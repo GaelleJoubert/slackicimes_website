@@ -1,0 +1,81 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { Picture } from "astro:assets";
+import { render } from "astro:content";
+import PhotoGallery from "../../components/sections/PhotoGallery.astro";
+import StageDetails from "../../components/sections/StageDetails.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import Section from "../../components/ui/Section.astro";
+import {
+  getGallery,
+  getLocalizedCollection,
+  getPageEntry,
+} from "../../i18n/collections";
+import { entrySlug } from "../../i18n/content";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "stages-jeunes";
+const YOUTH_STAGE_SLUG = "stage-jeunes";
+const HERO_IMAGE_WIDTHS = [480, 960];
+const HERO_IMAGE_SIZES = "(min-width: 768px) 480px, 100vw";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const stages = await getLocalizedCollection("stages", locale);
+const youthStage = stages.find(
+  (stage) => entrySlug(stage.id) === YOUTH_STAGE_SLUG,
+);
+if (!youthStage) {
+  throw new Error(
+    `Missing stage "${YOUTH_STAGE_SLUG}" in src/content/stages/${locale}/.`,
+  );
+}
+const gallery = await getGallery(YOUTH_STAGE_SLUG, locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section>
+    <div class="grid items-center gap-8 md:grid-cols-2">
+      <div>
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text mt-6 text-lg">
+          <Intro />
+        </div>
+        <div class="mt-8">
+          <LinkButton href={localizedPath("inscriptions", locale)}>
+            {strings.stages.registrationsButton}
+          </LinkButton>
+        </div>
+      </div>
+      <Picture
+        src={youthStage.data.image}
+        alt={youthStage.data.imageAlt}
+        widths={HERO_IMAGE_WIDTHS}
+        sizes={HERO_IMAGE_SIZES}
+        formats={["avif", "webp"]}
+        class="aspect-4/3 w-full rounded-lg object-cover"
+      />
+    </div>
+  </Section>
+
+  <StageDetails stage={youthStage} locale={locale} />
+
+  <Section tone="mist">
+    <h2 class="section-title mb-6">{strings.youthStages.galleryTitle}</h2>
+    <PhotoGallery gallery={gallery} />
+  </Section>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ImageGallery from "../ui/ImageGallery.astro";
+
+interface Props {
+  gallery: CollectionEntry<"galleries">;
+}
+
+const { gallery } = Astro.props;
+---
+
+<ImageGallery images={gallery.data.photos} />

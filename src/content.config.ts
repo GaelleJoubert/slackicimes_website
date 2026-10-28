@@ -84,14 +84,32 @@ const home = defineCollection({
   },
 });
 
-const festivalPhotos = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/festival-photos" }),
+const galleries = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/galleries" }),
+  schema: ({ image }) =>
+    z.object({
+      photos: z
+        .array(
+          z.object({
+            image: image(),
+            alt: nonEmptyText,
+            caption: nonEmptyText.optional(),
+          }),
+        )
+        .min(1),
+    }),
+});
+
+const festivalEditions = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/festival-editions" }),
   schema: ({ image }) =>
     z.object({
       order: displayOrder,
-      image: image(),
-      alt: nonEmptyText,
-      caption: nonEmptyText,
+      title: nonEmptyText,
+      poster: image().optional(),
+      posterAlt: nonEmptyText.optional(),
+      gallery: nonEmptyText.optional(),
+      galleryTitle: nonEmptyText.optional(),
     }),
 });
 
@@ -170,7 +188,8 @@ export const collections = {
   faq,
   testimonials,
   home,
-  festivalPhotos,
+  galleries,
+  festivalEditions,
   festival,
   association,
   team,

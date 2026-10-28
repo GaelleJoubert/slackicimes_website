@@ -4,7 +4,7 @@ import type { Locale } from "./locales";
 import { pageContentId } from "./routes";
 
 type LocalizedCollectionName =
-  "stages" | "faq" | "testimonials" | "festivalPhotos" | "team";
+  "stages" | "faq" | "testimonials" | "team" | "festivalEditions";
 
 type SingleEntryCollectionName = "home" | "festival" | "association";
 
@@ -30,6 +30,20 @@ export async function getSingleEntryContent<
     );
   }
   return content;
+}
+
+export async function getGallery(
+  gallerySlug: string,
+  locale: Locale,
+): Promise<CollectionEntry<"galleries">> {
+  const contentId = pageContentId(gallerySlug, locale);
+  const gallery = await getEntry("galleries", contentId);
+  if (!gallery) {
+    throw new Error(
+      `Missing gallery "${contentId}": add src/content/galleries/${contentId}.yaml.`,
+    );
+  }
+  return gallery;
 }
 
 export async function getPageEntry(

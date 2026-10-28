@@ -1,0 +1,10 @@
+photos:
+  - image: ../../../assets/images/festival/deux-tetes.jpg
+    alt: Le site des Deux Têtes enneigé, sur le domaine skiable des Arcs
+    caption: Site des Deux Têtes
+  - image: ../../../assets/images/festival/tandem.jpg
+    alt: Deux highlineurs en tandem suspendus sous une ligne au dessus de la neige
+    caption: L'amour du tandem
+  - image: ../../../assets/images/festival/tandem-250m.jpg
+    alt: Highlineurs sur une ligne de 250 mètres tendue au dessus d'une pente enneigée
+    caption: Tandem sur 250 m

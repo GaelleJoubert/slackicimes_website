@@ -1,0 +1,21 @@
+photos:
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-01.jpg,
+      alt: Jeune stagiaire souriante assise en baudrier sur une highline,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-02.jpg,
+      alt: Jeunes stagiaires sur une waterline tendue au dessus d'un plan d'eau,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-03.jpg,
+      alt: Jeune highlineuse en équilibre face au Mont Blanc dans les nuages,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-04.jpg,
+      alt: Jeunes stagiaires faisant des exercices sur l'herbe,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-05.jpg,
+      alt: Jeunes stagiaires jouant à des jeux d'équilibre dans un parc,
+    }

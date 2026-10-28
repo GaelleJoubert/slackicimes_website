@@ -2,10 +2,11 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import ContactBlock from "../../components/sections/ContactBlock.astro";
 import FeatureBlock from "../../components/sections/FeatureBlock.astro";
-import FestivalGallery from "../../components/sections/FestivalGallery.astro";
+import PhotoGallery from "../../components/sections/PhotoGallery.astro";
 import HomeHighlights from "../../components/sections/HomeHighlights.astro";
 import TestimonialsSection from "../../components/sections/TestimonialsSection.astro";
 import {
+  getGallery,
   getLocalizedCollection,
   getPageEntry,
   getSingleEntryContent,
@@ -29,7 +30,7 @@ const { highlights, stagesTeaser, festivalTeaser } = (
 ).data;
 const { origin } = (await getSingleEntryContent("association", locale)).data;
 const testimonials = await getLocalizedCollection("testimonials", locale);
-const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
+const festivalGallery = await getGallery("festival", locale);
 ---
 
 <BaseLayout
@@ -76,7 +77,7 @@ const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
     tone="mist"
   >
     <div class="mt-8">
-      <FestivalGallery photos={festivalPhotos} />
+      <PhotoGallery gallery={festivalGallery} />
     </div>
   </FeatureBlock>
 

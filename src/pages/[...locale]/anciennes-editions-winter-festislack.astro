@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import FestivalEditionSection from "../../components/sections/FestivalEditionSection.astro";
+import Section from "../../components/ui/Section.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "anciennes-editions-winter-festislack";
+
+const { locale } = Astro.props;
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const editions = await getLocalizedCollection("festivalEditions", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section spacing="flushBottom">
+    <h1 class="page-title">{page.data.heading}</h1>
+    <div class="rich-text mt-6 max-w-2xl text-lg">
+      <Intro />
+    </div>
+  </Section>
+
+  {editions.map((edition, editionIndex) => (
+    <FestivalEditionSection
+      edition={edition}
+      locale={locale}
+      tone={editionIndex % 2 === 0 ? "paper" : "mist"}
+    />
+  ))}
+</BaseLayout>

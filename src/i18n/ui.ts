@@ -44,6 +44,9 @@ const fr = {
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
   },
+  youthStages: {
+    galleryTitle: "Le stage en images",
+  },
   faq: {
     title: "FAQ",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages",
@@ -123,6 +126,9 @@ const en: UiStrings = {
   },
   festival: {
     pastEditionsButton: "See previous editions",
+  },
+  youthStages: {
+    galleryTitle: "The course in pictures",
   },
   faq: {
     title: "FAQ",

@@ -5,7 +5,7 @@ import { Picture } from "astro:assets";
 interface GalleryImage {
   image: ImageMetadata;
   alt: string;
-  caption: string;
+  caption?: string;
 }
 
 interface Props {
@@ -30,7 +30,7 @@ const { images } = Astro.props;
           formats={["avif", "webp"]}
           class="aspect-4/3 w-full rounded-lg object-cover"
         />
-        <figcaption class="caption mt-2">{caption}</figcaption>
+        {caption && <figcaption class="caption mt-2">{caption}</figcaption>}
       </figure>
     </li>
   ))}

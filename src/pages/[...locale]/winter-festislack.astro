@@ -2,10 +2,10 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import FeatureBlock from "../../components/sections/FeatureBlock.astro";
-import FestivalGallery from "../../components/sections/FestivalGallery.astro";
+import PhotoGallery from "../../components/sections/PhotoGallery.astro";
 import Section from "../../components/ui/Section.astro";
 import {
-  getLocalizedCollection,
+  getGallery,
   getPageEntry,
   getSingleEntryContent,
 } from "../../i18n/collections";
@@ -26,7 +26,7 @@ const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
 const { Content: Intro } = await render(page);
 const { announcement } = (await getSingleEntryContent("festival", locale)).data;
-const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
+const festivalGallery = await getGallery("festival", locale);
 ---
 
 <BaseLayout
@@ -40,7 +40,7 @@ const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
     <div class="rich-text mt-6 mb-8 max-w-2xl text-lg">
       <Intro />
     </div>
-    <FestivalGallery photos={festivalPhotos} />
+    <PhotoGallery gallery={festivalGallery} />
   </Section>
 
   <FeatureBlock
