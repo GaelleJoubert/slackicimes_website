@@ -5,18 +5,24 @@ import LinkButton from "../ui/LinkButton.astro";
 import Section from "../ui/Section.astro";
 
 type ImageSide = "start" | "end";
+type ImageShape = "landscape" | "portrait";
 
 interface Props {
   title: string;
   paragraphs: string[];
   illustration?: { image: ImageMetadata; alt: string };
   imageSide?: ImageSide;
+  imageShape?: ImageShape;
   link?: { href: string; label: string };
   tone?: "paper" | "mist";
 }
 
 const FEATURE_IMAGE_WIDTHS = [480, 960];
 const FEATURE_IMAGE_SIZES = "(min-width: 768px) 480px, 100vw";
+const IMAGE_SHAPE_CLASSES: Record<ImageShape, string> = {
+  landscape: "aspect-4/3 object-cover",
+  portrait: "mx-auto max-w-sm shadow-lg",
+};
 const IMAGE_ORDER_CLASSES: Record<ImageSide, string> = {
   start: "md:order-first",
   end: "md:order-last",
@@ -27,6 +33,7 @@ const {
   paragraphs,
   illustration,
   imageSide = "start",
+  imageShape = "landscape",
   link,
   tone,
 } = Astro.props;
@@ -44,7 +51,7 @@ const {
           widths={FEATURE_IMAGE_WIDTHS}
           sizes={FEATURE_IMAGE_SIZES}
           formats={["avif", "webp"]}
-          class="aspect-4/3 w-full rounded-lg object-cover"
+          class:list={["w-full rounded-lg", IMAGE_SHAPE_CLASSES[imageShape]]}
         />
       </div>
     )}

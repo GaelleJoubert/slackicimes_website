@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ImageGallery from "../ui/ImageGallery.astro";
+
+interface Props {
+  photos: CollectionEntry<"festivalPhotos">[];
+}
+
+const { photos } = Astro.props;
+---
+
+<ImageGallery images={photos.map((photo) => photo.data)} />

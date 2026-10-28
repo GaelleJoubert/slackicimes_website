@@ -41,13 +41,3 @@ festivalTeaser:
   paragraphs:
     - A one of a kind event combining skiing and highline.
     - It brings together practitioners from all over the world on the fabulous natural site of the Deux Têtes, in the heart of the Les Arcs ski area, facing Mont Blanc.
-  gallery:
-    - image: ../../assets/images/festival/deux-tetes.jpg
-      alt: The snowy Deux Têtes site, in the Les Arcs ski area
-      caption: The Deux Têtes site
-    - image: ../../assets/images/festival/tandem.jpg
-      alt: Two highliners in tandem hanging under a line above the snow
-      caption: Tandem love
-    - image: ../../assets/images/festival/tandem-250m.jpg
-      alt: Highliners on a 250 meter line above a snowy slope
-      caption: Tandem on 250 m

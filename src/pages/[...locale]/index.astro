@@ -2,13 +2,13 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import ContactBlock from "../../components/sections/ContactBlock.astro";
 import FeatureBlock from "../../components/sections/FeatureBlock.astro";
+import FestivalGallery from "../../components/sections/FestivalGallery.astro";
 import HomeHighlights from "../../components/sections/HomeHighlights.astro";
 import TestimonialsSection from "../../components/sections/TestimonialsSection.astro";
-import ImageGallery from "../../components/ui/ImageGallery.astro";
 import {
-  getHomeContent,
   getLocalizedCollection,
   getPageEntry,
+  getSingleEntryContent,
 } from "../../i18n/collections";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
@@ -25,9 +25,10 @@ const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(HOME_PAGE_SLUG, locale);
 const { highlights, association, stagesTeaser, festivalTeaser } = (
-  await getHomeContent(locale)
+  await getSingleEntryContent("home", locale)
 ).data;
 const testimonials = await getLocalizedCollection("testimonials", locale);
+const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
 ---
 
 <BaseLayout
@@ -74,7 +75,7 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
     tone="mist"
   >
     <div class="mt-8">
-      <ImageGallery images={festivalTeaser.gallery} />
+      <FestivalGallery photos={festivalPhotos} />
     </div>
   </FeatureBlock>
 

@@ -41,6 +41,9 @@ const fr = {
     priceNote: "Ce tarif inclut toutes les activités et le matériel collectif.",
     registerButton: "S'inscrire",
   },
+  festival: {
+    pastEditionsButton: "Voir les anciennes éditions",
+  },
   faq: {
     title: "FAQ",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages",
@@ -100,6 +103,9 @@ const en: UiStrings = {
     priceHeading: "Price",
     priceNote: "This price includes all activities and collective equipment.",
     registerButton: "Register",
+  },
+  festival: {
+    pastEditionsButton: "See previous editions",
   },
   faq: {
     title: "FAQ",

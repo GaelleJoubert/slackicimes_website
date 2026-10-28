@@ -80,11 +80,40 @@ const home = defineCollection({
         .min(1),
       association: textBlock.extend({ illustration }),
       stagesTeaser: textBlock.extend({ illustration }),
-      festivalTeaser: textBlock.extend({
-        gallery: z.array(illustration.extend({ caption: nonEmptyText })).min(1),
-      }),
+      festivalTeaser: textBlock,
     });
   },
 });
 
-export const collections = { pages, stages, faq, testimonials, home };
+const festivalPhotos = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/festival-photos" }),
+  schema: ({ image }) =>
+    z.object({
+      order: displayOrder,
+      image: image(),
+      alt: nonEmptyText,
+      caption: nonEmptyText,
+    }),
+});
+
+const festival = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/festival" }),
+  schema: ({ image }) =>
+    z.object({
+      announcement: z.object({
+        title: nonEmptyText,
+        paragraphs: z.array(nonEmptyText).min(1),
+        poster: z.object({ image: image(), alt: nonEmptyText }),
+      }),
+    }),
+});
+
+export const collections = {
+  pages,
+  stages,
+  faq,
+  testimonials,
+  home,
+  festivalPhotos,
+  festival,
+};

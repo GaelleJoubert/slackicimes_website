@@ -3,7 +3,10 @@ import { assertTranslationsComplete, entriesForLocale } from "./content";
 import type { Locale } from "./locales";
 import { pageContentId } from "./routes";
 
-type LocalizedCollectionName = "stages" | "faq" | "testimonials";
+type LocalizedCollectionName =
+  "stages" | "faq" | "testimonials" | "festivalPhotos";
+
+type SingleEntryCollectionName = "home" | "festival";
 
 export async function getLocalizedCollection<
   Name extends LocalizedCollectionName,
@@ -16,16 +19,17 @@ export async function getLocalizedCollection<
   return entriesForLocale(entries, locale);
 }
 
-export async function getHomeContent(
-  locale: Locale,
-): Promise<CollectionEntry<"home">> {
-  const homeContent = await getEntry("home", locale);
-  if (!homeContent) {
+export async function getSingleEntryContent<
+  Name extends SingleEntryCollectionName,
+>(collectionName: Name, locale: Locale): Promise<CollectionEntry<Name>> {
+  const entries: CollectionEntry<Name>[] = await getCollection(collectionName);
+  const content = entries.find((entry) => entry.id === locale);
+  if (!content) {
     throw new Error(
-      `Missing home content for "${locale}": add src/content/home/${locale}.yaml.`,
+      `Missing "${collectionName}" content for "${locale}": add a ${locale}.yaml entry to that collection.`,
     );
   }
-  return homeContent;
+  return content;
 }
 
 export async function getPageEntry(
