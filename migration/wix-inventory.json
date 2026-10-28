@@ -368,7 +368,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -508,6 +508,514 @@
       "json_ld_types": [
         "WebSite"
       ]
+    },
+    {
+      "path": "/anciennes-editions-winter-festislack",
+      "url": "https://www.slackicimes.org/anciennes-editions-winter-festislack",
+      "lang": "fr",
+      "title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
+      "meta_description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
+      "canonical": "https://www.slackicimes.org/anciennes-editions-winter-festislack",
+      "robots": "",
+      "og": {
+        "og:title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
+        "og:description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_ed61cbb998394032bbf3a0decfcfa7b9~mv2.png/v1/fill/w_2500,h_1315,al_c/0c3a1a_ed61cbb998394032bbf3a0decfcfa7b9~mv2.png",
+        "og:image:width": "2500",
+        "og:image:height": "1315",
+        "og:url": "https://www.slackicimes.org/anciennes-editions-winter-festislack",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Anciennes éditions"
+        },
+        {
+          "level": 2,
+          "text": "Winter FestiSlack Edition 2025"
+        },
+        {
+          "level": 2,
+          "text": "Winter FestiSlack Invitationnal Edition 2024"
+        },
+        {
+          "level": 2,
+          "text": "L'invitationnal en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'invitationnal en photos"
+        },
+        {
+          "level": 2,
+          "text": "Winter FestiSlack Edition #8 - 2023"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #8 (2023) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #7 (2022) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "Les années 2019 -2021"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #6 (2018) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #5 (2017) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #4 (2016) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #3 (2015) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #2 (2014) en vidéo"
+        },
+        {
+          "level": 2,
+          "text": "L'édition #1 (2013) en vidéo"
+        }
+      ],
+      "word_count": 556,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "L'équipe"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Anciennes éditions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "L'association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "Premiers Pas"
+        },
+        {
+          "tag": "li",
+          "text": "Autonomie"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Stages Jeunes"
+        },
+        {
+          "tag": "li",
+          "text": "Nos Formules"
+        },
+        {
+          "tag": "li",
+          "text": "Inscriptions"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "Livre d'or"
+        },
+        {
+          "tag": "li",
+          "text": "Stages"
+        },
+        {
+          "tag": "li",
+          "text": "Prestations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h2",
+          "text": "Anciennes éditions"
+        },
+        {
+          "tag": "p",
+          "text": "Replongez dans les précédentes éditions du festival !"
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack Edition 2025"
+        },
+        {
+          "tag": "p",
+          "text": "En plein coeur du domaine skiable des Arcs, se situe le site naturel fabuleux des Deux Têtes, avec vue panoramique sur la vallée de la Haute Tarentaise et le massif du Mont Blanc."
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "C'est ici que se réunissent des highliners du monde entier, de débutants aux meilleurs athlètes internationaux, dans une ambiance conviviale aux couleurs fluos des années 80 !"
+        },
+        {
+          "tag": "p",
+          "text": "Cette année les projecteurs sont sur la Surf - highline : une discipline impressionnante et hypnotisante ! Le spectacle sera visible pour tous les skieurs passant par le sommet du télésiège de Mont-Blanc."
+        },
+        {
+          "tag": "p",
+          "text": "Pour les initiations, le grand public poura se joindre au rassemblement et à des animations Place du soleil à Arc 1600."
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack Invitationnal Edition 2024"
+        },
+        {
+          "tag": "p",
+          "text": "En plein cœur du domaine skiable des Arcs, se situe le cirque naturel fabuleux des Fond Blanc. Cette année, exceptionnellement, c'est lui qui sera le théâtre des festivités !"
+        },
+        {
+          "tag": "p",
+          "text": "L'association a réuni une quinzaine d’athlètes parmi les meilleurs mondiaux, pour réaliser cette traversée du cirque longue de 570m !"
+        },
+        {
+          "tag": "p",
+          "text": "Lors de l'évènement, Tania Monier et Tijmen Van Dieren ont établi un nouveau record du monde de tandem (traversée à deux en se tenant les mains)."
+        },
+        {
+          "tag": "p",
+          "text": "Les athlètes ont exploité ce nouveau terrain de jeux en combinant highline, ski freestyle (Coline Ballet-Baz) , parapente, pour retranscrire ces exploits à travers des images inédites."
+        },
+        {
+          "tag": "p",
+          "text": "Cette highline, la plus longue de Tarentaise, a été baptisée Highpowcalypse Snow en clin d'oeil aux pionniers de la vallée."
+        },
+        {
+          "tag": "h2",
+          "text": "L'invitationnal en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'invitationnal en photos"
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack Edition #8 - 2023"
+        },
+        {
+          "tag": "p",
+          "text": "Cette année encore, le spot des deux têtes a acceuilli les highliners du monde entier, de débutants aux meilleurs athlètes internationaux, dans une ambiance conviviale aux couleurs fluos des années 80 !"
+        },
+        {
+          "tag": "p",
+          "text": "​Les projecteurs ont été sur la highline freestyle : discipline en plein essor, les meilleurs athlètes mondiaux de la discipline étaient présents pour cette étape de la coupe du monde de la discipline !"
+        },
+        {
+          "tag": "p",
+          "text": "​Une compétition de vitesse (speedline) s'est déroulée sur les deux plus grandes lignes du site (250m)."
+        },
+        {
+          "tag": "p",
+          "text": "Le grand public pourra se joindre au rassemblement grâce à des animations Place du Soleil à Arc 1600."
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #8 (2023) en vidéo"
+        },
+        {
+          "tag": "p",
+          "text": "Cette année, le festival a accueilli une étape de la coupe du monde de Highline Freestyle !"
+        },
+        {
+          "tag": "p",
+          "text": "Revivez les finales en vidéo."
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #7 (2022) en vidéo"
+        },
+        {
+          "tag": "p",
+          "text": "Après 3 années off, le festival revient en grande pompe !"
+        },
+        {
+          "tag": "p",
+          "text": "Pour la première fois il accueille une compétition internationnale de Highline Freestyle, dont le format novateur deviendra une référence de la discipline, et sera utilisé dans toutes les futures compétitions."
+        },
+        {
+          "tag": "h2",
+          "text": "Les années 2019 -2021"
+        },
+        {
+          "tag": "p",
+          "text": "2021 - Édition annulée bis : Une fois de plus un confinement est déclaré 1 semaine avant le festival."
+        },
+        {
+          "tag": "p",
+          "text": "2020 - Édition annulée : Le Covid arrive, et le confinement se déclare 5 jours avant le festival, ..."
+        },
+        {
+          "tag": "p",
+          "text": "2019 - Année de pause dans l'organisation du festival"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #6 (2018) en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #5 (2017) en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #4 (2016) en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #3 (2015) en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #2 (2014) en vidéo"
+        },
+        {
+          "tag": "h2",
+          "text": "L'édition #1 (2013) en vidéo"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2023 par Gaëlle Joubert pour Slack'icîmes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Coeur_PNG.png",
+          "alt": "logo slackicimes",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_0a65336984ed4694a9efd8186ceec7a2~mv2.png/v1/fill/w_528,h_529,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VisuelInsta_PNG.png",
+          "alt": "Festival highline winter festislack",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_0a65336984ed4694a9efd8186ceec7a2~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_a53b83ff50904a60be0dc9a3879cbf0b~mv2.jpg/v1/fill/w_480,h_674,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/wfs2024.jpg",
+          "alt": "affiche wfs 2024",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_a53b83ff50904a60be0dc9a3879cbf0b~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg/v1/fill/w_272,h_362,q_90,enc_avif,quality_auto/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg/v1/fill/w_272,h_181,q_90,enc_avif,quality_auto/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg/v1/fill/w_261,h_347,q_90,enc_avif,quality_auto/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg/v1/fill/w_261,h_196,q_90,enc_avif,quality_auto/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg/v1/fill/w_201,h_268,q_90,enc_avif,quality_auto/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg/v1/fill/w_201,h_268,q_90,enc_avif,quality_auto/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg/v1/fill/w_412,h_275,q_90,enc_avif,quality_auto/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg/v1/fill/w_423,h_282,q_90,enc_avif,quality_auto/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg/v1/fill/w_219,h_291,q_90,enc_avif,quality_auto/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg/v1/fill/w_194,h_291,q_90,enc_avif,quality_auto/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg/v1/fill/w_532,h_399,q_90,enc_avif,quality_auto/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg/v1/fill/w_261,h_174,q_90,enc_avif,quality_auto/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg/v1/fill/w_261,h_174,q_90,enc_avif,quality_auto/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg/v1/fill/w_477,h_318,q_90,enc_avif,quality_auto/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg/v1/fill/w_479,h_318,q_90,enc_avif,quality_auto/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_52f0aa6dbb1f4f97a04d83daae864bbe~mv2.png/v1/fill/w_447,h_628,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_1480_PNG.png",
+          "alt": "Affiche wfs 2023",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_52f0aa6dbb1f4f97a04d83daae864bbe~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/association",
+          "text": "L'association"
+        },
+        {
+          "href": "https://www.slackicimes.org/association",
+          "text": "L'équipe"
+        },
+        {
+          "href": "https://www.slackicimes.org/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/anciennes-editions-winter-festislack",
+          "text": "Anciennes éditions"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "Stages"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "Premiers Pas"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "Autonomie"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-jeunes",
+          "text": "Stages Jeunes"
+        },
+        {
+          "href": "https://www.slackicimes.org/inscriptions",
+          "text": "Inscriptions"
+        },
+        {
+          "href": "https://www.slackicimes.org/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/livre-d-or",
+          "text": "Livre d'or"
+        },
+        {
+          "href": "https://www.slackicimes.org/prestations",
+          "text": "Prestations"
+        },
+        {
+          "href": "https://www.slackicimes.org/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
     },
     {
       "path": "/association",
@@ -1081,7 +1589,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -1377,7 +1885,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -1445,106 +1953,66 @@
       "json_ld_types": []
     },
     {
-      "path": "/old-winterfestislack-editions",
-      "url": "https://www.slackicimes.org/old-winterfestislack-editions",
-      "lang": "fr",
-      "title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
-      "meta_description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
-      "canonical": "https://www.slackicimes.org/old-winterfestislack-editions",
+      "path": "/en",
+      "url": "https://www.slackicimes.org/en",
+      "lang": "en",
+      "title": "Slack'icîmes | Highline & Slackline | Savoie",
+      "meta_description": "Slack'icîmes est une association qui promeut la highline et la slackline dans les alpes, notamment aux Arcs à Bourg Saint Maurice. L'association organise des stages highline et un festival : le Winter Festislack.  Elle propose aussi des initiations et démonstrations.",
+      "canonical": "https://www.slackicimes.org/en",
       "robots": "",
       "og": {
-        "og:title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
-        "og:description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
-        "og:image": "https://static.wixstatic.com/media/0c3a1a_ed61cbb998394032bbf3a0decfcfa7b9~mv2.png/v1/fill/w_2500,h_1315,al_c/0c3a1a_ed61cbb998394032bbf3a0decfcfa7b9~mv2.png",
+        "og:title": "Slack'icîmes | Highline & Slackline | Savoie",
+        "og:description": "Slack'icîmes est une association qui promeut la highline et la slackline dans les alpes, notamment aux Arcs à Bourg Saint Maurice. L'association organise des stages highline et un festival : le Winter Festislack.  Elle propose aussi des initiations et démonstrations.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_7647f66932fc454c89438b947420d91c~mv2.jpg/v1/fill/w_2500,h_1391,al_c/0c3a1a_7647f66932fc454c89438b947420d91c~mv2.jpg",
         "og:image:width": "2500",
-        "og:image:height": "1315",
-        "og:url": "https://www.slackicimes.org/old-winterfestislack-editions",
+        "og:image:height": "1391",
+        "og:url": "https://www.slackicimes.org/en",
         "og:site_name": "Slack'icîmes",
         "og:type": "website"
       },
       "headings": [
         {
           "level": 2,
-          "text": "Anciennes éditions"
+          "text": "ASSOCIATION"
         },
         {
           "level": 2,
-          "text": "Winter FestiSlack Edition 2025"
+          "text": "SLACK'"
         },
         {
           "level": 2,
-          "text": "Winter FestiSlack Invitationnal Edition 2024"
+          "text": "ICÎMES"
+        },
+        {
+          "level": 3,
+          "text": "The origin"
         },
         {
           "level": 2,
-          "text": "L'invitationnal en vidéo"
+          "text": "Highline Workshops"
         },
         {
           "level": 2,
-          "text": "L'invitationnal en photos"
+          "text": "Winter FestiSlack"
+        },
+        {
+          "level": 1,
+          "text": "LIVRE D'OR"
         },
         {
           "level": 2,
-          "text": "Winter FestiSlack Edition #8 - 2023"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #8 (2023) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #7 (2022) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "Les années 2019 -2021"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #6 (2018) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #5 (2017) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #4 (2016) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #3 (2015) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #2 (2014) en vidéo"
-        },
-        {
-          "level": 2,
-          "text": "L'édition #1 (2013) en vidéo"
+          "text": "Contact us"
         }
       ],
-      "word_count": 556,
+      "word_count": 270,
       "text_blocks": [
         {
           "tag": "li",
-          "text": "L'équipe"
+          "text": "The team"
         },
         {
           "tag": "li",
-          "text": "Infos"
-        },
-        {
-          "tag": "li",
-          "text": "Anciennes éditions"
-        },
-        {
-          "tag": "li",
-          "text": "Winter Festislack"
-        },
-        {
-          "tag": "li",
-          "text": "L'association"
+          "text": "The Association"
         },
         {
           "tag": "li",
@@ -1552,11 +2020,11 @@
         },
         {
           "tag": "li",
-          "text": "Premiers Pas"
+          "text": "First Steps"
         },
         {
           "tag": "li",
-          "text": "Autonomie"
+          "text": "Rigging"
         },
         {
           "tag": "li",
@@ -1564,15 +2032,15 @@
         },
         {
           "tag": "li",
-          "text": "Stages Jeunes"
+          "text": "Young camp"
         },
         {
           "tag": "li",
-          "text": "Nos Formules"
+          "text": "our workshops"
         },
         {
           "tag": "li",
-          "text": "Inscriptions"
+          "text": "Registrations"
         },
         {
           "tag": "li",
@@ -1580,167 +2048,139 @@
         },
         {
           "tag": "li",
-          "text": "Livre d'or"
+          "text": "ratings"
         },
         {
           "tag": "li",
-          "text": "Stages"
+          "text": "Workshops"
         },
         {
           "tag": "li",
-          "text": "Prestations"
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
         },
         {
           "tag": "li",
           "text": "Contact"
         },
         {
-          "tag": "h2",
-          "text": "Anciennes éditions"
-        },
-        {
           "tag": "p",
-          "text": "Replongez dans les précédentes éditions du festival !"
+          "text": "Workshops"
         },
         {
           "tag": "h2",
-          "text": "Winter FestiSlack Edition 2025"
+          "text": "ASSOCIATION"
         },
         {
           "tag": "p",
-          "text": "En plein coeur du domaine skiable des Arcs, se situe le site naturel fabuleux des Deux Têtes, avec vue panoramique sur la vallée de la Haute Tarentaise et le massif du Mont Blanc."
+          "text": "Discover Highline"
         },
         {
           "tag": "p",
-          "text": "​"
+          "text": "Various Workshops to ride the sky. To safely start highlining, improve or learn how to rig."
         },
         {
           "tag": "p",
-          "text": "C'est ici que se réunissent des highliners du monde entier, de débutants aux meilleurs athlètes internationaux, dans une ambiance conviviale aux couleurs fluos des années 80 !"
-        },
-        {
-          "tag": "p",
-          "text": "Cette année les projecteurs sont sur la Surf - highline : une discipline impressionnante et hypnotisante ! Le spectacle sera visible pour tous les skieurs passant par le sommet du télésiège de Mont-Blanc."
-        },
-        {
-          "tag": "p",
-          "text": "Pour les initiations, le grand public poura se joindre au rassemblement et à des animations Place du soleil à Arc 1600."
+          "text": "Festival"
         },
         {
           "tag": "h2",
-          "text": "Winter FestiSlack Invitationnal Edition 2024"
+          "text": "SLACK'"
         },
         {
           "tag": "p",
-          "text": "En plein cœur du domaine skiable des Arcs, se situe le cirque naturel fabuleux des Fond Blanc. Cette année, exceptionnellement, c'est lui qui sera le théâtre des festivités !"
+          "text": "Winter Festi'slack"
         },
         {
           "tag": "p",
-          "text": "L'association a réuni une quinzaine d’athlètes parmi les meilleurs mondiaux, pour réaliser cette traversée du cirque longue de 570m !"
+          "text": "The festival which combine Ski and Highline since 2013 in Les Arcs."
         },
         {
           "tag": "p",
-          "text": "Lors de l'évènement, Tania Monier et Tijmen Van Dieren ont établi un nouveau record du monde de tandem (traversée à deux en se tenant les mains)."
-        },
-        {
-          "tag": "p",
-          "text": "Les athlètes ont exploité ce nouveau terrain de jeux en combinant highline, ski freestyle (Coline Ballet-Baz) , parapente, pour retranscrire ces exploits à travers des images inédites."
-        },
-        {
-          "tag": "p",
-          "text": "Cette highline, la plus longue de Tarentaise, a été baptisée Highpowcalypse Snow en clin d'oeil aux pionniers de la vallée."
+          "text": "Prestation"
         },
         {
           "tag": "h2",
-          "text": "L'invitationnal en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'invitationnal en photos"
-        },
-        {
-          "tag": "h2",
-          "text": "Winter FestiSlack Edition #8 - 2023"
+          "text": "ICÎMES"
         },
         {
           "tag": "p",
-          "text": "Cette année encore, le spot des deux têtes a acceuilli les highliners du monde entier, de débutants aux meilleurs athlètes internationaux, dans une ambiance conviviale aux couleurs fluos des années 80 !"
+          "text": "Initiations & demonstrations"
         },
         {
           "tag": "p",
-          "text": "​Les projecteurs ont été sur la highline freestyle : discipline en plein essor, les meilleurs athlètes mondiaux de la discipline étaient présents pour cette étape de la coupe du monde de la discipline !"
+          "text": "Showcase highline or slackline in your event !"
+        },
+        {
+          "tag": "h3",
+          "text": "The origin"
         },
         {
           "tag": "p",
-          "text": "​Une compétition de vitesse (speedline) s'est déroulée sur les deux plus grandes lignes du site (250m)."
+          "text": "The association was founded in 2012. Its purpose is to support Slacklining And Highlining in Haute Tarentaise, in Savoie. It started with the event Winter Festislack, which has brought together for 8 editions, 150 practitioners from all over the world."
         },
         {
           "tag": "p",
-          "text": "Le grand public pourra se joindre au rassemblement grâce à des animations Place du Soleil à Arc 1600."
+          "text": "We are now two women at the head of this association, extremely motivated to develop its many facets."
         },
         {
           "tag": "h2",
-          "text": "L'édition #8 (2023) en vidéo"
+          "text": "Highline Workshops"
         },
         {
           "tag": "p",
-          "text": "Cette année, le festival a accueilli une étape de la coupe du monde de Highline Freestyle !"
+          "text": "We are the first association in France to teach Highline courses. The association offers different formats, suitable for all levels. Discover our different workshops."
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack"
         },
         {
           "tag": "p",
-          "text": "Revivez les finales en vidéo."
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #7 (2022) en vidéo"
+          "text": "Unique event in the world of Skiing and Highlining."
         },
         {
           "tag": "p",
-          "text": "Après 3 années off, le festival revient en grande pompe !"
+          "text": "It brings together athletes from all over the world on the fabulous natural site of Les Deux Têtes, in the heart of the ski resort of Les Arcs, facing Mont Blanc."
+        },
+        {
+          "tag": "h1",
+          "text": "LIVRE D'OR"
         },
         {
           "tag": "p",
-          "text": "Pour la première fois il accueille une compétition internationnale de Highline Freestyle, dont le format novateur deviendra une référence de la discipline, et sera utilisé dans toutes les futures compétitions."
-        },
-        {
-          "tag": "h2",
-          "text": "Les années 2019 -2021"
+          "text": "Témoignages de nos stagiaires"
         },
         {
           "tag": "p",
-          "text": "2021 - Édition annulée bis : Une fois de plus un confinement est déclaré 1 semaine avant le festival."
+          "text": "« Vous nous donnez des ailes, à nous d'apprendre à nous en servir ! Merci. »"
         },
         {
           "tag": "p",
-          "text": "2020 - Édition annulée : Le Covid arrive, et le confinement se déclare 5 jours avant le festival, ..."
+          "text": "Fred, Stage Premier Pas"
+        },
+        {
+          "tag": "h2",
+          "text": "Contact us"
         },
         {
           "tag": "p",
-          "text": "2019 - Année de pause dans l'organisation du festival"
+          "text": "Gaelle 06 35 36 61 80"
         },
         {
-          "tag": "h2",
-          "text": "L'édition #6 (2018) en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #5 (2017) en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #4 (2016) en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #3 (2015) en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #2 (2014) en vidéo"
-        },
-        {
-          "tag": "h2",
-          "text": "L'édition #1 (2013) en vidéo"
+          "tag": "p",
+          "text": "Chloe 06 26 96 55 08"
         },
         {
           "tag": "p",
@@ -1748,154 +2188,98 @@
         },
         {
           "tag": "p",
-          "text": "© 2023 par Gaëlle Joubert pour Slack'icîmes"
+          "text": "Association Slack'îcimes Chalet of the Croizette Bow 1800 73700 Bourg Saint Maurice"
+        },
+        {
+          "tag": "label",
+          "text": "First name"
+        },
+        {
+          "tag": "label",
+          "text": "Name"
+        },
+        {
+          "tag": "label",
+          "text": "E-mail"
+        },
+        {
+          "tag": "label",
+          "text": "Message"
+        },
+        {
+          "tag": "button",
+          "text": "Send"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
         }
       ],
       "images": [
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Coeur_PNG.png",
-          "alt": "logo slackicimes",
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
           "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_0a65336984ed4694a9efd8186ceec7a2~mv2.png/v1/fill/w_528,h_529,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VisuelInsta_PNG.png",
-          "alt": "Festival highline winter festislack",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_0a65336984ed4694a9efd8186ceec7a2~mv2.png"
+          "src": "https://static.wixstatic.com/media/0c3a1a_03554f4fc5914182af5afd16896d941d~mv2.jpg/v1/crop/x_0,y_458,w_1676,h_2064/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Slackicimes-19.jpg",
+          "alt": "Slackicimes-19.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_03554f4fc5914182af5afd16896d941d~mv2.jpg"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_a53b83ff50904a60be0dc9a3879cbf0b~mv2.jpg/v1/fill/w_480,h_674,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/wfs2024.jpg",
-          "alt": "affiche wfs 2024",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_a53b83ff50904a60be0dc9a3879cbf0b~mv2.jpg"
+          "src": "https://static.wixstatic.com/media/0c3a1a_7b12b4012d4d4556b6f27346ddba6722~mv2.jpg/v1/crop/x_339,y_0,w_1056,h_1301/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/278568928_10158492395092115_4867268326393423323_n.jpg",
+          "alt": "278568928_10158492395092115_4867268326393423323_n.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_7b12b4012d4d4556b6f27346ddba6722~mv2.jpg"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg/v1/fill/w_272,h_362,q_90,enc_avif,quality_auto/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg",
+          "src": "https://static.wixstatic.com/media/0c3a1a_b202d7c865ab433d87ec816b44d6bfbf~mv2.jpg/v1/crop/x_1084,y_0,w_1832,h_2256/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/demo.jpg",
+          "alt": "demo.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_b202d7c865ab433d87ec816b44d6bfbf~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg/v1/fill/w_123,h_82,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg",
+          "alt": "IMG-20190830-WA0001.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_5fe796cd61f84662a49fe570b6545165~mv2.png/v1/fill/w_49,h_53,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_5fe796cd61f84662a49fe570b6545165~mv2.png",
           "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_bb0e751ffa7e4634b317be9a46bf009a~mv2.jpg"
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_5fe796cd61f84662a49fe570b6545165~mv2.png"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg/v1/fill/w_272,h_181,q_90,enc_avif,quality_auto/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg",
+          "src": "https://static.wixstatic.com/media/0c3a1a_cf10c71c6c4a4deb80687545d8c0726f~mv2.png/v1/fill/w_49,h_53,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_cf10c71c6c4a4deb80687545d8c0726f~mv2.png",
           "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_7ee0f8db90a44e459d193281c5602eae~mv2.jpg"
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_cf10c71c6c4a4deb80687545d8c0726f~mv2.png"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg/v1/fill/w_261,h_347,q_90,enc_avif,quality_auto/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg",
+          "src": "https://static.wixstatic.com/media/0c3a1a_e576c884b871409d98f583895eb01efc~mv2.png/v1/fill/w_49,h_53,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_e576c884b871409d98f583895eb01efc~mv2.png",
           "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_f458b504649b4ce7a43a5ee312399a72~mv2.jpg"
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_e576c884b871409d98f583895eb01efc~mv2.png"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg/v1/fill/w_261,h_196,q_90,enc_avif,quality_auto/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_96c3dac8e6e64ecb891a16c7e2f6833e~mv2.jpg"
+          "src": "https://static.wixstatic.com/media/0c3a1a_7b12b4012d4d4556b6f27346ddba6722~mv2.jpg/v1/fill/w_147,h_110,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_7b12b4012d4d4556b6f27346ddba6722~mv2.jpg",
+          "alt": "Site des Deux Têtes",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_7b12b4012d4d4556b6f27346ddba6722~mv2.jpg"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg/v1/fill/w_201,h_268,q_90,enc_avif,quality_auto/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_9195a6be8fef42d189603d6049221454~mv2.jpg"
+          "src": "https://static.wixstatic.com/media/0c3a1a_5c55c89492bf473f9bd0efd363580577~mv2.jpg/v1/fill/w_147,h_110,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_5c55c89492bf473f9bd0efd363580577~mv2.jpg",
+          "alt": "L'amour du tandem",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_5c55c89492bf473f9bd0efd363580577~mv2.jpg"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg/v1/fill/w_201,h_268,q_90,enc_avif,quality_auto/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_d88cbc53f33642fea47949097028c490~mv2.jpg"
+          "src": "https://static.wixstatic.com/media/0c3a1a_1e732b8654d84b12b76a25f8f6dcdc9f~mv2.jpg/v1/fill/w_147,h_110,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_1e732b8654d84b12b76a25f8f6dcdc9f~mv2.jpg",
+          "alt": "Tandem sur 250m",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_1e732b8654d84b12b76a25f8f6dcdc9f~mv2.jpg"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg/v1/fill/w_412,h_275,q_90,enc_avif,quality_auto/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_5fa503da924a42499548cbb419bdc088~mv2.jpg"
+          "src": "https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/23fd2a2be53141ed810f4d3dcdcd01fa.png",
+          "alt": "Facebook",
+          "original_url": "https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png"
         },
         {
-          "src": "https://static.wixstatic.com/media/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg/v1/fill/w_423,h_282,q_90,enc_avif,quality_auto/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_ce2008eb778a4295b4849d8dcdb37a29~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg/v1/fill/w_219,h_291,q_90,enc_avif,quality_auto/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_b94a0653d15a4739983fb5a1fe296a41~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg/v1/fill/w_194,h_291,q_90,enc_avif,quality_auto/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_6213bf006b7e4a10923f6904c8fd5736~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg/v1/fill/w_532,h_399,q_90,enc_avif,quality_auto/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_08df0657cfec4d2bb94173b3508a24b6~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg/v1/fill/w_261,h_174,q_90,enc_avif,quality_auto/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_2f2b90ca4a0e404bb994e265d25f98f7~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg/v1/fill/w_261,h_174,q_90,enc_avif,quality_auto/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_ad71749d4bce473d9ad68398f1d5eb6b~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg/v1/fill/w_477,h_318,q_90,enc_avif,quality_auto/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_a622226bd86f45a1a9483ea15959eea8~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_3d9e5f79d3d14e3c810c2bf8296b75cf~mv2.jpg/v1/fill/w_144,h_215,q_90,enc_avif,quality_auto/0c3a1a_3d9e5f79d3d14e3c810c2bf8296b75cf~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_3d9e5f79d3d14e3c810c2bf8296b75cf~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_c69d2f2867094c0482d78bdf0ea44936~mv2.jpg/v1/fill/w_323,h_215,q_90,enc_avif,quality_auto/0c3a1a_c69d2f2867094c0482d78bdf0ea44936~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_c69d2f2867094c0482d78bdf0ea44936~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg/v1/fill/w_479,h_318,q_90,enc_avif,quality_auto/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_84fc6ee93f0f4b6b9775f2c6dcf260af~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_3dec4e5d5cf04ead901ce3e81d7e72af~mv2.jpg/v1/fill/w_325,h_215,q_90,enc_avif,quality_auto/0c3a1a_3dec4e5d5cf04ead901ce3e81d7e72af~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_3dec4e5d5cf04ead901ce3e81d7e72af~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_fa9acb1d674342f4b37c4087094dcd64~mv2.jpg/v1/fill/w_144,h_215,q_90,enc_avif,quality_auto/0c3a1a_fa9acb1d674342f4b37c4087094dcd64~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_fa9acb1d674342f4b37c4087094dcd64~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_7c308f200c8142e9b098ebc95893035b~mv2.jpg/v1/fill/w_247,h_165,q_90,enc_avif,quality_auto/0c3a1a_7c308f200c8142e9b098ebc95893035b~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_7c308f200c8142e9b098ebc95893035b~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_bf4be2c234394647874bdab9baea60d3~mv2.jpg/v1/fill/w_247,h_165,q_90,enc_avif,quality_auto/0c3a1a_bf4be2c234394647874bdab9baea60d3~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_bf4be2c234394647874bdab9baea60d3~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_e25da6414eb34725bafab5ce863311da~mv2.jpg/v1/fill/w_504,h_336,q_90,enc_avif,quality_auto/0c3a1a_e25da6414eb34725bafab5ce863311da~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_e25da6414eb34725bafab5ce863311da~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_051f500751f741c08f4d56b30b5ff4ca~mv2.jpg/v1/fill/w_452,h_299,q_90,enc_avif,quality_auto/0c3a1a_051f500751f741c08f4d56b30b5ff4ca~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_051f500751f741c08f4d56b30b5ff4ca~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_0783158525bf4924b0973a02be6121e5~mv2.jpg/v1/fill/w_307,h_202,q_90,enc_avif,quality_auto/0c3a1a_0783158525bf4924b0973a02be6121e5~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_0783158525bf4924b0973a02be6121e5~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_365db72bd4e64a4b8e13ca500af6355d~mv2.jpg/v1/fill/w_135,h_202,q_90,enc_avif,quality_auto/0c3a1a_365db72bd4e64a4b8e13ca500af6355d~mv2.jpg",
-          "alt": "",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_365db72bd4e64a4b8e13ca500af6355d~mv2.jpg"
-        },
-        {
-          "src": "https://static.wixstatic.com/media/0c3a1a_52f0aa6dbb1f4f97a04d83daae864bbe~mv2.png/v1/fill/w_447,h_628,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_1480_PNG.png",
-          "alt": "Affiche wfs 2023",
-          "original_url": "https://static.wixstatic.com/media/0c3a1a_52f0aa6dbb1f4f97a04d83daae864bbe~mv2.png"
+          "src": "https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/81af6121f84c41a5b4391d7d37fce12a.png",
+          "alt": "Instagram",
+          "original_url": "https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png"
         },
         {
           "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
@@ -1915,71 +2299,3940 @@
       ],
       "links": [
         {
-          "href": "https://www.slackicimes.org",
+          "href": "https://www.slackicimes.org/en",
           "text": ""
         },
         {
-          "href": "https://www.slackicimes.org/association",
-          "text": "L'association"
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
         },
         {
-          "href": "https://www.slackicimes.org/association",
-          "text": "L'équipe"
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
         },
         {
-          "href": "https://www.slackicimes.org/winter-festislack",
-          "text": "Winter Festislack"
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
         },
         {
-          "href": "https://www.slackicimes.org/winter-festislack",
-          "text": "Infos"
-        },
-        {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
-          "text": "Anciennes éditions"
-        },
-        {
-          "href": "https://www.slackicimes.org/stages-highline",
-          "text": "Stages"
-        },
-        {
-          "href": "https://www.slackicimes.org/stages-highline",
+          "href": "https://www.slackicimes.org/en/stages-highline",
           "text": "Weekend"
         },
         {
-          "href": "https://www.slackicimes.org/stages-highline",
-          "text": "Premiers Pas"
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
         },
         {
-          "href": "https://www.slackicimes.org/stages-highline",
-          "text": "Autonomie"
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
         },
         {
-          "href": "https://www.slackicimes.org/stages-highline",
+          "href": "https://www.slackicimes.org/en/stages-highline",
           "text": "Back To Les Arcs"
         },
         {
-          "href": "https://www.slackicimes.org/stages-jeunes",
-          "text": "Stages Jeunes"
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
         },
         {
-          "href": "https://www.slackicimes.org/inscriptions",
-          "text": "Inscriptions"
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
         },
         {
-          "href": "https://www.slackicimes.org/stages-highline",
+          "href": "https://www.slackicimes.org/en/stages-highline",
           "text": "FAQ"
         },
         {
-          "href": "https://www.slackicimes.org/livre-d-or",
-          "text": "Livre d'or"
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
         },
         {
-          "href": "https://www.slackicimes.org/prestations",
-          "text": "Prestations"
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
         },
         {
-          "href": "https://www.slackicimes.org/contact",
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "learn more"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "learn more"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "learn more"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Learn More"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Learn more"
+        },
+        {
+          "href": "./#comp-lzb2083u",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb269x3",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb26brk",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dhxn",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2ds7c",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dvy7",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dnkl",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dr1f",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dxed",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dkvo",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dpo2",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb2dyqg",
+          "text": ""
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/anciennes-editions-winter-festislack",
+      "url": "https://www.slackicimes.org/en/anciennes-editions-winter-festislack",
+      "lang": "en",
+      "title": "",
+      "meta_description": "",
+      "canonical": "",
+      "robots": "",
+      "og": {},
+      "headings": [],
+      "word_count": 0,
+      "text_blocks": [],
+      "images": [],
+      "links": [],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/association",
+      "url": "https://www.slackicimes.org/en/association",
+      "lang": "en",
+      "title": "L'association | Slack'icîmes | Alpes",
+      "meta_description": "Découvrez l'association Slack'icîmes, une association de slackline et de highline. Organisatrice de stages, de festivals, d'initiation et de démonstrations.",
+      "canonical": "https://www.slackicimes.org/en/association",
+      "robots": "",
+      "og": {
+        "og:title": "L'association | Slack'icîmes | Alpes",
+        "og:description": "Découvrez l'association Slack'icîmes, une association de slackline et de highline. Organisatrice de stages, de festivals, d'initiation et de démonstrations.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/association",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "The origin"
+        },
+        {
+          "level": 2,
+          "text": "Our history"
+        },
+        {
+          "level": 2,
+          "text": "Slack'îcimes is..."
+        },
+        {
+          "level": 2,
+          "text": "The team"
+        },
+        {
+          "level": 2,
+          "text": "Chloe"
+        },
+        {
+          "level": 2,
+          "text": "Gaelle"
+        },
+        {
+          "level": 2,
+          "text": "The rest of the team"
+        },
+        {
+          "level": 2,
+          "text": "NICOLO"
+        },
+        {
+          "level": 2,
+          "text": "Alexian"
+        }
+      ],
+      "word_count": 1257,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h3",
+          "text": "The origin"
+        },
+        {
+          "tag": "p",
+          "text": "The association was founded in 2012. Its purpose is to support Slacklining And Highlining in Haute Tarentaise, in Savoie. It started with the event Winter Festislack, which has brought together for 8 editions, 150 practitioners from all over the world."
+        },
+        {
+          "tag": "p",
+          "text": "We are now two women at the head of this association, extremely motivated to develop its many facets."
+        },
+        {
+          "tag": "h2",
+          "text": "Our history"
+        },
+        {
+          "tag": "p",
+          "text": "In 2019 Chloë and Gaëlle unite to set up the first highline initiation courses in France. Both passionate about teaching in their original disciplines (skiing for Chloë and trampoline for Gaëlle), and after years of spontaneously introducing beginner participants at multiple festivals, they decided to share their experience. They love to bring all audiences and profiles to take their first steps into the void, and to accompany them on this overwhelming learning path."
+        },
+        {
+          "tag": "h2",
+          "text": "Slack'îcimes is..."
+        },
+        {
+          "tag": "p",
+          "text": "The association has always been committed to the development of slackline and highline, as well as sharing its core values."
+        },
+        {
+          "tag": "p",
+          "text": "A festival"
+        },
+        {
+          "tag": "p",
+          "text": "Since 2012, the WinterFestislack has brought together athletes from all over the world around a unique concept combining Ski & Highline"
+        },
+        {
+          "tag": "p",
+          "text": "Demonstrations"
+        },
+        {
+          "tag": "p",
+          "text": "The association has entertained admiring eyes at various events."
+        },
+        {
+          "tag": "p",
+          "text": "Workshops"
+        },
+        {
+          "tag": "p",
+          "text": "In 2019, the association organized the first highline courses in France. Since then, more than 300 people have discovered the world of highlining with us."
+        },
+        {
+          "tag": "p",
+          "text": "Expeditions"
+        },
+        {
+          "tag": "p",
+          "text": "In search of sporting exploits, explorations and discoveries, but also scientific and humanitarian projects."
+        },
+        {
+          "tag": "p",
+          "text": "Initiations"
+        },
+        {
+          "tag": "p",
+          "text": "In collaboration with municipalities and tourist offices, we offer to youngs and less youngs to test their balance."
+        },
+        {
+          "tag": "p",
+          "text": "Commitment"
+        },
+        {
+          "tag": "p",
+          "text": "We work in collaboration with the ISA (International Slackline Association)"
+        },
+        {
+          "tag": "h2",
+          "text": "The team"
+        },
+        {
+          "tag": "p",
+          "text": "Always involved in highline associations, Chloë and Gaëlle have come together since 2019 to give the first highline courses."
+        },
+        {
+          "tag": "p",
+          "text": "Between them, they are a real explosive cocktail of good humor, kindness and motivation!"
+        },
+        {
+          "tag": "p",
+          "text": "Our values"
+        },
+        {
+          "tag": "p",
+          "text": "share, benevolence, humility, self-transcendence, self-confidence, curiosity to learn and evolve"
+        },
+        {
+          "tag": "h2",
+          "text": "Chloe"
+        },
+        {
+          "tag": "p",
+          "text": "INSTRUCTOR HIGHLINE & ORGANIZER WINTER FESTISLACK"
+        },
+        {
+          "tag": "p",
+          "text": "I discovered highline at its very beginnings in France by meeting the Flying Frenchies, pioneers of the activity, and have seen the evolution over the years of the discipline: installations, materials, techniques..."
+        },
+        {
+          "tag": "p",
+          "text": "The aesthetics of the highline leads me to want to access alpine places and I invest myself in climbing and mountaineering for several years to be able to achieve lines that make me dream."
+        },
+        {
+          "tag": "p",
+          "text": "These years of learning lead me to as much inner work as technical and physical work, and I am passionate about passing on my experience, first for several years as a volunteer at festivals, then since 2019 through internships. initiation with Gaëlle."
+        },
+        {
+          "tag": "p",
+          "text": "Ihe magic that is created within the community around the highline is contagious and lasts over the years, and my passion does not age, unlike me ;)"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE FROM2010 TYPE OF PRACTICESkyline (Highline in high mountains) et search for aesthetic lines"
+        },
+        {
+          "tag": "p",
+          "text": "DIPLOMAS"
+        },
+        {
+          "tag": "p",
+          "text": "Rigger Certificate ISA (International Slackline Association)"
+        },
+        {
+          "tag": "p",
+          "text": "BE Ski Instructor,"
+        },
+        {
+          "tag": "p",
+          "text": "Health and Well-Being Coach, Cleen Practitioner (Coaching for the Release of Negative Emotional Imprints) certified ICI (International Coaching Institute of Geneva)"
+        },
+        {
+          "tag": "p",
+          "text": "DE nurse"
+        },
+        {
+          "tag": "p",
+          "text": "MOUNTAIN ACHIEVEMENTS1st rehearsal Ravanel-Mummery, Aiguille de la République opening, Aiguille de Roc, Col du Maudit, 1st Périades rehearsal, ..."
+        },
+        {
+          "tag": "p",
+          "text": "​PROJECTSOrganizer of the Winter Festislack in Les Arcs since 2012, Bourse Expé 2013 Paso a Paso Highlin'in Mexico"
+        },
+        {
+          "tag": "h2",
+          "text": "Gaelle"
+        },
+        {
+          "tag": "p",
+          "text": "​ In 2011, the slackline came into my life, and gradually took a big place. Already accustomed to cliffs thanks to climbing, I naturally headed towards the practice of the Highline."
+        },
+        {
+          "tag": "p",
+          "text": "After a difficult start, the highline ended up changing me. It changes my apprehension of fear, it changes my vision of life, and of the people around me.It meets two of my needs perfectly: understand & share."
+        },
+        {
+          "tag": "p",
+          "text": "Understand the technical installations, and the constant evolution of the material, but also the fear, the overcoming, the acceptance, and all the other feelings which cross us."
+        },
+        {
+          "tag": "p",
+          "text": "And share my knowledge, see the sparkles in the eyes of those new to slacklining, and work with them on their blocks."
+        },
+        {
+          "tag": "p",
+          "text": "Since then, I've traveled a lot, I've been in the mountains, I've set up highlines at many festivals, and I've done countless initiations.After having been President of the Grenoble slackline association for several years, I met Chloë, and our valuesmunicipalities mixed with our complementary skills give life to new projects"
+        },
+        {
+          "tag": "p",
+          "text": "and experiences, which confirm me once again on this observation:slacklining can change lives"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE FROM2014 TYPE OF PRACTICEVaried: beautiful lines & Highline Freestyle"
+        },
+        {
+          "tag": "p",
+          "text": "BAFA (Certificate of aptitude for the function of animator)"
+        },
+        {
+          "tag": "p",
+          "text": "IT Engineer"
+        },
+        {
+          "tag": "p",
+          "text": "Federal Trampoline Initiator"
+        },
+        {
+          "tag": "p",
+          "text": "ASSOCIATIVEOrganizer of the Winter Festislack in Les Arcs since 2019, President C'est Slack'er Bon 2016-2018 (Grenoble Association), Highline Manager at many Festivals in France and abroad, ..."
+        },
+        {
+          "tag": "p",
+          "text": "SHIPMENTSScientific, sporting and artistic expeditions to Greenland (Northmost Highline Record), Scientific & Humanitarian Expedition to Madagascar, ..."
+        },
+        {
+          "tag": "h2",
+          "text": "The rest of the team"
+        },
+        {
+          "tag": "p",
+          "text": "The association grows every year, and several passionate and experienced highliners have now joined the team."
+        },
+        {
+          "tag": "p",
+          "text": "They share our values and our motivation, and are keen to share their love of highlining."
+        },
+        {
+          "tag": "h2",
+          "text": "NICOLO"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE INSTRUCTOR"
+        },
+        {
+          "tag": "p",
+          "text": "As a child, my first word was \"FIL\", but it took me more than 20 years to discover the highline (2015). I immediately realized that it was true love and decided to travel by directing my life through this discipline. After having explored all facets of highlining and having participated in the installation of the two largest highlines in the world, today I find my greatest pleasure in transmitting this passion and installing the most aesthetic and improbable highlines."
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE SINCE 2015 TYPE OF PRACTICE Varied: beautiful lines & Highline Freestyle"
+        },
+        {
+          "tag": "p",
+          "text": "CQP1 rope access technician"
+        },
+        {
+          "tag": "p",
+          "text": "Physiotherapist DE"
+        },
+        {
+          "tag": "p",
+          "text": "Adapted Sports Educator"
+        },
+        {
+          "tag": "p",
+          "text": "PROJECTS: World record for highline length, 2700m in Auvergne (FRANCE) and 2900m in Senja (Norway). Alpine highline at Periades and Seru"
+        },
+        {
+          "tag": "h2",
+          "text": "Alexian"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE FREESTYLE INSTRUCTOR"
+        },
+        {
+          "tag": "p",
+          "text": "Slacklining came into my life when I was 18, I was first passionate about longlining, before moving towards highlining."
+        },
+        {
+          "tag": "p",
+          "text": "My first highline experience was very (too?) emotionally charged. I came home trembling, thinking it wasn't for me. Finally, surrounded by the right people, I was able to surpass myself, and this passion quickly guided my life."
+        },
+        {
+          "tag": "p",
+          "text": "I love the intense flow that we can achieve by practicing this sport, the artistic side of our practice and the community of enthusiasts around slacklining."
+        },
+        {
+          "tag": "p",
+          "text": "Highlining made me rediscover mountain sports and allowed me to see my environment with another eye. I love mixing my passion with other mountain activities: climbing, ski touring, mountaineering, maybe soon paragliding..."
+        },
+        {
+          "tag": "p",
+          "text": "Without knowing it, I have always done \"highline freetsyle\", before we put a name to this discipline. I have seen this practice evolve"
+        },
+        {
+          "tag": "p",
+          "text": "over the years and I hope to be able to introduce it to as many people as possible. It offers another vision of the highline and allows you to surpass yourself at all levels!"
+        },
+        {
+          "tag": "p",
+          "text": "HIGHLINE SINCE 2016 TYPE OF PRACTICE Highline Freestyle, long lines & mountain missions"
+        },
+        {
+          "tag": "p",
+          "text": "Computer engineer"
+        },
+        {
+          "tag": "p",
+          "text": "Judo black belt"
+        },
+        {
+          "tag": "p",
+          "text": "ASSOCIATIVE Volunteer & rigging manager at numerous festivals in France and abroad, organization of freestyle workshops, HF (highline freestyle) judge."
+        },
+        {
+          "tag": "p",
+          "text": "PRO-ATHLETE"
+        },
+        {
+          "tag": "p",
+          "text": "Highline artistic performance, athlete sponsored by Slack Inov' and member of the BounceKult team."
+        },
+        {
+          "tag": "p",
+          "text": "COMPETITION & RECORD"
+        },
+        {
+          "tag": "p",
+          "text": "2021 HF world champion (ISA ranking list), 3rd place at the first HF world championship in 2022 in Laax, participation in the highline world record of 2.7km in Auvergne (a crossing with 5 falls), record crossing of 227m tandem highline with Mattis Reisner in Les Arcs!"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg/v1/fill/w_123,h_82,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg",
+          "alt": "IMG-20190830-WA0001.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_8d1b72856fbc49a79631f3d20e6bd671~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_e49d5cf596dc4acf874f1271c2bb135c~mv2.jpg/v1/crop/x_0,y_342,w_1365,h_1365/fill/w_121,h_121,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/17966766_1323729421049091_4507436983911234824_o(1).jpg",
+          "alt": "17966766_1323729421049091_4507436983911234824_o(1).jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_e49d5cf596dc4acf874f1271c2bb135c~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_abf99faa58aa41199e00d22d9ef708fe~mv2.png/v1/crop/x_0,y_504,w_3024,h_3024/fill/w_121,h_121,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_3858_heif.png",
+          "alt": "IMG_3858.heif",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_abf99faa58aa41199e00d22d9ef708fe~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_552ebbfc4ff94a97bee43c969d7f33df~mv2.jpg/v1/crop/x_200,y_0,w_1200,h_1200/fill/w_121,h_121,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20190904-WA0167(1).jpg",
+          "alt": "IMG-20190904-WA0167(1).jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_552ebbfc4ff94a97bee43c969d7f33df~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_8ec2bc2ba5284923bbfabfd45d7380d1~mv2.jpg/v1/crop/x_328,y_0,w_844,h_844/fill/w_121,h_121,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/MAK_4540.jpg",
+          "alt": "MAK_4540.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_8ec2bc2ba5284923bbfabfd45d7380d1~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_459f0ee3f3a342d4a331f9ae8e8ef8f4~mv2.jpg/v1/crop/x_0,y_512,w_3072,h_3072/fill/w_121,h_121,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/27747333_10215884159766664_2136553307_o.jpg",
+          "alt": "27747333_10215884159766664_2136553307_o.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_459f0ee3f3a342d4a331f9ae8e8ef8f4~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_99875b47a9ea40379d607bab7f5bfb83~mv2.jpg/v1/crop/x_0,y_199,w_1242,h_1242/fill/w_121,h_121,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_4886.jpg",
+          "alt": "IMG_4886.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_99875b47a9ea40379d607bab7f5bfb83~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_06b338435bbf4f81ad3af771239f4c73~mv2.jpg/v1/fill/w_83,h_111,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_06b338435bbf4f81ad3af771239f4c73~mv2.jpg",
+          "alt": "IMG_6298.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_06b338435bbf4f81ad3af771239f4c73~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_4df66f1096124557bc8860130d74067d~mv2.jpg/v1/fill/w_81,h_108,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_4df66f1096124557bc8860130d74067d~mv2.jpg",
+          "alt": "PXL_20220803_183228309.PORTRAIT.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_4df66f1096124557bc8860130d74067d~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_9c5f226f1e534b278a666bbfc1f2480b~mv2.jpg/v1/fill/w_123,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_9c5f226f1e534b278a666bbfc1f2480b~mv2.jpg",
+          "alt": "IMG_3479.JPG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_9c5f226f1e534b278a666bbfc1f2480b~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_c7b820ea8e634423a7e3319c034cc032~mv2.jpg/v1/fill/w_123,h_125,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_c7b820ea8e634423a7e3319c034cc032~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_c7b820ea8e634423a7e3319c034cc032~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_86a81ff601d943708ba195dc52151083~mv2.jpg/v1/fill/w_123,h_123,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_86a81ff601d943708ba195dc52151083~mv2.jpg",
+          "alt": "DSC08945_edited.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_86a81ff601d943708ba195dc52151083~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d922a515d7044e3696c6455891536407~mv2.jpg/v1/fill/w_123,h_184,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_d922a515d7044e3696c6455891536407~mv2.jpg",
+          "alt": "alexianHighlinefreestyle.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d922a515d7044e3696c6455891536407~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "A festival"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Demonstrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "Chloe"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "Gaelle"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/contact",
+      "url": "https://www.slackicimes.org/en/contact",
+      "lang": "en",
+      "title": "Contact | Slack'icîmes",
+      "meta_description": "Vous avez une question sur nos stages de highline ? Une demande d'initiation slackline ou de démonstration highline ? N'hésitez pas à nous contacter !",
+      "canonical": "https://www.slackicimes.org/en/contact",
+      "robots": "",
+      "og": {
+        "og:title": "Contact | Slack'icîmes",
+        "og:description": "Vous avez une question sur nos stages de highline ? Une demande d'initiation slackline ou de démonstration highline ? N'hésitez pas à nous contacter !",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/contact",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Contact us"
+        }
+      ],
+      "word_count": 70,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h2",
+          "text": "Contact us"
+        },
+        {
+          "tag": "p",
+          "text": "Gaelle 06 35 36 61 80"
+        },
+        {
+          "tag": "p",
+          "text": "Chloe 06 26 96 55 08"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "Association Slack'îcimes Chalet of the Croizette Bow 1800 73700 Bourg Saint Maurice"
+        },
+        {
+          "tag": "label",
+          "text": "First name"
+        },
+        {
+          "tag": "label",
+          "text": "Name"
+        },
+        {
+          "tag": "label",
+          "text": "E-mail"
+        },
+        {
+          "tag": "label",
+          "text": "Message"
+        },
+        {
+          "tag": "button",
+          "text": "Send"
+        },
+        {
+          "tag": "p",
+          "text": "Thank you !"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/23fd2a2be53141ed810f4d3dcdcd01fa.png",
+          "alt": "Facebook",
+          "original_url": "https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/81af6121f84c41a5b4391d7d37fce12a.png",
+          "alt": "Instagram",
+          "original_url": "https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/expeditions",
+      "url": "https://www.slackicimes.org/en/expeditions",
+      "lang": "en",
+      "title": "Expéditions | Slack'icîmes",
+      "meta_description": "Les aventures et expéditions slackline/highline de l'association.",
+      "canonical": "https://www.slackicimes.org/en/expeditions",
+      "robots": "",
+      "og": {
+        "og:title": "Expéditions | Slack'icîmes",
+        "og:description": "Les aventures et expéditions slackline/highline de l'association.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/expeditions",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Projects"
+        },
+        {
+          "level": 2,
+          "text": "name of the project"
+        }
+      ],
+      "word_count": 123,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h1",
+          "text": "Projects"
+        },
+        {
+          "tag": "h2",
+          "text": "name of the project"
+        },
+        {
+          "tag": "p",
+          "text": "Description of your project. Write an abstract to present your work and its context. Click \"Edit Text\" or double-click the text box to get started."
+        },
+        {
+          "tag": "p",
+          "text": "Project description. Present your work and its context in a few lines. To get started, double-click on the text box or click on “Edit Text”."
+        },
+        {
+          "tag": "p",
+          "text": "Project description. Double click on the text box to start."
+        },
+        {
+          "tag": "p",
+          "text": "Project description. Present your work and its context in a few lines. To get started, click \"Edit Text\" or double-click the text box."
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_6f27754e06844d62a1708b316797fc08~mv2.jpg/v1/crop/x_1,y_904,w_4546,h_1634/fill/w_980,h_352,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/marbel.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/a3c153_6f27754e06844d62a1708b316797fc08~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_4c9ff7f594c1414f9f7894e514098894~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_fd5c21cdc57f4b19b00f8ec0988396fe_.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_4c9ff7f594c1414f9f7894e514098894~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/noah-boyer-mXz8dKrpO8w-unsplash.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_b1efd27c479d430baf6513f717b4d7df~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_e2d1ff51b7d143438f06552ee7e25704~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/878b419ef45e419bba087a2479c58e8a.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_e2d1ff51b7d143438f06552ee7e25704~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_c3a1f52d22f34ebf807575c44a0b3c46~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/hasan-almasi-nKNm_75lH4g-unsplash%20Copy_j.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_c3a1f52d22f34ebf807575c44a0b3c46~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_a948e560c4fb44eb9ec9a30bf5c105c4~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/sumner-mahaffey-7Y0NshQLohk-unsplash.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_a948e560c4fb44eb9ec9a30bf5c105c4~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/a3c153_8143624184174bd98cc1262723b6d8a3~mv2.jpg/v1/fill/w_358,h_212,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/matt-artz-Fu2v5drnMBA-unsplash%20copy.jpg",
+          "alt": "image temp",
+          "original_url": "https://static.wixstatic.com/media/a3c153_8143624184174bd98cc1262723b6d8a3~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/inscriptions",
+      "url": "https://www.slackicimes.org/en/inscriptions",
+      "lang": "en",
+      "title": "Registrations | Slack'icîmes",
+      "meta_description": "",
+      "canonical": "https://www.slackicimes.org/en/inscriptions",
+      "robots": "",
+      "og": {
+        "og:title": "Registrations | Slack'icîmes",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/inscriptions",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Highline Workshops"
+        },
+        {
+          "level": 1,
+          "text": "Registrations"
+        }
+      ],
+      "word_count": 126,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h2",
+          "text": "Highline Workshops"
+        },
+        {
+          "tag": "p",
+          "text": "The first association in France to offer Highline courses, the association offers courses in different formats, suitable for all levels.Discover our different formulas."
+        },
+        {
+          "tag": "h1",
+          "text": "Registrations"
+        },
+        {
+          "tag": "p",
+          "text": "Registrations are made through the Hello-Asso platform"
+        },
+        {
+          "tag": "p",
+          "text": "The platform itself is french, and we cannot translate it. So here is a few words to help you :"
+        },
+        {
+          "tag": "p",
+          "text": "\"Commander\" : order\"; Suivant\" : next ; \"Payer\" : Pay"
+        },
+        {
+          "tag": "p",
+          "text": "The names of the workshops translate as follow :"
+        },
+        {
+          "tag": "p",
+          "text": "\"Weekend Découverte\":\"Discovery Weekend\""
+        },
+        {
+          "tag": "p",
+          "text": "\"Premiers Pas\" : \"First Steps\""
+        },
+        {
+          "tag": "p",
+          "text": "\"Entre meufs\":\"Women's week\""
+        },
+        {
+          "tag": "p",
+          "text": "\"Autonomie\":\"Autonomy\""
+        },
+        {
+          "tag": "p",
+          "text": "\"Stage jeune\":\"youth workshop\""
+        },
+        {
+          "tag": "p",
+          "text": "\"Bon Cadeau\":\"Gift coupon\""
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_72dc70cd561a4f7cbfcfc3e34debe757~mv2.jpg/v1/crop/x_0,y_0,w_1200,h_1294/fill/w_259,h_279,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20190904-WA0062.jpg",
+          "alt": "IMG-20190904-WA0062.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_72dc70cd561a4f7cbfcfc3e34debe757~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "REGISTRATIONS"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/inscriptions-winter-festislack",
+      "url": "https://www.slackicimes.org/en/inscriptions-winter-festislack",
+      "lang": "en",
+      "title": "Registrations | Slack'icîmes",
+      "meta_description": "Inscriptions pour les stages de highline de l'association.",
+      "canonical": "https://www.slackicimes.org/en/inscriptions-winter-festislack",
+      "robots": "",
+      "og": {
+        "og:title": "Registrations | Slack'icîmes",
+        "og:description": "Inscriptions pour les stages de highline de l'association.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_af6df1e12c2d43d788001f93eb12deae~mv2.png/v1/fill/w_1337,h_628,al_c/0c3a1a_af6df1e12c2d43d788001f93eb12deae~mv2.png",
+        "og:image:width": "1337",
+        "og:image:height": "628",
+        "og:url": "https://www.slackicimes.org/en/inscriptions-winter-festislack",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Registrations"
+        }
+      ],
+      "word_count": 73,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h1",
+          "text": "Registrations"
+        },
+        {
+          "tag": "p",
+          "text": "Registrations are made through the Hello-Asso platform"
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "The platform itself is french, and we cannot translate it. So here is a few words to help you :"
+        },
+        {
+          "tag": "p",
+          "text": "\"Commander\" : order"
+        },
+        {
+          "tag": "p",
+          "text": "\"Suivant\" : next"
+        },
+        {
+          "tag": "p",
+          "text": "\"Payer\" : Pay"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/livre-d-or",
+      "url": "https://www.slackicimes.org/en/livre-d-or",
+      "lang": "en",
+      "title": "ratings | Slack'icîmes",
+      "meta_description": "",
+      "canonical": "https://www.slackicimes.org/en/livre-d-or",
+      "robots": "",
+      "og": {
+        "og:title": "ratings | Slack'icîmes",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/livre-d-or",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "LIVRE D'OR"
+        }
+      ],
+      "word_count": 61,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h1",
+          "text": "LIVRE D'OR"
+        },
+        {
+          "tag": "p",
+          "text": "Témoignages de nos stagiaires"
+        },
+        {
+          "tag": "p",
+          "text": "« Vous nous donnez des ailes, à nous d'apprendre à nous en servir ! Merci. »"
+        },
+        {
+          "tag": "p",
+          "text": "Fred, Stage Premier Pas"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "./#comp-lzb43hau3",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hb21",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hb81",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hbe",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hbl",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hbq",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hbu3",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hc02",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hc6",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hcb",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hcg",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lzb43hck2",
+          "text": ""
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/prestations",
+      "url": "https://www.slackicimes.org/en/prestations",
+      "lang": "en",
+      "title": "Prestations | Slack'icîmes | Alpes",
+      "meta_description": "Vous souhaitez organiser des initiations de slackline ? Des démonstrations de highline ? \nVous êtes à la recherche de stages, de team building autour de la slackline oud e la highline, n'hésitez pas à nous contacter !",
+      "canonical": "https://www.slackicimes.org/en/prestations",
+      "robots": "",
+      "og": {
+        "og:title": "Prestations | Slack'icîmes | Alpes",
+        "og:description": "Vous souhaitez organiser des initiations de slackline ? Des démonstrations de highline ? \nVous êtes à la recherche de stages, de team building autour de la slackline oud e la highline, n'hésitez pas à nous contacter !",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/prestations",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "PAGE UNDER CONSTRUCTION"
+        }
+      ],
+      "word_count": 54,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h1",
+          "text": "PAGE UNDER CONSTRUCTION"
+        },
+        {
+          "tag": "p",
+          "text": "If you are interested in a demonstration or initiations,"
+        },
+        {
+          "tag": "p",
+          "text": "do not hesitate to contact us !"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact us"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/stages-highline",
+      "url": "https://www.slackicimes.org/en/stages-highline",
+      "lang": "en",
+      "title": "Stages | Slack'icîmes | Alpes",
+      "meta_description": "Découvrez nos stages de slackline et de highline. Apprenez, découvrez ou perfectionnez vous dans la discipline.",
+      "canonical": "https://www.slackicimes.org/en/stages-highline",
+      "robots": "",
+      "og": {
+        "og:title": "Stages | Slack'icîmes | Alpes",
+        "og:description": "Découvrez nos stages de slackline et de highline. Apprenez, découvrez ou perfectionnez vous dans la discipline.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_648db888f4144a1084a71730e3e83535~mv2.jpg/v1/fill/w_6000,h_4000,al_c/0c3a1a_648db888f4144a1084a71730e3e83535~mv2.jpg",
+        "og:image:width": "6000",
+        "og:image:height": "4000",
+        "og:url": "https://www.slackicimes.org/en/stages-highline",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 4,
+          "text": "HIGHLINE COURSES"
+        },
+        {
+          "level": 1,
+          "text": "FAQ"
+        },
+        {
+          "level": 2,
+          "text": "PREREQUISITES"
+        },
+        {
+          "level": 2,
+          "text": "Where does the internship take place?"
+        },
+        {
+          "level": 2,
+          "text": "ACCOMODATION"
+        },
+        {
+          "level": 2,
+          "text": "I want my own accomodation"
+        },
+        {
+          "level": 2,
+          "text": "Which internship to choose?"
+        },
+        {
+          "level": 2,
+          "text": "What equipment should I bring?"
+        },
+        {
+          "level": 2,
+          "text": "Can I come without a car?"
+        },
+        {
+          "level": 2,
+          "text": "Can I come with my dog?"
+        },
+        {
+          "level": 2,
+          "text": "Can a friend/Partner come with me ?"
+        },
+        {
+          "level": 2,
+          "text": "What is the minimum age to join the courses?"
+        },
+        {
+          "level": 2,
+          "text": "An example of a typical week?"
+        },
+        {
+          "level": 1,
+          "text": "Testimonials"
+        }
+      ],
+      "word_count": 1483,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h4",
+          "text": "HIGHLINE COURSES"
+        },
+        {
+          "tag": "p",
+          "text": "The first association in France to offer Highline courses, the association offers courses in different formats, suitable for all levels.Discover our different formulas."
+        },
+        {
+          "tag": "p",
+          "text": "Different formulas to explore the void,"
+        },
+        {
+          "tag": "p",
+          "text": "fill up on sensations, emotions and (re)discover your body and mind."
+        },
+        {
+          "tag": "p",
+          "text": "Discovery Weekend"
+        },
+        {
+          "tag": "p",
+          "text": "2 days - Beginner"
+        },
+        {
+          "tag": "p",
+          "text": "Discover highlining for a weekend in Les Arcs."
+        },
+        {
+          "tag": "p",
+          "text": "First Steps"
+        },
+        {
+          "tag": "p",
+          "text": "5 Days - Beginner"
+        },
+        {
+          "tag": "p",
+          "text": "Complete course to learn highlining and immerse yourself in its world."
+        },
+        {
+          "tag": "p",
+          "text": "Back 2 Les Arcs"
+        },
+        {
+          "tag": "p",
+          "text": "5 days - Progression"
+        },
+        {
+          "tag": "p",
+          "text": "Continue your progress, accompanied, on a beautiful spot with a view of Mont Blanc."
+        },
+        {
+          "tag": "button",
+          "text": "Chat"
+        },
+        {
+          "tag": "p",
+          "text": "Description"
+        },
+        {
+          "tag": "p",
+          "text": "Perfect to discover the activity over a weekend, to test it, or even to improve."
+        },
+        {
+          "tag": "p",
+          "text": "Experience a special moment in a small group of 6 people for 1 instructor."
+        },
+        {
+          "tag": "p",
+          "text": "Program"
+        },
+        {
+          "tag": "p",
+          "text": "Slackline on the ground: 1 half day"
+        },
+        {
+          "tag": "p",
+          "text": "Highline: 3 half days."
+        },
+        {
+          "tag": "p",
+          "text": "Prerequisites"
+        },
+        {
+          "tag": "p",
+          "text": "Being motivated to exceed your own limits"
+        },
+        {
+          "tag": "p",
+          "text": "Know how to do 3 push-ups or 1 pull-up"
+        },
+        {
+          "tag": "p",
+          "text": "Be over 15 years old or be accompanied"
+        },
+        {
+          "tag": "p",
+          "text": "Dates"
+        },
+        {
+          "tag": "p",
+          "text": "June 20-21; June 27-28; July 4-5; July 11-12; July 19-20"
+        },
+        {
+          "tag": "p",
+          "text": "Price"
+        },
+        {
+          "tag": "p",
+          "text": "160€ This price includes all activities and collective equipment, as well as access to the bivouac area managed by the association."
+        },
+        {
+          "tag": "p",
+          "text": "This course is intended to be general and aims to makes you discover all the facets of Highline."
+        },
+        {
+          "tag": "p",
+          "text": "From technique, to some knowledge about rigging, through safety, cooperation and overcoming fears, perfect for athletes who want to discover new sensations or work on their mental and body control."
+        },
+        {
+          "tag": "p",
+          "text": "\"Rigging\" workshop (Highline installation): 1 half day"
+        },
+        {
+          "tag": "p",
+          "text": "Highline: 4 days"
+        },
+        {
+          "tag": "p",
+          "text": "July 27 to 31, 2026; August 17-21, 2026;"
+        },
+        {
+          "tag": "p",
+          "text": "250€ This price includes all activities and collective equipment, as well as access to the bivouac area managed by the association."
+        },
+        {
+          "tag": "p",
+          "text": "This course is for people who have already practiced highlining."
+        },
+        {
+          "tag": "p",
+          "text": "The first day takes place directly on the highline spot, and not on the ground. Instead a day at a water spot for waterline & chill is planned."
+        },
+        {
+          "tag": "p",
+          "text": "The program will be established according to the wishes of the group."
+        },
+        {
+          "tag": "p",
+          "text": "For learning \"rigging\", we recommend the “Autonomy” course, which is dedicated to this."
+        },
+        {
+          "tag": "p",
+          "text": "Programme"
+        },
+        {
+          "tag": "p",
+          "text": "Waterline & Chill: 1 day"
+        },
+        {
+          "tag": "p",
+          "text": "Have already practiced highlining"
+        },
+        {
+          "tag": "p",
+          "text": "Master the leash climb and the line mounting"
+        },
+        {
+          "tag": "p",
+          "text": "Master a seat start on a line on the ground."
+        },
+        {
+          "tag": "p",
+          "text": "3th to 7th of August 2026"
+        },
+        {
+          "tag": "p",
+          "text": "Tarif"
+        },
+        {
+          "tag": "p",
+          "text": "Rigging"
+        },
+        {
+          "tag": "p",
+          "text": "5 days - Highline installation"
+        },
+        {
+          "tag": "p",
+          "text": "The course to learn how to “rig” and become independent in your practice."
+        },
+        {
+          "tag": "p",
+          "text": "Youth Workshop"
+        },
+        {
+          "tag": "p",
+          "text": "5 days - Beginner <18 years old"
+        },
+        {
+          "tag": "p",
+          "text": "Highline initiation course specially designed for young athletes."
+        },
+        {
+          "tag": "p",
+          "text": "For even greater safety and learning, this course takes place in small groups of 12 people for 2 instructors."
+        },
+        {
+          "tag": "p",
+          "text": "Do you want to learn how to install highlines safely, to practice independently? This course is for you!"
+        },
+        {
+          "tag": "p",
+          "text": "Installations, various anchors, workshops, rescue, safety points...This intense week is designed to give as much knowledge as possible to people aiming for autonomy in their practice."
+        },
+        {
+          "tag": "p",
+          "text": "This course focuses more on the Rigging part, but it also includes highline practice."
+        },
+        {
+          "tag": "p",
+          "text": "Rigging Workshops & Practices: 3 days"
+        },
+        {
+          "tag": "li",
+          "text": "Rescue practice: 1 half day"
+        },
+        {
+          "tag": "p",
+          "text": "Highline: 3 half days"
+        },
+        {
+          "tag": "p",
+          "text": "Know how to do a seat start on the ground"
+        },
+        {
+          "tag": "p",
+          "text": "Have already been on a highline"
+        },
+        {
+          "tag": "p",
+          "text": "Know how to install a slackline on the ground OR be comfortable with rope handling"
+        },
+        {
+          "tag": "p",
+          "text": "20th to 24th of july 2025"
+        },
+        {
+          "tag": "p",
+          "text": "From technique, to safety, cooperation and overcoming fears, perfect for athletes who want to discover new sensations or work on their mental and body control!"
+        },
+        {
+          "tag": "p",
+          "text": "On the program: a little slackline, a lot of highline, a fun day at the lake, but also specific moments of mental preparation, management of fear and emotions."
+        },
+        {
+          "tag": "p",
+          "text": "The days are from 9 a.m. to 5 p.m."
+        },
+        {
+          "tag": "p",
+          "text": "Typical Week:"
+        },
+        {
+          "tag": "p",
+          "text": "Monday - at the park:"
+        },
+        {
+          "tag": "p",
+          "text": "Learn the basics and/or progress."
+        },
+        {
+          "tag": "p",
+          "text": "Highline specific workshops"
+        },
+        {
+          "tag": "p",
+          "text": "Stretching and Breathing Exercises"
+        },
+        {
+          "tag": "p",
+          "text": "Tuesday - on the Highline site"
+        },
+        {
+          "tag": "p",
+          "text": "Highline practice"
+        },
+        {
+          "tag": "p",
+          "text": "Fear Management Exercises"
+        },
+        {
+          "tag": "p",
+          "text": "Wednesday - at the lake"
+        },
+        {
+          "tag": "p",
+          "text": "Waterline (slackline over water),"
+        },
+        {
+          "tag": "p",
+          "text": "Slackline & Balancing Games."
+        },
+        {
+          "tag": "p",
+          "text": "Thursday & Friday - on the Highline website"
+        },
+        {
+          "tag": "p",
+          "text": "Emotion management exercises"
+        },
+        {
+          "tag": "li",
+          "text": "Be over 10 years old."
+        },
+        {
+          "tag": "p",
+          "text": "Practice a sport regularly."
+        },
+        {
+          "tag": "p",
+          "text": "Be motivated!"
+        },
+        {
+          "tag": "p",
+          "text": "24th to 28th of August"
+        },
+        {
+          "tag": "p",
+          "text": "200€ This price includes all activities and collective equipment."
+        },
+        {
+          "tag": "h1",
+          "text": "FAQ"
+        },
+        {
+          "tag": "p",
+          "text": "All the answers to your questions about internships"
+        },
+        {
+          "tag": "h2",
+          "text": "PREREQUISITES"
+        },
+        {
+          "tag": "p",
+          "text": "Have already participated in a Slack'icimes course"
+        },
+        {
+          "tag": "p",
+          "text": "Mastering the sit start on a line on the ground is strongly recommended to enjoy this course."
+        },
+        {
+          "tag": "h2",
+          "text": "Where does the internship take place?"
+        },
+        {
+          "tag": "p",
+          "text": "The courses take place in the resort of Les Arcs, in Savoie."
+        },
+        {
+          "tag": "p",
+          "text": "Every day we have appointments at the bottom of the Cachette chairlift, in Arc 1600. In most internships, we spend the Monday morning in Bourg Saint Maurice."
+        },
+        {
+          "tag": "h2",
+          "text": "ACCOMODATION"
+        },
+        {
+          "tag": "p",
+          "text": "The association manages a bivouac area called SlackCamp. This base camp is equipped with toilets and running water. It is accessible by vehicle, and it is possible to stay there in a van or a tent. It is a 15-minute walk from the heart of the resort and the Cachette chairlift."
+        },
+        {
+          "tag": "p",
+          "text": "When you register, you can choose to sleep at Slack Camp. It is at this base camp that the on-ground slackline sessions take place."
+        },
+        {
+          "tag": "h2",
+          "text": "I want my own accomodation"
+        },
+        {
+          "tag": "p",
+          "text": "If you are more of a camping person:"
+        },
+        {
+          "tag": "p",
+          "text": "- without a car: you can look at the campsites at Bourg Saint Maurice (Funnicular access)"
+        },
+        {
+          "tag": "p",
+          "text": "- With Car: The Lanchettes campsite is in a magnificent setting!"
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "Otherwise, many RBnBs and rentals exist. We advise you to look instead at Arc 1600 or Bourg Saint Maurice if you want to avoid traveling."
+        },
+        {
+          "tag": "h2",
+          "text": "Which internship to choose?"
+        },
+        {
+          "tag": "p",
+          "text": "Do you only have one weekend available? Our Discovery Weekend are made for you."
+        },
+        {
+          "tag": "p",
+          "text": "Workshops First steps, And Discovering my body are aimed at beginners, whether you have never been on a line, or you want to progress. Both workshops contain as much highline as each other."
+        },
+        {
+          "tag": "p",
+          "text": "Discovering my body contains in addition, extra workshops (Yoga, meditation, QiQong, Acro, etc.) to deepen the management of emotions and fear."
+        },
+        {
+          "tag": "p",
+          "text": "You wish to learn how to rig a highline in addition to practicing? The internship goal autonomy is just what you need."
+        },
+        {
+          "tag": "p",
+          "text": "And if it's thehighline freestyle that interests you, whether you are at the beginning of your highline practice, or already advanced, the course Bouncy'cîmes will make you bounce in all directions!"
+        },
+        {
+          "tag": "h2",
+          "text": "What equipment should I bring?"
+        },
+        {
+          "tag": "p",
+          "text": "Collective equipment for the Highline is provided."
+        },
+        {
+          "tag": "p",
+          "text": "We ask trainees to bring their harness and a pair of double lanyards."
+        },
+        {
+          "tag": "p",
+          "text": "Regarding the harness, a climbing harness with a double attach point is ideal."
+        },
+        {
+          "tag": "p",
+          "text": "About lanyards, they are simply a climbing safety lanyard, to secure yourself on the rock. You can buy them ready-made or make them with a piece of rope and two carabiners. Via ferrata lanyards are not suitable."
+        },
+        {
+          "tag": "h2",
+          "text": "Can I come without a car?"
+        },
+        {
+          "tag": "p",
+          "text": "Yes ! The easiest way to come to Les Arcs is to take the train to Bourg Saint Maurice station."
+        },
+        {
+          "tag": "p",
+          "text": "You can then directly access the Arc 1600 by funicular."
+        },
+        {
+          "tag": "h2",
+          "text": "Can I come with my dog?"
+        },
+        {
+          "tag": "p",
+          "text": "To access the highline spot, we takea chairlift, on which dogs are not accepted."
+        },
+        {
+          "tag": "p",
+          "text": "If you still come with your dog, you will need to access the spot on foot (800m D+, 1h30/2h walk)."
+        },
+        {
+          "tag": "p",
+          "text": "To take full advantage of the course, we therefore advise you to to have your doggie looked after :)"
+        },
+        {
+          "tag": "h2",
+          "text": "Can a friend/Partner come with me ?"
+        },
+        {
+          "tag": "p",
+          "text": "Yes, that’s possible."
+        },
+        {
+          "tag": "p",
+          "text": "Someone can accompany you to the highline site. It can be reached either by chairlift or on foot (about 1.5 to 2 hours of hiking)."
+        },
+        {
+          "tag": "p",
+          "text": "Your companion can also stay with us at the Slackcamp by becoming a member of the association (€25 membership fee)."
+        },
+        {
+          "tag": "h2",
+          "text": "What is the minimum age to join the courses?"
+        },
+        {
+          "tag": "p",
+          "text": "Our courses are open to participants aged 15 and over if coming alone, or from 10 years old if accompanied."
+        },
+        {
+          "tag": "p",
+          "text": "We are flexible about age — the most important thing is to feel comfortable in a group made up mostly of adults."
+        },
+        {
+          "tag": "p",
+          "text": "To stay at the Slackcamp, participants need to be independent with meals and bedtime, or be accompanied."
+        },
+        {
+          "tag": "p",
+          "text": "However, we recommend our “Youth Courses,” specially designed for participants under 16."
+        },
+        {
+          "tag": "h2",
+          "text": "An example of a typical week?"
+        },
+        {
+          "tag": "p",
+          "text": "A typical week is organized as follows:"
+        },
+        {
+          "tag": "p",
+          "text": "Schedule: 9:00 a.m. – 5:00 p.m."
+        },
+        {
+          "tag": "p",
+          "text": "Meeting point: at the bottom of the Cachette chairlift or at the SlackCamp"
+        },
+        {
+          "tag": "p",
+          "text": "Each day takes place either at the Deux Têtes spot or at the SlackCamp."
+        },
+        {
+          "tag": "p",
+          "text": "One night of bivouac at Les Deux Têtes is planned."
+        },
+        {
+          "tag": "h1",
+          "text": "Testimonials"
+        },
+        {
+          "tag": "p",
+          "text": "Feedback from our trainees"
+        },
+        {
+          "tag": "p",
+          "text": "I fulfilled a dream thanks to you."
+        },
+        {
+          "tag": "p",
+          "text": "I learned to overcome my fears and anxieties — two incredible instructors, so much kindness, amazing group cohesion, and beautiful friendships created."
+        },
+        {
+          "tag": "p",
+          "text": "Coming back to reality has been hard, but I’ve taken the first step — pure happiness."
+        },
+        {
+          "tag": "p",
+          "text": "Ludovic , Premiers Pas"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_855c57ae67784ad28282d189e91bd013~mv2.jpg/v1/crop/x_282,y_0,w_877,h_1080/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0371_JPG.jpg",
+          "alt": "highline les arcs",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_855c57ae67784ad28282d189e91bd013~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_b87557776f0645839fa336777f559faa~mv2.png/v1/crop/x_0,y_190,w_1032,h_1272/fill/w_315,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSCF8955_edited.png",
+          "alt": "highline couché de soleil les arcs",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_b87557776f0645839fa336777f559faa~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_1d3ba71fa8554452a5f2e50e9f75cb95~mv2.jpg/v1/crop/x_282,y_0,w_877,h_1080/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0362_JPG.jpg",
+          "alt": "highline montagne",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_1d3ba71fa8554452a5f2e50e9f75cb95~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_b34ed3a413fc43e6b92de4d7f5254b44~mv2.jpg/v1/crop/x_0,y_150,w_1813,h_2233/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/PXL_20220816_100543188_edited.jpg",
+          "alt": "highline rigging",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_b34ed3a413fc43e6b92de4d7f5254b44~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_c108c51f772d45f5a4ab27160a3bfc38~mv2.jpg/v1/crop/x_957,y_0,w_2981,h_3672/fill/w_315,h_388,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/P1010729.jpg",
+          "alt": "highline stage jeune",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_c108c51f772d45f5a4ab27160a3bfc38~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "REGISTRATIONS"
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/evenements/stages-highlines-2026",
+          "text": "INSCRIPTIONS"
+        },
+        {
+          "href": "./#comp-lze72lv0",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709ne2",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709nk6",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709ns2",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709ny",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709o4",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709o92",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709og1",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709n6",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709om",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709or2",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709ox2",
+          "text": ""
+        },
+        {
+          "href": "./#comp-lze709p31",
+          "text": ""
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/stages-jeunes",
+      "url": "https://www.slackicimes.org/en/stages-jeunes",
+      "lang": "en",
+      "title": "Young camp | Slack'icîmes",
+      "meta_description": "",
+      "canonical": "https://www.slackicimes.org/en/stages-jeunes",
+      "robots": "",
+      "og": {
+        "og:title": "Young camp | Slack'icîmes",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0c3a1a_f66e56110be0408c8edd4923059e5ceb%7Emv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1330",
+        "og:url": "https://www.slackicimes.org/en/stages-jeunes",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Highline Summer Camp"
+        },
+        {
+          "level": 2,
+          "text": "RATE"
+        },
+        {
+          "level": 2,
+          "text": "Dates & LOCATIONS"
+        },
+        {
+          "level": 2,
+          "text": "Program"
+        },
+        {
+          "level": 2,
+          "text": "PREREQUISITES"
+        },
+        {
+          "level": 2,
+          "text": "The course in pictures"
+        }
+      ],
+      "word_count": 215,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h2",
+          "text": "Highline Summer Camp"
+        },
+        {
+          "tag": "p",
+          "text": "Highline introductory course specially designed for young athletes!"
+        },
+        {
+          "tag": "p",
+          "text": "​"
+        },
+        {
+          "tag": "p",
+          "text": "From technique, through safety, cooperation and overcoming fears, perfect for athletes who want to discover new sensations or work on their mind and control of their body!"
+        },
+        {
+          "tag": "p",
+          "text": "On the program: a little slacklining, a lot of highlining, a fun day at the water, but also specific moments of mental preparation, management of fear and emotions."
+        },
+        {
+          "tag": "h2",
+          "text": "RATE"
+        },
+        {
+          "tag": "p",
+          "text": "€230"
+        },
+        {
+          "tag": "p",
+          "text": "For 5 training days."
+        },
+        {
+          "tag": "p",
+          "text": "This price includes all activities and general equipment. Meals not provided."
+        },
+        {
+          "tag": "h2",
+          "text": "Dates & LOCATIONS"
+        },
+        {
+          "tag": "p",
+          "text": "Week in Les Arcs (73)"
+        },
+        {
+          "tag": "p",
+          "text": "July 1-5, 2024"
+        },
+        {
+          "tag": "h2",
+          "text": "Program"
+        },
+        {
+          "tag": "p",
+          "text": "Monday - Day at the Park"
+        },
+        {
+          "tag": "p",
+          "text": "Learn the basics and/or progress."
+        },
+        {
+          "tag": "p",
+          "text": "Highline specific preparation workshops"
+        },
+        {
+          "tag": "p",
+          "text": "Stretching and guided breathing exercises"
+        },
+        {
+          "tag": "p",
+          "text": "Tuesday - Day on the Highline site"
+        },
+        {
+          "tag": "p",
+          "text": "Highline practice"
+        },
+        {
+          "tag": "p",
+          "text": "Fear management exercises"
+        },
+        {
+          "tag": "p",
+          "text": "Wednesday - Day at the lake"
+        },
+        {
+          "tag": "p",
+          "text": "Waterline (slackline above the water),"
+        },
+        {
+          "tag": "p",
+          "text": "Slackline"
+        },
+        {
+          "tag": "p",
+          "text": "Balancing games."
+        },
+        {
+          "tag": "p",
+          "text": "Thursday - Day on the Highline site"
+        },
+        {
+          "tag": "p",
+          "text": "Stretching"
+        },
+        {
+          "tag": "p",
+          "text": "Friday - Day on the Highline site"
+        },
+        {
+          "tag": "p",
+          "text": "Emotion management exercises"
+        },
+        {
+          "tag": "h2",
+          "text": "PREREQUISITES"
+        },
+        {
+          "tag": "p",
+          "text": "Be over 10 years old."
+        },
+        {
+          "tag": "p",
+          "text": "Practice sport on a regular basis."
+        },
+        {
+          "tag": "li",
+          "text": "To be motivated !"
+        },
+        {
+          "tag": "h2",
+          "text": "The course in pictures"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_c108c51f772d45f5a4ab27160a3bfc38~mv2.jpg/v1/fill/w_123,h_92,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/0c3a1a_c108c51f772d45f5a4ab27160a3bfc38~mv2.jpg",
+          "alt": "P1010729.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_c108c51f772d45f5a4ab27160a3bfc38~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_3b7874cbb93c4e3194bcaadbbca0a6d2~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/0c3a1a_3b7874cbb93c4e3194bcaadbbca0a6d2~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_3b7874cbb93c4e3194bcaadbbca0a6d2~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_5a6ce72d183a4127b088bd51d7b1353c~mv2.jpg/v1/fit/w_480,h_479,q_90,enc_avif,quality_auto/0c3a1a_5a6ce72d183a4127b088bd51d7b1353c~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_5a6ce72d183a4127b088bd51d7b1353c~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_8f52db46450b4d0c8b699d5b870d67fc~mv2.jpg/v1/fit/w_960,h_960,q_90,enc_avif,quality_auto/0c3a1a_8f52db46450b4d0c8b699d5b870d67fc~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_8f52db46450b4d0c8b699d5b870d67fc~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_b31d666d6b8d499ea722223ced059d0a~mv2.jpg/v1/fit/w_480,h_482,q_90,enc_avif,quality_auto/0c3a1a_b31d666d6b8d499ea722223ced059d0a~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_b31d666d6b8d499ea722223ced059d0a~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_e3b34a8cc0cf4f968ce9119c72788690~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/0c3a1a_e3b34a8cc0cf4f968ce9119c72788690~mv2.jpg",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_e3b34a8cc0cf4f968ce9119c72788690~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
+          "text": "Contact"
+        },
+        {
+          "href": "mailto:slackicimes@gmail.com",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "href": "https://www.facebook.com/slackicimes",
+          "text": ""
+        },
+        {
+          "href": "https://www.instagram.com/slackicimes/",
+          "text": ""
+        },
+        {
+          "href": "https://www.helloasso.com/associations/slackicimes/",
+          "text": ""
+        }
+      ],
+      "iframes": [],
+      "json_ld_types": []
+    },
+    {
+      "path": "/en/winter-festislack",
+      "url": "https://www.slackicimes.org/en/winter-festislack",
+      "lang": "en",
+      "title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
+      "meta_description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
+      "canonical": "https://www.slackicimes.org/en/winter-festislack",
+      "robots": "",
+      "og": {
+        "og:title": "Winter Festislack | Slack'icîmes | Bourg-saint-maurice",
+        "og:description": "Festival unique au monde mêlant Highline et Ski, sur le spot des deux têtes au seins de la station des arcs.\nProfitez des slacklines, des spectacles de highline freestyle, et des joies du ski et du snowboard.",
+        "og:image": "https://static.wixstatic.com/media/0c3a1a_7647f66932fc454c89438b947420d91c~mv2.jpg/v1/fill/w_2500,h_1391,al_c/0c3a1a_7647f66932fc454c89438b947420d91c~mv2.jpg",
+        "og:image:width": "2500",
+        "og:image:height": "1391",
+        "og:url": "https://www.slackicimes.org/en/winter-festislack",
+        "og:site_name": "Slack'icîmes",
+        "og:type": "website"
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Winter FestiSlack"
+        },
+        {
+          "level": 2,
+          "text": "Winter FestiSlack Edition 2027 ?"
+        }
+      ],
+      "word_count": 133,
+      "text_blocks": [
+        {
+          "tag": "li",
+          "text": "The team"
+        },
+        {
+          "tag": "li",
+          "text": "The Association"
+        },
+        {
+          "tag": "li",
+          "text": "Weekend"
+        },
+        {
+          "tag": "li",
+          "text": "First Steps"
+        },
+        {
+          "tag": "li",
+          "text": "Rigging"
+        },
+        {
+          "tag": "li",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "tag": "li",
+          "text": "Young camp"
+        },
+        {
+          "tag": "li",
+          "text": "our workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Registrations"
+        },
+        {
+          "tag": "li",
+          "text": "FAQ"
+        },
+        {
+          "tag": "li",
+          "text": "ratings"
+        },
+        {
+          "tag": "li",
+          "text": "Workshops"
+        },
+        {
+          "tag": "li",
+          "text": "Infos"
+        },
+        {
+          "tag": "li",
+          "text": "Previous editions"
+        },
+        {
+          "tag": "li",
+          "text": "Winter Festislack"
+        },
+        {
+          "tag": "li",
+          "text": "Shows/Initiations"
+        },
+        {
+          "tag": "li",
+          "text": "Contact"
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack"
+        },
+        {
+          "tag": "p",
+          "text": "Unique event in the world of Skiing and Highline."
+        },
+        {
+          "tag": "p",
+          "text": "It brings together practitioners from all over the world on the fabulous natural site of Les deux Têtes, in the heart of the ski resort of Les Arcs, facing Mont Blanc."
+        },
+        {
+          "tag": "h2",
+          "text": "Winter FestiSlack Edition 2027 ?"
+        },
+        {
+          "tag": "p",
+          "text": "In 2027, the association is focusing on organizing the Highline Freestyle World Cup! There will be no Winter Festislack this year. But the show will be spectacular, and it's happening on the usual Festival dates. So join us on the main square of Arc 2000 from April 14 to 16, 2027!"
+        },
+        {
+          "tag": "p",
+          "text": "slackicimes@gmail.com"
+        },
+        {
+          "tag": "p",
+          "text": "© 2022 by Gaëlle Joubert for Slack'icimes"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png/v1/fill/w_62,h_59,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo_Heart_PNG.png",
+          "alt": "Logo_Heart.PNG",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_d7ba2ff6241a493f83c2f6de2ef10afd~mv2.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0c3a1a_9ee0f4d689964f2087be7d76a876e633~mv2.jpg/v1/fill/w_424,h_600,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Affiche%20world%20cup.jpg",
+          "alt": "Affiche world cup.jpg",
+          "original_url": "https://static.wixstatic.com/media/0c3a1a_9ee0f4d689964f2087be7d76a876e633~mv2.jpg"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Facebook.png",
+          "alt": "alt.text.label.Facebook",
+          "original_url": "https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/alt_text_label_Instagram.png",
+          "alt": "alt.text.label.Instagram",
+          "original_url": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+        },
+        {
+          "src": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png",
+          "alt": "",
+          "original_url": "https://static.wixstatic.com/media/d3ee8f_a21cd4b9e8c0499fb0a2f235b6b6d9b0~mv2.png"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.slackicimes.org/en",
+          "text": ""
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The Association"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/association",
+          "text": "The team"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Workshops"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Weekend"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "First Steps"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Rigging"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "Back To Les Arcs"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-jeunes",
+          "text": "Young camp"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/inscriptions",
+          "text": "Registrations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/stages-highline",
+          "text": "FAQ"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/livre-d-or",
+          "text": "ratings"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Winter Festislack"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/winter-festislack",
+          "text": "Infos"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/copie-de-winter-festislack",
+          "text": "Previous editions"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/prestations",
+          "text": "Shows/Initiations"
+        },
+        {
+          "href": "https://www.slackicimes.org/en/contact",
           "text": "Contact"
         },
         {
@@ -2212,7 +6465,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -2451,7 +6704,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -2677,7 +6930,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -2907,7 +7160,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -3181,7 +7434,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -4032,7 +8285,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -4492,7 +8745,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -4743,7 +8996,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -5018,7 +9271,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -5291,7 +9544,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -5564,7 +9817,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -5837,7 +10090,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -6110,7 +10363,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -6383,7 +10636,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -6656,7 +10909,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -6929,7 +11182,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
@@ -7202,7 +11455,7 @@
           "text": "Infos"
         },
         {
-          "href": "https://www.slackicimes.org/old-winterfestislack-editions",
+          "href": "https://www.slackicimes.org/copie-de-winter-festislack",
           "text": "Anciennes éditions"
         },
         {
