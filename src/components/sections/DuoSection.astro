@@ -1,0 +1,63 @@
+---
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../i18n/content";
+import Section from "../ui/Section.astro";
+
+interface Props {
+  duo: CollectionEntry<"association">["data"]["duo"];
+  members: CollectionEntry<"team">[];
+}
+
+const PORTRAIT_WIDTHS = [320, 640];
+const PORTRAIT_SIZES = "(min-width: 768px) 240px, 45vw";
+
+const { duo, members } = Astro.props;
+const portraitMembers = members.flatMap((member) => {
+  const { portrait, portraitAlt, name } = member.data;
+  if (!portrait || !portraitAlt) {
+    return [];
+  }
+  return [{ name, portrait, portraitAlt, anchor: `#${entrySlug(member.id)}` }];
+});
+---
+
+<Section tone="mist">
+  <div class="grid items-center gap-10 md:grid-cols-2">
+    <div>
+      <h2 class="section-title">{duo.title}</h2>
+      <div class="rich-text mt-4">
+        {duo.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+      <h3 class="subsection-title mt-6">{duo.valuesTitle}</h3>
+      <ul class="mt-3 flex flex-wrap gap-2">
+        {duo.values.map((value) => (
+          <li class="bg-mist/40 text-navy rounded-full px-3 py-1 text-sm font-bold">
+            {value}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <ul class="grid grid-cols-2 gap-4">
+      {portraitMembers.map(({ name, portrait, portraitAlt, anchor }) => (
+        <li>
+          <a href={anchor} class="group block">
+            <Picture
+              src={portrait}
+              alt={portraitAlt}
+              widths={PORTRAIT_WIDTHS}
+              sizes={PORTRAIT_SIZES}
+              formats={["avif", "webp"]}
+              class="aspect-3/4 w-full rounded-lg object-cover"
+            />
+            <span class="font-heading text-navy group-hover:text-teal mt-2 block text-center text-lg font-bold">
+              {name}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>

@@ -26,8 +26,10 @@ const strings = uiStrings(locale);
           imageAlt={highlight.illustration.alt}
           title={highlight.title}
           eyebrow={highlight.eyebrow}
-          href={localizedPath(highlight.pageSlug, locale)}
-          linkLabel={strings.common.learnMore}
+          link={{
+            href: localizedPath(highlight.pageSlug, locale),
+            label: strings.common.learnMore,
+          }}
           headingLevel={2}
         >
           <p>{highlight.text}</p>

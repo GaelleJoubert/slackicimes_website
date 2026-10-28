@@ -16,6 +16,7 @@ export const getStaticPaths = (async () => {
     "winter-festislack",
     "contact",
     "merci",
+    "association",
   ]);
   const pages = await getCollection("pages");
   const pagesWithoutDedicatedRoute = pages.filter(

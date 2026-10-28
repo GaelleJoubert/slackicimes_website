@@ -78,7 +78,6 @@ const home = defineCollection({
           }),
         )
         .min(1),
-      association: textBlock.extend({ illustration }),
       stagesTeaser: textBlock.extend({ illustration }),
       festivalTeaser: textBlock,
     });
@@ -108,6 +107,63 @@ const festival = defineCollection({
     }),
 });
 
+const association = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/association" }),
+  schema: ({ image }) => {
+    const illustration = z.object({ image: image(), alt: nonEmptyText });
+    const textBlock = z.object({
+      title: nonEmptyText,
+      paragraphs: z.array(nonEmptyText).min(1),
+    });
+    return z.object({
+      origin: textBlock.extend({ illustration }),
+      firstStages: textBlock,
+      activities: z.object({
+        title: nonEmptyText,
+        intro: nonEmptyText,
+        items: z
+          .array(
+            z.object({
+              title: nonEmptyText,
+              text: nonEmptyText,
+              pageSlug: nonEmptyText.optional(),
+              illustration,
+            }),
+          )
+          .min(1),
+      }),
+      duo: textBlock.extend({
+        valuesTitle: nonEmptyText,
+        values: z.array(nonEmptyText).min(1),
+      }),
+      crew: textBlock,
+    });
+  },
+});
+
+const team = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
+  schema: ({ image }) =>
+    z.object({
+      order: displayOrder,
+      group: z.enum(["duo", "crew"]),
+      name: nonEmptyText,
+      role: nonEmptyText,
+      photo: image(),
+      photoAlt: nonEmptyText,
+      portrait: image().optional(),
+      portraitAlt: nonEmptyText.optional(),
+      facts: z
+        .array(
+          z.object({
+            label: nonEmptyText,
+            items: z.array(nonEmptyText).min(1),
+          }),
+        )
+        .min(1),
+    }),
+});
+
 export const collections = {
   pages,
   stages,
@@ -116,4 +172,6 @@ export const collections = {
   home,
   festivalPhotos,
   festival,
+  association,
+  team,
 };

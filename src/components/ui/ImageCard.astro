@@ -8,8 +8,7 @@ interface Props {
   title: string;
   eyebrow?: string;
   meta?: string;
-  href: string;
-  linkLabel: string;
+  link?: { href: string; label: string };
   headingLevel?: HeadingLevel;
 }
 
@@ -27,8 +26,7 @@ const {
   title,
   eyebrow,
   meta,
-  href,
-  linkLabel,
+  link,
   headingLevel = 3,
 } = Astro.props;
 const Heading = HEADING_TAGS[headingLevel];
@@ -44,22 +42,20 @@ const Heading = HEADING_TAGS[headingLevel];
     class="aspect-4/3 w-full object-cover"
   />
   <div class="flex flex-1 flex-col gap-2 p-5">
-    {eyebrow && (
-      <p class="text-teal text-sm font-bold tracking-wide uppercase">
-        {eyebrow}
-      </p>
-    )}
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <Heading class="font-heading text-navy text-xl font-bold">{title}</Heading>
     {meta && <p class="caption">{meta}</p>}
     <div class="flex-1">
       <slot />
     </div>
-    <a
-      href={href}
-      class="text-teal font-bold underline-offset-4 hover:underline"
-    >
-      {linkLabel}
-      <span class="sr-only">: {title}</span>
-    </a>
+    {link && (
+      <a
+        href={link.href}
+        class="text-teal font-bold underline-offset-4 hover:underline"
+      >
+        {link.label}
+        <span class="sr-only">: {title}</span>
+      </a>
+    )}
   </div>
 </article>

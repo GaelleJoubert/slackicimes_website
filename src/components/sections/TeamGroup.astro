@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Section from "../ui/Section.astro";
+import TeamMemberProfile from "./TeamMemberProfile.astro";
+
+interface Props {
+  members: CollectionEntry<"team">[];
+  tone: "paper" | "mist";
+  introduction?: { title: string; paragraphs: string[] };
+}
+
+const { members, tone, introduction } = Astro.props;
+---
+
+<Section tone={tone}>
+  {introduction && (
+    <div class="mb-10 max-w-2xl">
+      <h2 class="section-title">{introduction.title}</h2>
+      <div class="rich-text mt-4">
+        {introduction.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  )}
+  <div class="divide-mist space-y-12 divide-y">
+    {members.map((member) => (
+      <div class="pb-12 last:pb-0">
+        <TeamMemberProfile member={member} />
+      </div>
+    ))}
+  </div>
+</Section>

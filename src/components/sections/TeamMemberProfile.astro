@@ -1,0 +1,51 @@
+---
+import { Picture } from "astro:assets";
+import { render, type CollectionEntry } from "astro:content";
+import { entrySlug } from "../../i18n/content";
+
+interface Props {
+  member: CollectionEntry<"team">;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 768px) 320px, 100vw";
+
+const { member } = Astro.props;
+const { name, role, photo, photoAlt, facts } = member.data;
+const { Content: Biography } = await render(member);
+---
+
+<article
+  id={entrySlug(member.id)}
+  class="grid scroll-mt-4 gap-8 md:grid-cols-3"
+>
+  <Picture
+    src={photo}
+    alt={photoAlt}
+    widths={PHOTO_WIDTHS}
+    sizes={PHOTO_SIZES}
+    formats={["avif", "webp"]}
+    class="w-full rounded-lg object-cover"
+  />
+  <div class="md:col-span-2">
+    <h3 class="section-title">{name}</h3>
+    <p class="eyebrow mt-1">{role}</p>
+    <div class="rich-text mt-4">
+      <Biography />
+    </div>
+    <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+      {facts.map((fact) => (
+        <div>
+          <dt class="subsection-title">{fact.label}</dt>
+          <dd>
+            <ul class="mt-1 space-y-1">
+              {fact.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</article>

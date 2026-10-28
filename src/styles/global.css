@@ -30,6 +30,10 @@
     @apply font-heading text-lg font-bold text-navy;
   }
 
+  .eyebrow {
+    @apply text-sm font-bold tracking-wide text-teal uppercase;
+  }
+
   .caption {
     @apply text-sm text-slate;
   }

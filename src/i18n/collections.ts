@@ -4,9 +4,9 @@ import type { Locale } from "./locales";
 import { pageContentId } from "./routes";
 
 type LocalizedCollectionName =
-  "stages" | "faq" | "testimonials" | "festivalPhotos";
+  "stages" | "faq" | "testimonials" | "festivalPhotos" | "team";
 
-type SingleEntryCollectionName = "home" | "festival";
+type SingleEntryCollectionName = "home" | "festival" | "association";
 
 export async function getLocalizedCollection<
   Name extends LocalizedCollectionName,

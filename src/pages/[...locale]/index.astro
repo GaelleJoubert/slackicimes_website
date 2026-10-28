@@ -24,9 +24,10 @@ const HOME_PAGE_SLUG = "";
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(HOME_PAGE_SLUG, locale);
-const { highlights, association, stagesTeaser, festivalTeaser } = (
+const { highlights, stagesTeaser, festivalTeaser } = (
   await getSingleEntryContent("home", locale)
 ).data;
+const { origin } = (await getSingleEntryContent("association", locale)).data;
 const testimonials = await getLocalizedCollection("testimonials", locale);
 const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
 ---
@@ -44,9 +45,9 @@ const festivalPhotos = await getLocalizedCollection("festivalPhotos", locale);
   />
 
   <FeatureBlock
-    title={association.title}
-    paragraphs={association.paragraphs}
-    illustration={association.illustration}
+    title={strings.navigation.association}
+    paragraphs={origin.paragraphs}
+    illustration={origin.illustration}
     link={{
       href: localizedPath("association", locale),
       label: strings.common.learnMore,

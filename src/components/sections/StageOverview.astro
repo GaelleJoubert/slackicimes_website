@@ -29,8 +29,10 @@ const strings = uiStrings(locale);
           imageAlt={stage.data.imageAlt}
           title={stage.data.name}
           meta={`${stage.data.duration} · ${stage.data.level}`}
-          href={`#${entrySlug(stage.id)}`}
-          linkLabel={strings.common.learnMore}
+          link={{
+            href: `#${entrySlug(stage.id)}`,
+            label: strings.common.learnMore,
+          }}
         >
           <p>{stage.data.summary}</p>
         </ImageCard>

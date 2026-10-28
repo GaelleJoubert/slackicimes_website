@@ -1,0 +1,62 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ActivityGrid from "../../components/sections/ActivityGrid.astro";
+import DuoSection from "../../components/sections/DuoSection.astro";
+import FeatureBlock from "../../components/sections/FeatureBlock.astro";
+import TeamGroup from "../../components/sections/TeamGroup.astro";
+import Section from "../../components/ui/Section.astro";
+import {
+  getLocalizedCollection,
+  getPageEntry,
+  getSingleEntryContent,
+} from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "association";
+
+const { locale } = Astro.props;
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { origin, firstStages, activities, duo, crew } = (
+  await getSingleEntryContent("association", locale)
+).data;
+const team = await getLocalizedCollection("team", locale);
+const duoMembers = team.filter((member) => member.data.group === "duo");
+const crewMembers = team.filter((member) => member.data.group === "crew");
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section spacing="flushBottom">
+    <h1 class="page-title">{page.data.heading}</h1>
+  </Section>
+
+  <FeatureBlock
+    title={origin.title}
+    paragraphs={origin.paragraphs}
+    illustration={origin.illustration}
+  />
+
+  <FeatureBlock
+    title={firstStages.title}
+    paragraphs={firstStages.paragraphs}
+    tone="mist"
+  />
+
+  <ActivityGrid activities={activities} locale={locale} />
+
+  <DuoSection duo={duo} members={duoMembers} />
+
+  <TeamGroup members={duoMembers} tone="paper" />
+
+  <TeamGroup members={crewMembers} tone="mist" introduction={crew} />
+</BaseLayout>
