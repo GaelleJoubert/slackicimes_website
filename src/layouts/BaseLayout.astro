@@ -22,15 +22,22 @@ interface Props {
   description: string;
   locale: Locale;
   pageSlug: string;
+  isErrorPage?: boolean;
 }
 
-const { title, description, locale, pageSlug } = Astro.props;
+const {
+  title,
+  description,
+  locale,
+  pageSlug,
+  isErrorPage = false,
+} = Astro.props;
 const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
-const alternateLinks = buildAlternateLinks(pageSlug);
+const alternateLinks = isErrorPage ? [] : buildAlternateLinks(pageSlug);
 const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
 const strings = uiStrings(locale);
-const isIndexable = SITE_INDEXABLE && !isUnlistedPage(pageSlug);
+const isIndexable = SITE_INDEXABLE && !isErrorPage && !isUnlistedPage(pageSlug);
 ---
 
 <!doctype html>
@@ -41,7 +48,7 @@ const isIndexable = SITE_INDEXABLE && !isUnlistedPage(pageSlug);
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robotsDirective(isIndexable)} />
-    <link rel="canonical" href={canonicalUrl} />
+    {!isErrorPage && <link rel="canonical" href={canonicalUrl} />}
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />
     ))}

@@ -1,0 +1,51 @@
+---
+import LinkButton from "../components/ui/LinkButton.astro";
+import Section from "../components/ui/Section.astro";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_SETTINGS } from "../i18n/locales";
+import { localizedPath } from "../i18n/routes";
+import { uiStrings } from "../i18n/ui";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const HOME_PAGE_SLUG = "";
+
+const defaultStrings = uiStrings(DEFAULT_LOCALE).notFound;
+const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
+---
+
+<BaseLayout
+  title={defaultStrings.pageTitle}
+  description={defaultStrings.pageDescription}
+  locale={DEFAULT_LOCALE}
+  pageSlug={HOME_PAGE_SLUG}
+  isErrorPage
+>
+  <Section>
+    <h1 class="page-title">{defaultStrings.title}</h1>
+    <p class="mt-4 max-w-2xl text-lg">{defaultStrings.text}</p>
+    <div class="mt-8">
+      <LinkButton href={localizedPath(HOME_PAGE_SLUG, DEFAULT_LOCALE)}>
+        {defaultStrings.homeButton}
+      </LinkButton>
+    </div>
+    {otherLocales.map((locale) => {
+      const strings = uiStrings(locale).notFound;
+      return (
+        <div
+          lang={LOCALE_SETTINGS[locale].htmlLang}
+          class="border-mist mt-12 border-t pt-8"
+        >
+          <h2 class="section-title">{strings.title}</h2>
+          <p class="mt-3 max-w-2xl">{strings.text}</p>
+          <div class="mt-6">
+            <LinkButton
+              href={localizedPath(HOME_PAGE_SLUG, locale)}
+              variant="secondary"
+            >
+              {strings.homeButton}
+            </LinkButton>
+          </div>
+        </div>
+      );
+    })}
+  </Section>
+</BaseLayout>
