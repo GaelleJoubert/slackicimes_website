@@ -40,6 +40,7 @@ Every URL Google knows must keep working after the switch. `migration/wix-invent
 | `/inscriptions`                         | `/en/inscriptions`                         | 2 / 0                     |
 | `/livre-d-or`                           | `/en/livre-d-or`                           | 0 / 0                     |
 | `/anciennes-editions-winter-festislack` | `/en/anciennes-editions-winter-festislack` | new URL                   |
+| `/coupe-du-monde`                       | `/en/coupe-du-monde`                       | new URL                   |
 
 The top three pages carry 87% of clicks: copy them with the most care.
 

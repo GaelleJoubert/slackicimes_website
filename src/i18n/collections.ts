@@ -6,7 +6,8 @@ import { pageContentId } from "./routes";
 type LocalizedCollectionName =
   "stages" | "faq" | "testimonials" | "team" | "festivalEditions";
 
-type SingleEntryCollectionName = "home" | "festival" | "association";
+type SingleEntryCollectionName =
+  "home" | "festival" | "association" | "worldCup";
 
 export async function getLocalizedCollection<
   Name extends LocalizedCollectionName,

@@ -10,6 +10,7 @@ export interface NavigationItem {
 
 export const MAIN_NAVIGATION: NavigationItem[] = [
   { pageSlug: "association", labelKey: "association" },
+  { pageSlug: "coupe-du-monde", labelKey: "worldCup" },
   {
     pageSlug: "winter-festislack",
     labelKey: "winterFestislack",

@@ -1,0 +1,27 @@
+---
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  sectionNav: WorldCupContent["sectionNav"];
+}
+
+const { sectionNav } = Astro.props;
+---
+
+<nav
+  aria-label={sectionNav.label}
+  class="bg-cup-ink border-cup-pink sticky top-0 z-10 border-b-4"
+>
+  <ul class="mx-auto flex max-w-6xl gap-7 overflow-x-auto px-6 text-sm font-semibold whitespace-nowrap md:text-base">
+    {sectionNav.links.map((link) => (
+      <li>
+        <a
+          href={`#${link.target}`}
+          class="hover:text-cup-sky block py-4 text-white"
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

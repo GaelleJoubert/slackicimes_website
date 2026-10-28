@@ -1,0 +1,27 @@
+---
+type IntroTheme = "light" | "dark";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  theme: IntroTheme;
+}
+
+const EYEBROW_CLASSES: Record<IntroTheme, string> = {
+  light: "text-cup-magenta",
+  dark: "text-cup-sky",
+};
+
+const TITLE_CLASSES: Record<IntroTheme, string> = {
+  light: "text-cup-navy",
+  dark: "text-white",
+};
+
+const { eyebrow, title, theme } = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  <span class:list={["cup-eyebrow", EYEBROW_CLASSES[theme]]}>{eyebrow}</span>
+  <h2 class:list={["cup-title", TITLE_CLASSES[theme]]}>{title}</h2>
+  <slot />
+</div>

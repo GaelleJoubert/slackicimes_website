@@ -12,6 +12,7 @@ const fr = {
     menuToggle: "Menu",
     homeLinkLabel: "Accueil Slack'icîmes",
     association: "L'association",
+    worldCup: "Coupe du monde",
     winterFestislack: "Winter Festislack",
     pastEditions: "Anciennes éditions",
     stages: "Stages",
@@ -66,6 +67,13 @@ const fr = {
     addressHeading: "Adresse",
     writeUsButton: "Nous écrire",
   },
+  notFound: {
+    pageTitle: "Page introuvable | Slack'icîmes",
+    pageDescription: "Cette page n'existe pas ou a été déplacée.",
+    title: "Page introuvable",
+    text: "La page que vous cherchez n'existe pas ou a été déplacée.",
+    homeButton: "Retour à l'accueil",
+  },
   contactPage: {
     detailsTitle: "Nos coordonnées",
     formTitle: "Envoyez-nous un message",
@@ -99,6 +107,7 @@ const en: UiStrings = {
     menuToggle: "Menu",
     homeLinkLabel: "Slack'icîmes home",
     association: "The association",
+    worldCup: "World Cup",
     winterFestislack: "Winter Festislack",
     pastEditions: "Previous editions",
     stages: "Courses",
@@ -152,6 +161,13 @@ const en: UiStrings = {
     emailHeading: "Email",
     addressHeading: "Address",
     writeUsButton: "Write to us",
+  },
+  notFound: {
+    pageTitle: "Page not found | Slack'icîmes",
+    pageDescription: "This page does not exist or has moved.",
+    title: "Page not found",
+    text: "The page you are looking for does not exist or has moved.",
+    homeButton: "Back to the home page",
   },
   contactPage: {
     detailsTitle: "Our details",

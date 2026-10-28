@@ -1,0 +1,90 @@
+---
+import { Picture } from "astro:assets";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  partners: WorldCupContent["partners"];
+  locale: Locale;
+}
+
+type GroupSize = WorldCupContent["partners"]["groups"][number]["size"];
+
+const CONTACT_PAGE_SLUG = "contact";
+const LOGO_WIDTHS = [240, 480];
+const LOGO_SIZES = "240px";
+
+const TILE_CLASSES: Record<GroupSize, string> = {
+  main: "h-56 w-full max-w-md",
+  equipment: "h-44 w-full sm:w-72",
+  support: "h-32 w-full sm:w-56",
+};
+
+const LOGO_CLASSES: Record<GroupSize, string> = {
+  main: "max-h-40",
+  equipment: "max-h-24",
+  support: "max-h-16",
+};
+
+const { partners, locale } = Astro.props;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.partners} tone="white">
+  <div class="flex flex-col gap-10">
+    <div class="flex flex-col items-center gap-3.5 text-center">
+      <span class="cup-eyebrow text-cup-magenta">{partners.eyebrow}</span>
+      <h2 class="cup-title text-cup-navy">{partners.title}</h2>
+    </div>
+    {partners.groups.map((group) => (
+      <div class="flex flex-col items-center gap-3.5">
+        <h3 class="text-cup-muted text-sm font-bold tracking-widest uppercase">
+          {group.label}
+        </h3>
+        <ul class="flex w-full flex-wrap justify-center gap-4">
+          {group.partners.map((partner) => {
+            const Tile = partner.url ? "a" : "div";
+            return (
+              <li
+                class:list={["flex justify-center", TILE_CLASSES[group.size]]}
+              >
+                <Tile
+                  href={partner.url}
+                  class="border-cup-border flex size-full flex-col items-center justify-center gap-2.5 rounded-2xl border-2 px-8 py-4"
+                >
+                  <Picture
+                    src={partner.logo}
+                    alt={partner.name}
+                    widths={LOGO_WIDTHS}
+                    sizes={LOGO_SIZES}
+                    formats={["avif", "webp"]}
+                    class:list={[
+                      "h-auto w-auto max-w-full object-contain",
+                      LOGO_CLASSES[group.size],
+                    ]}
+                  />
+                  {partner.role && (
+                    <span class="text-cup-muted text-sm font-semibold">
+                      {partner.role}
+                    </span>
+                  )}
+                </Tile>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+    <div class="flex justify-center pt-2">
+      <LinkButton
+        href={localizedPath(CONTACT_PAGE_SLUG, locale)}
+        variant="cupOutlineDark"
+      >
+        {partners.becomePartnerLabel}
+      </LinkButton>
+    </div>
+  </div>
+</CupSection>

@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { WORLD_CUP_SECTION_ID_LIST } from "./lib/world-cup";
 
 const nonEmptyText = z.string().min(1);
 const displayOrder = z.number().int().nonnegative();
@@ -192,6 +193,160 @@ const team = defineCollection({
     }),
 });
 
+const worldCup = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/world-cup" }),
+  schema: ({ image }) => {
+    const illustration = z.object({ image: image(), alt: nonEmptyText });
+    const titledText = z.object({ title: nonEmptyText, text: nonEmptyText });
+    const titledList = z.object({
+      title: nonEmptyText,
+      items: z.array(nonEmptyText).min(1),
+    });
+    const emphasis = z.enum(["regular", "highlight", "reserve"]);
+    const sectionIntro = z.object({
+      eyebrow: nonEmptyText,
+      title: nonEmptyText,
+    });
+    return z.object({
+      hero: z.object({
+        badge: nonEmptyText,
+        kicker: nonEmptyText,
+        tag: nonEmptyText,
+        intro: nonEmptyText,
+        facts: z.array(z.object({ label: nonEmptyText, value: nonEmptyText })),
+        primaryCta: nonEmptyText,
+        secondaryCta: nonEmptyText,
+        logo: illustration,
+        poster: illustration,
+      }),
+      sectionNav: z.object({
+        label: nonEmptyText,
+        links: z.array(
+          z.object({
+            label: nonEmptyText,
+            target: z.enum(WORLD_CUP_SECTION_ID_LIST),
+          }),
+        ),
+      }),
+      now: z.object({
+        badge: nonEmptyText,
+        text: nonEmptyText,
+        linkLabel: nonEmptyText,
+      }),
+      event: sectionIntro.extend({
+        paragraphs: z.array(nonEmptyText).min(1),
+        illustration,
+        stats: z.array(
+          z.object({
+            value: nonEmptyText,
+            label: nonEmptyText,
+            detail: nonEmptyText,
+          }),
+        ),
+        highlights: z.array(titledText),
+      }),
+      programme: sectionIntro.extend({
+        note: nonEmptyText,
+        days: z.array(
+          z.object({
+            date: nonEmptyText,
+            title: nonEmptyText,
+            text: nonEmptyText,
+            emphasis,
+          }),
+        ),
+        formatTitle: nonEmptyText,
+        formatSteps: z.array(nonEmptyText).min(1),
+      }),
+      athletes: sectionIntro.extend({
+        intro: nonEmptyText,
+        announcement: nonEmptyText,
+        categories: z.array(nonEmptyText).min(1),
+        slotsPerCategory: z.number().int().positive(),
+        placeholderLabel: nonEmptyText,
+      }),
+      results: z.object({
+        badge: nonEmptyText,
+        title: nonEmptyText,
+        text: nonEmptyText,
+        previewLabel: nonEmptyText,
+        previewGroup: nonEmptyText,
+        previewScore: nonEmptyText,
+        previewRow: nonEmptyText,
+        previewRowCount: z.number().int().positive(),
+      }),
+      infos: sectionIntro.extend({
+        steps: z.array(
+          titledText.extend({
+            link: z.object({ label: nonEmptyText, url: z.url() }).optional(),
+          }),
+        ),
+        facts: z.array(titledText),
+        photo: illustration,
+        caption: nonEmptyText,
+      }),
+      participate: sectionIntro.extend({
+        intro: nonEmptyText,
+        timeline: z.array(
+          z.object({ date: nonEmptyText, label: nonEmptyText, emphasis }),
+        ),
+        videoFormat: titledList,
+        rules: titledList,
+        judging: z.object({
+          title: nonEmptyText,
+          criteria: z.array(
+            z.object({ label: nonEmptyText, points: nonEmptyText }),
+          ),
+          note: nonEmptyText,
+        }),
+        submission: z.object({
+          text: nonEmptyText,
+          label: nonEmptyText,
+          url: z.url(),
+        }),
+        prize: z.object({
+          title: nonEmptyText,
+          note: nonEmptyText,
+          places: z.array(
+            z.object({
+              label: nonEmptyText,
+              amountInEuros: z.number().positive(),
+            }),
+          ),
+        }),
+        setup: titledList,
+        rulebook: titledText,
+      }),
+      organizers: sectionIntro.extend({
+        paragraphs: z.array(nonEmptyText).min(1),
+        illustration,
+        linkLabel: nonEmptyText,
+      }),
+      partners: sectionIntro.extend({
+        groups: z.array(
+          z.object({
+            label: nonEmptyText,
+            size: z.enum(["main", "equipment", "support"]),
+            partners: z.array(
+              z.object({
+                name: nonEmptyText,
+                logo: image(),
+                url: z.url().optional(),
+                role: nonEmptyText.optional(),
+              }),
+            ),
+          }),
+        ),
+        becomePartnerLabel: nonEmptyText,
+      }),
+      question: z.object({
+        title: nonEmptyText,
+        buttonLabel: nonEmptyText,
+      }),
+    });
+  },
+});
+
 export const collections = {
   pages,
   stages,
@@ -203,4 +358,5 @@ export const collections = {
   festival,
   association,
   team,
+  worldCup,
 };

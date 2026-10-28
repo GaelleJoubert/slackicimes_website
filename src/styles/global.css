@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/clash-display-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/clash-display-semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-*: initial;
   --color-white: #ffffff;
@@ -13,8 +29,33 @@
   --color-coral: #ff695e;
   --color-coral-strong: #bd5048;
 
+  --color-cup-navy: #2f3064;
+  --color-cup-ink: #1b1c3f;
+  --color-cup-pink: #ff0098;
+  --color-cup-pink-strong: #d4007e;
+  --color-cup-pink-soft: #ff6fc4;
+  --color-cup-magenta: #c2007a;
+  --color-cup-sky: #50c1f7;
+  --color-cup-surface: #f4f5fb;
+  --color-cup-border: #e1e3f0;
+  --color-cup-line: #4a4c8a;
+  --color-cup-soft: #c9cbe6;
+  --color-cup-pale: #e9eaf6;
+  --color-cup-placeholder: #e6e8f4;
+  --color-cup-placeholder-text: #6b6e9c;
+  --color-cup-muted: #5a5d86;
+  --color-cup-slate: #353d57;
+  --color-cup-slate-deep: #2a3047;
+  --color-cup-slate-text: #d7d9ec;
+  --color-cup-slate-muted: #aeb2cf;
+
   --font-heading: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
   --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Clash Display", "Avenir Next", system-ui, sans-serif;
+  --font-cup: "Inter Variable", system-ui, sans-serif;
+
+  --text-hero: 7.25rem;
+  --text-hero--line-height: 0.92;
 }
 
 @layer components {
@@ -36,6 +77,22 @@
 
   .caption {
     @apply text-sm text-slate;
+  }
+
+  .cup-eyebrow {
+    @apply text-sm font-bold tracking-widest uppercase;
+  }
+
+  .cup-title {
+    @apply font-display text-4xl leading-none font-bold uppercase md:text-5xl lg:text-6xl;
+  }
+
+  .cup-card-title {
+    @apply font-display text-2xl font-semibold uppercase;
+  }
+
+  .cup-stat-value {
+    @apply font-display text-4xl leading-none font-bold;
   }
 
   .rich-text {
