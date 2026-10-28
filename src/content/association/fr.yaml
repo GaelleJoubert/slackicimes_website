@@ -36,7 +36,6 @@ activities:
         alt: Stagiaire souriant, pouce levé, assis sur une highline
     - title: Des expéditions
       text: A la recherche d'exploits sportifs, d'explorations et de découvertes, mais aussi de projets scientifiques et humanitaires.
-      pageSlug: expeditions
       illustration:
         image: ../../assets/images/association/expedition-groenland.jpg
         alt: Highline tendue au dessus des crevasses d'un glacier au Groenland

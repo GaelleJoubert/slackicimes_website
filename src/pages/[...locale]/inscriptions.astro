@@ -1,0 +1,59 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import FeatureBlock from "../../components/sections/FeatureBlock.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import Section from "../../components/ui/Section.astro";
+import { getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { STAGES_REGISTRATION_URL } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "inscriptions";
+const STAGES_PAGE_SLUG = "stages-highline";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Instructions } = await render(page);
+const { feature } = page.data;
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section>
+    <h1 class="page-title">{page.data.heading}</h1>
+    <div class="rich-text mt-6 max-w-2xl text-lg">
+      <Instructions />
+    </div>
+    <div class="mt-8">
+      <LinkButton href={STAGES_REGISTRATION_URL}>
+        {strings.stages.ticketOfficeButton}
+      </LinkButton>
+    </div>
+  </Section>
+
+  {feature && (
+    <FeatureBlock
+      title={feature.title}
+      paragraphs={feature.paragraphs}
+      illustration={feature.illustration}
+      imageShape="portrait"
+      link={{
+        href: localizedPath(STAGES_PAGE_SLUG, locale),
+        label: strings.common.learnMore,
+      }}
+      tone="mist"
+    />
+  )}
+</BaseLayout>

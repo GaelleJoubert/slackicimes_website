@@ -1,10 +1,10 @@
 ---
-import { render, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
-import Quote from "../ui/Quote.astro";
 import Section from "../ui/Section.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+import TestimonialList from "./TestimonialList.astro";
 
 interface Props {
   testimonials: CollectionEntry<"testimonials">[];
@@ -13,12 +13,6 @@ interface Props {
 
 const { testimonials, locale } = Astro.props;
 const strings = uiStrings(locale);
-const renderedTestimonials = await Promise.all(
-  testimonials.map(async (testimonial) => ({
-    ...testimonial.data,
-    Body: (await render(testimonial)).Content,
-  })),
-);
 ---
 
 <Section>
@@ -26,11 +20,5 @@ const renderedTestimonials = await Promise.all(
     title={strings.testimonials.title}
     intro={strings.testimonials.intro}
   />
-  <div class="grid gap-6 md:grid-cols-2">
-    {renderedTestimonials.map(({ author, stageName, Body }) => (
-      <Quote author={author} context={stageName}>
-        <Body />
-      </Quote>
-    ))}
-  </div>
+  <TestimonialList testimonials={testimonials} />
 </Section>

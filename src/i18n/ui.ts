@@ -39,6 +39,7 @@ const fr = {
     priceHeading: "Tarif",
     priceNote: "Ce tarif inclut toutes les activités et le matériel collectif.",
     registerButton: "S'inscrire",
+    ticketOfficeButton: "Accéder à la billetterie HelloAsso",
   },
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
@@ -100,8 +101,8 @@ const en: UiStrings = {
     association: "The association",
     winterFestislack: "Winter Festislack",
     pastEditions: "Previous editions",
-    stages: "Workshops",
-    youthStages: "Young camp",
+    stages: "Courses",
+    youthStages: "Youth course",
     registrations: "Registrations",
     guestbook: "Guestbook",
     contact: "Contact",
@@ -125,6 +126,7 @@ const en: UiStrings = {
     priceHeading: "Price",
     priceNote: "This price includes all activities and collective equipment.",
     registerButton: "Register",
+    ticketOfficeButton: "Go to the HelloAsso ticket office",
   },
   festival: {
     pastEditionsButton: "See previous editions",

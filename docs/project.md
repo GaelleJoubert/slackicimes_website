@@ -38,9 +38,7 @@ Every URL Google knows must keep working after the switch. `migration/wix-invent
 | `/stages-jeunes`                        | `/en/stages-jeunes`                        | 15 / 0                    |
 | `/contact`                              | `/en/contact`                              | 4 / 0                     |
 | `/inscriptions`                         | `/en/inscriptions`                         | 2 / 0                     |
-| `/inscriptions-winter-festislack`       | `/en/inscriptions-winter-festislack`       | 1 / 0                     |
 | `/livre-d-or`                           | `/en/livre-d-or`                           | 0 / 0                     |
-| `/expeditions`                          | `/en/expeditions`                          | 0 / 0                     |
 | `/anciennes-editions-winter-festislack` | `/en/anciennes-editions-winter-festislack` | new URL                   |
 
 The top three pages carry 87% of clicks: copy them with the most care.
@@ -56,6 +54,10 @@ GitHub Pages serves static files only, so redirects are Astro `redirects` entrie
 | `/event-details/*` (9 past 2024 events)                               | `/stages-highline`                         |
 | `/prestations` (removed page, 1 search click)                         | `/contact`                                 |
 | `/en/prestations`                                                     | `/en/contact`                              |
+| `/inscriptions-winter-festislack` (removed page, 1 search click)      | `/winter-festislack`                       |
+| `/en/inscriptions-winter-festislack`                                  | `/en/winter-festislack`                    |
+| `/expeditions` (removed page)                                         | `/association`                             |
+| `/en/expeditions`                                                     | `/en/association`                          |
 
 Bare domain to `www` and HTTP to HTTPS are handled by GitHub Pages with real 301s.
 
@@ -75,7 +77,6 @@ Bare domain to `www` and HTTP to HTTPS are handled by GitHub Pages with real 301
 src/
   pages/            routes only: thin files that pick content and compose sections
     [...locale]/    one file per page, built at /<slug> (French) and /en/<slug> (English)
-    [...path].astro generic route for pages that have no dedicated file yet
   layouts/          BaseLayout owns <head>: SEO tags, hreflang, structured data
   components/
     ui/             presentational building blocks (Button, Card, Section, Image)
@@ -106,5 +107,5 @@ Dependency direction: `pages` depend on `layouts`, `sections` and `content`; `se
 - The custom domain is set in the repository's Pages settings (Actions deployments ignore a `CNAME` file).
 
 - Which page each backlink (lesarcs.com, explore-savoie.com, slacklinesport.org) targets: the export does not say.
-- English page titles still in French on Wix (`/en/association`, `/en/expeditions`): translate in Phase 1 or keep as is?
+- English page titles still in French on Wix (`/en/association`): translate in Phase 1 or keep as is?
 - `/en/anciennes-editions-winter-festislack` is empty on Wix: translate or point it to the French page.

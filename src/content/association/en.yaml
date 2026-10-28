@@ -36,7 +36,6 @@ activities:
         alt: Smiling trainee giving a thumbs up while sitting on a highline
     - title: Expeditions
       text: In search of sporting feats, exploration and discovery, as well as scientific and humanitarian projects.
-      pageSlug: expeditions
       illustration:
         image: ../../assets/images/association/expedition-groenland.jpg
         alt: Highline rigged above the crevasses of a glacier in Greenland

@@ -3,6 +3,10 @@ const ENGLISH_PREFIX = "/en";
 const STAGES_PATH = "/stages-highline";
 const CONTACT_PATH = "/contact";
 const SERVICES_PATH = "/prestations";
+const FESTIVAL_PATH = "/winter-festislack";
+const FESTIVAL_REGISTRATIONS_PATH = "/inscriptions-winter-festislack";
+const ASSOCIATION_PATH = "/association";
+const EXPEDITIONS_PATH = "/expeditions";
 
 const PAST_EVENT_SLUGS = [
   "stage-premier-pas",
@@ -36,13 +40,21 @@ const renamedFestivalRedirects = RENAMED_FESTIVAL_EDITIONS_PATHS.flatMap(
   ],
 );
 
-const removedServicesRedirects = [
-  [SERVICES_PATH, CONTACT_PATH],
-  [`${ENGLISH_PREFIX}${SERVICES_PATH}`, `${ENGLISH_PREFIX}${CONTACT_PATH}`],
-];
+const REMOVED_PAGE_TARGETS: Record<string, string> = {
+  [SERVICES_PATH]: CONTACT_PATH,
+  [FESTIVAL_REGISTRATIONS_PATH]: FESTIVAL_PATH,
+  [EXPEDITIONS_PATH]: ASSOCIATION_PATH,
+};
+
+const removedPageRedirects = Object.entries(REMOVED_PAGE_TARGETS).flatMap(
+  ([removedPath, targetPath]) => [
+    [removedPath, targetPath],
+    [`${ENGLISH_PREFIX}${removedPath}`, `${ENGLISH_PREFIX}${targetPath}`],
+  ],
+);
 
 export const LEGACY_REDIRECTS: Record<string, string> = Object.fromEntries([
   ...renamedFestivalRedirects,
   ...pastEventRedirects,
-  ...removedServicesRedirects,
+  ...removedPageRedirects,
 ]);

@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import TestimonialList from "../../components/sections/TestimonialList.astro";
+import Section from "../../components/ui/Section.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "livre-d-or";
+
+const { locale } = Astro.props;
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const testimonials = await getLocalizedCollection("testimonials", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section>
+    <h1 class="page-title">{page.data.heading}</h1>
+    <div class="text-slate mt-4 mb-8 text-lg">
+      <Intro />
+    </div>
+    <TestimonialList testimonials={testimonials} />
+  </Section>
+</BaseLayout>

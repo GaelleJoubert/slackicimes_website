@@ -7,12 +7,20 @@ const displayOrder = z.number().int().nonnegative();
 
 const pages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
-  schema: z.object({
-    title: nonEmptyText,
-    description: nonEmptyText,
-    heading: nonEmptyText,
-    video: z.url().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: nonEmptyText,
+      description: nonEmptyText,
+      heading: nonEmptyText,
+      video: z.url().optional(),
+      feature: z
+        .object({
+          title: nonEmptyText,
+          paragraphs: z.array(nonEmptyText).min(1),
+          illustration: z.object({ image: image(), alt: nonEmptyText }),
+        })
+        .optional(),
+    }),
 });
 
 const programItem = z.object({
