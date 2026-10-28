@@ -1,0 +1,102 @@
+# Slack'icîmes website: scope, architecture, plan
+
+## Goal
+
+Replace the Wix site at https://www.slackicimes.org with an open source static site, without losing search rankings.
+
+1. **Phase 1: replica.** Same pages, same URLs, same text, same SEO metadata, in French and English. Responsive, mobile first (72% of search clicks come from mobile).
+2. **Phase 2: redesign.** New visual identity (Claude Design), integrated into the same components. URLs and SEO setup do not change.
+
+The step by step migration checklist lives in the shared doc: https://claude.ai/artifact/UyGs3pBgsSqtvwDE7EGEDf
+
+## Stack
+
+| Need | Choice |
+| --- | --- |
+| Framework | Astro (static output) + Tailwind CSS |
+| Hosting | GitHub Pages, deployed by GitHub Actions on push to `main` |
+| Domain and DNS | OVH (domain only) |
+| Contact form | Web3Forms (public access key, honeypot spam field) |
+| Registrations and payments | HelloAsso (already used by the association), linked or embedded |
+| Tests | Vitest |
+
+No server, no database, no client side framework. JavaScript ships only where a component truly needs it.
+
+## URL contract
+
+Every URL Google knows must keep working after the switch. `migration/wix-inventory.json` is the source of truth for the old site (titles, descriptions, headings, text, images, links).
+
+### Pages (French at the root, English under `/en`)
+
+| French | English | Search clicks (16 months) |
+| --- | --- | --- |
+| `/stages-highline` | `/en/stages-highline` | 932 / 35 |
+| `/` | `/en` | 691 / 89 |
+| `/winter-festislack` | `/en/winter-festislack` | 333 / 126 |
+| `/association` | `/en/association` | 66 / 0 |
+| `/stages-jeunes` | `/en/stages-jeunes` | 15 / 0 |
+| `/contact` | `/en/contact` | 4 / 0 |
+| `/inscriptions` | `/en/inscriptions` | 2 / 0 |
+| `/prestations` | `/en/prestations` | 1 / 0 |
+| `/inscriptions-winter-festislack` | `/en/inscriptions-winter-festislack` | 1 / 0 |
+| `/livre-d-or` | `/en/livre-d-or` | 0 / 0 |
+| `/expeditions` | `/en/expeditions` | 0 / 0 |
+| `/anciennes-editions-winter-festislack` | `/en/anciennes-editions-winter-festislack` | new URL |
+
+The top three pages carry 87% of clicks: copy them with the most care.
+
+### Redirects
+
+GitHub Pages serves static files only, so redirects are Astro `redirects` entries (instant meta refresh, which Google treats as permanent). Always point straight at the final URL, never chain.
+
+| Old URL | Target |
+| --- | --- |
+| `/copie-de-winter-festislack`, `/old-winterfestislack-editions` | `/anciennes-editions-winter-festislack` |
+| `/en/copie-de-winter-festislack`, `/en/old-winterfestislack-editions` | `/en/anciennes-editions-winter-festislack` |
+| `/event-details/*` (9 past 2024 events) | `/stages-highline` |
+
+Bare domain to `www` and HTTP to HTTPS are handled by GitHub Pages with real 301s.
+
+## SEO rules
+
+- Canonical URL on `https://www.slackicimes.org`, no trailing slash, matching the Wix URLs exactly.
+- `hreflang` alternates on every page: `fr-fr`, `en-us`, and `x-default` pointing to French (same as Wix today).
+- One H1 per page. Unique title and meta description per page and per language.
+- Every content image has a meaningful alt text in the page's language.
+- Structured data: `WebSite` and `Organization` site wide, `Event` for stages and the festival.
+- `sitemap.xml` (both languages) and `robots.txt` generated at build time.
+- The preview deployment carries `noindex` everywhere; production never does.
+
+## Architecture
+
+```
+src/
+  pages/            routes only: thin files that pick content and compose sections
+    en/             English routes, mirroring the French ones
+  layouts/          BaseLayout owns <head>: SEO tags, hreflang, structured data
+  components/
+    ui/             presentational building blocks (Button, Card, Section, Image)
+    sections/       page sections built from ui components (Hero, StageList, Faq)
+  content/          content collections: page copy per locale, stages, testimonials, festival editions
+  i18n/             locale config, UI strings, French/English route mapping
+  lib/              pure functions: SEO metadata, structured data builders, URL helpers
+  styles/           global.css with the Tailwind @theme design tokens
+  assets/images/    content images, optimized at build
+public/             CNAME, favicons, static files served as is
+tests/              unit tests for lib, URL contract test
+migration/          Wix inventory (read only reference for the replica)
+```
+
+Dependency direction: `pages` depend on `layouts`, `sections` and `content`; `sections` depend on `ui`; everything may use `lib` and `i18n`; `lib` depends on nothing in the project. Content never contains layout, components never hardcode copy.
+
+## Testing
+
+- `lib` functions are pure and unit tested.
+- A URL contract test builds the site and checks that every URL in the table above exists in `dist/`, and that every redirect points to an existing page.
+- Before each release: Lighthouse on the top three pages (mobile), and a link check.
+
+## Open questions
+
+- Which page each backlink (lesarcs.com, explore-savoie.com, slacklinesport.org) targets: the export does not say.
+- English page titles still in French on Wix (`/en/association`, `/en/expeditions`, `/en/prestations`): translate in Phase 1 or keep as is?
+- `/en/anciennes-editions-winter-festislack` is empty on Wix: translate or point it to the French page.
