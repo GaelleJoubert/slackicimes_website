@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import ImageCard from "../ui/ImageCard.astro";
+import Section from "../ui/Section.astro";
+
+interface Props {
+  heading: string;
+  highlights: CollectionEntry<"home">["data"]["highlights"];
+  locale: Locale;
+}
+
+const { heading, highlights, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<Section>
+  <h1 class="page-title mb-8">{heading}</h1>
+  <ul class="grid gap-6 md:grid-cols-3">
+    {highlights.map((highlight) => (
+      <li>
+        <ImageCard
+          image={highlight.illustration.image}
+          imageAlt={highlight.illustration.alt}
+          title={highlight.title}
+          eyebrow={highlight.eyebrow}
+          href={localizedPath(highlight.pageSlug, locale)}
+          linkLabel={strings.common.learnMore}
+          headingLevel={2}
+        >
+          <p>{highlight.text}</p>
+        </ImageCard>
+      </li>
+    ))}
+  </ul>
+</Section>

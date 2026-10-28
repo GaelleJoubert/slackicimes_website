@@ -15,6 +15,12 @@ describe("assertTranslationsComplete", () => {
     ).not.toThrow();
   });
 
+  it("accepts single entries identified by their locale", () => {
+    expect(() =>
+      assertTranslationsComplete("home", ["fr", "en"]),
+    ).not.toThrow();
+  });
+
   it("names every missing translation", () => {
     expect(() =>
       assertTranslationsComplete("stages", ["fr/weekend", "en/autonomie"]),

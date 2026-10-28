@@ -1,9 +1,9 @@
 ---
-import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { entrySlug } from "../../i18n/content";
 import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
+import ImageCard from "../ui/ImageCard.astro";
 import Section from "../ui/Section.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 
@@ -11,10 +11,6 @@ interface Props {
   stages: CollectionEntry<"stages">[];
   locale: Locale;
 }
-
-const CARD_IMAGE_WIDTHS = [480, 960];
-const CARD_IMAGE_SIZES =
-  "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
 
 const { stages, locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -27,31 +23,17 @@ const strings = uiStrings(locale);
   />
   <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {stages.map((stage) => (
-      <li class="bg-paper flex flex-col overflow-hidden rounded-lg shadow-sm">
-        <Picture
-          src={stage.data.image}
-          alt={stage.data.imageAlt}
-          widths={CARD_IMAGE_WIDTHS}
-          sizes={CARD_IMAGE_SIZES}
-          formats={["avif", "webp"]}
-          class="aspect-4/3 w-full object-cover"
-        />
-        <div class="flex flex-1 flex-col gap-2 p-5">
-          <h3 class="font-heading text-navy text-xl font-bold">
-            {stage.data.name}
-          </h3>
-          <p class="caption">
-            {stage.data.duration} · {stage.data.level}
-          </p>
-          <p class="flex-1">{stage.data.summary}</p>
-          <a
-            href={`#${entrySlug(stage.id)}`}
-            class="text-teal font-bold underline-offset-4 hover:underline"
-          >
-            {strings.stages.detailsLink}
-            <span class="sr-only">: {stage.data.name}</span>
-          </a>
-        </div>
+      <li>
+        <ImageCard
+          image={stage.data.image}
+          imageAlt={stage.data.imageAlt}
+          title={stage.data.name}
+          meta={`${stage.data.duration} · ${stage.data.level}`}
+          href={`#${entrySlug(stage.id)}`}
+          linkLabel={strings.common.learnMore}
+        >
+          <p>{stage.data.summary}</p>
+        </ImageCard>
       </li>
     ))}
   </ul>

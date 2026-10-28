@@ -1,0 +1,84 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ContactBlock from "../../components/sections/ContactBlock.astro";
+import FeatureBlock from "../../components/sections/FeatureBlock.astro";
+import HomeHighlights from "../../components/sections/HomeHighlights.astro";
+import TestimonialsSection from "../../components/sections/TestimonialsSection.astro";
+import ImageGallery from "../../components/ui/ImageGallery.astro";
+import {
+  getHomeContent,
+  getLocalizedCollection,
+  getPageEntry,
+} from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const HOME_PAGE_SLUG = "";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(HOME_PAGE_SLUG, locale);
+const { highlights, association, stagesTeaser, festivalTeaser } = (
+  await getHomeContent(locale)
+).data;
+const testimonials = await getLocalizedCollection("testimonials", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={HOME_PAGE_SLUG}
+>
+  <HomeHighlights
+    heading={page.data.heading}
+    highlights={highlights}
+    locale={locale}
+  />
+
+  <FeatureBlock
+    title={association.title}
+    paragraphs={association.paragraphs}
+    illustration={association.illustration}
+    link={{
+      href: localizedPath("association", locale),
+      label: strings.common.learnMore,
+    }}
+    tone="mist"
+  />
+
+  <FeatureBlock
+    title={stagesTeaser.title}
+    paragraphs={stagesTeaser.paragraphs}
+    illustration={stagesTeaser.illustration}
+    imageSide="end"
+    link={{
+      href: localizedPath("stages-highline", locale),
+      label: strings.common.learnMore,
+    }}
+  />
+
+  <FeatureBlock
+    title={festivalTeaser.title}
+    paragraphs={festivalTeaser.paragraphs}
+    link={{
+      href: localizedPath("winter-festislack", locale),
+      label: strings.common.learnMore,
+    }}
+    tone="mist"
+  >
+    <div class="mt-8">
+      <ImageGallery images={festivalTeaser.gallery} />
+    </div>
+  </FeatureBlock>
+
+  <TestimonialsSection testimonials={testimonials} locale={locale} />
+
+  <ContactBlock locale={locale} />
+</BaseLayout>

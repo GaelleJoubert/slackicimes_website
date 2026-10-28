@@ -10,7 +10,7 @@ import {
 } from "../i18n/routes";
 
 export const getStaticPaths = (async () => {
-  const slugsWithDedicatedRoute = new Set(["stages-highline"]);
+  const slugsWithDedicatedRoute = new Set(["", "stages-highline"]);
   const pages = await getCollection("pages");
   const pagesWithoutDedicatedRoute = pages.filter(
     (page) => !slugsWithDedicatedRoute.has(parseContentId(page.id).pageSlug),

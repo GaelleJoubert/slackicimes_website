@@ -16,6 +16,18 @@ export async function getLocalizedCollection<
   return entriesForLocale(entries, locale);
 }
 
+export async function getHomeContent(
+  locale: Locale,
+): Promise<CollectionEntry<"home">> {
+  const homeContent = await getEntry("home", locale);
+  if (!homeContent) {
+    throw new Error(
+      `Missing home content for "${locale}": add src/content/home/${locale}.yaml.`,
+    );
+  }
+  return homeContent;
+}
+
 export async function getPageEntry(
   pageSlug: string,
   locale: Locale,

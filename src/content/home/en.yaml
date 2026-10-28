@@ -1,0 +1,53 @@
+highlights:
+  - eyebrow: Courses
+    title: Discover highlining
+    text: Different formulas to move through the air. Get started safely, progress or perfect your skills.
+    pageSlug: stages-highline
+    illustration:
+      image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+      alt: Two highliners on lines lost in the clouds
+  - eyebrow: Festival
+    title: Winter Festi'slack
+    text: The festival combining highline and skiing in Les Arcs since 2013.
+    pageSlug: winter-festislack
+    illustration:
+      image: ../../assets/images/festival/deux-tetes.jpg
+      alt: The snowy Deux Têtes site, in the Les Arcs ski area
+  - eyebrow: Services
+    title: Introductions & demonstrations
+    text: Let people discover slackline or highline at your event.
+    pageSlug: prestations
+    illustration:
+      image: ../../assets/images/prestations/demonstration-lac.jpg
+      alt: Highline demonstration above a mountain lake at sunset
+association:
+  title: The association
+  paragraphs:
+    - Founded in 2012, the association has kept slackline and highline alive in Haute Tarentaise, Savoie, notably through the Winter Festislack event, which over 8 editions has brought together 150 practitioners from all over the world on the Les Arcs ski area, at the Deux Têtes.
+    - Two women now lead the association, highly motivated to develop its many facets.
+  illustration:
+    image: ../../assets/images/association/groupe.jpg
+    alt: Group of trainees and instructors smiling on a rock in the mountains
+stagesTeaser:
+  title: Highline courses
+  paragraphs:
+    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 450 people to this dizzying sport. It offers courses in different formats, suitable for every level.
+    - Discover our different courses.
+  illustration:
+    image: ../../assets/images/stages/weekend.jpg
+    alt: Highliner balancing in front of snowy peaks
+festivalTeaser:
+  title: Winter FestiSlack
+  paragraphs:
+    - A one of a kind event combining skiing and highline.
+    - It brings together practitioners from all over the world on the fabulous natural site of the Deux Têtes, in the heart of the Les Arcs ski area, facing Mont Blanc.
+  gallery:
+    - image: ../../assets/images/festival/deux-tetes.jpg
+      alt: The snowy Deux Têtes site, in the Les Arcs ski area
+      caption: The Deux Têtes site
+    - image: ../../assets/images/festival/tandem.jpg
+      alt: Two highliners in tandem hanging under a line above the snow
+      caption: Tandem love
+    - image: ../../assets/images/festival/tandem-250m.jpg
+      alt: Highliners on a 250 meter line above a snowy slope
+      caption: Tandem on 250 m

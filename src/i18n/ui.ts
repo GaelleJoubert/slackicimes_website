@@ -1,6 +1,9 @@
 import type { Locale } from "./locales";
 
 const fr = {
+  common: {
+    learnMore: "En savoir plus",
+  },
   accessibility: {
     skipToContent: "Aller au contenu",
   },
@@ -30,7 +33,6 @@ const fr = {
     formulasTitle: "Nos formules",
     formulasIntro:
       "Différentes formules pour explorer le monde des airs, faire le plein de sensations, d'émotions et (re)découvrir son corps et son esprit.",
-    detailsLink: "En savoir plus",
     descriptionHeading: "Description",
     programHeading: "Programme",
     prerequisitesHeading: "Prérequis",
@@ -47,11 +49,21 @@ const fr = {
     title: "Livre d'or",
     intro: "Témoignages de nos stagiaires",
   },
+  contactBlock: {
+    title: "Contactez-nous",
+    phoneHeading: "Téléphone",
+    emailHeading: "Email",
+    addressHeading: "Adresse",
+    writeUsButton: "Nous écrire",
+  },
 };
 
 export type UiStrings = typeof fr;
 
 const en: UiStrings = {
+  common: {
+    learnMore: "Learn more",
+  },
   accessibility: {
     skipToContent: "Skip to content",
   },
@@ -80,8 +92,7 @@ const en: UiStrings = {
     registrationsButton: "Registrations",
     formulasTitle: "Our courses",
     formulasIntro:
-      "Different formulas to explore the void, fill up on sensations and emotions, and (re)discover your body and mind.",
-    detailsLink: "Learn more",
+      "Different formulas to explore the world above, fill up on sensations and emotions, and (re)discover your body and mind.",
     descriptionHeading: "Description",
     programHeading: "Program",
     prerequisitesHeading: "Prerequisites",
@@ -97,6 +108,13 @@ const en: UiStrings = {
   testimonials: {
     title: "Guestbook",
     intro: "Feedback from our trainees",
+  },
+  contactBlock: {
+    title: "Contact us",
+    phoneHeading: "Phone",
+    emailHeading: "Email",
+    addressHeading: "Address",
+    writeUsButton: "Write to us",
   },
 };
 

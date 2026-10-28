@@ -1,0 +1,53 @@
+highlights:
+  - eyebrow: Stages
+    title: Découvrez la highline
+    text: Différentes formules pour évoluer dans les airs. Pour s'initier en toute sécurité, progresser ou se perfectionner.
+    pageSlug: stages-highline
+    illustration:
+      image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+      alt: Deux highlineurs sur des lignes perdues dans les nuages
+  - eyebrow: Festival
+    title: Winter Festi'slack
+    text: Le festival qui allie highline et ski depuis 2013 aux Arcs.
+    pageSlug: winter-festislack
+    illustration:
+      image: ../../assets/images/festival/deux-tetes.jpg
+      alt: Le site des Deux Têtes enneigé, sur le domaine skiable des Arcs
+  - eyebrow: Prestation
+    title: Initiations & démonstrations
+    text: Faites découvrir la slackline ou la highline lors de votre évènement.
+    pageSlug: prestations
+    illustration:
+      image: ../../assets/images/prestations/demonstration-lac.jpg
+      alt: Démonstration de highline au dessus d'un lac de montagne au coucher du soleil
+association:
+  title: L'association
+  paragraphs:
+    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 8 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
+    - Nous sommes maintenant deux femmes à la tête de cette association, extrêmement motivées à développer ses nombreuses facettes.
+  illustration:
+    image: ../../assets/images/association/groupe.jpg
+    alt: Groupe de stagiaires et d'encadrantes souriant sur un rocher en montagne
+stagesTeaser:
+  title: Stages Highline
+  paragraphs:
+    - En 2019, Slack'icîmes est la première association de France à proposer des stages de highline. Depuis ses débuts, l'association a initié plus de 450 personnes à ce sport vertigineux. L'association propose des stages de différents formats, adaptés à tous les niveaux.
+    - Découvrez nos différentes formules.
+  illustration:
+    image: ../../assets/images/stages/weekend.jpg
+    alt: Highlineur en équilibre face aux sommets enneigés
+festivalTeaser:
+  title: Winter FestiSlack
+  paragraphs:
+    - Évènement unique au monde de ski et highline.
+    - Il rassemble des pratiquants du monde entier sur le site naturel fabuleux des Deux Têtes, en plein cœur du domaine skiable des Arcs, face au Mont-Blanc.
+  gallery:
+    - image: ../../assets/images/festival/deux-tetes.jpg
+      alt: Le site des Deux Têtes enneigé, sur le domaine skiable des Arcs
+      caption: Site des Deux Têtes
+    - image: ../../assets/images/festival/tandem.jpg
+      alt: Deux highlineurs en tandem suspendus sous une ligne au dessus de la neige
+      caption: L'amour du tandem
+    - image: ../../assets/images/festival/tandem-250m.jpg
+      alt: Highlineurs sur une ligne de 250 mètres tendue au dessus d'une pente enneigée
+      caption: Tandem sur 250m

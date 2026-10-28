@@ -58,4 +58,33 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { pages, stages, faq, testimonials };
+const home = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/home" }),
+  schema: ({ image }) => {
+    const illustration = z.object({ image: image(), alt: nonEmptyText });
+    const textBlock = z.object({
+      title: nonEmptyText,
+      paragraphs: z.array(nonEmptyText).min(1),
+    });
+    return z.object({
+      highlights: z
+        .array(
+          z.object({
+            eyebrow: nonEmptyText,
+            title: nonEmptyText,
+            text: nonEmptyText,
+            pageSlug: nonEmptyText,
+            illustration,
+          }),
+        )
+        .min(1),
+      association: textBlock.extend({ illustration }),
+      stagesTeaser: textBlock.extend({ illustration }),
+      festivalTeaser: textBlock.extend({
+        gallery: z.array(illustration.extend({ caption: nonEmptyText })).min(1),
+      }),
+    });
+  },
+});
+
+export const collections = { pages, stages, faq, testimonials, home };

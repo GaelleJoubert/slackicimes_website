@@ -1,5 +1,5 @@
 import { LOCALES, type Locale } from "./locales";
-import { parseContentId } from "./routes";
+import { pageContentId, parseContentId } from "./routes";
 
 interface OrderedEntry {
   id: string;
@@ -9,8 +9,8 @@ interface OrderedEntry {
 function findMissingTranslations(contentIds: string[]): string[] {
   const existingIds = new Set(contentIds);
   const entrySlugs = new Set(contentIds.map(entrySlug));
-  return [...entrySlugs].flatMap((entrySlug) =>
-    LOCALES.map((locale) => `${locale}/${entrySlug}`).filter(
+  return [...entrySlugs].flatMap((sharedSlug) =>
+    LOCALES.map((locale) => pageContentId(sharedSlug, locale)).filter(
       (expectedId) => !existingIds.has(expectedId),
     ),
   );
