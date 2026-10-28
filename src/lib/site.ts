@@ -4,6 +4,9 @@ export const SITE_NAME = "Slack'icîmes";
 
 export const CONTACT_EMAIL = "slackicimes@gmail.com";
 
+export const STAGES_REGISTRATION_URL =
+  "https://www.helloasso.com/associations/slackicimes/evenements/stages-highlines-2026";
+
 export interface SocialProfile {
   name: string;
   url: string;

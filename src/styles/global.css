@@ -26,7 +26,27 @@
     @apply font-heading text-2xl font-bold text-navy md:text-3xl;
   }
 
+  .subsection-title {
+    @apply font-heading text-lg font-bold text-navy;
+  }
+
   .caption {
     @apply text-sm text-slate;
+  }
+
+  .rich-text {
+    @apply space-y-4 leading-relaxed;
+
+    & a {
+      @apply text-teal underline underline-offset-4;
+    }
+
+    & ul {
+      @apply list-disc space-y-1 pl-6;
+    }
+
+    & strong {
+      @apply text-navy;
+    }
   }
 }

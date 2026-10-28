@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   buildAlternateLinks,
+  buildLocaleStaticPaths,
   localizedPath,
+  pageContentId,
   parseContentId,
   toRestRouteParam,
 } from "../../src/i18n/routes";
@@ -51,5 +53,21 @@ describe("toRestRouteParam", () => {
   it("returns undefined for the home page", () => {
     expect(toRestRouteParam("/")).toBeUndefined();
     expect(toRestRouteParam("/en/contact")).toBe("en/contact");
+  });
+});
+
+describe("buildLocaleStaticPaths", () => {
+  it("serves French at the root and English under /en", () => {
+    expect(buildLocaleStaticPaths()).toEqual([
+      { params: { locale: undefined }, props: { locale: "fr" } },
+      { params: { locale: "en" }, props: { locale: "en" } },
+    ]);
+  });
+});
+
+describe("pageContentId", () => {
+  it("matches the ids produced by the content loader", () => {
+    expect(pageContentId("stages-highline", "en")).toBe("en/stages-highline");
+    expect(pageContentId("", "fr")).toBe("fr");
   });
 });

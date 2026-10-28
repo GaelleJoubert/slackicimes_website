@@ -1,0 +1,20 @@
+order: 1
+name: Discovery Weekend
+duration: 2 days
+level: Beginner
+summary: Discover highlining over a weekend.
+image: ../../../assets/images/stages/weekend.jpg
+imageAlt: Highliner balancing in front of snowy peaks
+description:
+  - Perfect to discover the activity over a weekend, to give it a try, or even to keep improving.
+  - Enjoy a special moment in a small group of up to 15 people with 2 instructors.
+program:
+  items:
+    - label: "Slackline on the ground: 1 half day"
+    - label: "Highline: 3 half days"
+prerequisites:
+  - Be motivated to push your own limits
+  - Be able to do 3 push-ups or 1 pull-up
+  - Be over 15 years old or be accompanied
+dates: June 20-21; June 27-28; July 4-5; July 11-12; July 19-20
+priceInEuros: 160

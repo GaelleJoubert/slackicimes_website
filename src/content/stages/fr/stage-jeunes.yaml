@@ -1,0 +1,38 @@
+order: 5
+name: Stage Jeune
+duration: 5 jours
+level: Débutant, moins de 18 ans
+summary: Stage d'initiation Highline spécialement pensé pour les jeunes sportifs.
+image: ../../../assets/images/stages/stage-jeunes.jpg
+imageAlt: Jeune stagiaire suspendue la tête en bas sous une highline
+description:
+  - De la technique, en passant par la sécurité, la coopération et le surpassement de ses peurs, parfait pour les sportifs qui veulent découvrir de nouvelles sensations ou travailler sur leur mental et le contrôle de leur corps !
+  - "Au programme : un peu de slackline, beaucoup de highline, une journée ludique au plan d'eau, mais aussi des moments spécifiques de préparation mentale, de gestion de la peur et des émotions."
+program:
+  intro:
+    - Les journées sont de 9h à 17h.
+    - "Semaine type :"
+  items:
+    - label: "Lundi, au parc :"
+      details:
+        - Apprendre les bases et/ou progresser
+        - Ateliers spécifiques à la highline
+        - Étirements et exercices de respiration
+    - label: "Mardi, sur le site de Highline :"
+      details:
+        - Pratique de la highline
+        - Exercices de gestion de la peur
+    - label: "Mercredi, au plan d'eau :"
+      details:
+        - Waterline (slackline au dessus de l'eau)
+        - Slackline & jeux d'équilibre
+    - label: "Jeudi & Vendredi, sur le site de Highline :"
+      details:
+        - Pratique de la highline
+        - Exercices de gestion des émotions
+prerequisites:
+  - Avoir plus de 10 ans
+  - Pratiquer un sport de manière régulière
+  - Être motivé !
+dates: 24 au 28 août 2025
+priceInEuros: 200

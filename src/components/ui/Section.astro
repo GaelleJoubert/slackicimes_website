@@ -4,6 +4,7 @@ import Container from "./Container.astro";
 type SectionTone = "paper" | "mist";
 
 interface Props {
+  id?: string;
   tone?: SectionTone;
 }
 
@@ -12,10 +13,13 @@ const TONE_CLASSES: Record<SectionTone, string> = {
   mist: "bg-mist/30",
 };
 
-const { tone = "paper" } = Astro.props;
+const { id, tone = "paper" } = Astro.props;
 ---
 
-<section class:list={["py-10 md:py-16", TONE_CLASSES[tone]]}>
+<section
+  id={id}
+  class:list={["scroll-mt-4 py-10 md:py-16", TONE_CLASSES[tone]]}
+>
   <Container>
     <slot />
   </Container>

@@ -1,0 +1,24 @@
+order: 4
+name: Rigging
+duration: 5 days
+level: Highline installation
+summary: The course to learn how to "rig" and become independent in your practice.
+image: ../../../assets/images/stages/autonomie.jpg
+imageAlt: Instructor setting up the ropes of a highline anchor on the rock
+description:
+  - For even more safety and learning, this course runs in a small group of 12 people with 2 instructors.
+  - Do you want to learn how to rig highlines safely, to practice on your own? This course is for you!
+  - Rigging, various anchors, workshops, rescue, safety checks... This intense week is built to give as much knowledge as possible to people aiming for autonomy in their practice.
+  - This course focuses on rigging, but it also includes highline practice.
+program:
+  items:
+    - label: "Rigging workshops and practice: 3 days"
+    - label: "Rescue practice: 1 half day"
+    - label: "Highline: 3 half days"
+prerequisites:
+  - Be able to do a sit start on the ground
+  - Have already been on a highline
+  - Know how to set up a slackline on the ground OR be comfortable handling ropes
+  - Be over 15 years old or be accompanied
+dates: July 20 to 24, 2025
+priceInEuros: 250

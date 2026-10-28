@@ -52,3 +52,14 @@ export function toRestRouteParam(path: string): string | undefined {
   const pathWithoutLeadingSlash = path.slice(1);
   return pathWithoutLeadingSlash || undefined;
 }
+
+export function buildLocaleStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: { locale: toRestRouteParam(localizedPath("", locale)) },
+    props: { locale },
+  }));
+}
+
+export function pageContentId(pageSlug: string, locale: Locale): string {
+  return [locale, pageSlug].filter(Boolean).join("/");
+}

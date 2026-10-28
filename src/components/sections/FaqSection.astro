@@ -1,0 +1,32 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import Disclosure from "../ui/Disclosure.astro";
+import Section from "../ui/Section.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  intro: string;
+  questions: CollectionEntry<"faq">[];
+}
+
+const { id, title, intro, questions } = Astro.props;
+const renderedQuestions = await Promise.all(
+  questions.map(async (question) => ({
+    question: question.data.question,
+    Answer: (await render(question)).Content,
+  })),
+);
+---
+
+<Section id={id} tone="mist">
+  <SectionHeading title={title} intro={intro} />
+  <div class="max-w-3xl">
+    {renderedQuestions.map(({ question, Answer }) => (
+      <Disclosure summary={question}>
+        <Answer />
+      </Disclosure>
+    ))}
+  </div>
+</Section>

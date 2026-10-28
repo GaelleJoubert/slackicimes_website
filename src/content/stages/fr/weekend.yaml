@@ -1,0 +1,20 @@
+order: 1
+name: Découverte Weekend
+duration: 2 jours
+level: Débutant
+summary: Découvrez la highline le temps d'un weekend.
+image: ../../../assets/images/stages/weekend.jpg
+imageAlt: Highlineur en équilibre face aux sommets enneigés
+description:
+  - Parfait pour découvrir l'activité le temps d'un weekend, pour tester, ou même pour progresser dans son apprentissage.
+  - Vivez un moment privilégié en petit groupe de 15 personnes maximum pour 2 instructeurs ou instructrices.
+program:
+  items:
+    - label: "Slackline au sol : 1 demi journée"
+    - label: "Highline : 3 demis journées"
+prerequisites:
+  - Être motivé pour dépasser ses propres limites
+  - Savoir faire 3 pompes ou 1 traction
+  - Avoir plus de 15 ans ou être accompagné
+dates: 20-21 juin ; 27-28 juin ; 4-5 juillet ; 11-12 juillet ; 19-20 juillet
+priceInEuros: 160

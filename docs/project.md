@@ -72,12 +72,13 @@ Bare domain to `www` and HTTP to HTTPS are handled by GitHub Pages with real 301
 ```
 src/
   pages/            routes only: thin files that pick content and compose sections
-    en/             English routes, mirroring the French ones
+    [...locale]/    one file per page, built at /<slug> (French) and /en/<slug> (English)
+    [...path].astro generic route for pages that have no dedicated file yet
   layouts/          BaseLayout owns <head>: SEO tags, hreflang, structured data
   components/
     ui/             presentational building blocks (Button, Card, Section, Image)
     sections/       page sections built from ui components (Hero, StageList, Faq)
-  content/          content collections: page copy per locale, stages, testimonials, festival editions
+  content/          content collections, one entry per locale: pages, stages, faq, testimonials
   i18n/             locale config, UI strings, French/English route mapping
   lib/              pure functions: SEO metadata, structured data builders, URL helpers
   styles/           global.css with the Tailwind @theme design tokens
@@ -86,6 +87,8 @@ public/             robots.txt, favicons, static files served as is
 tests/              unit tests for lib, URL contract test
 migration/          Wix inventory (read only reference for the replica)
 ```
+
+Every localized collection must hold each entry in both locales: `getLocalizedCollection` fails the build on a missing translation.
 
 Dependency direction: `pages` depend on `layouts`, `sections` and `content`; `sections` depend on `ui`; everything may use `lib` and `i18n`; `lib` depends on nothing in the project. Content never contains layout, components never hardcode copy.
 

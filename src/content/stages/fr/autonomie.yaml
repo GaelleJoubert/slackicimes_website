@@ -1,0 +1,24 @@
+order: 4
+name: Rigging
+duration: 5 jours
+level: Installation de Highline
+summary: Le stage pour apprendre à "rigger", et devenir autonome dans sa pratique.
+image: ../../../assets/images/stages/autonomie.jpg
+imageAlt: Instructeur installant les cordes d'un ancrage de highline sur le rocher
+description:
+  - Pour toujours plus de sécurité et d'apprentissage, ce stage se déroule en petit groupe de 12 personnes pour 2 instructeurices.
+  - Tu souhaites apprendre à installer des highlines en toute sécurité, pour aller pratiquer en autonomie ? Ce stage est pour toi !
+  - Installations, ancrages divers, ateliers, secours, points sécurité... Cette semaine intense est construite pour donner le plus de connaissances possibles, aux personnes visant une autonomie dans leur pratique.
+  - Ce stage se concentre plus sur la partie Rigging (installation), mais il contient aussi de la pratique de highline.
+program:
+  items:
+    - label: "Ateliers & Pratiques Rigging : 3 journées"
+    - label: "Pratique du secours : 1 demi journée"
+    - label: "Highline : 3 demis journées"
+prerequisites:
+  - Savoir faire un départ assis au sol
+  - Être déjà allé sur une highline
+  - Savoir installer une slack au sol OU être à l'aise avec les manipulations de cordes
+  - Avoir plus de 15 ans ou être accompagné
+dates: 20 au 24 juillet 2025
+priceInEuros: 250

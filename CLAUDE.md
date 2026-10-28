@@ -84,20 +84,20 @@ are fine, three identical blocks are not. YAGNI unless the change is already pla
 
 Run `ls` for the live tree. Tests live under `tests/`, mirroring `src/lib/`.
 
-| Artifact       | Location                      | Notes                                               |
-| :------------- | :---------------------------- | :-------------------------------------------------- |
-| Routes         | `src/pages/`, `src/pages/en/` | thin files: pick content, compose sections          |
-| Layouts        | `src/layouts/`                | `BaseLayout.astro` owns `<head>` and SEO tags       |
-| UI components  | `src/components/ui/`          | presentational building blocks                      |
-| Sections       | `src/components/sections/`    | page sections composed from ui components           |
-| Content        | `src/content/`                | collections with Zod schemas, one entry per locale  |
-| Localization   | `src/i18n/`                   | locales, UI strings, route mapping                  |
-| Pure logic     | `src/lib/`                    | SEO, structured data, URL helpers                   |
-| Site constants | `src/lib/site.ts`             | origin, organization data, social links             |
-| Design tokens  | `src/styles/global.css`       | Tailwind `@theme` block                             |
-| Images         | `src/assets/images/`          | optimized at build through `astro:assets`           |
-| Static files   | `public/`                     | `robots.txt`, favicons: files that need a fixed URL |
-| Wix reference  | `migration/`                  | read only inventory of the old site                 |
+| Artifact       | Location                   | Notes                                               |
+| :------------- | :------------------------- | :-------------------------------------------------- |
+| Routes         | `src/pages/[...locale]/`   | thin files: pick content, compose sections          |
+| Layouts        | `src/layouts/`             | `BaseLayout.astro` owns `<head>` and SEO tags       |
+| UI components  | `src/components/ui/`       | presentational building blocks                      |
+| Sections       | `src/components/sections/` | page sections composed from ui components           |
+| Content        | `src/content/`             | collections with Zod schemas, one entry per locale  |
+| Localization   | `src/i18n/`                | locales, UI strings, route mapping                  |
+| Pure logic     | `src/lib/`                 | SEO, structured data, URL helpers                   |
+| Site constants | `src/lib/site.ts`          | origin, organization data, social links             |
+| Design tokens  | `src/styles/global.css`    | Tailwind `@theme` block                             |
+| Images         | `src/assets/images/`       | optimized at build through `astro:assets`           |
+| Static files   | `public/`                  | `robots.txt`, favicons: files that need a fixed URL |
+| Wix reference  | `migration/`               | read only inventory of the old site                 |
 
 Dependencies point inward: pages use layouts, sections and content; sections use ui components;
 everything may use `lib/` and `i18n/`; `lib/` imports nothing from the rest of the project.

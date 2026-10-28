@@ -1,0 +1,22 @@
+---
+interface Props {
+  summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<details class="group border-mist border-b py-4">
+  <summary class="font-heading text-navy flex cursor-pointer list-none items-start justify-between gap-4 text-lg font-bold">
+    <h3>{summary}</h3>
+    <span
+      aria-hidden="true"
+      class="text-teal transition-transform group-open:rotate-45"
+    >
+      +
+    </span>
+  </summary>
+  <div class="rich-text mt-3">
+    <slot />
+  </div>
+</details>

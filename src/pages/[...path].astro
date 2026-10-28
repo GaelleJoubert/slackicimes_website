@@ -10,8 +10,12 @@ import {
 } from "../i18n/routes";
 
 export const getStaticPaths = (async () => {
+  const slugsWithDedicatedRoute = new Set(["stages-highline"]);
   const pages = await getCollection("pages");
-  return pages.map((page) => {
+  const pagesWithoutDedicatedRoute = pages.filter(
+    (page) => !slugsWithDedicatedRoute.has(parseContentId(page.id).pageSlug),
+  );
+  return pagesWithoutDedicatedRoute.map((page) => {
     const { locale, pageSlug } = parseContentId(page.id);
     return {
       params: { path: toRestRouteParam(localizedPath(pageSlug, locale)) },

@@ -1,0 +1,21 @@
+order: 2
+name: Premiers Pas
+duration: 5 jours
+level: Débutant
+summary: Stage complet pour s'initier à la highline et s'immerger dans son univers.
+image: ../../../assets/images/stages/premiers-pas.jpg
+imageAlt: Silhouette d'une highlineuse suspendue au dessus de la vallée
+description:
+  - Ce stage se veut général et a pour but de vous faire découvrir toutes les facettes de la Highline.
+  - De la technique aux notions d'installation, en passant par la sécurité, la coopération et le surpassement de ses peurs, parfait pour les sportifs qui veulent découvrir de nouvelles sensations ou travailler sur leur mental et le contrôle de leur corps.
+program:
+  items:
+    - label: "Slackline au sol : 1 demi journée"
+    - label: 'Atelier "Rigging" (installation de Highline) : 1 demi journée'
+    - label: "Highline : 4 journées"
+prerequisites:
+  - Être motivé pour dépasser ses propres limites
+  - Savoir faire 3 pompes ou 1 traction
+  - Avoir plus de 15 ans ou être accompagné
+dates: 27 au 31 juillet 2026 ; 17 au 21 août 2026
+priceInEuros: 250
