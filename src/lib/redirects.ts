@@ -1,6 +1,8 @@
 const PAST_FESTIVAL_EDITIONS_PATH = "/anciennes-editions-winter-festislack";
 const ENGLISH_PREFIX = "/en";
 const STAGES_PATH = "/stages-highline";
+const CONTACT_PATH = "/contact";
+const SERVICES_PATH = "/prestations";
 
 const PAST_EVENT_SLUGS = [
   "stage-premier-pas",
@@ -34,7 +36,13 @@ const renamedFestivalRedirects = RENAMED_FESTIVAL_EDITIONS_PATHS.flatMap(
   ],
 );
 
+const removedServicesRedirects = [
+  [SERVICES_PATH, CONTACT_PATH],
+  [`${ENGLISH_PREFIX}${SERVICES_PATH}`, `${ENGLISH_PREFIX}${CONTACT_PATH}`],
+];
+
 export const LEGACY_REDIRECTS: Record<string, string> = Object.fromEntries([
   ...renamedFestivalRedirects,
   ...pastEventRedirects,
+  ...removedServicesRedirects,
 ]);

@@ -37,7 +37,6 @@ Every URL Google knows must keep working after the switch. `migration/wix-invent
 | `/stages-jeunes`                        | `/en/stages-jeunes`                        | 15 / 0                    |
 | `/contact`                              | `/en/contact`                              | 4 / 0                     |
 | `/inscriptions`                         | `/en/inscriptions`                         | 2 / 0                     |
-| `/prestations`                          | `/en/prestations`                          | 1 / 0                     |
 | `/inscriptions-winter-festislack`       | `/en/inscriptions-winter-festislack`       | 1 / 0                     |
 | `/livre-d-or`                           | `/en/livre-d-or`                           | 0 / 0                     |
 | `/expeditions`                          | `/en/expeditions`                          | 0 / 0                     |
@@ -54,6 +53,8 @@ GitHub Pages serves static files only, so redirects are Astro `redirects` entrie
 | `/copie-de-winter-festislack`, `/old-winterfestislack-editions`       | `/anciennes-editions-winter-festislack`    |
 | `/en/copie-de-winter-festislack`, `/en/old-winterfestislack-editions` | `/en/anciennes-editions-winter-festislack` |
 | `/event-details/*` (9 past 2024 events)                               | `/stages-highline`                         |
+| `/prestations` (removed page, 1 search click)                         | `/contact`                                 |
+| `/en/prestations`                                                     | `/en/contact`                              |
 
 Bare domain to `www` and HTTP to HTTPS are handled by GitHub Pages with real 301s.
 
@@ -104,5 +105,5 @@ Dependency direction: `pages` depend on `layouts`, `sections` and `content`; `se
 - The custom domain is set in the repository's Pages settings (Actions deployments ignore a `CNAME` file).
 
 - Which page each backlink (lesarcs.com, explore-savoie.com, slacklinesport.org) targets: the export does not say.
-- English page titles still in French on Wix (`/en/association`, `/en/expeditions`, `/en/prestations`): translate in Phase 1 or keep as is?
+- English page titles still in French on Wix (`/en/association`, `/en/expeditions`): translate in Phase 1 or keep as is?
 - `/en/anciennes-editions-winter-festislack` is empty on Wix: translate or point it to the French page.

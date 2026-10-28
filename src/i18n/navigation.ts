@@ -29,6 +29,5 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
       { pageSlug: "livre-d-or", labelKey: "guestbook" },
     ],
   },
-  { pageSlug: "prestations", labelKey: "services" },
   { pageSlug: "contact", labelKey: "contact" },
 ];

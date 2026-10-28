@@ -15,7 +15,6 @@ const CONTRACT_PAGE_SLUGS = [
   "stages-jeunes",
   "contact",
   "inscriptions",
-  "prestations",
   "inscriptions-winter-festislack",
   "livre-d-or",
   "expeditions",

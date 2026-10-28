@@ -18,7 +18,6 @@ const fr = {
     youthStages: "Stages jeunes",
     registrations: "Inscriptions",
     guestbook: "Livre d'or",
-    services: "Prestations",
     contact: "Contact",
   },
   languageSwitcher: {
@@ -101,7 +100,6 @@ const en: UiStrings = {
     youthStages: "Young camp",
     registrations: "Registrations",
     guestbook: "Guestbook",
-    services: "Shows and introductions",
     contact: "Contact",
   },
   languageSwitcher: {

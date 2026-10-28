@@ -24,7 +24,7 @@ activities:
         alt: Highliner balancing above the snow with raised arms
     - title: Demonstrations
       text: The association has delighted admiring audiences at many events.
-      pageSlug: prestations
+      pageSlug: contact
       illustration:
         image: ../../assets/images/association/demonstration-mur-escalade.jpg
         alt: Highline rigged from the top of a climbing wall, above the clouds
@@ -42,7 +42,7 @@ activities:
         alt: Highline rigged above the crevasses of a glacier in Greenland
     - title: Introductions
       text: Together with towns and tourist offices, we let children and adults test their balance.
-      pageSlug: prestations
+      pageSlug: contact
       illustration:
         image: ../../assets/images/association/initiation-enfants.jpg
         alt: Children trying slackline between two trees in the snow, with an adult

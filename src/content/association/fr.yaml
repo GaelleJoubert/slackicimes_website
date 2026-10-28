@@ -24,7 +24,7 @@ activities:
         alt: Highlineuse en équilibre au dessus de la neige, les bras levés
     - title: Des démonstrations
       text: L'association a régalé des yeux admiratifs lors de divers évènements.
-      pageSlug: prestations
+      pageSlug: contact
       illustration:
         image: ../../assets/images/association/demonstration-mur-escalade.jpg
         alt: Highline tendue depuis le sommet d'un mur d'escalade, au dessus des nuages
@@ -42,7 +42,7 @@ activities:
         alt: Highline tendue au dessus des crevasses d'un glacier au Groenland
     - title: Des initiations
       text: En collaboration avec des communes et des offices du tourisme, nous permettons aux petits et grands de tester leur équilibre.
-      pageSlug: prestations
+      pageSlug: contact
       illustration:
         image: ../../assets/images/association/initiation-enfants.jpg
         alt: Enfants découvrant la slackline entre deux arbres dans la neige, accompagnés d'un adulte
