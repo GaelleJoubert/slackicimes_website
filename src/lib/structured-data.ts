@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_ORIGIN, SOCIAL_PROFILE_URLS } from "./site";
+import { SITE_NAME, SITE_ORIGIN, SOCIAL_PROFILES } from "./site";
 
 const SCHEMA_CONTEXT = "https://schema.org";
 
@@ -18,6 +18,6 @@ export function buildOrganizationSchema() {
     name: SITE_NAME,
     url: SITE_ORIGIN,
     sport: "Highline",
-    sameAs: SOCIAL_PROFILE_URLS,
+    sameAs: SOCIAL_PROFILES.map((profile) => profile.url),
   };
 }

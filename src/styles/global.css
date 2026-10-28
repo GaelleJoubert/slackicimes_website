@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-paper: #fffefc;
+  --color-ink: #011021;
+  --color-navy: #253e59;
+  --color-slate: #667d96;
+  --color-mist: #b8cfde;
+  --color-sky: #00a0c4;
+  --color-teal: #006f79;
+  --color-coral: #ff695e;
+  --color-coral-strong: #bd5048;
+
+  --font-heading: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@layer components {
+  .page-title {
+    @apply font-heading text-3xl font-extrabold text-navy md:text-5xl;
+  }
+
+  .section-title {
+    @apply font-heading text-2xl font-bold text-navy md:text-3xl;
+  }
+
+  .caption {
+    @apply text-sm text-slate;
+  }
+}

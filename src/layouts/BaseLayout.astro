@@ -1,8 +1,11 @@
 ---
 import { SITE_INDEXABLE } from "astro:env/server";
+import SiteFooter from "../components/sections/SiteFooter.astro";
+import SiteHeader from "../components/sections/SiteHeader.astro";
 import "../styles/global.css";
 import { LOCALE_SETTINGS, type Locale } from "../i18n/locales";
 import { buildAlternateLinks, localizedPath } from "../i18n/routes";
+import { uiStrings } from "../i18n/ui";
 import { absoluteUrl, robotsDirective } from "../lib/seo";
 import { SITE_NAME } from "../lib/site";
 import {
@@ -22,6 +25,7 @@ const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
 const alternateLinks = buildAlternateLinks(pageSlug);
 const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
+const strings = uiStrings(locale);
 ---
 
 <!doctype html>
@@ -49,7 +53,17 @@ const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body class="bg-white text-neutral-900 antialiased">
-    <slot />
+  <body class="bg-paper text-ink font-body flex min-h-screen flex-col antialiased">
+    <a
+      href="#main-content"
+      class="bg-navy text-paper sr-only rounded-full px-4 py-2 focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-20"
+    >
+      {strings.accessibility.skipToContent}
+    </a>
+    <SiteHeader locale={locale} pageSlug={pageSlug} />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
   </body>
 </html>

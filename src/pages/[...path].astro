@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getCollection, render } from "astro:content";
+import Section from "../components/ui/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   localizedPath,
@@ -31,8 +32,8 @@ const { Content } = await render(page);
   locale={locale}
   pageSlug={pageSlug}
 >
-  <main class="mx-auto max-w-3xl px-4 py-8 md:py-12">
-    <h1 class="text-3xl font-bold md:text-4xl">{page.data.heading}</h1>
+  <Section>
+    <h1 class="page-title">{page.data.heading}</h1>
     <Content />
-  </main>
+  </Section>
 </BaseLayout>

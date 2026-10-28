@@ -21,3 +21,5 @@ npm run dev
 | `npm run format` | Prettier                                    |
 
 Every push to `main` is built and deployed by `.github/workflows/deploy.yml`. Scope and architecture: `docs/project.md`.
+
+Design tokens (colors inspired by the Wix theme, fonts, typography roles) live in `src/styles/global.css`. Shared UI components (`Container`, `Section`, `LinkButton`, `NavigationLink`, `LanguageSwitcher`) live in `src/components/ui/`; the site header, navigation and footer in `src/components/sections/`. Menu entries are declared in `src/i18n/navigation.ts` and their labels in `src/i18n/ui.ts`.

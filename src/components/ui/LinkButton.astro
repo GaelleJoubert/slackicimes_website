@@ -1,0 +1,25 @@
+---
+type LinkButtonVariant = "primary" | "secondary";
+
+interface Props {
+  href: string;
+  variant?: LinkButtonVariant;
+}
+
+const VARIANT_CLASSES: Record<LinkButtonVariant, string> = {
+  primary: "bg-coral-strong text-white hover:bg-navy",
+  secondary: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
+};
+
+const { href, variant = "primary" } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "font-heading inline-block rounded-full px-6 py-3 font-bold transition-colors",
+    VARIANT_CLASSES[variant],
+  ]}
+>
+  <slot />
+</a>

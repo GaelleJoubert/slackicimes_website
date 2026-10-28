@@ -1,0 +1,22 @@
+---
+import Container from "./Container.astro";
+
+type SectionTone = "paper" | "mist";
+
+interface Props {
+  tone?: SectionTone;
+}
+
+const TONE_CLASSES: Record<SectionTone, string> = {
+  paper: "bg-paper",
+  mist: "bg-mist/30",
+};
+
+const { tone = "paper" } = Astro.props;
+---
+
+<section class:list={["py-10 md:py-16", TONE_CLASSES[tone]]}>
+  <Container>
+    <slot />
+  </Container>
+</section>

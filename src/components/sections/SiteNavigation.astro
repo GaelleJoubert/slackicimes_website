@@ -1,0 +1,68 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { MAIN_NAVIGATION } from "../../i18n/navigation";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import NavigationLink from "../ui/NavigationLink.astro";
+
+type NavigationLayout = "inline" | "stacked";
+
+interface Props {
+  locale: Locale;
+  currentPageSlug: string;
+  layout: NavigationLayout;
+}
+
+const LAYOUT_CLASSES: Record<
+  NavigationLayout,
+  { list: string; item: string; submenu: string; submenuLink: string }
+> = {
+  inline: {
+    list: "flex items-center gap-6",
+    item: "group relative",
+    submenu:
+      "bg-paper absolute top-full left-0 hidden min-w-56 rounded-lg py-2 shadow-lg group-focus-within:block group-hover:block",
+    submenuLink: "px-4",
+  },
+  stacked: {
+    list: "flex flex-col",
+    item: "",
+    submenu: "border-mist ml-1 border-l pl-4",
+    submenuLink: "",
+  },
+};
+
+const { locale, currentPageSlug, layout } = Astro.props;
+const strings = uiStrings(locale);
+const layoutClasses = LAYOUT_CLASSES[layout];
+---
+
+<nav aria-label={strings.navigation.mainMenuLabel}>
+  <ul class={layoutClasses.list}>
+    {MAIN_NAVIGATION.map((item) => (
+      <li class={layoutClasses.item}>
+        <NavigationLink
+          href={localizedPath(item.pageSlug, locale)}
+          isCurrentPage={item.pageSlug === currentPageSlug}
+        >
+          {strings.navigation[item.labelKey]}
+        </NavigationLink>
+        {item.children && (
+          <ul class={layoutClasses.submenu}>
+            {item.children.map((child) => (
+              <li>
+                <NavigationLink
+                  href={localizedPath(child.pageSlug, locale)}
+                  isCurrentPage={child.pageSlug === currentPageSlug}
+                  class={layoutClasses.submenuLink}
+                >
+                  {strings.navigation[child.labelKey]}
+                </NavigationLink>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>

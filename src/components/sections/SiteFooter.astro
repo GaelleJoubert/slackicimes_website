@@ -1,0 +1,49 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import { CONTACT_EMAIL, SITE_NAME, SOCIAL_PROFILES } from "../../lib/site";
+import Container from "../ui/Container.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-paper mt-auto">
+  <Container class="grid gap-8 py-10 sm:grid-cols-2">
+    <div>
+      <h2 class="font-heading mb-2 font-bold">
+        {strings.footer.contactHeading}
+      </h2>
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="underline-offset-4 hover:underline"
+      >
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+    <div>
+      <h2 class="font-heading mb-2 font-bold">
+        {strings.footer.followUsHeading}
+      </h2>
+      <ul class="flex flex-wrap gap-4">
+        {SOCIAL_PROFILES.map((profile) => (
+          <li>
+            <a href={profile.url} class="underline-offset-4 hover:underline">
+              {profile.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+  <Container class="border-slate border-t py-4">
+    <p class="text-mist text-sm">
+      © {currentYear} {SITE_NAME}
+    </p>
+  </Container>
+</footer>
