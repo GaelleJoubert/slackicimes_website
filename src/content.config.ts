@@ -11,6 +11,7 @@ const pages = defineCollection({
     title: nonEmptyText,
     description: nonEmptyText,
     heading: nonEmptyText,
+    video: z.url().optional(),
   }),
 });
 
@@ -110,6 +111,7 @@ const festivalEditions = defineCollection({
       posterAlt: nonEmptyText.optional(),
       gallery: nonEmptyText.optional(),
       galleryTitle: nonEmptyText.optional(),
+      videos: z.array(z.url()).default([]),
     }),
 });
 

@@ -5,6 +5,8 @@ poster: ../../../assets/images/festival/editions/affiche-2024-invitational.jpg
 posterAlt: Black and white poster of the 2024 Winter Festislack Invitational in Les Arcs
 gallery: invitational-2024
 galleryTitle: The Invitational in photos
+videos:
+  - "https://www.youtube.com/watch?v=V64RkCmcInU"
 ---
 
 In the heart of the Les Arcs ski area lies the fabulous natural cirque of Fond Blanc. This year, exceptionally, it hosted the festivities!

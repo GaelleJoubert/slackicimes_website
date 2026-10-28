@@ -1,0 +1,33 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import { toVideoSource } from "../../lib/video";
+import LinkButton from "./LinkButton.astro";
+
+interface Props {
+  videoUrl: string;
+  title: string;
+  locale: Locale;
+}
+
+const { videoUrl, title, locale } = Astro.props;
+const strings = uiStrings(locale);
+const videoSource = toVideoSource(videoUrl);
+---
+
+{videoSource.kind === "embed" ? (
+  <iframe
+    src={videoSource.embedUrl}
+    title={title}
+    loading="lazy"
+    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"
+    class="aspect-video w-full rounded-lg"
+  />
+) : (
+  <LinkButton href={videoSource.url} variant="secondary">
+    {strings.video.watchOnFacebook}
+    <span class="sr-only">: {title}</span>
+  </LinkButton>
+)}

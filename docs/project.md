@@ -11,14 +11,15 @@ The step by step migration checklist lives in the shared doc: https://claude.ai/
 
 ## Stack
 
-| Need                       | Choice                                                          |
-| -------------------------- | --------------------------------------------------------------- |
-| Framework                  | Astro (static output) + Tailwind CSS                            |
-| Hosting                    | GitHub Pages, deployed by GitHub Actions on push to `main`      |
-| Domain and DNS             | OVH (domain only)                                               |
-| Contact form               | Web3Forms (public access key, honeypot spam field)              |
-| Registrations and payments | HelloAsso (already used by the association), linked or embedded |
-| Tests                      | Vitest                                                          |
+| Need                       | Choice                                                                                             |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| Framework                  | Astro (static output) + Tailwind CSS                                                               |
+| Hosting                    | GitHub Pages, deployed by GitHub Actions on push to `main`                                         |
+| Domain and DNS             | OVH (domain only)                                                                                  |
+| Contact form               | Web3Forms (public access key, honeypot spam field)                                                 |
+| Registrations and payments | HelloAsso (already used by the association), linked or embedded                                    |
+| Videos                     | YouTube embeds through youtube-nocookie.com (approved by the user); Facebook videos as plain links |
+| Tests                      | Vitest                                                                                             |
 
 No server, no database, no client side framework. JavaScript ships only where a component truly needs it.
 

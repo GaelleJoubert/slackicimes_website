@@ -46,6 +46,10 @@ const fr = {
   youthStages: {
     galleryTitle: "Le stage en images",
   },
+  video: {
+    watchOnFacebook: "Voir la vidéo sur Facebook",
+    videoSuffix: "en vidéo",
+  },
   faq: {
     title: "FAQ",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages",
@@ -127,6 +131,10 @@ const en: UiStrings = {
   },
   youthStages: {
     galleryTitle: "The course in pictures",
+  },
+  video: {
+    watchOnFacebook: "Watch the video on Facebook",
+    videoSuffix: "on video",
   },
   faq: {
     title: "FAQ",

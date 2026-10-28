@@ -7,6 +7,7 @@ import StageOverview from "../../components/sections/StageOverview.astro";
 import TestimonialsSection from "../../components/sections/TestimonialsSection.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import Section from "../../components/ui/Section.astro";
+import VideoEmbed from "../../components/ui/VideoEmbed.astro";
 import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
@@ -36,14 +37,25 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   pageSlug={PAGE_SLUG}
 >
   <Section>
-    <h1 class="page-title">{page.data.heading}</h1>
-    <div class="rich-text mt-6 max-w-2xl text-lg">
-      <Intro />
-    </div>
-    <div class="mt-8">
-      <LinkButton href={localizedPath("inscriptions", locale)}>
-        {strings.stages.registrationsButton}
-      </LinkButton>
+    <div class="grid items-center gap-8 md:grid-cols-2">
+      <div>
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text mt-6 text-lg">
+          <Intro />
+        </div>
+        <div class="mt-8">
+          <LinkButton href={localizedPath("inscriptions", locale)}>
+            {strings.stages.registrationsButton}
+          </LinkButton>
+        </div>
+      </div>
+      {page.data.video && (
+        <VideoEmbed
+          videoUrl={page.data.video}
+          title={page.data.heading}
+          locale={locale}
+        />
+      )}
     </div>
   </Section>
 

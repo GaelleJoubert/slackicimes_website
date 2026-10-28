@@ -5,6 +5,8 @@ poster: ../../../assets/images/festival/editions/affiche-2024-invitational.jpg
 posterAlt: Affiche noire et blanche du Winter Festislack Invitational 2024 aux Arcs
 gallery: invitational-2024
 galleryTitle: L'Invitational en photos
+videos:
+  - "https://www.youtube.com/watch?v=V64RkCmcInU"
 ---
 
 En plein cœur du domaine skiable des Arcs, se situe le cirque naturel fabuleux du Fond Blanc. Cette année, exceptionnellement, c'est lui qui a été le théâtre des festivités !
