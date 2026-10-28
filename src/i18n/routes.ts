@@ -9,6 +9,8 @@ import {
 
 const DEFAULT_HREFLANG = "x-default";
 
+const UNLISTED_PAGE_SLUGS = new Set(["merci"]);
+
 export interface AlternateLink {
   hreflang: string;
   href: string;
@@ -62,4 +64,14 @@ export function buildLocaleStaticPaths() {
 
 export function pageContentId(pageSlug: string, locale: Locale): string {
   return [locale, pageSlug].filter(Boolean).join("/");
+}
+
+export function isUnlistedPage(pageSlug: string): boolean {
+  return UNLISTED_PAGE_SLUGS.has(pageSlug);
+}
+
+export function unlistedPageUrls(): string[] {
+  return [...UNLISTED_PAGE_SLUGS].flatMap((pageSlug) =>
+    LOCALES.map((locale) => absoluteUrl(localizedPath(pageSlug, locale))),
+  );
 }

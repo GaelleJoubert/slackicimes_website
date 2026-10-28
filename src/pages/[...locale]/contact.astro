@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ContactForm from "../../components/sections/ContactForm.astro";
+import ContactDetails from "../../components/ui/ContactDetails.astro";
+import Section from "../../components/ui/Section.astro";
+import { getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "contact";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <Section>
+    <h1 class="page-title">{page.data.heading}</h1>
+    <div class="mt-10 grid gap-12 md:grid-cols-3">
+      <div>
+        <h2 class="section-title mb-6">{strings.contactPage.detailsTitle}</h2>
+        <ContactDetails locale={locale} layout="stacked" />
+      </div>
+      <div class="md:col-span-2">
+        <h2 class="section-title mb-6">{strings.contactPage.formTitle}</h2>
+        <ContactForm locale={locale} />
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

@@ -4,7 +4,11 @@ import SiteFooter from "../components/sections/SiteFooter.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import "../styles/global.css";
 import { LOCALE_SETTINGS, type Locale } from "../i18n/locales";
-import { buildAlternateLinks, localizedPath } from "../i18n/routes";
+import {
+  buildAlternateLinks,
+  isUnlistedPage,
+  localizedPath,
+} from "../i18n/routes";
 import { uiStrings } from "../i18n/ui";
 import { absoluteUrl, robotsDirective } from "../lib/seo";
 import { SITE_NAME } from "../lib/site";
@@ -26,6 +30,7 @@ const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
 const alternateLinks = buildAlternateLinks(pageSlug);
 const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
 const strings = uiStrings(locale);
+const isIndexable = SITE_INDEXABLE && !isUnlistedPage(pageSlug);
 ---
 
 <!doctype html>
@@ -35,7 +40,7 @@ const strings = uiStrings(locale);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={robotsDirective(SITE_INDEXABLE)} />
+    <meta name="robots" content={robotsDirective(isIndexable)} />
     <link rel="canonical" href={canonicalUrl} />
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />

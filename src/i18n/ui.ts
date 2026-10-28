@@ -59,6 +59,23 @@ const fr = {
     addressHeading: "Adresse",
     writeUsButton: "Nous écrire",
   },
+  contactPage: {
+    detailsTitle: "Nos coordonnées",
+    formTitle: "Envoyez-nous un message",
+    backHomeButton: "Retour à l'accueil",
+  },
+  contactForm: {
+    firstNameLabel: "Prénom",
+    lastNameLabel: "Nom",
+    emailLabel: "Email",
+    topicLabel: "Sujet",
+    messageLabel: "Message",
+    requiredFieldsNote: "Les champs marqués d'un * sont obligatoires.",
+    submitButton: "Envoyer",
+    privacyNotice:
+      "Vos coordonnées servent uniquement à vous répondre. Le message nous est transmis par le service Web3Forms et n'est pas conservé sur ce site.",
+    notificationSubject: "Nouveau message depuis slackicimes.org",
+  },
 };
 
 export type UiStrings = typeof fr;
@@ -121,6 +138,23 @@ const en: UiStrings = {
     emailHeading: "Email",
     addressHeading: "Address",
     writeUsButton: "Write to us",
+  },
+  contactPage: {
+    detailsTitle: "Our details",
+    formTitle: "Send us a message",
+    backHomeButton: "Back to the home page",
+  },
+  contactForm: {
+    firstNameLabel: "First name",
+    lastNameLabel: "Last name",
+    emailLabel: "Email",
+    topicLabel: "Subject",
+    messageLabel: "Message",
+    requiredFieldsNote: "Fields marked with * are required.",
+    submitButton: "Send",
+    privacyNotice:
+      "Your details are only used to reply to you. The message reaches us through the Web3Forms service and is not stored on this site.",
+    notificationSubject: "New message from slackicimes.org (English)",
   },
 };
 

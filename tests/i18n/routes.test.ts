@@ -2,10 +2,12 @@ import { describe, expect, it } from "vitest";
 import {
   buildAlternateLinks,
   buildLocaleStaticPaths,
+  isUnlistedPage,
   localizedPath,
   pageContentId,
   parseContentId,
   toRestRouteParam,
+  unlistedPageUrls,
 } from "../../src/i18n/routes";
 
 describe("localizedPath", () => {
@@ -69,5 +71,19 @@ describe("pageContentId", () => {
   it("matches the ids produced by the content loader", () => {
     expect(pageContentId("stages-highline", "en")).toBe("en/stages-highline");
     expect(pageContentId("", "fr")).toBe("fr");
+  });
+});
+
+describe("unlisted pages", () => {
+  it("flags the thank you page only", () => {
+    expect(isUnlistedPage("merci")).toBe(true);
+    expect(isUnlistedPage("contact")).toBe(false);
+  });
+
+  it("lists the thank you page in every locale", () => {
+    expect(unlistedPageUrls()).toEqual([
+      "https://www.slackicimes.org/merci",
+      "https://www.slackicimes.org/en/merci",
+    ]);
   });
 });

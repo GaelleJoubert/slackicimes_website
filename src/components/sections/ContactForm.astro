@@ -1,0 +1,68 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import { absoluteUrl } from "../../lib/seo";
+import {
+  CONTACT_FORM_ENDPOINT,
+  SITE_NAME,
+  WEB3FORMS_ACCESS_KEY,
+} from "../../lib/site";
+import SubmitButton from "../ui/SubmitButton.astro";
+import TextField from "../ui/TextField.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const THANK_YOU_PAGE_SLUG = "merci";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale).contactForm;
+const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
+---
+
+<form action={CONTACT_FORM_ENDPOINT} method="POST" class="space-y-5">
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="from_name" value={SITE_NAME} />
+  <input type="hidden" name="subject" value={strings.notificationSubject} />
+  <input type="hidden" name="redirect" value={thankYouUrl} />
+  <input
+    type="checkbox"
+    name="botcheck"
+    class="hidden"
+    tabindex="-1"
+    autocomplete="off"
+  />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <TextField
+      name="first_name"
+      label={strings.firstNameLabel}
+      autocomplete="given-name"
+    />
+    <TextField
+      name="last_name"
+      label={strings.lastNameLabel}
+      autocomplete="family-name"
+    />
+  </div>
+  <TextField
+    name="email"
+    label={strings.emailLabel}
+    type="email"
+    autocomplete="email"
+    required
+  />
+  <TextField name="topic" label={strings.topicLabel} />
+  <TextField
+    name="message"
+    label={strings.messageLabel}
+    type="multiline"
+    required
+  />
+
+  <p class="caption">{strings.requiredFieldsNote}</p>
+  <SubmitButton>{strings.submitButton}</SubmitButton>
+  <p class="caption">{strings.privacyNotice}</p>
+</form>

@@ -1,25 +1,14 @@
 ---
-type LinkButtonVariant = "primary" | "secondary";
+import { buttonClasses, type ButtonVariant } from "./button-styles";
 
 interface Props {
   href: string;
-  variant?: LinkButtonVariant;
+  variant?: ButtonVariant;
 }
-
-const VARIANT_CLASSES: Record<LinkButtonVariant, string> = {
-  primary: "bg-coral-strong text-white hover:bg-navy",
-  secondary: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
-};
 
 const { href, variant = "primary" } = Astro.props;
 ---
 
-<a
-  href={href}
-  class:list={[
-    "font-heading inline-block rounded-full px-6 py-3 font-bold transition-colors",
-    VARIANT_CLASSES[variant],
-  ]}
->
+<a href={href} class={buttonClasses(variant)}>
   <slot />
 </a>

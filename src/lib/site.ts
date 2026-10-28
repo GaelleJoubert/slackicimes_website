@@ -30,6 +30,8 @@ export const POSTAL_ADDRESS_LINES = [
   "73700 Bourg Saint Maurice",
 ];
 
+export const CONTACT_FORM_ENDPOINT = "https://api.web3forms.com/submit";
+
 export const WEB3FORMS_ACCESS_KEY = "5ae66538-452d-4f43-a177-b69d6666129e";
 
 export const STAGES_REGISTRATION_URL =
