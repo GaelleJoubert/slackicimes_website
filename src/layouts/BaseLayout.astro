@@ -1,0 +1,55 @@
+---
+import { SITE_INDEXABLE } from "astro:env/server";
+import "../styles/global.css";
+import { LOCALE_SETTINGS, type Locale } from "../i18n/locales";
+import { buildAlternateLinks, localizedPath } from "../i18n/routes";
+import { absoluteUrl, robotsDirective } from "../lib/seo";
+import { SITE_NAME } from "../lib/site";
+import {
+  buildOrganizationSchema,
+  buildWebSiteSchema,
+} from "../lib/structured-data";
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  pageSlug: string;
+}
+
+const { title, description, locale, pageSlug } = Astro.props;
+const localeSettings = LOCALE_SETTINGS[locale];
+const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
+const alternateLinks = buildAlternateLinks(pageSlug);
+const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
+---
+
+<!doctype html>
+<html lang={localeSettings.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsDirective(SITE_INDEXABLE)} />
+    <link rel="canonical" href={canonicalUrl} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={localeSettings.openGraphLocale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    <slot />
+  </body>
+</html>
