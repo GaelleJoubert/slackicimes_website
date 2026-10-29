@@ -23,7 +23,7 @@ highlights:
 stats:
   - value: "2012"
     label: the association is founded
-  - value: 450+
+  - value: 550+
     label: people introduced to highlining
   - value: "10"
     label: editions of the Winter Festislack
@@ -33,7 +33,7 @@ associationTeaser:
   eyebrow: Who we are
   badge: In Les Arcs since 2012
   paragraphs:
-    - The association was founded in 2012 and has kept slackline and highline alive in Haute Tarentaise, Savoie, in particular through the Winter Festislack, which over 8 editions has brought together 150 practitioners from all over the world at the Deux Têtes, in the Les Arcs ski area.
+    - The association was founded in 2012 and has kept slackline and highline alive in Haute Tarentaise, Savoie, in particular through the Winter Festislack, which over 10 editions has brought together 150 practitioners from all over the world at the Deux Têtes, in the Les Arcs ski area.
     - Two women now lead the association, highly motivated to develop its many facets.
   illustration:
     image: ../../assets/images/association/groupe.jpg
@@ -42,7 +42,7 @@ stagesTeaser:
   eyebrow: Highline courses
   title: First steps into the void
   paragraphs:
-    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 450 people to this dizzying sport. It offers courses in different formats, suitable for every level.
+    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 550 people to this dizzying sport. It offers courses in different formats, suitable for every level.
   datesNote: 2027 dates coming soon
   illustration:
     image: ../../assets/images/stages/weekend.jpg

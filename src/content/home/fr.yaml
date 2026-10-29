@@ -23,7 +23,7 @@ highlights:
 stats:
   - value: "2012"
     label: création de l'association
-  - value: 450+
+  - value: 550+
     label: personnes initiées à la highline
   - value: "10"
     label: éditions du Winter Festislack
@@ -33,7 +33,7 @@ associationTeaser:
   eyebrow: Qui sommes-nous
   badge: Depuis 2012 aux Arcs
   paragraphs:
-    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 8 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
+    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 10 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
     - Nous sommes maintenant deux femmes à la tête de cette association, extrêmement motivées à développer ses nombreuses facettes.
   illustration:
     image: ../../assets/images/association/groupe.jpg
@@ -42,7 +42,7 @@ stagesTeaser:
   eyebrow: Stages highline
   title: Premiers pas dans le vide
   paragraphs:
-    - En 2019, Slack'icîmes est la première association de France à proposer des stages de highline. Depuis ses débuts, l'association a initié plus de 450 personnes à ce sport vertigineux. L'association propose des stages de différents formats, adaptés à tous les niveaux.
+    - En 2019, Slack'icîmes est la première association de France à proposer des stages de highline. Depuis ses débuts, l'association a initié plus de 550 personnes à ce sport vertigineux. L'association propose des stages de différents formats, adaptés à tous les niveaux.
   datesNote: Dates 2027 à venir
   illustration:
     image: ../../assets/images/stages/weekend.jpg
