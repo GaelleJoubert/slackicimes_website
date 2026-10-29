@@ -30,11 +30,7 @@ const contactPath = localizedPath("contact", locale);
 
 <section id={id} class="bg-cloud scroll-mt-4 py-14 md:py-26">
   <Container class="grid items-start gap-6 md:grid-cols-3 md:gap-14">
-    <SectionIntro
-      title={strings.faq.title}
-      eyebrow={strings.faq.eyebrow}
-      eyebrowTone="sky"
-    >
+    <SectionIntro title={strings.faq.title}>
       <p class="text-slate">{intro}</p>
       <div class="hidden md:block">
         <LinkButton href={contactPath} variant="secondary">

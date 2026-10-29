@@ -90,7 +90,6 @@ const fr = {
     videoSuffix: "en vidéo",
   },
   faq: {
-    eyebrow: "FAQ",
     title: "Vos questions",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages.",
     otherQuestionButton: "Une autre question ?",
@@ -232,7 +231,6 @@ const en: UiStrings = {
     videoSuffix: "on video",
   },
   faq: {
-    eyebrow: "FAQ",
     title: "Your questions",
     stagesIntro: "All the answers to your questions about our courses.",
     otherQuestionButton: "Another question?",
