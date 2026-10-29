@@ -1,9 +1,9 @@
 hero:
-  eyebrow: Highline · Slackline · Les Arcs, Savoie
   photos:
-    - ../../assets/images/stages/highliners-dans-les-nuages.jpg
-    - ../../assets/images/world-cup/ligne-arc-2000.jpg
-    - ../../assets/images/prestations/demonstration-lac.jpg
+    - image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+    - image: ../../assets/images/world-cup/ligne-arc-2000.jpg
+    - image: ../../assets/images/prestations/demonstration-lac.jpg
+      framing: zoomFromTop
 highlights:
   - eyebrow: Courses
     tone: coral
@@ -20,6 +20,7 @@ highlights:
     title: Introductions & demonstrations
     text: Let people discover slackline or highline at your event.
     pageSlug: contact
+    sectionId: formulaire
 stats:
   - value: "2012"
     label: the association is founded
@@ -30,7 +31,6 @@ stats:
   - value: 1st
     label: association in France to offer highline courses
 associationTeaser:
-  eyebrow: Who we are
   badge: In Les Arcs since 2012
   paragraphs:
     - The association was founded in 2012 and has kept slackline and highline alive in Haute Tarentaise, Savoie, in particular through the Winter Festislack, which over 10 editions has brought together 150 practitioners from all over the world at the Deux Têtes, in the Les Arcs ski area.
@@ -39,8 +39,7 @@ associationTeaser:
     image: ../../assets/images/association/groupe.jpg
     alt: Group of trainees and instructors smiling on a rock in the mountains
 stagesTeaser:
-  eyebrow: Highline courses
-  title: First steps into the void
+  title: Highline courses
   paragraphs:
     - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 550 people to this dizzying sport. It offers courses in different formats, suitable for every level.
   datesNote: 2027 dates coming soon
@@ -48,7 +47,6 @@ stagesTeaser:
     image: ../../assets/images/stages/weekend.jpg
     alt: Highliner balancing in front of snowy peaks
 festivalTeaser:
-  eyebrow: Festival
   paragraphs:
     - A one of a kind event combining skiing and highline. It brings together practitioners from all over the world on the fabulous natural site of the Deux Têtes, in the heart of the Les Arcs ski area, facing Mont Blanc.
 contactTeaser:

@@ -12,6 +12,9 @@ hero:
   logo:
     image: ../../assets/images/world-cup/logo-world-cup.png
     alt: Les Arcs Highline Freestyle World Cup logo
+  fullLogo:
+    image: ../../assets/images/world-cup/logo-world-cup-complet.png
+    alt: Les Arcs Highline Freestyle World Cup
   poster:
     image: ../../assets/images/festival/affiche-coupe-du-monde-2027.jpg
     alt: Official poster of the Les Arcs Highline Freestyle World Cup

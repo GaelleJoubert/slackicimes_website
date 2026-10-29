@@ -35,11 +35,7 @@ const strings = uiStrings(locale);
         {teaser.badge}
       </span>
     </div>
-    <SectionIntro
-      title={strings.navigation.association}
-      eyebrow={teaser.eyebrow}
-      eyebrowTone="cloud"
-    >
+    <SectionIntro title={strings.navigation.association}>
       {teaser.paragraphs.map((paragraph) => (
         <p>{paragraph}</p>
       ))}

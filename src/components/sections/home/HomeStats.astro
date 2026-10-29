@@ -1,33 +1,18 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Container from "../../ui/Container.astro";
-import SlacklineDivider from "../../ui/SlacklineDivider.astro";
-import Stat, { type StatTone } from "../../ui/Stat.astro";
+import KeyFactsBand from "../../ui/KeyFactsBand.astro";
 
 interface Props {
   label: string;
   stats: CollectionEntry<"home">["data"]["stats"];
 }
 
-const STAT_TONE_CYCLE: StatTone[] = ["coral", "sky", "mist"];
-
 const { label, stats } = Astro.props;
-const toneAt = (statIndex: number): StatTone =>
-  STAT_TONE_CYCLE[statIndex % STAT_TONE_CYCLE.length] ?? "coral";
 ---
 
-<div class="mt-8 md:mt-12">
-  <SlacklineDivider hasAnchors />
-</div>
-<section
-  aria-label={label}
-  class="bg-navy text-paper mt-3 py-8 md:mt-6 md:py-12"
->
+<section aria-label={label} class="pt-10 md:pt-16">
   <Container>
-    <dl class="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4 md:gap-6">
-      {stats.map((stat, statIndex) => (
-        <Stat value={stat.value} label={stat.label} tone={toneAt(statIndex)} />
-      ))}
-    </dl>
+    <KeyFactsBand facts={stats} />
   </Container>
 </section>

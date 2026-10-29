@@ -23,12 +23,7 @@ const strings = uiStrings(locale);
 <section class="bg-navy text-paper py-14 md:py-26">
   <Container class="flex flex-col gap-6 md:gap-12">
     <div class="max-w-190">
-      <SectionIntro
-        title={strings.navigation.winterFestislack}
-        eyebrow={teaser.eyebrow}
-        eyebrowTone="sky"
-        theme="dark"
-      >
+      <SectionIntro title={strings.navigation.winterFestislack} theme="dark">
         <HighlightedText
           slot="title"
           text={strings.navigation.winterFestislack}
@@ -40,7 +35,7 @@ const strings = uiStrings(locale);
         <div class="hidden md:block">
           <LinkButton
             href={localizedPath("winter-festislack", locale)}
-            variant="secondaryOnDark"
+            shape="rounded"
           >
             {strings.home.festivalButton}
           </LinkButton>
@@ -50,7 +45,7 @@ const strings = uiStrings(locale);
     <PhotoStrip photos={gallery.data.photos} />
     <LinkButton
       href={localizedPath("winter-festislack", locale)}
-      variant="secondaryOnDark"
+      shape="rounded"
       class="md:hidden"
     >
       {strings.home.festivalButton}

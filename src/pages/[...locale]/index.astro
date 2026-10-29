@@ -24,13 +24,11 @@ export const getStaticPaths = (() =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const HOME_PAGE_SLUG = "";
-const WORLD_CUP_PAGE_SLUG = "coupe-du-monde";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(HOME_PAGE_SLUG, locale);
 const home = (await getSingleEntryContent("home", locale)).data;
-const worldCupPage = await getPageEntry(WORLD_CUP_PAGE_SLUG, locale);
 const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
 const stages = await getLocalizedCollection("stages", locale);
 const testimonials = await getLocalizedCollection("testimonials", locale);
@@ -52,11 +50,7 @@ const festivalGallery = await getGallery("festival", locale);
   <HomeStats label={strings.home.statsLabel} stats={home.stats} />
   <HomeAssociation teaser={home.associationTeaser} locale={locale} />
   <HomeStages teaser={home.stagesTeaser} stages={stages} locale={locale} />
-  <HomeWorldCup
-    heading={worldCupPage.data.heading}
-    hero={worldCup.hero}
-    locale={locale}
-  />
+  <HomeWorldCup hero={worldCup.hero} locale={locale} />
   <HomeFestival
     teaser={home.festivalTeaser}
     gallery={festivalGallery}

@@ -29,19 +29,13 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 <section class="bg-blush py-14 md:py-26">
   <Container class="flex flex-col gap-6 md:gap-12">
     <div class="grid items-center gap-6 md:grid-cols-2 md:gap-18">
-      <SectionIntro title={teaser.title} eyebrow={teaser.eyebrow}>
+      <SectionIntro title={teaser.title}>
         {teaser.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
         <div class="hidden flex-wrap gap-3.5 md:flex">
-          <LinkButton href={stagesPagePath}>
+          <LinkButton href={stagesPagePath} shape="rounded">
             {strings.common.seeStagesButton}
-          </LinkButton>
-          <LinkButton
-            href={localizedPath("inscriptions", locale)}
-            variant="secondary"
-          >
-            {strings.stages.registrationsButton}
           </LinkButton>
         </div>
       </SectionIntro>
@@ -69,7 +63,7 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
       ))}
     </ul>
     <p class="text-navy text-center font-bold">{teaser.datesNote}</p>
-    <LinkButton href={stagesPagePath} class="md:hidden">
+    <LinkButton href={stagesPagePath} shape="rounded" class="md:hidden">
       {strings.common.seeStagesButton}
     </LinkButton>
   </Container>

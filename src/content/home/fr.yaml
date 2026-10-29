@@ -1,9 +1,9 @@
 hero:
-  eyebrow: Highline · Slackline · Les Arcs, Savoie
   photos:
-    - ../../assets/images/stages/highliners-dans-les-nuages.jpg
-    - ../../assets/images/world-cup/ligne-arc-2000.jpg
-    - ../../assets/images/prestations/demonstration-lac.jpg
+    - image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+    - image: ../../assets/images/world-cup/ligne-arc-2000.jpg
+    - image: ../../assets/images/prestations/demonstration-lac.jpg
+      framing: zoomFromTop
 highlights:
   - eyebrow: Stages
     tone: coral
@@ -20,6 +20,7 @@ highlights:
     title: Initiations & démonstrations
     text: Faites découvrir la slackline ou la highline lors de votre évènement.
     pageSlug: contact
+    sectionId: formulaire
 stats:
   - value: "2012"
     label: création de l'association
@@ -30,7 +31,6 @@ stats:
   - value: 1re
     label: asso de France à proposer des stages de highline
 associationTeaser:
-  eyebrow: Qui sommes-nous
   badge: Depuis 2012 aux Arcs
   paragraphs:
     - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 10 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
@@ -39,8 +39,7 @@ associationTeaser:
     image: ../../assets/images/association/groupe.jpg
     alt: Groupe de stagiaires et d'encadrantes souriant sur un rocher en montagne
 stagesTeaser:
-  eyebrow: Stages highline
-  title: Premiers pas dans le vide
+  title: Stages highline
   paragraphs:
     - En 2019, Slack'icîmes est la première association de France à proposer des stages de highline. Depuis ses débuts, l'association a initié plus de 550 personnes à ce sport vertigineux. L'association propose des stages de différents formats, adaptés à tous les niveaux.
   datesNote: Dates 2027 à venir
@@ -48,7 +47,6 @@ stagesTeaser:
     image: ../../assets/images/stages/weekend.jpg
     alt: Highlineur en équilibre face aux sommets enneigés
 festivalTeaser:
-  eyebrow: Festival
   paragraphs:
     - Évènement unique au monde de ski et highline. Il rassemble des pratiquants du monde entier sur le site naturel fabuleux des Deux Têtes, en plein cœur du domaine skiable des Arcs, face au Mont-Blanc.
 contactTeaser:

@@ -4,23 +4,22 @@ import { Picture } from "astro:assets";
 import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
-import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import Container from "../../ui/Container.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "../world-cup/types";
 
 interface Props {
-  heading: string;
   hero: WorldCupContent["hero"];
   locale: Locale;
 }
 
-const LOGO_HEIGHT_PX = 76;
+const FULL_LOGO_WIDTHS = [480, 960];
+const FULL_LOGO_SIZES = "(min-width: 768px) 480px, 90vw";
 const POSTER_WIDTHS = [400, 800];
 const POSTER_SIZES = "(min-width: 768px) 400px, 82vw";
 const TITLE_ID = "coupe-du-monde";
 
-const { heading, hero, locale } = Astro.props;
+const { hero, locale } = Astro.props;
 const strings = uiStrings(locale);
 const worldCupPath = localizedPath("coupe-du-monde", locale);
 ---
@@ -31,28 +30,17 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
 >
   <Container class="grid items-center gap-5 md:grid-cols-5 md:gap-16">
     <div class="flex flex-col gap-5 md:col-span-3 md:gap-6.5">
-      <div class="flex flex-col gap-5 md:flex-row md:flex-wrap md:items-center md:gap-4.5">
+      <h2 id={TITLE_ID}>
         <Picture
-          src={hero.logo.image}
-          alt={hero.logo.alt}
-          height={LOGO_HEIGHT_PX}
-          densities={[1, 2]}
+          src={hero.fullLogo.image}
+          alt={hero.fullLogo.alt}
+          widths={FULL_LOGO_WIDTHS}
+          sizes={FULL_LOGO_SIZES}
           formats={["avif", "webp"]}
-          class="h-15 w-auto self-start md:h-19"
+          class="h-auto w-full max-w-120"
         />
-        <span class="text-cup-sky cup-eyebrow">{hero.badge}</span>
-      </div>
-      <div>
-        <p class="font-display text-xl font-semibold tracking-widest uppercase md:text-2xl">
-          {hero.kicker}
-        </p>
-        <h2 id={TITLE_ID} class="cup-title">
-          {heading}
-        </h2>
-        <span class="bg-cup-pink font-display mt-3 inline-block rounded-xl px-4 py-2 text-xl leading-none font-bold uppercase md:rounded-2xl md:px-5 md:py-2.5 md:text-2xl">
-          {hero.tag}
-        </span>
-      </div>
+      </h2>
+      <span class="text-cup-sky cup-eyebrow">{hero.badge}</span>
       <p class="text-cup-pale max-w-xl md:text-lg">{hero.intro}</p>
       <dl class="flex flex-wrap gap-x-7 gap-y-2.5 md:gap-x-10">
         {hero.facts.map((fact) => (
@@ -70,12 +58,6 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
         <LinkButton href={worldCupPath} variant="cupPrimary">
           {strings.common.discoverWorldCupButton}
         </LinkButton>
-        <LinkButton
-          href={`${worldCupPath}#${WORLD_CUP_SECTION_IDS.participate}`}
-          variant="cupOutlineLight"
-        >
-          {hero.secondaryCta}
-        </LinkButton>
       </div>
     </div>
     <div class="flex justify-center md:col-span-2">
@@ -91,12 +73,6 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
     <div class="flex flex-col gap-3 md:hidden">
       <LinkButton href={worldCupPath} variant="cupPrimary">
         {strings.common.discoverWorldCupButton}
-      </LinkButton>
-      <LinkButton
-        href={`${worldCupPath}#${WORLD_CUP_SECTION_IDS.participate}`}
-        variant="cupOutlineLight"
-      >
-        {hero.secondaryCta}
       </LinkButton>
     </div>
   </Container>

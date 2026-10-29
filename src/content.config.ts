@@ -80,14 +80,16 @@ const home = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/home" }),
   schema: ({ image }) => {
     const illustration = z.object({ image: image(), alt: nonEmptyText });
-    const teaserIntro = z.object({
-      eyebrow: nonEmptyText,
-      paragraphs: z.array(nonEmptyText).min(1),
-    });
     return z.object({
       hero: z.object({
-        eyebrow: nonEmptyText,
-        photos: z.array(image()).min(1),
+        photos: z
+          .array(
+            z.object({
+              image: image(),
+              framing: z.enum(["fill", "zoomFromTop"]).default("fill"),
+            }),
+          )
+          .min(1),
       }),
       highlights: z
         .array(
@@ -97,22 +99,27 @@ const home = defineCollection({
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,
+            sectionId: nonEmptyText.optional(),
           }),
         )
         .min(1),
       stats: z
         .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
         .min(1),
-      associationTeaser: teaserIntro.extend({
+      associationTeaser: z.object({
+        paragraphs: z.array(nonEmptyText).min(1),
         badge: nonEmptyText,
         illustration,
       }),
-      stagesTeaser: teaserIntro.extend({
+      stagesTeaser: z.object({
+        paragraphs: z.array(nonEmptyText).min(1),
         title: nonEmptyText,
         datesNote: nonEmptyText,
         illustration,
       }),
-      festivalTeaser: teaserIntro,
+      festivalTeaser: z.object({
+        paragraphs: z.array(nonEmptyText).min(1),
+      }),
       contactTeaser: z.object({ text: nonEmptyText }),
     });
   },
@@ -250,6 +257,7 @@ const worldCup = defineCollection({
         primaryCta: nonEmptyText,
         secondaryCta: nonEmptyText,
         logo: illustration,
+        fullLogo: illustration,
         poster: illustration,
       }),
       sectionNav: z.object({
