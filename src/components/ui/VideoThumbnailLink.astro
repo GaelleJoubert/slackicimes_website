@@ -1,0 +1,37 @@
+---
+import type { ImageMetadata } from "astro";
+import FramedPicture from "./FramedPicture.astro";
+import PlayIcon from "./PlayIcon.astro";
+
+interface Props {
+  href: string;
+  thumbnail: ImageMetadata;
+  label: string;
+  class?: string;
+}
+
+const THUMBNAIL_WIDTHS = [400, 800];
+const THUMBNAIL_SIZES = "100vw";
+
+const { href, thumbnail, label, class: extraClasses } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  class:list={["group relative block", extraClasses]}
+>
+  <FramedPicture
+    image={thumbnail}
+    alt=""
+    widths={THUMBNAIL_WIDTHS}
+    sizes={THUMBNAIL_SIZES}
+    frame="offsetSky"
+    class="aspect-video"
+  />
+  <span class="bg-coral text-ink absolute inset-0 m-auto flex size-16 items-center justify-center rounded-full transition group-hover:scale-110">
+    <PlayIcon size="large" />
+  </span>
+  <span class="sr-only">{label}</span>
+</a>

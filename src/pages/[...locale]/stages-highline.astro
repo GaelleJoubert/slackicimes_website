@@ -3,14 +3,13 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import FaqSection from "../../components/sections/FaqSection.astro";
 import CoursePicker from "../../components/sections/stages/CoursePicker.astro";
+import StagesVideo from "../../components/sections/stages/StagesVideo.astro";
 import TestimonialHighlights from "../../components/sections/TestimonialHighlights.astro";
 import Container from "../../components/ui/Container.astro";
-import LinkButton from "../../components/ui/LinkButton.astro";
 import SectionIntro from "../../components/ui/SectionIntro.astro";
 import SlacklineDivider from "../../components/ui/SlacklineDivider.astro";
-import VideoEmbed from "../../components/ui/VideoEmbed.astro";
 import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
-import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { COURSE_FORMULAS_SECTION_ID } from "../../lib/site";
@@ -39,33 +38,19 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   pageSlug={PAGE_SLUG}
   headerTone="dark"
 >
-  <section class="bg-navy text-paper pt-5 pb-12 md:pt-10 md:pb-24">
-    <Container class="grid items-center gap-5 md:grid-cols-2 md:gap-16">
-      <div class="flex flex-col gap-4 md:gap-5.5">
+  <section class="bg-navy text-paper pt-5 pb-8 md:pt-10 md:pb-24">
+    <Container class="grid items-center gap-6 md:grid-cols-5 md:gap-14">
+      <div class="flex flex-col gap-4 md:col-span-2 md:gap-5.5">
         <h1 class="page-title text-paper">{page.data.heading}</h1>
         <div class="rich-text rich-text-on-dark md:text-xl">
           <Intro />
         </div>
-        <div class="hidden md:block">
-          <LinkButton href={localizedPath("inscriptions", locale)}>
-            {strings.stages.registrationsButton}
-          </LinkButton>
-        </div>
       </div>
       {page.data.video && (
-        <VideoEmbed
-          videoUrl={page.data.video}
-          title={page.data.heading}
-          locale={locale}
-          class="shadow-offset md:shadow-offset-lg shadow-sky"
-        />
+        <div class="md:col-span-3">
+          <StagesVideo video={page.data.video} locale={locale} />
+        </div>
       )}
-      <LinkButton
-        href={localizedPath("inscriptions", locale)}
-        class="md:hidden"
-      >
-        {strings.stages.registrationsButton}
-      </LinkButton>
     </Container>
   </section>
 

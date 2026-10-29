@@ -86,6 +86,7 @@ const fr = {
   },
   video: {
     watchOnFacebook: "Voir la vidéo sur Facebook",
+    watchOnYoutube: "Regarder sur YouTube",
     videoSuffix: "en vidéo",
   },
   faq: {
@@ -227,6 +228,7 @@ const en: UiStrings = {
   },
   video: {
     watchOnFacebook: "Watch the video on Facebook",
+    watchOnYoutube: "Watch on YouTube",
     videoSuffix: "on video",
   },
   faq: {

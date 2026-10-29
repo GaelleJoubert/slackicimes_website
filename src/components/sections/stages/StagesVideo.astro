@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import VideoEmbed from "../../ui/VideoEmbed.astro";
+import VideoThumbnailLink from "../../ui/VideoThumbnailLink.astro";
+
+type StagesVideoContent = NonNullable<
+  CollectionEntry<"pages">["data"]["video"]
+>;
+
+interface Props {
+  video: StagesVideoContent;
+  locale: Locale;
+}
+
+const { video, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<figure class="flex flex-col gap-3 md:gap-6">
+  <VideoThumbnailLink
+    href={video.url}
+    thumbnail={video.thumbnail}
+    label={`${strings.video.watchOnYoutube}: ${video.title}`}
+    class="md:hidden"
+  />
+  <div class="hidden md:block">
+    <VideoEmbed
+      videoUrl={video.url}
+      title={video.title}
+      locale={locale}
+      class="shadow-offset-lg shadow-sky"
+    />
+  </div>
+  <figcaption class="flex flex-col gap-1 pt-1 md:gap-2 md:pt-2">
+    <p class="card-title text-paper md:text-3xl">{video.heading}</p>
+    <p class="text-cloud">{video.text}</p>
+  </figcaption>
+</figure>
