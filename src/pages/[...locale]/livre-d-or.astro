@@ -48,7 +48,10 @@ const testimonialCountText = `${testimonials.length} ${lowercaseFirstLetter(stri
         paragraphs={[strings.testimonials.callToActionText]}
       >
         <div class="flex flex-col gap-3">
-          <LinkButton href={localizedPath("stages-highline", locale)}>
+          <LinkButton
+            href={localizedPath("stages-highline", locale)}
+            variant="primaryOnDark"
+          >
             {strings.common.seeStagesButton}
           </LinkButton>
           <LinkButton

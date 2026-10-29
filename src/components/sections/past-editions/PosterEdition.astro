@@ -27,7 +27,11 @@ if (hasUnlabeledVideo) {
 <TimelineEntry dotTone={dotTone}>
   <EditionWithPoster edition={edition} frame={posterFrame}>
     {videos.map((videoUrl) => (
-      <LinkButton href={videoUrl} variant="navy" class="gap-2.5 md:self-start">
+      <LinkButton
+        href={videoUrl}
+        variant="secondary"
+        class="gap-2.5 md:self-start"
+      >
         <PlayIcon class="text-coral" />
         {videoLinkLabel}
       </LinkButton>

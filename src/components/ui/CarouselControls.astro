@@ -1,7 +1,7 @@
 ---
 import { MAX_PAGE_DOTS } from "../../lib/pagination";
 import ChevronIcon from "./ChevronIcon.astro";
-import { ROUND_ICON_BUTTON_CLASSES } from "./button-styles";
+import { roundIconButtonClasses } from "./button-styles";
 
 export type CarouselTone = "light" | "dark";
 
@@ -14,12 +14,11 @@ interface Props {
 
 const TONE_CLASSES: Record<CarouselTone, { button: string; dot: string }> = {
   light: {
-    button: ROUND_ICON_BUTTON_CLASSES,
+    button: `${roundIconButtonClasses("light")} size-12 md:size-14`,
     dot: "bg-mist data-active:bg-navy",
   },
   dark: {
-    button:
-      "border-paper bg-navy text-paper hover:bg-paper hover:text-navy flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition",
+    button: `${roundIconButtonClasses("dark")} size-12`,
     dot: "bg-paper/30 data-active:bg-paper",
   },
 };

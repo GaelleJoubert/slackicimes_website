@@ -3,17 +3,13 @@ import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
 import type { HeaderTone } from "./header-tone";
 import SiteNavigation from "./SiteNavigation.astro";
+import { roundIconButtonClasses } from "../ui/button-styles";
 
 interface Props {
   locale: Locale;
   pageSlug: string;
   tone: HeaderTone;
 }
-
-const TOGGLE_TONE_CLASSES: Record<HeaderTone, string> = {
-  light: "border-navy text-navy bg-paper",
-  dark: "border-paper text-paper bg-navy",
-};
 
 const { locale, pageSlug, tone } = Astro.props;
 const strings = uiStrings(locale);
@@ -22,10 +18,7 @@ const strings = uiStrings(locale);
 <details data-animated-details class="group">
   <summary
     aria-label={strings.navigation.menuToggle}
-    class:list={[
-      "flex size-11 cursor-pointer list-none items-center justify-center rounded-full border-3",
-      TOGGLE_TONE_CLASSES[tone],
-    ]}
+    class:list={["size-11 list-none", roundIconButtonClasses(tone)]}
   >
     <svg
       aria-hidden="true"

@@ -33,7 +33,10 @@ const strings = uiStrings(locale);
           <p class="text-cloud">{paragraph}</p>
         ))}
         <div class="hidden md:block">
-          <LinkButton href={localizedPath("winter-festislack", locale)}>
+          <LinkButton
+            href={localizedPath("winter-festislack", locale)}
+            variant="primaryOnDark"
+          >
             {strings.common.learnMore}
           </LinkButton>
         </div>
@@ -46,6 +49,7 @@ const strings = uiStrings(locale);
     />
     <LinkButton
       href={localizedPath("winter-festislack", locale)}
+      variant="primaryOnDark"
       class="md:hidden"
     >
       {strings.common.learnMore}

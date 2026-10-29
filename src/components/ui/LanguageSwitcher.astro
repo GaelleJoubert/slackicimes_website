@@ -3,17 +3,13 @@ import type { HeaderTone } from "../sections/header-tone";
 import { LOCALES, LOCALE_SETTINGS, type Locale } from "../../i18n/locales";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
+import { roundIconButtonClasses } from "./button-styles";
 
 interface Props {
   locale: Locale;
   pageSlug: string;
   tone: HeaderTone;
 }
-
-const TONE_CLASSES: Record<HeaderTone, string> = {
-  light: "border-navy text-navy hover:bg-navy hover:text-paper",
-  dark: "border-paper text-paper hover:bg-paper hover:text-navy",
-};
 
 const { locale, pageSlug, tone } = Astro.props;
 const strings = uiStrings(locale);
@@ -29,8 +25,8 @@ const otherLocales = LOCALES.filter((candidate) => candidate !== locale);
           hreflang={LOCALE_SETTINGS[targetLocale].htmlLang}
           lang={LOCALE_SETTINGS[targetLocale].htmlLang}
           class:list={[
-            "inline-flex min-h-11 items-center rounded-xl border-2 px-3 text-sm font-extrabold transition-colors",
-            TONE_CLASSES[tone],
+            "size-11 text-sm font-extrabold",
+            roundIconButtonClasses(tone),
           ]}
         >
           <span aria-hidden="true">
