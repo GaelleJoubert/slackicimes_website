@@ -22,7 +22,11 @@ const strings = uiStrings(locale).contactForm;
 const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
 ---
 
-<form action={CONTACT_FORM_ENDPOINT} method="POST" class="space-y-5">
+<form
+  action={CONTACT_FORM_ENDPOINT}
+  method="POST"
+  class="flex flex-col gap-3.5 md:gap-4.5"
+>
   <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
   <input type="hidden" name="from_name" value={SITE_NAME} />
   <input type="hidden" name="subject" value={strings.notificationSubject} />
@@ -35,7 +39,7 @@ const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
     autocomplete="off"
   />
 
-  <div class="grid gap-5 sm:grid-cols-2">
+  <div class="grid gap-3.5 md:grid-cols-2 md:gap-4">
     <TextField
       name="first_name"
       label={strings.firstNameLabel}
@@ -63,6 +67,6 @@ const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
   />
 
   <p class="caption">{strings.requiredFieldsNote}</p>
-  <SubmitButton>{strings.submitButton}</SubmitButton>
+  <SubmitButton class="md:self-start">{strings.submitButton}</SubmitButton>
   <p class="caption">{strings.privacyNotice}</p>
 </form>

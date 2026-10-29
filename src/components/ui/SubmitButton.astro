@@ -3,11 +3,12 @@ import { buttonClasses, type ButtonVariant } from "./button-styles";
 
 interface Props {
   variant?: ButtonVariant;
+  class?: string;
 }
 
-const { variant = "primary" } = Astro.props;
+const { variant = "primary", class: extraClasses } = Astro.props;
 ---
 
-<button type="submit" class={buttonClasses(variant)}>
+<button type="submit" class:list={[buttonClasses(variant), extraClasses]}>
   <slot />
 </button>

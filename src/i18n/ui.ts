@@ -117,6 +117,7 @@ const fr = {
     detailsTitle: "Nos coordonnées",
     formTitle: "Envoyez-nous un message",
     backHomeButton: "Retour à l'accueil",
+    callPerson: "Appeler",
   },
   contactForm: {
     firstNameLabel: "Prénom",
@@ -250,6 +251,7 @@ const en: UiStrings = {
     detailsTitle: "Our details",
     formTitle: "Send us a message",
     backHomeButton: "Back to the home page",
+    callPerson: "Call",
   },
   contactForm: {
     firstNameLabel: "First name",
