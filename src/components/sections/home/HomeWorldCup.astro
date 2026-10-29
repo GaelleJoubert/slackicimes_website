@@ -15,8 +15,8 @@ interface Props {
 
 const FULL_LOGO_WIDTHS = [480, 960];
 const FULL_LOGO_SIZES = "(min-width: 768px) 480px, 90vw";
-const POSTER_WIDTHS = [400, 800];
-const POSTER_SIZES = "(min-width: 768px) 400px, 82vw";
+const POSTER_WIDTHS = [320, 400, 800];
+const POSTER_SIZES = "(min-width: 768px) 400px, 160px";
 const TITLE_ID = "coupe-du-monde";
 
 const { hero, locale } = Astro.props;
@@ -26,11 +26,11 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
 
 <section
   aria-labelledby={TITLE_ID}
-  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-12 text-white md:border-b-6 md:py-24"
+  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-14 text-white md:border-b-6 md:py-24"
 >
-  <Container class="grid items-center gap-5 md:grid-cols-5 md:gap-16">
-    <div class="flex flex-col gap-5 md:col-span-3 md:gap-6.5">
-      <h2 id={TITLE_ID}>
+  <Container class="media-start-grid grid items-center gap-5 md:grid-cols-5 md:gap-16">
+    <div class="contents md:col-span-3 md:flex md:flex-col md:gap-6.5">
+      <h2 id={TITLE_ID} class="col-span-2">
         <Picture
           src={hero.fullLogo.image}
           alt={hero.fullLogo.alt}
@@ -40,9 +40,9 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
           class="h-auto w-full max-w-120"
         />
       </h2>
-      <span class="text-cup-sky cup-eyebrow">{hero.badge}</span>
-      <p class="text-cup-pale max-w-xl md:text-lg">{hero.intro}</p>
-      <dl class="flex flex-wrap gap-x-7 gap-y-2.5 md:gap-x-10">
+      <span class="text-cup-sky cup-eyebrow col-span-2">{hero.badge}</span>
+      <p class="text-cup-pale col-span-2 max-w-xl md:text-lg">{hero.intro}</p>
+      <dl class="col-start-2 row-start-4 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2.5">
         {hero.facts.map((fact) => (
           <div class="flex flex-col">
             <dt class="text-cup-sky text-sm font-semibold tracking-wider uppercase">
@@ -60,17 +60,17 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
         </LinkButton>
       </div>
     </div>
-    <div class="flex justify-center md:col-span-2">
+    <div class="col-start-1 row-start-4 flex md:col-span-2 md:col-start-auto md:row-start-auto md:justify-center">
       <Picture
         src={hero.poster.image}
         alt={hero.poster.alt}
         widths={POSTER_WIDTHS}
         sizes={POSTER_SIZES}
         formats={["avif", "webp"]}
-        class="my-2 w-4/5 max-w-100 rotate-2 rounded-2xl shadow-2xl md:my-0 md:w-full"
+        class="w-40 max-w-100 rotate-2 rounded-xl shadow-2xl md:w-full md:rounded-2xl"
       />
     </div>
-    <div class="flex flex-col gap-3 md:hidden">
+    <div class="col-span-2 flex flex-col gap-3 md:hidden">
       <LinkButton href={worldCupPath} variant="cupPrimary">
         {strings.common.discoverWorldCupButton}
       </LinkButton>
