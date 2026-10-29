@@ -9,7 +9,7 @@ export type ButtonVariant =
   | "cupOutlineDark"
   | "cupLight";
 
-export type ButtonSize = "default" | "compact";
+export type ButtonSize = "default" | "compact" | "large";
 
 export const ROUND_ICON_BUTTON_CLASSES =
   "border-navy bg-paper text-navy hover:bg-navy hover:text-paper flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition md:size-14";
@@ -22,6 +22,7 @@ const CUP_BUTTON_SIZE = "min-h-13 px-7";
 const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
   default: "min-h-13 px-6",
   compact: "min-h-11 px-4 text-sm md:min-h-12 md:px-5 md:text-base",
+  large: "min-h-13 px-6 md:min-h-15 md:px-9 md:text-lg",
 };
 
 const PRESSABLE = "hover:translate-y-0.5 hover:shadow-none";
