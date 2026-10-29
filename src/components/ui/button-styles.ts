@@ -12,7 +12,7 @@ export type ButtonVariant =
 export type ButtonSize = "default" | "compact";
 
 const BASE_BUTTON_CLASSES =
-  "inline-flex cursor-pointer items-center justify-center rounded-xl text-center font-extrabold transition";
+  "inline-flex cursor-pointer items-center justify-center rounded-xl py-2 text-center font-extrabold transition";
 
 const CUP_BUTTON_SIZE = "min-h-13 px-7";
 

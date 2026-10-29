@@ -65,7 +65,7 @@
   --text-display--line-height: 0.92;
   --text-error-code: 11.25rem;
   --text-error-code--line-height: 1;
-  --text-display-sm: 3.5rem;
+  --text-display-sm: clamp(2.75rem, 14.5vw, 3.5rem);
   --text-display-sm--line-height: 0.95;
   --text-title: 4rem;
   --text-title--line-height: 1;
