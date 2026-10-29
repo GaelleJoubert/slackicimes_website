@@ -202,7 +202,7 @@ const association = defineCollection({
           )
           .min(1),
       }),
-      duo: textBlock.extend({ tagline: nonEmptyText }),
+      duo: textBlock,
       team: textBlock,
     });
   },
