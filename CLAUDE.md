@@ -137,6 +137,9 @@ add one there.
 
 - Mobile first: base utility classes target phones; `sm:`, `md:`, `lg:` only enlarge. Check every
   change at 375px wide before desktop.
+- On mobile, each section should fit one screen when possible: at 375 × 812, a section stays within
+  the viewport minus the sticky header (about 740px). Rearrange the mobile layout (smaller media,
+  side by side blocks, a carousel) rather than letting a section run over several screens.
 - Colors, fonts, font sizes, spacing scale, radii, shadows and breakpoints are defined once in the
   `@theme` block of `src/styles/global.css`. Use the utilities they generate.
 - Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`, `w-[372px]`) or inline `style`
