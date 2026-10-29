@@ -115,9 +115,18 @@
   object-position: 50% 25%;
 }
 
+@utility press-sink {
+  translate: var(--pressable-shadow-distance) var(--pressable-shadow-distance);
+  --tw-shadow: 0 0 #0000;
+}
+
 @layer base {
   summary::-webkit-details-marker {
     display: none;
+  }
+
+  :focus-visible {
+    @apply outline-3 outline-offset-3 outline-sky;
   }
 }
 
@@ -190,11 +199,19 @@
     }
   }
 
+  .text-link {
+    @apply font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-teal;
+  }
+
+  .text-link-on-dark {
+    @apply font-bold text-paper underline decoration-coral decoration-2 underline-offset-4 hover:text-ice;
+  }
+
   .rich-text {
     @apply space-y-4 leading-relaxed;
 
     & a {
-      @apply text-teal underline underline-offset-4;
+      @apply font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-teal;
     }
 
     & ul {
@@ -210,7 +227,7 @@
     @apply text-cloud;
 
     & a {
-      @apply text-ice;
+      @apply text-paper hover:text-ice;
     }
 
     & strong {

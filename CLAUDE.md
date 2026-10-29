@@ -133,6 +133,30 @@ For links styled as buttons and for actions, use the shared components in `src/c
 never style a raw `<a>` or `<button>` as a button inside a section. If no shared component fits,
 add one there.
 
+### Clickable or not
+
+Visitors on phones have no hover, so the look alone must say what reacts to a finger. Interactive
+and informative elements never share a cue.
+
+- A navy hard shadow means "press me": `shadow-pressable` (navy, or `shadow-ink` on dark
+  sections) only sits under buttons, round icon buttons and action badges. Photos and panels use
+  `shadow-raised` in a color (coral, sky, mist, blush), never navy.
+- Every clickable card carries an action badge (`ActionBadge`, or `ToggleSign` for details): a
+  coral circle whose icon says what happens (chevron opens a page, +/− unfolds, play, phone,
+  external). Information never has a coral circle.
+- A 3px navy outline marks a touchable surface (link card, expandable row, secondary button, round
+  icon button). A tint inside the outline is fine. Information is a flat tint with no outline.
+  Panels holding content (forms, details) use a mist outline and a colored `shadow-raised` frame.
+- Everything pressable sinks into its shadow on tap and on desktop hover (`active:press-sink`,
+  `hover:press-sink`, or `group-*` on badges inside a card). Keyboard focus shows the global
+  sky ring.
+- Links inside text use `.text-link` (or `.text-link-on-dark`, `.rich-text`): always underlined in
+  coral. Navigation lists (header, footers, section bars) are exempt.
+- No pills for information: eyebrows are a colored dot plus uppercase text, facts are plain text
+  separated by coral dots. Coral fills are reserved for actions.
+- Buttons have three levels: `primary` (coral, one per section), `secondary` (paper with navy
+  outline), and a text link for low priority. Use the `OnDark` variants on dark sections.
+
 ## Design tokens and responsive
 
 - Mobile first: base utility classes target phones; `sm:`, `md:`, `lg:` only enlarge. Check every

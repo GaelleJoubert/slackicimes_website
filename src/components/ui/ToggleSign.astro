@@ -1,4 +1,6 @@
 ---
+import { actionBadgeClasses } from "./action-badge";
+
 type ToggleSignVariant = "details" | "courseTab";
 
 interface Props {
@@ -34,7 +36,8 @@ const variantClasses = VARIANT_CLASSES[variant];
 <span
   aria-hidden="true"
   class:list={[
-    "bg-coral text-ink font-heading shadow-pressable flex size-8 shrink-0 items-center justify-center rounded-full text-xl transition group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none md:size-9",
+    "font-heading text-xl",
+    actionBadgeClasses(),
     variantClasses.circle,
     extraClasses,
   ]}
