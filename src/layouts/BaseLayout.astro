@@ -2,6 +2,7 @@
 import { SITE_INDEXABLE } from "astro:env/server";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
+import type { HeaderTone } from "../components/sections/header-tone";
 import "../styles/global.css";
 import { LOCALE_SETTINGS, type Locale } from "../i18n/locales";
 import {
@@ -23,6 +24,7 @@ interface Props {
   locale: Locale;
   pageSlug: string;
   isErrorPage?: boolean;
+  headerTone?: HeaderTone;
 }
 
 const {
@@ -31,6 +33,7 @@ const {
   locale,
   pageSlug,
   isErrorPage = false,
+  headerTone = "light",
 } = Astro.props;
 const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
@@ -65,14 +68,14 @@ const isIndexable = SITE_INDEXABLE && !isErrorPage && !isUnlistedPage(pageSlug);
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body class="bg-paper text-ink font-body flex min-h-screen flex-col antialiased">
+  <body class="bg-paper text-ink font-body flex min-h-screen flex-col text-base leading-relaxed antialiased md:text-lg">
     <a
       href="#main-content"
-      class="bg-navy text-paper sr-only rounded-full px-4 py-2 focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-20"
+      class="bg-navy text-paper sr-only rounded-full px-4 py-2 font-extrabold focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-30"
     >
       {strings.accessibility.skipToContent}
     </a>
-    <SiteHeader locale={locale} pageSlug={pageSlug} />
+    <SiteHeader locale={locale} pageSlug={pageSlug} tone={headerTone} />
     <main id="main-content" class="flex-1">
       <slot />
     </main>

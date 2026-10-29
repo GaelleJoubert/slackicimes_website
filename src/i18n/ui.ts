@@ -9,7 +9,8 @@ const fr = {
   },
   navigation: {
     mainMenuLabel: "Menu principal",
-    menuToggle: "Menu",
+    menuToggle: "Ouvrir le menu",
+    registerButton: "S'inscrire",
     homeLinkLabel: "Accueil Slack'icîmes",
     association: "L'association",
     worldCup: "Coupe du monde",
@@ -25,6 +26,8 @@ const fr = {
     label: "Langue",
   },
   footer: {
+    tagline: "Highline & slackline aux Arcs, Savoie",
+    siteHeading: "Le site",
     contactHeading: "Contact",
     followUsHeading: "Suivez-nous",
   },
@@ -104,7 +107,8 @@ const en: UiStrings = {
   },
   navigation: {
     mainMenuLabel: "Main menu",
-    menuToggle: "Menu",
+    menuToggle: "Open the menu",
+    registerButton: "Register",
     homeLinkLabel: "Slack'icîmes home",
     association: "The association",
     worldCup: "World Cup",
@@ -120,6 +124,8 @@ const en: UiStrings = {
     label: "Language",
   },
   footer: {
+    tagline: "Highline & slackline in Les Arcs, Savoie",
+    siteHeading: "The site",
     contactHeading: "Contact",
     followUsHeading: "Follow us",
   },

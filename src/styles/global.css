@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource/lilita-one";
+@import "@fontsource-variable/nunito";
 
 @font-face {
   font-family: "Clash Display";
@@ -22,8 +24,11 @@
   --color-paper: #fffefc;
   --color-ink: #011021;
   --color-navy: #253e59;
-  --color-slate: #667d96;
+  --color-slate: #3b4d63;
   --color-mist: #b8cfde;
+  --color-cloud: #e8f0f6;
+  --color-ice: #d9f1f7;
+  --color-blush: #ffe4e1;
   --color-sky: #00a0c4;
   --color-teal: #006f79;
   --color-coral: #ff695e;
@@ -49,26 +54,70 @@
   --color-cup-slate-text: #d7d9ec;
   --color-cup-slate-muted: #aeb2cf;
 
-  --font-heading: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
-  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: "Lilita One", "Nunito Variable", system-ui, sans-serif;
+  --font-body: "Nunito Variable", system-ui, sans-serif;
   --font-display: "Clash Display", "Avenir Next", system-ui, sans-serif;
   --font-cup: "Inter Variable", system-ui, sans-serif;
 
   --text-hero: 7.25rem;
   --text-hero--line-height: 0.92;
+  --text-display: 6.5rem;
+  --text-display--line-height: 0.92;
+  --text-display-sm: 3.5rem;
+  --text-display-sm--line-height: 0.95;
+  --text-title: 4rem;
+  --text-title--line-height: 1;
+  --text-title-sm: 2.75rem;
+  --text-title-sm--line-height: 1;
+  --text-quote: 2.125rem;
+  --text-quote--line-height: 1.15;
+
+  --container-page: 77.5rem;
+
+  --radius-card: 1.375rem;
+  --radius-photo: 1.75rem;
+
+  --shadow-drop-sm: 0 3px 0 var(--color-navy);
+  --shadow-drop: 0 4px 0 var(--color-navy);
+  --shadow-drop-lg: 0 10px 0 var(--color-navy);
+  --shadow-offset-sm: 6px 6px 0 var(--color-navy);
+  --shadow-offset: 8px 8px 0 var(--color-navy);
+  --shadow-offset-lg: 12px 12px 0 var(--color-navy);
+}
+
+@layer base {
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @layer components {
   .page-title {
-    @apply font-heading text-3xl font-extrabold text-navy md:text-5xl;
+    @apply font-heading text-display-sm font-normal text-navy md:text-display;
   }
 
   .section-title {
-    @apply font-heading text-2xl font-bold text-navy md:text-3xl;
+    @apply font-heading text-title-sm font-normal text-navy md:text-title;
+  }
+
+  .card-title {
+    @apply font-heading text-2xl leading-tight font-normal text-navy;
   }
 
   .subsection-title {
-    @apply font-heading text-lg font-bold text-navy;
+    @apply font-heading text-xl font-normal text-navy;
+  }
+
+  .stat-value {
+    @apply font-heading text-5xl leading-none md:text-6xl;
+  }
+
+  .quote-text {
+    @apply font-heading text-2xl md:text-quote;
+  }
+
+  .lead {
+    @apply text-lg font-bold md:text-xl;
   }
 
   .eyebrow {

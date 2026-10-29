@@ -1,0 +1,26 @@
+---
+export type EyebrowTone = "coral" | "sky" | "mist" | "cloud" | "ice";
+
+interface Props {
+  tone: EyebrowTone;
+}
+
+const TONE_CLASSES: Record<EyebrowTone, string> = {
+  coral: "bg-coral text-ink",
+  sky: "bg-sky text-ink",
+  mist: "bg-mist text-ink",
+  cloud: "bg-cloud text-navy",
+  ice: "bg-ice text-navy",
+};
+
+const { tone } = Astro.props;
+---
+
+<span
+  class:list={[
+    "inline-block self-start rounded-full px-3.5 py-1.5 text-xs font-extrabold tracking-widest uppercase md:text-sm",
+    TONE_CLASSES[tone],
+  ]}
+>
+  <slot />
+</span>

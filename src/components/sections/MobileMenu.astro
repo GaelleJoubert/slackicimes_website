@@ -1,0 +1,65 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
+import type { HeaderTone } from "./header-tone";
+import SiteNavigation from "./SiteNavigation.astro";
+
+interface Props {
+  locale: Locale;
+  pageSlug: string;
+  tone: HeaderTone;
+}
+
+const TOGGLE_TONE_CLASSES: Record<HeaderTone, string> = {
+  light: "border-navy text-navy bg-paper",
+  dark: "border-paper text-paper bg-navy",
+};
+
+const { locale, pageSlug, tone } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<details class="group">
+  <summary
+    aria-label={strings.navigation.menuToggle}
+    class:list={[
+      "flex size-11 cursor-pointer list-none items-center justify-center rounded-full border-3",
+      TOGGLE_TONE_CLASSES[tone],
+    ]}
+  >
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      class="size-5 group-open:hidden"
+    >
+      <path d="M3 5h14M3 10h14M3 15h14" />
+    </svg>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      class="hidden size-5 group-open:block"
+    >
+      <path d="M5 5l10 10M15 5L5 15" />
+    </svg>
+  </summary>
+  <div class="bg-paper border-navy absolute inset-x-0 top-full z-20 border-b-3 px-4 pt-2 pb-6">
+    <SiteNavigation
+      locale={locale}
+      currentPageSlug={pageSlug}
+      layout="stacked"
+      tone="light"
+    />
+    <div class="border-cloud mt-4 border-t-2 pt-4">
+      <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone="light" />
+    </div>
+  </div>
+</details>

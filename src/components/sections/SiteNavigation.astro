@@ -4,6 +4,7 @@ import { MAIN_NAVIGATION } from "../../i18n/navigation";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import NavigationLink from "../ui/NavigationLink.astro";
+import type { HeaderTone } from "./header-tone";
 
 type NavigationLayout = "inline" | "stacked";
 
@@ -11,28 +12,33 @@ interface Props {
   locale: Locale;
   currentPageSlug: string;
   layout: NavigationLayout;
+  tone: HeaderTone;
 }
 
 const LAYOUT_CLASSES: Record<
   NavigationLayout,
-  { list: string; item: string; submenu: string; submenuLink: string }
+  { list: string; item: string; submenu: string }
 > = {
   inline: {
-    list: "flex items-center gap-6",
+    list: "flex items-center gap-1",
     item: "group relative",
     submenu:
-      "bg-paper absolute top-full left-0 hidden min-w-56 rounded-lg py-2 shadow-lg group-focus-within:block group-hover:block",
-    submenuLink: "px-4",
+      "absolute top-full left-0 hidden pt-2 group-focus-within:block group-hover:block",
   },
   stacked: {
-    list: "flex flex-col",
+    list: "flex flex-col gap-1",
     item: "",
-    submenu: "border-mist ml-1 border-l pl-4",
-    submenuLink: "",
+    submenu: "border-coral ml-5 border-l-3 pl-2",
   },
 };
 
-const { locale, currentPageSlug, layout } = Astro.props;
+const SUBMENU_LIST_CLASSES: Record<NavigationLayout, string> = {
+  inline:
+    "bg-paper border-navy shadow-offset-sm flex min-w-60 flex-col rounded-card border-3 p-2",
+  stacked: "flex flex-col",
+};
+
+const { locale, currentPageSlug, layout, tone } = Astro.props;
 const strings = uiStrings(locale);
 const layoutClasses = LAYOUT_CLASSES[layout];
 ---
@@ -44,23 +50,26 @@ const layoutClasses = LAYOUT_CLASSES[layout];
         <NavigationLink
           href={localizedPath(item.pageSlug, locale)}
           isCurrentPage={item.pageSlug === currentPageSlug}
+          tone={tone}
         >
           {strings.navigation[item.labelKey]}
         </NavigationLink>
         {item.children && (
-          <ul class={layoutClasses.submenu}>
-            {item.children.map((child) => (
-              <li>
-                <NavigationLink
-                  href={localizedPath(child.pageSlug, locale)}
-                  isCurrentPage={child.pageSlug === currentPageSlug}
-                  class={layoutClasses.submenuLink}
-                >
-                  {strings.navigation[child.labelKey]}
-                </NavigationLink>
-              </li>
-            ))}
-          </ul>
+          <div class={layoutClasses.submenu}>
+            <ul class={SUBMENU_LIST_CLASSES[layout]}>
+              {item.children.map((child) => (
+                <li>
+                  <NavigationLink
+                    href={localizedPath(child.pageSlug, locale)}
+                    isCurrentPage={child.pageSlug === currentPageSlug}
+                    tone="light"
+                  >
+                    {strings.navigation[child.labelKey]}
+                  </NavigationLink>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </li>
     ))}
