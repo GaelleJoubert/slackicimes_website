@@ -35,7 +35,7 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
         ))}
         <div class="hidden flex-wrap gap-3.5 md:flex">
           <LinkButton href={stagesPagePath}>
-            {strings.home.seeStagesButton}
+            {strings.common.seeStagesButton}
           </LinkButton>
           <LinkButton
             href={localizedPath("inscriptions", locale)}
@@ -70,7 +70,7 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
     </ul>
     <p class="text-navy text-center font-bold">{teaser.datesNote}</p>
     <LinkButton href={stagesPagePath} class="md:hidden">
-      {strings.home.seeStagesButton}
+      {strings.common.seeStagesButton}
     </LinkButton>
   </Container>
 </section>

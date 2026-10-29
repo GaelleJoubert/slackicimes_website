@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
-import CoursesTeaser from "../../components/sections/registrations/CoursesTeaser.astro";
+import CalloutCard from "../../components/ui/CalloutCard.astro";
 import Container from "../../components/ui/Container.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
@@ -83,10 +83,18 @@ const stagesPagePath = localizedPath(STAGES_PAGE_SLUG, locale);
   </section>
 
   {feature && (
-    <CoursesTeaser
-      title={feature.title}
-      paragraphs={feature.paragraphs}
-      link={{ href: stagesPagePath, label: strings.common.learnMore }}
-    />
+    <section class="pb-14 md:pb-28">
+      <Container>
+        <CalloutCard title={feature.title} paragraphs={feature.paragraphs}>
+          <LinkButton
+            href={stagesPagePath}
+            variant="secondaryOnDark"
+            class="md:justify-self-end"
+          >
+            {strings.common.learnMore}
+          </LinkButton>
+        </CalloutCard>
+      </Container>
+    </section>
   )}
 </BaseLayout>

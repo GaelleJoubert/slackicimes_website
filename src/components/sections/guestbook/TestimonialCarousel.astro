@@ -1,0 +1,167 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { isShortTestimonial } from "../../../lib/testimonial";
+import ChevronIcon from "../../ui/ChevronIcon.astro";
+import QuoteCard, { type QuoteTone } from "../../ui/QuoteCard.astro";
+
+interface Props {
+  testimonials: CollectionEntry<"testimonials">[];
+  locale: Locale;
+}
+
+const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
+const ROUND_BUTTON_CLASSES =
+  "border-navy bg-paper text-navy hover:bg-navy hover:text-paper flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition md:size-14";
+
+const { testimonials, locale } = Astro.props;
+const strings = uiStrings(locale).testimonials;
+const slides = await Promise.all(
+  testimonials.map(async (testimonial, testimonialIndex) => ({
+    testimonial,
+    tone: QUOTE_TONES[testimonialIndex % QUOTE_TONES.length],
+    isShort: isShortTestimonial(testimonial.body ?? ""),
+    Content: (await render(testimonial)).Content,
+  })),
+);
+---
+
+<div
+  data-testimonial-carousel
+  role="region"
+  aria-roledescription={strings.carouselRoleDescription}
+  aria-label={strings.carouselLabel}
+  class="flex flex-col gap-5.5 md:gap-9"
+>
+  <ul
+    aria-live="polite"
+    class="grid min-h-130 gap-5 md:min-h-120 md:grid-cols-2 md:gap-10"
+  >
+    {slides.map(({ testimonial, tone, isShort, Content }) => (
+      <li data-carousel-slide>
+        <QuoteCard
+          author={testimonial.data.author}
+          context={testimonial.data.stageName}
+          tone={tone}
+          emphasis={isShort ? "display" : "body"}
+          showInitial
+          class="shadow-drop md:shadow-drop-lg h-full"
+        >
+          <Content />
+        </QuoteCard>
+      </li>
+    ))}
+  </ul>
+  <div data-carousel-controls hidden>
+    <div class="flex items-center gap-3.5 md:gap-6">
+      <button
+        type="button"
+        data-carousel-previous
+        aria-label={strings.previousButton}
+        class={ROUND_BUTTON_CLASSES}
+      >
+        <ChevronIcon direction="left" />
+      </button>
+      <div class="flex flex-1 flex-col items-center gap-1.5 md:flex-row md:gap-6">
+        <div aria-hidden="true" class="relative h-3 w-full md:h-4 md:flex-1">
+          <span class="bg-mist absolute inset-x-1.5 top-1 h-1 rounded-full md:inset-x-2 md:top-1.5" />
+          <span
+            data-carousel-progress
+            class="bg-coral absolute inset-x-1.5 top-1 h-1 origin-left scale-x-0 rounded-full transition-transform md:inset-x-2 md:top-1.5"
+          />
+          <span class="bg-navy absolute top-0 left-0 size-3 rounded-full md:size-4" />
+          <span class="bg-navy absolute top-0 right-0 size-3 rounded-full md:size-4" />
+        </div>
+        <p
+          data-carousel-page-label
+          class="text-navy text-sm font-extrabold tabular-nums md:text-base"
+        />
+      </div>
+      <button
+        type="button"
+        data-carousel-next
+        aria-label={strings.nextButton}
+        class={ROUND_BUTTON_CLASSES}
+      >
+        <ChevronIcon direction="right" />
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    isOnPage,
+    pageCount,
+    pageLabel,
+    wrapPageIndex,
+  } from "../../../lib/pagination";
+
+  const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
+  const SLIDES_PER_PAGE_ON_MOBILE = 1;
+  const SLIDES_PER_PAGE_ON_DESKTOP = 2;
+
+  function requireElement<Found extends Element>(
+    carousel: Element,
+    selector: string,
+  ): Found {
+    const element = carousel.querySelector<Found>(selector);
+    if (!element) {
+      throw new Error(`Testimonial carousel is missing "${selector}".`);
+    }
+    return element;
+  }
+
+  function setUpCarousel(carousel: HTMLElement) {
+    const slides = [
+      ...carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
+    ];
+    const controls = requireElement<HTMLElement>(
+      carousel,
+      "[data-carousel-controls]",
+    );
+    const progress = requireElement<HTMLElement>(
+      carousel,
+      "[data-carousel-progress]",
+    );
+    const label = requireElement<HTMLElement>(
+      carousel,
+      "[data-carousel-page-label]",
+    );
+    const desktopQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    let currentPageIndex = 0;
+
+    const slidesPerPage = () =>
+      desktopQuery.matches
+        ? SLIDES_PER_PAGE_ON_DESKTOP
+        : SLIDES_PER_PAGE_ON_MOBILE;
+
+    function showPage(pageIndex: number) {
+      const perPage = slidesPerPage();
+      const totalPages = pageCount(slides.length, perPage);
+      currentPageIndex = wrapPageIndex(pageIndex, totalPages);
+      slides.forEach((slide, slideIndex) => {
+        slide.hidden = !isOnPage(slideIndex, currentPageIndex, perPage);
+      });
+      label.textContent = pageLabel(currentPageIndex, totalPages);
+      progress.style.scale = `${(currentPageIndex + 1) / totalPages} 1`;
+    }
+
+    requireElement(carousel, "[data-carousel-previous]").addEventListener(
+      "click",
+      () => showPage(currentPageIndex - 1),
+    );
+    requireElement(carousel, "[data-carousel-next]").addEventListener(
+      "click",
+      () => showPage(currentPageIndex + 1),
+    );
+    desktopQuery.addEventListener("change", () => showPage(0));
+    controls.hidden = false;
+    showPage(0);
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-testimonial-carousel]")
+    .forEach(setUpCarousel);
+</script>

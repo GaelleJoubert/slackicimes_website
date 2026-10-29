@@ -4,6 +4,7 @@ const fr = {
   common: {
     learnMore: "En savoir plus",
     discoverWorldCupButton: "Découvrir la Coupe du Monde",
+    seeStagesButton: "Voir les stages",
   },
   accessibility: {
     skipToContent: "Aller au contenu",
@@ -29,7 +30,6 @@ const fr = {
   home: {
     statsLabel: "Slack'icîmes en bref",
     discoverTeamButton: "Découvrir l'équipe",
-    seeStagesButton: "Voir les stages",
     festivalButton: "Le festival et ses éditions",
   },
   footer: {
@@ -90,6 +90,14 @@ const fr = {
     title: "Livre d'or",
     intro: "Témoignages de nos stagiaires",
     readAllLink: "Lire tout le livre d'or",
+    carouselLabel: "Témoignages",
+    carouselRoleDescription: "carrousel",
+    previousButton: "Témoignages précédents",
+    nextButton: "Témoignages suivants",
+    callToActionTitle: "À votre tour !",
+    callToActionText:
+      "Découvrez nos stages, ou racontez-nous votre expérience.",
+    writeUsButton: "Nous écrire",
   },
   contactBlock: {
     title: "Contactez-nous",
@@ -130,6 +138,7 @@ const en: UiStrings = {
   common: {
     learnMore: "Learn more",
     discoverWorldCupButton: "Discover the World Cup",
+    seeStagesButton: "See the courses",
   },
   accessibility: {
     skipToContent: "Skip to content",
@@ -155,7 +164,6 @@ const en: UiStrings = {
   home: {
     statsLabel: "Slack'icîmes at a glance",
     discoverTeamButton: "Meet the team",
-    seeStagesButton: "See the courses",
     festivalButton: "The festival and its editions",
   },
   footer: {
@@ -214,8 +222,15 @@ const en: UiStrings = {
   },
   testimonials: {
     title: "Guestbook",
-    intro: "Feedback from our trainees",
+    intro: "Testimonials from our trainees",
     readAllLink: "Read the whole guestbook",
+    carouselLabel: "Testimonials",
+    carouselRoleDescription: "carousel",
+    previousButton: "Previous testimonials",
+    nextButton: "Next testimonials",
+    callToActionTitle: "Your turn!",
+    callToActionText: "Discover our courses, or tell us about your experience.",
+    writeUsButton: "Write to us",
   },
   contactBlock: {
     title: "Contact us",

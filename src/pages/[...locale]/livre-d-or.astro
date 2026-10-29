@@ -1,11 +1,15 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { render } from "astro:content";
-import TestimonialList from "../../components/sections/TestimonialList.astro";
-import Section from "../../components/ui/Section.astro";
+import TestimonialCarousel from "../../components/sections/guestbook/TestimonialCarousel.astro";
+import CalloutCard from "../../components/ui/CalloutCard.astro";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
 import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
-import { buildLocaleStaticPaths } from "../../i18n/routes";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { lowercaseFirstLetter } from "../../lib/format";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -15,9 +19,10 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const PAGE_SLUG = "livre-d-or";
 
 const { locale } = Astro.props;
+const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { Content: Intro } = await render(page);
 const testimonials = await getLocalizedCollection("testimonials", locale);
+const testimonialCountText = `${testimonials.length} ${lowercaseFirstLetter(strings.testimonials.intro, locale)}`;
 ---
 
 <BaseLayout
@@ -26,11 +31,34 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <Section>
-    <h1 class="page-title">{page.data.heading}</h1>
-    <div class="text-slate mt-4 mb-8 text-lg">
-      <Intro />
-    </div>
-    <TestimonialList testimonials={testimonials} />
-  </Section>
+  <section class="pt-6 pb-14 md:pt-10 md:pb-28">
+    <Container class="flex flex-col gap-5 md:gap-12">
+      <div class="flex flex-col items-center gap-2.5 text-center md:gap-3.5">
+        {page.data.eyebrow && (
+          <div>
+            <Eyebrow tone="coral">{page.data.eyebrow}</Eyebrow>
+          </div>
+        )}
+        <h1 class="page-title">{page.data.heading}</h1>
+        <p class="lead text-slate">{testimonialCountText}</p>
+      </div>
+      <TestimonialCarousel testimonials={testimonials} locale={locale} />
+      <CalloutCard
+        title={strings.testimonials.callToActionTitle}
+        paragraphs={[strings.testimonials.callToActionText]}
+      >
+        <div class="flex flex-col gap-3">
+          <LinkButton href={localizedPath("stages-highline", locale)}>
+            {strings.common.seeStagesButton}
+          </LinkButton>
+          <LinkButton
+            href={localizedPath("contact", locale)}
+            variant="secondaryOnDark"
+          >
+            {strings.testimonials.writeUsButton}
+          </LinkButton>
+        </div>
+      </CalloutCard>
+    </Container>
+  </section>
 </BaseLayout>
