@@ -25,6 +25,13 @@ const fr = {
   languageSwitcher: {
     label: "Langue",
   },
+  home: {
+    statsLabel: "Slack'icîmes en bref",
+    discoverTeamButton: "Découvrir l'équipe",
+    seeStagesButton: "Voir les stages",
+    discoverWorldCupButton: "Découvrir la Coupe du Monde",
+    festivalButton: "Le festival et ses éditions",
+  },
   footer: {
     tagline: "Highline & slackline aux Arcs, Savoie",
     siteHeading: "Le site",
@@ -62,6 +69,7 @@ const fr = {
   testimonials: {
     title: "Livre d'or",
     intro: "Témoignages de nos stagiaires",
+    readAllLink: "Lire tout le livre d'or",
   },
   contactBlock: {
     title: "Contactez-nous",
@@ -123,6 +131,13 @@ const en: UiStrings = {
   languageSwitcher: {
     label: "Language",
   },
+  home: {
+    statsLabel: "Slack'icîmes at a glance",
+    discoverTeamButton: "Meet the team",
+    seeStagesButton: "See the courses",
+    discoverWorldCupButton: "Discover the World Cup",
+    festivalButton: "The festival and its editions",
+  },
   footer: {
     tagline: "Highline & slackline in Les Arcs, Savoie",
     siteHeading: "The site",
@@ -160,6 +175,7 @@ const en: UiStrings = {
   testimonials: {
     title: "Guestbook",
     intro: "Feedback from our trainees",
+    readAllLink: "Read the whole guestbook",
   },
   contactBlock: {
     title: "Contact us",

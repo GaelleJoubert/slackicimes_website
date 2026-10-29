@@ -1,0 +1,40 @@
+---
+export type QuoteTone = "coral" | "ice";
+
+interface Props {
+  author: string;
+  context: string;
+  tone: QuoteTone;
+}
+
+const TONE_CLASSES: Record<QuoteTone, { card: string; mark: string }> = {
+  coral: { card: "bg-coral", mark: "text-paper" },
+  ice: { card: "bg-ice", mark: "text-sky" },
+};
+
+const { author, context, tone } = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<figure
+  class:list={[
+    "text-ink rounded-card md:rounded-photo flex flex-col gap-3 p-6 md:gap-4 md:p-10",
+    toneClasses.card,
+  ]}
+>
+  <span
+    aria-hidden="true"
+    class:list={[
+      "font-heading h-8 text-7xl leading-none md:h-12 md:text-8xl",
+      toneClasses.mark,
+    ]}
+  >
+    “
+  </span>
+  <blockquote class="testimonial-text flex flex-col gap-3">
+    <slot />
+  </blockquote>
+  <figcaption class="font-extrabold">
+    {author} · {context}
+  </figcaption>
+</figure>

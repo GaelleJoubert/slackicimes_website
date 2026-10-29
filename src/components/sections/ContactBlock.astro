@@ -3,26 +3,35 @@ import type { Locale } from "../../i18n/locales";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import ContactDetails from "../ui/ContactDetails.astro";
+import Container from "../ui/Container.astro";
 import LinkButton from "../ui/LinkButton.astro";
-import Section from "../ui/Section.astro";
-import SectionHeading from "../ui/SectionHeading.astro";
 
 interface Props {
+  text: string;
   locale: Locale;
 }
 
-const CONTACT_PAGE_SLUG = "contact";
-
-const { locale } = Astro.props;
+const { text, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<Section tone="mist">
-  <SectionHeading title={strings.contactBlock.title} />
-  <ContactDetails locale={locale} layout="row" />
-  <div class="mt-8">
-    <LinkButton href={localizedPath(CONTACT_PAGE_SLUG, locale)}>
-      {strings.contactBlock.writeUsButton}
-    </LinkButton>
-  </div>
-</Section>
+<section class="pb-14 md:pb-28">
+  <Container>
+    <div class="bg-sky text-ink shadow-drop md:shadow-drop-lg grid items-center gap-6 rounded-4xl p-6 md:grid-cols-2 md:gap-12 md:p-14">
+      <div class="flex flex-col gap-4">
+        <h2 class="section-title text-ink">{strings.contactBlock.title}</h2>
+        <p class="font-bold">{text}</p>
+        <LinkButton
+          href={localizedPath("contact", locale)}
+          variant="navy"
+          class="md:self-start"
+        >
+          {strings.contactBlock.writeUsButton}
+        </LinkButton>
+      </div>
+      <div class="bg-paper rounded-card p-5 md:rounded-3xl md:p-8">
+        <ContactDetails locale={locale} layout="grid" />
+      </div>
+    </div>
+  </Container>
+</section>

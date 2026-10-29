@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { uiStrings } from "../../../i18n/ui";
+import Container from "../../ui/Container.astro";
+import FestivalName from "../../ui/FestivalName.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  teaser: CollectionEntry<"home">["data"]["festivalTeaser"];
+  gallery: CollectionEntry<"galleries">;
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 768px) 400px, 240px";
+
+const { teaser, gallery, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="bg-navy text-paper py-14 md:py-26">
+  <Container class="flex flex-col gap-6 md:gap-12">
+    <div class="max-w-190">
+      <SectionIntro
+        title={strings.navigation.winterFestislack}
+        eyebrow={teaser.eyebrow}
+        eyebrowTone="sky"
+        theme="dark"
+      >
+        <FestivalName slot="title" />
+        {teaser.paragraphs.map((paragraph) => (
+          <p class="text-cloud">{paragraph}</p>
+        ))}
+        <LinkButton
+          href={localizedPath("winter-festislack", locale)}
+          variant="secondaryOnDark"
+          class="hidden self-start md:inline-flex"
+        >
+          {strings.home.festivalButton}
+        </LinkButton>
+      </SectionIntro>
+    </div>
+    <ul class="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pt-2 pb-3 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:p-0">
+      {gallery.data.photos.map((photo) => (
+        <li class="w-60 shrink-0 snap-start md:w-auto">
+          <figure class="flex flex-col gap-2">
+            <FramedPicture
+              image={photo.image}
+              alt={photo.alt}
+              widths={PHOTO_WIDTHS}
+              sizes={PHOTO_SIZES}
+              frame="bordered"
+              class="h-43 md:h-65"
+            />
+            {photo.caption && (
+              <figcaption class="text-mist text-sm font-bold md:hidden">
+                {photo.caption}
+              </figcaption>
+            )}
+          </figure>
+        </li>
+      ))}
+    </ul>
+    <LinkButton
+      href={localizedPath("winter-festislack", locale)}
+      variant="secondaryOnDark"
+      class="md:hidden"
+    >
+      {strings.home.festivalButton}
+    </LinkButton>
+  </Container>
+</section>

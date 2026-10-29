@@ -68,28 +68,46 @@ const testimonials = defineCollection({
   }),
 });
 
+const eyebrowTone = z.enum(["coral", "sky", "mist", "cloud", "ice"]);
+
 const home = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/home" }),
   schema: ({ image }) => {
     const illustration = z.object({ image: image(), alt: nonEmptyText });
-    const textBlock = z.object({
-      title: nonEmptyText,
+    const teaserIntro = z.object({
+      eyebrow: nonEmptyText,
       paragraphs: z.array(nonEmptyText).min(1),
     });
     return z.object({
+      hero: z.object({
+        eyebrow: nonEmptyText,
+        photos: z.array(image()).min(1),
+      }),
       highlights: z
         .array(
           z.object({
             eyebrow: nonEmptyText,
+            tone: eyebrowTone,
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,
-            illustration,
           }),
         )
         .min(1),
-      stagesTeaser: textBlock.extend({ illustration }),
-      festivalTeaser: textBlock,
+      stats: z
+        .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
+        .min(1),
+      associationTeaser: teaserIntro.extend({
+        badge: nonEmptyText,
+        illustration,
+      }),
+      stagesTeaser: teaserIntro.extend({
+        title: nonEmptyText,
+        datesNote: nonEmptyText,
+        illustration,
+      }),
+      festivalTeaser: teaserIntro,
+      contactTeaser: z.object({ text: nonEmptyText }),
     });
   },
 });

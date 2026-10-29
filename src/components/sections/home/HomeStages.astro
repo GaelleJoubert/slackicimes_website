@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { uiStrings } from "../../../i18n/ui";
+import { formatPriceInEuros } from "../../../lib/format";
+import Container from "../../ui/Container.astro";
+import CourseCard from "../../ui/CourseCard.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  teaser: CollectionEntry<"home">["data"]["stagesTeaser"];
+  stages: CollectionEntry<"stages">[];
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+
+const { teaser, stages, locale } = Astro.props;
+const strings = uiStrings(locale);
+const stagesPagePath = localizedPath("stages-highline", locale);
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+---
+
+<section class="bg-blush py-14 md:py-26">
+  <Container class="flex flex-col gap-6 md:gap-12">
+    <div class="grid items-center gap-6 md:grid-cols-2 md:gap-18">
+      <SectionIntro title={teaser.title} eyebrow={teaser.eyebrow}>
+        {teaser.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <div class="hidden flex-wrap gap-3.5 md:flex">
+          <LinkButton href={stagesPagePath}>
+            {strings.home.seeStagesButton}
+          </LinkButton>
+          <LinkButton
+            href={localizedPath("inscriptions", locale)}
+            variant="secondary"
+          >
+            {strings.stages.registrationsButton}
+          </LinkButton>
+        </div>
+      </SectionIntro>
+      <FramedPicture
+        image={teaser.illustration.image}
+        alt={teaser.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        frame="offsetCoral"
+        class="-order-1 h-58 md:order-none md:h-105"
+      />
+    </div>
+    <ul class="grid gap-2.5 md:grid-cols-5 md:gap-4">
+      {stages.map((stage) => (
+        <li>
+          <CourseCard
+            href={`${stagesPagePath}#${entrySlug(stage.id)}`}
+            name={stage.data.name}
+            details={`${stage.data.duration} · ${stage.data.level}`}
+            price={formatPriceInEuros(stage.data.priceInEuros, languageTag)}
+          />
+        </li>
+      ))}
+    </ul>
+    <p class="text-navy text-center font-bold">{teaser.datesNote}</p>
+    <LinkButton href={stagesPagePath} class="md:hidden">
+      {strings.home.seeStagesButton}
+    </LinkButton>
+  </Container>
+</section>

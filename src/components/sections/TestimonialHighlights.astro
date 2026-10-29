@@ -1,0 +1,47 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import Container from "../ui/Container.astro";
+import QuoteCard, { type QuoteTone } from "../ui/QuoteCard.astro";
+import SectionIntro from "../ui/SectionIntro.astro";
+
+interface Props {
+  testimonials: CollectionEntry<"testimonials">[];
+  locale: Locale;
+}
+
+const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
+
+const { testimonials, locale } = Astro.props;
+const strings = uiStrings(locale);
+const featuredTestimonials = await Promise.all(
+  testimonials.slice(0, QUOTE_TONES.length).map(async (testimonial, index) => ({
+    data: testimonial.data,
+    tone: QUOTE_TONES[index] ?? "coral",
+    Content: (await render(testimonial)).Content,
+  })),
+);
+---
+
+<section class="py-14 md:py-28">
+  <Container class="flex flex-col gap-8 md:gap-12">
+    <SectionIntro title={strings.testimonials.title} align="center">
+      <p class="text-slate font-bold">{strings.testimonials.intro}</p>
+    </SectionIntro>
+    <div class="grid items-start gap-5 md:grid-cols-2 md:gap-10">
+      {featuredTestimonials.map(({ data, tone, Content }) => (
+        <QuoteCard author={data.author} context={data.stageName} tone={tone}>
+          <Content />
+        </QuoteCard>
+      ))}
+    </div>
+    <a
+      href={localizedPath("livre-d-or", locale)}
+      class="text-teal self-center font-extrabold underline underline-offset-4"
+    >
+      {strings.testimonials.readAllLink}
+    </a>
+  </Container>
+</section>
