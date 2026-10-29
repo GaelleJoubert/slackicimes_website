@@ -2,10 +2,18 @@
 import { render, type CollectionEntry } from "astro:content";
 import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
-import { isShortTestimonial } from "../../lib/testimonial";
+import {
+  isShortTestimonial,
+  largestFittingTextSize,
+  testimonialParagraphs,
+  type TextSizeCandidate,
+} from "../../lib/testimonial";
 import { ROUND_ICON_BUTTON_CLASSES } from "../ui/button-styles";
 import ChevronIcon from "../ui/ChevronIcon.astro";
-import QuoteCard, { type QuoteTone } from "../ui/QuoteCard.astro";
+import QuoteCard, {
+  type QuoteTextSize,
+  type QuoteTone,
+} from "../ui/QuoteCard.astro";
 
 interface Props {
   testimonials: CollectionEntry<"testimonials">[];
@@ -13,6 +21,30 @@ interface Props {
 }
 
 const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
+// Sized for the 375px wide mobile card (min-h-104 minus its padding, quote mark and author row).
+const MOBILE_QUOTE_TEXT_BOX = { heightPx: 272, paragraphGapPx: 12 };
+const DISPLAY_TEXT_SIZES: TextSizeCandidate<QuoteTextSize>[] = [
+  { name: "displayLarge", charactersPerLine: 15, lineHeightPx: 40 },
+  { name: "displayMedium", charactersPerLine: 19, lineHeightPx: 36 },
+  { name: "display", charactersPerLine: 24, lineHeightPx: 32 },
+];
+const BODY_TEXT_SIZES: TextSizeCandidate<QuoteTextSize>[] = [
+  { name: "bodyExtraLarge", charactersPerLine: 27, lineHeightPx: 28 },
+  { name: "bodyLarge", charactersPerLine: 31, lineHeightPx: 28 },
+  { name: "body", charactersPerLine: 34, lineHeightPx: 24 },
+  { name: "bodySmall", charactersPerLine: 41, lineHeightPx: 20 },
+];
+
+function mobileTextSize(markdown: string): QuoteTextSize {
+  const candidates = isShortTestimonial(markdown)
+    ? DISPLAY_TEXT_SIZES
+    : BODY_TEXT_SIZES;
+  return largestFittingTextSize(
+    testimonialParagraphs(markdown),
+    candidates,
+    MOBILE_QUOTE_TEXT_BOX,
+  );
+}
 
 const { testimonials, locale } = Astro.props;
 const allStrings = uiStrings(locale);
@@ -21,7 +53,7 @@ const slides = await Promise.all(
   testimonials.map(async (testimonial, testimonialIndex) => ({
     testimonial,
     tone: QUOTE_TONES[testimonialIndex % QUOTE_TONES.length],
-    isShort: isShortTestimonial(testimonial.body ?? ""),
+    textSize: mobileTextSize(testimonial.body ?? ""),
     Content: (await render(testimonial)).Content,
   })),
 );
@@ -38,13 +70,13 @@ const slides = await Promise.all(
     aria-live="polite"
     class="grid min-h-104 gap-5 md:min-h-120 md:grid-cols-2 md:gap-10"
   >
-    {slides.map(({ testimonial, tone, isShort, Content }) => (
+    {slides.map(({ testimonial, tone, textSize, Content }) => (
       <li data-carousel-slide>
         <QuoteCard
           author={testimonial.data.author}
           context={testimonial.data.stageName}
           tone={tone}
-          emphasis={isShort ? "display" : "body"}
+          textSize={textSize}
           showInitial
           class="shadow-drop md:shadow-drop-lg h-full"
         >

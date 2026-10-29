@@ -178,7 +178,7 @@
 
   .testimonial-text {
     & p:first-child {
-      @apply font-heading text-2xl md:text-quote;
+      @apply font-heading;
     }
   }
 

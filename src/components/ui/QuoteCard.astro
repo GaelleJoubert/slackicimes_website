@@ -2,13 +2,20 @@
 import { authorInitial } from "../../lib/testimonial";
 
 export type QuoteTone = "coral" | "ice";
-type QuoteEmphasis = "display" | "body";
+export type QuoteTextSize =
+  | "displayLarge"
+  | "displayMedium"
+  | "display"
+  | "bodyExtraLarge"
+  | "bodyLarge"
+  | "body"
+  | "bodySmall";
 
 interface Props {
   author: string;
   context: string;
   tone: QuoteTone;
-  emphasis?: QuoteEmphasis;
+  textSize?: QuoteTextSize;
   showInitial?: boolean;
   class?: string;
 }
@@ -25,16 +32,21 @@ const TONE_CLASSES: Record<
   ice: { card: "bg-ice", mark: "text-sky", initial: "bg-navy text-paper" },
 };
 
-const EMPHASIS_CLASSES: Record<QuoteEmphasis, string> = {
-  display: "testimonial-text",
-  body: "text-sm md:text-lg",
+const TEXT_SIZE_CLASSES: Record<QuoteTextSize, string> = {
+  displayLarge: "testimonial-text text-4xl md:text-quote",
+  displayMedium: "testimonial-text text-3xl md:text-quote",
+  display: "testimonial-text text-2xl md:text-quote",
+  bodyExtraLarge: "text-xl md:text-lg",
+  bodyLarge: "text-lg",
+  body: "text-base md:text-lg",
+  bodySmall: "text-sm md:text-lg",
 };
 
 const {
   author,
   context,
   tone,
-  emphasis = "display",
+  textSize = "display",
   showInitial = false,
   class: extraClasses,
 } = Astro.props;
@@ -57,7 +69,7 @@ const toneClasses = TONE_CLASSES[tone];
   >
     “
   </span>
-  <blockquote class:list={["flex flex-col gap-3", EMPHASIS_CLASSES[emphasis]]}>
+  <blockquote class:list={["flex flex-col gap-3", TEXT_SIZE_CLASSES[textSize]]}>
     <slot />
   </blockquote>
   <figcaption class="mt-auto flex items-center gap-2.5 font-extrabold md:gap-3">
