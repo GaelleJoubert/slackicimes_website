@@ -14,7 +14,7 @@ The step by step migration checklist lives in the shared doc: https://claude.ai/
 | Need                       | Choice                                                                                             |
 | -------------------------- | -------------------------------------------------------------------------------------------------- |
 | Framework                  | Astro (static output) + Tailwind CSS                                                               |
-| Hosting                    | GitHub Pages, deployed by GitHub Actions on push to `main`                                         |
+| Hosting                    | GitHub Pages, deployed by GitHub Actions on push to `main` (`dev` integrates work before release)  |
 | Domain and DNS             | OVH (domain only)                                                                                  |
 | Contact form               | Web3Forms (public access key, honeypot spam field)                                                 |
 | Registrations and payments | HelloAsso (already used by the association), linked or embedded                                    |

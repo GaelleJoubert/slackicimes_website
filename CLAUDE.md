@@ -169,7 +169,10 @@ add one there.
 
 ## Git
 
-- `main` is the release branch (every push deploys): reach it only through pull requests.
+- `dev` is the integration branch and the base for local work: branch from `dev` and open every
+  pull request against `dev`.
+- `main` is the release branch (every push deploys): it only receives pull requests from `dev`,
+  opened by the user when a release is ready.
 - Commit messages and PR titles: `type: Capitalized sentence`, with `fix`, `feat`, `refactor` or
   `chore` (e.g. `fix: Restore the English title of the festival page`).
 
@@ -189,8 +192,8 @@ npm scripts only, with the Node version from `.nvmrc`:
 
 Claude may run the dev server and builds, and look at pages in the built-in browser to compare them
 with the Wix site (prefer the `agent-browser` skill over raw Playwright). Claude never deploys,
-never pushes to `main`, and never changes DNS, GitHub Pages settings or third-party accounts:
-those belong to the user.
+never pushes to `main` or `dev`, never opens a pull request against `main`, and never changes DNS,
+GitHub Pages settings or third-party accounts: those belong to the user.
 
 ### Definition of done
 
