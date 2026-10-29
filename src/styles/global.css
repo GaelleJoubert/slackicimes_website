@@ -128,16 +128,8 @@
     @apply font-heading text-2xl leading-tight md:text-3xl;
   }
 
-  .quote-text {
-    @apply font-heading text-2xl md:text-quote;
-  }
-
   .lead {
     @apply text-lg font-bold md:text-xl;
-  }
-
-  .eyebrow {
-    @apply text-sm font-bold tracking-wide text-teal uppercase;
   }
 
   .caption {

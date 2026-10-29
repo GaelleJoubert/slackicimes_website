@@ -43,7 +43,6 @@ const fr = {
     formulasTitle: "Nos formules",
     formulasIntro:
       "Différentes formules pour explorer le monde des airs, faire le plein de sensations, d'émotions et (re)découvrir son corps et son esprit.",
-    descriptionHeading: "Description",
     programHeading: "Programme",
     prerequisitesHeading: "Prérequis",
     datesHeading: "Dates",
@@ -178,7 +177,6 @@ const en: UiStrings = {
     formulasTitle: "Our courses",
     formulasIntro:
       "Different formulas to explore the world above, fill up on sensations and emotions, and (re)discover your body and mind.",
-    descriptionHeading: "Description",
     programHeading: "Program",
     prerequisitesHeading: "Prerequisites",
     datesHeading: "Dates",
