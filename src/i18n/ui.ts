@@ -55,6 +55,8 @@ const fr = {
     durationLabel: "Durée",
     levelLabel: "Niveau",
     ticketOfficeButton: "Accéder à la billetterie HelloAsso",
+    compareFormulasButton: "Comparer les formules",
+    registrationStepsLabel: "Les étapes de l'inscription",
   },
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
@@ -179,6 +181,8 @@ const en: UiStrings = {
     durationLabel: "Duration",
     levelLabel: "Level",
     ticketOfficeButton: "Go to the HelloAsso ticket office",
+    compareFormulasButton: "Compare the courses",
+    registrationStepsLabel: "Registration steps",
   },
   festival: {
     pastEditionsButton: "See previous editions",

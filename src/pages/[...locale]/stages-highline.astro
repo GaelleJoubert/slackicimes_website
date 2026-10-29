@@ -15,6 +15,7 @@ import { entrySlug } from "../../i18n/content";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { COURSE_FORMULAS_SECTION_ID } from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -22,7 +23,6 @@ export const getStaticPaths = (() =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "stages-highline";
-const FORMULAS_SECTION_ID = "formules";
 const FAQ_SECTION_ID = "faq";
 const FEATURED_TESTIMONIAL_SLUG = "ludovic";
 
@@ -63,7 +63,10 @@ if (!featuredTestimonial) {
           <LinkButton href={localizedPath("inscriptions", locale)}>
             {strings.stages.registrationsButton}
           </LinkButton>
-          <LinkButton href={`#${FORMULAS_SECTION_ID}`} variant="secondary">
+          <LinkButton
+            href={`#${COURSE_FORMULAS_SECTION_ID}`}
+            variant="secondary"
+          >
             {strings.stages.seeFormulasButton}
           </LinkButton>
         </div>
@@ -90,7 +93,7 @@ if (!featuredTestimonial) {
   </div>
 
   <section
-    id={FORMULAS_SECTION_ID}
+    id={COURSE_FORMULAS_SECTION_ID}
     class="scroll-mt-4 pt-6 pb-14 md:pt-12 md:pb-26"
   >
     <Container class="flex flex-col gap-4.5 md:gap-9">

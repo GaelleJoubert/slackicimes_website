@@ -17,6 +17,7 @@ const pages = defineCollection({
       keyFacts: z
         .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
         .optional(),
+      steps: z.array(nonEmptyText).optional(),
       video: z.url().optional(),
       feature: z
         .object({

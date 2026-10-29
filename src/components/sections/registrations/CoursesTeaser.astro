@@ -1,0 +1,32 @@
+---
+import Container from "../../ui/Container.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+
+interface Props {
+  title: string;
+  paragraphs: string[];
+  link: { href: string; label: string };
+}
+
+const { title, paragraphs, link } = Astro.props;
+---
+
+<section class="pb-14 md:pb-28">
+  <Container>
+    <div class="bg-navy text-paper rounded-card md:rounded-photo grid gap-3 p-5.5 md:grid-cols-3 md:items-center md:gap-10 md:px-12 md:py-10">
+      <div class="flex flex-col gap-2.5 md:col-span-2">
+        <h2 class="timeline-title text-paper md:text-title-sm">{title}</h2>
+        {paragraphs.map((paragraph) => (
+          <p class="text-cloud">{paragraph}</p>
+        ))}
+      </div>
+      <LinkButton
+        href={link.href}
+        variant="secondaryOnDark"
+        class="md:justify-self-end"
+      >
+        {link.label}
+      </LinkButton>
+    </div>
+  </Container>
+</section>
