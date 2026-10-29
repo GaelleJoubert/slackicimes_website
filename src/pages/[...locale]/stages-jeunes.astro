@@ -97,7 +97,7 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
       >
         {strings.stages.registrationsButton}
       </LinkButton>
-      <div class="border-navy shadow-raised rounded-card border-3 p-5 md:rounded-3xl md:p-7">
+      <div class="border-mist shadow-raised shadow-sky rounded-card border-3 p-5 md:rounded-3xl md:p-7">
         <h2 class="subsection-title md:text-3xl">
           {strings.stages.prerequisitesHeading}
         </h2>
@@ -107,18 +107,14 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
           ))}
         </ul>
       </div>
-      <div class="bg-coral rounded-card hidden flex-col justify-center gap-2.5 p-5 md:flex md:rounded-3xl md:p-7">
+      <div class="bg-blush rounded-card hidden flex-col justify-center gap-2.5 p-5 md:flex md:rounded-3xl md:p-7">
         <p class="font-heading text-ink text-2xl md:text-3xl">
           {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
         </p>
         <p class="font-bold">
           {strings.stages.priceNote} {dates}.
         </p>
-        <LinkButton
-          href={STAGES_REGISTRATION_URL}
-          variant="secondary"
-          class="md:self-start"
-        >
+        <LinkButton href={STAGES_REGISTRATION_URL} class="md:self-start">
           {strings.stages.registerButton}
         </LinkButton>
       </div>

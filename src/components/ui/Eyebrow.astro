@@ -1,16 +1,18 @@
 ---
-export type EyebrowTone = "coral" | "sky" | "mist" | "cloud" | "ice";
+export type EyebrowTone =
+  "coral" | "coralOnDark" | "sky" | "mist" | "cloud" | "ice";
 
 interface Props {
   tone: EyebrowTone;
 }
 
 const TONE_CLASSES: Record<EyebrowTone, string> = {
-  coral: "bg-coral text-ink",
-  sky: "bg-sky text-ink",
-  mist: "bg-mist text-ink",
-  cloud: "bg-cloud text-navy",
-  ice: "bg-ice text-navy",
+  coral: "text-coral-strong",
+  coralOnDark: "text-coral",
+  sky: "text-teal",
+  mist: "text-navy",
+  cloud: "text-navy",
+  ice: "text-teal",
 };
 
 const { tone } = Astro.props;
@@ -18,9 +20,13 @@ const { tone } = Astro.props;
 
 <span
   class:list={[
-    "inline-block self-start rounded-full px-3.5 py-1.5 text-xs font-extrabold tracking-widest uppercase md:text-sm",
+    "inline-flex items-center gap-2 self-start text-xs font-extrabold tracking-widest uppercase md:text-sm",
     TONE_CLASSES[tone],
   ]}
 >
+  <span
+    aria-hidden="true"
+    class="size-2 shrink-0 rounded-full bg-current"
+  ></span>
   <slot />
 </span>

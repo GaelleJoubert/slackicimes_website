@@ -21,7 +21,12 @@ interface Props {
   locale: Locale;
 }
 
-const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
+const QUOTE_TONES: QuoteTone[] = ["blush", "ice"];
+
+const QUOTE_FRAME_CLASSES: Record<QuoteTone, string> = {
+  blush: "shadow-coral",
+  ice: "shadow-sky",
+};
 // Text boxes of the 375px wide mobile cards: min-h-104 minus padding, quote mark and a two line author row.
 const REGULAR_TEXT_BOX: TextBox = { heightPx: 256, paragraphGapPx: 12 };
 const COMPACT_TEXT_BOX: TextBox = { heightPx: 94, paragraphGapPx: 12 };
@@ -137,7 +142,7 @@ const slides = withAlternatingTones(sizedGroups);
             tone={tone}
             density={density}
             textSize={textSize}
-            class="shadow-raised flex-1"
+            class:list={["shadow-raised flex-1", QUOTE_FRAME_CLASSES[tone]]}
           >
             <Content />
           </QuoteCard>

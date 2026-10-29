@@ -7,6 +7,7 @@ import { splitDisplayHeading } from "../../../lib/heading";
 import { withSectionAnchor } from "../../../lib/url";
 import ActionBadge from "../../ui/ActionBadge.astro";
 import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
 
 type HomeContent = CollectionEntry<"home">["data"];
 type HighlightTone = HomeContent["highlights"][number]["tone"];
@@ -31,13 +32,13 @@ const FRAMING_CLASSES: Record<PhotoFraming, string> = {
 
 const HIGHLIGHT_TONE_CLASSES: Record<
   HighlightTone,
-  { card: string; label: string }
+  { card: string; frame: string }
 > = {
-  coral: { card: "bg-blush", label: "text-coral-strong md:bg-coral" },
-  sky: { card: "bg-ice", label: "text-teal md:bg-sky" },
-  mist: { card: "bg-cloud", label: "text-navy md:bg-mist" },
-  cloud: { card: "bg-cloud", label: "text-navy md:bg-cloud" },
-  ice: { card: "bg-ice", label: "text-navy md:bg-ice" },
+  coral: { card: "bg-blush", frame: "shadow-coral" },
+  sky: { card: "bg-ice", frame: "shadow-sky" },
+  mist: { card: "bg-cloud", frame: "shadow-mist" },
+  cloud: { card: "bg-cloud", frame: "shadow-mist" },
+  ice: { card: "bg-ice", frame: "shadow-sky" },
 };
 
 const { heading, hero, highlights, locale } = Astro.props;
@@ -61,6 +62,9 @@ const panels = headingParts.map((part, partIndex) => ({
   href: highlights[partIndex] && highlightHref(highlights[partIndex]),
   needsSpaceBefore: part.startsNewWord && partIndex > 0,
   isMobileCover: partIndex === 0,
+  frameClass:
+    highlights[partIndex] &&
+    HIGHLIGHT_TONE_CLASSES[highlights[partIndex].tone].frame,
 }));
 ---
 
@@ -73,6 +77,7 @@ const panels = headingParts.map((part, partIndex) => ({
           <span
             class:list={[
               "group rounded-card md:rounded-photo shadow-raised relative overflow-hidden md:block md:h-115",
+              panel.frameClass,
               panel.isMobileCover ? "block h-88" : "hidden",
             ]}
           >
@@ -134,14 +139,7 @@ const panels = headingParts.map((part, partIndex) => ({
               ]}
             >
               <span class="flex flex-col gap-1.5">
-                <span
-                  class:list={[
-                    "text-xs font-extrabold tracking-widest uppercase md:text-ink md:self-start md:rounded-full md:px-3.5 md:py-1.5 md:text-sm",
-                    toneClasses.label,
-                  ]}
-                >
-                  {highlight.eyebrow}
-                </span>
+                <Eyebrow tone={highlight.tone}>{highlight.eyebrow}</Eyebrow>
                 <span class="card-title md:group-hover:text-teal md:text-3xl">
                   {highlight.title}
                 </span>

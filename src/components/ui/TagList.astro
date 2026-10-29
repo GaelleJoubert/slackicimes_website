@@ -7,9 +7,15 @@ interface Props {
 const { items, label } = Astro.props;
 ---
 
-<ul aria-label={label} class="flex flex-wrap gap-1.5 md:gap-2">
-  {items.map((item) => (
-    <li class="bg-cloud text-navy rounded-full px-2.5 py-1 text-xs font-bold md:px-3 md:text-sm">
+<ul
+  aria-label={label}
+  class="text-navy flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-bold"
+>
+  {items.map((item, itemIndex) => (
+    <li class="flex items-center gap-2.5">
+      {itemIndex > 0 && (
+        <span aria-hidden="true" class="bg-coral size-1.5 rounded-full"></span>
+      )}
       {item}
     </li>
   ))}

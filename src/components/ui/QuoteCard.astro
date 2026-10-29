@@ -1,7 +1,7 @@
 ---
 import { authorInitial } from "../../lib/testimonial";
 
-export type QuoteTone = "coral" | "ice";
+export type QuoteTone = "blush" | "ice";
 export type QuoteTextSize = "huge" | "extraLarge" | "large" | "base" | "small";
 type QuoteDensity = "regular" | "compact";
 
@@ -18,9 +18,9 @@ const TONE_CLASSES: Record<
   QuoteTone,
   { card: string; mark: string; initial: string }
 > = {
-  coral: {
-    card: "bg-coral",
-    mark: "text-paper",
+  blush: {
+    card: "bg-blush",
+    mark: "text-coral",
     initial: "bg-paper text-coral-strong",
   },
   ice: { card: "bg-ice", mark: "text-sky", initial: "bg-navy text-paper" },
