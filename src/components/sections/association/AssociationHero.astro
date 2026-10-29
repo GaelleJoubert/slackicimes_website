@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import Container from "../../ui/Container.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
+import SlacklineDivider from "../../ui/SlacklineDivider.astro";
 
 interface Props {
   heading: string;
@@ -17,11 +18,11 @@ const { heading, eyebrow, origin } = Astro.props;
 const [leadParagraph, ...closingParagraphs] = origin.paragraphs;
 ---
 
-<section class="pt-5 md:pt-10">
+<section class="bg-navy text-paper pt-5 pb-12 md:pt-10 md:pb-24">
   <Container class="split-centered-grid grid gap-3.5 md:grid-cols-2 md:gap-x-16 md:gap-y-5">
     <div class="flex flex-col gap-3.5 md:row-start-2 md:gap-5">
       {eyebrow && <Eyebrow tone="cloud">{eyebrow}</Eyebrow>}
-      <h1 class="page-title">{heading}</h1>
+      <h1 class="page-title text-paper">{heading}</h1>
     </div>
     <div class="pr-2 pb-2 md:col-start-2 md:row-span-4 md:row-start-1 md:p-0">
       <FramedPicture
@@ -35,10 +36,12 @@ const [leadParagraph, ...closingParagraphs] = origin.paragraphs;
       />
     </div>
     <div class="flex flex-col gap-3.5 md:row-start-3 md:gap-5">
-      <p>{leadParagraph}</p>
+      <p class="text-cloud">{leadParagraph}</p>
       {closingParagraphs.map((paragraph) => (
-        <p class="text-navy font-bold">{paragraph}</p>
+        <p class="text-paper font-bold">{paragraph}</p>
       ))}
     </div>
   </Container>
 </section>
+
+<SlacklineDivider backgroundTone="navy" fillTone="paper" />
