@@ -2,6 +2,7 @@
 import type { Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { CONTACT_PEOPLE } from "../../../lib/site";
+import ActionBadge from "../../ui/ActionBadge.astro";
 
 interface Props {
   locale: Locale;
@@ -17,7 +18,7 @@ const { locale, class: extraClasses } = Astro.props;
 const strings = uiStrings(locale).contactPage;
 ---
 
-<ul class:list={["grid grid-cols-2 gap-2.5", extraClasses]}>
+<ul class:list={["grid gap-2.5", extraClasses]}>
   {CONTACT_PEOPLE.map((person, personIndex) => {
     const tone = TILE_TONE_CLASSES[personIndex % TILE_TONE_CLASSES.length];
     return (
@@ -25,14 +26,17 @@ const strings = uiStrings(locale).contactPage;
         <a
           href={`tel:${person.internationalPhone}`}
           class:list={[
-            "rounded-2xl flex min-h-18 flex-col justify-center px-3.5 py-3",
+            "group border-navy rounded-2xl flex min-h-16 items-center justify-between gap-3 border-3 px-4 py-2.5",
             tone.tile,
           ]}
         >
-          <span class:list={["text-sm font-extrabold", tone.label]}>
-            {strings.callPerson} {person.firstName}
+          <span class="flex flex-col">
+            <span class:list={["text-sm font-extrabold", tone.label]}>
+              {strings.callPerson} {person.firstName}
+            </span>
+            <span class="text-navy font-extrabold">{person.displayPhone}</span>
           </span>
-          <span class="text-navy font-extrabold">{person.displayPhone}</span>
+          <ActionBadge icon="phone" />
         </a>
       </li>
     );

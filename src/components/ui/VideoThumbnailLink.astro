@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import FramedPicture from "./FramedPicture.astro";
-import PlayIcon from "./PlayIcon.astro";
+import ActionBadge from "./ActionBadge.astro";
 
 interface Props {
   href: string;
@@ -30,8 +30,6 @@ const { href, thumbnail, label, class: extraClasses } = Astro.props;
     frame="offsetSky"
     class="aspect-video"
   />
-  <span class="bg-coral text-ink absolute inset-0 m-auto flex size-16 items-center justify-center rounded-full transition group-hover:scale-110">
-    <PlayIcon size="large" />
-  </span>
+  <ActionBadge icon="play" size="large" class="absolute inset-0 m-auto" />
   <span class="sr-only">{label}</span>
 </a>

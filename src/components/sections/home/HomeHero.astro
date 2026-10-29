@@ -5,7 +5,7 @@ import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { splitDisplayHeading } from "../../../lib/heading";
 import { withSectionAnchor } from "../../../lib/url";
-import ChevronIcon from "../../ui/ChevronIcon.astro";
+import ActionBadge from "../../ui/ActionBadge.astro";
 import Container from "../../ui/Container.astro";
 
 type HomeContent = CollectionEntry<"home">["data"];
@@ -112,6 +112,11 @@ const panels = headingParts.map((part, partIndex) => ({
                 class="absolute inset-0 hidden md:block"
               />
             )}
+            {panel.href && (
+              <span class="absolute right-5 bottom-5 hidden md:block">
+                <ActionBadge icon="chevron" />
+              </span>
+            )}
           </span>
         </>
       ))}
@@ -124,7 +129,7 @@ const panels = headingParts.map((part, partIndex) => ({
             <a
               href={highlightHref(highlight)}
               class:list={[
-                "group rounded-card flex min-h-16 items-center justify-between gap-3 px-4 py-3 md:items-start md:bg-transparent md:p-2",
+                "group border-navy rounded-card flex min-h-16 items-center justify-between gap-3 border-3 px-4 py-3 md:items-start md:border-0 md:bg-transparent md:p-2",
                 toneClasses.card,
               ]}
             >
@@ -144,7 +149,7 @@ const panels = headingParts.map((part, partIndex) => ({
                   {highlight.text}
                 </span>
               </span>
-              <ChevronIcon class="text-navy md:hidden" />
+              <ActionBadge icon="chevron" class="md:hidden" />
             </a>
           </li>
         );
