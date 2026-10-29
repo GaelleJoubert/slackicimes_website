@@ -30,6 +30,7 @@ const fr = {
   home: {
     statsLabel: "Slack'icîmes en bref",
     discoverTeamButton: "Découvrir l'équipe",
+    discoverStagesButton: "Découvrir les stages",
     festivalButton: "Le festival et ses éditions",
   },
   footer: {
@@ -163,6 +164,7 @@ const en: UiStrings = {
   home: {
     statsLabel: "Slack'icîmes at a glance",
     discoverTeamButton: "Meet the team",
+    discoverStagesButton: "Discover the courses",
     festivalButton: "The festival and its editions",
   },
   footer: {

@@ -216,6 +216,10 @@
     }
   }
 
+  .title-thumbnail-grid {
+    grid-template-columns: 1fr auto;
+  }
+
   .poster-edition-grid {
     @variant md {
       grid-template-rows: auto 1fr;

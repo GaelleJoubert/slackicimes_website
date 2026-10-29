@@ -1,23 +1,69 @@
 ---
+type CourseCardMobileLayout = "row" | "tile";
+
 interface Props {
   href: string;
   name: string;
-  details: string;
+  duration: string;
+  level: string;
   price: string;
+  mobileLayout?: CourseCardMobileLayout;
 }
 
-const { href, name, details, price } = Astro.props;
+const MOBILE_LAYOUT_CLASSES: Record<
+  CourseCardMobileLayout,
+  { card: string; name: string; level: string; price: string }
+> = {
+  row: {
+    card: "grid-flow-col grid-rows-2 items-center justify-between gap-x-3 p-3",
+    name: "",
+    level: "",
+    price: "row-span-2",
+  },
+  tile: {
+    card: "grid-cols-2 content-between items-end gap-y-2 p-3",
+    name: "col-span-2",
+    level: "hidden md:inline",
+    price: "justify-self-end",
+  },
+};
+
+const {
+  href,
+  name,
+  duration,
+  level,
+  price,
+  mobileLayout = "row",
+} = Astro.props;
+const layoutClasses = MOBILE_LAYOUT_CLASSES[mobileLayout];
 ---
 
 <a
   href={href}
-  class="bg-paper border-navy rounded-card flex h-full items-center justify-between gap-3 border-3 px-4 py-3.5 transition md:flex-col md:items-start md:justify-start md:gap-1 md:p-5 md:hover:-translate-y-1"
+  class:list={[
+    "bg-paper border-navy rounded-card grid h-full border-3 transition md:flex md:flex-col md:items-start md:justify-start md:gap-1 md:p-5 md:hover:-translate-y-1",
+    layoutClasses.card,
+  ]}
 >
-  <span class="flex flex-col">
-    <span class="card-title text-xl md:text-2xl">{name}</span>
-    <span class="text-slate text-sm">{details}</span>
+  <span
+    class:list={[
+      "card-title self-start text-xl md:text-2xl",
+      layoutClasses.name,
+    ]}
+  >
+    {name}
   </span>
-  <span class="font-heading text-coral-strong text-2xl md:mt-auto md:pt-2 md:text-3xl">
+  <span class="text-slate text-sm">
+    {duration}
+    <span class={layoutClasses.level}> · {level}</span>
+  </span>
+  <span
+    class:list={[
+      "font-heading text-coral-strong text-2xl leading-none md:mt-auto md:pt-2 md:text-3xl md:leading-9",
+      layoutClasses.price,
+    ]}
+  >
     {price}
   </span>
 </a>

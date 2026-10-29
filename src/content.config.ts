@@ -119,6 +119,7 @@ const home = defineCollection({
         title: nonEmptyText,
         datesNote: nonEmptyText,
         illustration,
+        mobileThumbnail: illustration,
       }),
       festivalTeaser: z.object({
         paragraphs: z.array(nonEmptyText).min(1),
