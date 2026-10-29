@@ -1,5 +1,6 @@
 ---
 import { SITE_INDEXABLE } from "astro:env/server";
+import CompactFooter from "../components/sections/CompactFooter.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import type { HeaderTone } from "../components/sections/header-tone";
@@ -25,7 +26,10 @@ interface Props {
   pageSlug: string;
   isErrorPage?: boolean;
   headerTone?: HeaderTone;
+  footer?: FooterVariant;
 }
+
+type FooterVariant = "full" | "compact";
 
 const {
   title,
@@ -34,6 +38,7 @@ const {
   pageSlug,
   isErrorPage = false,
   headerTone = "light",
+  footer = "full",
 } = Astro.props;
 const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
@@ -79,6 +84,6 @@ const isIndexable = SITE_INDEXABLE && !isErrorPage && !isUnlistedPage(pageSlug);
     <main id="main-content" class="flex-1">
       <slot />
     </main>
-    <SiteFooter locale={locale} />
+    {footer === "compact" ? <CompactFooter /> : <SiteFooter locale={locale} />}
   </body>
 </html>
