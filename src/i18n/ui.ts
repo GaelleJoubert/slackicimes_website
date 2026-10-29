@@ -3,6 +3,7 @@ import type { Locale } from "./locales";
 const fr = {
   common: {
     learnMore: "En savoir plus",
+    discoverWorldCupButton: "Découvrir la Coupe du Monde",
   },
   accessibility: {
     skipToContent: "Aller au contenu",
@@ -29,7 +30,6 @@ const fr = {
     statsLabel: "Slack'icîmes en bref",
     discoverTeamButton: "Découvrir l'équipe",
     seeStagesButton: "Voir les stages",
-    discoverWorldCupButton: "Découvrir la Coupe du Monde",
     festivalButton: "Le festival et ses éditions",
   },
   footer: {
@@ -119,6 +119,7 @@ export type UiStrings = typeof fr;
 const en: UiStrings = {
   common: {
     learnMore: "Learn more",
+    discoverWorldCupButton: "Discover the World Cup",
   },
   accessibility: {
     skipToContent: "Skip to content",
@@ -145,7 +146,6 @@ const en: UiStrings = {
     statsLabel: "Slack'icîmes at a glance",
     discoverTeamButton: "Meet the team",
     seeStagesButton: "See the courses",
-    discoverWorldCupButton: "Discover the World Cup",
     festivalButton: "The festival and its editions",
   },
   footer: {

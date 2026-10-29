@@ -45,14 +45,16 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
           </LinkButton>
         </div>
       </SectionIntro>
-      <FramedPicture
-        image={teaser.illustration.image}
-        alt={teaser.illustration.alt}
-        widths={PHOTO_WIDTHS}
-        sizes={PHOTO_SIZES}
-        frame="offsetCoral"
-        class="-order-1 h-58 md:order-none md:h-105"
-      />
+      <div class="-order-1 md:order-none">
+        <FramedPicture
+          image={teaser.illustration.image}
+          alt={teaser.illustration.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={PHOTO_SIZES}
+          frame="offsetCoral"
+          class="h-58 md:h-105"
+        />
+      </div>
     </div>
     <ul class="grid gap-2.5 md:grid-cols-5 md:gap-4">
       {stages.map((stage) => (

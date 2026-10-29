@@ -2,11 +2,7 @@ export const SITE_ORIGIN = "https://www.slackicimes.org";
 
 export const SITE_NAME = "Slack'icîmes";
 
-export const FESTIVAL_NAME_PARTS = {
-  before: "Winter ",
-  highlighted: "Festi",
-  after: "Slack",
-} as const;
+export const FESTIVAL_NAME_HIGHLIGHT = "Festi";
 
 export const CONTACT_EMAIL = "slackicimes@gmail.com";
 

@@ -146,6 +146,22 @@
     @apply font-display text-4xl leading-none font-bold;
   }
 
+  .intro-text {
+    @apply flex flex-col gap-4;
+
+    & p:first-child {
+      @apply text-lg font-bold md:text-2xl;
+    }
+  }
+
+  .intro-text-on-dark {
+    @apply text-paper;
+
+    & p:not(:first-child) {
+      @apply text-cloud;
+    }
+  }
+
   .testimonial-text {
     & p:first-child {
       @apply font-heading text-2xl md:text-quote;
