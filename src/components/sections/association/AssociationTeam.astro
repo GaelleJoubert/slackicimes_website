@@ -25,9 +25,9 @@ const { team, members, locale } = Astro.props;
         ))}
       </SectionIntro>
     </div>
-    <ul class="grid items-start gap-5 md:grid-cols-2 md:gap-6">
+    <ul class="grid gap-5 md:grid-cols-2 md:gap-6">
       {members.map((member, memberIndex) => (
-        <li>
+        <li class="row-span-4 grid grid-rows-subgrid gap-0">
           <TeamMemberCard
             member={member}
             shadow={CARD_SHADOWS[memberIndex % CARD_SHADOWS.length]}

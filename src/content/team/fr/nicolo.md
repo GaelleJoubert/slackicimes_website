@@ -5,6 +5,7 @@ name: Nicolo
 role: Instructeur highline
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo souriant, assis à côté de son matériel de highline
+photoFocus: top
 highlineSince: 2015
 diplomaShortNames:
   - CQP Cordiste

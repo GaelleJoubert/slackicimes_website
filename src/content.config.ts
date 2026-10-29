@@ -209,6 +209,7 @@ const team = defineCollection({
       role: nonEmptyText,
       photo: image(),
       photoAlt: nonEmptyText,
+      photoFocus: z.enum(["center", "top"]).default("center"),
       portrait: image().optional(),
       portraitAlt: nonEmptyText.optional(),
       highlineSince: z.number().int().positive(),

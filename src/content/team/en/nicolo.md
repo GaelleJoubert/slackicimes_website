@@ -5,6 +5,7 @@ name: Nicolo
 role: Highline instructor
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo smiling, sitting next to his highline gear
+photoFocus: top
 highlineSince: 2015
 diplomaShortNames:
   - CQP rope access

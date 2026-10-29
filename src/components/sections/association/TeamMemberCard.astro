@@ -16,8 +16,16 @@ interface Props {
   locale: Locale;
 }
 
-const PHOTO_WIDTHS = [400, 800];
-const PHOTO_SIZES = "(min-width: 768px) 250px, 100vw";
+const PHOTO_WIDTHS = [600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 560px, 100vw";
+
+const PHOTO_FOCUS_CLASSES: Record<
+  CollectionEntry<"team">["data"]["photoFocus"],
+  string
+> = {
+  center: "object-center",
+  top: "object-top",
+};
 
 const SHADOW_CLASSES: Record<TeamCardShadow, string> = {
   coral: "shadow-coral",
@@ -32,6 +40,7 @@ const {
   role,
   photo,
   photoAlt,
+  photoFocus,
   highlineSince,
   diplomaShortNames,
   excerpt,
@@ -43,52 +52,54 @@ const { Content: Biography } = await render(member);
 <article
   id={entrySlug(member.id)}
   class:list={[
-    "border-navy rounded-card shadow-offset-sm md:rounded-photo md:shadow-offset grid scroll-mt-4 overflow-hidden border-3 md:grid-cols-5",
+    "border-navy rounded-card shadow-offset-sm md:rounded-photo md:shadow-offset row-span-4 grid scroll-mt-4 grid-rows-subgrid gap-0 overflow-hidden border-3",
     SHADOW_CLASSES[shadow],
   ]}
 >
-  <div class="md:col-span-2">
-    <Picture
-      src={photo}
-      alt={photoAlt}
-      widths={PHOTO_WIDTHS}
-      sizes={PHOTO_SIZES}
-      formats={["avif", "webp"]}
-      class="h-42.5 w-full object-cover md:h-full md:min-h-90"
-    />
-  </div>
-  <div class="flex flex-col gap-1.5 p-4 md:col-span-3 md:gap-2 md:p-6">
-    <header class="flex flex-col gap-1">
+  <Picture
+    src={photo}
+    alt={photoAlt}
+    widths={PHOTO_WIDTHS}
+    sizes={PHOTO_SIZES}
+    formats={["avif", "webp"]}
+    class:list={[
+      "h-52 w-full object-cover md:h-72",
+      PHOTO_FOCUS_CLASSES[photoFocus],
+    ]}
+  />
+  <header class="flex flex-col gap-1 px-5 pt-5 md:px-7 md:pt-6">
+    <div class="flex items-end justify-between gap-4">
       <h3 class="card-title text-3xl md:text-4xl">{name}</h3>
-      <p class="font-heading text-teal text-lg md:text-xl">
-        {strings.highlineSince} {highlineSince}
+      <p class="flex flex-col items-end">
+        <span class="caption">{strings.highlineSince}</span>
+        <span class="card-title text-teal">{highlineSince}</span>
       </p>
-    </header>
-    <p class="text-coral-strong text-xs font-extrabold tracking-wide uppercase md:text-sm">
-      {role}
-    </p>
-    <p class="text-sm md:text-base">{excerpt}</p>
-    <div class="pt-1">
-      <ReadMore summary={strings.readFullStory} accessibleContext={name}>
-        <div class="rich-text text-sm md:text-base">
-          <Biography />
-        </div>
-        <dl class="flex flex-col gap-4">
-          {facts.map((fact) => (
-            <div class="flex flex-col gap-1.5">
-              <dt class="subsection-title">{fact.label}</dt>
-              <dd>
-                <DotList items={fact.items} class="text-sm md:text-base" />
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </ReadMore>
     </div>
+    <p class="caption font-bold">{role}</p>
+  </header>
+  <blockquote class="mx-5 mt-4 text-sm md:mx-7 md:text-base">
+    {excerpt}
+  </blockquote>
+  <footer class="border-cloud mx-5 mt-5 flex flex-col gap-2 border-t-2 pt-4 pb-4 md:mx-7 md:pb-5">
+    <ReadMore summary={strings.readFullStory} accessibleContext={name}>
+      <div class="rich-text text-sm md:text-base">
+        <Biography />
+      </div>
+      <dl class="flex flex-col gap-4">
+        {facts.map((fact) => (
+          <div class="flex flex-col gap-1.5">
+            <dt class="subsection-title">{fact.label}</dt>
+            <dd>
+              <DotList items={fact.items} class="text-sm md:text-base" />
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </ReadMore>
     <InlineDotList
       items={diplomaShortNames}
       aria-label={strings.diplomasLabel}
       class="text-navy text-sm font-bold md:text-base"
     />
-  </div>
+  </footer>
 </article>
