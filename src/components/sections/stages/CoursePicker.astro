@@ -6,6 +6,7 @@ import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { formatPriceInEuros } from "../../../lib/format";
 import CourseDetails from "./CourseDetails.astro";
 import CourseDetailsCompact from "./CourseDetailsCompact.astro";
+import ToggleSign from "../../ui/ToggleSign.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
 interface Props {
@@ -63,26 +64,10 @@ const courses = stages.map((stage) => {
               {summary}
             </span>
           </span>
-          <span
-            aria-hidden="true"
-            class="bg-coral md:group-aria-expanded:bg-navy md:group-aria-expanded:text-paper flex size-8 shrink-0 items-center justify-center rounded-full text-xl font-extrabold md:absolute md:top-3 md:right-3"
-          >
-            <span class="group-aria-expanded:hidden">+</span>
-            <span class="hidden group-aria-expanded:inline md:group-aria-expanded:hidden">
-              –
-            </span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="hidden size-4 md:group-aria-expanded:block"
-            >
-              <path d="M5 12.5l4.5 4.5L19 7.5" />
-            </svg>
-          </span>
+          <ToggleSign
+            variant="courseTab"
+            class="md:absolute md:top-3 md:right-3"
+          />
         </button>
       </h3>
       <div
