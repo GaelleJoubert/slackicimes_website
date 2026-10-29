@@ -2,21 +2,15 @@
 import { authorInitial } from "../../lib/testimonial";
 
 export type QuoteTone = "coral" | "ice";
-export type QuoteTextSize =
-  | "displayLarge"
-  | "displayMedium"
-  | "display"
-  | "bodyExtraLarge"
-  | "bodyLarge"
-  | "body"
-  | "bodySmall";
+export type QuoteTextSize = "huge" | "extraLarge" | "large" | "base" | "small";
+type QuoteDensity = "regular" | "compact";
 
 interface Props {
   author: string;
   context: string;
   tone: QuoteTone;
-  textSize?: QuoteTextSize;
-  showInitial?: boolean;
+  textSize: QuoteTextSize;
+  density?: QuoteDensity;
   class?: string;
 }
 
@@ -33,21 +27,24 @@ const TONE_CLASSES: Record<
 };
 
 const TEXT_SIZE_CLASSES: Record<QuoteTextSize, string> = {
-  displayLarge: "testimonial-text text-4xl md:text-quote",
-  displayMedium: "testimonial-text text-3xl md:text-quote",
-  display: "testimonial-text text-2xl md:text-quote",
-  bodyExtraLarge: "text-xl md:text-lg",
-  bodyLarge: "text-lg",
-  body: "text-base md:text-lg",
-  bodySmall: "text-sm md:text-lg",
+  huge: "text-2xl md:text-lg",
+  extraLarge: "text-xl md:text-lg",
+  large: "text-lg",
+  base: "text-base md:text-lg",
+  small: "text-sm md:text-lg",
+};
+
+const DENSITY_CLASSES: Record<QuoteDensity, string> = {
+  regular: "gap-3.5 p-6 md:gap-5 md:p-10",
+  compact: "gap-3 p-4 md:gap-4 md:p-8",
 };
 
 const {
   author,
   context,
   tone,
-  textSize = "display",
-  showInitial = false,
+  textSize,
+  density = "regular",
   class: extraClasses,
 } = Astro.props;
 const toneClasses = TONE_CLASSES[tone];
@@ -55,35 +52,36 @@ const toneClasses = TONE_CLASSES[tone];
 
 <figure
   class:list={[
-    "text-ink rounded-card md:rounded-photo flex flex-col gap-3 p-6 md:gap-4 md:p-10",
+    "text-ink rounded-card md:rounded-photo flex flex-col justify-center",
     toneClasses.card,
+    DENSITY_CLASSES[density],
     extraClasses,
   ]}
 >
-  <span
-    aria-hidden="true"
-    class:list={[
-      "font-heading h-8 text-7xl leading-none md:h-12 md:text-8xl",
-      toneClasses.mark,
-    ]}
-  >
-    “
-  </span>
+  {density === "regular" && (
+    <span
+      aria-hidden="true"
+      class:list={[
+        "font-heading -mb-1 h-8 text-7xl leading-none md:h-12 md:text-8xl",
+        toneClasses.mark,
+      ]}
+    >
+      “
+    </span>
+  )}
   <blockquote class:list={["flex flex-col gap-3", TEXT_SIZE_CLASSES[textSize]]}>
     <slot />
   </blockquote>
-  <figcaption class="mt-auto flex items-center gap-2.5 font-extrabold md:gap-3">
-    {showInitial && (
-      <span
-        aria-hidden="true"
-        class:list={[
-          "font-heading flex size-10 shrink-0 items-center justify-center rounded-full text-xl md:size-12 md:text-2xl",
-          toneClasses.initial,
-        ]}
-      >
-        {authorInitial(author)}
-      </span>
-    )}
+  <figcaption class="flex items-center gap-2.5 font-extrabold md:gap-3">
+    <span
+      aria-hidden="true"
+      class:list={[
+        "font-heading flex size-10 shrink-0 items-center justify-center rounded-full text-xl md:size-12 md:text-2xl",
+        toneClasses.initial,
+      ]}
+    >
+      {authorInitial(author)}
+    </span>
     <span>
       {author} · {context}
     </span>

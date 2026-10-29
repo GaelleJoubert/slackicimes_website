@@ -2,24 +2,14 @@ import { describe, expect, it } from "vitest";
 import {
   authorInitial,
   estimatedTextHeight,
-  isShortTestimonial,
   largestFittingTextSize,
+  pairMatchingItems,
   testimonialParagraphs,
 } from "../../src/lib/testimonial";
 
 const LARGE = { name: "large", charactersPerLine: 10, lineHeightPx: 40 };
 const SMALL = { name: "small", charactersPerLine: 20, lineHeightPx: 20 };
 const BOX = { heightPx: 100, paragraphGapPx: 10 };
-
-describe("isShortTestimonial", () => {
-  it("treats a one line thank you as short", () => {
-    expect(isShortTestimonial("Merci pour tout !")).toBe(true);
-  });
-
-  it("treats a long story as long", () => {
-    expect(isShortTestimonial("a".repeat(200))).toBe(false);
-  });
-});
 
 describe("authorInitial", () => {
   it("returns the uppercase first letter, accents included", () => {
@@ -66,5 +56,22 @@ describe("largestFittingTextSize", () => {
 
   it("rejects an empty candidate list", () => {
     expect(() => largestFittingTextSize(["a"], [], BOX)).toThrow();
+  });
+});
+
+describe("pairMatchingItems", () => {
+  const isShort = (word: string) => word.length <= 3;
+
+  it("pairs each matching item with the next matching one, in order", () => {
+    expect(
+      pairMatchingItems(["ab", "long", "cd", "ef", "longer"], isShort),
+    ).toEqual([["ab", "cd"], ["long"], ["ef"], ["longer"]]);
+  });
+
+  it("leaves a matching item alone when no partner follows", () => {
+    expect(pairMatchingItems(["long", "ab"], isShort)).toEqual([
+      ["long"],
+      ["ab"],
+    ]);
   });
 });

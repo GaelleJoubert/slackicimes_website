@@ -3,9 +3,11 @@ import { render, type CollectionEntry } from "astro:content";
 import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
 import {
-  isShortTestimonial,
+  estimatedTextHeight,
   largestFittingTextSize,
+  pairMatchingItems,
   testimonialParagraphs,
+  type TextBox,
   type TextSizeCandidate,
 } from "../../lib/testimonial";
 import { ROUND_ICON_BUTTON_CLASSES } from "../ui/button-styles";
@@ -21,42 +23,99 @@ interface Props {
 }
 
 const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
-// Sized for the 375px wide mobile card (min-h-104 minus its padding, quote mark and author row).
-const MOBILE_QUOTE_TEXT_BOX = { heightPx: 272, paragraphGapPx: 12 };
-const DISPLAY_TEXT_SIZES: TextSizeCandidate<QuoteTextSize>[] = [
-  { name: "displayLarge", charactersPerLine: 15, lineHeightPx: 40 },
-  { name: "displayMedium", charactersPerLine: 19, lineHeightPx: 36 },
-  { name: "display", charactersPerLine: 24, lineHeightPx: 32 },
-];
-const BODY_TEXT_SIZES: TextSizeCandidate<QuoteTextSize>[] = [
-  { name: "bodyExtraLarge", charactersPerLine: 27, lineHeightPx: 28 },
-  { name: "bodyLarge", charactersPerLine: 31, lineHeightPx: 28 },
-  { name: "body", charactersPerLine: 34, lineHeightPx: 24 },
-  { name: "bodySmall", charactersPerLine: 41, lineHeightPx: 20 },
-];
-
-function mobileTextSize(markdown: string): QuoteTextSize {
-  const candidates = isShortTestimonial(markdown)
-    ? DISPLAY_TEXT_SIZES
-    : BODY_TEXT_SIZES;
-  return largestFittingTextSize(
-    testimonialParagraphs(markdown),
-    candidates,
-    MOBILE_QUOTE_TEXT_BOX,
-  );
-}
+// Text boxes of the 375px wide mobile cards: min-h-104 minus padding, quote mark and a two line author row.
+const REGULAR_TEXT_BOX: TextBox = { heightPx: 256, paragraphGapPx: 12 };
+const COMPACT_TEXT_BOX: TextBox = { heightPx: 94, paragraphGapPx: 12 };
+const HUGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "huge",
+  charactersPerLine: 21,
+  lineHeightPx: 32,
+};
+const EXTRA_LARGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "extraLarge",
+  charactersPerLine: 27,
+  lineHeightPx: 28,
+};
+const LARGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "large",
+  charactersPerLine: 31,
+  lineHeightPx: 28,
+};
+const BASE: TextSizeCandidate<QuoteTextSize> = {
+  name: "base",
+  charactersPerLine: 34,
+  lineHeightPx: 24,
+};
+const SMALL: TextSizeCandidate<QuoteTextSize> = {
+  name: "small",
+  charactersPerLine: 41,
+  lineHeightPx: 20,
+};
+const REGULAR_TEXT_SIZES = [HUGE, EXTRA_LARGE, LARGE, BASE, SMALL];
+const COMPACT_TEXT_SIZES = [LARGE, BASE, SMALL];
 
 const { testimonials, locale } = Astro.props;
 const allStrings = uiStrings(locale);
 const strings = allStrings.testimonials;
-const slides = await Promise.all(
-  testimonials.map(async (testimonial, testimonialIndex) => ({
-    testimonial,
-    tone: QUOTE_TONES[testimonialIndex % QUOTE_TONES.length],
-    textSize: mobileTextSize(testimonial.body ?? ""),
-    Content: (await render(testimonial)).Content,
-  })),
+const cards = await Promise.all(
+  testimonials.map(async (testimonial) => {
+    const paragraphs = testimonialParagraphs(testimonial.body ?? "");
+    return {
+      testimonial,
+      paragraphs,
+      fitsCompactCard:
+        estimatedTextHeight(
+          paragraphs,
+          SMALL,
+          COMPACT_TEXT_BOX.paragraphGapPx,
+        ) <= COMPACT_TEXT_BOX.heightPx,
+      Content: (await render(testimonial)).Content,
+    };
+  }),
 );
+
+type Card = (typeof cards)[number];
+
+function sharedTextSize(
+  group: Card[],
+  candidatesFromLargest: TextSizeCandidate<QuoteTextSize>[],
+  box: TextBox,
+): QuoteTextSize {
+  const fittingIndexes = group.map((card) => {
+    const fittingSize = largestFittingTextSize(
+      card.paragraphs,
+      candidatesFromLargest,
+      box,
+    );
+    return candidatesFromLargest.findIndex(
+      (candidate) => candidate.name === fittingSize,
+    );
+  });
+  return candidatesFromLargest[Math.max(...fittingIndexes)].name;
+}
+
+function withAlternatingTones<Item>(groups: Item[][]) {
+  let cardIndex = 0;
+  return groups.map((group) =>
+    group.map((item) => ({
+      ...item,
+      tone: QUOTE_TONES[cardIndex++ % QUOTE_TONES.length],
+    })),
+  );
+}
+
+const sizedGroups = pairMatchingItems(
+  cards,
+  (card) => card.fitsCompactCard,
+).map((group) => {
+  const isPair = group.length > 1;
+  const textSize = isPair
+    ? sharedTextSize(group, COMPACT_TEXT_SIZES, COMPACT_TEXT_BOX)
+    : sharedTextSize(group, REGULAR_TEXT_SIZES, REGULAR_TEXT_BOX);
+  const density = isPair ? ("compact" as const) : ("regular" as const);
+  return group.map((card) => ({ ...card, density, textSize }));
+});
+const slides = withAlternatingTones(sizedGroups);
 ---
 
 <div
@@ -70,18 +129,20 @@ const slides = await Promise.all(
     aria-live="polite"
     class="grid min-h-104 gap-5 md:min-h-120 md:grid-cols-2 md:gap-10"
   >
-    {slides.map(({ testimonial, tone, textSize, Content }) => (
-      <li data-carousel-slide>
-        <QuoteCard
-          author={testimonial.data.author}
-          context={testimonial.data.stageName}
-          tone={tone}
-          textSize={textSize}
-          showInitial
-          class="shadow-drop md:shadow-drop-lg h-full"
-        >
-          <Content />
-        </QuoteCard>
+    {slides.map((slideCards) => (
+      <li data-carousel-slide class="flex flex-col gap-3 md:gap-5">
+        {slideCards.map(({ testimonial, tone, density, textSize, Content }) => (
+          <QuoteCard
+            author={testimonial.data.author}
+            context={testimonial.data.stageName}
+            tone={tone}
+            density={density}
+            textSize={textSize}
+            class="shadow-drop md:shadow-drop-lg flex-1"
+          >
+            <Content />
+          </QuoteCard>
+        ))}
       </li>
     ))}
   </ul>

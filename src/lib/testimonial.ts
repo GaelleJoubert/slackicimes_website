@@ -1,4 +1,3 @@
-const SHORT_TESTIMONIAL_MAX_LENGTH = 160;
 const PARAGRAPH_SEPARATOR = /\n\s*\n/;
 
 export interface TextSizeCandidate<Name extends string> {
@@ -10,10 +9,6 @@ export interface TextSizeCandidate<Name extends string> {
 export interface TextBox {
   heightPx: number;
   paragraphGapPx: number;
-}
-
-export function isShortTestimonial(text: string): boolean {
-  return text.trim().length <= SHORT_TESTIMONIAL_MAX_LENGTH;
 }
 
 export function authorInitial(author: string): string {
@@ -56,4 +51,26 @@ export function largestFittingTextSize<Name extends string>(
       box.heightPx,
   );
   return (fitting ?? smallest).name;
+}
+
+export function pairMatchingItems<Item>(
+  items: Item[],
+  isPairable: (item: Item) => boolean,
+): Item[][] {
+  const groups: Item[][] = [];
+  let groupAwaitingPartner: Item[] | undefined;
+  for (const item of items) {
+    if (!isPairable(item)) {
+      groups.push([item]);
+      continue;
+    }
+    if (groupAwaitingPartner) {
+      groupAwaitingPartner.push(item);
+      groupAwaitingPartner = undefined;
+      continue;
+    }
+    groupAwaitingPartner = [item];
+    groups.push(groupAwaitingPartner);
+  }
+  return groups;
 }
