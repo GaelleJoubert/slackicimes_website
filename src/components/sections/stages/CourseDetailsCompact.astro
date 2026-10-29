@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
+import { STAGES_REGISTRATION_URL } from "../../../lib/site";
+import DotList from "../../ui/DotList.astro";
+import FactTile from "../../ui/FactTile.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+
+interface Props {
+  stage: CollectionEntry<"stages">;
+  locale: Locale;
+}
+
+const { stage, locale } = Astro.props;
+const strings = uiStrings(locale);
+const { name, duration, level, dates, description, program, prerequisites } =
+  stage.data;
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+const programLines = program.items.map((item) =>
+  item.place
+    ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
+    : item.label,
+);
+---
+
+<div class="bg-blush flex flex-col gap-3 px-3.5 pb-4 text-sm md:hidden">
+  <dl class="flex flex-wrap gap-2">
+    <FactTile
+      value={duration}
+      label={strings.stages.durationLabel}
+      tone="navy"
+      class="grow"
+    />
+    <FactTile
+      value={formattedPrice}
+      label={strings.stages.priceHeading}
+      tone="coral"
+      class="grow"
+    />
+    <FactTile
+      value={level}
+      label={strings.stages.levelLabel}
+      tone="sky"
+      class="grow"
+    />
+  </dl>
+  <div class="flex flex-col gap-2">
+    {description.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+  </div>
+  <div class="flex flex-col gap-1">
+    <h4 class="subsection-title">{strings.stages.programHeading}</h4>
+    <DotList items={programLines} size="small" />
+  </div>
+  <div class="flex flex-col gap-1">
+    <h4 class="subsection-title">{strings.stages.prerequisitesHeading}</h4>
+    <DotList items={prerequisites} size="small" />
+  </div>
+  <div class="flex items-baseline gap-2.5">
+    <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
+    <p class="font-bold">{dates}</p>
+  </div>
+  <LinkButton href={STAGES_REGISTRATION_URL}>
+    {strings.stages.registerButton}
+    <span class="sr-only">: {name}</span>
+  </LinkButton>
+</div>

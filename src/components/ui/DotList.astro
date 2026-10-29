@@ -1,18 +1,27 @@
 ---
+type DotListSize = "base" | "small";
+
 interface Props {
   items: string[];
+  size?: DotListSize;
   class?: string;
 }
 
-const { items, class: extraClasses } = Astro.props;
+const SIZE_CLASSES: Record<DotListSize, { list: string; dot: string }> = {
+  base: { list: "gap-2", dot: "mt-2.5 size-2.5 md:size-3" },
+  small: { list: "gap-1 text-sm", dot: "mt-1.5 size-2" },
+};
+
+const { items, size = "base", class: extraClasses } = Astro.props;
+const sizeClasses = SIZE_CLASSES[size];
 ---
 
-<ul class:list={["flex flex-col gap-2", extraClasses]}>
+<ul class:list={["flex flex-col", sizeClasses.list, extraClasses]}>
   {items.map((item) => (
     <li class="flex items-start gap-2.5">
       <span
         aria-hidden="true"
-        class="bg-coral mt-2.5 size-2.5 shrink-0 rounded-full md:size-3"
+        class:list={["bg-coral shrink-0 rounded-full", sizeClasses.dot]}
       />
       <span>{item}</span>
     </li>
