@@ -1,20 +1,23 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { entrySlug } from "../../../i18n/content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
 import Container from "../../ui/Container.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
-import InlineDotList from "../../ui/InlineDotList.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 
 interface Props {
   duo: CollectionEntry<"association">["data"]["duo"];
   members: CollectionEntry<"team">[];
+  locale: Locale;
 }
 
 const PORTRAIT_WIDTHS = [300, 600];
 const PORTRAIT_SIZES = "(min-width: 768px) 300px, 50vw";
 
-const { duo, members } = Astro.props;
+const { duo, members, locale } = Astro.props;
+const strings = uiStrings(locale).team;
 
 function portraitOf(member: CollectionEntry<"team">) {
   const { portrait, portraitAlt, name } = member.data;
@@ -28,27 +31,25 @@ function portraitOf(member: CollectionEntry<"team">) {
 ---
 
 <section class="bg-navy text-paper py-14 md:py-26">
-  <Container class="grid gap-4 md:grid-cols-2 md:items-center md:gap-16">
-    <SectionIntro
-      title={duo.title}
-      eyebrow={duo.eyebrow}
-      eyebrowTone="coral"
-      theme="dark"
-    >
-      {duo.paragraphs.map((paragraph) => (
-        <p class="text-cloud">{paragraph}</p>
-      ))}
-      <h3 class="card-title text-paper mt-2 md:mt-3">{duo.valuesTitle}</h3>
-      <InlineDotList items={duo.values} class="value-list-text" />
+  <Container class="grid gap-8 md:grid-cols-2 md:items-center md:gap-16">
+    <SectionIntro title={duo.title} theme="dark">
+      <div class="intro-text intro-text-on-dark">
+        {duo.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+      <p class="card-title text-coral border-coral border-l-4 pl-4 md:text-3xl">
+        {duo.tagline}
+      </p>
     </SectionIntro>
     <ul class="grid grid-cols-2 gap-3 md:gap-5">
       {members.map((member, memberIndex) => {
         const portrait = portraitOf(member);
         return (
-          <li class:list={[memberIndex % 2 === 1 && "md:mt-10"]}>
+          <li class:list={[memberIndex % 2 === 1 && "mt-6 md:mt-10"]}>
             <a
               href={`#${entrySlug(member.id)}`}
-              class="text-paper hover:text-coral flex flex-col gap-1.5 md:gap-2.5"
+              class="group text-paper flex flex-col items-center gap-1.5 text-center md:gap-2.5"
             >
               <FramedPicture
                 image={portrait.image}
@@ -58,8 +59,11 @@ function portraitOf(member: CollectionEntry<"team">) {
                 frame="bordered"
                 class="h-52.5 md:h-85"
               />
-              <span class="card-title text-current text-center md:text-3xl">
+              <span class="card-title group-hover:text-coral text-current md:text-3xl">
                 {member.data.name}
+              </span>
+              <span class="text-mist text-sm font-bold md:text-base">
+                {strings.highlineSince} {member.data.highlineSince}
               </span>
             </a>
           </li>

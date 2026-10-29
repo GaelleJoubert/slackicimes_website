@@ -124,10 +124,6 @@
     @apply font-heading text-4xl leading-none md:text-6xl;
   }
 
-  .value-list-text {
-    @apply font-heading text-2xl leading-tight md:text-3xl;
-  }
-
   .lead {
     @apply text-lg font-bold md:text-xl;
   }

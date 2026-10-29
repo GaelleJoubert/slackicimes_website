@@ -1,13 +1,19 @@
 ---
 interface Props {
   items: string[];
+  "aria-label"?: string;
   class?: string;
 }
 
-const { items, class: extraClasses } = Astro.props;
+const {
+  items,
+  "aria-label": accessibleLabel,
+  class: extraClasses,
+} = Astro.props;
 ---
 
 <ul
+  aria-label={accessibleLabel}
   class:list={[
     "flex flex-wrap items-center gap-x-3 gap-y-1 md:gap-x-4",
     extraClasses,

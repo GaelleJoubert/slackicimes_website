@@ -4,7 +4,6 @@ import AssociationActivities from "../../components/sections/association/Associa
 import AssociationDuo from "../../components/sections/association/AssociationDuo.astro";
 import AssociationHero from "../../components/sections/association/AssociationHero.astro";
 import AssociationTeam from "../../components/sections/association/AssociationTeam.astro";
-import FirstStagesCard from "../../components/sections/association/FirstStagesCard.astro";
 import {
   getLocalizedCollection,
   getPageEntry,
@@ -22,7 +21,7 @@ const PAGE_SLUG = "association";
 
 const { locale } = Astro.props;
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { origin, firstStages, activities, duo, team } = (
+const { origin, activities, duo, team } = (
   await getSingleEntryContent("association", locale)
 ).data;
 const teamMembers = await getLocalizedCollection("team", locale);
@@ -36,13 +35,8 @@ const duoMembers = teamMembers.filter((member) => member.data.group === "duo");
   pageSlug={PAGE_SLUG}
   headerTone="dark"
 >
-  <AssociationHero
-    heading={page.data.heading}
-    eyebrow={page.data.eyebrow}
-    origin={origin}
-  />
-  <FirstStagesCard firstStages={firstStages} />
+  <AssociationHero heading={page.data.heading} origin={origin} />
   <AssociationActivities activities={activities} locale={locale} />
-  <AssociationDuo duo={duo} members={duoMembers} />
+  <AssociationDuo duo={duo} members={duoMembers} locale={locale} />
   <AssociationTeam team={team} members={teamMembers} locale={locale} />
 </BaseLayout>

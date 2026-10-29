@@ -8,6 +8,11 @@ photoAlt: Highlineuse sur une ligne tendue au dessus d'un glacier au Groenland
 portrait: ../../../assets/images/team/gaelle-portrait.jpg
 portraitAlt: Portrait de Gaëlle souriante, chapeau et lunettes de soleil
 highlineSince: 2014
+diplomaShortNames:
+  - Rigger ISA
+  - CQP Cordiste
+  - BAFA
+  - Ingénieure
 excerpt: "La highline répond parfaitement à deux de mes besoins : comprendre & partager. Elle change mon appréhension de la peur, et ma vision de la vie."
 facts:
   - label: Type de pratique

@@ -6,6 +6,10 @@ role: Highline instructor
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo smiling, sitting next to his highline gear
 highlineSince: 2015
+diplomaShortNames:
+  - CQP rope access
+  - ISA Rigger
+  - Physiotherapist
 excerpt: 'As a child, my first word was "WIRE", but it took me more than 20 years to discover highline. I helped rig the two longest highlines in the world.'
 facts:
   - label: Style

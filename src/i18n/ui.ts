@@ -63,6 +63,7 @@ const fr = {
   team: {
     highlineSince: "Highline depuis",
     readFullStory: "Lire tout le parcours",
+    diplomasLabel: "Diplômes",
   },
   pastEditions: {
     timelineLabel: "Frise des éditions",
@@ -197,6 +198,7 @@ const en: UiStrings = {
   team: {
     highlineSince: "Highlining since",
     readFullStory: "Read the full story",
+    diplomasLabel: "Qualifications",
   },
   pastEditions: {
     timelineLabel: "Editions timeline",

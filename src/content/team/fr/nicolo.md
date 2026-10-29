@@ -6,6 +6,10 @@ role: Instructeur highline
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo souriant, assis à côté de son matériel de highline
 highlineSince: 2015
+diplomaShortNames:
+  - CQP Cordiste
+  - Rigger ISA
+  - Kinésithérapeute
 excerpt: 'Enfant, mon premier mot fut "FIL", mais il m''a fallu plus de 20 ans pour découvrir la highline. J''ai participé à l''installation des deux plus grandes highlines du monde.'
 facts:
   - label: Type de pratique

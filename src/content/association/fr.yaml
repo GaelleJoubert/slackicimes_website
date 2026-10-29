@@ -5,11 +5,6 @@ origin:
   illustration:
     image: ../../assets/images/association/groupe.jpg
     alt: Groupe de stagiaires et d'encadrantes souriant sur un rocher en montagne
-firstStages:
-  title: Les premiers stages de highline
-  paragraphs:
-    - En 2019, Chloë et Gaëlle s'unissent pour mettre en place les premiers stages d'initiation à la highline en France.
-    - "Toutes les deux passionnées par l'enseignement dans leurs disciplines d'origine (ski pour Chloë et trampoline pour Gaëlle), elles décident de partager leur expérience : amener tout public à faire ses premiers pas dans le vide, et l'accompagner avec bienveillance sur ce chemin d'apprentissage bouleversant."
 activities:
   title: Slack'icîmes c'est...
   intro: L'association s'est toujours engagée sur le développement de la slackline et de la highline, ainsi que le partage de ses valeurs.
@@ -50,18 +45,11 @@ activities:
         image: ../../assets/images/association/accolade.jpg
         alt: Deux highlineuses se serrant dans les bras au départ d'une ligne
 duo:
-  eyebrow: Depuis 2019
   title: Le duo
   paragraphs:
-    - Investies depuis toujours dans le milieu associatif de la highline, Chloë et Gaëlle se sont réunies depuis 2019 pour donner les premiers stages de highline. A elles deux, elles sont un vrai cocktail explosif de bonne humeur, de bienveillance et de motivation !
-  valuesTitle: Nos valeurs
-  values:
-    - Partage
-    - Bienveillance
-    - Humilité
-    - Dépassement de soi
-    - Confiance en soi
-    - Curiosité d'apprendre et d'évoluer
+    - En 2019, Chloë et Gaëlle s'unissent pour mettre en place les premiers stages d'initiation à la highline en France.
+    - "Investies depuis toujours dans le milieu associatif de la highline, et passionnées par l'enseignement dans leurs disciplines d'origine (ski pour Chloë, trampoline pour Gaëlle), elles partagent leur expérience : amener tout public à faire ses premiers pas dans le vide, et l'accompagner avec bienveillance sur ce chemin d'apprentissage bouleversant."
+  tagline: À elles deux, un vrai cocktail explosif de bonne humeur, de bienveillance et de motivation !
 team:
   title: L'équipe
   paragraphs:
