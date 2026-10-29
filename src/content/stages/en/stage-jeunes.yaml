@@ -13,20 +13,24 @@ program:
     - Days run from 9 a.m. to 5 p.m.
     - "Typical week:"
   items:
-    - label: "Monday, at the park:"
+    - label: Monday
+      place: At the park
       details:
         - Learn the basics and/or progress
         - Highline specific workshops
         - Stretching and breathing exercises
-    - label: "Tuesday, on the highline spot:"
+    - label: Tuesday
+      place: Highline spot
       details:
         - Highline practice
         - Fear management exercises
-    - label: "Wednesday, at the lake:"
+    - label: Wednesday
+      place: At the lake
       details:
         - Waterline (slackline over water)
         - Slackline and balance games
-    - label: "Thursday and Friday, on the highline spot:"
+    - label: Thursday and Friday
+      place: Highline spot
       details:
         - Highline practice
         - Emotion management exercises

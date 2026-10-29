@@ -13,6 +13,11 @@ const pages = defineCollection({
       title: nonEmptyText,
       description: nonEmptyText,
       heading: nonEmptyText,
+      eyebrow: nonEmptyText.optional(),
+      keyFacts: z
+        .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
+        .optional(),
+      steps: z.array(nonEmptyText).optional(),
       video: z.url().optional(),
       feature: z
         .object({
@@ -26,6 +31,7 @@ const pages = defineCollection({
 
 const programItem = z.object({
   label: nonEmptyText,
+  place: nonEmptyText.optional(),
   details: z.array(nonEmptyText).default([]),
 });
 
@@ -68,28 +74,46 @@ const testimonials = defineCollection({
   }),
 });
 
+const eyebrowTone = z.enum(["coral", "sky", "mist", "cloud", "ice"]);
+
 const home = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/home" }),
   schema: ({ image }) => {
     const illustration = z.object({ image: image(), alt: nonEmptyText });
-    const textBlock = z.object({
-      title: nonEmptyText,
+    const teaserIntro = z.object({
+      eyebrow: nonEmptyText,
       paragraphs: z.array(nonEmptyText).min(1),
     });
     return z.object({
+      hero: z.object({
+        eyebrow: nonEmptyText,
+        photos: z.array(image()).min(1),
+      }),
       highlights: z
         .array(
           z.object({
             eyebrow: nonEmptyText,
+            tone: eyebrowTone,
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,
-            illustration,
           }),
         )
         .min(1),
-      stagesTeaser: textBlock.extend({ illustration }),
-      festivalTeaser: textBlock,
+      stats: z
+        .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
+        .min(1),
+      associationTeaser: teaserIntro.extend({
+        badge: nonEmptyText,
+        illustration,
+      }),
+      stagesTeaser: teaserIntro.extend({
+        title: nonEmptyText,
+        datesNote: nonEmptyText,
+        illustration,
+      }),
+      festivalTeaser: teaserIntro,
+      contactTeaser: z.object({ text: nonEmptyText }),
     });
   },
 });
@@ -115,7 +139,12 @@ const festivalEditions = defineCollection({
   schema: ({ image }) =>
     z.object({
       order: displayOrder,
+      layout: z.enum(["poster", "spotlight", "brief", "archive"]),
+      period: nonEmptyText,
+      editionNumber: z.number().int().positive().optional(),
       title: nonEmptyText,
+      highlight: nonEmptyText.optional(),
+      videoLinkLabel: nonEmptyText.optional(),
       poster: image().optional(),
       posterAlt: nonEmptyText.optional(),
       gallery: nonEmptyText.optional(),
@@ -129,6 +158,7 @@ const festival = defineCollection({
   schema: ({ image }) =>
     z.object({
       announcement: z.object({
+        eyebrow: nonEmptyText,
         title: nonEmptyText,
         paragraphs: z.array(nonEmptyText).min(1),
         poster: z.object({ image: image(), alt: nonEmptyText }),
@@ -145,7 +175,10 @@ const association = defineCollection({
       paragraphs: z.array(nonEmptyText).min(1),
     });
     return z.object({
-      origin: textBlock.extend({ illustration }),
+      origin: z.object({
+        paragraphs: z.array(nonEmptyText).min(1),
+        illustration,
+      }),
       firstStages: textBlock,
       activities: z.object({
         title: nonEmptyText,
@@ -162,10 +195,11 @@ const association = defineCollection({
           .min(1),
       }),
       duo: textBlock.extend({
+        eyebrow: nonEmptyText,
         valuesTitle: nonEmptyText,
         values: z.array(nonEmptyText).min(1),
       }),
-      crew: textBlock,
+      team: textBlock,
     });
   },
 });
@@ -182,6 +216,8 @@ const team = defineCollection({
       photoAlt: nonEmptyText,
       portrait: image().optional(),
       portraitAlt: nonEmptyText.optional(),
+      highlineSince: z.number().int().positive(),
+      excerpt: nonEmptyText,
       facts: z
         .array(
           z.object({

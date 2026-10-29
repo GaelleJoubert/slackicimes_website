@@ -1,14 +1,20 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
-import FeatureBlock from "../../components/sections/FeatureBlock.astro";
+import CalloutCard from "../../components/ui/CalloutCard.astro";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import FramedPicture from "../../components/ui/FramedPicture.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
-import Section from "../../components/ui/Section.astro";
+import StepList from "../../components/ui/StepList.astro";
 import { getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { STAGES_REGISTRATION_URL } from "../../lib/site";
+import {
+  COURSE_FORMULAS_SECTION_ID,
+  STAGES_REGISTRATION_URL,
+} from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -17,12 +23,15 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "inscriptions";
 const STAGES_PAGE_SLUG = "stages-highline";
+const PHOTO_WIDTHS = [500, 1000];
+const PHOTO_SIZES = "(min-width: 768px) 460px, 100vw";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
 const { Content: Instructions } = await render(page);
-const { feature } = page.data;
+const { eyebrow, steps, feature } = page.data;
+const stagesPagePath = localizedPath(STAGES_PAGE_SLUG, locale);
 ---
 
 <BaseLayout
@@ -31,29 +40,61 @@ const { feature } = page.data;
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <Section>
-    <h1 class="page-title">{page.data.heading}</h1>
-    <div class="rich-text mt-6 max-w-2xl text-lg">
-      <Instructions />
-    </div>
-    <div class="mt-8">
-      <LinkButton href={STAGES_REGISTRATION_URL}>
-        {strings.stages.ticketOfficeButton}
-      </LinkButton>
-    </div>
-  </Section>
+  <section class="pt-5 pb-12 md:pt-10 md:pb-26">
+    <Container class="grid gap-4 md:grid-cols-5 md:items-center md:gap-16">
+      <div class="flex flex-col gap-4 md:col-span-3 md:gap-5.5">
+        {eyebrow && <Eyebrow tone="coral">{eyebrow}</Eyebrow>}
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text md:text-xl">
+          <Instructions />
+        </div>
+        {steps && (
+          <StepList
+            steps={steps}
+            label={strings.stages.registrationStepsLabel}
+          />
+        )}
+        <div class="flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-3.5">
+          <LinkButton href={STAGES_REGISTRATION_URL}>
+            {strings.stages.ticketOfficeButton}
+          </LinkButton>
+          <LinkButton
+            href={`${stagesPagePath}#${COURSE_FORMULAS_SECTION_ID}`}
+            variant="secondary"
+          >
+            {strings.stages.compareFormulasButton}
+          </LinkButton>
+        </div>
+      </div>
+      {feature && (
+        <div class="mt-3 pr-2 pb-2 md:col-span-2 md:mt-0 md:p-0">
+          <FramedPicture
+            image={feature.illustration.image}
+            alt={feature.illustration.alt}
+            widths={PHOTO_WIDTHS}
+            sizes={PHOTO_SIZES}
+            frame="offsetCoral"
+            loading="eager"
+            class="h-90 md:h-130"
+          />
+        </div>
+      )}
+    </Container>
+  </section>
 
   {feature && (
-    <FeatureBlock
-      title={feature.title}
-      paragraphs={feature.paragraphs}
-      illustration={feature.illustration}
-      imageShape="portrait"
-      link={{
-        href: localizedPath(STAGES_PAGE_SLUG, locale),
-        label: strings.common.learnMore,
-      }}
-      tone="mist"
-    />
+    <section class="pb-14 md:pb-28">
+      <Container>
+        <CalloutCard title={feature.title} paragraphs={feature.paragraphs}>
+          <LinkButton
+            href={stagesPagePath}
+            variant="secondaryOnDark"
+            class="md:justify-self-end"
+          >
+            {strings.common.learnMore}
+          </LinkButton>
+        </CalloutCard>
+      </Container>
+    </section>
   )}
 </BaseLayout>

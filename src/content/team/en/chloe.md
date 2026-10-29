@@ -7,9 +7,9 @@ photo: ../../../assets/images/team/chloe-skyline.jpg
 photoAlt: Highline rigged between two rocky peaks in the high mountains
 portrait: ../../../assets/images/team/chloe-portrait.jpg
 portraitAlt: Portrait of Chloë smiling at sunset in the mountains
+highlineSince: 2010
+excerpt: "I discovered highline in its very early days in France when I met the Flying Frenchies, pioneers of the activity, and I have watched the discipline evolve over the years."
 facts:
-  - label: Highlining since
-    items: ["2010"]
   - label: Style
     items:
       [

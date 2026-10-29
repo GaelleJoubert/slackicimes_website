@@ -1,0 +1,42 @@
+---
+import Eyebrow, { type EyebrowTone } from "./Eyebrow.astro";
+
+type IntroTheme = "light" | "dark";
+type IntroAlignment = "start" | "center";
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  eyebrowTone?: EyebrowTone;
+  theme?: IntroTheme;
+  align?: IntroAlignment;
+  id?: string;
+}
+
+const TITLE_THEME_CLASSES: Record<IntroTheme, string> = {
+  light: "",
+  dark: "text-paper",
+};
+
+const ALIGNMENT_CLASSES: Record<IntroAlignment, string> = {
+  start: "",
+  center: "items-center text-center",
+};
+
+const {
+  title,
+  eyebrow,
+  eyebrowTone = "coral",
+  theme = "light",
+  align = "start",
+  id,
+} = Astro.props;
+---
+
+<div class:list={["flex flex-col gap-4 md:gap-5", ALIGNMENT_CLASSES[align]]}>
+  {eyebrow && <Eyebrow tone={eyebrowTone}>{eyebrow}</Eyebrow>}
+  <h2 id={id} class:list={["section-title", TITLE_THEME_CLASSES[theme]]}>
+    <slot name="title">{title}</slot>
+  </h2>
+  <slot />
+</div>

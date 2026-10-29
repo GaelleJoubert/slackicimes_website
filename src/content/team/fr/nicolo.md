@@ -5,9 +5,9 @@ name: Nicolo
 role: Instructeur highline
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo souriant, assis à côté de son matériel de highline
+highlineSince: 2015
+excerpt: 'Enfant, mon premier mot fut "FIL", mais il m''a fallu plus de 20 ans pour découvrir la highline. J''ai participé à l''installation des deux plus grandes highlines du monde.'
 facts:
-  - label: Highline depuis
-    items: ["2015"]
   - label: Type de pratique
     items: ["Variée : belles lignes & highline freestyle"]
   - label: Diplômes

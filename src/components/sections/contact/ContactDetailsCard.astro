@@ -1,0 +1,80 @@
+---
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PEOPLE,
+  POSTAL_ADDRESS_LINES,
+  SOCIAL_PROFILES,
+} from "../../../lib/site";
+import LinkButton from "../../ui/LinkButton.astro";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const SOCIAL_NETWORK_NAMES = new Set(["Facebook", "Instagram"]);
+const LINK_CLASSES = "hover:text-coral underline-offset-4 hover:underline";
+
+const { locale, class: extraClasses } = Astro.props;
+const strings = uiStrings(locale);
+const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
+  SOCIAL_NETWORK_NAMES.has(profile.name),
+);
+---
+
+<aside
+  class:list={[
+    "bg-navy text-paper rounded-card md:rounded-photo md:shadow-offset-lg md:shadow-sky flex flex-col gap-3.5 p-5.5 md:gap-6 md:p-9",
+    extraClasses,
+  ]}
+>
+  <h2 class="timeline-title text-paper">{strings.contactPage.detailsTitle}</h2>
+  <dl class="flex flex-col gap-3.5 md:gap-6">
+    <div class="hidden md:block">
+      <dt class="text-coral font-extrabold">
+        {strings.contactBlock.phoneHeading}
+      </dt>
+      {CONTACT_PEOPLE.map((person) => (
+        <dd class="mt-1.5 text-xl font-bold">
+          {person.firstName}{" "}
+          <a href={`tel:${person.internationalPhone}`} class={LINK_CLASSES}>
+            {person.displayPhone}
+          </a>
+        </dd>
+      ))}
+    </div>
+    <div>
+      <dt class="text-coral font-extrabold">
+        {strings.contactBlock.emailHeading}
+      </dt>
+      <dd class="mt-0.5 font-bold break-all md:mt-1.5 md:text-xl">
+        <a href={`mailto:${CONTACT_EMAIL}`} class={LINK_CLASSES}>
+          {CONTACT_EMAIL}
+        </a>
+      </dd>
+    </div>
+    <div>
+      <dt class="text-coral font-extrabold">
+        {strings.contactBlock.addressHeading}
+      </dt>
+      <dd class="mt-0.5 md:mt-1.5">
+        <address class="flex flex-col not-italic">
+          {POSTAL_ADDRESS_LINES.map((line) => (
+            <span>{line}</span>
+          ))}
+        </address>
+      </dd>
+    </div>
+  </dl>
+  <ul class="hidden flex-wrap gap-2.5 md:flex">
+    {socialNetworks.map((profile) => (
+      <li>
+        <LinkButton href={profile.url} variant="secondaryOnDark" size="compact">
+          {profile.name}
+        </LinkButton>
+      </li>
+    ))}
+  </ul>
+</aside>

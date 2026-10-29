@@ -1,0 +1,55 @@
+---
+type SlacklineState = "walked" | "broken";
+
+interface Props {
+  state: SlacklineState;
+  class?: string;
+}
+
+const VIEW_BOXES: Record<SlacklineState, string> = {
+  walked: "0 0 900 140",
+  broken: "0 0 1000 260",
+};
+
+const { state, class: extraClasses } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  viewBox={VIEW_BOXES[state]}
+  class:list={["w-full", extraClasses]}
+>
+  {state === "walked" ? (
+    <>
+      <path
+        d="M20 30 Q 450 130 880 30"
+        class="stroke-coral fill-none"
+        stroke-width="5"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="round"
+      />
+      <circle cx="20" cy="30" r="14" class="fill-navy" />
+      <circle cx="880" cy="30" r="14" class="fill-navy" />
+      <circle cx="450" cy="54" r="26" class="fill-sky" />
+    </>
+  ) : (
+    <>
+      <path
+        d="M30 60 Q 230 150 430 120"
+        class="stroke-coral fill-none"
+        stroke-width="5"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="round"
+      />
+      <path
+        d="M970 60 Q 770 150 570 200"
+        class="stroke-coral fill-none"
+        stroke-width="5"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="round"
+      />
+      <circle cx="30" cy="60" r="16" class="fill-navy" />
+      <circle cx="970" cy="60" r="16" class="fill-navy" />
+    </>
+  )}
+</svg>

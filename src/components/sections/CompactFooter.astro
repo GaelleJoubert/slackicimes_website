@@ -1,0 +1,21 @@
+---
+import { SITE_NAME, SOCIAL_PROFILES } from "../../lib/site";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-ink text-mist mt-auto px-4 py-5 text-center text-sm md:py-6">
+  <p class="flex flex-wrap justify-center gap-x-2 gap-y-1">
+    <span>
+      © {currentYear} {SITE_NAME}
+    </span>
+    {SOCIAL_PROFILES.map((profile) => (
+      <>
+        <span aria-hidden="true">·</span>
+        <a href={profile.url} class="text-paper hover:text-coral font-bold">
+          {profile.name}
+        </a>
+      </>
+    ))}
+  </p>
+</footer>

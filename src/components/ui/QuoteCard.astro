@@ -1,0 +1,79 @@
+---
+import { authorInitial } from "../../lib/testimonial";
+
+export type QuoteTone = "coral" | "ice";
+type QuoteEmphasis = "display" | "body";
+
+interface Props {
+  author: string;
+  context: string;
+  tone: QuoteTone;
+  emphasis?: QuoteEmphasis;
+  showInitial?: boolean;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<
+  QuoteTone,
+  { card: string; mark: string; initial: string }
+> = {
+  coral: {
+    card: "bg-coral",
+    mark: "text-paper",
+    initial: "bg-paper text-coral-strong",
+  },
+  ice: { card: "bg-ice", mark: "text-sky", initial: "bg-navy text-paper" },
+};
+
+const EMPHASIS_CLASSES: Record<QuoteEmphasis, string> = {
+  display: "testimonial-text",
+  body: "text-sm md:text-lg",
+};
+
+const {
+  author,
+  context,
+  tone,
+  emphasis = "display",
+  showInitial = false,
+  class: extraClasses,
+} = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<figure
+  class:list={[
+    "text-ink rounded-card md:rounded-photo flex flex-col gap-3 p-6 md:gap-4 md:p-10",
+    toneClasses.card,
+    extraClasses,
+  ]}
+>
+  <span
+    aria-hidden="true"
+    class:list={[
+      "font-heading h-8 text-7xl leading-none md:h-12 md:text-8xl",
+      toneClasses.mark,
+    ]}
+  >
+    “
+  </span>
+  <blockquote class:list={["flex flex-col gap-3", EMPHASIS_CLASSES[emphasis]]}>
+    <slot />
+  </blockquote>
+  <figcaption class="mt-auto flex items-center gap-2.5 font-extrabold md:gap-3">
+    {showInitial && (
+      <span
+        aria-hidden="true"
+        class:list={[
+          "font-heading flex size-10 shrink-0 items-center justify-center rounded-full text-xl md:size-12 md:text-2xl",
+          toneClasses.initial,
+        ]}
+      >
+        {authorInitial(author)}
+      </span>
+    )}
+    <span>
+      {author} · {context}
+    </span>
+  </figcaption>
+</figure>

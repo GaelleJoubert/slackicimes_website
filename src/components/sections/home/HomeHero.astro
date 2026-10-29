@@ -1,0 +1,110 @@
+---
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { splitDisplayHeading } from "../../../lib/heading";
+import ChevronIcon from "../../ui/ChevronIcon.astro";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+
+type HomeContent = CollectionEntry<"home">["data"];
+type HighlightTone = HomeContent["highlights"][number]["tone"];
+
+interface Props {
+  heading: string;
+  hero: HomeContent["hero"];
+  highlights: HomeContent["highlights"];
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 768px) 400px, 100vw";
+
+const HIGHLIGHT_TONE_CLASSES: Record<
+  HighlightTone,
+  { card: string; label: string }
+> = {
+  coral: { card: "bg-blush", label: "text-coral-strong md:bg-coral" },
+  sky: { card: "bg-ice", label: "text-teal md:bg-sky" },
+  mist: { card: "bg-cloud", label: "text-navy md:bg-mist" },
+  cloud: { card: "bg-cloud", label: "text-navy md:bg-cloud" },
+  ice: { card: "bg-ice", label: "text-navy md:bg-ice" },
+};
+
+const { heading, hero, highlights, locale } = Astro.props;
+const headingParts = splitDisplayHeading(heading);
+if (headingParts.length !== hero.photos.length) {
+  throw new Error(
+    `The home hero needs one photo per heading part: "${heading}" has ${headingParts.length} parts but hero.photos has ${hero.photos.length} images.`,
+  );
+}
+const panels = headingParts.map((part, partIndex) => ({
+  ...part,
+  photo: hero.photos[partIndex],
+  needsSpaceBefore: part.startsNewWord && partIndex > 0,
+}));
+---
+
+<section class="pt-4 md:pt-8">
+  <Container class="flex flex-col gap-4 md:gap-7">
+    <Eyebrow tone="ice">{hero.eyebrow}</Eyebrow>
+    <h1 class="font-heading text-paper grid gap-3 uppercase md:grid-cols-3 md:gap-6">
+      {panels.map((panel) => (
+        <>
+          {panel.needsSpaceBefore ? " " : ""}
+          <span class="rounded-card md:rounded-photo shadow-drop md:shadow-drop-lg relative block h-40 overflow-hidden md:h-115">
+            {panel.photo && (
+              <Picture
+                src={panel.photo}
+                alt=""
+                widths={PHOTO_WIDTHS}
+                sizes={PHOTO_SIZES}
+                formats={["avif", "webp"]}
+                loading="eager"
+                class="absolute inset-0 size-full object-cover"
+              />
+            )}
+            <span class="text-title-sm text-shadow-drop absolute bottom-3.5 left-4.5 md:bottom-7 md:left-5 md:text-5xl">
+              {panel.text}
+            </span>
+          </span>
+        </>
+      ))}
+    </h1>
+    <ul class="mt-2 grid gap-2.5 md:grid-cols-3 md:gap-6">
+      {highlights.map((highlight) => {
+        const toneClasses = HIGHLIGHT_TONE_CLASSES[highlight.tone];
+        return (
+          <li>
+            <a
+              href={localizedPath(highlight.pageSlug, locale)}
+              class:list={[
+                "group rounded-card flex min-h-16 items-center justify-between gap-3 px-4 py-3 md:items-start md:bg-transparent md:p-2",
+                toneClasses.card,
+              ]}
+            >
+              <span class="flex flex-col gap-1.5">
+                <span
+                  class:list={[
+                    "text-xs font-extrabold tracking-widest uppercase md:text-ink md:self-start md:rounded-full md:px-3.5 md:py-1.5 md:text-sm",
+                    toneClasses.label,
+                  ]}
+                >
+                  {highlight.eyebrow}
+                </span>
+                <span class="card-title md:text-3xl md:group-hover:text-teal">
+                  {highlight.title}
+                </span>
+                <span class="text-slate hidden text-base md:block">
+                  {highlight.text}
+                </span>
+              </span>
+              <ChevronIcon class="text-navy md:hidden" />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </Container>
+</section>

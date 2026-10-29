@@ -32,3 +32,15 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
   },
   { pageSlug: "contact", labelKey: "contact" },
 ];
+
+export const FOOTER_SITE_LINKS: NavigationItem[] = [
+  { pageSlug: "association", labelKey: "association" },
+  { pageSlug: "coupe-du-monde", labelKey: "worldCup" },
+  { pageSlug: "winter-festislack", labelKey: "winterFestislack" },
+  { pageSlug: "stages-highline", labelKey: "stages" },
+];
+
+export const FOOTER_CONTACT_LINKS: NavigationItem[] = [
+  { pageSlug: "inscriptions", labelKey: "registrations" },
+  { pageSlug: "livre-d-or", labelKey: "guestbook" },
+];

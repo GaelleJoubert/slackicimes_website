@@ -1,0 +1,40 @@
+---
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { CONTACT_PEOPLE } from "../../../lib/site";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const TILE_TONE_CLASSES = [
+  { tile: "bg-blush", label: "text-coral-strong" },
+  { tile: "bg-ice", label: "text-teal" },
+];
+
+const { locale, class: extraClasses } = Astro.props;
+const strings = uiStrings(locale).contactPage;
+---
+
+<ul class:list={["grid grid-cols-2 gap-2.5", extraClasses]}>
+  {CONTACT_PEOPLE.map((person, personIndex) => {
+    const tone = TILE_TONE_CLASSES[personIndex % TILE_TONE_CLASSES.length];
+    return (
+      <li>
+        <a
+          href={`tel:${person.internationalPhone}`}
+          class:list={[
+            "rounded-2xl flex min-h-18 flex-col justify-center px-3.5 py-3",
+            tone.tile,
+          ]}
+        >
+          <span class:list={["text-sm font-extrabold", tone.label]}>
+            {strings.callPerson} {person.firstName}
+          </span>
+          <span class="text-navy font-extrabold">{person.displayPhone}</span>
+        </a>
+      </li>
+    );
+  })}
+</ul>

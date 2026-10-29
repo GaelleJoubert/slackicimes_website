@@ -5,9 +5,9 @@ name: Nicolo
 role: Highline instructor
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo smiling, sitting next to his highline gear
+highlineSince: 2015
+excerpt: 'As a child, my first word was "WIRE", but it took me more than 20 years to discover highline. I helped rig the two longest highlines in the world.'
 facts:
-  - label: Highlining since
-    items: ["2015"]
   - label: Style
     items: ["Varied: beautiful lines & highline freestyle"]
   - label: Qualifications

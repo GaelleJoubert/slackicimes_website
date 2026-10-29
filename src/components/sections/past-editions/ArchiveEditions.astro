@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { editionNumberLabel } from "../../../lib/festival-edition";
+import { videoPlatformName } from "../../../lib/video";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+
+interface Props {
+  editions: CollectionEntry<"festivalEditions">[];
+  dotTone: TimelineDotTone;
+  locale: Locale;
+}
+
+const TILE_TONE_CLASSES = [
+  "bg-navy text-paper",
+  "bg-coral text-ink",
+  "bg-sky text-ink",
+  "bg-mist text-ink",
+];
+
+const { editions, dotTone, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<TimelineEntry dotTone={dotTone} class="flex flex-col gap-3 md:gap-5">
+  <h2 class="timeline-title">{strings.pastEditions.archiveTitle}</h2>
+  <ul class="grid grid-cols-2 gap-2.5 md:grid-cols-6 md:gap-3.5">
+    {editions.map(({ data: edition }, editionIndex) => (
+      <li
+        class:list={[
+          "rounded-card flex min-h-27.5 flex-col justify-between gap-3 p-3.5 md:min-h-42.5 md:p-4",
+          TILE_TONE_CLASSES[editionIndex % TILE_TONE_CLASSES.length],
+        ]}
+      >
+        <h3 class="timeline-title text-current">{edition.period}</h3>
+        <p class="text-sm font-extrabold">
+          {edition.editionNumber &&
+            `${editionNumberLabel(edition.editionNumber)} · `}
+          {edition.videos.map((videoUrl, videoIndex) => (
+            <>
+              {videoIndex > 0 && " + "}
+              <a
+                href={videoUrl}
+                class="inline-block py-1 text-current underline underline-offset-4 hover:no-underline"
+              >
+                <span class="sr-only">{edition.title}, </span>
+                {videoPlatformName(videoUrl)}
+              </a>
+            </>
+          ))}
+        </p>
+      </li>
+    ))}
+  </ul>
+</TimelineEntry>

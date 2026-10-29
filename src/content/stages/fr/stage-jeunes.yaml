@@ -13,20 +13,24 @@ program:
     - Les journées sont de 9h à 17h.
     - "Semaine type :"
   items:
-    - label: "Lundi, au parc :"
+    - label: Lundi
+      place: Au parc
       details:
         - Apprendre les bases et/ou progresser
         - Ateliers spécifiques à la highline
         - Étirements et exercices de respiration
-    - label: "Mardi, sur le site de Highline :"
+    - label: Mardi
+      place: Site de highline
       details:
         - Pratique de la highline
         - Exercices de gestion de la peur
-    - label: "Mercredi, au plan d'eau :"
+    - label: Mercredi
+      place: Au plan d'eau
       details:
         - Waterline (slackline au dessus de l'eau)
         - Slackline & jeux d'équilibre
-    - label: "Jeudi & Vendredi, sur le site de Highline :"
+    - label: Jeudi & vendredi
+      place: Site de highline
       details:
         - Pratique de la highline
         - Exercices de gestion des émotions

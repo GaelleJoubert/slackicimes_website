@@ -1,17 +1,20 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import ContactBlock from "../../components/sections/ContactBlock.astro";
-import FeatureBlock from "../../components/sections/FeatureBlock.astro";
-import PhotoGallery from "../../components/sections/PhotoGallery.astro";
-import HomeHighlights from "../../components/sections/HomeHighlights.astro";
-import TestimonialsSection from "../../components/sections/TestimonialsSection.astro";
+import HomeAssociation from "../../components/sections/home/HomeAssociation.astro";
+import HomeFestival from "../../components/sections/home/HomeFestival.astro";
+import HomeHero from "../../components/sections/home/HomeHero.astro";
+import HomeStages from "../../components/sections/home/HomeStages.astro";
+import HomeStats from "../../components/sections/home/HomeStats.astro";
+import HomeWorldCup from "../../components/sections/home/HomeWorldCup.astro";
+import TestimonialHighlights from "../../components/sections/TestimonialHighlights.astro";
 import {
   getGallery,
   getLocalizedCollection,
   getPageEntry,
   getSingleEntryContent,
 } from "../../i18n/collections";
-import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -21,14 +24,15 @@ export const getStaticPaths = (() =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const HOME_PAGE_SLUG = "";
+const WORLD_CUP_PAGE_SLUG = "coupe-du-monde";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(HOME_PAGE_SLUG, locale);
-const { highlights, stagesTeaser, festivalTeaser } = (
-  await getSingleEntryContent("home", locale)
-).data;
-const { origin } = (await getSingleEntryContent("association", locale)).data;
+const home = (await getSingleEntryContent("home", locale)).data;
+const worldCupPage = await getPageEntry(WORLD_CUP_PAGE_SLUG, locale);
+const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
+const stages = await getLocalizedCollection("stages", locale);
 const testimonials = await getLocalizedCollection("testimonials", locale);
 const festivalGallery = await getGallery("festival", locale);
 ---
@@ -39,49 +43,25 @@ const festivalGallery = await getGallery("festival", locale);
   locale={locale}
   pageSlug={HOME_PAGE_SLUG}
 >
-  <HomeHighlights
+  <HomeHero
     heading={page.data.heading}
-    highlights={highlights}
+    hero={home.hero}
+    highlights={home.highlights}
     locale={locale}
   />
-
-  <FeatureBlock
-    title={strings.navigation.association}
-    paragraphs={origin.paragraphs}
-    illustration={origin.illustration}
-    link={{
-      href: localizedPath("association", locale),
-      label: strings.common.learnMore,
-    }}
-    tone="mist"
+  <HomeStats label={strings.home.statsLabel} stats={home.stats} />
+  <HomeAssociation teaser={home.associationTeaser} locale={locale} />
+  <HomeStages teaser={home.stagesTeaser} stages={stages} locale={locale} />
+  <HomeWorldCup
+    heading={worldCupPage.data.heading}
+    hero={worldCup.hero}
+    locale={locale}
   />
-
-  <FeatureBlock
-    title={stagesTeaser.title}
-    paragraphs={stagesTeaser.paragraphs}
-    illustration={stagesTeaser.illustration}
-    imageSide="end"
-    link={{
-      href: localizedPath("stages-highline", locale),
-      label: strings.common.learnMore,
-    }}
+  <HomeFestival
+    teaser={home.festivalTeaser}
+    gallery={festivalGallery}
+    locale={locale}
   />
-
-  <FeatureBlock
-    title={festivalTeaser.title}
-    paragraphs={festivalTeaser.paragraphs}
-    link={{
-      href: localizedPath("winter-festislack", locale),
-      label: strings.common.learnMore,
-    }}
-    tone="mist"
-  >
-    <div class="mt-8">
-      <PhotoGallery gallery={festivalGallery} />
-    </div>
-  </FeatureBlock>
-
-  <TestimonialsSection testimonials={testimonials} locale={locale} />
-
-  <ContactBlock locale={locale} />
+  <TestimonialHighlights testimonials={testimonials} locale={locale} />
+  <ContactBlock text={home.contactTeaser.text} locale={locale} />
 </BaseLayout>

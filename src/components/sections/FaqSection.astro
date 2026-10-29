@@ -1,32 +1,60 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import Container from "../ui/Container.astro";
 import Disclosure from "../ui/Disclosure.astro";
-import Section from "../ui/Section.astro";
-import SectionHeading from "../ui/SectionHeading.astro";
+import LinkButton from "../ui/LinkButton.astro";
+import SectionIntro from "../ui/SectionIntro.astro";
 
 interface Props {
   id: string;
-  title: string;
   intro: string;
   questions: CollectionEntry<"faq">[];
+  locale: Locale;
 }
 
-const { id, title, intro, questions } = Astro.props;
+const DISCLOSURE_GROUP_NAME = "faq";
+
+const { id, intro, questions, locale } = Astro.props;
+const strings = uiStrings(locale);
 const renderedQuestions = await Promise.all(
   questions.map(async (question) => ({
     question: question.data.question,
     Answer: (await render(question)).Content,
   })),
 );
+const contactPath = localizedPath("contact", locale);
 ---
 
-<Section id={id} tone="mist">
-  <SectionHeading title={title} intro={intro} />
-  <div class="max-w-3xl">
-    {renderedQuestions.map(({ question, Answer }) => (
-      <Disclosure summary={question}>
-        <Answer />
-      </Disclosure>
-    ))}
-  </div>
-</Section>
+<section id={id} class="bg-cloud scroll-mt-4 py-14 md:py-26">
+  <Container class="grid items-start gap-6 md:grid-cols-3 md:gap-14">
+    <SectionIntro
+      title={strings.faq.title}
+      eyebrow={strings.faq.eyebrow}
+      eyebrowTone="sky"
+    >
+      <p class="text-slate">{intro}</p>
+      <div class="hidden md:block">
+        <LinkButton href={contactPath} variant="secondary">
+          {strings.faq.otherQuestionButton}
+        </LinkButton>
+      </div>
+    </SectionIntro>
+    <div class="flex flex-col gap-2.5 md:col-span-2 md:gap-3">
+      {renderedQuestions.map(({ question, Answer }, questionIndex) => (
+        <Disclosure
+          summary={question}
+          groupName={DISCLOSURE_GROUP_NAME}
+          isOpen={questionIndex === 0}
+        >
+          <Answer />
+        </Disclosure>
+      ))}
+    </div>
+    <LinkButton href={contactPath} variant="secondary" class="md:hidden">
+      {strings.faq.otherQuestionButton}
+    </LinkButton>
+  </Container>
+</section>

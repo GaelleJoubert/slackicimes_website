@@ -5,9 +5,9 @@ name: Alexian
 role: Highline freestyle instructor
 photo: ../../../assets/images/team/alexian.jpg
 photoAlt: Alexian performing a highline freestyle trick, upside down under the line
+highlineSince: 2016
+excerpt: "I love the intense flow you can reach in this sport, the artistic side of our practice and the passionate community around slackline."
 facts:
-  - label: Highlining since
-    items: ["2016"]
   - label: Style
     items: ["Highline freestyle, long lines & mountain missions"]
   - label: Qualifications

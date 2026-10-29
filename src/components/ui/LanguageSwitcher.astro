@@ -1,4 +1,5 @@
 ---
+import type { HeaderTone } from "../sections/header-tone";
 import { LOCALES, LOCALE_SETTINGS, type Locale } from "../../i18n/locales";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
@@ -6,24 +7,38 @@ import { uiStrings } from "../../i18n/ui";
 interface Props {
   locale: Locale;
   pageSlug: string;
+  tone: HeaderTone;
 }
 
-const { locale, pageSlug } = Astro.props;
+const TONE_CLASSES: Record<HeaderTone, string> = {
+  light: "border-navy text-navy hover:bg-navy hover:text-paper",
+  dark: "border-paper text-paper hover:bg-paper hover:text-navy",
+};
+
+const { locale, pageSlug, tone } = Astro.props;
 const strings = uiStrings(locale);
 const otherLocales = LOCALES.filter((candidate) => candidate !== locale);
 ---
 
 <nav aria-label={strings.languageSwitcher.label}>
-  <ul class="flex gap-3">
+  <ul class="flex gap-2">
     {otherLocales.map((targetLocale) => (
       <li>
         <a
           href={localizedPath(pageSlug, targetLocale)}
           hreflang={LOCALE_SETTINGS[targetLocale].htmlLang}
           lang={LOCALE_SETTINGS[targetLocale].htmlLang}
-          class="text-teal text-sm font-bold underline-offset-4 hover:underline"
+          class:list={[
+            "inline-flex min-h-11 items-center rounded-full border-2 px-3 text-sm font-extrabold transition-colors",
+            TONE_CLASSES[tone],
+          ]}
         >
-          {LOCALE_SETTINGS[targetLocale].nativeName}
+          <span aria-hidden="true">
+            {LOCALE_SETTINGS[targetLocale].shortName}
+          </span>
+          <span class="sr-only">
+            {LOCALE_SETTINGS[targetLocale].nativeName}
+          </span>
         </a>
       </li>
     ))}

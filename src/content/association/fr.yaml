@@ -1,7 +1,6 @@
 origin:
-  title: Origine
   paragraphs:
-    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 8 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
+    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 10 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
     - Nous sommes maintenant deux femmes à la tête de cette association, extrêmement motivées à développer ses nombreuses facettes.
   illustration:
     image: ../../assets/images/association/groupe.jpg
@@ -10,51 +9,51 @@ firstStages:
   title: Les premiers stages de highline
   paragraphs:
     - En 2019, Chloë et Gaëlle s'unissent pour mettre en place les premiers stages d'initiation à la highline en France.
-    - Toutes les deux passionnées par l'enseignement dans leurs disciplines d'origine (ski pour Chloë et trampoline pour Gaëlle), et après des années à initier spontanément les participants débutants lors de multiples festivals, elles décident de partager leur expérience.
-    - L'occasion de pouvoir amener tout public et profils à faire leurs premiers pas dans le vide, et de les accompagner avec bienveillance sur ce chemin d'apprentissage bouleversant.
+    - "Toutes les deux passionnées par l'enseignement dans leurs disciplines d'origine (ski pour Chloë et trampoline pour Gaëlle), elles décident de partager leur expérience : amener tout public à faire ses premiers pas dans le vide, et l'accompagner avec bienveillance sur ce chemin d'apprentissage bouleversant."
 activities:
   title: Slack'icîmes c'est...
   intro: L'association s'est toujours engagée sur le développement de la slackline et de la highline, ainsi que le partage de ses valeurs.
   items:
+    - title: Des stages
+      text: En 2019, l'association organise les premiers stages de highline en France. Depuis, plus de 300 personnes y ont découvert la highline.
+      pageSlug: stages-highline
+      illustration:
+        image: ../../assets/images/association/stagiaire-pouce-leve.jpg
+        alt: Stagiaire souriant, pouce levé, assis sur une highline
     - title: Un festival
       text: Depuis 2012, le Winter Festislack rassemble des athlètes du monde entier autour d'un concept unique alliant ski et highline.
       pageSlug: winter-festislack
       illustration:
         image: ../../assets/images/association/festival-highline-neige.jpg
         alt: Highlineuse en équilibre au dessus de la neige, les bras levés
-    - title: Des démonstrations
-      text: L'association a régalé des yeux admiratifs lors de divers évènements.
-      pageSlug: contact
+    - title: Une compétition
+      text: Du 14 au 16 avril 2027, l'association organise aux Arcs la Coupe du Monde de Highline Freestyle, sur la place principale d'Arc 2000.
+      pageSlug: coupe-du-monde
       illustration:
-        image: ../../assets/images/association/demonstration-mur-escalade.jpg
-        alt: Highline tendue depuis le sommet d'un mur d'escalade, au dessus des nuages
-    - title: Des stages
-      text: En 2019, l'association organise les premiers stages de highline en France. Depuis, plus de 300 personnes y ont découvert le monde de la highline.
-      pageSlug: stages-highline
-      illustration:
-        image: ../../assets/images/association/stagiaire-pouce-leve.jpg
-        alt: Stagiaire souriant, pouce levé, assis sur une highline
-    - title: Des expéditions
-      text: A la recherche d'exploits sportifs, d'explorations et de découvertes, mais aussi de projets scientifiques et humanitaires.
-      illustration:
-        image: ../../assets/images/association/expedition-groenland.jpg
-        alt: Highline tendue au dessus des crevasses d'un glacier au Groenland
+        image: ../../assets/images/world-cup/athlete-rotation.jpg
+        alt: Athlète de highline freestyle en rotation sous la ligne, sur fond de ciel bleu
     - title: Des initiations
       text: En collaboration avec des communes et des offices du tourisme, nous permettons aux petits et grands de tester leur équilibre.
       pageSlug: contact
       illustration:
         image: ../../assets/images/association/initiation-enfants.jpg
         alt: Enfants découvrant la slackline entre deux arbres dans la neige, accompagnés d'un adulte
+    - title: Des démonstrations
+      text: L'association a régalé des yeux admiratifs lors de divers évènements.
+      pageSlug: contact
+      illustration:
+        image: ../../assets/images/association/demonstration-mur-escalade.jpg
+        alt: Highline tendue depuis le sommet d'un mur d'escalade, au dessus des nuages
     - title: Un engagement
       text: Nous travaillons en collaboration avec l'ISA (International Slackline Association).
       illustration:
         image: ../../assets/images/association/accolade.jpg
         alt: Deux highlineuses se serrant dans les bras au départ d'une ligne
 duo:
+  eyebrow: Depuis 2019
   title: Le duo
   paragraphs:
-    - Investies depuis toujours dans le milieu associatif de la highline, Chloë et Gaëlle se sont réunies depuis 2019 pour donner les premiers stages de highline.
-    - A elles deux, elles sont un vrai cocktail explosif de bonne humeur, de bienveillance et de motivation !
+    - Investies depuis toujours dans le milieu associatif de la highline, Chloë et Gaëlle se sont réunies depuis 2019 pour donner les premiers stages de highline. A elles deux, elles sont un vrai cocktail explosif de bonne humeur, de bienveillance et de motivation !
   valuesTitle: Nos valeurs
   values:
     - Partage
@@ -63,8 +62,7 @@ duo:
     - Dépassement de soi
     - Confiance en soi
     - Curiosité d'apprendre et d'évoluer
-crew:
-  title: Le reste de l'équipe
+team:
+  title: L'équipe
   paragraphs:
-    - L'association grandit chaque année, et plusieurs highlineurs passionnés et expérimentés ont maintenant rejoint l'équipe.
-    - Ils partagent nos valeurs et notre motivation, et ont à cœur de partager leur amour de la highline.
+    - L'association grandit chaque année, et plusieurs highlineurs passionnés et expérimentés ont maintenant rejoint l'équipe. Ils partagent nos valeurs et ont à cœur de partager leur amour de la highline.

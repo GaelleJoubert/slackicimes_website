@@ -1,20 +1,25 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { Picture } from "astro:assets";
 import { render } from "astro:content";
-import PhotoGallery from "../../components/sections/PhotoGallery.astro";
-import StageDetails from "../../components/sections/StageDetails.astro";
+import YouthWeek from "../../components/sections/youth/YouthWeek.astro";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import FramedPicture from "../../components/ui/FramedPicture.astro";
+import KeyFactsBand from "../../components/ui/KeyFactsBand.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
-import Section from "../../components/ui/Section.astro";
+import PhotoMosaic from "../../components/ui/PhotoMosaic.astro";
 import {
   getGallery,
   getLocalizedCollection,
   getPageEntry,
 } from "../../i18n/collections";
 import { entrySlug } from "../../i18n/content";
+import { LOCALE_SETTINGS } from "../../i18n/locales";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatPriceInEuros } from "../../lib/format";
+import { STAGES_REGISTRATION_URL } from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -23,8 +28,9 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "stages-jeunes";
 const YOUTH_STAGE_SLUG = "stage-jeunes";
-const HERO_IMAGE_WIDTHS = [480, 960];
-const HERO_IMAGE_SIZES = "(min-width: 768px) 480px, 100vw";
+const HERO_IMAGE_WIDTHS = [600, 1200];
+const HERO_IMAGE_SIZES = "(min-width: 768px) 600px, 100vw";
+const WEEK_INTRO_PARAGRAPH_INDEX = 1;
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -40,6 +46,14 @@ if (!youthStage) {
   );
 }
 const gallery = await getGallery(YOUTH_STAGE_SLUG, locale);
+const { duration, dates, prerequisites, description, program } =
+  youthStage.data;
+const formattedPrice = formatPriceInEuros(
+  youthStage.data.priceInEuros,
+  LOCALE_SETTINGS[locale].htmlLang,
+);
+const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
+const registrationsPath = localizedPath("inscriptions", locale);
 ---
 
 <BaseLayout
@@ -48,34 +62,89 @@ const gallery = await getGallery(YOUTH_STAGE_SLUG, locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <Section>
-    <div class="grid items-center gap-8 md:grid-cols-2">
-      <div>
+  <section class="pt-5 md:pt-10">
+    <Container class="grid items-center gap-4 md:grid-cols-2 md:gap-16">
+      <div class="flex flex-col gap-4 md:gap-5.5">
+        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
         <h1 class="page-title">{page.data.heading}</h1>
-        <div class="rich-text mt-6 text-lg">
+        <div class="rich-text md:text-xl">
           <Intro />
         </div>
-        <div class="mt-8">
-          <LinkButton href={localizedPath("inscriptions", locale)}>
+        <div class="hidden md:block">
+          <LinkButton href={registrationsPath}>
             {strings.stages.registrationsButton}
           </LinkButton>
         </div>
       </div>
-      <Picture
-        src={youthStage.data.image}
+      <FramedPicture
+        image={youthStage.data.image}
         alt={youthStage.data.imageAlt}
         widths={HERO_IMAGE_WIDTHS}
         sizes={HERO_IMAGE_SIZES}
-        formats={["avif", "webp"]}
-        class="aspect-4/3 w-full rounded-lg object-cover"
+        frame="offsetSky"
+        loading="eager"
+        class="h-60 md:h-110"
       />
-    </div>
-  </Section>
+      <LinkButton href={registrationsPath} class="md:hidden">
+        {strings.stages.registrationsButton}
+      </LinkButton>
+    </Container>
+  </section>
 
-  <StageDetails stage={youthStage} locale={locale} />
+  {page.data.keyFacts && (
+    <section
+      aria-label={strings.youthStages.keyFactsLabel}
+      class="pt-10 md:pt-18"
+    >
+      <Container>
+        <KeyFactsBand facts={page.data.keyFacts} />
+      </Container>
+    </section>
+  )}
 
-  <Section tone="mist">
-    <h2 class="section-title mb-6">{strings.youthStages.galleryTitle}</h2>
-    <PhotoGallery gallery={gallery} />
-  </Section>
+  <section
+    aria-label={strings.youthStages.priceDetailsLabel}
+    class="pt-5 md:pt-7"
+  >
+    <Container class="grid gap-4 md:grid-cols-2 md:gap-6">
+      <div class="border-navy shadow-offset-sm md:shadow-offset rounded-card border-3 p-5 md:rounded-3xl md:p-7">
+        <h2 class="subsection-title md:text-3xl">
+          {strings.stages.prerequisitesHeading}
+        </h2>
+        <ul class="mt-2.5 flex list-disc flex-col gap-1 pl-5">
+          {prerequisites.map((prerequisite) => (
+            <li>{prerequisite}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-coral rounded-card flex flex-col justify-center gap-2.5 p-5 md:rounded-3xl md:p-7">
+        <p class="font-heading text-ink text-2xl md:text-3xl">
+          {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
+        </p>
+        <p class="font-bold">
+          {strings.stages.priceNote} {dates}.
+        </p>
+        <LinkButton
+          href={STAGES_REGISTRATION_URL}
+          variant="navy"
+          class="md:self-start"
+        >
+          {strings.stages.registerButton}
+        </LinkButton>
+      </div>
+    </Container>
+  </section>
+
+  <YouthWeek
+    title={strings.youthStages.weekTitle}
+    intro={weekIntro}
+    days={program.items}
+  />
+
+  <section class="pb-14 md:pb-28">
+    <Container class="flex flex-col gap-3.5 md:gap-7">
+      <h2 class="section-title">{strings.youthStages.galleryTitle}</h2>
+      <PhotoMosaic photos={gallery.data.photos} />
+    </Container>
+  </section>
 </BaseLayout>

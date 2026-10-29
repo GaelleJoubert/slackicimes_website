@@ -7,9 +7,9 @@ photo: ../../../assets/images/team/gaelle-groenland.jpg
 photoAlt: Highliner on a line rigged above a glacier in Greenland
 portrait: ../../../assets/images/team/gaelle-portrait.jpg
 portraitAlt: Portrait of Gaëlle smiling, wearing a hat and sunglasses
+highlineSince: 2014
+excerpt: "Highline perfectly meets two of my needs: understanding & sharing. It changes how I handle fear, and how I see life."
 facts:
-  - label: Highlining since
-    items: ["2014"]
   - label: Style
     items: ["Varied: beautiful lines & highline freestyle"]
   - label: Qualifications

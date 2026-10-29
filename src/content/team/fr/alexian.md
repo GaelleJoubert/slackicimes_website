@@ -5,9 +5,9 @@ name: Alexian
 role: Instructeur highline freestyle
 photo: ../../../assets/images/team/alexian.jpg
 photoAlt: Alexian en figure de highline freestyle, la tête en bas sous la ligne
+highlineSince: 2016
+excerpt: "J'aime le flow intense que l'on peut atteindre en pratiquant ce sport, le côté artistique de notre pratique et la communauté de passionnés autour de la slackline."
 facts:
-  - label: Highline depuis
-    items: ["2016"]
   - label: Type de pratique
     items: ["Highline freestyle, grandes lignes & missions en montagne"]
   - label: Diplômes

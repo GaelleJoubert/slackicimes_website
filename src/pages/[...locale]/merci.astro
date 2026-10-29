@@ -1,8 +1,9 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
+import Container from "../../components/ui/Container.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
-import Section from "../../components/ui/Section.astro";
+import SlacklineIllustration from "../../components/ui/SlacklineIllustration.astro";
 import { getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
@@ -15,6 +16,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "merci";
 const HOME_PAGE_SLUG = "";
+const STAGES_PAGE_SLUG = "stages-highline";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -27,16 +29,28 @@ const { Content } = await render(page);
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
+  footer="compact"
 >
-  <Section>
-    <h1 class="page-title">{page.data.heading}</h1>
-    <div class="rich-text mt-6 max-w-2xl text-lg">
-      <Content />
-    </div>
-    <div class="mt-8">
-      <LinkButton href={localizedPath(HOME_PAGE_SLUG, locale)}>
-        {strings.contactPage.backHomeButton}
-      </LinkButton>
-    </div>
-  </Section>
+  <section class="pt-12 pb-18 md:pt-18 md:pb-30">
+    <Container>
+      <div class="mx-auto flex max-w-225 flex-col items-center gap-4.5 text-center md:gap-6">
+        <SlacklineIllustration state="walked" class="h-22.5 md:h-35" />
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text md:text-2xl">
+          <Content />
+        </div>
+        <div class="mt-2 flex flex-col gap-3 self-stretch md:flex-row md:justify-center md:gap-3.5 md:self-auto">
+          <LinkButton href={localizedPath(HOME_PAGE_SLUG, locale)}>
+            {strings.contactPage.backHomeButton}
+          </LinkButton>
+          <LinkButton
+            href={localizedPath(STAGES_PAGE_SLUG, locale)}
+            variant="secondary"
+          >
+            {strings.common.seeStagesButton}
+          </LinkButton>
+        </div>
+      </div>
+    </Container>
+  </section>
 </BaseLayout>

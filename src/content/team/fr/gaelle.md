@@ -7,9 +7,9 @@ photo: ../../../assets/images/team/gaelle-groenland.jpg
 photoAlt: Highlineuse sur une ligne tendue au dessus d'un glacier au Groenland
 portrait: ../../../assets/images/team/gaelle-portrait.jpg
 portraitAlt: Portrait de Gaëlle souriante, chapeau et lunettes de soleil
+highlineSince: 2014
+excerpt: "La highline répond parfaitement à deux de mes besoins : comprendre & partager. Elle change mon appréhension de la peur, et ma vision de la vie."
 facts:
-  - label: Highline depuis
-    items: ["2014"]
   - label: Type de pratique
     items: ["Variée : belles lignes & highline freestyle"]
   - label: Diplômes

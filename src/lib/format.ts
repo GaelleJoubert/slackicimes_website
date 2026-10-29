@@ -8,3 +8,10 @@ export function formatPriceInEuros(
     maximumFractionDigits: 0,
   }).format(amountInEuros);
 }
+
+export function lowercaseFirstLetter(
+  text: string,
+  languageTag: string,
+): string {
+  return `${text.charAt(0).toLocaleLowerCase(languageTag)}${text.slice(1)}`;
+}

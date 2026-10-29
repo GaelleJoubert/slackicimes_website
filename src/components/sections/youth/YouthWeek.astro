@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import Eyebrow, { type EyebrowTone } from "../../ui/Eyebrow.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+type ProgramItem =
+  CollectionEntry<"stages">["data"]["program"]["items"][number];
+
+interface Props {
+  title: string;
+  intro: string;
+  days: ProgramItem[];
+}
+
+interface DayTone {
+  card: string;
+  label: EyebrowTone;
+  title: string;
+}
+
+const DEFAULT_DAY_TONE: DayTone = {
+  card: "bg-blush",
+  label: "coral",
+  title: "text-navy",
+};
+
+const DAY_TONE_CYCLE: DayTone[] = [
+  DEFAULT_DAY_TONE,
+  { card: "bg-ice", label: "sky", title: "text-navy" },
+  { card: "bg-cloud", label: "mist", title: "text-navy" },
+  { card: "bg-navy text-paper", label: "coral", title: "text-paper" },
+];
+
+const { title, intro, days } = Astro.props;
+const toneAt = (dayIndex: number): DayTone =>
+  DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
+---
+
+<section class="py-14 md:py-26">
+  <Container class="flex flex-col gap-3.5 md:gap-9">
+    <div class="max-w-190">
+      <SectionIntro title={title}>
+        <p class="text-slate">{intro}</p>
+      </SectionIntro>
+    </div>
+    <ul class="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-4">
+      {days.map((day, dayIndex) => {
+        const tone = toneAt(dayIndex);
+        return (
+          <li
+            class:list={[
+              "rounded-card flex flex-col gap-2.5 p-5 md:rounded-3xl md:p-6",
+              tone.card,
+            ]}
+          >
+            <Eyebrow tone={tone.label}>{day.label}</Eyebrow>
+            {day.place && (
+              <h3
+                class:list={["font-heading text-2xl md:text-3xl", tone.title]}
+              >
+                {day.place}
+              </h3>
+            )}
+            <ul class="flex list-disc flex-col gap-1 pl-5 text-base">
+              {day.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+  </Container>
+</section>
