@@ -5,7 +5,6 @@ import ContactForm from "../../components/sections/ContactForm.astro";
 import CallTiles from "../../components/sections/contact/CallTiles.astro";
 import ContactDetailsCard from "../../components/sections/contact/ContactDetailsCard.astro";
 import Container from "../../components/ui/Container.astro";
-import Eyebrow from "../../components/ui/Eyebrow.astro";
 import { getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
@@ -34,7 +33,6 @@ const { Content: Intro } = await render(page);
   <section class="pt-5 pb-14 md:pt-10 md:pb-28">
     <Container class="flex flex-col gap-4.5 md:gap-10">
       <div class="flex max-w-205 flex-col gap-4.5 md:gap-3.5">
-        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
         <h1 class="page-title">{page.data.heading}</h1>
         <div class="rich-text md:text-xl">
           <Intro />

@@ -3,7 +3,6 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import CalloutCard from "../../components/ui/CalloutCard.astro";
 import Container from "../../components/ui/Container.astro";
-import Eyebrow from "../../components/ui/Eyebrow.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import StepList from "../../components/ui/StepList.astro";
@@ -30,7 +29,7 @@ const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
 const { Content: Instructions } = await render(page);
-const { eyebrow, steps, feature } = page.data;
+const { steps, feature } = page.data;
 const stagesPagePath = localizedPath(STAGES_PAGE_SLUG, locale);
 ---
 
@@ -43,7 +42,6 @@ const stagesPagePath = localizedPath(STAGES_PAGE_SLUG, locale);
   <section class="pt-5 pb-12 md:pt-10 md:pb-26">
     <Container class="grid gap-4 md:grid-cols-5 md:items-center md:gap-16">
       <div class="flex flex-col gap-4 md:col-span-3 md:gap-5.5">
-        {eyebrow && <Eyebrow tone="coral">{eyebrow}</Eyebrow>}
         <h1 class="page-title">{page.data.heading}</h1>
         <div class="rich-text md:text-xl">
           <Instructions />

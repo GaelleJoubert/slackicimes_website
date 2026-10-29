@@ -2,7 +2,6 @@
 title: "Inscriptions | Slack'icîmes"
 description: "Inscriptions pour les stages de highline de l'association."
 heading: "Inscriptions"
-eyebrow: Billetterie HelloAsso
 steps:
   - Choisissez votre formule
   - Inscrivez-vous sur HelloAsso

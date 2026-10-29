@@ -65,8 +65,8 @@ const registrationsPath = localizedPath("inscriptions", locale);
   <section class="pt-5 md:pt-10">
     <Container class="grid items-center gap-4 md:grid-cols-2 md:gap-16">
       <div class="flex flex-col gap-4 md:gap-5.5">
-        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
         <h1 class="page-title">{page.data.heading}</h1>
+        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
         <div class="rich-text md:text-xl">
           <Intro />
         </div>

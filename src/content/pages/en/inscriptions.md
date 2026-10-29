@@ -2,7 +2,6 @@
 title: "Registrations | Slack'icîmes"
 description: "Registrations for the association's highline courses."
 heading: "Registrations"
-eyebrow: HelloAsso ticket office
 steps:
   - Choose your course
   - Register on HelloAsso
