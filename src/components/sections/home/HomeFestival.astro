@@ -33,10 +33,7 @@ const strings = uiStrings(locale);
           <p class="text-cloud">{paragraph}</p>
         ))}
         <div class="hidden md:block">
-          <LinkButton
-            href={localizedPath("winter-festislack", locale)}
-            shape="rounded"
-          >
+          <LinkButton href={localizedPath("winter-festislack", locale)}>
             {strings.home.festivalButton}
           </LinkButton>
         </div>
@@ -45,7 +42,7 @@ const strings = uiStrings(locale);
     <PhotoStrip photos={gallery.data.photos} />
     <LinkButton
       href={localizedPath("winter-festislack", locale)}
-      shape="rounded"
+
       class="md:hidden"
     >
       {strings.home.festivalButton}

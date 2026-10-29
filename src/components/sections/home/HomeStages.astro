@@ -34,7 +34,7 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
           <p>{paragraph}</p>
         ))}
         <div class="hidden flex-wrap gap-3.5 md:flex">
-          <LinkButton href={stagesPagePath} shape="rounded">
+          <LinkButton href={stagesPagePath}>
             {strings.common.seeStagesButton}
           </LinkButton>
         </div>
@@ -63,7 +63,7 @@ const languageTag = LOCALE_SETTINGS[locale].htmlLang;
       ))}
     </ul>
     <p class="text-navy text-center font-bold">{teaser.datesNote}</p>
-    <LinkButton href={stagesPagePath} shape="rounded" class="md:hidden">
+    <LinkButton href={stagesPagePath} class="md:hidden">
       {strings.common.seeStagesButton}
     </LinkButton>
   </Container>
