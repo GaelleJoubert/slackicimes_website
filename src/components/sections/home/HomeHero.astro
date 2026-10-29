@@ -60,6 +60,7 @@ const panels = headingParts.map((part, partIndex) => ({
   photo: hero.photos[partIndex],
   href: highlights[partIndex] && highlightHref(highlights[partIndex]),
   needsSpaceBefore: part.startsNewWord && partIndex > 0,
+  isMobileCover: partIndex === 0,
 }));
 ---
 
@@ -69,7 +70,12 @@ const panels = headingParts.map((part, partIndex) => ({
       {panels.map((panel) => (
         <>
           {panel.needsSpaceBefore ? " " : ""}
-          <span class="group rounded-card md:rounded-photo shadow-drop md:shadow-drop-lg relative block h-40 overflow-hidden md:h-115">
+          <span
+            class:list={[
+              "group rounded-card md:rounded-photo shadow-drop md:shadow-drop-lg relative overflow-hidden md:block md:h-115",
+              panel.isMobileCover ? "block h-88" : "hidden",
+            ]}
+          >
             {panel.photo && (
               <Picture
                 src={panel.photo.image}
@@ -81,14 +87,20 @@ const panels = headingParts.map((part, partIndex) => ({
                     : PHOTO_SIZES
                 }
                 formats={["avif", "webp"]}
-                loading="eager"
+                loading={panel.isMobileCover ? "eager" : "lazy"}
                 class:list={[
                   "absolute inset-0 size-full object-cover transition duration-300 group-hover:brightness-110",
+                  panel.isMobileCover && "object-upper md:object-center",
                   FRAMING_CLASSES[panel.photo.framing],
                 ]}
               />
             )}
-            <span class="text-title-sm text-shadow-drop absolute inset-x-0 top-3.5 text-center md:top-7 md:text-5xl">
+            {panel.isMobileCover && (
+              <span class="text-cover-title text-shadow-drop absolute inset-x-0 top-6 px-4 text-center md:hidden">
+                {heading}
+              </span>
+            )}
+            <span class="text-shadow-drop absolute inset-x-0 top-7 hidden text-center text-5xl md:block">
               {panel.text}
             </span>
             {/* Duplicates the highlight link below, so it stays out of the tab order and the accessibility tree. */}
@@ -97,7 +109,7 @@ const panels = headingParts.map((part, partIndex) => ({
                 href={panel.href}
                 aria-hidden="true"
                 tabindex="-1"
-                class="absolute inset-0"
+                class="absolute inset-0 hidden md:block"
               />
             )}
           </span>

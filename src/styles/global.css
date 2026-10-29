@@ -71,6 +71,8 @@
   --text-title--line-height: 1;
   --text-title-sm: 2.75rem;
   --text-title-sm--line-height: 1;
+  --text-cover-title: clamp(2rem, 12.5vw, 2.75rem);
+  --text-cover-title--line-height: 1;
   --text-quote: 2.125rem;
   --text-quote--line-height: 1.15;
 
@@ -93,6 +95,10 @@
 
 @utility object-high {
   object-position: 50% 40%;
+}
+
+@utility object-upper {
+  object-position: 50% 25%;
 }
 
 @layer base {
