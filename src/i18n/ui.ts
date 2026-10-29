@@ -134,8 +134,6 @@ const fr = {
     messageLabel: "Message",
     requiredFieldsNote: "Les champs marqués d'un * sont obligatoires.",
     submitButton: "Envoyer",
-    privacyNotice:
-      "Vos coordonnées servent uniquement à vous répondre. Le message nous est transmis par le service Web3Forms et n'est pas conservé sur ce site.",
     notificationSubject: "Nouveau message depuis slackicimes.org",
   },
 };
@@ -275,8 +273,6 @@ const en: UiStrings = {
     messageLabel: "Message",
     requiredFieldsNote: "Fields marked with * are required.",
     submitButton: "Send",
-    privacyNotice:
-      "Your details are only used to reply to you. The message reaches us through the Web3Forms service and is not stored on this site.",
     notificationSubject: "New message from slackicimes.org (English)",
   },
 };

@@ -7,13 +7,14 @@ interface Props {
   type?: TextFieldType;
   required?: boolean;
   autocomplete?: string;
+  maxLength: number;
 }
 
 const MULTILINE_ROWS = 6;
 const INPUT_CLASSES =
   "border-mist bg-paper focus:border-teal focus:ring-teal block w-full rounded-2xl border-3 px-3.5 font-normal focus:ring-2 focus:outline-none md:px-4";
 const SINGLE_LINE_CLASSES = "min-h-12 md:min-h-13";
-const MULTILINE_CLASSES = "py-3 md:py-3.5";
+const MULTILINE_CLASSES = "h-24 py-3 md:h-auto md:py-3.5";
 
 const {
   name,
@@ -21,6 +22,7 @@ const {
   type = "text",
   required = false,
   autocomplete,
+  maxLength,
 } = Astro.props;
 const fieldId = `field-${name}`;
 ---
@@ -36,6 +38,7 @@ const fieldId = `field-${name}`;
       name={name}
       rows={MULTILINE_ROWS}
       required={required}
+      maxlength={maxLength}
       class:list={[INPUT_CLASSES, MULTILINE_CLASSES]}
     />
   ) : (
@@ -45,6 +48,7 @@ const fieldId = `field-${name}`;
       type={type}
       required={required}
       autocomplete={autocomplete}
+      maxlength={maxLength}
       class:list={[INPUT_CLASSES, SINGLE_LINE_CLASSES]}
     />
   )}
