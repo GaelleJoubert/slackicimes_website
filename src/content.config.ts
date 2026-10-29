@@ -165,7 +165,6 @@ const festival = defineCollection({
   schema: ({ image }) =>
     z.object({
       announcement: z.object({
-        eyebrow: nonEmptyText,
         title: nonEmptyText,
         paragraphs: z.array(nonEmptyText).min(1),
         poster: z.object({ image: image(), alt: nonEmptyText }),

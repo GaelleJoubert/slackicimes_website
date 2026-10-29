@@ -2,7 +2,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import Container from "../../components/ui/Container.astro";
-import Eyebrow from "../../components/ui/Eyebrow.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
 import HighlightedText from "../../components/ui/HighlightedText.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
@@ -47,17 +46,12 @@ const festivalGallery = await getGallery("festival", locale);
   <section class="bg-navy text-paper pt-6 pb-12 md:pt-12 md:pb-24">
     <Container class="flex flex-col gap-4 md:gap-12">
       <div class="grid gap-4 md:grid-cols-2 md:items-end md:gap-16">
-        <div class="flex flex-col gap-4 md:gap-4.5">
-          {page.data.eyebrow && (
-            <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>
-          )}
-          <h1 class="page-title text-paper lg:text-hero">
-            <HighlightedText
-              text={page.data.heading}
-              highlight={FESTIVAL_NAME_HIGHLIGHT}
-            />
-          </h1>
-        </div>
+        <h1 class="page-title text-paper lg:text-hero">
+          <HighlightedText
+            text={page.data.heading}
+            highlight={FESTIVAL_NAME_HIGHLIGHT}
+          />
+        </h1>
         <div class="intro-text intro-text-on-dark">
           <Intro />
         </div>
@@ -66,12 +60,12 @@ const festivalGallery = await getGallery("festival", locale);
     </Container>
   </section>
 
-  <SlacklineDivider backgroundTone="navy" fillTone="blush" />
+  <SlacklineDivider backgroundTone="navy" fillTone="paper" />
 
-  <section class="bg-blush pt-10 pb-14 md:pt-18 md:pb-28">
+  <section class="bg-paper pt-10 pb-14 md:pt-18 md:pb-28">
     <Container class="grid items-center gap-4 md:grid-cols-5 md:gap-16">
       <div class="md:col-span-3">
-        <SectionIntro title={announcement.title} eyebrow={announcement.eyebrow}>
+        <SectionIntro title={announcement.title}>
           {announcement.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>
           ))}
