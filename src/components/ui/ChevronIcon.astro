@@ -1,0 +1,28 @@
+---
+type ChevronDirection = "right" | "left";
+
+interface Props {
+  direction?: ChevronDirection;
+  class?: string;
+}
+
+const PATHS: Record<ChevronDirection, string> = {
+  right: "M8 4l6 6-6 6",
+  left: "M12 4l-6 6 6 6",
+};
+
+const { direction = "right", class: extraClasses } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  viewBox="0 0 20 20"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class:list={["size-5 shrink-0", extraClasses]}
+>
+  <path d={PATHS[direction]} />
+</svg>

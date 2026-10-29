@@ -1,0 +1,52 @@
+---
+import "@fontsource-variable/inter";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import WorldCupAthletes from "../../components/sections/world-cup/WorldCupAthletes.astro";
+import WorldCupEvent from "../../components/sections/world-cup/WorldCupEvent.astro";
+import WorldCupHero from "../../components/sections/world-cup/WorldCupHero.astro";
+import WorldCupNowBanner from "../../components/sections/world-cup/WorldCupNowBanner.astro";
+import WorldCupOrganizers from "../../components/sections/world-cup/WorldCupOrganizers.astro";
+import WorldCupParticipate from "../../components/sections/world-cup/WorldCupParticipate.astro";
+import WorldCupPartners from "../../components/sections/world-cup/WorldCupPartners.astro";
+import WorldCupPracticalInfo from "../../components/sections/world-cup/WorldCupPracticalInfo.astro";
+import WorldCupProgramme from "../../components/sections/world-cup/WorldCupProgramme.astro";
+import WorldCupQuestion from "../../components/sections/world-cup/WorldCupQuestion.astro";
+import WorldCupResults from "../../components/sections/world-cup/WorldCupResults.astro";
+import WorldCupSectionNav from "../../components/sections/world-cup/WorldCupSectionNav.astro";
+import { getPageEntry, getSingleEntryContent } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "coupe-du-monde";
+
+const { locale } = Astro.props;
+const page = await getPageEntry(PAGE_SLUG, locale);
+const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <div class="font-cup text-cup-ink bg-cup-surface text-base leading-relaxed md:text-lg">
+    <WorldCupHero heading={page.data.heading} hero={worldCup.hero} />
+    <WorldCupSectionNav sectionNav={worldCup.sectionNav} />
+    <WorldCupNowBanner now={worldCup.now} />
+    <WorldCupEvent event={worldCup.event} />
+    <WorldCupProgramme programme={worldCup.programme} />
+    <WorldCupAthletes athletes={worldCup.athletes} />
+    <WorldCupResults results={worldCup.results} />
+    <WorldCupPracticalInfo infos={worldCup.infos} />
+    <WorldCupParticipate participate={worldCup.participate} locale={locale} />
+    <WorldCupOrganizers organizers={worldCup.organizers} locale={locale} />
+    <WorldCupPartners partners={worldCup.partners} locale={locale} />
+    <WorldCupQuestion question={worldCup.question} locale={locale} />
+  </div>
+</BaseLayout>

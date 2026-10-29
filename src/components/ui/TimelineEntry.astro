@@ -1,0 +1,35 @@
+---
+export type TimelineDotTone = "navy" | "coral" | "sky";
+type TimelineDotOffset = "flush" | "card";
+
+interface Props {
+  dotTone: TimelineDotTone;
+  dotOffset?: TimelineDotOffset;
+  class?: string;
+}
+
+const DOT_TONE_CLASSES: Record<TimelineDotTone, string> = {
+  navy: "bg-navy",
+  coral: "bg-coral",
+  sky: "bg-sky",
+};
+
+const DOT_OFFSET_CLASSES: Record<TimelineDotOffset, string> = {
+  flush: "top-1.5 md:top-0",
+  card: "top-4.5 md:top-10",
+};
+
+const { dotTone, dotOffset = "flush", class: extraClasses } = Astro.props;
+---
+
+<li class:list={["relative", extraClasses]}>
+  <span
+    aria-hidden="true"
+    class:list={[
+      "border-paper absolute -left-9.25 size-6.5 rounded-full border-4 md:-left-21.5 md:size-13 md:border-5",
+      DOT_TONE_CLASSES[dotTone],
+      DOT_OFFSET_CLASSES[dotOffset],
+    ]}
+  />
+  <slot />
+</li>

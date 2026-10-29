@@ -1,0 +1,34 @@
+---
+import type { HeaderTone } from "../sections/header-tone";
+
+interface Props {
+  href: string;
+  isCurrentPage: boolean;
+  tone: HeaderTone;
+}
+
+const TONE_CLASSES: Record<HeaderTone, { current: string; other: string }> = {
+  light: {
+    current: "bg-ice text-navy",
+    other: "text-navy hover:text-teal",
+  },
+  dark: {
+    current: "bg-sky text-ink",
+    other: "text-paper hover:text-coral",
+  },
+};
+
+const { href, isCurrentPage, tone } = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<a
+  href={href}
+  aria-current={isCurrentPage ? "page" : undefined}
+  class:list={[
+    "block rounded-full px-3.5 py-2.5 font-extrabold transition-colors",
+    isCurrentPage ? toneClasses.current : toneClasses.other,
+  ]}
+>
+  <slot />
+</a>

@@ -1,0 +1,23 @@
+order: 3
+name: Back 2 Les Arcs
+duration: 5 jours
+level: Progression
+summary: Continuez votre progression, accompagnés, sur un spot magnifique avec vue sur le Mont Blanc.
+image: ../../../assets/images/stages/back-to-les-arcs.jpg
+imageAlt: Highlineuse en silhouette au coucher du soleil aux Arcs
+description:
+  - Ce stage est réservé aux personnes ayant déjà pratiqué la highline.
+  - La première journée se déroule directement sur le spot highline, et non pas au sol.
+  - "A la place une journée à un plan d'eau est prévue : au programme waterline, slackline, yoga et détente."
+  - Le programme précis sera établi en fonction des envies du groupe.
+  - Pour un apprentissage du "rigging", nous conseillons plutôt le stage "Rigging", qui y est dédié.
+program:
+  items:
+    - label: "Waterline & Chill : 1 journée"
+    - label: "Highline : 4 journées"
+prerequisites:
+  - Avoir déjà pratiqué la highline
+  - Maîtriser la remontée sur leash et le rétablissement sur la ligne
+  - Maîtriser un départ assis sur une ligne au sol
+dates: Dates 2027 à venir
+priceInEuros: 250

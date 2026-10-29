@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import Container from "../../ui/Container.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import InlineDotList from "../../ui/InlineDotList.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  duo: CollectionEntry<"association">["data"]["duo"];
+  members: CollectionEntry<"team">[];
+}
+
+const PORTRAIT_WIDTHS = [300, 600];
+const PORTRAIT_SIZES = "(min-width: 768px) 300px, 50vw";
+
+const { duo, members } = Astro.props;
+
+function portraitOf(member: CollectionEntry<"team">) {
+  const { portrait, portraitAlt, name } = member.data;
+  if (!portrait || !portraitAlt) {
+    throw new Error(
+      `Team member "${member.id}" belongs to the duo: add "portrait" and "portraitAlt" for ${name}.`,
+    );
+  }
+  return { image: portrait, alt: portraitAlt };
+}
+---
+
+<section class="bg-navy text-paper py-14 md:py-26">
+  <Container class="grid gap-4 md:grid-cols-2 md:items-center md:gap-16">
+    <SectionIntro
+      title={duo.title}
+      eyebrow={duo.eyebrow}
+      eyebrowTone="coral"
+      theme="dark"
+    >
+      {duo.paragraphs.map((paragraph) => (
+        <p class="text-cloud">{paragraph}</p>
+      ))}
+      <h3 class="card-title text-paper mt-2 md:mt-3">{duo.valuesTitle}</h3>
+      <InlineDotList items={duo.values} class="value-list-text" />
+    </SectionIntro>
+    <ul class="grid grid-cols-2 gap-3 md:gap-5">
+      {members.map((member, memberIndex) => {
+        const portrait = portraitOf(member);
+        return (
+          <li class:list={[memberIndex % 2 === 1 && "md:mt-10"]}>
+            <a
+              href={`#${entrySlug(member.id)}`}
+              class="text-paper hover:text-coral flex flex-col gap-1.5 md:gap-2.5"
+            >
+              <FramedPicture
+                image={portrait.image}
+                alt={portrait.alt}
+                widths={PORTRAIT_WIDTHS}
+                sizes={PORTRAIT_SIZES}
+                frame="bordered"
+                class="h-52.5 md:h-85"
+              />
+              <span class="card-title text-current text-center md:text-3xl">
+                {member.data.name}
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </Container>
+</section>

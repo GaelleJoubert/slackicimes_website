@@ -15,11 +15,9 @@ const CONTRACT_PAGE_SLUGS = [
   "stages-jeunes",
   "contact",
   "inscriptions",
-  "prestations",
-  "inscriptions-winter-festislack",
   "livre-d-or",
-  "expeditions",
   "anciennes-editions-winter-festislack",
+  "coupe-du-monde",
 ];
 
 const CONTRACT_PATHS = CONTRACT_PAGE_SLUGS.flatMap((slug) => [

@@ -1,0 +1,67 @@
+---
+import Container from "../components/ui/Container.astro";
+import LinkButton from "../components/ui/LinkButton.astro";
+import SlacklineIllustration from "../components/ui/SlacklineIllustration.astro";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_SETTINGS } from "../i18n/locales";
+import { localizedPath } from "../i18n/routes";
+import { uiStrings } from "../i18n/ui";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const HOME_PAGE_SLUG = "";
+const ERROR_CODE = "404";
+
+const defaultStrings = uiStrings(DEFAULT_LOCALE).notFound;
+const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
+---
+
+<BaseLayout
+  title={defaultStrings.pageTitle}
+  description={defaultStrings.pageDescription}
+  locale={DEFAULT_LOCALE}
+  pageSlug={HOME_PAGE_SLUG}
+  isErrorPage
+  footer="compact"
+>
+  <section class="pt-8 pb-16 md:pt-14 md:pb-30">
+    <Container>
+      <div class="mx-auto flex max-w-250 flex-col items-center gap-4 text-center md:gap-6">
+        <div class="relative h-37.5 w-full md:h-65">
+          <SlacklineIllustration state="broken" class="h-full" />
+          <p
+            aria-hidden="true"
+            class="font-heading text-navy text-display md:text-error-code absolute inset-x-0 top-6 md:top-12.5"
+          >
+            {ERROR_CODE}
+          </p>
+        </div>
+        <h1 class="section-title">{defaultStrings.title}</h1>
+        <p class="md:text-xl">{defaultStrings.text}</p>
+        <LinkButton
+          href={localizedPath(HOME_PAGE_SLUG, DEFAULT_LOCALE)}
+          class="self-stretch md:self-auto"
+        >
+          {defaultStrings.homeButton}
+        </LinkButton>
+        {otherLocales.map((locale) => {
+          const strings = uiStrings(locale).notFound;
+          return (
+            <div
+              lang={LOCALE_SETTINGS[locale].htmlLang}
+              class="bg-cloud rounded-card md:rounded-photo mt-5 flex flex-col gap-2 self-stretch p-5 md:mt-8 md:items-center md:gap-2.5 md:p-7"
+            >
+              <h2 class="timeline-title">{strings.title}</h2>
+              <p>{strings.text}</p>
+              <LinkButton
+                href={localizedPath(HOME_PAGE_SLUG, locale)}
+                variant="secondary"
+                class="mt-1"
+              >
+                {strings.homeButton}
+              </LinkButton>
+            </div>
+          );
+        })}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

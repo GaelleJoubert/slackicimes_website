@@ -1,0 +1,23 @@
+---
+interface Props {
+  href: string;
+  name: string;
+  details: string;
+  price: string;
+}
+
+const { href, name, details, price } = Astro.props;
+---
+
+<a
+  href={href}
+  class="bg-paper border-navy rounded-card flex h-full items-center justify-between gap-3 border-3 px-4 py-3.5 transition md:flex-col md:items-start md:justify-start md:gap-1 md:p-5 md:hover:-translate-y-1"
+>
+  <span class="flex flex-col">
+    <span class="card-title text-xl md:text-2xl">{name}</span>
+    <span class="text-slate text-sm">{details}</span>
+  </span>
+  <span class="font-heading text-coral-strong text-2xl md:mt-2 md:text-3xl">
+    {price}
+  </span>
+</a>

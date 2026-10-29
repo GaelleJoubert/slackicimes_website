@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { groupConsecutiveBy } from "../../../lib/grouping";
+import Container from "../../ui/Container.astro";
+import type { PictureFrame } from "../../ui/FramedPicture.astro";
+import Timeline from "../../ui/Timeline.astro";
+import type { TimelineDotTone } from "../../ui/TimelineEntry.astro";
+import ArchiveEditions from "./ArchiveEditions.astro";
+import BriefEditions from "./BriefEditions.astro";
+import PosterEdition from "./PosterEdition.astro";
+import SpotlightEdition from "./SpotlightEdition.astro";
+
+type FestivalEdition = CollectionEntry<"festivalEditions">;
+
+interface Props {
+  editions: FestivalEdition[];
+  locale: Locale;
+}
+
+const GROUPED_LAYOUTS = new Set(["brief", "archive"]);
+const DOT_TONES: TimelineDotTone[] = ["navy", "coral", "sky"];
+const POSTER_FRAMES: PictureFrame[] = ["offsetSky", "offsetCoral"];
+
+const { editions, locale } = Astro.props;
+const editionGroups = groupConsecutiveBy(editions, ({ data }) =>
+  GROUPED_LAYOUTS.has(data.layout) ? data.layout : undefined,
+);
+const posterEditions = editions.filter(({ data }) => data.layout === "poster");
+
+function posterFrameOf(edition: FestivalEdition): PictureFrame {
+  const posterIndex = posterEditions.indexOf(edition);
+  return POSTER_FRAMES[posterIndex % POSTER_FRAMES.length];
+}
+---
+
+<section class="pt-7 pb-14 md:pt-12 md:pb-28">
+  <Container>
+    <Timeline label={uiStrings(locale).pastEditions.timelineLabel}>
+      {editionGroups.map((group, groupIndex) => {
+        const [leadEdition] = group;
+        const dotTone = DOT_TONES[groupIndex % DOT_TONES.length];
+        switch (leadEdition.data.layout) {
+          case "poster":
+            return (
+              <PosterEdition
+                edition={leadEdition}
+                dotTone={dotTone}
+                posterFrame={posterFrameOf(leadEdition)}
+              />
+            );
+          case "spotlight":
+            return (
+              <SpotlightEdition
+                edition={leadEdition}
+                dotTone={dotTone}
+                locale={locale}
+              />
+            );
+          case "brief":
+            return <BriefEditions editions={group} dotTone={dotTone} />;
+          case "archive":
+            return (
+              <ArchiveEditions
+                editions={group}
+                dotTone={dotTone}
+                locale={locale}
+              />
+            );
+        }
+      })}
+    </Timeline>
+  </Container>
+</section>

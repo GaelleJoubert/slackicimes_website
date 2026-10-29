@@ -1,0 +1,38 @@
+---
+import type { ImageMetadata } from "astro";
+import { Picture } from "astro:assets";
+
+interface MosaicPhoto {
+  image: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  photos: MosaicPhoto[];
+}
+
+const LEAD_PHOTO_WIDTHS = [600, 1200];
+const LEAD_PHOTO_SIZES = "(min-width: 768px) 620px, 100vw";
+const PHOTO_WIDTHS = [300, 600];
+const PHOTO_SIZES = "(min-width: 768px) 300px, 50vw";
+
+const { photos } = Astro.props;
+---
+
+<ul class="grid auto-rows-38 grid-cols-2 gap-2.5 md:auto-rows-50 md:grid-cols-4 md:gap-4">
+  {photos.map((photo, photoIndex) => {
+    const isLeadPhoto = photoIndex === 0;
+    return (
+      <li class:list={[isLeadPhoto && "col-span-2 row-span-2"]}>
+        <Picture
+          src={photo.image}
+          alt={photo.alt}
+          widths={isLeadPhoto ? LEAD_PHOTO_WIDTHS : PHOTO_WIDTHS}
+          sizes={isLeadPhoto ? LEAD_PHOTO_SIZES : PHOTO_SIZES}
+          formats={["avif", "webp"]}
+          class="size-full rounded-2xl object-cover md:rounded-3xl"
+        />
+      </li>
+    );
+  })}
+</ul>

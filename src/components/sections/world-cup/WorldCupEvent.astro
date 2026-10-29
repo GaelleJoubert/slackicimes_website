@@ -1,0 +1,61 @@
+---
+import { Picture } from "astro:assets";
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  event: WorldCupContent["event"];
+}
+
+const ILLUSTRATION_WIDTHS = [480, 960];
+const ILLUSTRATION_SIZES = "(min-width: 1024px) 460px, 100vw";
+
+const { event } = Astro.props;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.event} tone="surface">
+  <div class="flex flex-col gap-14">
+    <div class="grid items-center gap-12 lg:grid-cols-5">
+      <div class="lg:col-span-3">
+        <CupSectionIntro
+          eyebrow={event.eyebrow}
+          title={event.title}
+          theme="light"
+        >
+          {event.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </CupSectionIntro>
+      </div>
+      <div class="lg:col-span-2">
+        <Picture
+          src={event.illustration.image}
+          alt={event.illustration.alt}
+          widths={ILLUSTRATION_WIDTHS}
+          sizes={ILLUSTRATION_SIZES}
+          formats={["avif", "webp"]}
+          class="w-full rounded-2xl"
+        />
+      </div>
+    </div>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {event.stats.map((stat) => (
+        <li class="bg-cup-navy rounded-2xl p-7 text-white">
+          <p class="cup-stat-value text-cup-sky">{stat.value}</p>
+          <p class="mt-2.5 font-semibold">{stat.label}</p>
+          <p class="text-cup-soft text-sm">{stat.detail}</p>
+        </li>
+      ))}
+    </ul>
+    <ul class="grid gap-4 md:grid-cols-2">
+      {event.highlights.map((highlight) => (
+        <li class="flex flex-col gap-2.5 rounded-2xl bg-white p-7">
+          <h3 class="cup-card-title text-cup-navy">{highlight.title}</h3>
+          <p>{highlight.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</CupSection>

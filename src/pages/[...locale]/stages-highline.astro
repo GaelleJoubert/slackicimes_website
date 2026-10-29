@@ -1,0 +1,120 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import FaqSection from "../../components/sections/FaqSection.astro";
+import FeaturedTestimonial from "../../components/sections/FeaturedTestimonial.astro";
+import CoursePicker from "../../components/sections/stages/CoursePicker.astro";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import SectionIntro from "../../components/ui/SectionIntro.astro";
+import SlacklineDivider from "../../components/ui/SlacklineDivider.astro";
+import VideoEmbed from "../../components/ui/VideoEmbed.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { entrySlug } from "../../i18n/content";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { COURSE_FORMULAS_SECTION_ID } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "stages-highline";
+const FAQ_SECTION_ID = "faq";
+const FEATURED_TESTIMONIAL_SLUG = "ludovic";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const stages = await getLocalizedCollection("stages", locale);
+const questions = await getLocalizedCollection("faq", locale);
+const testimonials = await getLocalizedCollection("testimonials", locale);
+const featuredTestimonial = testimonials.find(
+  (testimonial) => entrySlug(testimonial.id) === FEATURED_TESTIMONIAL_SLUG,
+);
+if (!featuredTestimonial) {
+  throw new Error(
+    `Missing testimonial "${FEATURED_TESTIMONIAL_SLUG}" for the ${PAGE_SLUG} page.`,
+  );
+}
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <section class="pt-5 md:pt-10">
+    <Container class="grid items-center gap-5 md:grid-cols-2 md:gap-16">
+      <div class="flex flex-col gap-4 md:gap-5.5">
+        {page.data.eyebrow && (
+          <Eyebrow tone="coral">{page.data.eyebrow}</Eyebrow>
+        )}
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text md:text-xl">
+          <Intro />
+        </div>
+        <div class="hidden flex-wrap gap-3.5 md:flex">
+          <LinkButton href={localizedPath("inscriptions", locale)}>
+            {strings.stages.registrationsButton}
+          </LinkButton>
+          <LinkButton
+            href={`#${COURSE_FORMULAS_SECTION_ID}`}
+            variant="secondary"
+          >
+            {strings.stages.seeFormulasButton}
+          </LinkButton>
+        </div>
+      </div>
+      {page.data.video && (
+        <VideoEmbed
+          videoUrl={page.data.video}
+          title={page.data.heading}
+          locale={locale}
+          class="shadow-offset md:shadow-offset-lg shadow-sky"
+        />
+      )}
+      <LinkButton
+        href={localizedPath("inscriptions", locale)}
+        class="md:hidden"
+      >
+        {strings.stages.registrationsButton}
+      </LinkButton>
+    </Container>
+  </section>
+
+  <div class="mt-9 md:mt-18">
+    <SlacklineDivider hasAnchors />
+  </div>
+
+  <section
+    id={COURSE_FORMULAS_SECTION_ID}
+    class="scroll-mt-4 pt-6 pb-14 md:pt-12 md:pb-26"
+  >
+    <Container class="flex flex-col gap-4.5 md:gap-9">
+      <div class="max-w-190">
+        <SectionIntro title={strings.stages.formulasTitle}>
+          <p class="text-slate">{strings.stages.formulasIntro}</p>
+        </SectionIntro>
+      </div>
+      <div class="flex flex-col gap-3 md:gap-4">
+        <p class="text-navy font-extrabold">{strings.stages.pickerHint}</p>
+        <CoursePicker stages={stages} locale={locale} />
+      </div>
+    </Container>
+  </section>
+
+  <FaqSection
+    id={FAQ_SECTION_ID}
+    intro={strings.faq.stagesIntro}
+    questions={questions}
+    locale={locale}
+  />
+
+  <FeaturedTestimonial testimonial={featuredTestimonial} locale={locale} />
+</BaseLayout>

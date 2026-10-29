@@ -1,0 +1,25 @@
+---
+import ToggleSign from "./ToggleSign.astro";
+
+interface Props {
+  summary: string;
+  groupName?: string;
+  isOpen?: boolean;
+}
+
+const { summary, groupName, isOpen = false } = Astro.props;
+---
+
+<details
+  name={groupName}
+  open={isOpen}
+  class="group bg-paper border-navy rounded-card border-3"
+>
+  <summary class="font-heading text-navy flex min-h-14 cursor-pointer items-center justify-between gap-4 px-4 py-3 text-lg md:px-5.5 md:py-4.5 md:text-2xl">
+    <h3>{summary}</h3>
+    <ToggleSign />
+  </summary>
+  <div class="rich-text px-4 pb-4 text-base md:px-5.5 md:pb-5">
+    <slot />
+  </div>
+</details>

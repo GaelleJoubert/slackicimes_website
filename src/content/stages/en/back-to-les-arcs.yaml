@@ -1,0 +1,23 @@
+order: 3
+name: Back 2 Les Arcs
+duration: 5 days
+level: Progression
+summary: Keep progressing, with guidance, on a beautiful spot overlooking Mont Blanc.
+image: ../../../assets/images/stages/back-to-les-arcs.jpg
+imageAlt: Silhouette of a highliner at sunset in Les Arcs
+description:
+  - This course is for people who have already practiced highlining.
+  - The first day takes place directly on the highline spot, not on the ground.
+  - "Instead, a day at a lake is planned: waterline, slackline, yoga and relaxing."
+  - The exact program will be set according to the group's wishes.
+  - To learn "rigging", we recommend the "Rigging" course, which is dedicated to it.
+program:
+  items:
+    - label: "Waterline & Chill: 1 day"
+    - label: "Highline: 4 days"
+prerequisites:
+  - Have already practiced highlining
+  - Master the leash climb and getting back on the line
+  - Master a sit start on a line on the ground
+dates: 2027 dates coming soon
+priceInEuros: 250

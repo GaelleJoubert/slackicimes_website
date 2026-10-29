@@ -1,0 +1,43 @@
+---
+import type { ImageMetadata } from "astro";
+import FramedPicture from "./FramedPicture.astro";
+
+interface StripPhoto {
+  image: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  photos: StripPhoto[];
+  loading?: "eager" | "lazy";
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 768px) 400px, 240px";
+
+const { photos, loading = "lazy" } = Astro.props;
+---
+
+<ul class="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pt-2 pb-3 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:p-0">
+  {photos.map((photo) => (
+    <li class="w-60 shrink-0 snap-start md:w-auto">
+      <figure class="flex flex-col gap-2">
+        <FramedPicture
+          image={photo.image}
+          alt={photo.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={PHOTO_SIZES}
+          frame="bordered"
+          loading={loading}
+          class="h-43 md:h-75"
+        />
+        {photo.caption && (
+          <figcaption class="text-mist text-sm font-bold md:hidden">
+            {photo.caption}
+          </figcaption>
+        )}
+      </figure>
+    </li>
+  ))}
+</ul>

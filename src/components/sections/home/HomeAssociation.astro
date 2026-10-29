@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { uiStrings } from "../../../i18n/ui";
+import Container from "../../ui/Container.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  teaser: CollectionEntry<"home">["data"]["associationTeaser"];
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+
+const { teaser, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="py-14 md:py-28">
+  <Container class="grid items-center gap-7 md:grid-cols-2 md:gap-18">
+    <div class="relative pr-2.5 md:pr-0">
+      <FramedPicture
+        image={teaser.illustration.image}
+        alt={teaser.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        frame="offsetMist"
+        class="h-60 md:h-110"
+      />
+      <span class="bg-coral font-heading text-ink absolute -right-1.5 -bottom-4.5 flex size-25 items-center justify-center rounded-full p-2.5 text-center leading-tight md:-right-4.5 md:-bottom-5.5 md:size-38 md:p-4 md:text-2xl">
+        {teaser.badge}
+      </span>
+    </div>
+    <SectionIntro
+      title={strings.navigation.association}
+      eyebrow={teaser.eyebrow}
+      eyebrowTone="cloud"
+    >
+      {teaser.paragraphs.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+      <LinkButton
+        href={localizedPath("association", locale)}
+        variant="secondaryRaised"
+        class="md:self-start"
+      >
+        {strings.home.discoverTeamButton}
+      </LinkButton>
+    </SectionIntro>
+  </Container>
+</section>
