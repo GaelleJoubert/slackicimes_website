@@ -10,8 +10,7 @@ import {
   type TextBox,
   type TextSizeCandidate,
 } from "../../lib/testimonial";
-import { ROUND_ICON_BUTTON_CLASSES } from "../ui/button-styles";
-import ChevronIcon from "../ui/ChevronIcon.astro";
+import CarouselControls from "../ui/CarouselControls.astro";
 import QuoteCard, {
   type QuoteTextSize,
   type QuoteTone,
@@ -146,82 +145,26 @@ const slides = withAlternatingTones(sizedGroups);
       </li>
     ))}
   </ul>
-  <div data-carousel-controls hidden>
-    <div class="flex items-center gap-3.5 md:gap-6">
-      <button
-        type="button"
-        data-carousel-previous
-        aria-label={strings.previousButton}
-        class={ROUND_ICON_BUTTON_CLASSES}
-      >
-        <ChevronIcon direction="left" />
-      </button>
-      <div class="flex flex-1 flex-col items-center gap-1.5 md:flex-row md:gap-6">
-        <div aria-hidden="true" class="relative h-3 w-full md:h-4 md:flex-1">
-          <span class="bg-mist absolute inset-x-1.5 top-1 h-1 rounded-full md:inset-x-2 md:top-1.5" />
-          <span
-            data-carousel-progress
-            class="bg-coral absolute inset-x-1.5 top-1 h-1 origin-left scale-x-0 rounded-full transition-transform md:inset-x-2 md:top-1.5"
-          />
-          <span class="bg-navy absolute top-0 left-0 size-3 rounded-full md:size-4" />
-          <span class="bg-navy absolute top-0 right-0 size-3 rounded-full md:size-4" />
-        </div>
-        <p
-          data-carousel-page-label
-          class="text-navy text-sm font-extrabold tabular-nums md:text-base"
-        />
-      </div>
-      <button
-        type="button"
-        data-carousel-next
-        aria-label={strings.nextButton}
-        class={ROUND_ICON_BUTTON_CLASSES}
-      >
-        <ChevronIcon direction="right" />
-      </button>
-    </div>
-  </div>
+  <CarouselControls
+    previousLabel={strings.previousButton}
+    nextLabel={strings.nextButton}
+  />
 </div>
 
 <script>
-  import {
-    isOnPage,
-    pageCount,
-    pageLabel,
-    wrapPageIndex,
-  } from "../../lib/pagination";
+  import { isOnPage, pageCount, wrapPageIndex } from "../../lib/pagination";
+  import { findCarouselControls, showPageDots } from "../ui/carousel-controls";
 
   const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
   const SLIDES_PER_PAGE_ON_MOBILE = 1;
   const SLIDES_PER_PAGE_ON_DESKTOP = 2;
 
-  function requireElement<Found extends Element>(
-    carousel: Element,
-    selector: string,
-  ): Found {
-    const element = carousel.querySelector<Found>(selector);
-    if (!element) {
-      throw new Error(`Testimonial carousel is missing "${selector}".`);
-    }
-    return element;
-  }
-
   function setUpCarousel(carousel: HTMLElement) {
     const slides = [
       ...carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
     ];
-    const controls = requireElement<HTMLElement>(
-      carousel,
-      "[data-carousel-controls]",
-    );
-    const progress = requireElement<HTMLElement>(
-      carousel,
-      "[data-carousel-progress]",
-    );
-    const label = requireElement<HTMLElement>(
-      carousel,
-      "[data-carousel-page-label]",
-    );
+    const { controls, previousButton, nextButton, dots } =
+      findCarouselControls(carousel);
     const desktopQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
     let currentPageIndex = 0;
 
@@ -237,18 +180,13 @@ const slides = withAlternatingTones(sizedGroups);
       slides.forEach((slide, slideIndex) => {
         slide.hidden = !isOnPage(slideIndex, currentPageIndex, perPage);
       });
-      label.textContent = pageLabel(currentPageIndex, totalPages);
-      progress.style.scale = `${(currentPageIndex + 1) / totalPages} 1`;
+      showPageDots(dots, currentPageIndex, totalPages);
     }
 
-    requireElement(carousel, "[data-carousel-previous]").addEventListener(
-      "click",
-      () => showPage(currentPageIndex - 1),
+    previousButton.addEventListener("click", () =>
+      showPage(currentPageIndex - 1),
     );
-    requireElement(carousel, "[data-carousel-next]").addEventListener(
-      "click",
-      () => showPage(currentPageIndex + 1),
-    );
+    nextButton.addEventListener("click", () => showPage(currentPageIndex + 1));
     desktopQuery.addEventListener("change", () => showPage(0));
     controls.hidden = false;
     showPage(0);

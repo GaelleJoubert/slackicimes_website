@@ -1,0 +1,75 @@
+---
+import { MAX_PAGE_DOTS } from "../../lib/pagination";
+import ChevronIcon from "./ChevronIcon.astro";
+import { ROUND_ICON_BUTTON_CLASSES } from "./button-styles";
+
+export type CarouselTone = "light" | "dark";
+
+interface Props {
+  previousLabel: string;
+  nextLabel: string;
+  tone?: CarouselTone;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<CarouselTone, { button: string; dot: string }> = {
+  light: {
+    button: ROUND_ICON_BUTTON_CLASSES,
+    dot: "bg-mist data-active:bg-navy",
+  },
+  dark: {
+    button:
+      "border-paper bg-navy text-paper hover:bg-paper hover:text-navy flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition",
+    dot: "bg-paper/30 data-active:bg-paper",
+  },
+};
+
+const {
+  previousLabel,
+  nextLabel,
+  tone = "light",
+  class: extraClasses,
+} = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+const dotIndexes = Array.from(
+  { length: MAX_PAGE_DOTS },
+  (_, dotIndex) => dotIndex,
+);
+---
+
+<div data-carousel-controls hidden>
+  <div
+    class:list={[
+      "flex items-center justify-center gap-4 md:gap-5",
+      extraClasses,
+    ]}
+  >
+    <button
+      type="button"
+      data-carousel-previous
+      aria-label={previousLabel}
+      class={toneClasses.button}
+    >
+      <ChevronIcon direction="left" />
+    </button>
+    <ol aria-hidden="true" class="flex items-center gap-2">
+      {dotIndexes.map(() => (
+        <li
+          data-carousel-dot
+          class:list={[
+            "data-more:scale-50 size-2.5 rounded-full transition",
+            toneClasses.dot,
+          ]}
+        />
+      ))}
+    </ol>
+    <button
+      type="button"
+      data-carousel-next
+      aria-label={nextLabel}
+      class={toneClasses.button}
+    >
+      <ChevronIcon direction="right" />
+    </button>
+  </div>
+</div>
