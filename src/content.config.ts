@@ -35,6 +35,8 @@ const programItem = z.object({
   details: z.array(nonEmptyText).default([]),
 });
 
+const stageImageFocus = z.enum(["top", "high", "center"]);
+
 const stages = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/stages" }),
   schema: ({ image }) =>
@@ -46,6 +48,7 @@ const stages = defineCollection({
       summary: nonEmptyText,
       image: image(),
       imageAlt: nonEmptyText,
+      imageFocus: stageImageFocus.default("center"),
       description: z.array(nonEmptyText).min(1),
       program: z.object({
         intro: z.array(nonEmptyText).default([]),

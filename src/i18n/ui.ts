@@ -49,7 +49,6 @@ const fr = {
     priceHeading: "Tarif",
     priceNote: "Ce tarif inclut toutes les activités et le matériel collectif.",
     registerButton: "S'inscrire sur HelloAsso",
-    seeFormulasButton: "Voir les formules",
     pickerHint: "Choisissez une formule pour afficher son programme",
     durationLabel: "Durée",
     levelLabel: "Niveau",
@@ -89,7 +88,6 @@ const fr = {
   testimonials: {
     title: "Livre d'or",
     intro: "Témoignages de nos stagiaires",
-    readAllLink: "Lire tout le livre d'or",
     carouselLabel: "Témoignages",
     carouselRoleDescription: "carrousel",
     previousButton: "Témoignages précédents",
@@ -184,7 +182,6 @@ const en: UiStrings = {
     priceHeading: "Price",
     priceNote: "This price includes all activities and collective equipment.",
     registerButton: "Register on HelloAsso",
-    seeFormulasButton: "See the courses",
     pickerHint: "Pick a course to see its program",
     durationLabel: "Duration",
     levelLabel: "Level",
@@ -224,7 +221,6 @@ const en: UiStrings = {
   testimonials: {
     title: "Guestbook",
     intro: "Testimonials from our trainees",
-    readAllLink: "Read the whole guestbook",
     carouselLabel: "Testimonials",
     carouselRoleDescription: "carousel",
     previousButton: "Previous testimonials",

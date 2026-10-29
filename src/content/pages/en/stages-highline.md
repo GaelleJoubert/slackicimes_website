@@ -2,7 +2,6 @@
 title: "Highline courses | Slack'icîmes | Alps"
 description: "Discover our slackline and highline courses. Learn, discover or improve in the discipline."
 heading: "Highline courses"
-eyebrow: "1st association in France to offer courses"
 video: "https://www.youtube.com/watch?v=iIkt2Ot478s"
 ---
 

@@ -5,6 +5,7 @@ import { entrySlug } from "../../../i18n/content";
 import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { formatPriceInEuros } from "../../../lib/format";
 import CourseDetails from "./CourseDetails.astro";
+import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
 interface Props {
   stages: CollectionEntry<"stages">[];
@@ -51,7 +52,10 @@ const courses = stages.map((stage, stageIndex) => {
             widths={THUMBNAIL_WIDTHS}
             sizes={THUMBNAIL_SIZES}
             formats={["avif", "webp"]}
-            class="size-14 shrink-0 rounded-2xl object-cover md:h-27.5 md:w-full md:rounded-none"
+            class:list={[
+              "md:aspect-photo size-14 shrink-0 rounded-2xl object-cover md:h-auto md:w-full md:rounded-none",
+              STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus],
+            ]}
           />
           <span class="flex flex-1 flex-col md:px-4 md:pt-3.5 md:pb-4">
             <span class="card-title text-xl md:text-2xl">

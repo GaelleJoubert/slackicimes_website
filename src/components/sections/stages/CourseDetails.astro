@@ -7,6 +7,7 @@ import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import FactTile from "../../ui/FactTile.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
 interface Props {
   stage: CollectionEntry<"stages">;
@@ -24,6 +25,7 @@ const {
   level,
   image,
   imageAlt,
+  imageFocus,
   description,
   program,
   prerequisites,
@@ -40,7 +42,7 @@ const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
       alt={imageAlt}
       widths={PHOTO_WIDTHS}
       sizes={PHOTO_SIZES}
-      class="h-48 md:h-75"
+      class={`aspect-photo h-auto ${STAGE_IMAGE_FOCUS_CLASSES[imageFocus]}`}
     />
     <dl class="grid grid-cols-2 gap-2.5 md:gap-4">
       <FactTile
