@@ -7,9 +7,9 @@ photo: ../../../assets/images/team/chloe-skyline.jpg
 photoAlt: Highline tendue entre deux sommets rocheux en haute montagne
 portrait: ../../../assets/images/team/chloe-portrait.jpg
 portraitAlt: Portrait de Chloë souriante au coucher du soleil en montagne
+highlineSince: 2010
+excerpt: "Je découvre la highline à ses tous débuts en France en rencontrant les Flying Frenchies, pionniers de l'activité, et vois l'évolution au fil des ans de la discipline."
 facts:
-  - label: Highline depuis
-    items: ["2010"]
   - label: Type de pratique
     items:
       [

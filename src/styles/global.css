@@ -122,6 +122,10 @@
     @apply font-heading text-4xl leading-none md:text-6xl;
   }
 
+  .value-list-text {
+    @apply font-heading text-2xl leading-tight md:text-3xl;
+  }
+
   .quote-text {
     @apply font-heading text-2xl md:text-quote;
   }
@@ -201,6 +205,12 @@
 
     & strong {
       @apply text-paper;
+    }
+  }
+
+  .split-centered-grid {
+    @variant md {
+      grid-template-rows: 1fr auto auto 1fr;
     }
   }
 

@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+
+interface Props {
+  heading: string;
+  eyebrow?: string;
+  origin: CollectionEntry<"association">["data"]["origin"];
+}
+
+const PHOTO_WIDTHS = [600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+
+const { heading, eyebrow, origin } = Astro.props;
+const [leadParagraph, ...closingParagraphs] = origin.paragraphs;
+---
+
+<section class="pt-5 md:pt-10">
+  <Container class="split-centered-grid grid gap-3.5 md:grid-cols-2 md:gap-x-16 md:gap-y-5">
+    <div class="flex flex-col gap-3.5 md:row-start-2 md:gap-5">
+      {eyebrow && <Eyebrow tone="cloud">{eyebrow}</Eyebrow>}
+      <h1 class="page-title">{heading}</h1>
+    </div>
+    <div class="pr-2 pb-2 md:col-start-2 md:row-span-4 md:row-start-1 md:p-0">
+      <FramedPicture
+        image={origin.illustration.image}
+        alt={origin.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        frame="offsetMist"
+        loading="eager"
+        class="h-57.5 md:h-115"
+      />
+    </div>
+    <div class="flex flex-col gap-3.5 md:row-start-3 md:gap-5">
+      <p>{leadParagraph}</p>
+      {closingParagraphs.map((paragraph) => (
+        <p class="text-navy font-bold">{paragraph}</p>
+      ))}
+    </div>
+  </Container>
+</section>

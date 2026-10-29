@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import ActivityGrid from "../../components/sections/ActivityGrid.astro";
-import DuoSection from "../../components/sections/DuoSection.astro";
-import FeatureBlock from "../../components/sections/FeatureBlock.astro";
-import TeamGroup from "../../components/sections/TeamGroup.astro";
-import Section from "../../components/ui/Section.astro";
+import AssociationActivities from "../../components/sections/association/AssociationActivities.astro";
+import AssociationDuo from "../../components/sections/association/AssociationDuo.astro";
+import AssociationHero from "../../components/sections/association/AssociationHero.astro";
+import AssociationTeam from "../../components/sections/association/AssociationTeam.astro";
+import FirstStagesCard from "../../components/sections/association/FirstStagesCard.astro";
 import {
   getLocalizedCollection,
   getPageEntry,
@@ -22,12 +22,11 @@ const PAGE_SLUG = "association";
 
 const { locale } = Astro.props;
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { origin, firstStages, activities, duo, crew } = (
+const { origin, firstStages, activities, duo, team } = (
   await getSingleEntryContent("association", locale)
 ).data;
-const team = await getLocalizedCollection("team", locale);
-const duoMembers = team.filter((member) => member.data.group === "duo");
-const crewMembers = team.filter((member) => member.data.group === "crew");
+const teamMembers = await getLocalizedCollection("team", locale);
+const duoMembers = teamMembers.filter((member) => member.data.group === "duo");
 ---
 
 <BaseLayout
@@ -36,27 +35,13 @@ const crewMembers = team.filter((member) => member.data.group === "crew");
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <Section spacing="flushBottom">
-    <h1 class="page-title">{page.data.heading}</h1>
-  </Section>
-
-  <FeatureBlock
-    title={origin.title}
-    paragraphs={origin.paragraphs}
-    illustration={origin.illustration}
+  <AssociationHero
+    heading={page.data.heading}
+    eyebrow={page.data.eyebrow}
+    origin={origin}
   />
-
-  <FeatureBlock
-    title={firstStages.title}
-    paragraphs={firstStages.paragraphs}
-    tone="mist"
-  />
-
-  <ActivityGrid activities={activities} locale={locale} />
-
-  <DuoSection duo={duo} members={duoMembers} />
-
-  <TeamGroup members={duoMembers} tone="paper" />
-
-  <TeamGroup members={crewMembers} tone="mist" introduction={crew} />
+  <FirstStagesCard firstStages={firstStages} />
+  <AssociationActivities activities={activities} locale={locale} />
+  <AssociationDuo duo={duo} members={duoMembers} />
+  <AssociationTeam team={team} members={teamMembers} locale={locale} />
 </BaseLayout>

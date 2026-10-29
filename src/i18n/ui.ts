@@ -59,6 +59,10 @@ const fr = {
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
   },
+  team: {
+    highlineSince: "Highline depuis",
+    readFullStory: "Lire tout le parcours",
+  },
   pastEditions: {
     timelineLabel: "Frise des éditions",
     archiveTitle: "Les premières éditions en vidéo",
@@ -178,6 +182,10 @@ const en: UiStrings = {
   },
   festival: {
     pastEditionsButton: "See previous editions",
+  },
+  team: {
+    highlineSince: "Highlining since",
+    readFullStory: "Read the full story",
   },
   pastEditions: {
     timelineLabel: "Editions timeline",

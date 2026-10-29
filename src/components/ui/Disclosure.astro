@@ -1,4 +1,6 @@
 ---
+import ToggleSign from "./ToggleSign.astro";
+
 interface Props {
   summary: string;
   groupName?: string;
@@ -15,13 +17,7 @@ const { summary, groupName, isOpen = false } = Astro.props;
 >
   <summary class="font-heading text-navy flex min-h-14 cursor-pointer items-center justify-between gap-4 px-4 py-3 text-lg md:px-5.5 md:py-4.5 md:text-2xl">
     <h3>{summary}</h3>
-    <span
-      aria-hidden="true"
-      class="bg-coral text-ink flex size-8 shrink-0 items-center justify-center rounded-full text-xl md:size-9"
-    >
-      <span class="group-open:hidden">+</span>
-      <span class="hidden group-open:inline">–</span>
-    </span>
+    <ToggleSign />
   </summary>
   <div class="rich-text px-4 pb-4 text-base md:px-5.5 md:pb-5">
     <slot />

@@ -174,7 +174,10 @@ const association = defineCollection({
       paragraphs: z.array(nonEmptyText).min(1),
     });
     return z.object({
-      origin: textBlock.extend({ illustration }),
+      origin: z.object({
+        paragraphs: z.array(nonEmptyText).min(1),
+        illustration,
+      }),
       firstStages: textBlock,
       activities: z.object({
         title: nonEmptyText,
@@ -191,10 +194,11 @@ const association = defineCollection({
           .min(1),
       }),
       duo: textBlock.extend({
+        eyebrow: nonEmptyText,
         valuesTitle: nonEmptyText,
         values: z.array(nonEmptyText).min(1),
       }),
-      crew: textBlock,
+      team: textBlock,
     });
   },
 });
@@ -211,6 +215,8 @@ const team = defineCollection({
       photoAlt: nonEmptyText,
       portrait: image().optional(),
       portraitAlt: nonEmptyText.optional(),
+      highlineSince: z.number().int().positive(),
+      excerpt: nonEmptyText,
       facts: z
         .array(
           z.object({

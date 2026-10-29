@@ -1,0 +1,25 @@
+---
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: extraClasses } = Astro.props;
+---
+
+<ul
+  class:list={[
+    "flex flex-wrap items-center gap-x-3 gap-y-1 md:gap-x-4",
+    extraClasses,
+  ]}
+>
+  {items.map((item) => (
+    <li class="group inline-flex items-center gap-3 md:gap-4">
+      {item}
+      <span
+        aria-hidden="true"
+        class="bg-coral size-2.5 shrink-0 rounded-full group-last:hidden md:size-3"
+      />
+    </li>
+  ))}
+</ul>
