@@ -65,9 +65,7 @@ const registerButton = {
     </div>
 
     <div class="flex items-center gap-2 lg:hidden">
-      <LinkButton href={registerButton.href} size="compact">
-        {registerButton.label}
-      </LinkButton>
+      <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
       <MobileMenu locale={locale} pageSlug={pageSlug} tone={tone} />
     </div>
   </Container>
