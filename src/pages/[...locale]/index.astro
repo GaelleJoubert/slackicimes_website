@@ -49,9 +49,9 @@ const festivalGallery = await getGallery("festival", locale);
     locale={locale}
   />
   <HomeStats label={strings.home.statsLabel} stats={home.stats} />
-  <HomeAssociation teaser={home.associationTeaser} locale={locale} />
   <HomeStages teaser={home.stagesTeaser} stages={stages} locale={locale} />
   <HomeWorldCup hero={worldCup.hero} locale={locale} />
+  <HomeAssociation teaser={home.associationTeaser} locale={locale} />
   <HomeFestival
     teaser={home.festivalTeaser}
     gallery={festivalGallery}
