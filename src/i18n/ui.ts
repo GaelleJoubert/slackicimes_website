@@ -6,6 +6,8 @@ const fr = {
     discoverWorldCupButton: "Découvrir la Coupe du Monde",
     seeStagesButton: "Voir les stages",
     carouselRoleDescription: "carrousel",
+    previousPhotoButton: "Photo précédente",
+    nextPhotoButton: "Photo suivante",
   },
   accessibility: {
     skipToContent: "Aller au contenu",
@@ -35,7 +37,7 @@ const fr = {
     courseCarouselLabel: "Nos stages",
     previousCourseButton: "Stage précédent",
     nextCourseButton: "Stage suivant",
-    festivalButton: "Le festival et ses éditions",
+    festivalCarouselLabel: "Le festival en images",
   },
   footer: {
     tagline: "Highline & slackline aux Arcs, Savoie",
@@ -143,6 +145,8 @@ const en: UiStrings = {
     discoverWorldCupButton: "Discover the World Cup",
     seeStagesButton: "See the courses",
     carouselRoleDescription: "carousel",
+    previousPhotoButton: "Previous photo",
+    nextPhotoButton: "Next photo",
   },
   accessibility: {
     skipToContent: "Skip to content",
@@ -172,7 +176,7 @@ const en: UiStrings = {
     courseCarouselLabel: "Our courses",
     previousCourseButton: "Previous course",
     nextCourseButton: "Next course",
-    festivalButton: "The festival and its editions",
+    festivalCarouselLabel: "The festival in pictures",
   },
   footer: {
     tagline: "Highline & slackline in Les Arcs, Savoie",

@@ -5,12 +5,14 @@ import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros } from "../../../lib/format";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import CourseCard from "../../ui/CourseCard.astro";
+import CourseSlide from "../../ui/CourseSlide.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
-import HomeCourseCarousel from "./HomeCourseCarousel.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "../stages/stage-image-focus";
 
 interface Props {
@@ -57,18 +59,27 @@ const courses = stages.map((stage) => ({
         />
       </div>
     </div>
-    <HomeCourseCarousel
-      courses={courses.map(({ stage, href, price }) => ({
-        href,
-        name: stage.data.name,
-        duration: stage.data.duration,
-        price,
-        image: stage.data.image,
-        imageFocusClass: STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus],
-      }))}
-      locale={locale}
+    <Carousel
+      label={strings.home.courseCarouselLabel}
+      roleDescription={strings.common.carouselRoleDescription}
+      previousLabel={strings.home.previousCourseButton}
+      nextLabel={strings.home.nextCourseButton}
+      slideCount={courses.length}
       class="md:hidden"
-    />
+    >
+      {courses.map(({ stage, href, price }) => (
+        <CarouselSlide>
+          <CourseSlide
+            href={href}
+            name={stage.data.name}
+            duration={stage.data.duration}
+            price={price}
+            image={stage.data.image}
+            imageFocusClass={STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus]}
+          />
+        </CarouselSlide>
+      ))}
+    </Carousel>
     <ul class="hidden gap-4 md:grid md:grid-cols-5">
       {courses.map(({ stage, href, price }) => (
         <li>

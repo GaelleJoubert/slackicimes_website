@@ -3,9 +3,12 @@ import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import HighlightedText from "../../ui/HighlightedText.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import PhotoSlide from "../../ui/PhotoSlide.astro";
 import PhotoStrip from "../../ui/PhotoStrip.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 import { FESTIVAL_NAME_HIGHLIGHT } from "../../../lib/site";
@@ -34,18 +37,35 @@ const strings = uiStrings(locale);
         ))}
         <div class="hidden md:block">
           <LinkButton href={localizedPath("winter-festislack", locale)}>
-            {strings.home.festivalButton}
+            {strings.common.learnMore}
           </LinkButton>
         </div>
       </SectionIntro>
     </div>
-    <PhotoStrip photos={gallery.data.photos} />
+    <div class="hidden md:block">
+      <PhotoStrip photos={gallery.data.photos} />
+    </div>
+    <Carousel
+      label={strings.home.festivalCarouselLabel}
+      roleDescription={strings.common.carouselRoleDescription}
+      previousLabel={strings.common.previousPhotoButton}
+      nextLabel={strings.common.nextPhotoButton}
+      slideCount={gallery.data.photos.length}
+      tone="dark"
+      class="md:hidden"
+    >
+      {gallery.data.photos.map((photo) => (
+        <CarouselSlide>
+          <PhotoSlide {...photo} />
+        </CarouselSlide>
+      ))}
+    </Carousel>
     <LinkButton
       href={localizedPath("winter-festislack", locale)}
 
       class="md:hidden"
     >
-      {strings.home.festivalButton}
+      {strings.common.learnMore}
     </LinkButton>
   </Container>
 </section>

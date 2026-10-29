@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from "astro";
+import FramedPicture from "./FramedPicture.astro";
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "304px";
+
+const { image, alt, caption } = Astro.props;
+---
+
+<figure class="flex flex-col gap-2">
+  <FramedPicture
+    image={image}
+    alt={alt}
+    widths={PHOTO_WIDTHS}
+    sizes={PHOTO_SIZES}
+    frame="bordered"
+    class="h-56"
+  />
+  {caption && (
+    <figcaption class="text-mist text-center text-sm font-bold">
+      {caption}
+    </figcaption>
+  )}
+</figure>

@@ -1,0 +1,147 @@
+---
+import ChevronIcon from "./ChevronIcon.astro";
+import { ROUND_ICON_BUTTON_CLASSES } from "./button-styles";
+
+type CarouselTone = "light" | "dark";
+
+interface Props {
+  label: string;
+  roleDescription: string;
+  previousLabel: string;
+  nextLabel: string;
+  slideCount: number;
+  tone?: CarouselTone;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<CarouselTone, { button: string; dot: string }> = {
+  light: {
+    button: ROUND_ICON_BUTTON_CLASSES,
+    dot: "bg-mist data-active:bg-navy",
+  },
+  dark: {
+    button:
+      "border-paper bg-navy text-paper hover:bg-paper hover:text-navy flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition",
+    dot: "bg-paper/30 data-active:bg-paper",
+  },
+};
+
+const {
+  label,
+  roleDescription,
+  previousLabel,
+  nextLabel,
+  slideCount,
+  tone = "light",
+  class: extraClasses,
+} = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+const dotIndexes = Array.from(
+  { length: slideCount },
+  (_, dotIndex) => dotIndex,
+);
+---
+
+<div
+  data-slide-carousel
+  role="region"
+  aria-roledescription={roleDescription}
+  aria-label={label}
+  class:list={["mx-auto flex w-full max-w-76 flex-col gap-3", extraClasses]}
+>
+  <ul data-slide-track class="flex snap-x snap-mandatory gap-4 overflow-x-auto">
+    <slot />
+  </ul>
+  <div data-slide-controls hidden>
+    <div class="flex items-center justify-between gap-3">
+      <button
+        type="button"
+        data-slide-previous
+        aria-label={previousLabel}
+        class={toneClasses.button}
+      >
+        <ChevronIcon direction="left" />
+      </button>
+      <ol aria-hidden="true" class="flex items-center gap-2">
+        {dotIndexes.map(() => (
+          <li
+            data-slide-dot
+            class:list={[
+              "size-2.5 rounded-full transition-colors",
+              toneClasses.dot,
+            ]}
+          />
+        ))}
+      </ol>
+      <button
+        type="button"
+        data-slide-next
+        aria-label={nextLabel}
+        class={toneClasses.button}
+      >
+        <ChevronIcon direction="right" />
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { wrapPageIndex } from "../../lib/pagination";
+
+  function requireElement<Found extends Element>(
+    carousel: Element,
+    selector: string,
+  ): Found {
+    const element = carousel.querySelector<Found>(selector);
+    if (!element) {
+      throw new Error(`Carousel is missing "${selector}".`);
+    }
+    return element;
+  }
+
+  function setUpCarousel(carousel: HTMLElement) {
+    const track = requireElement<HTMLElement>(carousel, "[data-slide-track]");
+    const slides = [...track.children] as HTMLElement[];
+    const dots = [
+      ...carousel.querySelectorAll<HTMLElement>("[data-slide-dot]"),
+    ];
+    if (slides.length !== dots.length) {
+      throw new Error(
+        `Carousel has ${slides.length} slides but ${dots.length} dots: pass slideCount={${slides.length}}.`,
+      );
+    }
+
+    const slideStep = () =>
+      slides[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap);
+    const currentSlideIndex = () => Math.round(track.scrollLeft / slideStep());
+
+    function showSlide(slideIndex: number) {
+      const targetIndex = wrapPageIndex(slideIndex, slides.length);
+      track.scrollTo({ left: targetIndex * slideStep(), behavior: "smooth" });
+    }
+
+    function highlightCurrentDot() {
+      const activeIndex = currentSlideIndex();
+      dots.forEach((dot, dotIndex) => {
+        dot.toggleAttribute("data-active", dotIndex === activeIndex);
+      });
+    }
+
+    requireElement(carousel, "[data-slide-previous]").addEventListener(
+      "click",
+      () => showSlide(currentSlideIndex() - 1),
+    );
+    requireElement(carousel, "[data-slide-next]").addEventListener(
+      "click",
+      () => showSlide(currentSlideIndex() + 1),
+    );
+    track.addEventListener("scroll", highlightCurrentDot, { passive: true });
+    requireElement<HTMLElement>(carousel, "[data-slide-controls]").hidden =
+      false;
+    highlightCurrentDot();
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-slide-carousel]")
+    .forEach(setUpCarousel);
+</script>
