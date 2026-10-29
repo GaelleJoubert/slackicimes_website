@@ -8,7 +8,6 @@ import FramedPicture from "../../components/ui/FramedPicture.astro";
 import KeyFactsBand from "../../components/ui/KeyFactsBand.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import PhotoMosaic from "../../components/ui/PhotoMosaic.astro";
-import SlacklineDivider from "../../components/ui/SlacklineDivider.astro";
 import {
   getGallery,
   getLocalizedCollection,
@@ -62,14 +61,13 @@ const registrationsPath = localizedPath("inscriptions", locale);
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
-  headerTone="dark"
 >
-  <section class="bg-navy text-paper pt-5 pb-12 md:pt-10 md:pb-24">
+  <section class="pt-5 md:pt-10">
     <Container class="grid items-center gap-4 md:grid-cols-2 md:gap-16">
       <div class="flex flex-col gap-4 md:gap-5.5">
         {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
-        <h1 class="page-title text-paper">{page.data.heading}</h1>
-        <div class="rich-text rich-text-on-dark md:text-xl">
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text md:text-xl">
           <Intro />
         </div>
         <div class="hidden md:block">
@@ -92,8 +90,6 @@ const registrationsPath = localizedPath("inscriptions", locale);
       </LinkButton>
     </Container>
   </section>
-
-  <SlacklineDivider backgroundTone="navy" fillTone="paper" />
 
   {page.data.keyFacts && (
     <section
