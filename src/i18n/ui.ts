@@ -15,7 +15,6 @@ const fr = {
   navigation: {
     mainMenuLabel: "Menu principal",
     menuToggle: "Ouvrir le menu",
-    registerButton: "S'inscrire",
     homeLinkLabel: "Accueil Slack'icîmes",
     association: "L'association",
     worldCup: "Coupe du monde",
@@ -155,7 +154,6 @@ const en: UiStrings = {
   navigation: {
     mainMenuLabel: "Main menu",
     menuToggle: "Open the menu",
-    registerButton: "Register",
     homeLinkLabel: "Slack'icîmes home",
     association: "The association",
     worldCup: "World Cup",

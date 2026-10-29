@@ -6,7 +6,6 @@ import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import Container from "../ui/Container.astro";
 import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
-import LinkButton from "../ui/LinkButton.astro";
 import type { HeaderTone } from "./header-tone";
 import MobileMenu from "./MobileMenu.astro";
 import SiteNavigation from "./SiteNavigation.astro";
@@ -19,7 +18,6 @@ interface Props {
 
 const LOGO_LARGEST_HEIGHT_PX = 64;
 const HOME_PAGE_SLUG = "";
-const REGISTRATIONS_PAGE_SLUG = "inscriptions";
 
 const TONE_CLASSES: Record<HeaderTone, { header: string; logo: string }> = {
   light: { header: "bg-paper", logo: "" },
@@ -29,10 +27,6 @@ const TONE_CLASSES: Record<HeaderTone, { header: string; logo: string }> = {
 const { locale, pageSlug, tone } = Astro.props;
 const strings = uiStrings(locale);
 const toneClasses = TONE_CLASSES[tone];
-const registerButton = {
-  href: localizedPath(REGISTRATIONS_PAGE_SLUG, locale),
-  label: strings.navigation.registerButton,
-};
 ---
 
 <header class:list={["sticky top-0 z-30", toneClasses.header]}>
@@ -59,9 +53,6 @@ const registerButton = {
         tone={tone}
       />
       <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
-      <LinkButton href={registerButton.href} size="compact" class="ml-2">
-        {registerButton.label}
-      </LinkButton>
     </div>
 
     <div class="flex items-center gap-2 lg:hidden">
