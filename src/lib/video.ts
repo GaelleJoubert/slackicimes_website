@@ -29,6 +29,15 @@ function youtubeEmbedUrl(videoUrl: URL): string {
   return `${YOUTUBE_PRIVACY_EMBED_ORIGIN}/${videoId}${startQuery}`;
 }
 
+export function videoPlatformName(videoUrl: string): string {
+  const { hostname } = new URL(videoUrl);
+  if (YOUTUBE_HOSTS.has(hostname)) return "YouTube";
+  if (FACEBOOK_HOSTS.has(hostname)) return "Facebook";
+  throw new Error(
+    `Unsupported video URL "${videoUrl}": use a YouTube or Facebook link.`,
+  );
+}
+
 export function toVideoSource(videoUrl: string): VideoSource {
   const parsedUrl = new URL(videoUrl);
   if (YOUTUBE_HOSTS.has(parsedUrl.hostname)) {

@@ -138,7 +138,12 @@ const festivalEditions = defineCollection({
   schema: ({ image }) =>
     z.object({
       order: displayOrder,
+      layout: z.enum(["poster", "spotlight", "brief", "archive"]),
+      period: nonEmptyText,
+      editionNumber: z.number().int().positive().optional(),
       title: nonEmptyText,
+      highlight: nonEmptyText.optional(),
+      videoLinkLabel: nonEmptyText.optional(),
       poster: image().optional(),
       posterAlt: nonEmptyText.optional(),
       gallery: nonEmptyText.optional(),

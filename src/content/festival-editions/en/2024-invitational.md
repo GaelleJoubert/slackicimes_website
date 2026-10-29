@@ -1,5 +1,8 @@
 ---
 order: 2
+layout: spotlight
+period: "2024"
+highlight: "Tandem world record · 570 m"
 title: Invitational, 2024 edition
 poster: ../../../assets/images/festival/editions/affiche-2024-invitational.jpg
 posterAlt: Black and white poster of the 2024 Winter Festislack Invitational in Les Arcs

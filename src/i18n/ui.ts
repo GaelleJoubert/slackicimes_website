@@ -59,6 +59,10 @@ const fr = {
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
   },
+  pastEditions: {
+    timelineLabel: "Frise des éditions",
+    archiveTitle: "Les premières éditions en vidéo",
+  },
   youthStages: {
     keyFactsLabel: "L'essentiel",
     priceDetailsLabel: "Prérequis et tarif",
@@ -174,6 +178,10 @@ const en: UiStrings = {
   },
   festival: {
     pastEditionsButton: "See previous editions",
+  },
+  pastEditions: {
+    timelineLabel: "Editions timeline",
+    archiveTitle: "The first editions on video",
   },
   youthStages: {
     keyFactsLabel: "Key facts",

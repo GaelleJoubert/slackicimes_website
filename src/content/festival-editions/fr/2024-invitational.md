@@ -1,5 +1,8 @@
 ---
 order: 2
+layout: spotlight
+period: "2024"
+highlight: "Record du monde de tandem · 570 m"
 title: Invitational, édition 2024
 poster: ../../../assets/images/festival/editions/affiche-2024-invitational.jpg
 posterAlt: Affiche noire et blanche du Winter Festislack Invitational 2024 aux Arcs

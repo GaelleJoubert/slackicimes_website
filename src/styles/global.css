@@ -106,6 +106,14 @@
     @apply font-heading text-2xl leading-tight font-normal text-navy;
   }
 
+  .timeline-year {
+    @apply font-heading text-5xl leading-none font-normal md:text-7xl;
+  }
+
+  .timeline-title {
+    @apply font-heading text-3xl leading-tight font-normal text-navy md:text-4xl;
+  }
+
   .subsection-title {
     @apply font-heading text-xl font-normal text-navy;
   }
@@ -181,6 +189,24 @@
 
     & strong {
       @apply text-navy;
+    }
+  }
+
+  .rich-text-on-dark {
+    @apply text-cloud;
+
+    & a {
+      @apply text-ice;
+    }
+
+    & strong {
+      @apply text-paper;
+    }
+  }
+
+  .poster-edition-grid {
+    @variant md {
+      grid-template-rows: auto 1fr;
     }
   }
 }

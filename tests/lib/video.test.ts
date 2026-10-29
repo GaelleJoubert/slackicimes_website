@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toVideoSource } from "../../src/lib/video";
+import { toVideoSource, videoPlatformName } from "../../src/lib/video";
 
 describe("toVideoSource", () => {
   it("embeds a YouTube video through the privacy enhanced domain", () => {
@@ -37,6 +37,21 @@ describe("toVideoSource", () => {
 
   it("rejects other video hosts", () => {
     expect(() => toVideoSource("https://vimeo.com/123")).toThrow(
+      /Unsupported video URL/,
+    );
+  });
+});
+
+describe("videoPlatformName", () => {
+  it("names the platform hosting the video", () => {
+    expect(videoPlatformName("https://youtu.be/bKfmpMardhE")).toBe("YouTube");
+    expect(
+      videoPlatformName("https://www.facebook.com/watch/?v=1914871465243438"),
+    ).toBe("Facebook");
+  });
+
+  it("rejects other hosts", () => {
+    expect(() => videoPlatformName("https://vimeo.com/1")).toThrow(
       /Unsupported video URL/,
     );
   });
