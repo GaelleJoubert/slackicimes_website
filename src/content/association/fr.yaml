@@ -19,8 +19,8 @@ activities:
       text: Depuis 2012, le Winter Festislack rassemble des athlètes du monde entier autour d'un concept unique alliant ski et highline.
       pageSlug: winter-festislack
       illustration:
-        image: ../../assets/images/association/festival-highline-neige.jpg
-        alt: Highlineuse en équilibre au dessus de la neige, les bras levés
+        image: ../../assets/images/association/festival-ski-highline.jpg
+        alt: Skieur en salto au dessus d'une highline tendue entre les sommets enneigés
     - title: Une compétition
       text: Du 14 au 16 avril 2027, l'association organise aux Arcs la Coupe du Monde de Highline Freestyle, sur la place principale d'Arc 2000.
       pageSlug: coupe-du-monde
@@ -31,8 +31,8 @@ activities:
       text: En collaboration avec des communes et des offices du tourisme, nous permettons aux petits et grands de tester leur équilibre.
       pageSlug: contact
       illustration:
-        image: ../../assets/images/association/initiation-enfants.jpg
-        alt: Enfants découvrant la slackline entre deux arbres dans la neige, accompagnés d'un adulte
+        image: ../../assets/images/association/initiation-slackline-parc.jpg
+        alt: Enfants s'entraidant pour garder l'équilibre sur une slackline basse dans un parc
     - title: Des démonstrations
       text: L'association a régalé des yeux admiratifs lors de divers évènements.
       pageSlug: contact
