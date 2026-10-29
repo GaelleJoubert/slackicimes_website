@@ -5,6 +5,7 @@ const fr = {
     learnMore: "En savoir plus",
     discoverWorldCupButton: "Découvrir la Coupe du Monde",
     seeStagesButton: "Voir les stages",
+    carouselRoleDescription: "carrousel",
   },
   accessibility: {
     skipToContent: "Aller au contenu",
@@ -31,6 +32,9 @@ const fr = {
     statsLabel: "Slack'icîmes en bref",
     discoverTeamButton: "Découvrir l'équipe",
     discoverStagesButton: "Découvrir les stages",
+    courseCarouselLabel: "Nos stages",
+    previousCourseButton: "Stage précédent",
+    nextCourseButton: "Stage suivant",
     festivalButton: "Le festival et ses éditions",
   },
   footer: {
@@ -90,7 +94,6 @@ const fr = {
     title: "Livre d'or",
     intro: "Témoignages de nos stagiaires",
     carouselLabel: "Témoignages",
-    carouselRoleDescription: "carrousel",
     previousButton: "Témoignages précédents",
     nextButton: "Témoignages suivants",
     callToActionTitle: "À votre tour !",
@@ -139,6 +142,7 @@ const en: UiStrings = {
     learnMore: "Learn more",
     discoverWorldCupButton: "Discover the World Cup",
     seeStagesButton: "See the courses",
+    carouselRoleDescription: "carousel",
   },
   accessibility: {
     skipToContent: "Skip to content",
@@ -165,6 +169,9 @@ const en: UiStrings = {
     statsLabel: "Slack'icîmes at a glance",
     discoverTeamButton: "Meet the team",
     discoverStagesButton: "Discover the courses",
+    courseCarouselLabel: "Our courses",
+    previousCourseButton: "Previous course",
+    nextCourseButton: "Next course",
     festivalButton: "The festival and its editions",
   },
   footer: {
@@ -224,7 +231,6 @@ const en: UiStrings = {
     title: "Guestbook",
     intro: "Testimonials from our trainees",
     carouselLabel: "Testimonials",
-    carouselRoleDescription: "carousel",
     previousButton: "Previous testimonials",
     nextButton: "Next testimonials",
     callToActionTitle: "Your turn!",

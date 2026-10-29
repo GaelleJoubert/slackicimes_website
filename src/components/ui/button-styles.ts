@@ -11,6 +11,9 @@ export type ButtonVariant =
 
 export type ButtonSize = "default" | "compact";
 
+export const ROUND_ICON_BUTTON_CLASSES =
+  "border-navy bg-paper text-navy hover:bg-navy hover:text-paper flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition md:size-14";
+
 const BASE_BUTTON_CLASSES =
   "inline-flex cursor-pointer items-center justify-center rounded-xl py-2 text-center font-extrabold transition";
 

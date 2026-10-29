@@ -9,6 +9,9 @@ import Container from "../../ui/Container.astro";
 import CourseCard from "../../ui/CourseCard.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import HomeCourseCarousel from "./HomeCourseCarousel.astro";
+import { STAGE_IMAGE_FOCUS_CLASSES } from "../stages/stage-image-focus";
 
 interface Props {
   teaser: CollectionEntry<"home">["data"]["stagesTeaser"];
@@ -18,33 +21,32 @@ interface Props {
 
 const PHOTO_WIDTHS = [600, 1200];
 const PHOTO_SIZES = "600px";
-const THUMBNAIL_WIDTHS = [160, 320, 480];
-const THUMBNAIL_SIZES = "160px";
 
 const { teaser, stages, locale } = Astro.props;
 const strings = uiStrings(locale);
 const stagesPagePath = localizedPath("stages-highline", locale);
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
-const hasUnpairedLastStage = stages.length % 2 === 1;
-const isUnpairedOnMobile = (stageIndex: number) =>
-  hasUnpairedLastStage && stageIndex === stages.length - 1;
+const courses = stages.map((stage) => ({
+  stage,
+  href: `${stagesPagePath}#${entrySlug(stage.id)}`,
+  price: formatPriceInEuros(stage.data.priceInEuros, languageTag),
+}));
 ---
 
-<section class="bg-blush py-8 md:py-26">
-  <Container class="flex flex-col gap-4 md:gap-12">
-    <div class="split-centered-grid title-thumbnail-grid grid items-center gap-x-4 gap-y-4 md:grid-cols-2 md:gap-x-18">
-      <h2 class="section-title md:row-start-2">{teaser.title}</h2>
-      <div class="pr-2 pb-2 md:hidden">
-        <FramedPicture
-          image={teaser.mobileThumbnail.image}
-          alt={teaser.mobileThumbnail.alt}
-          widths={THUMBNAIL_WIDTHS}
-          sizes={THUMBNAIL_SIZES}
-          frame="offsetCoral"
-          class="h-24 w-40"
-        />
-      </div>
-      <div class="hidden md:col-start-2 md:row-span-4 md:row-start-1 md:block">
+<section class="bg-blush py-10 md:py-26">
+  <Container class="flex flex-col gap-5 md:gap-12">
+    <div class="grid items-center gap-6 md:grid-cols-2 md:gap-18">
+      <SectionIntro title={teaser.title}>
+        {teaser.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <div class="hidden flex-wrap gap-3.5 md:flex">
+          <LinkButton href={stagesPagePath}>
+            {strings.home.discoverStagesButton}
+          </LinkButton>
+        </div>
+      </SectionIntro>
+      <div class="hidden md:block">
         <FramedPicture
           image={teaser.illustration.image}
           alt={teaser.illustration.alt}
@@ -54,31 +56,27 @@ const isUnpairedOnMobile = (stageIndex: number) =>
           class="h-105"
         />
       </div>
-      <div class="col-span-2 flex flex-col gap-4 md:col-span-1 md:row-start-3 md:gap-5">
-        {teaser.paragraphs.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))}
-        <div class="hidden flex-wrap gap-3.5 md:flex">
-          <LinkButton href={stagesPagePath}>
-            {strings.home.discoverStagesButton}
-          </LinkButton>
-        </div>
-      </div>
     </div>
-    <ul class="grid grid-cols-2 gap-2.5 md:grid-cols-5 md:gap-4">
-      {stages.map((stage, stageIndex) => (
-        <li
-          class:list={[
-            isUnpairedOnMobile(stageIndex) && "col-span-2 md:col-span-1",
-          ]}
-        >
+    <HomeCourseCarousel
+      courses={courses.map(({ stage, href, price }) => ({
+        href,
+        name: stage.data.name,
+        duration: stage.data.duration,
+        price,
+        image: stage.data.image,
+        imageFocusClass: STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus],
+      }))}
+      locale={locale}
+      class="md:hidden"
+    />
+    <ul class="hidden gap-4 md:grid md:grid-cols-5">
+      {courses.map(({ stage, href, price }) => (
+        <li>
           <CourseCard
-            href={`${stagesPagePath}#${entrySlug(stage.id)}`}
+            href={href}
             name={stage.data.name}
-            duration={stage.data.duration}
-            level={stage.data.level}
-            price={formatPriceInEuros(stage.data.priceInEuros, languageTag)}
-            mobileLayout={isUnpairedOnMobile(stageIndex) ? "row" : "tile"}
+            details={`${stage.data.duration} · ${stage.data.level}`}
+            price={price}
           />
         </li>
       ))}

@@ -46,9 +46,6 @@ stagesTeaser:
   illustration:
     image: ../../assets/images/stages/weekend.jpg
     alt: Highlineur en équilibre face aux sommets enneigés
-  mobileThumbnail:
-    image: ../../assets/images/stages/premiers-pas.jpg
-    alt: Silhouette d'une highlineuse suspendue au dessus de la vallée
 festivalTeaser:
   paragraphs:
     - Évènement unique au monde de ski et highline. Il rassemble des pratiquants du monde entier sur le site naturel fabuleux des Deux Têtes, en plein cœur du domaine skiable des Arcs, face au Mont-Blanc.

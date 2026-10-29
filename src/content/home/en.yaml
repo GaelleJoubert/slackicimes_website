@@ -46,9 +46,6 @@ stagesTeaser:
   illustration:
     image: ../../assets/images/stages/weekend.jpg
     alt: Highliner balancing in front of snowy peaks
-  mobileThumbnail:
-    image: ../../assets/images/stages/premiers-pas.jpg
-    alt: Silhouette of a highliner hanging above the valley
 festivalTeaser:
   paragraphs:
     - A one of a kind event combining skiing and highline. It brings together practitioners from all over the world on the fabulous natural site of the Deux Têtes, in the heart of the Les Arcs ski area, facing Mont Blanc.

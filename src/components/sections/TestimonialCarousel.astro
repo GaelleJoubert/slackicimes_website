@@ -3,6 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
 import { isShortTestimonial } from "../../lib/testimonial";
+import { ROUND_ICON_BUTTON_CLASSES } from "../ui/button-styles";
 import ChevronIcon from "../ui/ChevronIcon.astro";
 import QuoteCard, { type QuoteTone } from "../ui/QuoteCard.astro";
 
@@ -12,11 +13,10 @@ interface Props {
 }
 
 const QUOTE_TONES: QuoteTone[] = ["coral", "ice"];
-const ROUND_BUTTON_CLASSES =
-  "border-navy bg-paper text-navy hover:bg-navy hover:text-paper flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition md:size-14";
 
 const { testimonials, locale } = Astro.props;
-const strings = uiStrings(locale).testimonials;
+const allStrings = uiStrings(locale);
+const strings = allStrings.testimonials;
 const slides = await Promise.all(
   testimonials.map(async (testimonial, testimonialIndex) => ({
     testimonial,
@@ -30,7 +30,7 @@ const slides = await Promise.all(
 <div
   data-testimonial-carousel
   role="region"
-  aria-roledescription={strings.carouselRoleDescription}
+  aria-roledescription={allStrings.common.carouselRoleDescription}
   aria-label={strings.carouselLabel}
   class="flex flex-col gap-5.5 md:gap-9"
 >
@@ -59,7 +59,7 @@ const slides = await Promise.all(
         type="button"
         data-carousel-previous
         aria-label={strings.previousButton}
-        class={ROUND_BUTTON_CLASSES}
+        class={ROUND_ICON_BUTTON_CLASSES}
       >
         <ChevronIcon direction="left" />
       </button>
@@ -82,7 +82,7 @@ const slides = await Promise.all(
         type="button"
         data-carousel-next
         aria-label={strings.nextButton}
-        class={ROUND_BUTTON_CLASSES}
+        class={ROUND_ICON_BUTTON_CLASSES}
       >
         <ChevronIcon direction="right" />
       </button>
