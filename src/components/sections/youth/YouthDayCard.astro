@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Eyebrow, { type EyebrowTone } from "../../ui/Eyebrow.astro";
+
+type ProgramItem =
+  CollectionEntry<"stages">["data"]["program"]["items"][number];
+
+export interface DayTone {
+  card: string;
+  label: EyebrowTone;
+  title: string;
+}
+
+interface Props {
+  day: ProgramItem;
+  tone: DayTone;
+}
+
+const { day, tone } = Astro.props;
+---
+
+<article
+  class:list={[
+    "rounded-card flex h-full flex-col gap-2.5 p-5 md:rounded-3xl md:p-6",
+    tone.card,
+  ]}
+>
+  <Eyebrow tone={tone.label}>{day.label}</Eyebrow>
+  {day.place && (
+    <h3 class:list={["font-heading text-2xl md:text-3xl", tone.title]}>
+      {day.place}
+    </h3>
+  )}
+  <ul class="flex list-disc flex-col gap-1 pl-5 text-base">
+    {day.details.map((detail) => (
+      <li>{detail}</li>
+    ))}
+  </ul>
+</article>

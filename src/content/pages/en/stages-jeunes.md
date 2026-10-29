@@ -2,10 +2,9 @@
 title: "Youth highline camp | Slack'icîmes"
 description: "Highline camp for young people, children and teenagers, in Les Arcs, Savoie."
 heading: "Youth course"
-eyebrow: "For ages 10 to 17"
 keyFacts:
   - { value: "5 days", label: "from 9 a.m. to 5 p.m." }
-  - { value: "10 years", label: "minimum age" }
+  - { value: "10-17", label: "years old, for young athletes" }
   - { value: "€200", label: "activities and equipment included" }
   - { value: "2027", label: "dates coming soon" }
 ---

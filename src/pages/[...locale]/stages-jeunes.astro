@@ -2,12 +2,14 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import YouthWeek from "../../components/sections/youth/YouthWeek.astro";
+import Carousel from "../../components/ui/Carousel.astro";
+import CarouselSlide from "../../components/ui/CarouselSlide.astro";
 import Container from "../../components/ui/Container.astro";
-import Eyebrow from "../../components/ui/Eyebrow.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
 import KeyFactsBand from "../../components/ui/KeyFactsBand.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import PhotoMosaic from "../../components/ui/PhotoMosaic.astro";
+import PhotoSlide from "../../components/ui/PhotoSlide.astro";
 import {
   getGallery,
   getLocalizedCollection,
@@ -53,7 +55,6 @@ const formattedPrice = formatPriceInEuros(
   LOCALE_SETTINGS[locale].htmlLang,
 );
 const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
-const registrationsPath = localizedPath("inscriptions", locale);
 ---
 
 <BaseLayout
@@ -61,19 +62,14 @@ const registrationsPath = localizedPath("inscriptions", locale);
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
+  snapSectionsOnMobile
 >
   <section class="pt-5 md:pt-10">
     <Container class="grid items-center gap-4 md:grid-cols-2 md:gap-16">
       <div class="flex flex-col gap-4 md:gap-5.5">
         <h1 class="page-title">{page.data.heading}</h1>
-        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
         <div class="rich-text md:text-xl">
           <Intro />
-        </div>
-        <div class="hidden md:block">
-          <LinkButton href={registrationsPath}>
-            {strings.stages.registrationsButton}
-          </LinkButton>
         </div>
       </div>
       <FramedPicture
@@ -83,30 +79,24 @@ const registrationsPath = localizedPath("inscriptions", locale);
         sizes={HERO_IMAGE_SIZES}
         frame="offsetSky"
         loading="eager"
-        class="h-60 md:h-110"
+        class="h-48 md:h-110"
       />
-      <LinkButton href={registrationsPath} class="md:hidden">
-        {strings.stages.registrationsButton}
-      </LinkButton>
     </Container>
   </section>
 
-  {page.data.keyFacts && (
-    <section
-      aria-label={strings.youthStages.keyFactsLabel}
-      class="pt-10 md:pt-18"
-    >
-      <Container>
-        <KeyFactsBand facts={page.data.keyFacts} />
-      </Container>
-    </section>
-  )}
-
-  <section
-    aria-label={strings.youthStages.priceDetailsLabel}
-    class="pt-5 md:pt-7"
-  >
-    <Container class="grid gap-4 md:grid-cols-2 md:gap-6">
+  <section aria-label={strings.youthStages.keyFactsLabel} class="pt-8 md:pt-18">
+    <Container class="grid gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-7">
+      {page.data.keyFacts && (
+        <div class="md:col-span-2">
+          <KeyFactsBand facts={page.data.keyFacts} />
+        </div>
+      )}
+      <LinkButton
+        href={localizedPath("inscriptions", locale)}
+        class="my-2 md:hidden"
+      >
+        {strings.stages.registrationsButton}
+      </LinkButton>
       <div class="border-navy shadow-offset-sm md:shadow-offset rounded-card border-3 p-5 md:rounded-3xl md:p-7">
         <h2 class="subsection-title md:text-3xl">
           {strings.stages.prerequisitesHeading}
@@ -117,7 +107,7 @@ const registrationsPath = localizedPath("inscriptions", locale);
           ))}
         </ul>
       </div>
-      <div class="bg-coral rounded-card flex flex-col justify-center gap-2.5 p-5 md:rounded-3xl md:p-7">
+      <div class="bg-coral rounded-card hidden flex-col justify-center gap-2.5 p-5 md:flex md:rounded-3xl md:p-7">
         <p class="font-heading text-ink text-2xl md:text-3xl">
           {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
         </p>
@@ -139,12 +129,28 @@ const registrationsPath = localizedPath("inscriptions", locale);
     title={strings.youthStages.weekTitle}
     intro={weekIntro}
     days={program.items}
+    locale={locale}
   />
 
   <section class="pb-14 md:pb-28">
     <Container class="flex flex-col gap-3.5 md:gap-7">
       <h2 class="section-title">{strings.youthStages.galleryTitle}</h2>
-      <PhotoMosaic photos={gallery.data.photos} />
+      <div class="hidden md:block">
+        <PhotoMosaic photos={gallery.data.photos} />
+      </div>
+      <Carousel
+        label={strings.youthStages.galleryTitle}
+        roleDescription={strings.common.carouselRoleDescription}
+        previousLabel={strings.common.previousPhotoButton}
+        nextLabel={strings.common.nextPhotoButton}
+        class="md:hidden"
+      >
+        {gallery.data.photos.map((photo) => (
+          <CarouselSlide>
+            <PhotoSlide {...photo} />
+          </CarouselSlide>
+        ))}
+      </Carousel>
     </Container>
   </section>
 </BaseLayout>

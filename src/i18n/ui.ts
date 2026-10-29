@@ -79,9 +79,10 @@ const fr = {
   },
   youthStages: {
     keyFactsLabel: "L'essentiel",
-    priceDetailsLabel: "Prérequis et tarif",
     pricePerDuration: "les",
     weekTitle: "La semaine type",
+    previousDayButton: "Jour précédent",
+    nextDayButton: "Jour suivant",
     galleryTitle: "Le stage en images",
   },
   video: {
@@ -220,9 +221,10 @@ const en: UiStrings = {
   },
   youthStages: {
     keyFactsLabel: "Key facts",
-    priceDetailsLabel: "Prerequisites and price",
     pricePerDuration: "for",
     weekTitle: "A typical week",
+    previousDayButton: "Previous day",
+    nextDayButton: "Next day",
     galleryTitle: "The course in pictures",
   },
   video: {
