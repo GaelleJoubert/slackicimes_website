@@ -2,7 +2,7 @@
 order: 3
 group: crew
 name: Nicolo
-role: Instructeur highline
+role: Instructeur highline & organisateur du Winter Festislack
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo souriant, assis à côté de son matériel de highline
 photoFocus: top

@@ -5,8 +5,8 @@ import { entrySlug } from "../../../i18n/content";
 import type { Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import DotList from "../../ui/DotList.astro";
-import InlineDotList from "../../ui/InlineDotList.astro";
 import ReadMore from "../../ui/ReadMore.astro";
+import TagList from "../../ui/TagList.astro";
 
 export type TeamCardShadow = "coral" | "sky" | "mist";
 
@@ -80,7 +80,7 @@ const { Content: Biography } = await render(member);
   <blockquote class="mx-5 mt-4 text-sm md:mx-7 md:text-base">
     {excerpt}
   </blockquote>
-  <footer class="border-cloud mx-5 mt-5 flex flex-col gap-2 border-t-2 pt-4 pb-4 md:mx-7 md:pb-5">
+  <footer class="mx-5 mt-3 flex flex-col gap-3 pb-4 md:mx-7 md:pb-5">
     <ReadMore summary={strings.readFullStory} accessibleContext={name}>
       <div class="rich-text text-sm md:text-base">
         <Biography />
@@ -96,10 +96,8 @@ const { Content: Biography } = await render(member);
         ))}
       </dl>
     </ReadMore>
-    <InlineDotList
-      items={diplomaShortNames}
-      aria-label={strings.diplomasLabel}
-      class="text-navy text-sm font-bold md:text-base"
-    />
+    <div class="border-cloud border-t-2 pt-3">
+      <TagList items={diplomaShortNames} label={strings.diplomasLabel} />
+    </div>
   </footer>
 </article>

@@ -2,7 +2,7 @@
 order: 3
 group: crew
 name: Nicolo
-role: Highline instructor
+role: Highline instructor & Winter Festislack organizer
 photo: ../../../assets/images/team/nicolo.jpg
 photoAlt: Nicolo smiling, sitting next to his highline gear
 photoFocus: top
