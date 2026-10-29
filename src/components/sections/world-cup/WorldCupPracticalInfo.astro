@@ -31,8 +31,10 @@ const lastStepIndex = infos.steps.length - 1;
               <span
                 aria-hidden="true"
                 class:list={[
-                  "font-display flex size-11 flex-none items-center justify-center rounded-full text-xl font-bold text-white",
-                  stepIndex === lastStepIndex ? "bg-cup-pink" : "bg-cup-navy",
+                  "font-display w-8 flex-none text-4xl leading-none font-bold",
+                  stepIndex === lastStepIndex
+                    ? "text-cup-magenta"
+                    : "text-cup-navy",
                 ]}
               >
                 {stepIndex + 1}
@@ -44,7 +46,7 @@ const lastStepIndex = infos.steps.length - 1;
                   {step.link && (
                     <a
                       href={step.link.url}
-                      class="text-cup-magenta hover:text-cup-ink underline"
+                      class="text-cup-magenta hover:text-cup-ink decoration-cup-pink font-bold underline decoration-2 underline-offset-4"
                     >
                       {step.link.label}
                     </a>

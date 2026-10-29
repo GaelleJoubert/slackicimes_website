@@ -156,6 +156,9 @@ and informative elements never share a cue.
   separated by coral dots. Coral fills are reserved for actions.
 - Buttons have three levels: `primary` (coral, one per section), `secondary` (paper with navy
   outline), and a text link for low priority. Use the `OnDark` variants on dark sections.
+- World Cup pages follow the same rules in their palette: pink (`cup-pink-strong`) replaces coral
+  for primary buttons and badges (`ActionBadge tone="cupPink"`), shadows are `cup-ink` on dark and
+  `cup-navy` on light. Their thin outlines are information; pink fills are for actions only.
 
 ## Design tokens and responsive
 

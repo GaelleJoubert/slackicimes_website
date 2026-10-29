@@ -1,13 +1,18 @@
 ---
 import ChevronIcon from "./ChevronIcon.astro";
 import PlayIcon from "./PlayIcon.astro";
-import { actionBadgeClasses, type ActionBadgeSize } from "./action-badge";
+import {
+  actionBadgeClasses,
+  type ActionBadgeSize,
+  type ActionBadgeTone,
+} from "./action-badge";
 
 export type ActionBadgeIcon = "chevron" | "play" | "phone" | "external";
 
 interface Props {
   icon: ActionBadgeIcon;
   size?: ActionBadgeSize;
+  tone?: ActionBadgeTone;
   class?: string;
 }
 
@@ -17,10 +22,18 @@ const STROKE_ICON_PATHS: Record<"phone" | "external", string> = {
   external: "M8 4h8v8M16 4L5 15",
 };
 
-const { icon, size = "default", class: extraClasses } = Astro.props;
+const {
+  icon,
+  size = "default",
+  tone = "coral",
+  class: extraClasses,
+} = Astro.props;
 ---
 
-<span aria-hidden="true" class:list={[actionBadgeClasses(size), extraClasses]}>
+<span
+  aria-hidden="true"
+  class:list={[actionBadgeClasses(size, tone), extraClasses]}
+>
   {icon === "chevron" && <ChevronIcon class="size-4.5 md:size-5" />}
   {icon === "play" && <PlayIcon size={size === "large" ? "large" : "small"} />}
   {(icon === "phone" || icon === "external") && (

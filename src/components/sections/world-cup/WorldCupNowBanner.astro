@@ -11,13 +11,14 @@ const { now } = Astro.props;
 
 <aside aria-label={now.badge} class="border-cup-border border-b bg-white px-6">
   <div class="text-cup-ink mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-3 py-5">
-    <span class="bg-cup-pink rounded-lg px-3 py-1.5 text-sm font-bold tracking-wider text-white uppercase">
+    <span class="text-cup-magenta inline-flex items-center gap-2 text-sm font-bold tracking-wider uppercase">
+      <span aria-hidden="true" class="bg-cup-pink size-2 rounded-full"></span>
       {now.badge}
     </span>
     <p class="min-w-0 flex-1 basis-80 font-medium">{now.text}</p>
     <a
       href={`#${WORLD_CUP_SECTION_IDS.participate}`}
-      class="text-cup-magenta hover:text-cup-ink font-bold"
+      class="text-cup-magenta hover:text-cup-ink decoration-cup-pink font-bold underline decoration-2 underline-offset-4"
     >
       {now.linkLabel}
     </a>

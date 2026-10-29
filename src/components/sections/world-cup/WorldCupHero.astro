@@ -28,7 +28,11 @@ const { heading, hero } = Astro.props;
           formats={["avif", "webp"]}
           class="h-16 w-auto md:h-20"
         />
-        <span class="border-cup-sky text-cup-sky rounded-full border px-4 py-1.5 text-sm font-semibold tracking-wide uppercase">
+        <span class="text-cup-sky inline-flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+          <span
+            aria-hidden="true"
+            class="bg-cup-sky size-2 rounded-full"
+          ></span>
           {hero.badge}
         </span>
       </div>
@@ -63,7 +67,7 @@ const { heading, hero } = Astro.props;
         </LinkButton>
         <LinkButton
           href={`#${WORLD_CUP_SECTION_IDS.participate}`}
-          variant="cupOutlineLight"
+          variant="cupSecondaryOnDark"
         >
           {hero.secondaryCta}
         </LinkButton>

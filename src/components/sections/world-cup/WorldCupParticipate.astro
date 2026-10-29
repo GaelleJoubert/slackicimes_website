@@ -96,9 +96,9 @@ const { videoFormat, rules, judging, submission } = participate;
           </dl>
           <p class="text-cup-soft text-sm">{judging.note}</p>
         </div>
-        <div class="bg-cup-pink flex flex-col items-start gap-3 rounded-2xl p-7">
+        <div class="border-cup-pink bg-cup-navy flex flex-col items-start gap-3 rounded-2xl border-2 p-7">
           <p class="font-semibold">{submission.text}</p>
-          <LinkButton href={submission.url} variant="cupLight">
+          <LinkButton href={submission.url} variant="cupPrimary">
             {submission.label}
           </LinkButton>
         </div>

@@ -3,6 +3,7 @@ import { Picture } from "astro:assets";
 import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import ActionBadge from "../../ui/ActionBadge.astro";
 import CupSection from "../../ui/CupSection.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "./types";
@@ -53,8 +54,18 @@ const { partners, locale } = Astro.props;
               >
                 <Tile
                   href={partner.url}
-                  class="border-cup-border flex size-full flex-col items-center justify-center gap-2.5 rounded-2xl border-2 px-8 py-4"
+                  class:list={[
+                    "relative flex size-full flex-col items-center justify-center gap-2.5 rounded-2xl border-2 px-8 py-4",
+                    partner.url ? "group border-cup-navy" : "border-cup-border",
+                  ]}
                 >
+                  {partner.url && (
+                    <ActionBadge
+                      icon="external"
+                      tone="cupPink"
+                      class="absolute top-2 right-2"
+                    />
+                  )}
                   <Picture
                     src={partner.logo}
                     alt={partner.name}
@@ -81,7 +92,7 @@ const { partners, locale } = Astro.props;
     <div class="flex justify-center pt-2">
       <LinkButton
         href={localizedPath(CONTACT_PAGE_SLUG, locale)}
-        variant="cupOutlineDark"
+        variant="cupSecondary"
       >
         {partners.becomePartnerLabel}
       </LinkButton>

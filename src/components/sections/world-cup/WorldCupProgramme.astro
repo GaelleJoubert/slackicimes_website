@@ -12,13 +12,13 @@ type DayEmphasis = WorldCupContent["programme"]["days"][number]["emphasis"];
 
 const DAY_CARD_CLASSES: Record<DayEmphasis, string> = {
   regular: "border-cup-line border-2",
-  highlight: "bg-cup-pink",
+  highlight: "border-cup-pink border-2",
   reserve: "border-cup-line border-2 border-dashed",
 };
 
 const DAY_DATE_CLASSES: Record<DayEmphasis, string> = {
   regular: "text-cup-sky",
-  highlight: "text-white",
+  highlight: "text-cup-pink-soft",
   reserve: "text-cup-sky",
 };
 
@@ -73,10 +73,10 @@ const finalStepIndex = programme.formatSteps.length - 1;
           <li class="flex flex-col gap-3 md:flex-row md:items-center">
             <span
               class:list={[
-                "rounded-xl px-4 py-3 font-semibold",
+                "rounded-xl border-2 px-4 py-3 font-semibold",
                 stepIndex === finalStepIndex
-                  ? "bg-cup-pink font-bold"
-                  : "bg-cup-navy",
+                  ? "border-cup-pink text-cup-pink-soft font-bold"
+                  : "border-cup-line",
               ]}
             >
               {step}

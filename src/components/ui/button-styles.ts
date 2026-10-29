@@ -4,9 +4,8 @@ export type ButtonVariant =
   | "secondary"
   | "secondaryOnDark"
   | "cupPrimary"
-  | "cupOutlineLight"
-  | "cupOutlineDark"
-  | "cupLight";
+  | "cupSecondary"
+  | "cupSecondaryOnDark";
 
 export type ButtonSize = "default" | "compact" | "large";
 
@@ -45,10 +44,9 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} bg-coral text-ink`,
   secondary: `${PRESSABLE_CLASSES} border-3 border-navy bg-paper text-navy`,
   secondaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} border-3 border-paper bg-paper text-navy`,
-  cupPrimary: `${CUP_BUTTON_SIZE} bg-cup-pink-strong text-white hover:bg-cup-magenta`,
-  cupOutlineLight: `${CUP_BUTTON_SIZE} border-2 border-white text-white hover:bg-white hover:text-cup-ink`,
-  cupOutlineDark: `${CUP_BUTTON_SIZE} border-2 border-cup-navy text-cup-navy hover:bg-cup-navy hover:text-white`,
-  cupLight: `${CUP_BUTTON_SIZE} bg-white text-cup-ink hover:bg-cup-pale`,
+  cupPrimary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink bg-cup-pink-strong text-white`,
+  cupSecondary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-navy border-2 border-cup-navy bg-white text-cup-navy`,
+  cupSecondaryOnDark: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink border-2 border-white bg-white text-cup-ink`,
 };
 
 function isSiteVariant(variant: ButtonVariant): boolean {
