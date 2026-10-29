@@ -99,6 +99,8 @@ const courses = stages.map((stage) => {
 </div>
 
 <script>
+  import { collapsePanel, expandPanel } from "../../ui/expand-animation";
+
   const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
 
   interface Course {
@@ -128,6 +130,21 @@ const courses = stages.map((stage) => {
     }
   }
 
+  const isExpanded = (course: Course) =>
+    course.toggle.getAttribute("aria-expanded") === "true";
+
+  async function collapseCourse(course: Course): Promise<void> {
+    course.toggle.setAttribute("aria-expanded", "false");
+    await collapsePanel(course.panel);
+    if (isExpanded(course)) return;
+    setOpen(course, false);
+  }
+
+  async function expandCourse(course: Course): Promise<void> {
+    setOpen(course, true);
+    await expandPanel(course.panel);
+  }
+
   function initCoursePicker(picker: HTMLElement): void {
     const courses = [
       ...picker.querySelectorAll<HTMLElement>("[data-course]"),
@@ -138,15 +155,21 @@ const courses = stages.map((stage) => {
       courses.forEach((course) => setOpen(course, course === target));
 
     courses.forEach((course) => {
-      course.toggle.addEventListener("click", () => {
-        const isClosingOnPhone =
-          course.root.hasAttribute("data-open") && !isDesktop();
-        if (isClosingOnPhone) {
-          setOpen(course, false);
+      course.toggle.addEventListener("click", async () => {
+        if (isDesktop()) {
+          openOnly(course);
+          course.toggle.scrollIntoView({ block: "nearest" });
           return;
         }
-        openOnly(course);
-        course.toggle.scrollIntoView({ block: "nearest" });
+        if (isExpanded(course)) {
+          await collapseCourse(course);
+          return;
+        }
+        courses
+          .filter((other) => other !== course && isExpanded(other))
+          .forEach((other) => void collapseCourse(other));
+        await expandCourse(course);
+        course.toggle.scrollIntoView({ block: "nearest", behavior: "smooth" });
       });
       course.panel.addEventListener("beforematch", () => openOnly(course));
     });

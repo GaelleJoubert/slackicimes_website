@@ -11,6 +11,7 @@ const { summary, groupName, isOpen = false } = Astro.props;
 ---
 
 <details
+  data-animated-details
   name={groupName}
   open={isOpen}
   class="group bg-paper border-navy rounded-card border-3"
@@ -19,7 +20,15 @@ const { summary, groupName, isOpen = false } = Astro.props;
     <h3>{summary}</h3>
     <ToggleSign />
   </summary>
-  <div class="rich-text px-4 pb-4 text-base md:px-5.5 md:pb-5">
-    <slot />
+  <div data-expand-panel>
+    <div class="rich-text px-4 pb-4 text-base md:px-5.5 md:pb-5">
+      <slot />
+    </div>
   </div>
 </details>
+
+<script>
+  import { enhanceAnimatedDetails } from "./expand-animation";
+
+  enhanceAnimatedDetails();
+</script>

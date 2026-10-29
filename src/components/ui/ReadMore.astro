@@ -9,7 +9,7 @@ interface Props {
 const { summary, accessibleContext } = Astro.props;
 ---
 
-<details class="group">
+<details data-animated-details class="group">
   <summary class="text-navy hover:text-teal flex min-h-11 cursor-pointer items-center gap-3 font-extrabold">
     <ToggleSign />
     <span>
@@ -17,7 +17,15 @@ const { summary, accessibleContext } = Astro.props;
       <span class="sr-only">: {accessibleContext}</span>
     </span>
   </summary>
-  <div class="mt-3 flex flex-col gap-5">
-    <slot />
+  <div data-expand-panel>
+    <div class="flex flex-col gap-5 pt-3">
+      <slot />
+    </div>
   </div>
 </details>
+
+<script>
+  import { enhanceAnimatedDetails } from "./expand-animation";
+
+  enhanceAnimatedDetails();
+</script>

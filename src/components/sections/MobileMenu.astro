@@ -19,7 +19,7 @@ const { locale, pageSlug, tone } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<details class="group">
+<details data-animated-details class="group">
   <summary
     aria-label={strings.navigation.menuToggle}
     class:list={[
@@ -50,12 +50,20 @@ const strings = uiStrings(locale);
       <path d="M5 5l10 10M15 5L5 15" />
     </svg>
   </summary>
-  <div class="bg-paper border-navy absolute inset-x-0 top-full z-20 border-b-3 px-4 pt-2 pb-6">
-    <SiteNavigation
-      locale={locale}
-      currentPageSlug={pageSlug}
-      layout="stacked"
-      tone="light"
-    />
+  <div data-expand-panel class="absolute inset-x-0 top-full z-20">
+    <div class="bg-paper border-navy border-b-3 px-4 pt-2 pb-6">
+      <SiteNavigation
+        locale={locale}
+        currentPageSlug={pageSlug}
+        layout="stacked"
+        tone="light"
+      />
+    </div>
   </div>
 </details>
+
+<script>
+  import { enhanceAnimatedDetails } from "../ui/expand-animation";
+
+  enhanceAnimatedDetails();
+</script>
