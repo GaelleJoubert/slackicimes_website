@@ -15,7 +15,6 @@ interface Props {
 }
 
 const SOCIAL_NETWORK_NAMES = new Set(["Facebook", "Instagram"]);
-const LINK_CLASSES = "hover:text-coral underline-offset-4 hover:underline";
 
 const { locale, class: extraClasses } = Astro.props;
 const strings = uiStrings(locale);
@@ -39,7 +38,10 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
       {CONTACT_PEOPLE.map((person) => (
         <dd class="mt-1.5 text-xl font-bold">
           {person.firstName}{" "}
-          <a href={`tel:${person.internationalPhone}`} class={LINK_CLASSES}>
+          <a
+            href={`tel:${person.internationalPhone}`}
+            class="text-link-on-dark"
+          >
             {person.displayPhone}
           </a>
         </dd>
@@ -50,7 +52,7 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
         {strings.contactBlock.emailHeading}
       </dt>
       <dd class="mt-0.5 font-bold break-all md:mt-1.5 md:text-xl">
-        <a href={`mailto:${CONTACT_EMAIL}`} class={LINK_CLASSES}>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="text-link-on-dark">
           {CONTACT_EMAIL}
         </a>
       </dd>

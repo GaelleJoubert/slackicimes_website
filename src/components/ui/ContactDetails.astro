@@ -25,8 +25,6 @@ const LAYOUT_CLASSES: Record<
   stacked: { list: "flex flex-col gap-5", address: "" },
 };
 
-const LINK_CLASSES = "text-teal font-bold underline-offset-4 hover:underline";
-
 const { locale, layout } = Astro.props;
 const strings = uiStrings(locale);
 const layoutClasses = LAYOUT_CLASSES[layout];
@@ -40,7 +38,7 @@ const layoutClasses = LAYOUT_CLASSES[layout];
     {CONTACT_PEOPLE.map((person) => (
       <dd class="mt-1">
         {person.firstName}{" "}
-        <a href={`tel:${person.internationalPhone}`} class={LINK_CLASSES}>
+        <a href={`tel:${person.internationalPhone}`} class="text-link">
           {person.displayPhone}
         </a>
       </dd>
@@ -51,10 +49,7 @@ const layoutClasses = LAYOUT_CLASSES[layout];
       {strings.contactBlock.emailHeading}
     </dt>
     <dd class="mt-1">
-      <a
-        href={`mailto:${CONTACT_EMAIL}`}
-        class:list={[LINK_CLASSES, "break-all"]}
-      >
+      <a href={`mailto:${CONTACT_EMAIL}`} class="text-link break-all">
         {CONTACT_EMAIL}
       </a>
     </dd>
