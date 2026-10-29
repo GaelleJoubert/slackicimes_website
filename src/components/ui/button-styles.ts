@@ -25,12 +25,13 @@ const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
   large: "min-h-13 px-6 md:min-h-15 md:px-9 md:text-lg",
 };
 
-const PRESSABLE = "hover:translate-y-0.5 hover:shadow-none";
+const PRESSABLE =
+  "hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: `${PRESSABLE} bg-coral text-ink shadow-drop`,
+  primary: `${PRESSABLE} bg-coral text-ink shadow-pressable`,
   secondary: `border-3 border-navy text-navy hover:bg-navy hover:text-paper`,
-  secondaryRaised: `${PRESSABLE} border-3 border-navy text-navy shadow-drop`,
+  secondaryRaised: `${PRESSABLE} border-3 border-navy text-navy shadow-pressable`,
   secondaryOnDark: `border-3 border-paper text-paper hover:bg-paper hover:text-navy`,
   navy: `bg-navy text-paper hover:bg-ink`,
   cupPrimary: `${CUP_BUTTON_SIZE} bg-cup-pink-strong text-white hover:bg-cup-magenta`,

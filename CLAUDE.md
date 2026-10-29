@@ -144,6 +144,11 @@ add one there.
   `@theme` block of `src/styles/global.css`. Use the utilities they generate.
 - Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`, `w-[372px]`) or inline `style`
   attributes. If no token fits, add one to `@theme`, keeping the existing scale.
+- Shadows share one direction: a hard diagonal offset toward the bottom right, no blur. Use
+  `shadow-raised` for photos, cards and panels, `shadow-pressable` for buttons and small controls,
+  `text-shadow-raised` for text over photos. Their distances grow on desktop by themselves, so never
+  add an `md:` shadow size. Change the color with `shadow-<color>` only. Tailwind's default
+  shadows are disabled; a new shadow need is a new token in `@theme`, in the same direction.
 - Typography roles (page title, section title, body, caption) are component classes or components;
   sections pick a role, they do not combine raw size and weight utilities.
 
