@@ -14,34 +14,31 @@ interface Props {
 
 const THUMBNAIL_WIDTHS = [120, 480];
 const THUMBNAIL_SIZES = "(min-width: 768px) 240px, 56px";
-const INITIALLY_OPEN_INDEX = 0;
 
 const { stages, locale } = Astro.props;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
-const courses = stages.map((stage, stageIndex) => {
+const courses = stages.map((stage) => {
   const slug = entrySlug(stage.id);
   return {
     stage,
     slug,
     panelId: `${slug}-details`,
-    isOpen: stageIndex === INITIALLY_OPEN_INDEX,
     summary: `${stage.data.duration} · ${formatPriceInEuros(stage.data.priceInEuros, languageTag)}`,
   };
 });
 ---
 
 <div data-course-picker class="grid gap-3 md:grid-cols-5 md:gap-4.5">
-  {courses.map(({ stage, slug, panelId, isOpen, summary }) => (
+  {courses.map(({ stage, slug, panelId, summary }) => (
     <div
       id={slug}
       data-course
-      data-open={isOpen ? "" : undefined}
       class="border-navy rounded-card data-open:bg-blush scroll-mt-4 overflow-hidden border-3 md:contents"
     >
       <h3 class="md:row-start-1">
         <button
           type="button"
-          aria-expanded={isOpen ? "true" : "false"}
+          aria-expanded="false"
           aria-controls={panelId}
           data-course-toggle
           class="group text-ink md:bg-paper md:border-navy md:aria-expanded:bg-blush md:aria-expanded:shadow-offset-sm relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:rounded-3xl md:border-3 md:p-0 md:transition md:hover:-translate-y-1"
@@ -90,7 +87,7 @@ const courses = stages.map((stage, stageIndex) => {
       <div
         id={panelId}
         data-course-panel
-        hidden={isOpen ? undefined : "until-found"}
+        hidden="until-found"
         class="md:col-span-5 md:col-start-1 md:row-start-2 md:mt-4"
       >
         <CourseDetails stage={stage} locale={locale} />
@@ -133,7 +130,8 @@ const courses = stages.map((stage, stageIndex) => {
     const courses = [
       ...picker.querySelectorAll<HTMLElement>("[data-course]"),
     ].map(findCourse);
-    const isDesktop = () => window.matchMedia(DESKTOP_MEDIA_QUERY).matches;
+    const desktopQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    const isDesktop = () => desktopQuery.matches;
     const openOnly = (target: Course) =>
       courses.forEach((course) => setOpen(course, course === target));
 
@@ -159,8 +157,16 @@ const courses = stages.map((stage, stageIndex) => {
       openOnly(target);
       target.toggle.scrollIntoView({ block: "start" });
     };
+    const openFirstOnDesktop = () => {
+      const hasOpenCourse = courses.some((course) =>
+        course.root.hasAttribute("data-open"),
+      );
+      if (isDesktop() && !hasOpenCourse) openOnly(courses[0]);
+    };
     openFromHash();
+    openFirstOnDesktop();
     window.addEventListener("hashchange", openFromHash);
+    desktopQuery.addEventListener("change", openFirstOnDesktop);
   }
 
   document
