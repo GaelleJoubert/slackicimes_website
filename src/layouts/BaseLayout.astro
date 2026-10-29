@@ -27,6 +27,7 @@ interface Props {
   isErrorPage?: boolean;
   headerTone?: HeaderTone;
   footer?: FooterVariant;
+  snapSectionsOnMobile?: boolean;
 }
 
 type FooterVariant = "full" | "compact";
@@ -39,6 +40,7 @@ const {
   isErrorPage = false,
   headerTone = "light",
   footer = "full",
+  snapSectionsOnMobile = false,
 } = Astro.props;
 const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
@@ -46,10 +48,20 @@ const alternateLinks = isErrorPage ? [] : buildAlternateLinks(pageSlug);
 const structuredData = [buildWebSiteSchema(), buildOrganizationSchema()];
 const strings = uiStrings(locale);
 const isIndexable = SITE_INDEXABLE && !isErrorPage && !isUnlistedPage(pageSlug);
+const HEADER_SCROLL_PADDING_CLASSES: Record<HeaderTone, string> = {
+  light: "scroll-pt-18 lg:scroll-pt-24",
+  dark: "scroll-pt-20 lg:scroll-pt-26",
+};
 ---
 
 <!doctype html>
-<html lang={localeSettings.htmlLang} class="scroll-pt-20 lg:scroll-pt-26">
+<html
+  lang={localeSettings.htmlLang}
+  class:list={[
+    HEADER_SCROLL_PADDING_CLASSES[headerTone],
+    snapSectionsOnMobile && "mobile-section-snap",
+  ]}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

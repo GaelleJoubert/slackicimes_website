@@ -214,6 +214,18 @@
     grid-template-columns: auto 1fr;
   }
 
+  .mobile-section-snap {
+    scroll-snap-type: y proximity;
+
+    & main > section {
+      scroll-snap-align: start;
+    }
+
+    @variant md {
+      scroll-snap-type: none;
+    }
+  }
+
   .poster-edition-grid {
     @variant md {
       grid-template-rows: auto 1fr;
