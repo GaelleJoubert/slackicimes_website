@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 import TeamMemberCard, { type TeamCardShadow } from "./TeamMemberCard.astro";
@@ -14,10 +17,11 @@ interface Props {
 const CARD_SHADOWS: TeamCardShadow[] = ["coral", "sky", "mist"];
 
 const { team, members, locale } = Astro.props;
+const strings = uiStrings(locale);
 ---
 
-<section class="py-14 md:pt-26 md:pb-28">
-  <Container class="flex flex-col gap-4 md:gap-9">
+<section class="pt-8 pb-6 md:pt-26 md:pb-28">
+  <Container class="flex flex-col gap-3 md:gap-9">
     <div class="max-w-190">
       <SectionIntro title={team.title}>
         {team.paragraphs.map((paragraph) => (
@@ -25,16 +29,24 @@ const { team, members, locale } = Astro.props;
         ))}
       </SectionIntro>
     </div>
-    <ul class="grid gap-5 md:grid-cols-2 md:gap-6">
+    <Carousel
+      label={team.title}
+      roleDescription={strings.common.carouselRoleDescription}
+      previousLabel={strings.team.previousMemberButton}
+      nextLabel={strings.team.nextMemberButton}
+      slideCount={members.length}
+      width="full"
+      desktopGrid
+    >
       {members.map((member, memberIndex) => (
-        <li class="row-span-4 grid grid-rows-subgrid gap-0">
+        <CarouselSlide class="pr-1.5 pb-1.5 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-0 md:p-0">
           <TeamMemberCard
             member={member}
             shadow={CARD_SHADOWS[memberIndex % CARD_SHADOWS.length]}
             locale={locale}
           />
-        </li>
+        </CarouselSlide>
       ))}
-    </ul>
+    </Carousel>
   </Container>
 </section>

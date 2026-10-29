@@ -16,8 +16,8 @@ interface Props {
   locale: Locale;
 }
 
-const PHOTO_WIDTHS = [600, 1200];
-const PHOTO_SIZES = "(min-width: 768px) 560px, 100vw";
+const PHOTO_WIDTHS = [320, 600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 560px, 160px";
 
 const PHOTO_FOCUS_CLASSES: Record<
   CollectionEntry<"team">["data"]["photoFocus"],
@@ -52,7 +52,7 @@ const { Content: Biography } = await render(member);
 <article
   id={entrySlug(member.id)}
   class:list={[
-    "border-navy rounded-card shadow-offset-sm md:rounded-photo md:shadow-offset row-span-4 grid scroll-mt-4 grid-rows-subgrid gap-0 overflow-hidden border-3",
+    "border-navy rounded-card shadow-offset-sm md:rounded-photo md:shadow-offset media-start-grid row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-0 md:content-normal overflow-hidden border-3 md:h-auto md:grid-cols-1",
     SHADOW_CLASSES[shadow],
   ]}
 >
@@ -63,24 +63,22 @@ const { Content: Biography } = await render(member);
     sizes={PHOTO_SIZES}
     formats={["avif", "webp"]}
     class:list={[
-      "h-52 w-full object-cover md:h-72",
+      "mt-4 ml-4 block size-40 rounded-2xl object-cover md:m-0 md:h-72 md:w-full md:rounded-none",
       PHOTO_FOCUS_CLASSES[photoFocus],
     ]}
   />
-  <header class="flex flex-col gap-1 px-5 pt-5 md:px-7 md:pt-6">
-    <div class="flex items-end justify-between gap-4">
-      <h3 class="card-title text-3xl md:text-4xl">{name}</h3>
-      <p class="flex flex-col items-end">
-        <span class="caption">{strings.highlineSince}</span>
-        <span class="card-title text-teal">{highlineSince}</span>
-      </p>
-    </div>
-    <p class="caption font-bold">{role}</p>
+  <header class="flex flex-col gap-1.5 px-4 pt-4 md:grid md:gap-1 md:grid-cols-2 md:items-end md:gap-x-4 md:px-7 md:pt-6 md:pb-0">
+    <h3 class="card-title text-3xl md:text-4xl">{name}</h3>
+    <p class="caption font-bold md:order-last md:col-span-2">{role}</p>
+    <p class="hidden md:flex md:flex-col md:items-end md:justify-self-end">
+      <span class="caption">{strings.highlineSince}</span>
+      <span class="card-title text-teal">{highlineSince}</span>
+    </p>
   </header>
-  <blockquote class="mx-5 mt-4 text-sm md:mx-7 md:text-base">
+  <blockquote class="col-span-2 mx-4 mt-4 text-sm md:col-span-1 md:mx-7 md:mt-4 md:text-base">
     {excerpt}
   </blockquote>
-  <footer class="mx-5 mt-3 flex flex-col gap-3 pb-4 md:mx-7 md:pb-5">
+  <footer class="col-span-2 mx-4 mt-2 flex flex-col gap-2 pb-3 md:col-span-1 md:mx-7 md:mt-3 md:gap-3 md:pb-5">
     <ReadMore summary={strings.readFullStory} accessibleContext={name}>
       <div class="rich-text text-sm md:text-base">
         <Biography />
@@ -96,7 +94,7 @@ const { Content: Biography } = await render(member);
         ))}
       </dl>
     </ReadMore>
-    <div class="border-cloud border-t-2 pt-3">
+    <div class="border-cloud border-t-2 pt-2 md:pt-3">
       <TagList items={diplomaShortNames} label={strings.diplomasLabel} />
     </div>
   </footer>

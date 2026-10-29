@@ -30,15 +30,15 @@ function portraitOf(member: CollectionEntry<"team">) {
 }
 ---
 
-<section class="bg-navy text-paper py-14 md:py-26">
-  <Container class="grid gap-8 md:grid-cols-2 md:items-center md:gap-16">
+<section class="bg-navy text-paper py-10 md:py-26">
+  <Container class="grid gap-6 md:grid-cols-2 md:items-center md:gap-16">
     <SectionIntro title={duo.title} theme="dark">
       <div class="intro-text intro-text-on-dark">
         {duo.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
       </div>
-      <p class="card-title text-coral border-coral border-l-4 pl-4 md:text-3xl">
+      <p class="card-title text-coral border-coral hidden border-l-4 pl-4 md:block md:text-3xl">
         {duo.tagline}
       </p>
     </SectionIntro>
@@ -46,7 +46,7 @@ function portraitOf(member: CollectionEntry<"team">) {
       {members.map((member, memberIndex) => {
         const portrait = portraitOf(member);
         return (
-          <li class:list={[memberIndex % 2 === 1 && "mt-6 md:mt-10"]}>
+          <li class:list={[memberIndex % 2 === 1 && "mt-4 md:mt-10"]}>
             <a
               href={`#${entrySlug(member.id)}`}
               class="group text-paper flex flex-col items-center gap-1.5 text-center md:gap-2.5"
@@ -57,7 +57,7 @@ function portraitOf(member: CollectionEntry<"team">) {
                 widths={PORTRAIT_WIDTHS}
                 sizes={PORTRAIT_SIZES}
                 frame="bordered"
-                class="h-52.5 md:h-85"
+                class="h-44 md:h-85"
               />
               <span class="card-title group-hover:text-coral text-current md:text-3xl">
                 {member.data.name}
