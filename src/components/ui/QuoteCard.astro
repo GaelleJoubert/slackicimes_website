@@ -5,6 +5,7 @@ interface Props {
   author: string;
   context: string;
   tone: QuoteTone;
+  class?: string;
 }
 
 const TONE_CLASSES: Record<QuoteTone, { card: string; mark: string }> = {
@@ -12,7 +13,7 @@ const TONE_CLASSES: Record<QuoteTone, { card: string; mark: string }> = {
   ice: { card: "bg-ice", mark: "text-sky" },
 };
 
-const { author, context, tone } = Astro.props;
+const { author, context, tone, class: extraClasses } = Astro.props;
 const toneClasses = TONE_CLASSES[tone];
 ---
 
@@ -20,6 +21,7 @@ const toneClasses = TONE_CLASSES[tone];
   class:list={[
     "text-ink rounded-card md:rounded-photo flex flex-col gap-3 p-6 md:gap-4 md:p-10",
     toneClasses.card,
+    extraClasses,
   ]}
 >
   <span

@@ -8,9 +8,10 @@ interface Props {
   videoUrl: string;
   title: string;
   locale: Locale;
+  class?: string;
 }
 
-const { videoUrl, title, locale } = Astro.props;
+const { videoUrl, title, locale, class: frameClasses } = Astro.props;
 const strings = uiStrings(locale);
 const videoSource = toVideoSource(videoUrl);
 ---
@@ -23,7 +24,10 @@ const videoSource = toVideoSource(videoUrl);
     allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
     allowfullscreen
     referrerpolicy="strict-origin-when-cross-origin"
-    class="aspect-video w-full rounded-lg"
+    class:list={[
+      "rounded-card md:rounded-photo aspect-video w-full",
+      frameClasses,
+    ]}
   />
 ) : (
   <LinkButton href={videoSource.url} variant="secondary">

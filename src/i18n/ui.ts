@@ -49,7 +49,11 @@ const fr = {
     datesHeading: "Dates",
     priceHeading: "Tarif",
     priceNote: "Ce tarif inclut toutes les activités et le matériel collectif.",
-    registerButton: "S'inscrire",
+    registerButton: "S'inscrire sur HelloAsso",
+    seeFormulasButton: "Voir les formules",
+    pickerHint: "Choisissez une formule pour afficher son programme",
+    durationLabel: "Durée",
+    levelLabel: "Niveau",
     ticketOfficeButton: "Accéder à la billetterie HelloAsso",
   },
   festival: {
@@ -63,8 +67,10 @@ const fr = {
     videoSuffix: "en vidéo",
   },
   faq: {
-    title: "FAQ",
-    stagesIntro: "Toutes les réponses à vos questions concernant les stages",
+    eyebrow: "FAQ",
+    title: "Vos questions",
+    stagesIntro: "Toutes les réponses à vos questions concernant les stages.",
+    otherQuestionButton: "Une autre question ?",
   },
   testimonials: {
     title: "Livre d'or",
@@ -155,7 +161,11 @@ const en: UiStrings = {
     datesHeading: "Dates",
     priceHeading: "Price",
     priceNote: "This price includes all activities and collective equipment.",
-    registerButton: "Register",
+    registerButton: "Register on HelloAsso",
+    seeFormulasButton: "See the courses",
+    pickerHint: "Pick a course to see its program",
+    durationLabel: "Duration",
+    levelLabel: "Level",
     ticketOfficeButton: "Go to the HelloAsso ticket office",
   },
   festival: {
@@ -169,8 +179,10 @@ const en: UiStrings = {
     videoSuffix: "on video",
   },
   faq: {
-    title: "FAQ",
-    stagesIntro: "All the answers to your questions about our courses",
+    eyebrow: "FAQ",
+    title: "Your questions",
+    stagesIntro: "All the answers to your questions about our courses.",
+    otherQuestionButton: "Another question?",
   },
   testimonials: {
     title: "Guestbook",

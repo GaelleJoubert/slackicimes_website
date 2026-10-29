@@ -13,6 +13,7 @@ const pages = defineCollection({
       title: nonEmptyText,
       description: nonEmptyText,
       heading: nonEmptyText,
+      eyebrow: nonEmptyText.optional(),
       video: z.url().optional(),
       feature: z
         .object({
