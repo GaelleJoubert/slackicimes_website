@@ -37,7 +37,6 @@ const fr = {
     courseCarouselLabel: "Nos stages",
     previousCourseButton: "Stage précédent",
     nextCourseButton: "Stage suivant",
-    festivalCarouselLabel: "Le festival en images",
   },
   footer: {
     tagline: "Highline & slackline aux Arcs, Savoie",
@@ -65,6 +64,7 @@ const fr = {
   },
   festival: {
     pastEditionsButton: "Voir les anciennes éditions",
+    galleryLabel: "Le festival en images",
   },
   team: {
     highlineSince: "Highline depuis",
@@ -178,7 +178,6 @@ const en: UiStrings = {
     courseCarouselLabel: "Our courses",
     previousCourseButton: "Previous course",
     nextCourseButton: "Next course",
-    festivalCarouselLabel: "The festival in pictures",
   },
   footer: {
     tagline: "Highline & slackline in Les Arcs, Savoie",
@@ -206,6 +205,7 @@ const en: UiStrings = {
   },
   festival: {
     pastEditionsButton: "See previous editions",
+    galleryLabel: "The festival in pictures",
   },
   team: {
     highlineSince: "Highlining since",

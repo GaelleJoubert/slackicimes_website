@@ -6,12 +6,13 @@ interface Props {
   image: ImageMetadata;
   alt: string;
   caption?: string;
+  loading?: "eager" | "lazy";
 }
 
 const PHOTO_WIDTHS = [400, 800];
 const PHOTO_SIZES = "304px";
 
-const { image, alt, caption } = Astro.props;
+const { image, alt, caption, loading = "lazy" } = Astro.props;
 ---
 
 <figure class="flex flex-col gap-2">
@@ -21,6 +22,7 @@ const { image, alt, caption } = Astro.props;
     widths={PHOTO_WIDTHS}
     sizes={PHOTO_SIZES}
     frame="bordered"
+    loading={loading}
     class="h-56"
   />
   {caption && (

@@ -5,7 +5,7 @@ import Container from "../../components/ui/Container.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
 import HighlightedText from "../../components/ui/HighlightedText.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
-import PhotoStrip from "../../components/ui/PhotoStrip.astro";
+import PhotoGallery from "../../components/ui/PhotoGallery.astro";
 import SectionIntro from "../../components/ui/SectionIntro.astro";
 import SlacklineDivider from "../../components/ui/SlacklineDivider.astro";
 import {
@@ -26,7 +26,9 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const PAGE_SLUG = "winter-festislack";
 const PAST_EDITIONS_PAGE_SLUG = "anciennes-editions-winter-festislack";
 const POSTER_WIDTHS = [480, 960];
-const POSTER_SIZES = "(min-width: 768px) 480px, 100vw";
+const POSTER_SIZES = "480px";
+const POSTER_THUMBNAIL_WIDTHS = [160, 320];
+const POSTER_THUMBNAIL_SIZES = "128px";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -42,6 +44,7 @@ const festivalGallery = await getGallery("festival", locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
   headerTone="dark"
+  snapSectionsOnMobile
 >
   <section class="bg-navy text-paper pt-6 pb-12 md:pt-12 md:pb-24">
     <Container class="flex flex-col gap-4 md:gap-12">
@@ -56,19 +59,36 @@ const festivalGallery = await getGallery("festival", locale);
           <Intro />
         </div>
       </div>
-      <PhotoStrip photos={festivalGallery.data.photos} loading="eager" />
+      <PhotoGallery
+        photos={festivalGallery.data.photos}
+        label={strings.festival.galleryLabel}
+        locale={locale}
+        loading="eager"
+      />
     </Container>
   </section>
 
   <SlacklineDivider backgroundTone="navy" fillTone="paper" />
 
-  <section class="bg-paper pt-10 pb-14 md:pt-18 md:pb-28">
+  <section class="bg-paper pt-14 pb-16 md:pt-18 md:pb-28">
     <Container class="grid items-center gap-4 md:grid-cols-5 md:gap-16">
       <div class="md:col-span-3">
         <SectionIntro title={announcement.title}>
-          {announcement.paragraphs.map((paragraph) => (
-            <p>{paragraph}</p>
-          ))}
+          <div class="flow-root space-y-4">
+            <div class="float-right mb-2 ml-4 w-32 md:hidden">
+              <FramedPicture
+                image={announcement.poster.image}
+                alt={announcement.poster.alt}
+                widths={POSTER_THUMBNAIL_WIDTHS}
+                sizes={POSTER_THUMBNAIL_SIZES}
+                frame="offsetNavy"
+                class="h-auto"
+              />
+            </div>
+            {announcement.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
           <div class="flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-3.5">
             <LinkButton href={localizedPath("coupe-du-monde", locale)}>
               {strings.common.discoverWorldCupButton}
@@ -82,7 +102,7 @@ const festivalGallery = await getGallery("festival", locale);
           </div>
         </SectionIntro>
       </div>
-      <div class="pr-2 md:col-span-2 md:pr-0">
+      <div class="hidden md:col-span-2 md:block">
         <FramedPicture
           image={announcement.poster.image}
           alt={announcement.poster.alt}

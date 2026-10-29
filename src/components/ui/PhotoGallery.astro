@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from "astro";
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import Carousel from "./Carousel.astro";
+import CarouselSlide from "./CarouselSlide.astro";
+import PhotoSlide from "./PhotoSlide.astro";
+import PhotoStrip from "./PhotoStrip.astro";
+
+interface GalleryPhoto {
+  image: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  photos: GalleryPhoto[];
+  label: string;
+  locale: Locale;
+  loading?: "eager" | "lazy";
+}
+
+const { photos, label, locale, loading = "lazy" } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<div class="hidden md:block">
+  <PhotoStrip photos={photos} loading={loading} />
+</div>
+<Carousel
+  label={label}
+  roleDescription={strings.common.carouselRoleDescription}
+  previousLabel={strings.common.previousPhotoButton}
+  nextLabel={strings.common.nextPhotoButton}
+  slideCount={photos.length}
+  tone="dark"
+  class="md:hidden"
+>
+  {photos.map((photo) => (
+    <CarouselSlide>
+      <PhotoSlide {...photo} loading={loading} />
+    </CarouselSlide>
+  ))}
+</Carousel>
