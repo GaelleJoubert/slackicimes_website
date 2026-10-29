@@ -35,13 +35,14 @@ const strings = uiStrings(locale);
         {teaser.paragraphs.map((paragraph) => (
           <p class="text-cloud">{paragraph}</p>
         ))}
-        <LinkButton
-          href={localizedPath("winter-festislack", locale)}
-          variant="secondaryOnDark"
-          class="hidden self-start md:inline-flex"
-        >
-          {strings.home.festivalButton}
-        </LinkButton>
+        <div class="hidden md:block">
+          <LinkButton
+            href={localizedPath("winter-festislack", locale)}
+            variant="secondaryOnDark"
+          >
+            {strings.home.festivalButton}
+          </LinkButton>
+        </div>
       </SectionIntro>
     </div>
     <ul class="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pt-2 pb-3 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:p-0">

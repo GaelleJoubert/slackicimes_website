@@ -14,6 +14,9 @@ const pages = defineCollection({
       description: nonEmptyText,
       heading: nonEmptyText,
       eyebrow: nonEmptyText.optional(),
+      keyFacts: z
+        .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
+        .optional(),
       video: z.url().optional(),
       feature: z
         .object({
@@ -27,6 +30,7 @@ const pages = defineCollection({
 
 const programItem = z.object({
   label: nonEmptyText,
+  place: nonEmptyText.optional(),
   details: z.array(nonEmptyText).default([]),
 });
 

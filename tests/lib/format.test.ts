@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPriceInEuros } from "../../src/lib/format";
+import { formatPriceInEuros, lowercaseFirstLetter } from "../../src/lib/format";
 
 const NARROW_NO_BREAK_SPACE = " ";
 const NO_BREAK_SPACE = " ";
@@ -14,5 +14,12 @@ describe("formatPriceInEuros", () => {
 
   it("puts the euro sign before the amount in English", () => {
     expect(formatPriceInEuros(250, "en")).toBe("€250");
+  });
+});
+
+describe("lowercaseFirstLetter", () => {
+  it("lowercases only the first letter, accents included", () => {
+    expect(lowercaseFirstLetter("Au plan d'eau", "fr")).toBe("au plan d'eau");
+    expect(lowercaseFirstLetter("Étape Une", "fr")).toBe("étape Une");
   });
 });

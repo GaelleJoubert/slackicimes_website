@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
-import { formatPriceInEuros } from "../../../lib/format";
+import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
 import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import FactTile from "../../ui/FactTile.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
@@ -29,10 +29,8 @@ const {
   prerequisites,
   dates,
 } = stage.data;
-const formattedPrice = formatPriceInEuros(
-  stage.data.priceInEuros,
-  LOCALE_SETTINGS[locale].htmlLang,
-);
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
 ---
 
 <div class="bg-blush flex flex-col gap-4 px-3.5 pt-1 pb-4 md:grid md:grid-cols-5 md:items-start md:gap-8 md:rounded-4xl md:p-10">
@@ -75,7 +73,9 @@ const formattedPrice = formatPriceInEuros(
             class="bg-coral mt-2.5 size-2.5 shrink-0 rounded-full md:size-3"
           />
           <span>
-            {item.label}
+            {item.place
+              ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
+              : item.label}
             {item.details.length > 0 && (
               <ul class="text-slate list-disc pl-5">
                 {item.details.map((detail) => (

@@ -60,6 +60,10 @@ const fr = {
     pastEditionsButton: "Voir les anciennes éditions",
   },
   youthStages: {
+    keyFactsLabel: "L'essentiel",
+    priceDetailsLabel: "Prérequis et tarif",
+    pricePerDuration: "les",
+    weekTitle: "La semaine type",
     galleryTitle: "Le stage en images",
   },
   video: {
@@ -172,6 +176,10 @@ const en: UiStrings = {
     pastEditionsButton: "See previous editions",
   },
   youthStages: {
+    keyFactsLabel: "Key facts",
+    priceDetailsLabel: "Prerequisites and price",
+    pricePerDuration: "for",
+    weekTitle: "A typical week",
     galleryTitle: "The course in pictures",
   },
   video: {
