@@ -1,0 +1,39 @@
+---
+interface Props {
+  steps: string[];
+  label: string;
+}
+
+const STEP_TONE_CLASSES = [
+  { tile: "bg-blush", number: "text-coral-strong" },
+  { tile: "bg-ice", number: "text-teal" },
+  { tile: "bg-cloud", number: "text-navy" },
+];
+
+const { steps, label } = Astro.props;
+---
+
+<ol aria-label={label} class="grid gap-2.5 md:grid-cols-3 md:gap-3.5">
+  {steps.map((step, stepIndex) => {
+    const tone = STEP_TONE_CLASSES[stepIndex % STEP_TONE_CLASSES.length];
+    return (
+      <li
+        class:list={[
+          "flex items-center gap-3.5 rounded-2xl px-4 py-3.5 md:rounded-card md:flex-col md:items-start md:gap-1.5 md:p-5",
+          tone.tile,
+        ]}
+      >
+        <span
+          aria-hidden="true"
+          class:list={[
+            "font-heading w-5 shrink-0 text-3xl leading-none md:w-auto md:text-4xl",
+            tone.number,
+          ]}
+        >
+          {stepIndex + 1}
+        </span>
+        <span class="text-navy font-extrabold">{step}</span>
+      </li>
+    );
+  })}
+</ol>

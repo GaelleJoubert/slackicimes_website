@@ -1,0 +1,61 @@
+photos:
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-01.jpg,
+      alt: "Highliner balancing on the line, seen from above the snow",
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-02.jpg,
+      alt: Freestyle skier mid jump in the sky above the peaks,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-03.jpg,
+      alt: Smiling athlete in a harness on a snowy ridge,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-04.jpg,
+      alt: Athlete with a backpack facing the sunrise over the mountains,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-05.jpg,
+      alt: Athlete in a down jacket on a sunny snowy slope,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-06.jpg,
+      alt: "The snowy Fond Blanc cirque, crossed by the 570 meter highline",
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-07.jpg,
+      alt: Silhouette of an athlete doing an aerial trick under a cloudy sky,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-08.jpg,
+      alt: Highline rigged between the rocks of a snowy ridge,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-09.jpg,
+      alt: Highliner crossing high above the snowy peaks,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-10.jpg,
+      alt: Athlete jumping under the line against a heavy sky,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-11.jpg,
+      alt: The long line crossing the cirque under an overcast sky,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-12.jpg,
+      alt: Freestyle skier in red mid jump,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-13.jpg,
+      alt: Paraglider flying over the snowy rocks of the cirque,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-14.jpg,
+      alt: Skier in red jumping above the snowy slope,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-15.jpg,
+      alt: Highliner walking the line near the rocky ridge,
+    }

@@ -1,0 +1,26 @@
+---
+export type FactTileTone = "navy" | "sky";
+
+interface Props {
+  value: string;
+  label: string;
+  tone: FactTileTone;
+}
+
+const TONE_CLASSES: Record<FactTileTone, string> = {
+  navy: "bg-navy text-paper",
+  sky: "bg-sky text-ink",
+};
+
+const { value, label, tone } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex min-h-22 flex-col justify-between gap-2 rounded-2xl px-3.5 py-3 md:min-h-28 md:rounded-card md:px-4.5 md:py-4",
+    TONE_CLASSES[tone],
+  ]}
+>
+  <dt class="order-last text-sm font-extrabold md:text-base">{label}</dt>
+  <dd class="font-heading text-xl leading-tight md:text-3xl">{value}</dd>
+</div>

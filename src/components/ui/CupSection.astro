@@ -1,0 +1,28 @@
+---
+type CupTone = "surface" | "white" | "navy" | "ink";
+
+interface Props {
+  id?: string;
+  tone: CupTone;
+  ariaLabel?: string;
+}
+
+const TONE_CLASSES: Record<CupTone, string> = {
+  surface: "bg-cup-surface text-cup-ink",
+  white: "bg-white text-cup-ink",
+  navy: "bg-cup-navy text-white",
+  ink: "bg-cup-ink text-white",
+};
+
+const { id, tone, ariaLabel } = Astro.props;
+---
+
+<section
+  id={id}
+  aria-label={ariaLabel}
+  class:list={["scroll-mt-16 px-6 py-16 md:py-24", TONE_CLASSES[tone]]}
+>
+  <div class="mx-auto max-w-6xl">
+    <slot />
+  </div>
+</section>

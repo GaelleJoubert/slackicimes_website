@@ -1,0 +1,116 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
+import { STAGES_REGISTRATION_URL } from "../../../lib/site";
+import FactTile from "../../ui/FactTile.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+
+interface Props {
+  stage: CollectionEntry<"stages">;
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [480, 960];
+const PHOTO_SIZES = "(min-width: 768px) 700px, 100vw";
+
+const { stage, locale } = Astro.props;
+const strings = uiStrings(locale);
+const {
+  name,
+  duration,
+  level,
+  image,
+  imageAlt,
+  description,
+  program,
+  prerequisites,
+  dates,
+} = stage.data;
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+---
+
+<div class="bg-blush flex flex-col gap-4 px-3.5 pt-1 pb-4 md:grid md:grid-cols-5 md:items-start md:gap-8 md:rounded-4xl md:p-10">
+  <div class="flex flex-col gap-4 md:col-span-3 md:gap-4.5">
+    <FramedPicture
+      image={image}
+      alt={imageAlt}
+      widths={PHOTO_WIDTHS}
+      sizes={PHOTO_SIZES}
+      class="h-48 md:h-75"
+    />
+    <dl class="grid grid-cols-2 gap-2.5 md:gap-4">
+      <FactTile
+        value={duration}
+        label={strings.stages.durationLabel}
+        tone="navy"
+      />
+      <FactTile value={level} label={strings.stages.levelLabel} tone="sky" />
+    </dl>
+    <p
+      aria-hidden="true"
+      class="font-heading text-navy hidden text-5xl leading-none md:block"
+    >
+      {name}
+    </p>
+    {description.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+    <h4 class="subsection-title md:text-3xl">
+      {strings.stages.programHeading}
+    </h4>
+    {program.intro.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
+    <ul class="flex flex-col gap-2">
+      {program.items.map((item) => (
+        <li class="flex items-start gap-2.5">
+          <span
+            aria-hidden="true"
+            class="bg-coral mt-2.5 size-2.5 shrink-0 rounded-full md:size-3"
+          />
+          <span>
+            {item.place
+              ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
+              : item.label}
+            {item.details.length > 0 && (
+              <ul class="text-slate list-disc pl-5">
+                {item.details.map((detail) => (
+                  <li>{detail}</li>
+                ))}
+              </ul>
+            )}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <aside class="bg-paper border-navy rounded-card md:shadow-offset flex flex-col gap-3 border-3 p-4.5 md:col-span-2 md:gap-4.5 md:rounded-3xl md:p-7">
+    <div>
+      <h4 class="subsection-title">{strings.stages.prerequisitesHeading}</h4>
+      <ul class="mt-1 flex list-disc flex-col gap-1 pl-5 text-base">
+        {prerequisites.map((prerequisite) => (
+          <li>{prerequisite}</li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
+      <p class="mt-1 font-bold">{dates}</p>
+    </div>
+    <div>
+      <h4 class="subsection-title">{strings.stages.priceHeading}</h4>
+      <p class="font-heading text-coral-strong text-5xl leading-none md:text-6xl">
+        {formattedPrice}
+      </p>
+      <p class="caption mt-1.5">{strings.stages.priceNote}</p>
+    </div>
+    <LinkButton href={STAGES_REGISTRATION_URL}>
+      {strings.stages.registerButton}
+      <span class="sr-only">: {name}</span>
+    </LinkButton>
+  </aside>
+</div>

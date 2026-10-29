@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import EditionTimeline from "../../components/sections/past-editions/EditionTimeline.astro";
+import ChevronIcon from "../../components/ui/ChevronIcon.astro";
+import Container from "../../components/ui/Container.astro";
+import HighlightedText from "../../components/ui/HighlightedText.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { FESTIVAL_FULL_NAME_HIGHLIGHT } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "anciennes-editions-winter-festislack";
+const FESTIVAL_PAGE_SLUG = "winter-festislack";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const editions = await getLocalizedCollection("festivalEditions", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <section class="pt-5 pb-2 md:pt-10 md:pb-6">
+    <Container class="flex flex-col gap-3 md:gap-4.5">
+      <a
+        href={localizedPath(FESTIVAL_PAGE_SLUG, locale)}
+        class="text-teal hover:text-navy inline-flex min-h-11 items-center gap-1.5 self-start font-extrabold"
+      >
+        <ChevronIcon direction="left" />
+        {strings.navigation.winterFestislack}
+      </a>
+      <h1 class="page-title">
+        <HighlightedText
+          text={page.data.heading}
+          highlight={FESTIVAL_FULL_NAME_HIGHLIGHT}
+        />
+      </h1>
+      <div class="lead">
+        <Intro />
+      </div>
+    </Container>
+  </section>
+
+  <EditionTimeline editions={editions} locale={locale} />
+</BaseLayout>

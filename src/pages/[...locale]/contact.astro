@@ -1,0 +1,55 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import ContactForm from "../../components/sections/ContactForm.astro";
+import CallTiles from "../../components/sections/contact/CallTiles.astro";
+import ContactDetailsCard from "../../components/sections/contact/ContactDetailsCard.astro";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import { getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "contact";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <section class="pt-5 pb-14 md:pt-10 md:pb-28">
+    <Container class="flex flex-col gap-4.5 md:gap-10">
+      <div class="flex max-w-205 flex-col gap-4.5 md:gap-3.5">
+        {page.data.eyebrow && <Eyebrow tone="sky">{page.data.eyebrow}</Eyebrow>}
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="rich-text md:text-xl">
+          <Intro />
+        </div>
+      </div>
+      <CallTiles locale={locale} class="md:hidden" />
+      <div class="grid gap-6 md:grid-cols-5 md:items-start md:gap-10">
+        <div class="border-navy rounded-card md:rounded-photo shadow-offset-sm md:shadow-offset-lg mt-2 flex flex-col gap-3.5 border-3 p-5 md:col-span-3 md:mt-0 md:gap-4.5 md:p-9">
+          <h2 class="timeline-title">{strings.contactPage.formTitle}</h2>
+          <ContactForm locale={locale} />
+        </div>
+        <ContactDetailsCard
+          locale={locale}
+          class="md:order-first md:col-span-2"
+        />
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

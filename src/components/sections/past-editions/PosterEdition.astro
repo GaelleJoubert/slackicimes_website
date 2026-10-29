@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { PictureFrame } from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import PlayIcon from "../../ui/PlayIcon.astro";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+import EditionWithPoster from "./EditionWithPoster.astro";
+
+interface Props {
+  edition: CollectionEntry<"festivalEditions">;
+  dotTone: TimelineDotTone;
+  posterFrame: PictureFrame;
+}
+
+const { edition, dotTone, posterFrame } = Astro.props;
+const { videos, videoLinkLabel } = edition.data;
+const hasUnlabeledVideo = videos.length > 0 && !videoLinkLabel;
+if (hasUnlabeledVideo) {
+  throw new Error(
+    `Festival edition "${edition.id}" has videos: add a "videoLinkLabel" to its frontmatter.`,
+  );
+}
+---
+
+<TimelineEntry dotTone={dotTone}>
+  <EditionWithPoster edition={edition} frame={posterFrame}>
+    {videos.map((videoUrl) => (
+      <LinkButton href={videoUrl} variant="navy" class="gap-2.5 md:self-start">
+        <PlayIcon class="text-coral" />
+        {videoLinkLabel}
+      </LinkButton>
+    ))}
+  </EditionWithPoster>
+</TimelineEntry>

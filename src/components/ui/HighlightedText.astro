@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+  highlight: string;
+}
+
+const { text, highlight } = Astro.props;
+const highlightStart = text.indexOf(highlight);
+const hasHighlight = highlight.length > 0 && highlightStart >= 0;
+const highlightEnd = highlightStart + highlight.length;
+---
+
+{hasHighlight ? (
+  <>
+    {text.slice(0, highlightStart)}
+    <span class="text-coral">{text.slice(highlightStart, highlightEnd)}</span>
+    {text.slice(highlightEnd)}
+  </>
+) : (
+  text
+)}

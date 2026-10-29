@@ -1,0 +1,80 @@
+---
+import { Picture } from "astro:assets";
+import { render, type CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import DotList from "../../ui/DotList.astro";
+import ReadMore from "../../ui/ReadMore.astro";
+
+export type TeamCardShadow = "coral" | "sky" | "mist";
+
+interface Props {
+  member: CollectionEntry<"team">;
+  shadow: TeamCardShadow;
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 768px) 250px, 100vw";
+
+const SHADOW_CLASSES: Record<TeamCardShadow, string> = {
+  coral: "shadow-coral",
+  sky: "shadow-sky",
+  mist: "shadow-mist",
+};
+
+const { member, shadow, locale } = Astro.props;
+const strings = uiStrings(locale).team;
+const { name, role, photo, photoAlt, highlineSince, excerpt, facts } =
+  member.data;
+const { Content: Biography } = await render(member);
+---
+
+<article
+  id={entrySlug(member.id)}
+  class:list={[
+    "border-navy rounded-card shadow-offset-sm md:rounded-photo md:shadow-offset grid scroll-mt-4 overflow-hidden border-3 md:grid-cols-5",
+    SHADOW_CLASSES[shadow],
+  ]}
+>
+  <div class="md:col-span-2">
+    <Picture
+      src={photo}
+      alt={photoAlt}
+      widths={PHOTO_WIDTHS}
+      sizes={PHOTO_SIZES}
+      formats={["avif", "webp"]}
+      class="h-42.5 w-full object-cover md:h-full md:min-h-90"
+    />
+  </div>
+  <div class="flex flex-col gap-1.5 p-4 md:col-span-3 md:gap-2 md:p-6">
+    <header class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <h3 class="card-title text-3xl md:text-4xl">{name}</h3>
+      <p class="text-slate text-sm font-bold md:text-base">
+        {strings.highlineSince} {highlineSince}
+      </p>
+    </header>
+    <p class="text-coral-strong text-xs font-extrabold tracking-wide uppercase md:text-sm">
+      {role}
+    </p>
+    <p class="text-sm md:text-base">{excerpt}</p>
+    <div class="pt-1">
+      <ReadMore summary={strings.readFullStory} accessibleContext={name}>
+        <div class="rich-text text-sm md:text-base">
+          <Biography />
+        </div>
+        <dl class="flex flex-col gap-4">
+          {facts.map((fact) => (
+            <div class="flex flex-col gap-1.5">
+              <dt class="subsection-title">{fact.label}</dt>
+              <dd>
+                <DotList items={fact.items} class="text-sm md:text-base" />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </ReadMore>
+    </div>
+  </div>
+</article>

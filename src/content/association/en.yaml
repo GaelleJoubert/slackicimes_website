@@ -1,0 +1,68 @@
+origin:
+  paragraphs:
+    - Founded in 2012, the association has kept slackline and highline alive in Haute Tarentaise, Savoie, notably through the Winter Festislack event, which over 10 editions has brought together 150 practitioners from all over the world on the Les Arcs ski area, at the Deux Têtes.
+    - Two women now lead the association, highly motivated to develop its many facets.
+  illustration:
+    image: ../../assets/images/association/groupe.jpg
+    alt: Group of trainees and instructors smiling on a rock in the mountains
+firstStages:
+  title: The first highline courses
+  paragraphs:
+    - In 2019, Chloë and Gaëlle joined forces to set up the first highline introduction courses in France.
+    - "Both passionate about teaching in their original disciplines (skiing for Chloë and trampoline for Gaëlle), they decided to share their experience: helping people of every background take their first steps into the void, and guiding them with kindness along this life changing learning path."
+activities:
+  title: Slack'icîmes is...
+  intro: The association has always been committed to developing slackline and highline, and to sharing their values.
+  items:
+    - title: Courses
+      text: In 2019, the association ran the first highline courses in France. Since then, more than 300 people have discovered highline with us.
+      pageSlug: stages-highline
+      illustration:
+        image: ../../assets/images/association/stagiaire-pouce-leve.jpg
+        alt: Smiling trainee giving a thumbs up while sitting on a highline
+    - title: A festival
+      text: Since 2012, the Winter Festislack has brought together athletes from all over the world around a unique concept combining skiing and highline.
+      pageSlug: winter-festislack
+      illustration:
+        image: ../../assets/images/association/festival-highline-neige.jpg
+        alt: Highliner balancing above the snow with raised arms
+    - title: A competition
+      text: From April 14 to 16, 2027, the association hosts the Highline Freestyle World Cup in Les Arcs, on the main square of Arc 2000.
+      pageSlug: coupe-du-monde
+      illustration:
+        image: ../../assets/images/world-cup/athlete-rotation.jpg
+        alt: Highline freestyle athlete spinning under the line against a blue sky
+    - title: Introductions
+      text: Together with towns and tourist offices, we let children and adults test their balance.
+      pageSlug: contact
+      illustration:
+        image: ../../assets/images/association/initiation-enfants.jpg
+        alt: Children trying slackline between two trees in the snow, with an adult
+    - title: Demonstrations
+      text: The association has delighted admiring audiences at many events.
+      pageSlug: contact
+      illustration:
+        image: ../../assets/images/association/demonstration-mur-escalade.jpg
+        alt: Highline rigged from the top of a climbing wall, above the clouds
+    - title: A commitment
+      text: We work together with the ISA (International Slackline Association).
+      illustration:
+        image: ../../assets/images/association/accolade.jpg
+        alt: Two highliners hugging at the start of a line
+duo:
+  eyebrow: Since 2019
+  title: The duo
+  paragraphs:
+    - Long involved in the highline community, Chloë and Gaëlle teamed up in 2019 to run the first highline courses. Together, they are an explosive cocktail of good mood, kindness and motivation!
+  valuesTitle: Our values
+  values:
+    - Sharing
+    - Kindness
+    - Humility
+    - Pushing your limits
+    - Self confidence
+    - Curiosity to learn and grow
+team:
+  title: The team
+  paragraphs:
+    - The association grows every year, and several passionate, experienced highliners have now joined the team. They share our values and are keen to share their love of highline.

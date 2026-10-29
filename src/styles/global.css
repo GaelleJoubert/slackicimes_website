@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "@fontsource/lilita-one";
+@import "@fontsource-variable/nunito";
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/clash-display-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/clash-display-semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-paper: #fffefc;
+  --color-ink: #011021;
+  --color-navy: #253e59;
+  --color-slate: #3b4d63;
+  --color-mist: #b8cfde;
+  --color-cloud: #e8f0f6;
+  --color-ice: #d9f1f7;
+  --color-blush: #ffe4e1;
+  --color-sky: #00a0c4;
+  --color-teal: #006f79;
+  --color-coral: #ff695e;
+  --color-coral-strong: #bd5048;
+
+  --color-cup-navy: #2f3064;
+  --color-cup-ink: #1b1c3f;
+  --color-cup-pink: #ff0098;
+  --color-cup-pink-strong: #d4007e;
+  --color-cup-pink-soft: #ff6fc4;
+  --color-cup-magenta: #c2007a;
+  --color-cup-sky: #50c1f7;
+  --color-cup-surface: #f4f5fb;
+  --color-cup-border: #e1e3f0;
+  --color-cup-line: #4a4c8a;
+  --color-cup-soft: #c9cbe6;
+  --color-cup-pale: #e9eaf6;
+  --color-cup-placeholder: #e6e8f4;
+  --color-cup-placeholder-text: #6b6e9c;
+  --color-cup-muted: #5a5d86;
+  --color-cup-slate: #353d57;
+  --color-cup-slate-deep: #2a3047;
+  --color-cup-slate-text: #d7d9ec;
+  --color-cup-slate-muted: #aeb2cf;
+
+  --font-heading: "Lilita One", "Nunito Variable", system-ui, sans-serif;
+  --font-body: "Nunito Variable", system-ui, sans-serif;
+  --font-display: "Clash Display", "Avenir Next", system-ui, sans-serif;
+  --font-cup: "Inter Variable", system-ui, sans-serif;
+
+  --text-hero: 7.25rem;
+  --text-hero--line-height: 0.92;
+  --text-display: 6.5rem;
+  --text-display--line-height: 0.92;
+  --text-error-code: 11.25rem;
+  --text-error-code--line-height: 1;
+  --text-display-sm: 3.5rem;
+  --text-display-sm--line-height: 0.95;
+  --text-title: 4rem;
+  --text-title--line-height: 1;
+  --text-title-sm: 2.75rem;
+  --text-title-sm--line-height: 1;
+  --text-quote: 2.125rem;
+  --text-quote--line-height: 1.15;
+
+  --container-page: 77.5rem;
+
+  --radius-card: 1.375rem;
+  --radius-photo: 1.75rem;
+
+  --text-shadow-drop: 0 3px 0 var(--color-navy);
+
+  --shadow-drop-sm: 0 3px 0 var(--color-navy);
+  --shadow-drop: 0 4px 0 var(--color-navy);
+  --shadow-drop-lg: 0 10px 0 var(--color-navy);
+  --shadow-offset-sm: 6px 6px 0 var(--color-navy);
+  --shadow-offset: 8px 8px 0 var(--color-navy);
+  --shadow-offset-lg: 12px 12px 0 var(--color-navy);
+}
+
+@layer base {
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply font-heading text-display-sm font-normal text-navy md:text-display;
+  }
+
+  .section-title {
+    @apply font-heading text-title-sm font-normal text-navy md:text-title;
+  }
+
+  .card-title {
+    @apply font-heading text-2xl leading-tight font-normal text-navy;
+  }
+
+  .timeline-year {
+    @apply font-heading text-5xl leading-none font-normal md:text-7xl;
+  }
+
+  .timeline-title {
+    @apply font-heading text-3xl leading-tight font-normal text-navy md:text-4xl;
+  }
+
+  .subsection-title {
+    @apply font-heading text-xl font-normal text-navy;
+  }
+
+  .stat-value {
+    @apply font-heading text-4xl leading-none md:text-6xl;
+  }
+
+  .value-list-text {
+    @apply font-heading text-2xl leading-tight md:text-3xl;
+  }
+
+  .lead {
+    @apply text-lg font-bold md:text-xl;
+  }
+
+  .caption {
+    @apply text-sm text-slate;
+  }
+
+  .cup-eyebrow {
+    @apply text-sm font-bold tracking-widest uppercase;
+  }
+
+  .cup-title {
+    @apply font-display text-4xl leading-none font-bold uppercase md:text-5xl lg:text-6xl;
+  }
+
+  .cup-card-title {
+    @apply font-display text-2xl font-semibold uppercase;
+  }
+
+  .cup-stat-value {
+    @apply font-display text-4xl leading-none font-bold;
+  }
+
+  .intro-text {
+    @apply flex flex-col gap-4;
+
+    & p:first-child {
+      @apply text-lg font-bold md:text-2xl;
+    }
+  }
+
+  .intro-text-on-dark {
+    @apply text-paper;
+
+    & p:not(:first-child) {
+      @apply text-cloud;
+    }
+  }
+
+  .testimonial-text {
+    & p:first-child {
+      @apply font-heading text-2xl md:text-quote;
+    }
+  }
+
+  .rich-text {
+    @apply space-y-4 leading-relaxed;
+
+    & a {
+      @apply text-teal underline underline-offset-4;
+    }
+
+    & ul {
+      @apply list-disc space-y-1 pl-6;
+    }
+
+    & strong {
+      @apply text-navy;
+    }
+  }
+
+  .rich-text-on-dark {
+    @apply text-cloud;
+
+    & a {
+      @apply text-ice;
+    }
+
+    & strong {
+      @apply text-paper;
+    }
+  }
+
+  .split-centered-grid {
+    @variant md {
+      grid-template-rows: 1fr auto auto 1fr;
+    }
+  }
+
+  .poster-edition-grid {
+    @variant md {
+      grid-template-rows: auto 1fr;
+    }
+  }
+}

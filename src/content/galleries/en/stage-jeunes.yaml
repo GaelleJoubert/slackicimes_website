@@ -1,0 +1,21 @@
+photos:
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-01.jpg,
+      alt: Smiling young trainee sitting in a harness on a highline,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-02.jpg,
+      alt: Young trainees on a waterline above a lake,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-03.jpg,
+      alt: Young highliner balancing in front of Mont Blanc in the clouds,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-04.jpg,
+      alt: Young trainees doing exercises on the grass,
+    }
+  - {
+      image: ../../../assets/images/stages/jeunes/photo-05.jpg,
+      alt: Young trainees playing balance games in a park,
+    }

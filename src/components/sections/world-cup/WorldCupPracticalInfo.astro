@@ -1,0 +1,79 @@
+---
+import { Picture } from "astro:assets";
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  infos: WorldCupContent["infos"];
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 1024px) 380px, 100vw";
+
+const { infos } = Astro.props;
+const lastStepIndex = infos.steps.length - 1;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.practicalInfo} tone="white">
+  <div class="flex flex-col gap-10">
+    <CupSectionIntro
+      eyebrow={infos.eyebrow}
+      title={infos.title}
+      theme="light"
+    />
+    <div class="grid gap-8 lg:grid-cols-5">
+      <div class="flex flex-col gap-5 lg:col-span-3">
+        <ol class="flex flex-col gap-5">
+          {infos.steps.map((step, stepIndex) => (
+            <li class="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                class:list={[
+                  "font-display flex size-11 flex-none items-center justify-center rounded-full text-xl font-bold text-white",
+                  stepIndex === lastStepIndex ? "bg-cup-pink" : "bg-cup-navy",
+                ]}
+              >
+                {stepIndex + 1}
+              </span>
+              <div>
+                <h3 class="text-cup-navy text-lg font-bold">{step.title}</h3>
+                <p class="mt-1">
+                  {step.text}{" "}
+                  {step.link && (
+                    <a
+                      href={step.link.url}
+                      class="text-cup-magenta hover:text-cup-ink underline"
+                    >
+                      {step.link.label}
+                    </a>
+                  )}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <ul class="mt-2 grid gap-3 sm:grid-cols-3">
+          {infos.facts.map((fact) => (
+            <li class="bg-cup-surface rounded-2xl p-5">
+              <h3 class="text-cup-navy font-bold">{fact.title}</h3>
+              <p class="mt-1 text-sm">{fact.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <figure class="flex flex-col gap-2.5 lg:col-span-2">
+        <Picture
+          src={infos.photo.image}
+          alt={infos.photo.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={PHOTO_SIZES}
+          formats={["avif", "webp"]}
+          class="max-h-screen w-full rounded-2xl object-cover"
+        />
+        <figcaption class="text-cup-muted text-sm">{infos.caption}</figcaption>
+      </figure>
+    </div>
+  </div>
+</CupSection>

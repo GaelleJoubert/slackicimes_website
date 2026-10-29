@@ -1,0 +1,165 @@
+---
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { formatPriceInEuros } from "../../../lib/format";
+import CourseDetails from "./CourseDetails.astro";
+
+interface Props {
+  stages: CollectionEntry<"stages">[];
+  locale: Locale;
+}
+
+const THUMBNAIL_WIDTHS = [120, 480];
+const THUMBNAIL_SIZES = "(min-width: 768px) 240px, 56px";
+const INITIALLY_OPEN_INDEX = 0;
+
+const { stages, locale } = Astro.props;
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+const courses = stages.map((stage, stageIndex) => {
+  const slug = entrySlug(stage.id);
+  return {
+    stage,
+    slug,
+    panelId: `${slug}-details`,
+    isOpen: stageIndex === INITIALLY_OPEN_INDEX,
+    summary: `${stage.data.duration} · ${formatPriceInEuros(stage.data.priceInEuros, languageTag)}`,
+  };
+});
+---
+
+<div data-course-picker class="grid gap-3 md:grid-cols-5 md:gap-4.5">
+  {courses.map(({ stage, slug, panelId, isOpen, summary }) => (
+    <div
+      id={slug}
+      data-course
+      data-open={isOpen ? "" : undefined}
+      class="border-navy rounded-card data-open:bg-blush scroll-mt-4 overflow-hidden border-3 md:contents"
+    >
+      <h3 class="md:row-start-1">
+        <button
+          type="button"
+          aria-expanded={isOpen ? "true" : "false"}
+          aria-controls={panelId}
+          data-course-toggle
+          class="group text-ink md:bg-paper md:border-navy md:aria-expanded:bg-blush md:aria-expanded:shadow-offset-sm relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:rounded-3xl md:border-3 md:p-0 md:transition md:hover:-translate-y-1"
+        >
+          <Picture
+            src={stage.data.image}
+            alt=""
+            widths={THUMBNAIL_WIDTHS}
+            sizes={THUMBNAIL_SIZES}
+            formats={["avif", "webp"]}
+            class="size-14 shrink-0 rounded-2xl object-cover md:h-27.5 md:w-full md:rounded-none"
+          />
+          <span class="flex flex-1 flex-col md:px-4 md:pt-3.5 md:pb-4">
+            <span class="card-title text-xl md:text-2xl">
+              {stage.data.name}
+            </span>
+            <span class="text-slate text-sm font-bold md:text-base">
+              {summary}
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            class="bg-coral md:group-aria-expanded:bg-navy md:group-aria-expanded:text-paper flex size-8 shrink-0 items-center justify-center rounded-full text-xl font-extrabold md:absolute md:top-3 md:right-3"
+          >
+            <span class="group-aria-expanded:hidden">+</span>
+            <span class="hidden group-aria-expanded:inline md:group-aria-expanded:hidden">
+              –
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="hidden size-4 md:group-aria-expanded:block"
+            >
+              <path d="M5 12.5l4.5 4.5L19 7.5" />
+            </svg>
+          </span>
+        </button>
+      </h3>
+      <div
+        id={panelId}
+        data-course-panel
+        hidden={isOpen ? undefined : "until-found"}
+        class="md:col-span-5 md:col-start-1 md:row-start-2 md:mt-4"
+      >
+        <CourseDetails stage={stage} locale={locale} />
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
+
+  interface Course {
+    root: HTMLElement;
+    toggle: HTMLButtonElement;
+    panel: HTMLElement;
+  }
+
+  function findCourse(root: HTMLElement): Course {
+    const toggle = root.querySelector<HTMLButtonElement>(
+      "[data-course-toggle]",
+    );
+    const panel = root.querySelector<HTMLElement>("[data-course-panel]");
+    if (!toggle || !panel) {
+      throw new Error(`Course "${root.id}" needs a toggle and a panel.`);
+    }
+    return { root, toggle, panel };
+  }
+
+  function setOpen(course: Course, isOpen: boolean): void {
+    course.root.toggleAttribute("data-open", isOpen);
+    course.toggle.setAttribute("aria-expanded", String(isOpen));
+    if (isOpen) {
+      course.panel.removeAttribute("hidden");
+    } else {
+      course.panel.setAttribute("hidden", "until-found");
+    }
+  }
+
+  function initCoursePicker(picker: HTMLElement): void {
+    const courses = [
+      ...picker.querySelectorAll<HTMLElement>("[data-course]"),
+    ].map(findCourse);
+    const isDesktop = () => window.matchMedia(DESKTOP_MEDIA_QUERY).matches;
+    const openOnly = (target: Course) =>
+      courses.forEach((course) => setOpen(course, course === target));
+
+    courses.forEach((course) => {
+      course.toggle.addEventListener("click", () => {
+        const isClosingOnPhone =
+          course.root.hasAttribute("data-open") && !isDesktop();
+        if (isClosingOnPhone) {
+          setOpen(course, false);
+          return;
+        }
+        openOnly(course);
+        course.toggle.scrollIntoView({ block: "nearest" });
+      });
+      course.panel.addEventListener("beforematch", () => openOnly(course));
+    });
+
+    const openFromHash = () => {
+      const target = courses.find(
+        (course) => `#${course.root.id}` === window.location.hash,
+      );
+      if (!target) return;
+      openOnly(target);
+      target.toggle.scrollIntoView({ block: "start" });
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-course-picker]")
+    .forEach(initCoursePicker);
+</script>

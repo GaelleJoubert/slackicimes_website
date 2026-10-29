@@ -1,0 +1,98 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  programme: WorldCupContent["programme"];
+}
+
+type DayEmphasis = WorldCupContent["programme"]["days"][number]["emphasis"];
+
+const DAY_CARD_CLASSES: Record<DayEmphasis, string> = {
+  regular: "border-cup-line border-2",
+  highlight: "bg-cup-pink",
+  reserve: "border-cup-line border-2 border-dashed",
+};
+
+const DAY_DATE_CLASSES: Record<DayEmphasis, string> = {
+  regular: "text-cup-sky",
+  highlight: "text-white",
+  reserve: "text-cup-sky",
+};
+
+const DAY_TEXT_CLASSES: Record<DayEmphasis, string> = {
+  regular: "text-cup-soft",
+  highlight: "text-white font-medium",
+  reserve: "text-cup-soft",
+};
+
+const { programme } = Astro.props;
+const finalStepIndex = programme.formatSteps.length - 1;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.programme} tone="navy">
+  <div class="flex flex-col gap-10">
+    <CupSectionIntro
+      eyebrow={programme.eyebrow}
+      title={programme.title}
+      theme="dark"
+    >
+      <p class="text-cup-soft">{programme.note}</p>
+    </CupSectionIntro>
+    <ol class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
+      {programme.days.map((day) => (
+        <li
+          class:list={[
+            "flex flex-col gap-2 rounded-2xl p-6",
+            DAY_CARD_CLASSES[day.emphasis],
+          ]}
+        >
+          <span
+            class:list={[
+              "text-sm font-semibold tracking-wider uppercase",
+              DAY_DATE_CLASSES[day.emphasis],
+            ]}
+          >
+            {day.date}
+          </span>
+          <h3 class="cup-card-title">{day.title}</h3>
+          <p class:list={["text-sm", DAY_TEXT_CLASSES[day.emphasis]]}>
+            {day.text}
+          </p>
+        </li>
+      ))}
+    </ol>
+    <div class="bg-cup-ink flex flex-col gap-4 rounded-2xl p-7">
+      <h3 class="font-display text-xl font-semibold uppercase">
+        {programme.formatTitle}
+      </h3>
+      <ol class="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
+        {programme.formatSteps.map((step, stepIndex) => (
+          <li class="flex flex-col gap-3 md:flex-row md:items-center">
+            <span
+              class:list={[
+                "rounded-xl px-4 py-3 font-semibold",
+                stepIndex === finalStepIndex
+                  ? "bg-cup-pink font-bold"
+                  : "bg-cup-navy",
+              ]}
+            >
+              {step}
+            </span>
+            {stepIndex < finalStepIndex && (
+              <span
+                aria-hidden="true"
+                class="text-cup-sky pl-4 font-bold md:pl-0"
+              >
+                <span class="md:hidden">↓</span>
+                <span class="hidden md:inline">→</span>
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</CupSection>

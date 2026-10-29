@@ -1,0 +1,70 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PEOPLE,
+  POSTAL_ADDRESS_LINES,
+} from "../../lib/site";
+
+type ContactDetailsLayout = "grid" | "stacked";
+
+interface Props {
+  locale: Locale;
+  layout: ContactDetailsLayout;
+}
+
+const LAYOUT_CLASSES: Record<
+  ContactDetailsLayout,
+  { list: string; address: string }
+> = {
+  grid: {
+    list: "grid gap-5 sm:grid-cols-2 md:gap-6",
+    address: "sm:col-span-2",
+  },
+  stacked: { list: "flex flex-col gap-5", address: "" },
+};
+
+const LINK_CLASSES = "text-teal font-bold underline-offset-4 hover:underline";
+
+const { locale, layout } = Astro.props;
+const strings = uiStrings(locale);
+const layoutClasses = LAYOUT_CLASSES[layout];
+---
+
+<dl class={layoutClasses.list}>
+  <div>
+    <dt class="text-navy font-extrabold">
+      {strings.contactBlock.phoneHeading}
+    </dt>
+    {CONTACT_PEOPLE.map((person) => (
+      <dd class="mt-1">
+        {person.firstName}{" "}
+        <a href={`tel:${person.internationalPhone}`} class={LINK_CLASSES}>
+          {person.displayPhone}
+        </a>
+      </dd>
+    ))}
+  </div>
+  <div>
+    <dt class="text-navy font-extrabold">
+      {strings.contactBlock.emailHeading}
+    </dt>
+    <dd class="mt-1">
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class:list={[LINK_CLASSES, "break-all"]}
+      >
+        {CONTACT_EMAIL}
+      </a>
+    </dd>
+  </div>
+  <div class={layoutClasses.address}>
+    <dt class="text-navy font-extrabold">
+      {strings.contactBlock.addressHeading}
+    </dt>
+    <dd class="mt-1">
+      <address class="not-italic">{POSTAL_ADDRESS_LINES.join(", ")}</address>
+    </dd>
+  </div>
+</dl>

@@ -1,0 +1,54 @@
+---
+import { Picture } from "astro:assets";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  organizers: WorldCupContent["organizers"];
+  locale: Locale;
+}
+
+const ASSOCIATION_PAGE_SLUG = "association";
+const ILLUSTRATION_WIDTHS = [480, 960];
+const ILLUSTRATION_SIZES = "(min-width: 1024px) 460px, 100vw";
+
+const { organizers, locale } = Astro.props;
+---
+
+<CupSection tone="surface">
+  <div class="grid items-center gap-12 lg:grid-cols-5">
+    <div class="lg:col-span-2">
+      <Picture
+        src={organizers.illustration.image}
+        alt={organizers.illustration.alt}
+        widths={ILLUSTRATION_WIDTHS}
+        sizes={ILLUSTRATION_SIZES}
+        formats={["avif", "webp"]}
+        class="w-full rounded-2xl"
+      />
+    </div>
+    <div class="lg:col-span-3">
+      <CupSectionIntro
+        eyebrow={organizers.eyebrow}
+        title={organizers.title}
+        theme="light"
+      >
+        {organizers.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <div>
+          <LinkButton
+            href={localizedPath(ASSOCIATION_PAGE_SLUG, locale)}
+            variant="cupOutlineDark"
+          >
+            {organizers.linkLabel}
+          </LinkButton>
+        </div>
+      </CupSectionIntro>
+    </div>
+  </div>
+</CupSection>

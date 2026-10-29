@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/images/logo-slackicimes.png";
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import Container from "../ui/Container.astro";
+import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
+import LinkButton from "../ui/LinkButton.astro";
+import type { HeaderTone } from "./header-tone";
+import MobileMenu from "./MobileMenu.astro";
+import SiteNavigation from "./SiteNavigation.astro";
+
+interface Props {
+  locale: Locale;
+  pageSlug: string;
+  tone: HeaderTone;
+}
+
+const LOGO_LARGEST_HEIGHT_PX = 64;
+const HOME_PAGE_SLUG = "";
+const REGISTRATIONS_PAGE_SLUG = "inscriptions";
+
+const TONE_CLASSES: Record<HeaderTone, { header: string; logo: string }> = {
+  light: { header: "bg-paper", logo: "" },
+  dark: { header: "bg-navy", logo: "bg-paper rounded-2xl px-2 py-1" },
+};
+
+const { locale, pageSlug, tone } = Astro.props;
+const strings = uiStrings(locale);
+const toneClasses = TONE_CLASSES[tone];
+const registerButton = {
+  href: localizedPath(REGISTRATIONS_PAGE_SLUG, locale),
+  label: strings.navigation.registerButton,
+};
+---
+
+<header class:list={["relative z-20", toneClasses.header]}>
+  <Container class="flex items-center justify-between gap-4 py-3 lg:py-4">
+    <a
+      href={localizedPath(HOME_PAGE_SLUG, locale)}
+      class:list={["shrink-0", toneClasses.logo]}
+    >
+      <Image
+        src={logo}
+        alt={strings.navigation.homeLinkLabel}
+        height={LOGO_LARGEST_HEIGHT_PX}
+        densities={[1, 2]}
+        loading="eager"
+        class="h-12 w-auto lg:h-16"
+      />
+    </a>
+
+    <div class="hidden items-center gap-2 lg:flex">
+      <SiteNavigation
+        locale={locale}
+        currentPageSlug={pageSlug}
+        layout="inline"
+        tone={tone}
+      />
+      <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
+      <LinkButton href={registerButton.href} size="compact" class="ml-2">
+        {registerButton.label}
+      </LinkButton>
+    </div>
+
+    <div class="flex items-center gap-2 lg:hidden">
+      <LinkButton href={registerButton.href} size="compact">
+        {registerButton.label}
+      </LinkButton>
+      <MobileMenu locale={locale} pageSlug={pageSlug} tone={tone} />
+    </div>
+  </Container>
+</header>

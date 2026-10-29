@@ -1,0 +1,67 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import ContactBlock from "../../components/sections/ContactBlock.astro";
+import HomeAssociation from "../../components/sections/home/HomeAssociation.astro";
+import HomeFestival from "../../components/sections/home/HomeFestival.astro";
+import HomeHero from "../../components/sections/home/HomeHero.astro";
+import HomeStages from "../../components/sections/home/HomeStages.astro";
+import HomeStats from "../../components/sections/home/HomeStats.astro";
+import HomeWorldCup from "../../components/sections/home/HomeWorldCup.astro";
+import TestimonialHighlights from "../../components/sections/TestimonialHighlights.astro";
+import {
+  getGallery,
+  getLocalizedCollection,
+  getPageEntry,
+  getSingleEntryContent,
+} from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const HOME_PAGE_SLUG = "";
+const WORLD_CUP_PAGE_SLUG = "coupe-du-monde";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(HOME_PAGE_SLUG, locale);
+const home = (await getSingleEntryContent("home", locale)).data;
+const worldCupPage = await getPageEntry(WORLD_CUP_PAGE_SLUG, locale);
+const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
+const stages = await getLocalizedCollection("stages", locale);
+const testimonials = await getLocalizedCollection("testimonials", locale);
+const festivalGallery = await getGallery("festival", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={HOME_PAGE_SLUG}
+>
+  <HomeHero
+    heading={page.data.heading}
+    hero={home.hero}
+    highlights={home.highlights}
+    locale={locale}
+  />
+  <HomeStats label={strings.home.statsLabel} stats={home.stats} />
+  <HomeAssociation teaser={home.associationTeaser} locale={locale} />
+  <HomeStages teaser={home.stagesTeaser} stages={stages} locale={locale} />
+  <HomeWorldCup
+    heading={worldCupPage.data.heading}
+    hero={worldCup.hero}
+    locale={locale}
+  />
+  <HomeFestival
+    teaser={home.festivalTeaser}
+    gallery={festivalGallery}
+    locale={locale}
+  />
+  <TestimonialHighlights testimonials={testimonials} locale={locale} />
+  <ContactBlock text={home.contactTeaser.text} locale={locale} />
+</BaseLayout>
