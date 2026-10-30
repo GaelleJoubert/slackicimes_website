@@ -35,7 +35,7 @@ const courses = stages.map((stage) => {
     <div
       id={slug}
       data-course
-      class="border-navy rounded-card data-open:bg-blush scroll-mt-4 overflow-hidden border-3 md:contents"
+      class="bg-cloud rounded-card shadow-card data-open:bg-blush not-data-open:active:card-sink scroll-mt-4 overflow-hidden transition md:contents"
     >
       <h3 class="md:row-start-1">
         <button
@@ -43,7 +43,7 @@ const courses = stages.map((stage) => {
           aria-expanded="false"
           aria-controls={panelId}
           data-course-toggle
-          class="group text-ink md:bg-paper md:border-navy md:aria-expanded:bg-blush md:aria-expanded:shadow-raised relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:rounded-3xl md:border-3 md:p-0 md:transition md:hover:-translate-y-1"
+          class="group text-ink md:bg-cloud md:shadow-card md:hover:card-sink md:aria-expanded:card-sink md:aria-expanded:bg-blush relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:rounded-3xl md:p-0 md:transition"
         >
           <Picture
             src={stage.data.image}

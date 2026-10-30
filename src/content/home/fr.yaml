@@ -1,6 +1,7 @@
 hero:
   photos:
     - image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+      framing: upper
     - image: ../../assets/images/world-cup/ligne-arc-2000.jpg
     - image: ../../assets/images/prestations/demonstration-lac.jpg
       framing: zoomFromTop

@@ -67,7 +67,7 @@ const courses = stages.map((stage) => ({
       class="md:hidden"
     >
       {courses.map(({ stage, href, price }) => (
-        <CarouselSlide>
+        <CarouselSlide class="pr-card-shadow pb-card-shadow">
           <CourseSlide
             href={href}
             name={stage.data.name}

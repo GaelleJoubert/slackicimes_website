@@ -5,7 +5,6 @@ import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { splitDisplayHeading } from "../../../lib/heading";
 import { withSectionAnchor } from "../../../lib/url";
-import ActionBadge from "../../ui/ActionBadge.astro";
 import Container from "../../ui/Container.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
 
@@ -27,6 +26,7 @@ const ZOOMED_PHOTO_SIZES = "(min-width: 768px) 1200px, 150vw";
 
 const FRAMING_CLASSES: Record<PhotoFraming, string> = {
   fill: "",
+  upper: "object-upper",
   zoomFromTop: "origin-top scale-150",
 };
 
@@ -34,18 +34,29 @@ const HIGHLIGHT_TONE_CLASSES: Record<
   HighlightTone,
   { card: string; frame: string }
 > = {
-  coral: { card: "bg-blush", frame: "shadow-navy" },
+  coral: { card: "bg-blush", frame: "shadow-coral" },
   sky: { card: "bg-ice", frame: "shadow-sky" },
   mist: { card: "bg-cloud", frame: "shadow-mist" },
   cloud: { card: "bg-cloud", frame: "shadow-mist" },
   ice: { card: "bg-ice", frame: "shadow-sky" },
 };
 
+const DESKTOP_COLUMN_CLASSES = [
+  "md:col-start-1",
+  "md:col-start-2",
+  "md:col-start-3",
+];
+
 const { heading, hero, highlights, locale } = Astro.props;
 const headingParts = splitDisplayHeading(heading);
 const hasOnePhotoAndHighlightPerPart =
   headingParts.length === hero.photos.length &&
   headingParts.length === highlights.length;
+if (headingParts.length > DESKTOP_COLUMN_CLASSES.length) {
+  throw new Error(
+    `The home hero lays out at most ${DESKTOP_COLUMN_CLASSES.length} cards on desktop: "${heading}" has ${headingParts.length} parts.`,
+  );
+}
 if (!hasOnePhotoAndHighlightPerPart) {
   throw new Error(
     `The home hero needs one photo and one highlight per heading part: "${heading}" has ${headingParts.length} parts, hero.photos has ${hero.photos.length} images and highlights has ${highlights.length} entries.`,
@@ -59,45 +70,43 @@ const highlightHref = (highlight: HomeContent["highlights"][number]) =>
 const panels = headingParts.map((part, partIndex) => ({
   ...part,
   photo: hero.photos[partIndex],
-  href: highlights[partIndex] && highlightHref(highlights[partIndex]),
   needsSpaceBefore: part.startsNewWord && partIndex > 0,
   isMobileCover: partIndex === 0,
-  frameClass:
-    highlights[partIndex] &&
-    HIGHLIGHT_TONE_CLASSES[highlights[partIndex].tone].frame,
+  frameClass: HIGHLIGHT_TONE_CLASSES[highlights[partIndex].tone].frame,
+  columnClass: DESKTOP_COLUMN_CLASSES[partIndex],
+}));
+const cards = highlights.map((highlight, highlightIndex) => ({
+  ...highlight,
+  href: highlightHref(highlight),
+  photo: hero.photos[highlightIndex],
+  toneClasses: HIGHLIGHT_TONE_CLASSES[highlight.tone],
+  columnClass: DESKTOP_COLUMN_CLASSES[highlightIndex],
 }));
 ---
 
 <section class="pt-page-top">
-  <Container class="flex flex-col gap-grid">
-    <h1 class="font-heading text-paper grid gap-grid uppercase md:grid-cols-3">
+  <Container class="gap-grid flex flex-col md:grid md:grid-cols-3">
+    <h1 class="font-heading text-paper grid gap-grid uppercase md:contents">
       {panels.map((panel) => (
         <>
           {panel.needsSpaceBefore ? " " : ""}
           <span
             class:list={[
-              "group rounded-card md:rounded-photo shadow-raised relative overflow-hidden md:block md:h-115",
+              "rounded-card shadow-raised relative overflow-hidden md:pointer-events-none md:z-10 md:row-start-1 md:block md:overflow-visible md:rounded-none md:pt-7 md:shadow-none",
               panel.frameClass,
+              panel.columnClass,
               panel.isMobileCover ? "block h-88" : "hidden",
             ]}
           >
-            {panel.photo && (
+            {panel.isMobileCover && panel.photo && (
               <Picture
                 src={panel.photo.image}
                 alt=""
                 widths={PHOTO_WIDTHS}
-                sizes={
-                  panel.photo.framing === "zoomFromTop"
-                    ? ZOOMED_PHOTO_SIZES
-                    : PHOTO_SIZES
-                }
+                sizes={PHOTO_SIZES}
                 formats={["avif", "webp"]}
-                loading={panel.isMobileCover ? "eager" : "lazy"}
-                class:list={[
-                  "absolute inset-0 size-full object-cover transition duration-300 group-hover:brightness-110",
-                  panel.isMobileCover && "object-upper md:object-center",
-                  FRAMING_CLASSES[panel.photo.framing],
-                ]}
+                loading="eager"
+                class="object-upper absolute inset-0 size-full object-cover md:hidden"
               />
             )}
             {panel.isMobileCover && (
@@ -105,53 +114,52 @@ const panels = headingParts.map((part, partIndex) => ({
                 {heading}
               </span>
             )}
-            <span class="text-shadow-raised absolute inset-x-0 top-7 hidden text-center text-5xl md:block">
+            <span class="text-shadow-raised hidden text-center text-4xl md:block lg:text-hero-word">
               {panel.text}
             </span>
-            {/* Duplicates the highlight link below, so it stays out of the tab order and the accessibility tree. */}
-            {panel.href && (
-              <a
-                href={panel.href}
-                aria-hidden="true"
-                tabindex="-1"
-                class="absolute inset-0 hidden md:block"
-              />
-            )}
-            {panel.href && (
-              <span class="absolute right-5 bottom-5 hidden md:block">
-                <ActionBadge icon="chevron" />
-              </span>
-            )}
           </span>
         </>
       ))}
     </h1>
-    <ul class="grid gap-grid md:grid-cols-3">
-      {highlights.map((highlight) => {
-        const toneClasses = HIGHLIGHT_TONE_CLASSES[highlight.tone];
-        return (
-          <li>
-            <a
-              href={highlightHref(highlight)}
-              class:list={[
-                "group border-navy rounded-card flex min-h-16 items-center justify-between gap-3 border-3 px-4 py-3 md:items-start md:border-0 md:bg-transparent md:p-2",
-                toneClasses.card,
-              ]}
-            >
-              <span class="flex flex-col gap-1.5">
-                <Eyebrow tone={highlight.tone}>{highlight.eyebrow}</Eyebrow>
-                <span class="card-title md:group-hover:text-teal md:text-3xl">
-                  {highlight.title}
-                </span>
-                <span class="text-slate hidden text-base md:block">
-                  {highlight.text}
-                </span>
+    <ul class="grid gap-grid md:contents">
+      {cards.map((card) => (
+        <li class:list={["md:row-start-1", card.columnClass]}>
+          <a
+            href={card.href}
+            class:list={[
+              "group rounded-card shadow-card max-md:active:card-sink flex min-h-16 items-center gap-3 px-4 py-3 transition md:rounded-photo md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:p-0 md:hover:card-sink md:active:card-sink",
+              card.toneClasses.card,
+            ]}
+          >
+            {card.photo && (
+              <span class="hidden h-72 overflow-hidden md:block">
+                <Picture
+                  src={card.photo.image}
+                  alt=""
+                  widths={PHOTO_WIDTHS}
+                  sizes={
+                    card.photo.framing === "zoomFromTop"
+                      ? ZOOMED_PHOTO_SIZES
+                      : PHOTO_SIZES
+                  }
+                  formats={["avif", "webp"]}
+                  class:list={[
+                    "size-full object-cover transition duration-300 group-hover:brightness-110",
+                    FRAMING_CLASSES[card.photo.framing],
+                  ]}
+                />
               </span>
-              <ActionBadge icon="chevron" class="md:hidden" />
-            </a>
-          </li>
-        );
-      })}
+            )}
+            <span class="flex flex-col gap-1.5 md:p-tile">
+              <Eyebrow tone={card.tone}>{card.eyebrow}</Eyebrow>
+              <span class="card-title lg:text-3xl">{card.title}</span>
+              <span class="text-slate hidden text-base md:block">
+                {card.text}
+              </span>
+            </span>
+          </a>
+        </li>
+      ))}
     </ul>
   </Container>
 </section>

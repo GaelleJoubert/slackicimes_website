@@ -1,5 +1,4 @@
 ---
-import ChevronIcon from "./ChevronIcon.astro";
 import PlayIcon from "./PlayIcon.astro";
 import {
   actionBadgeClasses,
@@ -7,7 +6,7 @@ import {
   type ActionBadgeTone,
 } from "./action-badge";
 
-export type ActionBadgeIcon = "chevron" | "play" | "phone" | "external";
+export type ActionBadgeIcon = "play" | "phone" | "external";
 
 interface Props {
   icon: ActionBadgeIcon;
@@ -34,9 +33,8 @@ const {
   aria-hidden="true"
   class:list={[actionBadgeClasses(size, tone), extraClasses]}
 >
-  {icon === "chevron" && <ChevronIcon class="size-4.5 md:size-5" />}
   {icon === "play" && <PlayIcon size={size === "large" ? "large" : "small"} />}
-  {(icon === "phone" || icon === "external") && (
+  {icon !== "play" && (
     <svg
       viewBox="0 0 20 20"
       fill="none"

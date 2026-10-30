@@ -2,6 +2,7 @@
 import type { ImageMetadata } from "astro";
 import FramedPicture from "./FramedPicture.astro";
 import ActionBadge from "./ActionBadge.astro";
+import { PRESSABLE_CARD_CLASSES } from "./card-styles";
 
 interface Props {
   href: string;
@@ -20,14 +21,18 @@ const { href, thumbnail, label, class: extraClasses } = Astro.props;
   href={href}
   target="_blank"
   rel="noopener"
-  class:list={["group relative block", extraClasses]}
+  class:list={[
+    "rounded-card md:rounded-photo relative block shadow-ink",
+    PRESSABLE_CARD_CLASSES,
+    extraClasses,
+  ]}
 >
   <FramedPicture
     image={thumbnail}
     alt=""
     widths={THUMBNAIL_WIDTHS}
     sizes={THUMBNAIL_SIZES}
-    frame="offsetSky"
+    frame="plain"
     class="aspect-video"
   />
   <ActionBadge icon="play" size="large" class="absolute inset-0 m-auto" />

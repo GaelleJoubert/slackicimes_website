@@ -3,6 +3,7 @@ import type { Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { CONTACT_PEOPLE } from "../../../lib/site";
 import ActionBadge from "../../ui/ActionBadge.astro";
+import { PRESSABLE_CARD_CLASSES } from "../../ui/card-styles";
 
 interface Props {
   locale: Locale;
@@ -26,7 +27,8 @@ const strings = uiStrings(locale).contactPage;
         <a
           href={`tel:${person.internationalPhone}`}
           class:list={[
-            "group border-navy rounded-2xl flex min-h-16 items-center justify-between gap-3 border-3 px-4 py-2.5",
+            "rounded-2xl flex min-h-16 items-center justify-between gap-3 px-4 py-2.5",
+            PRESSABLE_CARD_CLASSES,
             tone.tile,
           ]}
         >

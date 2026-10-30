@@ -1,5 +1,5 @@
 ---
-import ActionBadge from "./ActionBadge.astro";
+import { PRESSABLE_CARD_CLASSES } from "./card-styles";
 
 interface Props {
   href: string;
@@ -13,16 +13,16 @@ const { href, name, details, price } = Astro.props;
 
 <a
   href={href}
-  class="group bg-paper border-navy rounded-card flex h-full items-center justify-between gap-3 border-3 px-4 py-3.5 md:flex-col md:items-stretch md:justify-start md:gap-1 md:p-5"
+  class:list={[
+    "bg-paper rounded-card flex h-full items-center justify-between gap-3 px-4 py-3.5 md:flex-col md:items-stretch md:justify-start md:gap-1 md:p-5",
+    PRESSABLE_CARD_CLASSES,
+  ]}
 >
   <span class="flex flex-col">
     <span class="card-title text-xl md:text-2xl">{name}</span>
     <span class="text-slate text-sm">{details}</span>
   </span>
-  <span class="flex items-center gap-3 md:mt-auto md:justify-between md:pt-2">
-    <span class="font-heading text-coral-strong text-2xl md:text-3xl">
-      {price}
-    </span>
-    <ActionBadge icon="chevron" />
+  <span class="font-heading text-coral-strong text-2xl md:mt-auto md:pt-2 md:text-3xl">
+    {price}
   </span>
 </a>

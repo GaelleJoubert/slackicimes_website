@@ -2,7 +2,10 @@ export type ActionBadgeSize = "default" | "large";
 export type ActionBadgeTone = "coral" | "cupPink";
 
 const BASE_BADGE_CLASSES =
-  "shadow-pressable flex shrink-0 items-center justify-center rounded-full transition group-hover:press-sink group-active:press-sink";
+  "flex shrink-0 items-center justify-center rounded-full";
+
+export const STANDALONE_BADGE_CLASSES =
+  "shadow-pressable transition group-hover:press-sink group-active:press-sink";
 
 const SIZE_CLASSES: Record<ActionBadgeSize, string> = {
   default: "size-8 md:size-9",
@@ -11,7 +14,7 @@ const SIZE_CLASSES: Record<ActionBadgeSize, string> = {
 
 const TONE_CLASSES: Record<ActionBadgeTone, string> = {
   coral: "bg-coral text-ink",
-  cupPink: "bg-cup-pink-strong text-white shadow-cup-navy",
+  cupPink: "bg-cup-pink-strong text-white",
 };
 
 export function actionBadgeClasses(

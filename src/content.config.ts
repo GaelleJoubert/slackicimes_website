@@ -97,7 +97,7 @@ const home = defineCollection({
           .array(
             z.object({
               image: image(),
-              framing: z.enum(["fill", "zoomFromTop"]).default("fill"),
+              framing: z.enum(["fill", "upper", "zoomFromTop"]).default("fill"),
             }),
           )
           .min(1),

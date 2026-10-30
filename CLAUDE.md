@@ -138,20 +138,22 @@ add one there.
 Visitors on phones have no hover, so the look alone must say what reacts to a finger. Interactive
 and informative elements never share a cue.
 
-- A navy hard shadow means "press me": `shadow-pressable` (navy, or `shadow-ink` on dark
-  sections) only sits under buttons, round icon buttons and action badges. Photos and panels use
-  `shadow-raised` in a color (coral, sky, mist, blush), never navy.
-- Every clickable card carries an action badge (`ActionBadge`, or `ToggleSign` for details): a
-  coral circle whose icon says what happens (chevron opens a page, +/− unfolds, play, phone,
-  external). Information never has a coral circle.
-- A 3px navy outline marks a touchable surface (link card, expandable row, secondary button, round
-  icon button). A tint inside the outline is fine. Information is a flat tint with no outline.
-  Panels holding content (forms, details, team cards) use a mist outline and a mist frame.
-- A block with a visible border takes a shadow of the same color as its border. Colored frames
-  (coral, sky, teal) are only for borderless photos and blocks.
-- Everything pressable sinks into its shadow on tap and on desktop hover (`active:press-sink`,
-  `hover:press-sink`, or `group-*` on badges inside a card). Keyboard focus shows the global
-  sky ring.
+- A navy hard shadow means "press me": it sits under the whole thing you press. Buttons and round
+  icon buttons use `shadow-pressable`, clickable cards and clickable photos use `shadow-card`
+  (`PRESSABLE_CARD_CLASSES`), in navy, or `shadow-ink` on dark sections. Nothing else has a navy
+  shadow.
+- Clickable cards have no outline: a tint fill (cloud by default, or the card's tone) plus the card
+  shadow. A plain link card has no badge, since opening a page is what a shadowed card does.
+- An action badge (`ActionBadge`, or `ToggleSign` for details) appears only when the tap does
+  something else: +/− unfolds, play, phone, external. It is a flat coral circle inside a card;
+  only a badge standing alone (`ReadMore`) takes `STANDALONE_BADGE_CLASSES`. Information never has
+  a coral circle.
+- Information lies flat: no shadow, no navy outline, no badge. Panels holding content (forms,
+  details, team cards) keep a mist outline without a frame. Only photos that are not links keep a
+  colored frame (`shadow-raised` in coral, sky, mist or blush), never navy.
+- Everything pressable sinks into its shadow on tap and on desktop hover (`press-sink` for buttons,
+  `card-sink` for cards). A disclosure only sinks while closed. Keyboard focus shows the global sky
+  ring.
 - Links inside text use `.text-link` (or `.text-link-on-dark`, `.rich-text`): always underlined in
   coral. Navigation lists (header, footers, section bars) are exempt.
 - No pills for information: eyebrows are a colored dot plus uppercase text, facts are plain text
@@ -160,7 +162,7 @@ and informative elements never share a cue.
   outline), and a text link for low priority. Use the `OnDark` variants on dark sections.
 - World Cup pages follow the same rules in their palette: pink (`cup-pink-strong`) replaces coral
   for primary buttons and badges (`ActionBadge tone="cupPink"`), shadows are `cup-ink` on dark and
-  `cup-navy` on light. Their thin outlines are information; pink fills are for actions only.
+  `cup-navy` on light, and clickable tiles use a `cup-surface` fill with the card shadow. Their thin outlines are information; pink fills are for actions only.
 
 ## Design tokens and responsive
 
@@ -174,7 +176,8 @@ and informative elements never share a cue.
 - Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`, `w-[372px]`) or inline `style`
   attributes. If no token fits, add one to `@theme`, keeping the existing scale.
 - Shadows share one direction: a hard diagonal offset toward the bottom right, no blur. Use
-  `shadow-raised` for photos, cards and panels, `shadow-pressable` for buttons and small controls,
+  `shadow-raised` for photos that are not links, `shadow-card` for clickable cards and photos,
+  `shadow-pressable` for buttons and small controls,
   `text-shadow-raised` for text over photos. Their distances grow on desktop by themselves, so never
   add an `md:` shadow size. Change the color with `shadow-<color>` only. Tailwind's default
   shadows are disabled; a new shadow need is a new token in `@theme`, in the same direction.
