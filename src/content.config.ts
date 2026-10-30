@@ -119,7 +119,6 @@ const home = defineCollection({
         .min(1),
       associationTeaser: z.object({
         paragraphs: z.array(nonEmptyText).min(1),
-        badge: nonEmptyText,
         illustration,
       }),
       stagesTeaser: z.object({

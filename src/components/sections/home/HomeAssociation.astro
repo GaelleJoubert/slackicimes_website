@@ -22,7 +22,7 @@ const strings = uiStrings(locale);
 
 <section class="py-14 md:py-28">
   <Container class="grid items-center gap-7 md:grid-cols-2 md:gap-18">
-    <div class="relative pr-2.5 md:pr-0">
+    <div class="pr-2.5 md:pr-0">
       <FramedPicture
         image={teaser.illustration.image}
         alt={teaser.illustration.alt}
@@ -31,9 +31,6 @@ const strings = uiStrings(locale);
         frame="offsetMist"
         class="h-60 md:h-110"
       />
-      <span class="bg-sky font-heading text-ink absolute -right-1.5 -bottom-4.5 flex size-25 items-center justify-center rounded-full p-2.5 text-center leading-tight md:-right-4.5 md:-bottom-5.5 md:size-38 md:p-4 md:text-2xl">
-        {teaser.badge}
-      </span>
     </div>
     <SectionIntro title={strings.navigation.association}>
       {teaser.paragraphs.map((paragraph) => (
