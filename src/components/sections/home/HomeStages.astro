@@ -85,7 +85,13 @@ const courses = stages.map((stage) => ({
           <CourseCard
             href={href}
             name={stage.data.name}
-            details={`${stage.data.duration} · ${stage.data.level}`}
+            details={[
+              stage.data.duration,
+              stage.data.level,
+              stage.data.ageRange,
+            ]
+              .filter(Boolean)
+              .join(" · ")}
             price={price}
           />
         </li>

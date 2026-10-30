@@ -53,6 +53,7 @@ const stages = defineCollection({
       name: nonEmptyText,
       duration: nonEmptyText,
       level: nonEmptyText,
+      ageRange: nonEmptyText.optional(),
       summary: nonEmptyText,
       image: image(),
       imageAlt: nonEmptyText,

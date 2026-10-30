@@ -15,8 +15,16 @@ interface Props {
 
 const { stage, locale } = Astro.props;
 const strings = uiStrings(locale);
-const { name, duration, level, dates, description, program, prerequisites } =
-  stage.data;
+const {
+  name,
+  duration,
+  level,
+  ageRange,
+  dates,
+  description,
+  program,
+  prerequisites,
+} = stage.data;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
 const programLines = program.items.map((item) =>
@@ -46,6 +54,14 @@ const programLines = program.items.map((item) =>
       tone="sky"
       class="grow"
     />
+    {ageRange && (
+      <FactTile
+        value={ageRange}
+        label={strings.stages.ageLabel}
+        tone="ice"
+        class="grow"
+      />
+    )}
   </dl>
   <div class="flex flex-col gap-2">
     {description.map((paragraph) => (

@@ -1,5 +1,5 @@
 ---
-export type FactTileTone = "navy" | "sky" | "paper";
+export type FactTileTone = "navy" | "sky" | "ice" | "coral" | "paper";
 
 interface Props {
   value: string;
@@ -11,6 +11,8 @@ interface Props {
 const TONE_CLASSES: Record<FactTileTone, string> = {
   navy: "bg-navy text-paper",
   sky: "bg-sky text-ink",
+  ice: "bg-ice text-ink",
+  coral: "bg-coral text-ink",
   paper: "bg-paper text-ink",
 };
 
@@ -19,11 +21,11 @@ const { value, label, tone, class: extraClasses } = Astro.props;
 
 <div
   class:list={[
-    "flex min-h-18 flex-col justify-between gap-1 rounded-2xl px-3 py-2.5 md:min-h-28 md:gap-2 md:rounded-card md:px-4.5 md:py-4",
+    "flex min-h-18 flex-col justify-between gap-1 rounded-2xl px-3 py-2.5 md:min-h-0 md:gap-1 md:rounded-card md:px-4.5 md:py-3",
     TONE_CLASSES[tone],
     extraClasses,
   ]}
 >
   <dt class="order-last text-sm font-extrabold md:text-base">{label}</dt>
-  <dd class="font-heading text-xl leading-tight md:text-3xl">{value}</dd>
+  <dd class="font-heading text-xl leading-tight md:text-2xl">{value}</dd>
 </div>

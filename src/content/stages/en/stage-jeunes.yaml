@@ -1,7 +1,8 @@
 order: 5
 name: Youth Course
 duration: 5 days
-level: Beginner, under 18
+level: Beginner
+ageRange: 10-18 years old
 summary: A highline introduction course designed especially for young athletes.
 image: ../../../assets/images/stages/stage-jeunes.jpg
 imageAlt: Young trainee hanging upside down under a highline
@@ -11,7 +12,6 @@ description:
 program:
   intro:
     - Days run from 9 a.m. to 5 p.m.
-    - "Typical week:"
   items:
     - label: Monday
       place: At the park

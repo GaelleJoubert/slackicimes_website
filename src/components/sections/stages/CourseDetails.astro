@@ -4,18 +4,28 @@ import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
 import { STAGES_REGISTRATION_URL } from "../../../lib/site";
+import DotList from "../../ui/DotList.astro";
 import FactTile from "../../ui/FactTile.astro";
-import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
-import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
+import YouthDayCard, { type DayTone } from "../youth/YouthDayCard.astro";
 
 interface Props {
   stage: CollectionEntry<"stages">;
   locale: Locale;
 }
 
-const PHOTO_WIDTHS = [480, 960];
-const PHOTO_SIZES = "(min-width: 768px) 700px, 100vw";
+const DEFAULT_DAY_TONE: DayTone = {
+  card: "bg-paper",
+  label: "coral",
+  title: "text-navy",
+};
+
+const DAY_TONE_CYCLE: DayTone[] = [
+  DEFAULT_DAY_TONE,
+  { card: "bg-ice", label: "sky", title: "text-navy" },
+  { card: "bg-cloud", label: "mist", title: "text-navy" },
+  { card: "bg-navy text-paper", label: "coralOnDark", title: "text-paper" },
+];
 
 const { stage, locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -23,9 +33,7 @@ const {
   name,
   duration,
   level,
-  image,
-  imageAlt,
-  imageFocus,
+  ageRange,
   description,
   program,
   prerequisites,
@@ -33,86 +41,100 @@ const {
 } = stage.data;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+const isWeekByDay = program.items.some((item) => item.details.length > 0);
+const programLines = program.items.map((item) =>
+  item.place
+    ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
+    : item.label,
+);
+const dayToneAt = (dayIndex: number): DayTone =>
+  DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
 ---
 
-<div class="bg-blush hidden md:grid md:grid-cols-5 md:items-start md:gap-block md:rounded-4xl md:p-card">
-  <div class="gap-stack flex flex-col md:col-span-3">
-    <FramedPicture
-      image={image}
-      alt={imageAlt}
-      widths={PHOTO_WIDTHS}
-      sizes={PHOTO_SIZES}
-      class={`aspect-photo h-auto ${STAGE_IMAGE_FOCUS_CLASSES[imageFocus]}`}
+<div class="bg-blush gap-stack hidden md:flex md:flex-col md:rounded-4xl md:p-card">
+  <dl class:list={["gap-grid grid", ageRange ? "grid-cols-5" : "grid-cols-4"]}>
+    <FactTile
+      value={duration}
+      label={strings.stages.durationLabel}
+      tone="navy"
     />
-    <dl class="gap-grid grid grid-cols-2">
-      <FactTile
-        value={duration}
-        label={strings.stages.durationLabel}
-        tone="navy"
-      />
-      <FactTile value={level} label={strings.stages.levelLabel} tone="sky" />
-    </dl>
-    <p
-      aria-hidden="true"
-      class="font-heading text-navy hidden text-5xl leading-none md:block"
-    >
-      {name}
-    </p>
-    {description.map((paragraph) => (
-      <p>{paragraph}</p>
-    ))}
-    <h4 class="subsection-title md:text-3xl">
-      {strings.stages.programHeading}
-    </h4>
-    {program.intro.map((paragraph) => (
-      <p>{paragraph}</p>
-    ))}
-    <ul class="flex flex-col gap-2">
-      {program.items.map((item) => (
-        <li class="flex items-start gap-2.5">
-          <span
-            aria-hidden="true"
-            class="bg-coral mt-2.5 size-2.5 shrink-0 rounded-full md:size-3"
-          />
-          <span>
-            {item.place
-              ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
-              : item.label}
-            {item.details.length > 0 && (
-              <ul class="text-slate list-disc pl-5">
-                {item.details.map((detail) => (
-                  <li>{detail}</li>
-                ))}
-              </ul>
-            )}
-          </span>
-        </li>
+    <FactTile value={level} label={strings.stages.levelLabel} tone="sky" />
+    {ageRange && (
+      <FactTile value={ageRange} label={strings.stages.ageLabel} tone="ice" />
+    )}
+    <FactTile
+      value={formattedPrice}
+      label={strings.stages.priceHeading}
+      tone="coral"
+    />
+    <FactTile value={dates} label={strings.stages.datesHeading} tone="paper" />
+  </dl>
+  <div class="gap-block grid grid-cols-2 items-start">
+    <div class="gap-stack flex flex-col">
+      <p
+        aria-hidden="true"
+        class="font-heading text-navy text-5xl leading-none"
+      >
+        {name}
+      </p>
+      {description.map((paragraph) => (
+        <p class="text-justify hyphens-auto">{paragraph}</p>
       ))}
-    </ul>
+      {!isWeekByDay && (
+        <LinkButton href={STAGES_REGISTRATION_URL} class="self-center">
+          {strings.stages.registerButton}
+          <span class="sr-only">: {name}</span>
+        </LinkButton>
+      )}
+    </div>
+    <div class="gap-stack flex flex-col">
+      <div class="bg-paper border-mist rounded-card p-tile gap-stack flex flex-col border-3">
+        <section class="flex flex-col gap-3">
+          <h4 class="subsection-title md:text-3xl">
+            {strings.stages.prerequisitesHeading}
+          </h4>
+          <DotList items={prerequisites} />
+        </section>
+        {!isWeekByDay && (
+          <section class="flex flex-col gap-3">
+            <h4 class="subsection-title md:text-3xl">
+              {strings.stages.programHeading}
+            </h4>
+            {program.intro.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            <DotList items={programLines} />
+          </section>
+        )}
+      </div>
+      {isWeekByDay && (
+        <LinkButton href={STAGES_REGISTRATION_URL} class="self-center">
+          {strings.stages.registerButton}
+          <span class="sr-only">: {name}</span>
+        </LinkButton>
+      )}
+    </div>
   </div>
-  <aside class="bg-paper border-mist rounded-card gap-stack p-card flex flex-col border-3 md:col-span-2 md:rounded-3xl">
-    <div>
-      <h4 class="subsection-title">{strings.stages.prerequisitesHeading}</h4>
-      <ul class="mt-1 flex list-disc flex-col gap-1 pl-5 text-base">
-        {prerequisites.map((prerequisite) => (
-          <li>{prerequisite}</li>
+  {isWeekByDay && (
+    <section class="flex flex-col gap-3">
+      <h4 class="subsection-title md:text-3xl">
+        {strings.stages.typicalWeekHeading}
+      </h4>
+      {program.intro.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+      <ul class="gap-grid grid grid-cols-2 lg:grid-cols-4">
+        {program.items.map((day, dayIndex) => (
+          <li>
+            <YouthDayCard
+              day={day}
+              tone={dayToneAt(dayIndex)}
+              density="compact"
+              headingTag="h5"
+            />
+          </li>
         ))}
       </ul>
-    </div>
-    <div>
-      <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
-      <p class="mt-1 font-bold">{dates}</p>
-    </div>
-    <div>
-      <h4 class="subsection-title">{strings.stages.priceHeading}</h4>
-      <p class="font-heading text-coral-strong text-5xl leading-none md:text-6xl">
-        {formattedPrice}
-      </p>
-      <p class="caption mt-1.5">{strings.stages.priceNote}</p>
-    </div>
-    <LinkButton href={STAGES_REGISTRATION_URL}>
-      {strings.stages.registerButton}
-      <span class="sr-only">: {name}</span>
-    </LinkButton>
-  </aside>
+    </section>
+  )}
 </div>
