@@ -146,7 +146,9 @@ and informative elements never share a cue.
   external). Information never has a coral circle.
 - A 3px navy outline marks a touchable surface (link card, expandable row, secondary button, round
   icon button). A tint inside the outline is fine. Information is a flat tint with no outline.
-  Panels holding content (forms, details) use a mist outline and a colored `shadow-raised` frame.
+  Panels holding content (forms, details, team cards) use a mist outline and a mist frame.
+- A block with a visible border takes a shadow of the same color as its border. Colored frames
+  (coral, sky, teal) are only for borderless photos and blocks.
 - Everything pressable sinks into its shadow on tap and on desktop hover (`active:press-sink`,
   `hover:press-sink`, or `group-*` on badges inside a card). Keyboard focus shows the global
   sky ring.

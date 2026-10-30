@@ -8,11 +8,8 @@ import DotList from "../../ui/DotList.astro";
 import ReadMore from "../../ui/ReadMore.astro";
 import TagList from "../../ui/TagList.astro";
 
-export type TeamCardShadow = "coral" | "sky" | "mist";
-
 interface Props {
   member: CollectionEntry<"team">;
-  shadow: TeamCardShadow;
   locale: Locale;
 }
 
@@ -27,13 +24,7 @@ const PHOTO_FOCUS_CLASSES: Record<
   top: "object-top",
 };
 
-const SHADOW_CLASSES: Record<TeamCardShadow, string> = {
-  coral: "shadow-coral",
-  sky: "shadow-sky",
-  mist: "shadow-mist",
-};
-
-const { member, shadow, locale } = Astro.props;
+const { member, locale } = Astro.props;
 const strings = uiStrings(locale).team;
 const {
   name,
@@ -52,8 +43,7 @@ const { Content: Biography } = await render(member);
 <article
   id={entrySlug(member.id)}
   class:list={[
-    "border-mist rounded-card md:rounded-photo shadow-raised media-start-grid row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-0 md:content-normal overflow-hidden border-3 md:h-auto md:grid-cols-1",
-    SHADOW_CLASSES[shadow],
+    "border-mist rounded-card md:rounded-photo shadow-raised shadow-mist media-start-grid row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-0 md:content-normal overflow-hidden border-3 md:h-auto md:grid-cols-1",
   ]}
 >
   <Picture

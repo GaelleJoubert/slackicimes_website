@@ -6,15 +6,13 @@ import Carousel from "../../ui/Carousel.astro";
 import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
-import TeamMemberCard, { type TeamCardShadow } from "./TeamMemberCard.astro";
+import TeamMemberCard from "./TeamMemberCard.astro";
 
 interface Props {
   team: CollectionEntry<"association">["data"]["team"];
   members: CollectionEntry<"team">[];
   locale: Locale;
 }
-
-const CARD_SHADOWS: TeamCardShadow[] = ["coral", "sky", "mist"];
 
 const { team, members, locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -37,13 +35,9 @@ const strings = uiStrings(locale);
       width="full"
       desktopGrid
     >
-      {members.map((member, memberIndex) => (
+      {members.map((member) => (
         <CarouselSlide class="pr-1.5 pb-1.5 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-0 md:p-0">
-          <TeamMemberCard
-            member={member}
-            shadow={CARD_SHADOWS[memberIndex % CARD_SHADOWS.length]}
-            locale={locale}
-          />
+          <TeamMemberCard member={member} locale={locale} />
         </CarouselSlide>
       ))}
     </Carousel>
