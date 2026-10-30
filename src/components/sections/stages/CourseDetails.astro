@@ -51,7 +51,10 @@ const dayToneAt = (dayIndex: number): DayTone =>
   DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
 ---
 
-<div class="bg-blush gap-stack hidden md:flex md:flex-col md:rounded-4xl md:p-card">
+<div
+  data-switch-content
+  class="bg-blush gap-stack hidden md:flex md:flex-col md:rounded-4xl md:p-card"
+>
   <dl class:list={["gap-grid grid", ageRange ? "grid-cols-5" : "grid-cols-4"]}>
     <FactTile
       value={duration}

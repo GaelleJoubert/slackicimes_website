@@ -5,7 +5,7 @@ const ANIMATED_DETAILS_SELECTOR = "details[data-animated-details]";
 
 const detailsClosers = new WeakMap<HTMLDetailsElement, () => void>();
 
-function prefersReducedMotion(): boolean {
+export function prefersReducedMotion(): boolean {
   return window.matchMedia(REDUCED_MOTION_QUERY).matches;
 }
 

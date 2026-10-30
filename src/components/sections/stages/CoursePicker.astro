@@ -30,7 +30,7 @@ const courses = stages.map((stage) => {
 });
 ---
 
-<div data-course-picker class="gap-grid grid md:grid-cols-5">
+<div data-course-picker class="gap-grid grid md:relative md:grid-cols-5">
   {courses.map(({ stage, slug, panelId, summary }) => (
     <div
       id={slug}
@@ -74,19 +74,35 @@ const courses = stages.map((stage) => {
         id={panelId}
         data-course-panel
         hidden="until-found"
-        class="md:col-span-5 md:col-start-1 md:row-start-2 md:mt-4"
+        class="md:col-span-5 md:col-start-1 md:row-start-2"
       >
         <CourseDetails stage={stage} locale={locale} />
         <CourseDetailsCompact stage={stage} locale={locale} />
       </div>
     </div>
   ))}
+  <div
+    data-course-bridge
+    aria-hidden="true"
+    class="text-blush card-sink pointer-events-none absolute hidden h-14 md:block"
+  >
+    <svg viewBox="0 0 100 56" preserveAspectRatio="none" class="size-full">
+      <path
+        fill="currentColor"
+        d="M0 0H100V12C80 18 68 22 68 28C68 34 80 38 100 44V56H0V44C20 38 32 34 32 28C32 22 20 18 0 12Z"
+      />
+    </svg>
+  </div>
 </div>
 
 <script>
   import { collapsePanel, expandPanel } from "../../ui/expand-animation";
+  import { crossfadePanels, glideTo } from "../../ui/slide-animation";
 
   const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
+  const BRIDGE_WIDTH_RATIO = 0.75;
+  // The bridge starts inside the card so its curve reads as part of the card.
+  const BRIDGE_CARD_OVERLAP_PX = 16;
 
   interface Course {
     root: HTMLElement;
@@ -138,12 +154,45 @@ const courses = stages.map((stage) => {
     const isDesktop = () => desktopQuery.matches;
     const openOnly = (target: Course) =>
       courses.forEach((course) => setOpen(course, course === target));
+    const bridge = picker.querySelector<HTMLElement>("[data-course-bridge]");
+    if (!bridge) {
+      throw new Error("The course picker needs a bridge element.");
+    }
+    const openCourse = () =>
+      courses.find((course) => course.root.hasAttribute("data-open"));
+
+    function placeBridgeUnder(course: Course): void {
+      const card = course.toggle.parentElement;
+      if (!card || !bridge) return;
+      const bridgeWidth = card.offsetWidth * BRIDGE_WIDTH_RATIO;
+      bridge.style.width = `${bridgeWidth}px`;
+      bridge.style.left = `${card.offsetLeft + (card.offsetWidth - bridgeWidth) / 2}px`;
+      bridge.style.top = `${card.offsetTop + card.offsetHeight - BRIDGE_CARD_OVERLAP_PX}px`;
+    }
+
+    const placeBridgeUnderOpenCourse = () => {
+      const course = openCourse();
+      if (course) placeBridgeUnder(course);
+    };
+
+    async function switchDesktopCourse(target: Course): Promise<void> {
+      const current = openCourse();
+      if (current === target) return;
+      if (!current) {
+        openOnly(target);
+        placeBridgeUnder(target);
+        return;
+      }
+      glideTo(bridge, () => placeBridgeUnder(target));
+      await crossfadePanels(current.panel, target.panel, () =>
+        openOnly(target),
+      );
+    }
 
     courses.forEach((course) => {
       course.toggle.addEventListener("click", async () => {
         if (isDesktop()) {
-          openOnly(course);
-          course.toggle.scrollIntoView({ block: "nearest" });
+          await switchDesktopCourse(course);
           return;
         }
         if (isExpanded(course)) {
@@ -156,7 +205,10 @@ const courses = stages.map((stage) => {
         await expandCourse(course);
         course.toggle.scrollIntoView({ block: "nearest", behavior: "smooth" });
       });
-      course.panel.addEventListener("beforematch", () => openOnly(course));
+      course.panel.addEventListener("beforematch", () => {
+        openOnly(course);
+        placeBridgeUnderOpenCourse();
+      });
     });
 
     const openFromHash = () => {
@@ -165,6 +217,7 @@ const courses = stages.map((stage) => {
       );
       if (!target) return;
       openOnly(target);
+      placeBridgeUnderOpenCourse();
       target.toggle.scrollIntoView({ block: "start" });
     };
     const openFirstOnDesktop = () => {
@@ -172,10 +225,12 @@ const courses = stages.map((stage) => {
         course.root.hasAttribute("data-open"),
       );
       if (isDesktop() && !hasOpenCourse) openOnly(courses[0]);
+      placeBridgeUnderOpenCourse();
     };
     openFromHash();
     openFirstOnDesktop();
     window.addEventListener("hashchange", openFromHash);
+    new ResizeObserver(placeBridgeUnderOpenCourse).observe(picker);
     desktopQuery.addEventListener("change", openFirstOnDesktop);
   }
 
