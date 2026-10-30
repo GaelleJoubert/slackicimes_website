@@ -33,7 +33,7 @@ const finalStepIndex = programme.formatSteps.length - 1;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.programme} tone="navy">
-  <div class="flex flex-col gap-10">
+  <div class="gap-block flex flex-col">
     <CupSectionIntro
       eyebrow={programme.eyebrow}
       title={programme.title}
@@ -41,11 +41,11 @@ const finalStepIndex = programme.formatSteps.length - 1;
     >
       <p class="text-cup-soft">{programme.note}</p>
     </CupSectionIntro>
-    <ol class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-5">
+    <ol class="gap-grid grid sm:grid-cols-2 lg:grid-cols-5">
       {programme.days.map((day) => (
         <li
           class:list={[
-            "flex flex-col gap-2 rounded-2xl p-6",
+            "p-tile flex flex-col gap-2 rounded-2xl",
             DAY_CARD_CLASSES[day.emphasis],
           ]}
         >
@@ -57,14 +57,14 @@ const finalStepIndex = programme.formatSteps.length - 1;
           >
             {day.date}
           </span>
-          <h3 class="cup-card-title">{day.title}</h3>
+          <h3 class="cup-card-title lg:text-xl">{day.title}</h3>
           <p class:list={["text-sm", DAY_TEXT_CLASSES[day.emphasis]]}>
             {day.text}
           </p>
         </li>
       ))}
     </ol>
-    <div class="bg-cup-ink flex flex-col gap-4 rounded-2xl p-7">
+    <div class="bg-cup-ink gap-stack p-card flex flex-col rounded-2xl">
       <h3 class="font-display text-xl font-semibold uppercase">
         {programme.formatTitle}
       </h3>

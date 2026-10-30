@@ -33,7 +33,7 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["flex flex-col gap-4 md:gap-5", ALIGNMENT_CLASSES[align]]}>
+<div class:list={["flex flex-col gap-stack", ALIGNMENT_CLASSES[align]]}>
   {eyebrow && <Eyebrow tone={eyebrowTone}>{eyebrow}</Eyebrow>}
   <h2 id={id} class:list={["section-title", TITLE_THEME_CLASSES[theme]]}>
     <slot name="title">{title}</slot>

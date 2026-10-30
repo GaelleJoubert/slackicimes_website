@@ -26,10 +26,10 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
 
 <section
   aria-labelledby={TITLE_ID}
-  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-14 text-white md:border-b-6 md:py-24"
+  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-section text-white md:border-b-6"
 >
-  <Container class="media-start-grid grid items-center gap-5 md:grid-cols-5 md:gap-16">
-    <div class="contents md:col-span-3 md:flex md:flex-col md:gap-6.5">
+  <Container class="media-start-grid grid items-center gap-grid md:grid-cols-5 md:gap-block">
+    <div class="contents md:col-span-3 md:flex md:flex-col md:gap-stack">
       <h2 id={TITLE_ID} class="col-span-2">
         <Picture
           src={hero.fullLogo.image}
@@ -54,7 +54,7 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
           </div>
         ))}
       </dl>
-      <div class="hidden flex-wrap gap-3.5 md:flex">
+      <div class="gap-inline hidden flex-wrap md:flex">
         <LinkButton href={worldCupPath} variant="cupPrimary">
           {strings.common.discoverWorldCupButton}
         </LinkButton>
@@ -70,7 +70,7 @@ const worldCupPath = localizedPath("coupe-du-monde", locale);
         class="w-40 max-w-100 rotate-2 rounded-xl shadow-raised shadow-cup-pink md:w-full md:rounded-2xl"
       />
     </div>
-    <div class="col-span-2 flex flex-col gap-3 md:hidden">
+    <div class="gap-inline col-span-2 flex flex-col md:hidden">
       <LinkButton href={worldCupPath} variant="cupPrimary">
         {strings.common.discoverWorldCupButton}
       </LinkButton>

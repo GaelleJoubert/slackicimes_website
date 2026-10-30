@@ -33,8 +33,8 @@ if (!poster || !posterAlt) {
 const { Content: Story } = await render(edition);
 ---
 
-<article class="poster-edition-grid grid gap-3 md:grid-cols-3 md:gap-x-10 md:gap-y-3.5">
-  <header class="flex flex-col gap-2 md:col-span-2 md:gap-3.5">
+<article class="poster-edition-grid gap-stack md:gap-x-block grid md:grid-cols-3">
+  <header class="gap-stack flex flex-col md:col-span-2">
     <p class="timeline-year text-coral">{period}</p>
     <h2 class:list={["timeline-title", TITLE_THEME_CLASSES[theme]]}>{title}</h2>
   </header>
@@ -48,7 +48,7 @@ const { Content: Story } = await render(edition);
       class="h-auto"
     />
   </div>
-  <div class="flex flex-col gap-4 md:col-span-2">
+  <div class="gap-stack flex flex-col md:col-span-2">
     <div class:list={["rich-text", STORY_THEME_CLASSES[theme]]}>
       <Story />
     </div>

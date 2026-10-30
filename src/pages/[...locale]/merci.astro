@@ -31,15 +31,15 @@ const { Content } = await render(page);
   pageSlug={PAGE_SLUG}
   footer="compact"
 >
-  <section class="pt-12 pb-18 md:pt-18 md:pb-30">
+  <section class="pt-page-top pb-section">
     <Container>
-      <div class="mx-auto flex max-w-225 flex-col items-center gap-4.5 text-center md:gap-6">
+      <div class="mx-auto flex max-w-225 gap-stack flex-col items-center text-center">
         <SlacklineIllustration state="walked" class="h-22.5 md:h-35" />
         <h1 class="page-title">{page.data.heading}</h1>
         <div class="rich-text md:text-2xl">
           <Content />
         </div>
-        <div class="mt-2 flex flex-col gap-3 self-stretch md:flex-row md:justify-center md:gap-3.5 md:self-auto">
+        <div class="gap-inline flex flex-col self-stretch md:flex-row md:justify-center md:self-auto">
           <LinkButton href={localizedPath(HOME_PAGE_SLUG, locale)}>
             {strings.contactPage.backHomeButton}
           </LinkButton>

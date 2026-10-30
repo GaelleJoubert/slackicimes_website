@@ -20,7 +20,7 @@ const TITLE_CLASSES: Record<IntroTheme, string> = {
 const { eyebrow, title, theme } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-stack">
   <span class:list={["cup-eyebrow", EYEBROW_CLASSES[theme]]}>{eyebrow}</span>
   <h2 class:list={["cup-title", TITLE_CLASSES[theme]]}>{title}</h2>
   <slot />

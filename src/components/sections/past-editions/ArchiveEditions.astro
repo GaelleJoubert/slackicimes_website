@@ -25,13 +25,13 @@ const { editions, dotTone, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<TimelineEntry dotTone={dotTone} class="flex flex-col gap-3 md:gap-5">
+<TimelineEntry dotTone={dotTone} class="gap-stack flex flex-col">
   <h2 class="timeline-title">{strings.pastEditions.archiveTitle}</h2>
-  <ul class="grid grid-cols-2 gap-2.5 md:grid-cols-6 md:gap-3.5">
+  <ul class="gap-grid grid grid-cols-2 md:grid-cols-6">
     {editions.map(({ data: edition }, editionIndex) => (
       <li
         class:list={[
-          "rounded-card flex min-h-27.5 flex-col justify-between gap-3 p-3.5 md:min-h-42.5 md:p-4",
+          "rounded-card flex min-h-27.5 flex-col justify-between gap-3 p-tile md:min-h-42.5",
           TILE_TONE_CLASSES[editionIndex % TILE_TONE_CLASSES.length],
         ]}
       >

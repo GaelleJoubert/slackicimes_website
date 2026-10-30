@@ -30,7 +30,7 @@ const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
 <form
   action={CONTACT_FORM_ENDPOINT}
   method="POST"
-  class="flex flex-col gap-3 md:gap-4.5"
+  class="gap-stack flex flex-col"
 >
   <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
   <input type="hidden" name="from_name" value={SITE_NAME} />
@@ -44,7 +44,7 @@ const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
     autocomplete="off"
   />
 
-  <div class="grid grid-cols-2 gap-3 md:gap-4">
+  <div class="gap-grid grid grid-cols-2">
     <TextField
       name="first_name"
       label={strings.firstNameLabel}

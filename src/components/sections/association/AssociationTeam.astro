@@ -18,8 +18,8 @@ const { team, members, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="pt-8 pb-6 md:pt-26 md:pb-28">
-  <Container class="flex flex-col gap-3 md:gap-9">
+<section class="py-section">
+  <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={team.title}>
         {team.paragraphs.map((paragraph) => (

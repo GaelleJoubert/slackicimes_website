@@ -30,8 +30,8 @@ function portraitOf(member: CollectionEntry<"team">) {
 }
 ---
 
-<section class="bg-navy text-paper py-10 md:py-26">
-  <Container class="grid gap-6 md:grid-cols-2 md:items-center md:gap-16">
+<section class="bg-navy text-paper py-section">
+  <Container class="grid gap-block md:grid-cols-2 md:items-center">
     <SectionIntro title={duo.title} theme="dark">
       <div class="intro-text intro-text-on-dark">
         {duo.paragraphs.map((paragraph) => (
@@ -39,7 +39,7 @@ function portraitOf(member: CollectionEntry<"team">) {
         ))}
       </div>
     </SectionIntro>
-    <ul class="grid grid-cols-2 gap-3 md:gap-5">
+    <ul class="gap-grid grid grid-cols-2">
       {members.map((member, memberIndex) => {
         const portrait = portraitOf(member);
         return (

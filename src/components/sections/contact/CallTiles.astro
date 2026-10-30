@@ -18,7 +18,7 @@ const { locale, class: extraClasses } = Astro.props;
 const strings = uiStrings(locale).contactPage;
 ---
 
-<ul class:list={["grid gap-2.5", extraClasses]}>
+<ul class:list={["gap-grid grid", extraClasses]}>
   {CONTACT_PEOPLE.map((person, personIndex) => {
     const tone = TILE_TONE_CLASSES[personIndex % TILE_TONE_CLASSES.length];
     return (

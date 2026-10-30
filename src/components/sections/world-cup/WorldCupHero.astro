@@ -16,9 +16,9 @@ const POSTER_SIZES = "(min-width: 768px) 420px, 90vw";
 const { heading, hero } = Astro.props;
 ---
 
-<section class="bg-cup-navy overflow-hidden px-6 pt-16 pb-20 text-white md:pt-20 md:pb-24">
-  <div class="mx-auto flex max-w-6xl flex-col gap-14 lg:flex-row lg:items-center">
-    <div class="flex min-w-0 flex-1 flex-col gap-7">
+<section class="bg-cup-navy overflow-hidden px-6 py-section text-white">
+  <div class="mx-auto gap-block flex max-w-6xl flex-col lg:flex-row lg:items-center">
+    <div class="gap-stack flex min-w-0 flex-1 flex-col">
       <div class="flex flex-wrap items-center gap-4">
         <Picture
           src={hero.logo.image}
@@ -58,7 +58,7 @@ const { heading, hero } = Astro.props;
           </div>
         ))}
       </dl>
-      <div class="flex flex-wrap gap-3.5">
+      <div class="gap-inline flex flex-wrap">
         <LinkButton
           href={`#${WORLD_CUP_SECTION_IDS.practicalInfo}`}
           variant="cupPrimary"

@@ -15,10 +15,10 @@ const { text, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="pb-14 md:pb-28">
+<section class="pb-section">
   <Container>
-    <div class="bg-paper border-mist rounded-card md:rounded-photo shadow-raised shadow-mist grid items-center gap-6 border-3 p-5 md:grid-cols-2 md:gap-12 md:p-14">
-      <div class="flex flex-col gap-4">
+    <div class="bg-paper border-mist rounded-card md:rounded-photo shadow-raised shadow-mist grid items-center gap-block border-3 p-card md:grid-cols-2">
+      <div class="flex flex-col gap-stack">
         <h2 class="section-title">{strings.contactBlock.title}</h2>
         <p class="font-bold">{text}</p>
         <LinkButton
@@ -29,7 +29,7 @@ const strings = uiStrings(locale);
           {strings.contactBlock.writeUsButton}
         </LinkButton>
       </div>
-      <div class="bg-cloud rounded-card p-5 md:rounded-3xl md:p-8">
+      <div class="bg-cloud rounded-card p-tile md:rounded-3xl">
         <ContactDetails locale={locale} layout="grid" />
       </div>
     </div>

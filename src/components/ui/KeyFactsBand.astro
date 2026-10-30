@@ -17,7 +17,7 @@ const toneAt = (factIndex: number): StatTone =>
   FACT_TONE_CYCLE[factIndex % FACT_TONE_CYCLE.length] ?? "coral";
 ---
 
-<dl class="bg-navy text-paper rounded-card md:rounded-photo grid grid-cols-2 gap-x-3 gap-y-4.5 p-5.5 md:grid-cols-4 md:gap-6 md:px-10 md:py-8">
+<dl class="bg-navy text-paper rounded-card md:rounded-photo gap-grid p-card grid grid-cols-2 md:grid-cols-4">
   {facts.map((fact, factIndex) => (
     <Stat value={fact.value} label={fact.label} tone={toneAt(factIndex)} />
   ))}

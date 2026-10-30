@@ -31,9 +31,9 @@ const testimonialCountText = `${testimonials.length} ${lowercaseFirstLetter(stri
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <section class="pt-6 pb-14 md:pt-10 md:pb-28">
-    <Container class="flex flex-col gap-5 md:gap-12">
-      <div class="flex flex-col items-center gap-2.5 text-center md:gap-3.5">
+  <section class="pt-page-top pb-section">
+    <Container class="gap-block flex flex-col">
+      <div class="gap-stack flex flex-col items-center text-center">
         <h1 class="page-title">{page.data.heading}</h1>
         {page.data.eyebrow && (
           <div>
@@ -47,7 +47,7 @@ const testimonialCountText = `${testimonials.length} ${lowercaseFirstLetter(stri
         title={strings.testimonials.callToActionTitle}
         paragraphs={[strings.testimonials.callToActionText]}
       >
-        <div class="flex flex-col gap-3">
+        <div class="gap-inline flex flex-col">
           <LinkButton
             href={localizedPath("stages-highline", locale)}
             variant="primaryOnDark"

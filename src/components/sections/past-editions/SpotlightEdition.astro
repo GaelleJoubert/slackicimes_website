@@ -31,7 +31,7 @@ const gallery = gallerySlug ? await getGallery(gallerySlug, locale) : undefined;
 <TimelineEntry
   dotTone={dotTone}
   dotOffset="card"
-  class="bg-navy text-paper rounded-photo flex flex-col gap-6 p-4.5 md:gap-8 md:p-10"
+  class="bg-navy text-paper rounded-photo gap-block p-card flex flex-col"
 >
   <EditionWithPoster edition={edition} frame="bordered" theme="dark">
     {highlight && <p class="subsection-title text-sky">{highlight}</p>}
@@ -40,7 +40,7 @@ const gallery = gallerySlug ? await getGallery(gallerySlug, locale) : undefined;
     <VideoEmbed videoUrl={videoUrl} title={videoTitle} locale={locale} />
   ))}
   {gallery && (
-    <div class="flex flex-col gap-3.5">
+    <div class="gap-stack flex flex-col">
       {galleryTitle && <h3 class="card-title text-paper">{galleryTitle}</h3>}
       <PhotoGrid photos={gallery.data.photos} />
     </div>

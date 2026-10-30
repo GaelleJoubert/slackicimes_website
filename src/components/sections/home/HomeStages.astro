@@ -35,14 +35,14 @@ const courses = stages.map((stage) => ({
 }));
 ---
 
-<section class="bg-blush py-10 md:py-26">
-  <Container class="flex flex-col gap-5 md:gap-12">
-    <div class="grid items-center gap-6 md:grid-cols-2 md:gap-18">
+<section class="bg-blush py-section">
+  <Container class="flex flex-col gap-block">
+    <div class="grid items-center gap-block md:grid-cols-2">
       <SectionIntro title={teaser.title}>
         {teaser.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
-        <div class="hidden flex-wrap gap-3.5 md:flex">
+        <div class="gap-inline hidden flex-wrap md:flex">
           <LinkButton href={stagesPagePath}>
             {strings.home.discoverStagesButton}
           </LinkButton>
@@ -79,7 +79,7 @@ const courses = stages.map((stage) => ({
         </CarouselSlide>
       ))}
     </Carousel>
-    <ul class="hidden gap-4 md:grid md:grid-cols-5">
+    <ul class="gap-grid hidden md:grid md:grid-cols-5">
       {courses.map(({ stage, href, price }) => (
         <li>
           <CourseCard

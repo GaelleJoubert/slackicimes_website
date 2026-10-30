@@ -127,14 +127,14 @@ const slides = withAlternatingTones(sizedGroups);
   role="region"
   aria-roledescription={allStrings.common.carouselRoleDescription}
   aria-label={strings.carouselLabel}
-  class="flex flex-col gap-5.5 md:gap-9"
+  class="gap-grid flex flex-col"
 >
   <ul
     aria-live="polite"
-    class="grid min-h-104 gap-5 md:min-h-120 md:grid-cols-2 md:gap-10"
+    class="gap-grid grid min-h-104 md:min-h-120 md:grid-cols-2"
   >
     {slides.map((slideCards) => (
-      <li data-carousel-slide class="flex flex-col gap-3 md:gap-5">
+      <li data-carousel-slide class="gap-grid flex flex-col">
         {slideCards.map(({ testimonial, tone, density, textSize, Content }) => (
           <QuoteCard
             author={testimonial.data.author}

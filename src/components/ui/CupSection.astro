@@ -20,7 +20,7 @@ const { id, tone, ariaLabel } = Astro.props;
 <section
   id={id}
   aria-label={ariaLabel}
-  class:list={["scroll-mt-16 px-6 py-16 md:py-24", TONE_CLASSES[tone]]}
+  class:list={["scroll-mt-16 px-6 py-section", TONE_CLASSES[tone]]}
 >
   <div class="mx-auto max-w-6xl">
     <slot />

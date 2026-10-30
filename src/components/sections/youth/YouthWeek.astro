@@ -37,8 +37,8 @@ const toneAt = (dayIndex: number): DayTone =>
   DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
 ---
 
-<section class="py-10 md:py-26">
-  <Container class="flex flex-col gap-4 md:gap-9">
+<section class="py-section">
+  <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={title}>
         <p class="text-slate">{intro}</p>
@@ -58,7 +58,7 @@ const toneAt = (dayIndex: number): DayTone =>
         </CarouselSlide>
       ))}
     </Carousel>
-    <ul class="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-4">
+    <ul class="gap-grid hidden md:grid md:grid-cols-2 lg:grid-cols-4">
       {days.map((day, dayIndex) => (
         <li>
           <YouthDayCard day={day} tone={toneAt(dayIndex)} />

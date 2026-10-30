@@ -31,18 +31,18 @@ const { Content: Intro } = await render(page);
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <section class="pt-5 pb-14 md:pt-10 md:pb-28">
-    <Container class="flex flex-col gap-4.5 md:gap-10">
-      <div class="flex max-w-205 flex-col gap-4.5 md:gap-3.5">
+  <section class="pt-page-top pb-section">
+    <Container class="gap-block flex flex-col">
+      <div class="gap-stack flex max-w-205 flex-col">
         <h1 class="page-title">{page.data.heading}</h1>
         <div class="rich-text md:text-xl">
           <Intro />
         </div>
       </div>
-      <div class="grid gap-6 md:grid-cols-5 md:items-start md:gap-10">
+      <div class="gap-block grid md:grid-cols-5 md:items-start">
         <div
           id={CONTACT_FORM_SECTION_ID}
-          class="scroll-mt-4 border-mist rounded-card md:rounded-photo shadow-raised shadow-mist flex snap-start flex-col gap-3 border-3 p-5 md:col-span-3 md:gap-4.5 md:p-9"
+          class="scroll-mt-4 border-mist rounded-card md:rounded-photo shadow-raised shadow-mist gap-stack p-card flex snap-start flex-col border-3 md:col-span-3"
         >
           <h2 class="timeline-title">{strings.contactPage.formTitle}</h2>
           <ContactForm locale={locale} />

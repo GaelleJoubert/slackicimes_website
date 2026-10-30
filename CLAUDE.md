@@ -178,6 +178,17 @@ and informative elements never share a cue.
   `text-shadow-raised` for text over photos. Their distances grow on desktop by themselves, so never
   add an `md:` shadow size. Change the color with `shadow-<color>` only. Tailwind's default
   shadows are disabled; a new shadow need is a new token in `@theme`, in the same direction.
+- Spacing comes from eight named tokens that grow on desktop by themselves (never add an `md:`
+  size to them). Generous white space wins: when in doubt, take the larger role.
+  - `section`: vertical padding of every section (`py-section`). When two sections in a row share
+    a background, the second one drops its top padding (`pb-section`) so the gap stays one step.
+  - `page-top`: top padding of a page's first section, under the header (`pt-page-top`).
+  - `block`: between big groups inside a section, such as an intro and its grid of cards.
+  - `stack`: between the elements of a text group: eyebrow, title, paragraphs, buttons.
+  - `grid`: between cards or tiles in a grid or list.
+  - `card` and `tile`: inner padding of panels and large cards (`p-card`), of small cards and
+    tiles (`p-tile`).
+  - `inline`: between items in a row, such as buttons side by side.
 - Typography roles (page title, section title, body, caption) are component classes or components;
   sections pick a role, they do not combine raw size and weight utilities.
 

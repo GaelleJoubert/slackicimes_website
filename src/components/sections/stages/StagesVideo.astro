@@ -18,7 +18,7 @@ const { video, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<figure class="flex flex-col gap-3 md:gap-6">
+<figure class="gap-stack flex flex-col">
   <VideoThumbnailLink
     href={video.url}
     thumbnail={video.thumbnail}

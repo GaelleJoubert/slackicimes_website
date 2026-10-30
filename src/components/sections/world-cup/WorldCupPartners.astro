@@ -35,8 +35,8 @@ const { partners, locale } = Astro.props;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.partners} tone="white">
-  <div class="flex flex-col gap-10">
-    <div class="flex flex-col items-center gap-3.5 text-center">
+  <div class="gap-block flex flex-col">
+    <div class="gap-stack flex flex-col items-center text-center">
       <span class="cup-eyebrow text-cup-magenta">{partners.eyebrow}</span>
       <h2 class="cup-title text-cup-navy">{partners.title}</h2>
     </div>
@@ -45,7 +45,7 @@ const { partners, locale } = Astro.props;
         <h3 class="text-cup-muted text-sm font-bold tracking-widest uppercase">
           {group.label}
         </h3>
-        <ul class="flex w-full flex-wrap justify-center gap-4">
+        <ul class="gap-grid flex w-full flex-wrap justify-center">
           {group.partners.map((partner) => {
             const Tile = partner.url ? "a" : "div";
             return (

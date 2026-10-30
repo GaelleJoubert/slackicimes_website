@@ -41,9 +41,9 @@ const formulasPath = `${stagesPagePath}#${COURSE_FORMULAS_SECTION_ID}`;
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <section class="pt-5 pb-14 md:pt-10 md:pb-28">
-    <Container class="registration-grid grid gap-4 md:grid-cols-5 md:gap-x-16 md:gap-y-12">
-      <div class="flex flex-col gap-4 md:col-span-3 md:gap-5.5">
+  <section class="pt-page-top pb-section">
+    <Container class="registration-grid gap-stack md:gap-block grid md:grid-cols-5">
+      <div class="gap-stack flex flex-col md:col-span-3">
         <h1 class="page-title">{page.data.heading}</h1>
         <div class="rich-text md:text-xl">
           <Instructions />

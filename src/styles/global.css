@@ -80,6 +80,15 @@
 
   --aspect-photo: 3 / 2;
 
+  --spacing-section: var(--section-space);
+  --spacing-page-top: var(--page-top-space);
+  --spacing-block: var(--block-space);
+  --spacing-stack: var(--stack-space);
+  --spacing-grid: var(--grid-space);
+  --spacing-card: var(--card-space);
+  --spacing-tile: var(--tile-space);
+  --spacing-inline: var(--inline-space);
+
   --radius-card: 1.375rem;
   --radius-photo: 1.75rem;
 
@@ -100,10 +109,26 @@
 :root {
   --raised-shadow-distance: 0.5rem;
   --pressable-shadow-distance: 0.1875rem;
+  --section-space: 2.5rem;
+  --page-top-space: 2rem;
+  --block-space: 2rem;
+  --stack-space: 1.25rem;
+  --grid-space: 1rem;
+  --card-space: 1.5rem;
+  --tile-space: 1rem;
+  --inline-space: 0.75rem;
 
   @variant md {
     --raised-shadow-distance: 0.75rem;
     --pressable-shadow-distance: 0.25rem;
+    --section-space: 8rem;
+    --page-top-space: 4rem;
+    --block-space: 4rem;
+    --stack-space: 1.5rem;
+    --grid-space: 1.5rem;
+    --card-space: 2.5rem;
+    --tile-space: 1.5rem;
+    --inline-space: 1rem;
   }
 }
 

@@ -32,7 +32,7 @@ const { videoFormat, rules, judging, submission } = participate;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.participate} tone="ink">
-  <div class="flex flex-col gap-10">
+  <div class="gap-block flex flex-col">
     <CupSectionIntro
       eyebrow={participate.eyebrow}
       title={participate.title}
@@ -40,7 +40,7 @@ const { videoFormat, rules, judging, submission } = participate;
     >
       <p class="text-cup-slate-text max-w-3xl">{participate.intro}</p>
     </CupSectionIntro>
-    <ol class="grid gap-3.5 sm:grid-cols-3">
+    <ol class="gap-grid grid sm:grid-cols-3">
       {participate.timeline.map((milestone) => (
         <li
           class:list={[
@@ -60,8 +60,8 @@ const { videoFormat, rules, judging, submission } = participate;
         </li>
       ))}
     </ol>
-    <div class="grid gap-5 lg:grid-cols-2">
-      <div class="bg-cup-navy flex flex-col gap-3.5 rounded-2xl p-7">
+    <div class="gap-grid grid lg:grid-cols-2">
+      <div class="bg-cup-navy gap-stack p-card flex flex-col rounded-2xl">
         <h3 class="font-display text-xl font-semibold uppercase">
           {videoFormat.title}
         </h3>
@@ -79,8 +79,8 @@ const { videoFormat, rules, judging, submission } = participate;
           ))}
         </ul>
       </div>
-      <div class="flex flex-col gap-5">
-        <div class="bg-cup-navy flex flex-col gap-3.5 rounded-2xl p-7">
+      <div class="gap-grid flex flex-col">
+        <div class="bg-cup-navy gap-stack p-card flex flex-col rounded-2xl">
           <h3 class="font-display text-xl font-semibold uppercase">
             {judging.title}
           </h3>
@@ -96,7 +96,7 @@ const { videoFormat, rules, judging, submission } = participate;
           </dl>
           <p class="text-cup-soft text-sm">{judging.note}</p>
         </div>
-        <div class="border-cup-pink bg-cup-navy flex flex-col items-start gap-3 rounded-2xl border-2 p-7">
+        <div class="border-cup-pink bg-cup-navy gap-stack p-card flex flex-col items-start rounded-2xl border-2">
           <p class="font-semibold">{submission.text}</p>
           <LinkButton href={submission.url} variant="cupPrimary">
             {submission.label}

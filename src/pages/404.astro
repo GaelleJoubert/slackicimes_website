@@ -22,9 +22,9 @@ const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
   isErrorPage
   footer="compact"
 >
-  <section class="pt-8 pb-16 md:pt-14 md:pb-30">
+  <section class="pt-page-top pb-section">
     <Container>
-      <div class="mx-auto flex max-w-250 flex-col items-center gap-4 text-center md:gap-6">
+      <div class="mx-auto flex max-w-250 gap-stack flex-col items-center text-center">
         <div class="relative h-37.5 w-full md:h-65">
           <SlacklineIllustration state="broken" class="h-full" />
           <p
@@ -47,7 +47,7 @@ const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
           return (
             <div
               lang={LOCALE_SETTINGS[locale].htmlLang}
-              class="bg-cloud rounded-card md:rounded-photo mt-5 flex flex-col gap-2 self-stretch p-5 md:mt-8 md:items-center md:gap-2.5 md:p-7"
+              class="bg-cloud rounded-card md:rounded-photo mt-block p-card flex flex-col gap-2 self-stretch md:items-center md:gap-2.5"
             >
               <h2 class="timeline-title">{strings.title}</h2>
               <p>{strings.text}</p>

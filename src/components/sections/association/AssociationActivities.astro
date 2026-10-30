@@ -18,14 +18,14 @@ const CARD_TONES: ActivityCardTone[] = ["cloud", "ice", "blush"];
 const { activities, locale } = Astro.props;
 ---
 
-<section class="py-8 md:py-26">
-  <Container class="flex flex-col gap-3.5 md:gap-9">
+<section class="py-section">
+  <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={activities.title}>
         <p class="text-slate">{activities.intro}</p>
       </SectionIntro>
     </div>
-    <ul class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+    <ul class="gap-grid grid grid-cols-2 md:grid-cols-3">
       {activities.items.map((activity, activityIndex) => (
         <li>
           <ActivityCard

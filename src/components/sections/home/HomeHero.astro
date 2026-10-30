@@ -68,9 +68,9 @@ const panels = headingParts.map((part, partIndex) => ({
 }));
 ---
 
-<section class="pt-4 md:pt-8">
-  <Container class="flex flex-col gap-4 md:gap-7">
-    <h1 class="font-heading text-paper grid gap-3 uppercase md:grid-cols-3 md:gap-6">
+<section class="pt-page-top">
+  <Container class="flex flex-col gap-grid">
+    <h1 class="font-heading text-paper grid gap-grid uppercase md:grid-cols-3">
       {panels.map((panel) => (
         <>
           {panel.needsSpaceBefore ? " " : ""}
@@ -126,7 +126,7 @@ const panels = headingParts.map((part, partIndex) => ({
         </>
       ))}
     </h1>
-    <ul class="mt-2 grid gap-2.5 md:grid-cols-3 md:gap-6">
+    <ul class="grid gap-grid md:grid-cols-3">
       {highlights.map((highlight) => {
         const toneClasses = HIGHLIGHT_TONE_CLASSES[highlight.tone];
         return (

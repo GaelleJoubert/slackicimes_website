@@ -21,7 +21,7 @@ const WIDTH_CLASSES: Record<CarouselWidth, string> = {
 
 const DESKTOP_GRID_CLASSES = {
   root: "md:max-w-none",
-  track: "md:grid md:grid-cols-2 md:gap-6 md:overflow-visible",
+  track: "md:grid md:grid-cols-2 md:gap-grid md:overflow-visible",
   controls: "md:hidden",
 };
 
@@ -43,7 +43,7 @@ const {
   aria-roledescription={roleDescription}
   aria-label={label}
   class:list={[
-    "mx-auto flex w-full flex-col gap-3",
+    "gap-grid mx-auto flex w-full flex-col",
     WIDTH_CLASSES[width],
     desktopGrid && DESKTOP_GRID_CLASSES.root,
     extraClasses,
@@ -52,7 +52,7 @@ const {
   <ul
     data-slide-track
     class:list={[
-      "relative flex snap-x snap-mandatory gap-4 overflow-x-auto",
+      "gap-grid relative flex snap-x snap-mandatory overflow-x-auto",
       desktopGrid && DESKTOP_GRID_CLASSES.track,
     ]}
   >

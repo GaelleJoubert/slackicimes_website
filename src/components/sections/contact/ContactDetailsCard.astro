@@ -25,12 +25,12 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
 
 <aside
   class:list={[
-    "bg-navy text-paper rounded-card md:rounded-photo md:shadow-raised md:shadow-sky flex flex-col gap-3.5 p-5.5 md:gap-6 md:p-9",
+    "bg-navy text-paper rounded-card md:rounded-photo md:shadow-raised md:shadow-sky gap-stack p-card flex flex-col",
     extraClasses,
   ]}
 >
   <h2 class="timeline-title text-paper">{strings.contactPage.detailsTitle}</h2>
-  <dl class="flex flex-col gap-3.5 md:gap-6">
+  <dl class="gap-stack flex flex-col">
     <div class="hidden md:block">
       <dt class="text-coral font-extrabold">
         {strings.contactBlock.phoneHeading}
@@ -70,7 +70,7 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
       </dd>
     </div>
   </dl>
-  <ul class="hidden flex-wrap gap-2.5 md:flex">
+  <ul class="gap-inline hidden flex-wrap md:flex">
     {socialNetworks.map((profile) => (
       <li>
         <LinkButton href={profile.url} variant="secondaryOnDark" size="compact">

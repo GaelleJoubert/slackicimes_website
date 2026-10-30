@@ -46,9 +46,9 @@ const festivalGallery = await getGallery("festival", locale);
   headerTone="dark"
   snapSectionsOnMobile
 >
-  <section class="bg-navy text-paper pt-6 pb-12 md:pt-12 md:pb-24">
-    <Container class="flex flex-col gap-4 md:gap-12">
-      <div class="grid gap-4 md:grid-cols-2 md:items-end md:gap-16">
+  <section class="bg-navy text-paper pt-page-top pb-section">
+    <Container class="gap-block flex flex-col">
+      <div class="gap-stack md:gap-block grid md:grid-cols-2 md:items-end">
         <h1 class="page-title text-paper lg:text-hero">
           <HighlightedText
             text={page.data.heading}
@@ -70,8 +70,8 @@ const festivalGallery = await getGallery("festival", locale);
 
   <SlacklineDivider backgroundTone="navy" fillTone="paper" />
 
-  <section class="bg-paper pt-14 pb-16 md:pt-18 md:pb-28">
-    <Container class="grid items-center gap-4 md:grid-cols-5 md:gap-16">
+  <section class="bg-paper py-section">
+    <Container class="gap-block grid items-center md:grid-cols-5">
       <div class="md:col-span-3">
         <SectionIntro title={announcement.title}>
           <div class="flow-root space-y-4">
@@ -89,7 +89,7 @@ const festivalGallery = await getGallery("festival", locale);
               <p>{paragraph}</p>
             ))}
           </div>
-          <div class="flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-3.5">
+          <div class="gap-inline flex flex-col md:flex-row md:flex-wrap">
             <LinkButton href={localizedPath("coupe-du-monde", locale)}>
               {strings.common.discoverWorldCupButton}
             </LinkButton>
