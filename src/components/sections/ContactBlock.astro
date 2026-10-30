@@ -17,9 +17,9 @@ const strings = uiStrings(locale);
 
 <section class="pb-14 md:pb-28">
   <Container>
-    <div class="bg-sky text-ink shadow-raised shadow-teal grid items-center gap-6 rounded-4xl p-6 md:grid-cols-2 md:gap-12 md:p-14">
+    <div class="bg-paper border-mist rounded-card md:rounded-photo shadow-raised shadow-mist grid items-center gap-6 border-3 p-5 md:grid-cols-2 md:gap-12 md:p-14">
       <div class="flex flex-col gap-4">
-        <h2 class="section-title text-ink">{strings.contactBlock.title}</h2>
+        <h2 class="section-title">{strings.contactBlock.title}</h2>
         <p class="font-bold">{text}</p>
         <LinkButton
           href={localizedPath("contact", locale)}
@@ -29,7 +29,7 @@ const strings = uiStrings(locale);
           {strings.contactBlock.writeUsButton}
         </LinkButton>
       </div>
-      <div class="bg-paper rounded-card p-5 md:rounded-3xl md:p-8">
+      <div class="bg-cloud rounded-card p-5 md:rounded-3xl md:p-8">
         <ContactDetails locale={locale} layout="grid" />
       </div>
     </div>
