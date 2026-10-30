@@ -7,7 +7,7 @@ hero:
       framing: zoomFromTop
 highlights:
   - eyebrow: Courses
-    tone: coral
+    tone: mist
     title: Discover highlining
     text: Different formulas to move through the air. Get started safely, progress or perfect your skills.
     pageSlug: stages-highline
@@ -17,7 +17,7 @@ highlights:
     text: First stop of the 2027 World Cup, from April 14 to 16 on the Place Olympique in Arc 2000. Free entry.
     pageSlug: coupe-du-monde
   - eyebrow: Services
-    tone: mist
+    tone: coral
     title: Introductions & demonstrations
     text: Let people discover slackline or highline at your event.
     pageSlug: contact

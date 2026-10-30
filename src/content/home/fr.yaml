@@ -7,7 +7,7 @@ hero:
       framing: zoomFromTop
 highlights:
   - eyebrow: Stages
-    tone: coral
+    tone: mist
     title: Découvrez la highline
     text: Différentes formules pour évoluer dans les airs. Pour s'initier en toute sécurité, progresser ou se perfectionner.
     pageSlug: stages-highline
@@ -17,7 +17,7 @@ highlights:
     text: Première étape de la Coupe du Monde 2027, du 14 au 16 avril sur la Place Olympique d'Arc 2000. Entrée libre.
     pageSlug: coupe-du-monde
   - eyebrow: Prestation
-    tone: mist
+    tone: coral
     title: Initiations & démonstrations
     text: Faites découvrir la slackline ou la highline lors de votre évènement.
     pageSlug: contact
