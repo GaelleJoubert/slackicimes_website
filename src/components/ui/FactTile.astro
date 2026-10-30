@@ -1,5 +1,5 @@
 ---
-export type FactTileTone = "navy" | "sky" | "blush";
+export type FactTileTone = "navy" | "sky" | "paper";
 
 interface Props {
   value: string;
@@ -11,7 +11,7 @@ interface Props {
 const TONE_CLASSES: Record<FactTileTone, string> = {
   navy: "bg-navy text-paper",
   sky: "bg-sky text-ink",
-  blush: "bg-blush text-ink",
+  paper: "bg-paper text-ink",
 };
 
 const { value, label, tone, class: extraClasses } = Astro.props;
