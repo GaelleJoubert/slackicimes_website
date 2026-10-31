@@ -1,0 +1,46 @@
+---
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { formatPriceInEuros } from "../../../lib/format";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  contest: WorldCupContent["athletes"]["contest"];
+  locale: Locale;
+}
+
+const { contest, locale } = Astro.props;
+const { setup, prize, rulebook } = contest;
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+---
+
+<div class="gap-stack flex flex-col">
+  <h3 class="cup-subsection-title">{contest.title}</h3>
+  <div class="gap-grid grid lg:grid-cols-3">
+    <div class="bg-cup-ink gap-stack p-card flex flex-col rounded-2xl">
+      <h4 class="cup-card-title lg:text-xl">{setup.title}</h4>
+      <ul class="text-cup-pale marker:text-cup-pink flex list-disc flex-col gap-2 pl-5">
+        {setup.items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="bg-cup-ink gap-stack p-card flex flex-col rounded-2xl">
+      <h4 class="cup-card-title lg:text-xl">{prize.title}</h4>
+      <p class="text-cup-soft text-sm">{prize.note}</p>
+      <dl class="grid grid-cols-2 gap-2">
+        {prize.places.map((place) => (
+          <div class="bg-cup-navy p-tile flex flex-col rounded-xl">
+            <dt class="text-cup-soft text-sm">{place.label}</dt>
+            <dd class="font-display text-cup-sky text-2xl font-bold">
+              {formatPriceInEuros(place.amountInEuros, languageTag)}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="border-cup-line gap-stack p-card flex flex-col rounded-2xl border-2 border-dashed">
+      <h4 class="cup-card-title lg:text-xl">{rulebook.title}</h4>
+      <p class="text-cup-soft">{rulebook.text}</p>
+    </div>
+  </div>
+</div>

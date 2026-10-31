@@ -16,19 +16,19 @@ hero:
 sectionNav:
   label: Page sections
   links:
-    - { label: Practical info, target: infos }
     - { label: The event, target: evenement }
+    - { label: Practical info, target: infos }
     - { label: Schedule, target: programme }
+    - { label: The format, target: format }
     - { label: Athletes, target: athletes }
     - { label: Results, target: resultats }
-    - { label: Take part, target: participer }
     - { label: Partners, target: partenaires }
 event:
   eyebrow: The event
-  title: The first stop of the 2027 World Cup
+  title: 2027 World Cup – First stop
   paragraphs:
-    - Highline freestyle is a 2.5 centimeter wide webbing, rigged 25 meters above the ground and stretchy enough to bounce several meters high. Athletes chain rotations, twists and never seen tricks, tied to the line by a safety rope.
-    - The ISA World Cup Series is the discipline's first world circuit, launched by the International Slackline Association. In April 2027, it all starts in Les Arcs.
+    - "Highline is a modern take on tightrope walking, on a 2.5 centimeter wide elastic webbing rigged high above the ground. Highline freestyle is its acrobatic discipline. Athletes chain rotations, twists and spectacular tricks, always tied to the line for their safety."
+    - "The ISA World Cup Series is the discipline's first world circuit, launched by the International Slackline Association (ISA). The Les Arcs event is the first stop of the 2027 season."
   illustration:
     image: ../../assets/images/world-cup/athlete-rotation.jpg
     alt: An athlete rotating under the line against a blue sky
@@ -45,14 +45,29 @@ event:
         label: in prize money,
         detail: equal for women and men,
       }
-  highlights:
-    - title: The battle
-      text: Two athletes start at the same time on two parallel lines and answer each other trick after trick, like a dance battle. The judges decide.
-    - title: Born in Les Arcs
-      text: The battle format was created here, at the Deux Têtes, in 2022. It is now used in almost every world competition, World Championships included.
+format:
+  title: Format & Origins
+  battle:
+    title: The battle
+    text: Two athletes start at the same time on two parallel lines and answer each other trick after trick, like a dance battle. The judges decide.
+  origin:
+    title: Born in Les Arcs
+    text: The battle format was created here, at the Deux Têtes, in 2022. It is now used in almost every world competition, World Championships included.
+  bracket:
+    title: How does the competition work?
+    pool:
+      title: Groups of 4
+      text: Each athlete earns a rank in their group, from 1st to 4th.
+      ranks: [1st, 2nd, 3rd, 4th]
+    grandFinal:
+      title: Semi finals and grand final
+      text: The group winners battle for the title.
+    rankFinals:
+      title: Semi finals and placing finals
+      text: Athletes ranked 2nd, 3rd and 4th each play the bracket for their rank.
 programme:
   eyebrow: Schedule
-  title: Five days on the line
+  title: Four days of spectacle
   note: Detailed times coming soon.
   days:
     - {
@@ -85,29 +100,91 @@ programme:
         text: Only used in case of bad weather.,
         emphasis: reserve,
       }
-  formatTitle: How does the competition work?
-  formatSteps:
-    - Groups of 4
-    - Ranked 1st to 4th in each group
-    - Semi finals and finals by rank
-    - Grand final of the group winners
 athletes:
   eyebrow: Athletes
-  title: The 24 qualified athletes
-  intro: In each category, 6 athletes qualify through the ISA ranking and 6 through video wild cards.
-  announcement: Qualified athletes announced in December 2026.
-  categories: [Women, Men]
-  slotsPerCategory: 12
-  placeholderLabel: Coming soon
+  title: Information for athletes
+  intro: "12 athletes per category: the top 6 of the ISA ranking (after the Poland stop) and 6 video wild cards. If a ranked athlete withdraws, an extra wild card is awarded."
+  contest:
+    title: The competition
+    setup:
+      title: The setup
+      items:
+        - "4 parallel lines: two of 74 m, two of 68 m."
+        - Dyneema lines rigged on bungees.
+        - 100% battle competition.
+    prize:
+      title: Prize money · €4,000
+      note: Same prize money for women and men.
+      places:
+        - { label: 1st place, amountInEuros: 900 }
+        - { label: 2nd place, amountInEuros: 600 }
+        - { label: 3rd place, amountInEuros: 300 }
+        - { label: 4th place, amountInEuros: 200 }
+    rulebook:
+      title: Judging rules
+      text: The competition's judging rules will be published here as soon as they are final.
+  wildCard:
+    title: Get your wild card
+    timeline:
+      - { date: "Sept 24, 2026", label: Wild cards open, emphasis: regular }
+      - {
+          date: "Nov 30, 2026",
+          label: Last day to send your video,
+          emphasis: highlight,
+        }
+      - {
+          date: December 2026,
+          label: Selected wild cards announced,
+          emphasis: regular,
+        }
+    videoFormat:
+      title: Video format
+      items:
+        - Two combos of 7 bounces.
+        - The bounce into your first position does not count (rocket start, backbounce…).
+        - "Show your control after the 7 bounces: 3 bounces in the final position."
+        - "At the start or end of the combo, make the mandatory sign: a triangle with both hands."
+    rules:
+      title: Rules
+      items:
+        - No editing within a combo, a single camera angle.
+        - No slow motion.
+        - Both combos can be in one or two videos.
+    judging:
+      title: Video judging
+      criteria:
+        - {
+            label: "Difficulty (tier list, a repeated trick drops one tier)",
+            points: 40 pts,
+          }
+        - { label: "Style, control and originality", points: 20 pts / combo }
+        - { label: Variety between the two combos, points: 20 pts }
+      note: "Why this format? The competition is played only in battles, with many combos: we want athletes who can land them again and again, and variety to avoid repetitive battles."
+    submission:
+      text: Post your video (Instagram Reel from a public account, public or unlisted YouTube link, or Google Drive link), then fill in the form.
+      formLabel: Fill in the wild card form
+      formUrl: "https://forms.gle/LsXL8ETZb51gEKmY6"
+      rulesLabel: "Detailed rules (PDF)"
+      rulesUrl: "https://drive.google.com/file/d/10DoaADau1BqLYGdcwkwOagzmTuyD5Nr6/view"
 results:
-  badge: Live from April 14
-  title: Live results
-  text: During the competition, follow every battle here, group after group, all the way to the grand final.
-  previewLabel: Preview of the results table
-  previewGroup: Group A · Women
-  previewScore: Score
-  previewRow: Athlete to be announced
-  previewRowCount: 4
+  eyebrow: Results
+  title: Qualified athletes and results
+  qualified:
+    title: The 24 qualified athletes
+    intro: In each category, 6 athletes qualify through the ISA ranking and 6 through video wild cards.
+    announcement: Qualified athletes announced in December 2026.
+    categories: [Women, Men]
+    slotsPerCategory: 12
+    placeholderLabel: Coming soon
+  live:
+    badge: Live from April 14
+    title: Live results
+    text: During the competition, follow every battle here, group after group, all the way to the grand final.
+    previewLabel: Preview of the results table
+    previewGroup: Group A · Women
+    previewScore: Score
+    previewRow: Athlete to be announced
+    previewRowCount: 4
 infos:
   eyebrow: Practical info
   title: Come and watch the competition
@@ -122,12 +199,15 @@ infos:
     - title: Free shuttle → Arc 2000
       text: It links Arc 1600 to Arc 2000; the competition is on the Place Olympique.
     - title: Or on skis, down the slopes
-      text: The lines are rigged right where the ski area passes.
+      text: The lines are rigged right where the ski area passes. You can reach Arc 2000 on the slopes from anywhere in the Les Arcs ski area.
   facts:
-    - { title: Free entry, text: "Free, no tickets, no barriers." }
+    - {
+        title: Free entry,
+        text: "Entry is free for spectators, come and watch the best athletes in the world.",
+      }
     - {
         title: No lift pass,
-        text: "No ski pass needed, only the funicular is paid.",
+        text: "You don't need a ski pass to reach the competition site.",
       }
     - {
         title: Stay nearby,
@@ -137,66 +217,6 @@ infos:
     image: ../../assets/images/world-cup/ligne-arc-2000.jpg
     alt: A highliner on a line rigged above the Arc 2000 residences, with Mont Blanc in the background
   caption: "Place Olympique, Arc 2000: between the terrace of the 2134 and the Arolles residence, below the Aiguille Rouge."
-participate:
-  eyebrow: Athletes
-  title: Get your wild card
-  intro: "12 athletes per category: the top 6 of the ISA ranking (after the Poland stop) and 6 video wild cards. If a ranked athlete withdraws, an extra wild card is awarded."
-  timeline:
-    - { date: "Sept 24, 2026", label: Wild cards open, emphasis: regular }
-    - {
-        date: "Nov 30, 2026",
-        label: Last day to send your video,
-        emphasis: highlight,
-      }
-    - {
-        date: December 2026,
-        label: Selected wild cards announced,
-        emphasis: regular,
-      }
-  videoFormat:
-    title: Video format
-    items:
-      - Two combos of 7 bounces.
-      - The bounce into your first position does not count (rocket start, backbounce…).
-      - "Show your control after the 7 bounces: 3 bounces in the final position."
-      - "At the start or end of the combo, make the mandatory sign: a triangle with both hands."
-  rules:
-    title: Rules
-    items:
-      - No editing within a combo, a single camera angle.
-      - No slow motion.
-      - Both combos can be in one or two videos.
-  judging:
-    title: Video judging
-    criteria:
-      - {
-          label: "Difficulty (tier list, a repeated trick drops one tier)",
-          points: 40 pts,
-        }
-      - { label: "Style, control and originality", points: 20 pts / combo }
-      - { label: Variety between the two combos, points: 20 pts }
-    note: "Why this format? The competition is played only in battles, with many combos: we want athletes who can land them again and again, and variety to avoid repetitive battles."
-  submission:
-    text: Post your video (Instagram Reel from a public account, public or unlisted YouTube link, or Google Drive link), then fill in the form.
-    label: Fill in the wild card form →
-    url: "https://forms.gle/LsXL8ETZb51gEKmY6"
-  prize:
-    title: Prize money · €4,000
-    note: Same prize money for women and men.
-    places:
-      - { label: 1st place, amountInEuros: 900 }
-      - { label: 2nd place, amountInEuros: 600 }
-      - { label: 3rd place, amountInEuros: 300 }
-      - { label: 4th place, amountInEuros: 200 }
-  setup:
-    title: The setup
-    items:
-      - "4 parallel lines: two of 74 m, two of 68 m."
-      - Dyneema lines rigged on bungees.
-      - 100% battle competition.
-  rulebook:
-    title: Judging rules
-    text: The competition's judging rules will be published here as soon as they are final.
 organizers:
   eyebrow: The organizers
   title: "Slack'icîmes, highline in Les Arcs since 2013"
@@ -204,8 +224,8 @@ organizers:
     - Ten editions of the Winter Festislack, the first highline courses in France, and in 2022, at the Deux Têtes, the first international highline freestyle competition in battle format. In 2023, the ISA upgraded our Master competition to a World Cup.
     - "In 2027, the association is putting all its energy into this World Cup: no Winter Festislack this year, but a spectacular show on the festival's usual dates."
   illustration:
-    image: ../../assets/images/world-cup/highliner-salut.jpg
-    alt: A highliner waving in the middle of the line, facing snowy peaks
+    image: ../../assets/images/world-cup/highliner-figure-sommet.jpg
+    alt: A highliner mid trick above the line, in front of a snowy peak
   linkLabel: Discover the association
 partners:
   eyebrow: Partners

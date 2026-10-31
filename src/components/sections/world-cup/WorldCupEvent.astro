@@ -17,43 +17,38 @@ const { event } = Astro.props;
 
 <CupSection id={WORLD_CUP_SECTION_IDS.event} tone="surface">
   <div class="gap-block flex flex-col">
-    <div class="gap-block grid items-center lg:grid-cols-5">
-      <div class="lg:col-span-3">
-        <CupSectionIntro
-          eyebrow={event.eyebrow}
-          title={event.title}
-          theme="light"
-        >
+    <div class="gap-stack flex flex-col">
+      <CupSectionIntro
+        eyebrow={event.eyebrow}
+        title={event.title}
+        theme="light"
+      />
+      <div class="gap-stack lg:gap-x-block grid items-center lg:grid-cols-5">
+        <div class="gap-stack flex flex-col lg:col-span-3">
           {event.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>
           ))}
-        </CupSectionIntro>
-      </div>
-      <div class="lg:col-span-2">
-        <Picture
-          src={event.illustration.image}
-          alt={event.illustration.alt}
-          widths={ILLUSTRATION_WIDTHS}
-          sizes={ILLUSTRATION_SIZES}
-          formats={["avif", "webp"]}
-          class="w-full rounded-2xl"
-        />
+        </div>
+        <div class="lg:col-span-2">
+          <Picture
+            src={event.illustration.image}
+            alt={event.illustration.alt}
+            widths={ILLUSTRATION_WIDTHS}
+            sizes={ILLUSTRATION_SIZES}
+            formats={["avif", "webp"]}
+            class="aspect-photo w-full rounded-2xl object-cover"
+          />
+        </div>
       </div>
     </div>
-    <ul class="gap-grid grid sm:grid-cols-2 lg:grid-cols-4">
+    <ul class="bg-cup-navy gap-grid p-card grid grid-cols-2 rounded-2xl text-white lg:grid-cols-4">
       {event.stats.map((stat) => (
-        <li class="bg-cup-navy p-card rounded-2xl text-white">
-          <p class="cup-stat-value text-cup-sky">{stat.value}</p>
-          <p class="mt-2.5 font-semibold">{stat.label}</p>
+        <li class="lg:not-first:border-cup-line lg:not-first:pl-grid flex flex-col gap-1 lg:not-first:border-l">
+          <p class="cup-stat-value text-cup-sky whitespace-nowrap">
+            {stat.value}
+          </p>
+          <p class="font-semibold">{stat.label}</p>
           <p class="text-cup-soft text-sm">{stat.detail}</p>
-        </li>
-      ))}
-    </ul>
-    <ul class="gap-grid grid md:grid-cols-2">
-      {event.highlights.map((highlight) => (
-        <li class="gap-stack p-card flex flex-col rounded-2xl bg-white">
-          <h3 class="cup-card-title text-cup-navy">{highlight.title}</h3>
-          <p>{highlight.text}</p>
         </li>
       ))}
     </ul>

@@ -1,49 +1,30 @@
 ---
+import type { Locale } from "../../../i18n/locales";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import CupSection from "../../ui/CupSection.astro";
 import CupSectionIntro from "../../ui/CupSectionIntro.astro";
 import type { WorldCupContent } from "./types";
+import WorldCupContestInfo from "./WorldCupContestInfo.astro";
+import WorldCupWildCard from "./WorldCupWildCard.astro";
 
 interface Props {
   athletes: WorldCupContent["athletes"];
+  locale: Locale;
 }
 
-const { athletes } = Astro.props;
-const placeholderSlots = Array.from({ length: athletes.slotsPerCategory });
+const { athletes, locale } = Astro.props;
 ---
 
-<CupSection id={WORLD_CUP_SECTION_IDS.athletes} tone="surface">
+<CupSection id={WORLD_CUP_SECTION_IDS.athletes} tone="navy">
   <div class="gap-block flex flex-col">
     <CupSectionIntro
       eyebrow={athletes.eyebrow}
       title={athletes.title}
-      theme="light"
+      theme="dark"
     >
-      <p class="max-w-2xl">
-        {athletes.intro} <strong>{athletes.announcement}</strong>
-      </p>
+      <p class="text-cup-pale max-w-3xl">{athletes.intro}</p>
     </CupSectionIntro>
-    <div class="gap-grid grid lg:grid-cols-2">
-      {athletes.categories.map((category) => (
-        <div class="gap-stack p-card flex flex-col rounded-2xl bg-white">
-          <h3 class="cup-card-title text-cup-navy">{category}</h3>
-          <ul class="grid grid-cols-4 gap-3 sm:grid-cols-6">
-            {placeholderSlots.map(() => (
-              <li class="flex flex-col items-center gap-1.5">
-                <span
-                  aria-hidden="true"
-                  class="bg-cup-placeholder text-cup-placeholder-text font-display flex aspect-square w-full items-center justify-center rounded-full text-xl font-semibold"
-                >
-                  ?
-                </span>
-                <span class="text-cup-muted text-xs">
-                  {athletes.placeholderLabel}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <WorldCupContestInfo contest={athletes.contest} locale={locale} />
+    <WorldCupWildCard wildCard={athletes.wildCard} />
   </div>
 </CupSection>

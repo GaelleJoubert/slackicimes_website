@@ -29,7 +29,6 @@ const DAY_TEXT_CLASSES: Record<DayEmphasis, string> = {
 };
 
 const { programme } = Astro.props;
-const finalStepIndex = programme.formatSteps.length - 1;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.programme} tone="navy">
@@ -64,35 +63,5 @@ const finalStepIndex = programme.formatSteps.length - 1;
         </li>
       ))}
     </ol>
-    <div class="bg-cup-ink gap-stack p-card flex flex-col rounded-2xl">
-      <h3 class="font-display text-xl font-semibold uppercase">
-        {programme.formatTitle}
-      </h3>
-      <ol class="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
-        {programme.formatSteps.map((step, stepIndex) => (
-          <li class="flex flex-col gap-3 md:flex-row md:items-center">
-            <span
-              class:list={[
-                "rounded-xl border-2 px-4 py-3 font-semibold",
-                stepIndex === finalStepIndex
-                  ? "border-cup-pink text-cup-pink-soft font-bold"
-                  : "border-cup-line",
-              ]}
-            >
-              {step}
-            </span>
-            {stepIndex < finalStepIndex && (
-              <span
-                aria-hidden="true"
-                class="text-cup-sky pl-4 font-bold md:pl-0"
-              >
-                <span class="md:hidden">↓</span>
-                <span class="hidden md:inline">→</span>
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </div>
   </div>
 </CupSection>

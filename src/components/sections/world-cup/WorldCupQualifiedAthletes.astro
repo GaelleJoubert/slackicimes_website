@@ -1,0 +1,39 @@
+---
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  qualified: WorldCupContent["results"]["qualified"];
+}
+
+const { qualified } = Astro.props;
+const placeholderSlots = Array.from({ length: qualified.slotsPerCategory });
+---
+
+<div class="gap-stack flex flex-col">
+  <h3 class="cup-subsection-title text-cup-navy">{qualified.title}</h3>
+  <p class="max-w-2xl">
+    {qualified.intro} <strong>{qualified.announcement}</strong>
+  </p>
+  <div class="gap-grid grid lg:grid-cols-2">
+    {qualified.categories.map((category) => (
+      <div class="bg-cup-surface gap-stack p-card flex flex-col rounded-2xl">
+        <h4 class="cup-card-title text-cup-navy">{category}</h4>
+        <ul class="grid grid-cols-4 gap-3 sm:grid-cols-6">
+          {placeholderSlots.map(() => (
+            <li class="flex flex-col items-center gap-1.5">
+              <span
+                aria-hidden="true"
+                class="bg-cup-placeholder text-cup-placeholder-text font-display flex aspect-square w-full items-center justify-center rounded-full text-xl font-semibold"
+              >
+                ?
+              </span>
+              <span class="text-cup-muted text-xs">
+                {qualified.placeholderLabel}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>

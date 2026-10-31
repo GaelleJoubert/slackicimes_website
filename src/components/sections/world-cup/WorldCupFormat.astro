@@ -1,0 +1,28 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import type { WorldCupContent } from "./types";
+import WorldCupBracket from "./WorldCupBracket.astro";
+
+interface Props {
+  format: WorldCupContent["format"];
+}
+
+const { format } = Astro.props;
+const storyBlocks = [format.battle, format.origin];
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.format} tone="surface">
+  <div class="gap-stack flex flex-col">
+    <h2 class="cup-title text-cup-navy">{format.title}</h2>
+    <ul class="gap-grid grid md:grid-cols-2">
+      {storyBlocks.map((block) => (
+        <li class="p-tile flex flex-col gap-2 rounded-2xl bg-white">
+          <h3 class="cup-card-title text-cup-navy">{block.title}</h3>
+          <p class="text-base">{block.text}</p>
+        </li>
+      ))}
+    </ul>
+    <WorldCupBracket bracket={format.bracket} />
+  </div>
+</CupSection>

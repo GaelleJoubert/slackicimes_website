@@ -1,0 +1,98 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  wildCard: WorldCupContent["athletes"]["wildCard"];
+}
+
+type TimelineEmphasis =
+  WorldCupContent["athletes"]["wildCard"]["timeline"][number]["emphasis"];
+
+const TIMELINE_BORDER_CLASSES: Record<TimelineEmphasis, string> = {
+  regular: "border-cup-sky",
+  highlight: "border-cup-pink",
+  reserve: "border-cup-line",
+};
+
+const TIMELINE_DATE_CLASSES: Record<TimelineEmphasis, string> = {
+  regular: "text-cup-sky",
+  highlight: "text-cup-pink-soft",
+  reserve: "text-cup-soft",
+};
+
+const { wildCard } = Astro.props;
+const { videoFormat, rules, judging, submission } = wildCard;
+const videoGuidelines = [videoFormat, rules];
+const DESKTOP_GUIDELINE_ORDER_CLASSES = ["lg:order-1", "lg:order-3"];
+---
+
+<div
+  id={WORLD_CUP_SECTION_IDS.wildCards}
+  class="gap-stack flex scroll-mt-16 flex-col"
+>
+  <h3 class="cup-subsection-title">{wildCard.title}</h3>
+  <ol class="gap-grid grid sm:grid-cols-3">
+    {wildCard.timeline.map((milestone) => (
+      <li
+        class:list={[
+          "border-t-4 pt-3.5",
+          TIMELINE_BORDER_CLASSES[milestone.emphasis],
+        ]}
+      >
+        <span
+          class:list={[
+            "text-sm font-bold uppercase",
+            TIMELINE_DATE_CLASSES[milestone.emphasis],
+          ]}
+        >
+          {milestone.date}
+        </span>
+        <p class="mt-1 font-semibold">{milestone.label}</p>
+      </li>
+    ))}
+  </ol>
+  <div class="gap-grid grid lg:grid-cols-2">
+    {videoGuidelines.map((guideline, guidelineIndex) => (
+      <div
+        class:list={[
+          "bg-cup-ink gap-stack p-card flex flex-col rounded-2xl",
+          DESKTOP_GUIDELINE_ORDER_CLASSES[guidelineIndex],
+        ]}
+      >
+        <h4 class="cup-card-title lg:text-xl">{guideline.title}</h4>
+        <ul class="text-cup-pale marker:text-cup-pink flex list-disc flex-col gap-2 pl-5">
+          {guideline.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+    <div class="bg-cup-ink gap-stack p-card flex flex-col rounded-2xl lg:order-2">
+      <h4 class="cup-card-title lg:text-xl">{judging.title}</h4>
+      <dl class="divide-cup-line flex flex-col divide-y">
+        {judging.criteria.map((criterion) => (
+          <div class="flex justify-between gap-3 py-2.5">
+            <dt>{criterion.label}</dt>
+            <dd class="text-cup-sky font-bold whitespace-nowrap">
+              {criterion.points}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <p class="text-cup-soft text-sm">{judging.note}</p>
+    </div>
+    <div class="border-cup-pink bg-cup-ink gap-stack p-card flex flex-col items-start justify-center rounded-2xl border-2 lg:order-4">
+      <p class="font-semibold">{submission.text}</p>
+      <div class="gap-inline flex flex-wrap">
+        <LinkButton href={submission.formUrl} variant="cupPrimary">
+          {submission.formLabel}
+        </LinkButton>
+        <LinkButton href={submission.rulesUrl} variant="cupSecondaryOnDark">
+          {submission.rulesLabel}
+        </LinkButton>
+      </div>
+    </div>
+  </div>
+</div>

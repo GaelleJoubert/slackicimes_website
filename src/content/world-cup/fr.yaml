@@ -16,19 +16,19 @@ hero:
 sectionNav:
   label: Sections de la page
   links:
-    - { label: Infos pratiques, target: infos }
     - { label: "L'événement", target: evenement }
+    - { label: Infos pratiques, target: infos }
     - { label: Programme, target: programme }
+    - { label: Le format, target: format }
     - { label: Athlètes, target: athletes }
     - { label: Résultats, target: resultats }
-    - { label: Participer, target: participer }
     - { label: Partenaires, target: partenaires }
 event:
   eyebrow: "L'événement"
-  title: La première étape de la Coupe du Monde 2027
+  title: Coupe du Monde 2027 – Première étape
   paragraphs:
-    - La highline freestyle, c'est une sangle large de 2,5 centimètres, tendue à 25 mètres du sol et assez élastique pour y faire des rebonds de plusieurs mètres. Les athlètes y enchaînent rotations, vrilles et figures inédites, reliés à la ligne par une corde de sécurité.
-    - Les ISA World Cup Series sont le premier circuit mondial de la discipline, lancé par l'International Slackline Association. En avril 2027, c'est aux Arcs que tout commence.
+    - "La highline est une variante du funambulisme moderne, sur une sangle de 2,5 centimètres, élastique, tendue en hauteur. La highline freestyle, c'est la discipline acrobatique de la « highline ». Les athlètes enchaînent rotations, vrilles et figures spectaculaires, toujours reliés à la ligne pour leur sécurité."
+    - "Les ISA World Cup Series sont le premier circuit mondial de la discipline, lancé par l'International Slackline Association (ISA). L'édition des Arcs est la première de la saison 2027."
   illustration:
     image: ../../assets/images/world-cup/athlete-rotation.jpg
     alt: Une athlète en rotation sous la ligne, sur fond de ciel bleu
@@ -45,14 +45,29 @@ event:
         label: de prize money,
         detail: identique femmes et hommes,
       }
-  highlights:
-    - title: La battle
-      text: Deux athlètes s'élancent en même temps sur deux lignes parallèles et se répondent figure après figure, comme une battle de danse. Les juges tranchent.
-    - title: Né aux Arcs
-      text: "Le format battle a été créé ici, aux Deux Têtes, en 2022. Il est aujourd'hui celui de presque toutes les compétitions mondiales, Championnats du monde compris."
+format:
+  title: Format & Origines
+  battle:
+    title: La battle
+    text: Deux athlètes s'élancent en même temps sur deux lignes parallèles et se répondent figure après figure, comme une battle de danse. Les juges tranchent.
+  origin:
+    title: Né aux Arcs
+    text: "Le format battle a été créé ici, aux Deux Têtes, en 2022. Il est aujourd'hui celui de presque toutes les compétitions mondiales, Championnats du monde compris."
+  bracket:
+    title: Comment se joue la compétition ?
+    pool:
+      title: Poules de 4
+      text: Chaque athlète y décroche son rang, de 1er à 4e.
+      ranks: [1er, 2e, 3e, 4e]
+    grandFinal:
+      title: Demi-finales et grande finale
+      text: Les 1ers de poule s'affrontent jusqu'au titre.
+    rankFinals:
+      title: Demi-finales et petites finales
+      text: Les 2es, 3es et 4es de poule jouent chacun le tableau de leur rang.
 programme:
   eyebrow: Programme
-  title: Cinq jours sur la ligne
+  title: Quatre jours de spectacle
   note: Horaires détaillés à venir.
   days:
     - {
@@ -85,29 +100,95 @@ programme:
         text: Utilisé seulement en cas de mauvaise météo.,
         emphasis: reserve,
       }
-  formatTitle: Comment se joue la compétition ?
-  formatSteps:
-    - Poules de 4
-    - Classement 1er à 4e dans chaque poule
-    - Demi-finales et finales par rang
-    - Grande finale des 1ers de poule
 athletes:
   eyebrow: Athlètes
-  title: Les 24 qualifiés
-  intro: Dans chaque catégorie, 6 athlètes sont qualifiés par le classement ISA et 6 par les wild cards vidéo.
-  announcement: Annonce des qualifiés en décembre 2026.
-  categories: [Femmes, Hommes]
-  slotsPerCategory: 12
-  placeholderLabel: À venir
+  title: Informations pour les athlètes
+  intro: "12 athlètes par catégorie : les 6 premiers du classement ISA (après l'étape de Pologne) et 6 wild cards sur vidéo. Si un athlète du classement se désiste, une wild card supplémentaire est attribuée."
+  contest:
+    title: La compétition
+    setup:
+      title: Le setup
+      items:
+        - "4 lignes parallèles : deux de 74 m, deux de 68 m."
+        - Lignes en Dyneema montées sur bungees.
+        - Compétition 100 % battle.
+    prize:
+      title: Prize money · 4 000 €
+      note: Même dotation pour les femmes et pour les hommes.
+      places:
+        - { label: 1re place, amountInEuros: 900 }
+        - { label: 2e place, amountInEuros: 600 }
+        - { label: 3e place, amountInEuros: 300 }
+        - { label: 4e place, amountInEuros: 200 }
+    rulebook:
+      title: Règlement de jugement
+      text: "Le règlement de jugement de la compétition sera publié ici dès qu'il sera finalisé."
+  wildCard:
+    title: Décroche ta wild card
+    timeline:
+      - {
+          date: 24 sept. 2026,
+          label: Ouverture des wild cards,
+          emphasis: regular,
+        }
+      - {
+          date: 30 nov. 2026,
+          label: Dernier jour pour envoyer ta vidéo,
+          emphasis: highlight,
+        }
+      - {
+          date: Décembre 2026,
+          label: Annonce des wild cards retenues,
+          emphasis: regular,
+        }
+    videoFormat:
+      title: Format de la vidéo
+      items:
+        - Deux combos de 7 rebonds.
+        - Le rebond pour entrer dans ta première position ne compte pas (départ en rocket, backbounce…).
+        - "Montre ton contrôle après les 7 rebonds : 3 rebonds en position finale."
+        - "Au début ou à la fin du combo, fais le signe obligatoire : un triangle avec les deux mains."
+    rules:
+      title: Règles
+      items:
+        - Aucun montage dans le combo, un seul angle de vue.
+        - Pas de ralenti.
+        - Les deux combos peuvent être dans une ou deux vidéos.
+    judging:
+      title: Jugement des vidéos
+      criteria:
+        - {
+            label: "Difficulté (tier list, une figure répétée descend d'un tier)",
+            points: 40 pts,
+          }
+        - { label: "Style, contrôle et originalité", points: 20 pts / combo }
+        - { label: Variété entre les deux combos, points: 20 pts }
+      note: "Pourquoi ce format ? La compétition se joue uniquement en battle, avec beaucoup de combos : on veut voir des athlètes capables de les replaquer, et de la diversité pour éviter les battles répétitives."
+    submission:
+      text: Poste ta vidéo (Reel Instagram d'un compte public, lien YouTube public ou privé, ou lien Google Drive), puis remplis le formulaire.
+      formLabel: Remplir le formulaire wild card
+      formUrl: "https://forms.gle/LsXL8ETZb51gEKmY6"
+      rulesLabel: "Règlement détaillé (PDF, en anglais)"
+      rulesUrl: "https://drive.google.com/file/d/10DoaADau1BqLYGdcwkwOagzmTuyD5Nr6/view"
 results:
-  badge: Live dès le 14 avril
-  title: Résultats en direct
-  text: Pendant la compétition, suivez ici chaque battle, poule après poule, jusqu'à la grande finale.
-  previewLabel: Aperçu du tableau de résultats
-  previewGroup: Poule A · Femmes
-  previewScore: Score
-  previewRow: Athlète à venir
-  previewRowCount: 4
+  eyebrow: Résultats
+  title: Qualifiés et résultats
+  qualified:
+    title: Les 24 qualifiés
+    intro: Dans chaque catégorie, 6 athlètes sont qualifiés par le classement ISA et 6 par les wild cards vidéo.
+    announcement: Annonce des qualifiés en décembre 2026.
+    categories: [Femmes, Hommes]
+    slotsPerCategory: 12
+    placeholderLabel: À venir
+  live:
+    badge: Live dès le 14 avril
+    title: Résultats en direct
+    text: Pendant la compétition, suivez ici chaque battle, poule après poule, jusqu'à la grande finale.
+    previewLabel: Aperçu du tableau de résultats
+    previewGroup: Poule A · Femmes
+    previewScore: Score
+    previewRow: Athlète à venir
+    previewRowCount: 4
 infos:
   eyebrow: Infos pratiques
   title: Venir voir la compétition
@@ -122,88 +203,24 @@ infos:
     - title: Navette gratuite → Arc 2000
       text: "Elle relie Arc 1600 à Arc 2000 ; la compétition est sur la Place Olympique."
     - title: Ou à ski, par les pistes
-      text: Les lignes sont tendues en plein passage du domaine.
+      text: Les lignes sont tendues en plein passage du domaine. Il est possible de rejoindre Arc 2000 par les pistes de ski depuis le domaine des Arcs.
   facts:
     - {
-        title: Entrée libre,
-        text: "Gratuit, sans billetterie, sans barrières.",
+        title: Entrée gratuite,
+        text: "L'accès est gratuit pour les spectateurs, venez admirer les meilleurs athlètes mondiaux.",
       }
     - {
         title: Pas de forfait,
-        text: "Aucun forfait de ski nécessaire, seul le funiculaire est payant.",
+        text: "Un forfait de ski n'est pas nécessaire pour accéder au site de la compétition.",
       }
     - {
         title: Dormir sur place,
-        text: "Athlètes et organisation logent au camping Le Reclus, à Bourg-Saint-Maurice. Rejoignez-les !",
+        text: "Athlètes et organisation logent au camping Le Reclus, à Bourg-Saint-Maurice. Rejoignez-les !",
       }
   photo:
     image: ../../assets/images/world-cup/ligne-arc-2000.jpg
     alt: "Un highliner sur une ligne tendue au-dessus des résidences d'Arc 2000, Mont-Blanc en fond"
   caption: "Place Olympique, Arc 2000 : entre la terrasse du 2134 et la résidence des Arolles, sous l'Aiguille Rouge."
-participate:
-  eyebrow: Athlètes
-  title: Décroche ta wild card
-  intro: "12 athlètes par catégorie : les 6 premiers du classement ISA (après l'étape de Pologne) et 6 wild cards sur vidéo. Si un athlète du classement se désiste, une wild card supplémentaire est attribuée."
-  timeline:
-    - {
-        date: 24 sept. 2026,
-        label: Ouverture des wild cards,
-        emphasis: regular,
-      }
-    - {
-        date: 30 nov. 2026,
-        label: Dernier jour pour envoyer ta vidéo,
-        emphasis: highlight,
-      }
-    - {
-        date: Décembre 2026,
-        label: Annonce des wild cards retenues,
-        emphasis: regular,
-      }
-  videoFormat:
-    title: Format de la vidéo
-    items:
-      - Deux combos de 7 rebonds.
-      - Le rebond pour entrer dans ta première position ne compte pas (départ en rocket, backbounce…).
-      - "Montre ton contrôle après les 7 rebonds : 3 rebonds en position finale."
-      - "Au début ou à la fin du combo, fais le signe obligatoire : un triangle avec les deux mains."
-  rules:
-    title: Règles
-    items:
-      - Aucun montage dans le combo, un seul angle de vue.
-      - Pas de ralenti.
-      - Les deux combos peuvent être dans une ou deux vidéos.
-  judging:
-    title: Jugement des vidéos
-    criteria:
-      - {
-          label: "Difficulté (tier list, une figure répétée descend d'un tier)",
-          points: 40 pts,
-        }
-      - { label: "Style, contrôle et originalité", points: 20 pts / combo }
-      - { label: Variété entre les deux combos, points: 20 pts }
-    note: "Pourquoi ce format ? La compétition se joue uniquement en battle, avec beaucoup de combos : on veut voir des athlètes capables de les replaquer, et de la diversité pour éviter les battles répétitives."
-  submission:
-    text: Poste ta vidéo (Reel Instagram d'un compte public, lien YouTube public ou privé, ou lien Google Drive), puis remplis le formulaire.
-    label: Remplir le formulaire wild card →
-    url: "https://forms.gle/LsXL8ETZb51gEKmY6"
-  prize:
-    title: Prize money · 4 000 €
-    note: Même dotation pour les femmes et pour les hommes.
-    places:
-      - { label: 1re place, amountInEuros: 900 }
-      - { label: 2e place, amountInEuros: 600 }
-      - { label: 3e place, amountInEuros: 300 }
-      - { label: 4e place, amountInEuros: 200 }
-  setup:
-    title: Le setup
-    items:
-      - "4 lignes parallèles : deux de 74 m, deux de 68 m."
-      - Lignes en Dyneema montées sur bungees.
-      - Compétition 100 % battle.
-  rulebook:
-    title: Règlement de jugement
-    text: "Le règlement de jugement de la compétition sera publié ici dès qu'il sera finalisé."
 organizers:
   eyebrow: Les organisateurs
   title: "Slack'icîmes, la highline aux Arcs depuis 2013"
@@ -211,8 +228,8 @@ organizers:
     - Dix éditions du Winter Festislack, les premiers stages de highline en France, et en 2022, aux Deux Têtes, la première compétition internationale de highline freestyle au format battle. En 2023, notre compétition Master a été requalifiée en World Cup par l'ISA.
     - "En 2027, l'association met toute son énergie dans cette Coupe du Monde : pas de Winter Festislack cette année, mais un spectacle grandiose aux dates habituelles du festival."
   illustration:
-    image: ../../assets/images/world-cup/highliner-salut.jpg
-    alt: Un highliner salue au milieu de la ligne, face aux sommets enneigés
+    image: ../../assets/images/world-cup/highliner-figure-sommet.jpg
+    alt: Un highliner en pleine figure au-dessus de la ligne, devant un sommet enneigé
   linkLabel: "Découvrir l'association"
 partners:
   eyebrow: Partenaires

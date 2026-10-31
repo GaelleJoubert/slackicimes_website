@@ -17,14 +17,14 @@ const lastStepIndex = infos.steps.length - 1;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.practicalInfo} tone="white">
-  <div class="gap-block flex flex-col">
+  <div class="gap-stack flex flex-col">
     <CupSectionIntro
       eyebrow={infos.eyebrow}
       title={infos.title}
       theme="light"
     />
-    <div class="gap-block grid lg:grid-cols-5">
-      <div class="gap-stack flex flex-col lg:col-span-3">
+    <div class="gap-block grid lg:grid-cols-3">
+      <div class="gap-stack flex flex-col lg:col-span-2">
         <ol class="gap-stack flex flex-col">
           {infos.steps.map((step, stepIndex) => (
             <li class="flex items-start gap-4">
@@ -65,15 +65,17 @@ const lastStepIndex = infos.steps.length - 1;
           ))}
         </ul>
       </div>
-      <figure class="flex flex-col gap-2.5 lg:col-span-2">
-        <Picture
-          src={infos.photo.image}
-          alt={infos.photo.alt}
-          widths={PHOTO_WIDTHS}
-          sizes={PHOTO_SIZES}
-          formats={["avif", "webp"]}
-          class="max-h-screen w-full rounded-2xl object-cover"
-        />
+      <figure class="flex flex-col gap-2.5">
+        <div class="relative lg:flex-1">
+          <Picture
+            src={infos.photo.image}
+            alt={infos.photo.alt}
+            widths={PHOTO_WIDTHS}
+            sizes={PHOTO_SIZES}
+            formats={["avif", "webp"]}
+            class="max-h-screen w-full rounded-2xl object-cover lg:absolute lg:inset-0 lg:h-full"
+          />
+        </div>
         <figcaption class="text-cup-muted text-sm">{infos.caption}</figcaption>
       </figure>
     </div>

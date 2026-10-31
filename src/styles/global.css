@@ -215,6 +215,10 @@
     @apply font-display text-4xl leading-none font-bold uppercase md:text-5xl lg:text-6xl;
   }
 
+  .cup-subsection-title {
+    @apply font-display text-2xl leading-none font-bold uppercase md:text-3xl;
+  }
+
   .cup-card-title {
     @apply font-display text-2xl font-semibold uppercase;
   }
@@ -283,6 +287,12 @@
 
   .media-start-grid {
     grid-template-columns: auto 1fr;
+  }
+
+  .bracket-flow-grid {
+    @variant lg {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+    }
   }
 
   .mobile-section-snap {

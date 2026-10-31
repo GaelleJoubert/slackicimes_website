@@ -1,53 +1,26 @@
 ---
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
 import type { WorldCupContent } from "./types";
+import WorldCupLiveResults from "./WorldCupLiveResults.astro";
+import WorldCupQualifiedAthletes from "./WorldCupQualifiedAthletes.astro";
 
 interface Props {
   results: WorldCupContent["results"];
 }
 
 const { results } = Astro.props;
-const previewRows = Array.from({ length: results.previewRowCount });
 ---
 
-<section
-  id={WORLD_CUP_SECTION_IDS.results}
-  class="bg-cup-surface scroll-mt-16 px-6 pb-cup-section"
->
-  <div class="bg-cup-slate mx-auto gap-block p-card flex max-w-6xl flex-col rounded-3xl text-white lg:flex-row lg:items-center">
-    <div class="gap-stack flex min-w-0 flex-1 flex-col">
-      <span class="text-cup-sky inline-flex items-center gap-2 self-start text-sm font-bold tracking-wider uppercase">
-        <span aria-hidden="true" class="bg-cup-sky size-2 rounded-full"></span>
-        {results.badge}
-      </span>
-      <h2 class="font-display text-4xl leading-none font-bold uppercase md:text-5xl">
-        {results.title}
-      </h2>
-      <p class="text-cup-slate-text">{results.text}</p>
-    </div>
-    <div
-      class="bg-cup-slate-deep p-tile flex flex-1 flex-col gap-2.5 rounded-2xl"
-      aria-label={results.previewLabel}
-      role="table"
-    >
-      <div
-        role="row"
-        class="text-cup-slate-muted flex justify-between text-sm font-semibold tracking-wider uppercase"
-      >
-        <span role="columnheader">{results.previewGroup}</span>
-        <span role="columnheader">{results.previewScore}</span>
-      </div>
-      {previewRows.map(() => (
-        <div
-          role="row"
-          class="bg-cup-slate flex justify-between rounded-lg px-3.5 py-2.5"
-        >
-          <span role="cell">{results.previewRow}</span>
-          <span role="cell" class="text-cup-slate-muted">
-            –
-          </span>
-        </div>
-      ))}
-    </div>
+<CupSection id={WORLD_CUP_SECTION_IDS.results} tone="white">
+  <div class="gap-block flex flex-col">
+    <CupSectionIntro
+      eyebrow={results.eyebrow}
+      title={results.title}
+      theme="light"
+    />
+    <WorldCupQualifiedAthletes qualified={results.qualified} />
+    <WorldCupLiveResults live={results.live} />
   </div>
-</section>
+</CupSection>

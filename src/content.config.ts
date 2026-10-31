@@ -286,7 +286,17 @@ const worldCup = defineCollection({
             detail: nonEmptyText,
           }),
         ),
-        highlights: z.array(titledText),
+      }),
+      format: z.object({
+        title: nonEmptyText,
+        battle: titledText,
+        origin: titledText,
+        bracket: z.object({
+          title: nonEmptyText,
+          pool: titledText.extend({ ranks: z.array(nonEmptyText).min(1) }),
+          grandFinal: titledText,
+          rankFinals: titledText,
+        }),
       }),
       programme: sectionIntro.extend({
         note: nonEmptyText,
@@ -298,25 +308,26 @@ const worldCup = defineCollection({
             emphasis,
           }),
         ),
-        formatTitle: nonEmptyText,
-        formatSteps: z.array(nonEmptyText).min(1),
       }),
-      athletes: sectionIntro.extend({
-        intro: nonEmptyText,
-        announcement: nonEmptyText,
-        categories: z.array(nonEmptyText).min(1),
-        slotsPerCategory: z.number().int().positive(),
-        placeholderLabel: nonEmptyText,
-      }),
-      results: z.object({
-        badge: nonEmptyText,
-        title: nonEmptyText,
-        text: nonEmptyText,
-        previewLabel: nonEmptyText,
-        previewGroup: nonEmptyText,
-        previewScore: nonEmptyText,
-        previewRow: nonEmptyText,
-        previewRowCount: z.number().int().positive(),
+      results: sectionIntro.extend({
+        qualified: z.object({
+          title: nonEmptyText,
+          intro: nonEmptyText,
+          announcement: nonEmptyText,
+          categories: z.array(nonEmptyText).min(1),
+          slotsPerCategory: z.number().int().positive(),
+          placeholderLabel: nonEmptyText,
+        }),
+        live: z.object({
+          badge: nonEmptyText,
+          title: nonEmptyText,
+          text: nonEmptyText,
+          previewLabel: nonEmptyText,
+          previewGroup: nonEmptyText,
+          previewScore: nonEmptyText,
+          previewRow: nonEmptyText,
+          previewRowCount: z.number().int().positive(),
+        }),
       }),
       infos: sectionIntro.extend({
         steps: z.array(
@@ -328,37 +339,45 @@ const worldCup = defineCollection({
         photo: illustration,
         caption: nonEmptyText,
       }),
-      participate: sectionIntro.extend({
+      athletes: sectionIntro.extend({
         intro: nonEmptyText,
-        timeline: z.array(
-          z.object({ date: nonEmptyText, label: nonEmptyText, emphasis }),
-        ),
-        videoFormat: titledList,
-        rules: titledList,
-        judging: z.object({
+        contest: z.object({
           title: nonEmptyText,
-          criteria: z.array(
-            z.object({ label: nonEmptyText, points: nonEmptyText }),
-          ),
-          note: nonEmptyText,
+          setup: titledList,
+          prize: z.object({
+            title: nonEmptyText,
+            note: nonEmptyText,
+            places: z.array(
+              z.object({
+                label: nonEmptyText,
+                amountInEuros: z.number().positive(),
+              }),
+            ),
+          }),
+          rulebook: titledText,
         }),
-        submission: z.object({
-          text: nonEmptyText,
-          label: nonEmptyText,
-          url: z.url(),
-        }),
-        prize: z.object({
+        wildCard: z.object({
           title: nonEmptyText,
-          note: nonEmptyText,
-          places: z.array(
-            z.object({
-              label: nonEmptyText,
-              amountInEuros: z.number().positive(),
-            }),
+          timeline: z.array(
+            z.object({ date: nonEmptyText, label: nonEmptyText, emphasis }),
           ),
+          videoFormat: titledList,
+          rules: titledList,
+          judging: z.object({
+            title: nonEmptyText,
+            criteria: z.array(
+              z.object({ label: nonEmptyText, points: nonEmptyText }),
+            ),
+            note: nonEmptyText,
+          }),
+          submission: z.object({
+            text: nonEmptyText,
+            formLabel: nonEmptyText,
+            formUrl: z.url(),
+            rulesLabel: nonEmptyText,
+            rulesUrl: z.url(),
+          }),
         }),
-        setup: titledList,
-        rulebook: titledText,
       }),
       organizers: sectionIntro.extend({
         paragraphs: z.array(nonEmptyText).min(1),

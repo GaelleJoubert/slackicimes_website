@@ -1,0 +1,40 @@
+---
+import ChevronIcon from "../../ui/ChevronIcon.astro";
+import type { WorldCupContent } from "./types";
+import WorldCupBracketStage from "./WorldCupBracketStage.astro";
+
+interface Props {
+  bracket: WorldCupContent["format"]["bracket"];
+}
+
+const { bracket } = Astro.props;
+const { pool, grandFinal, rankFinals } = bracket;
+const STEP_CHEVRON_CLASSES =
+  "text-cup-sky mx-auto rotate-90 self-center lg:rotate-0";
+---
+
+<div class="bg-cup-navy gap-stack p-card flex flex-col rounded-2xl text-white">
+  <h3 class="cup-card-title">{bracket.title}</h3>
+  <div class="bracket-flow-grid gap-grid grid">
+    <WorldCupBracketStage stage={pool} tone="regular">
+      <ol class="grid grid-cols-4 gap-2">
+        {pool.ranks.map((rank, rankIndex) => (
+          <li
+            class:list={[
+              "font-display rounded-lg border-2 py-1 text-center font-bold",
+              rankIndex === 0
+                ? "border-cup-pink text-cup-pink-soft"
+                : "border-cup-line",
+            ]}
+          >
+            {rank}
+          </li>
+        ))}
+      </ol>
+    </WorldCupBracketStage>
+    <ChevronIcon class={STEP_CHEVRON_CLASSES} />
+    <WorldCupBracketStage stage={rankFinals} tone="regular" />
+    <ChevronIcon class={STEP_CHEVRON_CLASSES} />
+    <WorldCupBracketStage stage={grandFinal} tone="final" />
+  </div>
+</div>

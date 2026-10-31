@@ -3,9 +3,9 @@ import "@fontsource-variable/inter";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import WorldCupAthletes from "../../components/sections/world-cup/WorldCupAthletes.astro";
 import WorldCupEvent from "../../components/sections/world-cup/WorldCupEvent.astro";
+import WorldCupFormat from "../../components/sections/world-cup/WorldCupFormat.astro";
 import WorldCupHero from "../../components/sections/world-cup/WorldCupHero.astro";
 import WorldCupOrganizers from "../../components/sections/world-cup/WorldCupOrganizers.astro";
-import WorldCupParticipate from "../../components/sections/world-cup/WorldCupParticipate.astro";
 import WorldCupPartners from "../../components/sections/world-cup/WorldCupPartners.astro";
 import WorldCupPracticalInfo from "../../components/sections/world-cup/WorldCupPracticalInfo.astro";
 import WorldCupProgramme from "../../components/sections/world-cup/WorldCupProgramme.astro";
@@ -37,12 +37,12 @@ const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
   <div class="font-cup text-cup-ink bg-cup-surface text-base leading-relaxed md:text-lg">
     <WorldCupSectionNav sectionNav={worldCup.sectionNav} />
     <WorldCupHero hero={worldCup.hero} />
-    <WorldCupPracticalInfo infos={worldCup.infos} />
     <WorldCupEvent event={worldCup.event} />
+    <WorldCupPracticalInfo infos={worldCup.infos} />
     <WorldCupProgramme programme={worldCup.programme} />
-    <WorldCupAthletes athletes={worldCup.athletes} />
+    <WorldCupFormat format={worldCup.format} />
+    <WorldCupAthletes athletes={worldCup.athletes} locale={locale} />
     <WorldCupResults results={worldCup.results} />
-    <WorldCupParticipate participate={worldCup.participate} locale={locale} />
     <WorldCupOrganizers organizers={worldCup.organizers} locale={locale} />
     <WorldCupPartners partners={worldCup.partners} locale={locale} />
     <WorldCupQuestion question={worldCup.question} locale={locale} />

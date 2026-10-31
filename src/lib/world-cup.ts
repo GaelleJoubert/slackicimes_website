@@ -4,7 +4,8 @@ export const WORLD_CUP_SECTION_IDS = {
   athletes: "athletes",
   results: "resultats",
   practicalInfo: "infos",
-  participate: "participer",
+  format: "format",
+  wildCards: "participer",
   partners: "partenaires",
 } as const;
 
