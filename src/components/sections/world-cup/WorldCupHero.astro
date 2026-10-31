@@ -1,88 +1,32 @@
 ---
-import { Picture } from "astro:assets";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
-import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "./types";
+import WorldCupShowcase from "./WorldCupShowcase.astro";
 
 interface Props {
-  heading: string;
   hero: WorldCupContent["hero"];
 }
 
-const LOGO_HEIGHT_PX = 84;
-const POSTER_WIDTHS = [420, 840];
-const POSTER_SIZES = "(min-width: 768px) 420px, 90vw";
+const TITLE_ID = "coupe-du-monde-titre";
 
-const { heading, hero } = Astro.props;
+const { hero } = Astro.props;
+const heroActions = [
+  {
+    href: `#${WORLD_CUP_SECTION_IDS.practicalInfo}`,
+    label: hero.primaryCta,
+    variant: "cupPrimary" as const,
+  },
+  {
+    href: `#${WORLD_CUP_SECTION_IDS.participate}`,
+    label: hero.secondaryCta,
+    variant: "cupSecondaryOnDark" as const,
+  },
+];
 ---
 
-<section class="bg-cup-navy overflow-hidden px-6 py-section text-white">
-  <div class="mx-auto gap-block flex max-w-6xl flex-col lg:flex-row lg:items-center">
-    <div class="gap-stack flex min-w-0 flex-1 flex-col">
-      <div class="flex flex-wrap items-center gap-4">
-        <Picture
-          src={hero.logo.image}
-          alt={hero.logo.alt}
-          height={LOGO_HEIGHT_PX}
-          densities={[1, 2]}
-          formats={["avif", "webp"]}
-          class="h-16 w-auto md:h-20"
-        />
-        <span class="text-cup-sky inline-flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-          <span
-            aria-hidden="true"
-            class="bg-cup-sky size-2 rounded-full"
-          ></span>
-          {hero.badge}
-        </span>
-      </div>
-      <div>
-        <p class="font-display text-2xl font-semibold tracking-widest uppercase md:text-3xl">
-          {hero.kicker}
-        </p>
-        <h1 class="font-display text-6xl leading-none font-bold uppercase md:text-8xl lg:text-hero">
-          {heading}
-        </h1>
-        <span class="bg-cup-pink font-display mt-4 inline-block rounded-2xl px-5 py-2.5 text-2xl leading-none font-bold uppercase md:text-3xl">
-          {hero.tag}
-        </span>
-      </div>
-      <p class="text-cup-pale max-w-xl text-lg md:text-xl">{hero.intro}</p>
-      <dl class="flex flex-wrap gap-x-10 gap-y-3">
-        {hero.facts.map((fact) => (
-          <div class="flex flex-col">
-            <dt class="text-cup-sky text-sm font-semibold tracking-wider uppercase">
-              {fact.label}
-            </dt>
-            <dd class="font-display text-2xl font-semibold">{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
-      <div class="gap-inline flex flex-wrap">
-        <LinkButton
-          href={`#${WORLD_CUP_SECTION_IDS.practicalInfo}`}
-          variant="cupPrimary"
-        >
-          {hero.primaryCta}
-        </LinkButton>
-        <LinkButton
-          href={`#${WORLD_CUP_SECTION_IDS.participate}`}
-          variant="cupSecondaryOnDark"
-        >
-          {hero.secondaryCta}
-        </LinkButton>
-      </div>
-    </div>
-    <div class="flex flex-1 justify-center lg:max-w-md">
-      <Picture
-        src={hero.poster.image}
-        alt={hero.poster.alt}
-        widths={POSTER_WIDTHS}
-        sizes={POSTER_SIZES}
-        formats={["avif", "webp"]}
-        loading="eager"
-        class="w-full max-w-sm rotate-2 rounded-2xl shadow-raised shadow-cup-pink"
-      />
-    </div>
-  </div>
-</section>
+<WorldCupShowcase
+  hero={hero}
+  headingLevel="h1"
+  titleId={TITLE_ID}
+  actions={heroActions}
+/>

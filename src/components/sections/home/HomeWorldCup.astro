@@ -1,79 +1,29 @@
 ---
-import "@fontsource-variable/inter";
-import { Picture } from "astro:assets";
 import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
-import Container from "../../ui/Container.astro";
-import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "../world-cup/types";
+import WorldCupShowcase from "../world-cup/WorldCupShowcase.astro";
 
 interface Props {
   hero: WorldCupContent["hero"];
   locale: Locale;
 }
 
-const FULL_LOGO_WIDTHS = [480, 960];
-const FULL_LOGO_SIZES = "(min-width: 768px) 480px, 90vw";
-const POSTER_WIDTHS = [320, 400, 800];
-const POSTER_SIZES = "(min-width: 768px) 400px, 160px";
 const TITLE_ID = "coupe-du-monde";
 
 const { hero, locale } = Astro.props;
 const strings = uiStrings(locale);
-const worldCupPath = localizedPath("coupe-du-monde", locale);
+const discoverAction = {
+  href: localizedPath("coupe-du-monde", locale),
+  label: strings.common.discoverWorldCupButton,
+  variant: "cupPrimary" as const,
+};
 ---
 
-<section
-  aria-labelledby={TITLE_ID}
-  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-section text-white md:border-b-6"
->
-  <Container class="media-start-grid grid items-center gap-grid md:grid-cols-5 md:gap-block">
-    <div class="contents md:col-span-3 md:flex md:flex-col md:gap-stack">
-      <h2 id={TITLE_ID} class="col-span-2">
-        <Picture
-          src={hero.fullLogo.image}
-          alt={hero.fullLogo.alt}
-          widths={FULL_LOGO_WIDTHS}
-          sizes={FULL_LOGO_SIZES}
-          formats={["avif", "webp"]}
-          class="h-auto w-full max-w-120"
-        />
-      </h2>
-      <span class="text-cup-sky cup-eyebrow col-span-2">{hero.badge}</span>
-      <p class="text-cup-pale col-span-2 max-w-xl md:text-lg">{hero.intro}</p>
-      <dl class="col-start-2 row-start-4 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2.5">
-        {hero.facts.map((fact) => (
-          <div class="flex flex-col">
-            <dt class="text-cup-sky text-sm font-semibold tracking-wider uppercase">
-              {fact.label}
-            </dt>
-            <dd class="font-display text-lg font-semibold md:text-2xl">
-              {fact.value}
-            </dd>
-          </div>
-        ))}
-      </dl>
-      <div class="gap-inline hidden flex-wrap md:flex">
-        <LinkButton href={worldCupPath} variant="cupPrimary">
-          {strings.common.discoverWorldCupButton}
-        </LinkButton>
-      </div>
-    </div>
-    <div class="col-start-1 row-start-4 flex md:col-span-2 md:col-start-auto md:row-start-auto md:justify-center">
-      <Picture
-        src={hero.poster.image}
-        alt={hero.poster.alt}
-        widths={POSTER_WIDTHS}
-        sizes={POSTER_SIZES}
-        formats={["avif", "webp"]}
-        class="w-40 max-w-100 origin-top-left scale-85 rotate-2 rounded-xl shadow-raised shadow-cup-pink md:w-full md:scale-100 md:rounded-2xl"
-      />
-    </div>
-    <div class="gap-inline col-span-2 flex flex-col md:hidden">
-      <LinkButton href={worldCupPath} variant="cupPrimary">
-        {strings.common.discoverWorldCupButton}
-      </LinkButton>
-    </div>
-  </Container>
-</section>
+<WorldCupShowcase
+  hero={hero}
+  headingLevel="h2"
+  titleId={TITLE_ID}
+  actions={[discoverAction]}
+/>

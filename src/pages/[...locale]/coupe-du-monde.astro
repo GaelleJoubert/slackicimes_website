@@ -4,7 +4,6 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import WorldCupAthletes from "../../components/sections/world-cup/WorldCupAthletes.astro";
 import WorldCupEvent from "../../components/sections/world-cup/WorldCupEvent.astro";
 import WorldCupHero from "../../components/sections/world-cup/WorldCupHero.astro";
-import WorldCupNowBanner from "../../components/sections/world-cup/WorldCupNowBanner.astro";
 import WorldCupOrganizers from "../../components/sections/world-cup/WorldCupOrganizers.astro";
 import WorldCupParticipate from "../../components/sections/world-cup/WorldCupParticipate.astro";
 import WorldCupPartners from "../../components/sections/world-cup/WorldCupPartners.astro";
@@ -36,14 +35,13 @@ const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
   pageSlug={PAGE_SLUG}
 >
   <div class="font-cup text-cup-ink bg-cup-surface text-base leading-relaxed md:text-lg">
-    <WorldCupHero heading={page.data.heading} hero={worldCup.hero} />
     <WorldCupSectionNav sectionNav={worldCup.sectionNav} />
-    <WorldCupNowBanner now={worldCup.now} />
+    <WorldCupHero hero={worldCup.hero} />
+    <WorldCupPracticalInfo infos={worldCup.infos} />
     <WorldCupEvent event={worldCup.event} />
     <WorldCupProgramme programme={worldCup.programme} />
     <WorldCupAthletes athletes={worldCup.athletes} />
     <WorldCupResults results={worldCup.results} />
-    <WorldCupPracticalInfo infos={worldCup.infos} />
     <WorldCupParticipate participate={worldCup.participate} locale={locale} />
     <WorldCupOrganizers organizers={worldCup.organizers} locale={locale} />
     <WorldCupPartners partners={worldCup.partners} locale={locale} />

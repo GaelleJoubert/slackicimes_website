@@ -1,0 +1,90 @@
+---
+import "@fontsource-variable/inter";
+import { Picture } from "astro:assets";
+import Container from "../../ui/Container.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { ButtonVariant } from "../../ui/button-styles";
+import type { WorldCupContent } from "./types";
+
+interface ShowcaseAction {
+  href: string;
+  label: string;
+  variant: ButtonVariant;
+}
+
+interface Props {
+  hero: WorldCupContent["hero"];
+  headingLevel: "h1" | "h2";
+  titleId: string;
+  actions: ShowcaseAction[];
+}
+
+const FULL_LOGO_WIDTHS = [480, 960];
+const FULL_LOGO_SIZES = "(min-width: 768px) 480px, 90vw";
+const POSTER_WIDTHS = [320, 400, 800];
+const POSTER_SIZES = "(min-width: 768px) 400px, 160px";
+
+const { hero, headingLevel: Heading, titleId, actions } = Astro.props;
+const isPageHeading = Heading === "h1";
+const imageLoading = isPageHeading ? "eager" : "lazy";
+---
+
+<section
+  aria-labelledby={titleId}
+  class="bg-cup-navy font-cup border-cup-pink border-b-5 py-section text-white md:border-b-6"
+>
+  <Container class="media-start-grid grid items-center gap-grid md:grid-cols-5 md:gap-block">
+    <div class="contents md:col-span-3 md:flex md:flex-col md:gap-stack">
+      <Heading id={titleId} class="col-span-2">
+        <Picture
+          src={hero.fullLogo.image}
+          alt={hero.fullLogo.alt}
+          widths={FULL_LOGO_WIDTHS}
+          sizes={FULL_LOGO_SIZES}
+          formats={["avif", "webp"]}
+          loading={imageLoading}
+          class="h-auto w-full max-w-120"
+        />
+      </Heading>
+      <span class="text-cup-sky cup-eyebrow col-span-2">{hero.badge}</span>
+      <p class="text-cup-pale col-span-2 max-w-xl md:text-lg">{hero.intro}</p>
+      <dl class="col-start-2 row-start-4 flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2.5">
+        {hero.facts.map((fact) => (
+          <div class="flex flex-col">
+            <dt class="text-cup-sky text-sm font-semibold tracking-wider uppercase">
+              {fact.label}
+            </dt>
+            <dd class="font-display text-lg font-semibold md:text-2xl">
+              {fact.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div class="gap-inline hidden flex-wrap md:flex">
+        {actions.map((action) => (
+          <LinkButton href={action.href} variant={action.variant}>
+            {action.label}
+          </LinkButton>
+        ))}
+      </div>
+    </div>
+    <div class="col-start-1 row-start-4 flex md:col-span-2 md:col-start-auto md:row-start-auto md:justify-center">
+      <Picture
+        src={hero.poster.image}
+        alt={hero.poster.alt}
+        widths={POSTER_WIDTHS}
+        sizes={POSTER_SIZES}
+        formats={["avif", "webp"]}
+        loading={imageLoading}
+        class="w-40 max-w-100 origin-top-left scale-85 rotate-2 rounded-xl shadow-raised shadow-cup-pink md:w-full md:scale-100 md:rounded-2xl"
+      />
+    </div>
+    <div class="gap-inline col-span-2 flex flex-col md:hidden">
+      {actions.map((action) => (
+        <LinkButton href={action.href} variant={action.variant}>
+          {action.label}
+        </LinkButton>
+      ))}
+    </div>
+  </Container>
+</section>

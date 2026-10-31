@@ -1,7 +1,5 @@
 hero:
   badge: 1st stop · ISA World Cup Series 2027
-  kicker: Les Arcs
-  tag: World Cup
   intro: The world's 24 best athletes go head to head in battles on four lines rigged above the Place Olympique in Arc 2000. A free show, right in the heart of the resort.
   facts:
     - { label: Dates, value: "April 14 – 16, 2027" }
@@ -9,9 +7,6 @@ hero:
     - { label: Entry, value: Free }
   primaryCta: Come and watch
   secondaryCta: "Athletes: wild cards"
-  logo:
-    image: ../../assets/images/world-cup/logo-world-cup.png
-    alt: Les Arcs Highline Freestyle World Cup logo
   fullLogo:
     image: ../../assets/images/world-cup/logo-world-cup-complet.png
     alt: Les Arcs Highline Freestyle World Cup
@@ -21,17 +16,13 @@ hero:
 sectionNav:
   label: Page sections
   links:
+    - { label: Practical info, target: infos }
     - { label: The event, target: evenement }
     - { label: Schedule, target: programme }
     - { label: Athletes, target: athletes }
     - { label: Results, target: resultats }
-    - { label: Practical info, target: infos }
     - { label: Take part, target: participer }
     - { label: Partners, target: partenaires }
-now:
-  badge: Right now
-  text: Video wild cards are open until November 30, 2026. The 24 qualified athletes will be announced in December.
-  linkLabel: Send my video →
 event:
   eyebrow: The event
   title: The first stop of the 2027 World Cup

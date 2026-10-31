@@ -1,7 +1,5 @@
 hero:
   badge: 1re étape · ISA World Cup Series 2027
-  kicker: Les Arcs
-  tag: Coupe du Monde
   intro: Les 24 meilleurs athlètes du monde s'affrontent en battle sur quatre lignes tendues au-dessus de la Place Olympique d'Arc 2000. Un spectacle gratuit, en plein cœur de la station.
   facts:
     - { label: Dates, value: 14 – 16 avril 2027 }
@@ -9,9 +7,6 @@ hero:
     - { label: Accès, value: Entrée libre }
   primaryCta: Venir voir la compétition
   secondaryCta: "Athlètes : wild cards"
-  logo:
-    image: ../../assets/images/world-cup/logo-world-cup.png
-    alt: Logo Les Arcs Highline Freestyle World Cup
   fullLogo:
     image: ../../assets/images/world-cup/logo-world-cup-complet.png
     alt: Les Arcs Highline Freestyle World Cup
@@ -21,17 +16,13 @@ hero:
 sectionNav:
   label: Sections de la page
   links:
+    - { label: Infos pratiques, target: infos }
     - { label: "L'événement", target: evenement }
     - { label: Programme, target: programme }
     - { label: Athlètes, target: athletes }
     - { label: Résultats, target: resultats }
-    - { label: Infos pratiques, target: infos }
     - { label: Participer, target: participer }
     - { label: Partenaires, target: partenaires }
-now:
-  badge: En ce moment
-  text: Les wild cards vidéo sont ouvertes jusqu'au 30 novembre 2026. Les 24 qualifiés seront annoncés en décembre.
-  linkLabel: Envoyer ma vidéo →
 event:
   eyebrow: "L'événement"
   title: La première étape de la Coupe du Monde 2027

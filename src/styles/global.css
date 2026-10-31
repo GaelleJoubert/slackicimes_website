@@ -83,6 +83,7 @@
   --aspect-photo: 3 / 2;
 
   --spacing-section: var(--section-space);
+  --spacing-cup-section: var(--cup-section-space);
   --spacing-page-top: var(--page-top-space);
   --spacing-block: var(--block-space);
   --spacing-stack: var(--stack-space);
@@ -116,6 +117,7 @@
   --card-shadow-distance: 0.3125rem;
   --pressable-shadow-distance: 0.1875rem;
   --section-space: 2.5rem;
+  --cup-section-space: 2.5rem;
   --page-top-space: 2rem;
   --block-space: 2rem;
   --stack-space: 1.25rem;
@@ -129,6 +131,7 @@
     --card-shadow-distance: 0.375rem;
     --pressable-shadow-distance: 0.25rem;
     --section-space: 8rem;
+    --cup-section-space: 5rem;
     --page-top-space: 4rem;
     --block-space: 4rem;
     --stack-space: 1.5rem;

@@ -1,4 +1,5 @@
 ---
+import Container from "../../ui/Container.astro";
 import type { WorldCupContent } from "./types";
 
 interface Props {
@@ -12,16 +13,18 @@ const { sectionNav } = Astro.props;
   aria-label={sectionNav.label}
   class="bg-cup-ink border-cup-pink sticky top-18 z-10 border-b-4 lg:top-24"
 >
-  <ul class="mx-auto flex max-w-6xl gap-7 overflow-x-auto px-6 text-sm font-semibold whitespace-nowrap md:text-base">
-    {sectionNav.links.map((link) => (
-      <li>
-        <a
-          href={`#${link.target}`}
-          class="hover:text-cup-sky block py-4 text-white"
-        >
-          {link.label}
-        </a>
-      </li>
-    ))}
-  </ul>
+  <Container>
+    <ul class="flex gap-7 overflow-x-auto text-sm font-semibold whitespace-nowrap md:text-base">
+      {sectionNav.links.map((link) => (
+        <li>
+          <a
+            href={`#${link.target}`}
+            class="hover:text-cup-sky block py-4 text-white"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Container>
 </nav>

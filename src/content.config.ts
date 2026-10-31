@@ -260,13 +260,10 @@ const worldCup = defineCollection({
     return z.object({
       hero: z.object({
         badge: nonEmptyText,
-        kicker: nonEmptyText,
-        tag: nonEmptyText,
         intro: nonEmptyText,
         facts: z.array(z.object({ label: nonEmptyText, value: nonEmptyText })),
         primaryCta: nonEmptyText,
         secondaryCta: nonEmptyText,
-        logo: illustration,
         fullLogo: illustration,
         poster: illustration,
       }),
@@ -278,11 +275,6 @@ const worldCup = defineCollection({
             target: z.enum(WORLD_CUP_SECTION_ID_LIST),
           }),
         ),
-      }),
-      now: z.object({
-        badge: nonEmptyText,
-        text: nonEmptyText,
-        linkLabel: nonEmptyText,
       }),
       event: sectionIntro.extend({
         paragraphs: z.array(nonEmptyText).min(1),
