@@ -109,9 +109,10 @@ athletes:
     setup:
       title: The setup
       items:
-        - "4 parallel lines: two of 74 m, two of 68 m."
-        - Dyneema lines rigged on bungees.
-        - 100% battle competition.
+        - All lines will be Dyneema, with SlackX adjustable bungees.
+        - "Mainline: Dynosaur 2, backup: Dienomore, by Sewings El Patron."
+        - "Two pairs of lines: two of 68 m and two of 74 m."
+        - Each category (Men and Women) will be assigned a fixed length.
     prize:
       title: Prize money · €4,000
       note: Same prize money for women and men.
@@ -245,11 +246,13 @@ partners:
         - {
             name: SlackX,
             logo: ../../assets/images/world-cup/partners/slackx.png,
+            url: "https://www.instagram.com/slackx.slacklines/",
             role: Bungees,
           }
         - {
             name: Sewings El Patrón,
             logo: ../../assets/images/world-cup/partners/el-patron.jpg,
+            url: "https://www.instagram.com/sewingselpatron/",
             role: Webbing,
           }
     - label: "Support partners · organization & communication"
@@ -258,14 +261,17 @@ partners:
         - {
             name: "ISA Slackline World Cup Series 2027 Les Arcs",
             logo: ../../assets/images/world-cup/partners/isa-world-cup-series.png,
+            url: "https://www.slacklineinternational.org/sport/competitions/",
           }
         - {
             name: "AFS, French Slackline Association",
             logo: ../../assets/images/world-cup/partners/afs.png,
+            url: "https://linktr.ee/associationfrancaiseslackline",
           }
         - {
             name: "R'Les Arcs 93.4",
             logo: ../../assets/images/world-cup/partners/r-les-arcs.jpg,
+            url: "https://laradiostation.fr/rles-arcs/",
           }
   becomePartnerLabel: Become a partner
 question:
