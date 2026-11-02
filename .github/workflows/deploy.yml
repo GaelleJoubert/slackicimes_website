@@ -2,12 +2,15 @@ name: Build and deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+
+env:
+  STAGING_REPOSITORY: slackicimes/slackicimes.github.io
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -28,12 +31,21 @@ jobs:
       - run: npm run check
       - run: npm run build
         env:
-          SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE == 'true' }}
+          # Only production may be indexed; staging is always noindex.
+          SITE_INDEXABLE: ${{ github.ref == 'refs/heads/main' && vars.SITE_INDEXABLE == 'true' }}
       - run: npm test
       - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+      - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.STAGING_DEPLOY_KEY }}
+          external_repository: ${{ env.STAGING_REPOSITORY }}
+          publish_branch: gh-pages
+          publish_dir: dist
+          force_orphan: true
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
