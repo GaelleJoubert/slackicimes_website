@@ -3,16 +3,18 @@ import { Picture } from "astro:assets";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import CupSection from "../../ui/CupSection.astro";
 import CupSectionIntro from "../../ui/CupSectionIntro.astro";
-import type { WorldCupContent } from "./types";
+import type { WorldCupContent, WorldCupVenue } from "./types";
+import WorldCupVenuePhoto from "./WorldCupVenuePhoto.astro";
 
 interface Props {
   event: WorldCupContent["event"];
+  venue: WorldCupVenue;
 }
 
 const ILLUSTRATION_WIDTHS = [480, 960];
 const ILLUSTRATION_SIZES = "(min-width: 1024px) 460px, 100vw";
 
-const { event } = Astro.props;
+const { event, venue } = Astro.props;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.event} tone="surface">
@@ -29,7 +31,7 @@ const { event } = Astro.props;
             <p>{paragraph}</p>
           ))}
         </div>
-        <div class="lg:col-span-2">
+        <div class="hidden lg:col-span-2 lg:block">
           <Picture
             src={event.illustration.image}
             alt={event.illustration.alt}
@@ -48,9 +50,10 @@ const { event } = Astro.props;
             {stat.value}
           </p>
           <p class="font-semibold">{stat.label}</p>
-          <p class="text-cup-soft text-sm">{stat.detail}</p>
+          <p class="text-cup-soft hidden text-sm lg:block">{stat.detail}</p>
         </li>
       ))}
     </ul>
+    <WorldCupVenuePhoto venue={venue} class="flex lg:hidden" />
   </div>
 </CupSection>

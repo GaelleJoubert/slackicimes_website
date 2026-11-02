@@ -223,6 +223,10 @@
     @apply font-display text-2xl font-semibold uppercase;
   }
 
+  .cup-tile-title {
+    @apply font-display text-sm leading-tight font-semibold uppercase sm:text-xl;
+  }
+
   .cup-stat-value {
     @apply font-display text-4xl leading-none font-bold;
   }

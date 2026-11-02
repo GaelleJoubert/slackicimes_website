@@ -8,21 +8,26 @@ interface Props {
   format: WorldCupContent["format"];
 }
 
+const STORY_BLOCK_CLASSES = "p-tile flex flex-col gap-2 rounded-2xl bg-white";
+
 const { format } = Astro.props;
-const storyBlocks = [format.battle, format.origin];
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.format} tone="surface">
   <div class="gap-stack flex flex-col">
     <h2 class="cup-title text-cup-navy">{format.title}</h2>
-    <ul class="gap-grid grid md:grid-cols-2">
-      {storyBlocks.map((block) => (
-        <li class="p-tile flex flex-col gap-2 rounded-2xl bg-white">
-          <h3 class="cup-card-title text-cup-navy">{block.title}</h3>
-          <p class="text-base">{block.text}</p>
-        </li>
-      ))}
-    </ul>
-    <WorldCupBracket bracket={format.bracket} />
+    <div class="gap-grid grid md:grid-cols-2">
+      <article class={STORY_BLOCK_CLASSES}>
+        <h3 class="cup-card-title text-cup-navy">{format.battle.title}</h3>
+        <p class="text-base">{format.battle.text}</p>
+      </article>
+      <article class:list={[STORY_BLOCK_CLASSES, "order-last md:order-none"]}>
+        <h3 class="cup-card-title text-cup-navy">{format.origin.title}</h3>
+        <p class="text-base">{format.origin.text}</p>
+      </article>
+      <div class="md:col-span-2">
+        <WorldCupBracket bracket={format.bracket} />
+      </div>
+    </div>
   </div>
 </CupSection>

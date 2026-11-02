@@ -1,0 +1,28 @@
+---
+import { Picture } from "astro:assets";
+import type { WorldCupVenue } from "./types";
+
+interface Props {
+  venue: WorldCupVenue;
+  class?: string;
+}
+
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "(min-width: 1024px) 380px, 100vw";
+
+const { venue, class: extraClasses } = Astro.props;
+---
+
+<figure class:list={["flex-col gap-2.5", extraClasses]}>
+  <div class="relative lg:flex-1">
+    <Picture
+      src={venue.photo.image}
+      alt={venue.photo.alt}
+      widths={PHOTO_WIDTHS}
+      sizes={PHOTO_SIZES}
+      formats={["avif", "webp"]}
+      class="aspect-4/5 max-h-screen w-full rounded-2xl object-cover lg:absolute lg:aspect-auto lg:inset-0 lg:h-full"
+    />
+  </div>
+  <figcaption class="text-cup-muted text-sm">{venue.caption}</figcaption>
+</figure>

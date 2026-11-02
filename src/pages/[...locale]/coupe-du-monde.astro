@@ -37,7 +37,7 @@ const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
   <div class="font-cup text-cup-ink bg-cup-surface text-base leading-relaxed md:text-lg">
     <WorldCupSectionNav sectionNav={worldCup.sectionNav} />
     <WorldCupHero hero={worldCup.hero} />
-    <WorldCupEvent event={worldCup.event} />
+    <WorldCupEvent event={worldCup.event} venue={worldCup.infos} />
     <WorldCupPracticalInfo infos={worldCup.infos} />
     <WorldCupProgramme programme={worldCup.programme} />
     <WorldCupFormat format={worldCup.format} />

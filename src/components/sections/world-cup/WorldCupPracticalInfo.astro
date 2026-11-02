@@ -1,16 +1,13 @@
 ---
-import { Picture } from "astro:assets";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import CupSection from "../../ui/CupSection.astro";
 import CupSectionIntro from "../../ui/CupSectionIntro.astro";
 import type { WorldCupContent } from "./types";
+import WorldCupVenuePhoto from "./WorldCupVenuePhoto.astro";
 
 interface Props {
   infos: WorldCupContent["infos"];
 }
-
-const PHOTO_WIDTHS = [400, 800];
-const PHOTO_SIZES = "(min-width: 1024px) 380px, 100vw";
 
 const { infos } = Astro.props;
 const lastStepIndex = infos.steps.length - 1;
@@ -65,19 +62,7 @@ const lastStepIndex = infos.steps.length - 1;
           ))}
         </ul>
       </div>
-      <figure class="flex flex-col gap-2.5">
-        <div class="relative lg:flex-1">
-          <Picture
-            src={infos.photo.image}
-            alt={infos.photo.alt}
-            widths={PHOTO_WIDTHS}
-            sizes={PHOTO_SIZES}
-            formats={["avif", "webp"]}
-            class="max-h-screen w-full rounded-2xl object-cover lg:absolute lg:inset-0 lg:h-full"
-          />
-        </div>
-        <figcaption class="text-cup-muted text-sm">{infos.caption}</figcaption>
-      </figure>
+      <WorldCupVenuePhoto venue={infos} class="hidden lg:flex" />
     </div>
   </div>
 </CupSection>
