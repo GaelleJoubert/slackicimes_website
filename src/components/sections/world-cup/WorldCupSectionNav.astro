@@ -1,25 +1,61 @@
 ---
+import ChevronIcon from "../../ui/ChevronIcon.astro";
 import Container from "../../ui/Container.astro";
+import { actionBadgeClasses } from "../../ui/action-badge";
 import type { WorldCupContent } from "./types";
 
 interface Props {
   sectionNav: WorldCupContent["sectionNav"];
 }
 
+const CURRENT_LINK_CLASSES = "data-current:text-cup-sky";
+
 const { sectionNav } = Astro.props;
+const [firstLink] = sectionNav.links;
+const desktopLinks = sectionNav.links.filter((link) => !link.mobileOnly);
 ---
 
 <nav
+  data-section-nav
   aria-label={sectionNav.label}
   class="bg-cup-ink border-cup-pink sticky top-18 z-10 border-b-4 lg:top-24"
 >
-  <Container>
-    <ul class="flex gap-7 overflow-x-auto text-sm font-semibold whitespace-nowrap md:text-base">
-      {sectionNav.links.map((link) => (
+  <Container class="relative">
+    <details data-section-menu class="group md:hidden">
+      <summary class="flex min-h-12 cursor-pointer items-center justify-between gap-4 font-semibold text-white">
+        <span data-current-section-label>{firstLink.label}</span>
+        <span class={actionBadgeClasses("default", "cupPink")}>
+          <ChevronIcon
+            direction="down"
+            class="transition group-open:rotate-180"
+          />
+        </span>
+      </summary>
+      <ul class="bg-cup-ink border-cup-pink absolute inset-x-0 top-full border-b-4 px-4 pb-2">
+        {sectionNav.links.map((link) => (
+          <li class="border-cup-line border-t">
+            <a
+              href={`#${link.target}`}
+              class:list={[
+                "block py-3 text-white data-current:font-bold",
+                CURRENT_LINK_CLASSES,
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+    <ul class="hidden gap-7 overflow-x-auto text-base font-semibold whitespace-nowrap md:flex">
+      {desktopLinks.map((link) => (
         <li>
           <a
             href={`#${link.target}`}
-            class="hover:text-cup-sky block py-4 text-white"
+            class:list={[
+              "hover:text-cup-sky block py-4 text-white",
+              CURRENT_LINK_CLASSES,
+            ]}
           >
             {link.label}
           </a>
@@ -28,3 +64,11 @@ const { sectionNav } = Astro.props;
     </ul>
   </Container>
 </nav>
+
+<script>
+  import { setUpSectionNav } from "./section-nav";
+
+  document
+    .querySelectorAll<HTMLElement>("[data-section-nav]")
+    .forEach(setUpSectionNav);
+</script>

@@ -1,5 +1,5 @@
 ---
-type ChevronDirection = "right" | "left";
+type ChevronDirection = "right" | "left" | "down";
 
 interface Props {
   direction?: ChevronDirection;
@@ -9,6 +9,7 @@ interface Props {
 const PATHS: Record<ChevronDirection, string> = {
   right: "M8 4l6 6-6 6",
   left: "M12 4l-6 6 6 6",
+  down: "M4 8l6 6 6-6",
 };
 
 const { direction = "right", class: extraClasses } = Astro.props;

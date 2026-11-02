@@ -16,6 +16,7 @@ hero:
 sectionNav:
   label: Sections de la page
   links:
+    - { label: "L'événement", target: evenement, mobileOnly: true }
     - { label: Infos pratiques, target: infos }
     - { label: Programme, target: programme }
     - { label: Le format, target: format }

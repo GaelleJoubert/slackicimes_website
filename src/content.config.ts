@@ -269,12 +269,15 @@ const worldCup = defineCollection({
       }),
       sectionNav: z.object({
         label: nonEmptyText,
-        links: z.array(
-          z.object({
-            label: nonEmptyText,
-            target: z.enum(WORLD_CUP_SECTION_ID_LIST),
-          }),
-        ),
+        links: z
+          .array(
+            z.object({
+              label: nonEmptyText,
+              target: z.enum(WORLD_CUP_SECTION_ID_LIST),
+              mobileOnly: z.boolean().default(false),
+            }),
+          )
+          .nonempty(),
       }),
       event: sectionIntro.extend({
         paragraphs: z.array(nonEmptyText).min(1),
