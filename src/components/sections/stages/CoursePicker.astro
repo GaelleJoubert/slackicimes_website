@@ -146,6 +146,14 @@ const courses = stages.map((stage) => {
     await expandPanel(course.panel);
   }
 
+  function findBridge(picker: HTMLElement): HTMLElement {
+    const bridge = picker.querySelector<HTMLElement>("[data-course-bridge]");
+    if (!bridge) {
+      throw new Error("The course picker needs a bridge element.");
+    }
+    return bridge;
+  }
+
   function initCoursePicker(picker: HTMLElement): void {
     const courses = [
       ...picker.querySelectorAll<HTMLElement>("[data-course]"),
@@ -154,16 +162,13 @@ const courses = stages.map((stage) => {
     const isDesktop = () => desktopQuery.matches;
     const openOnly = (target: Course) =>
       courses.forEach((course) => setOpen(course, course === target));
-    const bridge = picker.querySelector<HTMLElement>("[data-course-bridge]");
-    if (!bridge) {
-      throw new Error("The course picker needs a bridge element.");
-    }
+    const bridge = findBridge(picker);
     const openCourse = () =>
       courses.find((course) => course.root.hasAttribute("data-open"));
 
     function placeBridgeUnder(course: Course): void {
       const card = course.toggle.parentElement;
-      if (!card || !bridge) return;
+      if (!card) return;
       const bridgeWidth = card.offsetWidth * BRIDGE_WIDTH_RATIO;
       bridge.style.width = `${bridgeWidth}px`;
       bridge.style.left = `${card.offsetLeft + (card.offsetWidth - bridgeWidth) / 2}px`;
