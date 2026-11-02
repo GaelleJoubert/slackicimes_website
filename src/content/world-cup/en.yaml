@@ -16,7 +16,6 @@ hero:
 sectionNav:
   label: Page sections
   links:
-    - { label: The event, target: evenement }
     - { label: Practical info, target: infos }
     - { label: Schedule, target: programme }
     - { label: The format, target: format }
