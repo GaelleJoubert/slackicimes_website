@@ -55,12 +55,7 @@ const linkColumns = [
 ---
 
 <footer class="bg-slate text-snow relative isolate mt-auto overflow-hidden">
-  <Skyline
-    variant="background"
-    profiles={["crete", "pourri"]}
-    tone="dark"
-    isMirrored
-  />
+  <Skyline variant="background" profiles={["crete"]} tone="dark" isMirrored />
   <Container class="gap-block grid pt-18 pb-10 md:grid-cols-4">
     <div class="flex flex-col gap-3">
       <p class="font-heading text-3xl font-voice md:text-4xl">{SITE_NAME}</p>
@@ -92,7 +87,7 @@ const linkColumns = [
     </div>
   </Container>
   <Container>
-    <p class="border-graphite text-sage border-t py-6 text-sm">
+    <p class="text-sage py-6 text-sm">
       © {currentYear} {SITE_NAME}
     </p>
   </Container>

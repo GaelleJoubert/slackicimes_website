@@ -91,9 +91,15 @@ describe("skylineBackgroundLayers", () => {
     expect(layers.map((layer) => layer.opacity)).toEqual([0.16, 0.09]);
   });
 
-  it("refuses a single layer or more than three", () => {
-    expect(() => skylineBackgroundLayers(["crete"], "light")).toThrow(
-      /2 to 3 profiles, got 1/,
+  it("accepts a single ridge", () => {
+    const layers = skylineBackgroundLayers(["crete"], "light");
+
+    expect(layers.map((layer) => layer.opacity)).toEqual([0.85]);
+  });
+
+  it("refuses no layer or more than three", () => {
+    expect(() => skylineBackgroundLayers([], "light")).toThrow(
+      /1 to 3 profiles, got 0/,
     );
     expect(() =>
       skylineBackgroundLayers(

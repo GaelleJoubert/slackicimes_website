@@ -76,8 +76,8 @@ const LAYER_OPACITIES: Record<SkylineBackgroundTone, readonly number[]> = {
 const LAYER_SHIFT_LEFT = 90;
 const LAYER_DROP = 22;
 
-export const MIN_BACKGROUND_LAYERS = 2;
-export const MAX_BACKGROUND_LAYERS = MIN_BACKGROUND_LAYERS + 1;
+export const MIN_BACKGROUND_LAYERS = 1;
+export const MAX_BACKGROUND_LAYERS = 3;
 
 export function skylineBackgroundLayers(
   profiles: readonly SkylineProfile[],

@@ -219,7 +219,7 @@ page or section.
 - Edge: the bottom of a colored block may follow a ridge filled with the next block's color,
   72px high (43px on phones). Once or twice per page, so it stays an event. Leave enough bottom
   padding that the ridge never touches content.
-- Background: a colored block may carry 2 or 3 white ridges behind its content: 1.5px strokes,
+- Background: a colored block may carry 1 to 3 white ridges behind its content: 1.5px strokes,
   each one lower and fainter than the previous (85, 45, 20% opacity on lichen; 16, 9, 5% on
   forest or lake). They never sit under long text without a contrast check.
 - Hosts: an `edge` sits at the bottom of a `relative` block; a `background` needs a
