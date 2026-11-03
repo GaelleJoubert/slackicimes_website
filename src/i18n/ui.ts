@@ -85,6 +85,7 @@ const fr = {
   },
   youthStages: {
     keyFactsLabel: "L'essentiel",
+    registerButton: "Inscription",
     pricePerDuration: "les",
     weekTitle: "La semaine type",
     previousDayButton: "Jour précédent",
@@ -231,6 +232,7 @@ const en: UiStrings = {
     archiveTitle: "The first editions on video",
   },
   youthStages: {
+    registerButton: "Registration",
     keyFactsLabel: "Key facts",
     pricePerDuration: "for",
     weekTitle: "A typical week",

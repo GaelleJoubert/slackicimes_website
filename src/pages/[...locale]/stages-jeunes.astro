@@ -8,6 +8,7 @@ import CarouselSlide from "../../components/ui/CarouselSlide.astro";
 import Container from "../../components/ui/Container.astro";
 import DotList from "../../components/ui/DotList.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
+import KeyFactsRow from "../../components/ui/KeyFactsRow.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import PhotoMosaic from "../../components/ui/PhotoMosaic.astro";
 import PhotoSlide from "../../components/ui/PhotoSlide.astro";
@@ -18,7 +19,7 @@ import {
 } from "../../i18n/collections";
 import { entrySlug } from "../../i18n/content";
 import { LOCALE_SETTINGS } from "../../i18n/locales";
-import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatPriceInEuros } from "../../lib/format";
@@ -63,22 +64,23 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <PageHero page={page.data} keyFactsLabel={strings.youthStages.keyFactsLabel}>
+  <PageHero page={page.data}>
     <Intro />
     <LinkButton slot="actions" href={STAGES_REGISTRATION_URL}>
-      {strings.stages.registerButton}
-    </LinkButton>
-    <LinkButton
-      slot="actions"
-      href={localizedPath("inscriptions", locale)}
-      variant="secondary"
-    >
-      {strings.stages.registrationsButton}
+      {strings.youthStages.registerButton}
     </LinkButton>
   </PageHero>
 
   <section class="py-section">
     <Container class="gap-block grid md:grid-cols-2 md:items-start">
+      {page.data.keyFacts && (
+        <div class="md:col-span-2">
+          <KeyFactsRow
+            facts={page.data.keyFacts}
+            label={strings.youthStages.keyFactsLabel}
+          />
+        </div>
+      )}
       <div class="gap-stack flex flex-col">
         <h2>
           <Eyebrow>{strings.stages.prerequisitesHeading}</Eyebrow>

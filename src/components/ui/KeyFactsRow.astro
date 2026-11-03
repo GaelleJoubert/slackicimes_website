@@ -1,0 +1,35 @@
+---
+import Skyline from "./Skyline.astro";
+
+interface KeyFact {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  facts: KeyFact[];
+  label: string;
+}
+
+const MAX_FACTS_IN_ONE_PHONE_ROW = 3;
+
+const { facts, label } = Astro.props;
+const factColumnsClass =
+  facts.length > MAX_FACTS_IN_ONE_PHONE_ROW
+    ? "grid-cols-2 md:grid-cols-4"
+    : "grid-cols-3";
+---
+
+<div class="gap-stack flex flex-col">
+  <Skyline variant="divider" profile="pourri" />
+  <dl aria-label={label} class:list={["grid gap-y-4", factColumnsClass]}>
+    {facts.map((fact) => (
+      <div class="flex flex-col gap-1.5 pr-4 pb-2">
+        <dt class="label-text text-graphite">{fact.label}</dt>
+        <dd class="font-heading text-xl font-voice md:text-3xl">
+          {fact.value}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</div>

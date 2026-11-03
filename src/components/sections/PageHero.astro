@@ -4,24 +4,22 @@ import Container from "../ui/Container.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import FramedPicture from "../ui/FramedPicture.astro";
 import HighlightedText from "../ui/HighlightedText.astro";
+import KeyFactsRow from "../ui/KeyFactsRow.astro";
 import Skyline, { type SkylineEdgeFill } from "../ui/Skyline.astro";
 
+type PageData = CollectionEntry<"pages">["data"];
+
 interface Props {
-  page: CollectionEntry<"pages">["data"];
-  keyFactsLabel: string;
+  page: PageData;
+  keyFacts?: PageData["keyFacts"];
+  keyFactsLabel?: string;
   edgeFill?: SkylineEdgeFill;
 }
 
 const PHOTO_WIDTHS = [600, 1000];
 const PHOTO_SIZES = "(min-width: 768px) 500px, 100vw";
-const MAX_FACTS_IN_ONE_PHONE_ROW = 3;
 
-const { page, keyFactsLabel, edgeFill = "snow" } = Astro.props;
-const keyFacts = page.keyFacts ?? [];
-const factColumnsClass =
-  keyFacts.length > MAX_FACTS_IN_ONE_PHONE_ROW
-    ? "grid-cols-2 md:grid-cols-4"
-    : "grid-cols-3";
+const { page, keyFacts, keyFactsLabel, edgeFill = "snow" } = Astro.props;
 ---
 
 <section
@@ -29,7 +27,12 @@ const factColumnsClass =
   class="bg-lichen pt-page-top relative pb-20 md:pb-44"
 >
   <Container class="gap-block grid md:grid-cols-12">
-    <div class="gap-block flex flex-col justify-between md:col-span-7 md:pb-20">
+    <div
+      class:list={[
+        "gap-block flex flex-col md:col-span-7",
+        keyFacts && "justify-between md:pb-20",
+      ]}
+    >
       <div class="gap-stack flex flex-col">
         {page.eyebrow && <Eyebrow>{page.eyebrow}</Eyebrow>}
         <h1 id="page-title" class="page-title">
@@ -44,23 +47,8 @@ const factColumnsClass =
         </div>
       </div>
       <div class="gap-stack flex flex-col">
-        {keyFacts.length > 0 && (
-          <>
-            <Skyline variant="divider" profile="pourri" />
-            <dl
-              aria-label={keyFactsLabel}
-              class:list={["grid gap-y-4", factColumnsClass]}
-            >
-              {keyFacts.map((fact) => (
-                <div class="flex flex-col gap-1.5 pr-4 pb-2">
-                  <dt class="label-text text-graphite">{fact.label}</dt>
-                  <dd class="font-heading text-xl font-voice md:text-3xl">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </>
+        {keyFacts && (
+          <KeyFactsRow facts={keyFacts} label={keyFactsLabel ?? ""} />
         )}
         <div class="gap-inline flex flex-wrap">
           <slot name="actions" />

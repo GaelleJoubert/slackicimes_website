@@ -38,7 +38,11 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <PageHero page={page.data} keyFactsLabel={strings.stages.keyFactsLabel}>
+  <PageHero
+    page={page.data}
+    keyFacts={page.data.keyFacts}
+    keyFactsLabel={strings.stages.keyFactsLabel}
+  >
     <Intro />
     <LinkButton slot="actions" href={`#${COURSE_FORMULAS_SECTION_ID}`}>
       {strings.stages.chooseCourseButton}
