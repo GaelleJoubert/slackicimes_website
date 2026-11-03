@@ -36,7 +36,7 @@ const CUP_BUTTON_SHAPE = "min-h-13 rounded-xl px-7 py-2 font-extrabold";
 const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
   default: "min-h-12 px-5.5 text-sm md:text-base",
   compact: "min-h-11 px-4 text-sm",
-  large: "min-h-12 px-5.5 md:min-h-14 md:px-7 md:text-lg",
+  large: "min-h-14 px-8 text-base md:min-h-15 md:px-10 md:text-lg",
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {

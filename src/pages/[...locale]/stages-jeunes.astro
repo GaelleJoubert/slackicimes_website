@@ -66,9 +66,6 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
 >
   <PageHero page={page.data} photoShape="landscape">
     <Intro />
-    <LinkButton slot="actions" href={STAGES_REGISTRATION_URL}>
-      {strings.youthStages.registerButton}
-    </LinkButton>
   </PageHero>
 
   <section class="py-section">
@@ -87,16 +84,21 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
           <DotList items={prerequisites} />
         </div>
       </div>
-      <div class="bg-moss rounded-card p-card gap-stack flex flex-col">
-        <h2>
-          <Eyebrow>{strings.stages.priceHeading}</Eyebrow>
-        </h2>
-        <p class="font-heading text-slate text-3xl font-voice">
-          {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
-        </p>
-        <p class="text-graphite">
-          {strings.stages.priceNote} {dates}.
-        </p>
+      <div class="gap-block flex flex-col items-center">
+        <div class="bg-moss rounded-card p-card gap-stack flex w-full flex-col">
+          <h2>
+            <Eyebrow>{strings.stages.priceHeading}</Eyebrow>
+          </h2>
+          <p class="font-heading text-slate text-3xl font-voice">
+            {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
+          </p>
+          <p class="text-graphite">
+            {strings.stages.priceNote} {dates}.
+          </p>
+        </div>
+        <LinkButton href={STAGES_REGISTRATION_URL} size="large">
+          {strings.youthStages.registerButton}
+        </LinkButton>
       </div>
     </Container>
   </section>
