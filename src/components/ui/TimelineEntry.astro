@@ -1,5 +1,5 @@
 ---
-export type TimelineDotTone = "navy" | "coral" | "sky";
+export type TimelineDotTone = "slate" | "forest" | "lake";
 type TimelineDotOffset = "flush" | "card";
 
 interface Props {
@@ -9,9 +9,9 @@ interface Props {
 }
 
 const DOT_TONE_CLASSES: Record<TimelineDotTone, string> = {
-  navy: "bg-slate",
-  coral: "bg-coral",
-  sky: "bg-lake",
+  slate: "bg-slate",
+  forest: "bg-forest",
+  lake: "bg-lake",
 };
 
 const DOT_OFFSET_CLASSES: Record<TimelineDotOffset, string> = {

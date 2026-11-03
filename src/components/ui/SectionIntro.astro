@@ -26,8 +26,8 @@ const ALIGNMENT_CLASSES: Record<IntroAlignment, string> = {
 const {
   title,
   eyebrow,
-  eyebrowTone = "coral",
   theme = "light",
+  eyebrowTone = theme,
   align = "start",
   id,
 } = Astro.props;

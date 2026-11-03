@@ -18,23 +18,14 @@ interface Props {
   locale: Locale;
 }
 
-const DEFAULT_DAY_TONE: DayTone = {
-  card: "bg-lichen",
-  label: "coral",
+const DAY_TONE: DayTone = {
+  card: "bg-moss",
+  label: "light",
   title: "text-slate",
 };
 
-const DAY_TONE_CYCLE: DayTone[] = [
-  DEFAULT_DAY_TONE,
-  { card: "bg-moss", label: "sky", title: "text-slate" },
-  { card: "bg-moss", label: "mist", title: "text-slate" },
-  { card: "bg-slate text-snow", label: "coralOnDark", title: "text-snow" },
-];
-
 const { title, intro, days, locale } = Astro.props;
 const strings = uiStrings(locale);
-const toneAt = (dayIndex: number): DayTone =>
-  DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
 ---
 
 <section class="py-section">
@@ -52,16 +43,16 @@ const toneAt = (dayIndex: number): DayTone =>
       width="full"
       class="md:hidden"
     >
-      {days.map((day, dayIndex) => (
+      {days.map((day) => (
         <CarouselSlide>
-          <YouthDayCard day={day} tone={toneAt(dayIndex)} />
+          <YouthDayCard day={day} tone={DAY_TONE} />
         </CarouselSlide>
       ))}
     </Carousel>
     <ul class="gap-grid hidden md:grid md:grid-cols-2 lg:grid-cols-4">
-      {days.map((day, dayIndex) => (
+      {days.map((day) => (
         <li>
-          <YouthDayCard day={day} tone={toneAt(dayIndex)} />
+          <YouthDayCard day={day} tone={DAY_TONE} />
         </li>
       ))}
     </ul>

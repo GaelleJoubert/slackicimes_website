@@ -1,0 +1,126 @@
+---
+import {
+  SKYLINE_HEIGHT,
+  SKYLINE_WIDTH,
+  skylineBackgroundLayers,
+  skylineFillPath,
+  skylineStrokePath,
+  type SkylineBackgroundTone,
+  type SkylineProfile,
+} from "../../lib/skylines";
+
+export type SkylineEdgeFill =
+  "snow" | "moss" | "lichen" | "forest" | "lake" | "slate";
+
+type Props =
+  | {
+      variant: "divider";
+      profile?: SkylineProfile;
+      tone?: SkylineBackgroundTone;
+      isMirrored?: boolean;
+      class?: string;
+    }
+  | {
+      variant: "edge";
+      profile?: SkylineProfile;
+      fill: SkylineEdgeFill;
+      isMirrored?: boolean;
+      class?: string;
+    }
+  | {
+      variant: "background";
+      profiles: SkylineProfile[];
+      tone: SkylineBackgroundTone;
+      isMirrored?: boolean;
+      class?: string;
+    };
+
+const DIVIDER_TOP_MARGIN = 5;
+const DIVIDER_BOTTOM_MARGIN = 10;
+const DIVIDER_VIEW_BOX = `0 ${DIVIDER_TOP_MARGIN} ${SKYLINE_WIDTH} ${SKYLINE_HEIGHT - DIVIDER_TOP_MARGIN - DIVIDER_BOTTOM_MARGIN}`;
+const FULL_VIEW_BOX = `0 0 ${SKYLINE_WIDTH} ${SKYLINE_HEIGHT}`;
+const BACKGROUND_VISIBLE_SHARE = 0.5;
+const BACKGROUND_VISIBLE_WIDTH = SKYLINE_WIDTH * BACKGROUND_VISIBLE_SHARE;
+const BACKGROUND_VISIBLE_START = (SKYLINE_WIDTH - BACKGROUND_VISIBLE_WIDTH) / 2;
+const BACKGROUND_VIEW_BOX = `${BACKGROUND_VISIBLE_START} 0 ${BACKGROUND_VISIBLE_WIDTH} ${SKYLINE_HEIGHT}`;
+
+const DIVIDER_STROKE_CLASSES: Record<SkylineBackgroundTone, string> = {
+  light: "stroke-slate",
+  dark: "stroke-snow",
+};
+
+const EDGE_FILL_CLASSES: Record<SkylineEdgeFill, string> = {
+  snow: "fill-snow",
+  moss: "fill-moss",
+  lichen: "fill-lichen",
+  forest: "fill-forest",
+  lake: "fill-lake",
+  slate: "fill-slate",
+};
+
+const props = Astro.props;
+const isMirrored = props.isMirrored ?? false;
+---
+
+{props.variant === "divider" && (
+  <svg
+    aria-hidden="true"
+    viewBox={DIVIDER_VIEW_BOX}
+    preserveAspectRatio="none"
+    class:list={["block h-6 w-full overflow-visible md:h-10", props.class]}
+  >
+    <path
+      d={skylineStrokePath({ profile: props.profile ?? "crete", isMirrored })}
+      fill="none"
+      stroke-width="2"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      vector-effect="non-scaling-stroke"
+      class={DIVIDER_STROKE_CLASSES[props.tone ?? "light"]}
+    />
+  </svg>
+)}
+
+{props.variant === "edge" && (
+  <svg
+    aria-hidden="true"
+    viewBox={FULL_VIEW_BOX}
+    preserveAspectRatio="none"
+    class:list={[
+      "pointer-events-none absolute inset-x-0 -bottom-px block h-11 w-full md:h-18",
+      props.class,
+    ]}
+  >
+    <path
+      d={skylineFillPath({ profile: props.profile ?? "crete", isMirrored })}
+      class={EDGE_FILL_CLASSES[props.fill]}
+    />
+  </svg>
+)}
+
+{props.variant === "background" && (
+  <svg
+    aria-hidden="true"
+    viewBox={BACKGROUND_VIEW_BOX}
+    preserveAspectRatio="none"
+    fill="none"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+    class:list={[
+      "stroke-white pointer-events-none absolute inset-x-0 -bottom-6 -z-10 block h-30 w-full md:-bottom-12 md:h-55",
+      props.class,
+    ]}
+  >
+    {skylineBackgroundLayers(props.profiles, props.tone, isMirrored).map(
+      (layer) => (
+        <path
+          d={layer.path}
+          stroke-opacity={layer.opacity}
+          transform={`translate(${layer.offsetX} ${layer.offsetY})`}
+          vector-effect="non-scaling-stroke"
+        />
+      ),
+    )}
+  </svg>
+)}

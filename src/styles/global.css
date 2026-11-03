@@ -165,6 +165,10 @@
   object-position: 50% 25%;
 }
 
+@utility border-thin {
+  border-width: 1.5px;
+}
+
 @utility press-sink {
   translate: var(--pressable-shadow-distance) var(--pressable-shadow-distance);
   --tw-shadow: 0 0 #0000;

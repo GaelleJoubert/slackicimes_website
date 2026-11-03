@@ -1,7 +1,7 @@
 ---
 import { authorInitial } from "../../lib/testimonial";
 
-export type QuoteTone = "blush" | "ice";
+export type QuoteTone = "lichen" | "moss";
 export type QuoteTextSize = "huge" | "extraLarge" | "large" | "base" | "small";
 type QuoteDensity = "regular" | "compact";
 
@@ -18,12 +18,16 @@ const TONE_CLASSES: Record<
   QuoteTone,
   { card: string; mark: string; initial: string }
 > = {
-  blush: {
+  lichen: {
     card: "bg-lichen",
-    mark: "text-coral",
-    initial: "bg-snow text-coral-strong",
+    mark: "text-forest",
+    initial: "bg-snow text-forest",
   },
-  ice: { card: "bg-moss", mark: "text-lake", initial: "bg-slate text-snow" },
+  moss: {
+    card: "bg-moss",
+    mark: "text-forest",
+    initial: "bg-forest text-snow",
+  },
 };
 
 const TEXT_SIZE_CLASSES: Record<QuoteTextSize, string> = {
@@ -72,7 +76,7 @@ const toneClasses = TONE_CLASSES[tone];
   <blockquote class:list={["flex flex-col gap-3", TEXT_SIZE_CLASSES[textSize]]}>
     <slot />
   </blockquote>
-  <figcaption class="flex items-center gap-2.5 font-extrabold md:gap-3">
+  <figcaption class="flex items-center gap-2.5 font-semibold md:gap-3">
     <span
       aria-hidden="true"
       class:list={[

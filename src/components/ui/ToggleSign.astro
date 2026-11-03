@@ -17,7 +17,7 @@ interface VariantClasses {
 
 const VARIANT_CLASSES: Record<ToggleSignVariant, VariantClasses> = {
   details: {
-    circle: "",
+    circle: "group-open:bg-slate group-open:text-snow",
     plus: "group-open:hidden",
     minus: "hidden group-open:inline",
   },
@@ -36,7 +36,7 @@ const variantClasses = VARIANT_CLASSES[variant];
 <span
   aria-hidden="true"
   class:list={[
-    "font-heading text-xl",
+    "text-xl leading-none",
     actionBadgeClasses(),
     variantClasses.circle,
     extraClasses,

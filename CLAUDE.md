@@ -222,6 +222,8 @@ page or section.
 - Background: a colored block may carry 2 or 3 white ridges behind its content: 1.5px strokes,
   each one lower and fainter than the previous (85, 45, 20% opacity on lichen; 16, 9, 5% on
   forest or lake). They never sit under long text without a contrast check.
+- Hosts: an `edge` sits at the bottom of a `relative` block; a `background` needs a
+  `relative isolate overflow-hidden` block so the ridges stay behind the content.
 - Skylines are decorative: `aria-hidden="true"`, no interaction, strokes with
   `vector-effect="non-scaling-stroke"` so they keep their width when stretched.
 

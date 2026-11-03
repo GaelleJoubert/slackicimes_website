@@ -2,9 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
-import ActivityCard, {
-  type ActivityCardTone,
-} from "../../ui/ActivityCard.astro";
+import ActivityCard from "../../ui/ActivityCard.astro";
 import Container from "../../ui/Container.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 
@@ -12,8 +10,6 @@ interface Props {
   activities: CollectionEntry<"association">["data"]["activities"];
   locale: Locale;
 }
-
-const CARD_TONES: ActivityCardTone[] = ["cloud", "ice", "blush"];
 
 const { activities, locale } = Astro.props;
 ---
@@ -26,14 +22,13 @@ const { activities, locale } = Astro.props;
       </SectionIntro>
     </div>
     <ul class="gap-grid grid grid-cols-2 md:grid-cols-3">
-      {activities.items.map((activity, activityIndex) => (
+      {activities.items.map((activity) => (
         <li>
           <ActivityCard
             title={activity.title}
             text={activity.text}
             image={activity.illustration.image}
             imageAlt={activity.illustration.alt}
-            tone={CARD_TONES[activityIndex % CARD_TONES.length]}
             href={activity.pageSlug && localizedPath(activity.pageSlug, locale)}
           />
         </li>

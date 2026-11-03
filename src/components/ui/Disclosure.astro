@@ -14,14 +14,14 @@ const { summary, groupName, isOpen = false } = Astro.props;
   data-animated-details
   name={groupName}
   open={isOpen}
-  class="group bg-snow rounded-card shadow-card transition not-open:hover:card-sink not-open:active:card-sink"
+  class="group border-rule border-b"
 >
-  <summary class="font-heading text-slate flex min-h-14 cursor-pointer items-center justify-between gap-4 px-4 py-3 text-lg md:px-5.5 md:py-4.5 md:text-2xl">
+  <summary class="font-heading text-slate flex min-h-16 cursor-pointer items-center justify-between gap-4 py-4 text-lg leading-snug font-voice md:min-h-18 md:text-2xl">
     <h3>{summary}</h3>
     <ToggleSign />
   </summary>
   <div data-expand-panel>
-    <div class="rich-text px-4 pb-4 text-base md:px-5.5 md:pb-5">
+    <div class="rich-text pr-12 pb-6 text-base md:pr-14">
       <slot />
     </div>
   </div>

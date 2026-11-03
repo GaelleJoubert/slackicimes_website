@@ -13,7 +13,7 @@ const highlightEnd = highlightStart + highlight.length;
 {hasHighlight ? (
   <>
     {text.slice(0, highlightStart)}
-    <span class="text-coral">{text.slice(highlightStart, highlightEnd)}</span>
+    <span class="italic">{text.slice(highlightStart, highlightEnd)}</span>
     {text.slice(highlightEnd)}
   </>
 ) : (

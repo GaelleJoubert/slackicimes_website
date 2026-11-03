@@ -20,8 +20,8 @@ interface Props {
 }
 
 const GROUPED_LAYOUTS = new Set(["brief", "archive"]);
-const DOT_TONES: TimelineDotTone[] = ["navy", "coral", "sky"];
-const POSTER_FRAMES: PictureFrame[] = ["offsetSky", "offsetCoral"];
+const DOT_TONES: TimelineDotTone[] = ["slate", "forest", "lake"];
+const POSTER_FRAMES: PictureFrame[] = ["plain"];
 
 const { editions, locale } = Astro.props;
 const editionGroups = groupConsecutiveBy(editions, ({ data }) =>

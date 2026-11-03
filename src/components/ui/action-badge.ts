@@ -1,25 +1,29 @@
 export type ActionBadgeSize = "default" | "large";
-export type ActionBadgeTone = "coral" | "cupPink";
+export type ActionBadgeTone = "outline" | "filled" | "cupPink";
 
-const BASE_BADGE_CLASSES =
+const SQUARE_BADGE_SHAPE =
+  "flex shrink-0 items-center justify-center rounded-control transition";
+
+const CUP_BADGE_SHAPE =
   "flex shrink-0 items-center justify-center rounded-full";
 
 export const STANDALONE_BADGE_CLASSES =
-  "shadow-pressable transition group-hover:press-sink group-active:press-sink";
+  "group-hover:bg-slate group-hover:text-snow";
 
 const SIZE_CLASSES: Record<ActionBadgeSize, string> = {
-  default: "size-8 md:size-9",
+  default: "size-9 md:size-10",
   large: "size-16",
 };
 
 const TONE_CLASSES: Record<ActionBadgeTone, string> = {
-  coral: "bg-coral text-slate",
-  cupPink: "bg-cup-pink-strong text-white",
+  outline: `${SQUARE_BADGE_SHAPE} border-thin border-slate text-slate`,
+  filled: `${SQUARE_BADGE_SHAPE} bg-coral text-white group-hover:bg-coral-strong`,
+  cupPink: `${CUP_BADGE_SHAPE} bg-cup-pink-strong text-white`,
 };
 
 export function actionBadgeClasses(
   size: ActionBadgeSize = "default",
-  tone: ActionBadgeTone = "coral",
+  tone: ActionBadgeTone = "outline",
 ): string {
-  return `${BASE_BADGE_CLASSES} ${SIZE_CLASSES[size]} ${TONE_CLASSES[tone]}`;
+  return `${SIZE_CLASSES[size]} ${TONE_CLASSES[tone]}`;
 }

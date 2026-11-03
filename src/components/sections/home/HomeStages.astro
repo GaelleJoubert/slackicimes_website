@@ -54,7 +54,7 @@ const courses = stages.map((stage) => ({
           alt={teaser.illustration.alt}
           widths={PHOTO_WIDTHS}
           sizes={PHOTO_SIZES}
-          frame="offsetCoral"
+          frame="plain"
           class="h-105"
         />
       </div>
@@ -67,7 +67,7 @@ const courses = stages.map((stage) => ({
       class="md:hidden"
     >
       {courses.map(({ stage, href, price }) => (
-        <CarouselSlide class="pr-card-shadow pb-card-shadow">
+        <CarouselSlide>
           <CourseSlide
             href={href}
             name={stage.data.name}

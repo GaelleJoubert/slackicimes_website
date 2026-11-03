@@ -7,9 +7,9 @@ interface Props {
   class?: string;
 }
 
-const SIZE_CLASSES: Record<DotListSize, { list: string; dot: string }> = {
-  base: { list: "gap-2", dot: "mt-2.5 size-2.5 md:size-3" },
-  small: { list: "gap-1 text-sm", dot: "mt-1.5 size-2" },
+const SIZE_CLASSES: Record<DotListSize, { list: string; bullet: string }> = {
+  base: { list: "gap-2.5", bullet: "mt-2.5" },
+  small: { list: "gap-1.5 text-sm", bullet: "mt-2" },
 };
 
 const { items, size = "base", class: extraClasses } = Astro.props;
@@ -18,10 +18,10 @@ const sizeClasses = SIZE_CLASSES[size];
 
 <ul class:list={["flex flex-col", sizeClasses.list, extraClasses]}>
   {items.map((item) => (
-    <li class="flex items-start gap-2.5">
+    <li class="flex items-start gap-3">
       <span
         aria-hidden="true"
-        class:list={["bg-coral shrink-0 rounded-full", sizeClasses.dot]}
+        class:list={["bg-forest size-1.5 shrink-0", sizeClasses.bullet]}
       />
       <span>{item}</span>
     </li>

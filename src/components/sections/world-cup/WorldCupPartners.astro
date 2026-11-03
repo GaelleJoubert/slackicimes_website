@@ -5,7 +5,7 @@ import { localizedPath } from "../../../i18n/routes";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import ActionBadge from "../../ui/ActionBadge.astro";
 import CupSection from "../../ui/CupSection.astro";
-import { PRESSABLE_CARD_CLASSES } from "../../ui/card-styles";
+import { CUP_PRESSABLE_CARD_CLASSES } from "../../ui/card-styles";
 import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "./types";
 
@@ -58,7 +58,7 @@ const { partners, locale } = Astro.props;
                   class:list={[
                     "relative flex size-full flex-col items-center justify-center gap-2.5 rounded-2xl px-8 py-4",
                     partner.url
-                      ? `bg-cup-surface shadow-cup-navy ${PRESSABLE_CARD_CLASSES}`
+                      ? `bg-cup-surface shadow-cup-navy ${CUP_PRESSABLE_CARD_CLASSES}`
                       : "border-cup-border border-2",
                   ]}
                 >
