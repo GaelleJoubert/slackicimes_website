@@ -7,6 +7,7 @@ import Container from "../ui/Container.astro";
 import Disclosure from "../ui/Disclosure.astro";
 import LinkButton from "../ui/LinkButton.astro";
 import SectionIntro from "../ui/SectionIntro.astro";
+import Skyline from "../ui/Skyline.astro";
 
 interface Props {
   id: string;
@@ -28,7 +29,10 @@ const renderedQuestions = await Promise.all(
 const contactPath = localizedPath("contact", locale);
 ---
 
-<section id={id} class="bg-moss scroll-mt-4 py-section">
+<section
+  id={id}
+  class="bg-moss pt-section relative scroll-mt-24 pb-24 md:pb-40"
+>
   <Container class="grid items-start gap-block md:grid-cols-3">
     <SectionIntro title={strings.faq.title}>
       <p class="text-graphite">{intro}</p>
@@ -53,4 +57,5 @@ const contactPath = localizedPath("contact", locale);
       {strings.faq.otherQuestionButton}
     </LinkButton>
   </Container>
+  <Skyline variant="edge" profile="montBlanc" fill="snow" />
 </section>
