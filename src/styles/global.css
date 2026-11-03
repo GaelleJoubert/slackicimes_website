@@ -47,13 +47,7 @@
   --color-cup-border: #e1e3f0;
   --color-cup-line: #4a4c8a;
   --color-cup-soft: #c9cbe6;
-  --color-cup-pale: #e9eaf6;
-  --color-cup-placeholder: #e6e8f4;
-  --color-cup-placeholder-text: #6b6e9c;
   --color-cup-muted: #5a5d86;
-  --color-cup-slate: #353d57;
-  --color-cup-slate-deep: #2a3047;
-  --color-cup-slate-text: #d7d9ec;
   --color-cup-slate-muted: #aeb2cf;
 
   --font-heading: "Fraunces Variable", Georgia, serif;
@@ -98,7 +92,6 @@
   --aspect-photo: 3 / 2;
 
   --spacing-section: var(--section-space);
-  --spacing-cup-section: var(--cup-section-space);
   --spacing-page-top: var(--page-top-space);
   --spacing-block: var(--block-space);
   --spacing-stack: var(--stack-space);
@@ -106,7 +99,6 @@
   --spacing-card: var(--card-space);
   --spacing-tile: var(--tile-space);
   --spacing-inline: var(--inline-space);
-  --spacing-card-shadow: var(--card-shadow-distance);
 
   --radius-control: 0.375rem;
   --radius-card: 0.625rem;
@@ -115,24 +107,10 @@
   --inset-shadow-*: initial;
   --drop-shadow-*: initial;
   --text-shadow-*: initial;
-
-  /* calc() makes Tailwind read the distances as lengths, so shadow color utilities keep working. */
-  --shadow-raised: calc(var(--raised-shadow-distance))
-    calc(var(--raised-shadow-distance)) 0 var(--color-slate);
-  --shadow-pressable: calc(var(--pressable-shadow-distance))
-    calc(var(--pressable-shadow-distance)) 0 var(--color-slate);
-  --shadow-card: calc(var(--card-shadow-distance))
-    calc(var(--card-shadow-distance)) 0 var(--color-slate);
-  --text-shadow-raised: calc(var(--pressable-shadow-distance))
-    calc(var(--pressable-shadow-distance)) 0 var(--color-slate);
 }
 
 :root {
-  --raised-shadow-distance: 0.3125rem;
-  --card-shadow-distance: 0.3125rem;
-  --pressable-shadow-distance: 0.1875rem;
   --section-space: 4.5rem;
-  --cup-section-space: 2.5rem;
   --page-top-space: 4rem;
   --block-space: 3rem;
   --stack-space: 1rem;
@@ -142,11 +120,7 @@
   --inline-space: 0.75rem;
 
   @variant md {
-    --raised-shadow-distance: 0.5rem;
-    --card-shadow-distance: 0.375rem;
-    --pressable-shadow-distance: 0.25rem;
     --section-space: 8rem;
-    --cup-section-space: 5rem;
     --page-top-space: 7.5rem;
     --block-space: 4.5rem;
     --stack-space: 1.5rem;
@@ -167,16 +141,6 @@
 
 @utility border-thin {
   border-width: 1.5px;
-}
-
-@utility press-sink {
-  translate: var(--pressable-shadow-distance) var(--pressable-shadow-distance);
-  --tw-shadow: 0 0 #0000;
-}
-
-@utility card-sink {
-  translate: var(--card-shadow-distance) var(--card-shadow-distance);
-  --tw-shadow: 0 0 #0000;
 }
 
 @layer base {
@@ -250,12 +214,8 @@
     @apply font-display text-2xl font-semibold uppercase;
   }
 
-  .cup-tile-title {
-    @apply font-display text-sm leading-tight font-semibold uppercase sm:text-xl;
-  }
-
   .cup-stat-value {
-    @apply font-display text-4xl leading-none font-bold;
+    @apply font-display text-4xl leading-none font-bold md:text-5xl;
   }
 
   .intro-text {
@@ -280,6 +240,11 @@
 
   .text-link {
     @apply font-medium text-slate underline decoration-coral underline-offset-5 hover:text-coral;
+    text-decoration-thickness: 1.5px;
+  }
+
+  .cup-text-link {
+    @apply font-semibold text-cup-ink underline decoration-cup-pink-strong underline-offset-5 hover:text-cup-pink-strong;
     text-decoration-thickness: 1.5px;
   }
 

@@ -1,11 +1,9 @@
 export type ActionBadgeSize = "default" | "large";
-export type ActionBadgeTone = "outline" | "filled" | "cupPink";
+export type ActionBadgeTone =
+  "outline" | "filled" | "cupOutline" | "cupOutlineOnDark";
 
 const SQUARE_BADGE_SHAPE =
   "flex shrink-0 items-center justify-center rounded-control transition";
-
-const CUP_BADGE_SHAPE =
-  "flex shrink-0 items-center justify-center rounded-full";
 
 export const STANDALONE_BADGE_CLASSES =
   "group-hover:bg-slate group-hover:text-snow";
@@ -18,7 +16,8 @@ const SIZE_CLASSES: Record<ActionBadgeSize, string> = {
 const TONE_CLASSES: Record<ActionBadgeTone, string> = {
   outline: `${SQUARE_BADGE_SHAPE} border-thin border-slate text-slate`,
   filled: `${SQUARE_BADGE_SHAPE} bg-coral text-white group-hover:bg-coral-strong`,
-  cupPink: `${CUP_BADGE_SHAPE} bg-cup-pink-strong text-white`,
+  cupOutline: `${SQUARE_BADGE_SHAPE} border-thin border-cup-navy text-cup-navy group-hover:bg-cup-navy group-hover:text-white`,
+  cupOutlineOnDark: `${SQUARE_BADGE_SHAPE} border-thin border-white text-white`,
 };
 
 export function actionBadgeClasses(

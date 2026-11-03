@@ -290,6 +290,7 @@ const worldCup = defineCollection({
             value: nonEmptyText,
             label: nonEmptyText,
             detail: nonEmptyText,
+            isHighlighted: z.boolean().default(false),
           }),
         ),
       }),

@@ -10,22 +10,32 @@ interface Props {
 
 type DayEmphasis = WorldCupContent["programme"]["days"][number]["emphasis"];
 
-const DAY_CARD_CLASSES: Record<DayEmphasis, string> = {
-  regular: "border-cup-line border-2",
-  highlight: "border-cup-pink border-2",
-  reserve: "border-cup-line border-2 border-dashed",
-};
+interface DayStyle {
+  rule: string;
+  date: string;
+  title: string;
+  text: string;
+}
 
-const DAY_DATE_CLASSES: Record<DayEmphasis, string> = {
-  regular: "text-cup-sky",
-  highlight: "text-cup-pink-soft",
-  reserve: "text-cup-sky",
-};
-
-const DAY_TEXT_CLASSES: Record<DayEmphasis, string> = {
-  regular: "text-cup-soft",
-  highlight: "text-white font-medium",
-  reserve: "text-cup-soft",
+const DAY_STYLES: Record<DayEmphasis, DayStyle> = {
+  regular: {
+    rule: "border-cup-line border-t-2 pt-5",
+    date: "text-cup-sky",
+    title: "text-white",
+    text: "text-cup-soft",
+  },
+  highlight: {
+    rule: "border-cup-pink border-t-4 pt-4.5",
+    date: "text-cup-pink-soft",
+    title: "text-white",
+    text: "text-white",
+  },
+  reserve: {
+    rule: "border-cup-line border-t-2 border-dashed pt-5",
+    date: "text-cup-slate-muted",
+    title: "text-cup-slate-muted",
+    text: "text-cup-slate-muted",
+  },
 };
 
 const { programme } = Astro.props;
@@ -40,28 +50,26 @@ const { programme } = Astro.props;
     >
       <p class="text-cup-soft">{programme.note}</p>
     </CupSectionIntro>
-    <ol class="gap-grid grid grid-cols-2 lg:grid-cols-5">
-      {programme.days.map((day) => (
-        <li
-          class:list={[
-            "p-tile flex flex-col gap-2 rounded-2xl last:col-span-2 lg:last:col-span-1",
-            DAY_CARD_CLASSES[day.emphasis],
-          ]}
-        >
-          <span
-            class:list={[
-              "text-sm font-semibold tracking-wider uppercase",
-              DAY_DATE_CLASSES[day.emphasis],
-            ]}
-          >
-            {day.date}
-          </span>
-          <h3 class="cup-tile-title">{day.title}</h3>
-          <p class:list={["text-sm", DAY_TEXT_CLASSES[day.emphasis]]}>
-            {day.text}
-          </p>
-        </li>
-      ))}
+    <ol class="gap-grid grid sm:grid-cols-2 lg:grid-cols-5">
+      {programme.days.map((day) => {
+        const style = DAY_STYLES[day.emphasis];
+        return (
+          <li class:list={["flex flex-col gap-2.5", style.rule]}>
+            <span
+              class:list={[
+                "text-xs font-bold tracking-widest uppercase",
+                style.date,
+              ]}
+            >
+              {day.date}
+            </span>
+            <h3 class:list={["cup-card-title text-xl", style.title]}>
+              {day.title}
+            </h3>
+            <p class:list={["text-sm", style.text]}>{day.text}</p>
+          </li>
+        );
+      })}
     </ol>
   </div>
 </CupSection>

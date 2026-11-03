@@ -42,6 +42,7 @@ event:
       }
     - {
         value: 4 000 €,
+        isHighlighted: true,
         label: de prize money,
         detail: identique femmes et hommes,
       }

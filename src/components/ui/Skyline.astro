@@ -12,7 +12,14 @@ import {
 } from "../../lib/skylines";
 
 export type SkylineEdgeFill =
-  "snow" | "moss" | "lichen" | "forest" | "lake" | "slate";
+  | "snow"
+  | "moss"
+  | "lichen"
+  | "forest"
+  | "lake"
+  | "slate"
+  | "cupSurface"
+  | "white";
 
 type Props =
   | {
@@ -60,6 +67,8 @@ const EDGE_FILL_CLASSES: Record<SkylineEdgeFill, string> = {
   forest: "fill-forest",
   lake: "fill-lake",
   slate: "fill-slate",
+  cupSurface: "fill-cup-surface",
+  white: "fill-white",
 };
 
 const props = Astro.props;

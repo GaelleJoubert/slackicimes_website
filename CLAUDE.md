@@ -255,8 +255,12 @@ Interactive and informative elements never share a cue.
 
 ### World Cup pages
 
-The World Cup pages keep their own palette (pink, navy) until a Crête version is designed in
-Claude Design and approved by the user. Do not restyle them on your own.
+The World Cup pages keep their own identity: Clash Display and Inter, and the `cup-*` colors
+(navy, ink, pink, sky, surface). They follow the Crête shapes and behaviors: `control` and `card`
+radii, no shadows, information on rules, eyebrows with the glyph, ridge edges, arrow squares for
+clickable cards and outlined squares for external links. Pink marks actions (buttons use
+`cup-pink-strong` for contrast) and a few highlights (final day, deadline, prize figure). The
+approved mockup is the "Coupe du monde" page of the Crête canvas.
 
 ### Tokens and responsive
 

@@ -5,7 +5,8 @@ import { localizedPath } from "../../../i18n/routes";
 import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
 import ActionBadge from "../../ui/ActionBadge.astro";
 import CupSection from "../../ui/CupSection.astro";
-import { CUP_PRESSABLE_CARD_CLASSES } from "../../ui/card-styles";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import type { WorldCupContent } from "./types";
 
@@ -20,14 +21,20 @@ const CONTACT_PAGE_SLUG = "contact";
 const LOGO_WIDTHS = [240, 480];
 const LOGO_SIZES = "240px";
 
-const TILE_CLASSES: Record<GroupSize, string> = {
-  main: "h-56 w-full max-w-md",
-  equipment: "h-44 w-full sm:w-72",
-  support: "h-32 w-full sm:w-56",
+const GRID_CLASSES: Record<GroupSize, string> = {
+  main: "grid-cols-1",
+  equipment: "sm:grid-cols-2",
+  support: "sm:grid-cols-3",
+};
+
+const TILE_HEIGHT_CLASSES: Record<GroupSize, string> = {
+  main: "h-56",
+  equipment: "h-48",
+  support: "h-40",
 };
 
 const LOGO_CLASSES: Record<GroupSize, string> = {
-  main: "max-h-40",
+  main: "max-h-32",
   equipment: "max-h-24",
   support: "max-h-16",
 };
@@ -35,38 +42,36 @@ const LOGO_CLASSES: Record<GroupSize, string> = {
 const { partners, locale } = Astro.props;
 ---
 
-<CupSection id={WORLD_CUP_SECTION_IDS.partners} tone="white">
+<CupSection id={WORLD_CUP_SECTION_IDS.partners} tone="surface">
   <div class="gap-block flex flex-col">
-    <div class="gap-stack flex flex-col items-center text-center">
-      <span class="cup-eyebrow text-cup-magenta">{partners.eyebrow}</span>
-      <h2 class="cup-title text-cup-navy">{partners.title}</h2>
-    </div>
+    <CupSectionIntro
+      eyebrow={partners.eyebrow}
+      title={partners.title}
+      theme="light"
+    />
     {partners.groups.map((group) => (
-      <div class="flex flex-col items-center gap-3.5">
-        <h3 class="text-cup-muted text-sm font-bold tracking-widest uppercase">
+      <div class="gap-stack flex flex-col">
+        <h3 class="text-cup-muted text-xs font-bold tracking-widest uppercase">
           {group.label}
         </h3>
-        <ul class="gap-grid flex w-full flex-wrap justify-center">
+        <ul class:list={["gap-grid grid", GRID_CLASSES[group.size]]}>
           {group.partners.map((partner) => {
             const Tile = partner.url ? "a" : "div";
             return (
-              <li
-                class:list={["flex justify-center", TILE_CLASSES[group.size]]}
-              >
+              <li>
                 <Tile
                   href={partner.url}
                   class:list={[
-                    "relative flex size-full flex-col items-center justify-center gap-2.5 rounded-2xl px-8 py-4",
-                    partner.url
-                      ? `bg-cup-surface shadow-cup-navy ${CUP_PRESSABLE_CARD_CLASSES}`
-                      : "border-cup-border border-2",
+                    "rounded-card relative flex w-full flex-col items-center justify-center gap-2.5 bg-white px-14 pt-12 pb-6",
+                    TILE_HEIGHT_CLASSES[group.size],
+                    partner.url && CLICKABLE_CARD_CLASSES,
                   ]}
                 >
                   {partner.url && (
                     <ActionBadge
                       icon="external"
-                      tone="cupPink"
-                      class="absolute top-2 right-2"
+                      tone="cupOutline"
+                      class="absolute top-3 right-3"
                     />
                   )}
                   <Picture
@@ -92,7 +97,7 @@ const { partners, locale } = Astro.props;
         </ul>
       </div>
     ))}
-    <div class="flex justify-center pt-2">
+    <div>
       <LinkButton
         href={localizedPath(CONTACT_PAGE_SLUG, locale)}
         variant="cupSecondary"

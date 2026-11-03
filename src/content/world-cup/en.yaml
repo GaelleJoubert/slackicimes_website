@@ -42,6 +42,7 @@ event:
       }
     - {
         value: "€4,000",
+        isHighlighted: true,
         label: in prize money,
         detail: equal for women and men,
       }

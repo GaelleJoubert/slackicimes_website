@@ -1,10 +1,14 @@
 ---
+import Container from "./Container.astro";
+import Skyline, { type SkylineEdgeFill } from "./Skyline.astro";
+
 type CupTone = "surface" | "white" | "navy" | "ink";
 
 interface Props {
   id?: string;
   tone: CupTone;
   ariaLabel?: string;
+  edgeFill?: SkylineEdgeFill;
 }
 
 const TONE_CLASSES: Record<CupTone, string> = {
@@ -14,15 +18,24 @@ const TONE_CLASSES: Record<CupTone, string> = {
   ink: "bg-cup-ink text-white",
 };
 
-const { id, tone, ariaLabel } = Astro.props;
+const SECTION_WITH_EDGE_CLASSES = "relative pt-section pb-28 md:pb-44";
+
+const { id, tone, ariaLabel, edgeFill } = Astro.props;
 ---
 
 <section
   id={id}
   aria-label={ariaLabel}
-  class:list={["scroll-mt-16 px-6 py-cup-section", TONE_CLASSES[tone]]}
+  class:list={[
+    "scroll-mt-16",
+    edgeFill ? SECTION_WITH_EDGE_CLASSES : "py-section",
+    TONE_CLASSES[tone],
+  ]}
 >
-  <div class="mx-auto max-w-6xl">
+  <Container>
     <slot />
-  </div>
+  </Container>
+  {edgeFill && (
+    <Skyline variant="edge" profile="montBlanc" fill={edgeFill} isMirrored />
+  )}
 </section>

@@ -9,9 +9,6 @@ export type ButtonVariant =
 
 export type ButtonSize = "default" | "compact" | "large";
 
-export const CUP_PRESSABLE_CLASSES =
-  "shadow-pressable hover:press-sink active:press-sink";
-
 export type SquareIconButtonTone = "light" | "dark";
 
 const SQUARE_ICON_BUTTON_SHAPE =
@@ -31,7 +28,7 @@ const BASE_BUTTON_CLASSES =
 
 const SITE_BUTTON_SHAPE = "rounded-control font-semibold";
 
-const CUP_BUTTON_SHAPE = "min-h-13 rounded-xl px-7 py-2 font-extrabold";
+const CUP_BUTTON_SHAPE = "min-h-13 rounded-control px-6.5 py-2 font-bold";
 
 const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
   default: "min-h-12 px-5.5 text-sm md:text-base",
@@ -46,9 +43,11 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
     "border-thin border-slate text-slate hover:bg-slate hover:text-snow",
   secondaryOnDark:
     "border-thin border-snow text-snow hover:bg-snow hover:text-slate",
-  cupPrimary: `${CUP_PRESSABLE_CLASSES} shadow-cup-ink bg-cup-pink-strong text-white`,
-  cupSecondary: `${CUP_PRESSABLE_CLASSES} shadow-cup-navy border-2 border-cup-navy bg-white text-cup-navy`,
-  cupSecondaryOnDark: `${CUP_PRESSABLE_CLASSES} shadow-cup-ink border-2 border-white bg-white text-cup-ink`,
+  cupPrimary: "bg-cup-pink-strong text-white hover:bg-cup-magenta",
+  cupSecondary:
+    "border-thin border-cup-navy text-cup-navy hover:bg-cup-navy hover:text-white",
+  cupSecondaryOnDark:
+    "border-thin border-white text-white hover:bg-white hover:text-cup-ink",
 };
 
 function isSiteVariant(variant: ButtonVariant): boolean {

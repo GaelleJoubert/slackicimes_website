@@ -18,20 +18,20 @@ const desktopLinks = sectionNav.links.filter((link) => !link.mobileOnly);
 <nav
   data-section-nav
   aria-label={sectionNav.label}
-  class="bg-cup-ink border-cup-pink sticky top-18 z-10 border-b-4 lg:top-24"
+  class="bg-cup-ink sticky top-18 z-10 lg:top-24"
 >
   <Container class="relative">
     <details data-section-menu class="group md:hidden">
       <summary class="flex min-h-12 cursor-pointer items-center justify-between gap-4 font-semibold text-white">
         <span data-current-section-label>{firstLink.label}</span>
-        <span class={actionBadgeClasses("default", "cupPink")}>
+        <span class={actionBadgeClasses("default", "cupOutlineOnDark")}>
           <ChevronIcon
             direction="down"
             class="transition group-open:rotate-180"
           />
         </span>
       </summary>
-      <ul class="bg-cup-ink border-cup-pink absolute inset-x-0 top-full border-b-4 px-4 pb-2">
+      <ul class="bg-cup-ink absolute inset-x-0 top-full px-5 pb-2">
         {sectionNav.links.map((link) => (
           <li class="border-cup-line border-t">
             <a

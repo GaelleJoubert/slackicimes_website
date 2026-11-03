@@ -1,18 +1,30 @@
 ---
 type DotListSize = "base" | "small";
+type BulletTone = "forest" | "cupPink";
 
 interface Props {
   items: string[];
   size?: DotListSize;
+  bulletTone?: BulletTone;
   class?: string;
 }
+
+const BULLET_TONE_CLASSES: Record<BulletTone, string> = {
+  forest: "bg-forest",
+  cupPink: "bg-cup-pink-soft",
+};
 
 const SIZE_CLASSES: Record<DotListSize, { list: string; bullet: string }> = {
   base: { list: "gap-2.5", bullet: "mt-2.5" },
   small: { list: "gap-1.5 text-sm", bullet: "mt-2" },
 };
 
-const { items, size = "base", class: extraClasses } = Astro.props;
+const {
+  items,
+  size = "base",
+  bulletTone = "forest",
+  class: extraClasses,
+} = Astro.props;
 const sizeClasses = SIZE_CLASSES[size];
 ---
 
@@ -21,7 +33,11 @@ const sizeClasses = SIZE_CLASSES[size];
     <li class="flex items-start gap-3">
       <span
         aria-hidden="true"
-        class:list={["bg-forest size-1.5 shrink-0", sizeClasses.bullet]}
+        class:list={[
+          "size-1.5 shrink-0",
+          BULLET_TONE_CLASSES[bulletTone],
+          sizeClasses.bullet,
+        ]}
       />
       <span>{item}</span>
     </li>
