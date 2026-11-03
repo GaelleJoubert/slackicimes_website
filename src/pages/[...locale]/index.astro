@@ -43,13 +43,11 @@ const festivalGallery = await getGallery("festival", locale);
   pageSlug={HOME_PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <HomeHero heading={page.data.heading} hero={home.hero} />
-  <HomeStats label={strings.home.statsLabel} stats={home.stats} />
-  <HomeHighlights
-    intro={home.highlightsIntro}
-    highlights={home.highlights}
-    locale={locale}
-  />
+  <div class="md:h-home-fold snap-start md:flex md:flex-col">
+    <HomeHero heading={page.data.heading} hero={home.hero} />
+    <HomeStats label={strings.home.statsLabel} stats={home.stats} />
+  </div>
+  <HomeHighlights highlights={home.highlights} locale={locale} />
   <HomeStages teaser={home.stagesTeaser} stages={stages} locale={locale} />
   <HomeWorldCup hero={worldCup.hero} locale={locale} />
   <HomeAssociation teaser={home.associationTeaser} locale={locale} />

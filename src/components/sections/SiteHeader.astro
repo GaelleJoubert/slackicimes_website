@@ -27,8 +27,8 @@ const strings = uiStrings(locale);
 const toneClasses = TONE_CLASSES[tone];
 ---
 
-<header class:list={["sticky top-0 z-30", toneClasses.header]}>
-  <Container class="flex items-center justify-between gap-4 py-3 lg:py-4">
+<header class:list={["h-site-header sticky top-0 z-30", toneClasses.header]}>
+  <Container class="flex h-full items-center justify-between gap-4">
     <a
       href={localizedPath(HOME_PAGE_SLUG, locale)}
       aria-label={strings.navigation.homeLinkLabel}

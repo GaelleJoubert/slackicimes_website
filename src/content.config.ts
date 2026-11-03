@@ -104,15 +104,14 @@ const home = defineCollection({
         illustration,
         phoneImage: image(),
       }),
-      highlightsIntro: z.object({
-        eyebrow: nonEmptyText,
-      }),
       highlights: z
         .array(
           z.object({
             eyebrow: nonEmptyText,
             illustration,
-            imageFocus: z.enum(["center", "upper"]).default("center"),
+            imageFocus: z
+              .enum(["center", "upper", "highRight"])
+              .default("center"),
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,

@@ -99,6 +99,8 @@
   --spacing-card: var(--card-space);
   --spacing-tile: var(--tile-space);
   --spacing-inline: var(--inline-space);
+  --spacing-site-header: var(--site-header-height);
+  --spacing-home-fold: calc(100svh - var(--site-header-height));
 
   --radius-control: 0.375rem;
   --radius-card: 0.625rem;
@@ -118,6 +120,11 @@
   --card-space: 1.75rem;
   --tile-space: 1.25rem;
   --inline-space: 0.75rem;
+  --site-header-height: 4.5625rem;
+
+  @variant lg {
+    --site-header-height: 6.0625rem;
+  }
 
   @variant md {
     --section-space: 8rem;
@@ -133,6 +140,14 @@
 
 @utility object-high {
   object-position: 50% 40%;
+}
+
+@utility object-low {
+  object-position: 50% 58%;
+}
+
+@utility object-high-right {
+  object-position: 63% 43%;
 }
 
 @utility object-upper {
