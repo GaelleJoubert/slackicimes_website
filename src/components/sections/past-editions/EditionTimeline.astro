@@ -45,7 +45,13 @@ const editionGroups = groupConsecutiveBy(editions, ({ data }) =>
               />
             );
           case "brief":
-            return <BriefEditions editions={group} dotTone={dotTone} />;
+            return (
+              <BriefEditions
+                editions={group}
+                dotTone={dotTone}
+                locale={locale}
+              />
+            );
           case "archive":
             return (
               <ArchiveEditions
