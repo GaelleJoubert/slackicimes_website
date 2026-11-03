@@ -3,12 +3,11 @@ name: Discovery Weekend
 duration: 2 days
 level: Beginner
 summary: Discover highlining over a weekend.
-image: ../../../assets/images/stages/weekend.jpg
-imageAlt: Highliner balancing in front of snowy peaks
-imageFocus: top
+image: ../../../assets/images/stages/deux-highlineurs-entre-deux-falaises.jpg
+imageAlt: Two highliners on lines rigged between two cliffs, with mountains in the background
 description:
   - Perfect to discover the activity over a weekend, to give it a try, or even to keep improving.
-  - Enjoy a special moment in a small group of up to 15 people with 2 instructors.
+  - Enjoy a special moment in a small group of 6 people per instructor.
 program:
   items:
     - label: "Slackline on the ground: 1 half day"

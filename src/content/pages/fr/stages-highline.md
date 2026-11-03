@@ -8,7 +8,7 @@ illustration:
   image: ../../../assets/images/stages/highliners-dans-les-nuages.jpg
   alt: "Deux highlineurs suspendus dans un ciel brumeux"
 keyFacts:
-  - value: "5 stages"
+  - value: "5 formules"
     label: "Formules"
   - value: "160 €"
     label: "À partir de"

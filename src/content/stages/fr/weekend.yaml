@@ -3,12 +3,11 @@ name: Découverte Weekend
 duration: 2 jours
 level: Débutant
 summary: Découvrez la highline le temps d'un weekend.
-image: ../../../assets/images/stages/weekend.jpg
-imageAlt: Highlineur en équilibre face aux sommets enneigés
-imageFocus: top
+image: ../../../assets/images/stages/deux-highlineurs-entre-deux-falaises.jpg
+imageAlt: Deux highlineurs sur des lignes tendues entre deux falaises, montagnes en arrière plan
 description:
   - Parfait pour découvrir l'activité le temps d'un weekend, pour tester, ou même pour progresser dans son apprentissage.
-  - Vivez un moment privilégié en petit groupe de 15 personnes maximum pour 2 instructeurs ou instructrices.
+  - Vivez un moment privilégié en petit groupe de 6 personnes pour un.e instructeur.ice.
 program:
   items:
     - label: "Slackline au sol : 1 demi journée"
