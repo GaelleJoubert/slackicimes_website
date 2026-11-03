@@ -97,10 +97,10 @@ const { partners, locale } = Astro.props;
         </ul>
       </div>
     ))}
-    <div>
+    <div class="flex justify-center">
       <LinkButton
         href={localizedPath(CONTACT_PAGE_SLUG, locale)}
-        variant="cupSecondary"
+        variant="cupPrimary"
       >
         {partners.becomePartnerLabel}
       </LinkButton>
