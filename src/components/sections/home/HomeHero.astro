@@ -27,19 +27,19 @@ const { heading, hero } = Astro.props;
     alt={hero.illustration.alt}
     desktopWidths={DESKTOP_PHOTO_WIDTHS}
     phoneWidths={PHONE_PHOTO_WIDTHS}
-    class="absolute inset-0 size-full object-cover md:object-high"
+    class="absolute inset-0 size-full object-cover object-top md:object-high"
   />
   <div
     aria-hidden="true"
-    class="to-slate/55 absolute inset-0 bg-linear-to-b from-transparent from-60%"
+    class="to-slate/55 absolute inset-0 hidden bg-linear-to-b from-transparent from-60% md:block"
   ></div>
-  <Container class="relative flex h-full flex-col items-end justify-end gap-stack pb-24 text-right md:pb-36">
-    <Eyebrow tone="photo" class="self-end">
+  <Container class="gap-stack pt-block relative flex h-full flex-col items-start md:items-end md:justify-end md:pt-0 md:pb-36 md:text-right">
+    <Eyebrow tone="light" class="md:text-snow self-start md:self-end">
       {hero.eyebrow}
     </Eyebrow>
     <h1
       id="hero-title"
-      class="font-heading flex flex-col items-end text-2xl leading-none font-medium tracking-tight md:text-4xl"
+      class="font-heading text-slate md:text-snow flex flex-col items-start text-2xl leading-none font-medium tracking-tight md:items-end md:text-4xl"
     >
       <HighlightedText
         text={heading}
