@@ -7,8 +7,6 @@ hero:
   phoneImage: ../../assets/images/association/deux-highlineurs-dans-le-ciel.jpg
 highlightsIntro:
   eyebrow: Ce que nous faisons
-  title: Prendre de la hauteur, ensemble
-  titleAccent: ensemble
 highlights:
   - eyebrow: Stages
     illustration:

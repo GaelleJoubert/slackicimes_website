@@ -106,8 +106,6 @@ const home = defineCollection({
       }),
       highlightsIntro: z.object({
         eyebrow: nonEmptyText,
-        title: nonEmptyText,
-        titleAccent: nonEmptyText,
       }),
       highlights: z
         .array(

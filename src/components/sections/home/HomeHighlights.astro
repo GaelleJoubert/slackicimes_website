@@ -7,8 +7,7 @@ import { withSectionAnchor } from "../../../lib/url";
 import ArrowSquare from "../../ui/ArrowSquare.astro";
 import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
 import Container from "../../ui/Container.astro";
-import HighlightedText from "../../ui/HighlightedText.astro";
-import SectionIntro from "../../ui/SectionIntro.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
 
 type HomeContent = CollectionEntry<"home">["data"];
 type ImageFocus = HomeContent["highlights"][number]["imageFocus"];
@@ -38,17 +37,10 @@ const cards = highlights.map((highlight) => ({
 ---
 
 <section class="py-section">
-  <Container class="gap-block flex flex-col">
-    <div class="max-w-160">
-      <SectionIntro title={intro.title} eyebrow={intro.eyebrow}>
-        <HighlightedText
-          slot="title"
-          text={intro.title}
-          highlight={intro.titleAccent}
-          highlightClass="text-forest font-medium italic"
-        />
-      </SectionIntro>
-    </div>
+  <Container class="gap-stack flex flex-col">
+    <h2>
+      <Eyebrow>{intro.eyebrow}</Eyebrow>
+    </h2>
     <ul class="gap-grid grid md:grid-cols-3">
       {cards.map((card) => (
         <li>
