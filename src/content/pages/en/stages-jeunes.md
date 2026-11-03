@@ -5,8 +5,8 @@ heading: "Youth course"
 headingAccent: "Youth"
 eyebrow: "Les Arcs · Ages 10 to 17"
 illustration:
-  image: ../../../assets/images/stages/stage-jeunes.jpg
-  alt: "Young trainee hanging upside down under a highline"
+  image: ../../../assets/images/stages/jeunes/jeune-face-au-mont-blanc.jpg
+  alt: "Young trainee sitting on a highline facing Mont Blanc"
 keyFacts:
   - { value: "5 days", label: "from 9 a.m. to 5 p.m." }
   - { value: "10-17", label: "years old, for young athletes" }
