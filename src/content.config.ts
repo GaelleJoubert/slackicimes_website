@@ -50,7 +50,7 @@ const programItem = z.object({
   details: z.array(nonEmptyText).default([]),
 });
 
-const stageImageFocus = z.enum(["top", "high", "center"]);
+const stageImageFocus = z.enum(["top", "high", "center", "right"]);
 
 const stages = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/stages" }),
@@ -104,15 +104,14 @@ const home = defineCollection({
         illustration,
         phoneImage: image(),
       }),
-      highlightsIntro: z.object({
-        eyebrow: nonEmptyText,
-      }),
       highlights: z
         .array(
           z.object({
             eyebrow: nonEmptyText,
             illustration,
-            imageFocus: z.enum(["center", "upper"]).default("center"),
+            imageFocus: z
+              .enum(["center", "upper", "highRight"])
+              .default("center"),
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,
@@ -203,17 +202,26 @@ const association = defineCollection({
         intro: nonEmptyText,
         items: z
           .array(
-            z.object({
-              title: nonEmptyText,
-              text: nonEmptyText,
-              pageSlug: nonEmptyText.optional(),
-              illustration,
-            }),
+            z
+              .object({
+                title: nonEmptyText,
+                text: nonEmptyText,
+                pageSlug: nonEmptyText.optional(),
+                externalUrl: z.url().optional(),
+                illustration,
+              })
+              .refine(
+                (activity) => !(activity.pageSlug && activity.externalUrl),
+                {
+                  message:
+                    "An activity links either to a pageSlug or to an externalUrl, not both.",
+                },
+              ),
           )
           .min(1),
       }),
       duo: textBlock,
-      team: textBlock,
+      team: z.object({ title: nonEmptyText }),
     });
   },
 });

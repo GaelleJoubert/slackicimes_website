@@ -20,13 +20,7 @@ const strings = uiStrings(locale);
 
 <section class="py-section">
   <Container class="flex flex-col gap-block">
-    <div class="max-w-190">
-      <SectionIntro title={team.title}>
-        {team.paragraphs.map((paragraph) => (
-          <p class="text-graphite">{paragraph}</p>
-        ))}
-      </SectionIntro>
-    </div>
+    <SectionIntro title={team.title} />
     <Carousel
       label={team.title}
       roleDescription={strings.common.carouselRoleDescription}

@@ -4,8 +4,9 @@ duration: 5 jours
 level: Débutant
 ageRange: 10-18 ans
 summary: Stage d'initiation Highline spécialement pensé pour les jeunes sportifs.
-image: ../../../assets/images/stages/stage-jeunes.jpg
-imageAlt: Jeune stagiaire suspendue la tête en bas sous une highline
+image: ../../../assets/images/stages/jeunes/photo-01.jpg
+imageAlt: Jeune stagiaire souriante assise en baudrier sur une highline
+imageFocus: right
 description:
   - De la technique, en passant par la sécurité, la coopération et le surpassement de ses peurs, parfait pour les sportifs qui veulent découvrir de nouvelles sensations ou travailler sur leur mental et le contrôle de leur corps !
   - "Au programme : un peu de slackline, beaucoup de highline, une journée ludique au plan d'eau, mais aussi des moments spécifiques de préparation mentale, de gestion de la peur et des émotions."

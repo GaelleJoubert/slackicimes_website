@@ -8,7 +8,7 @@ illustration:
   image: ../../../assets/images/stages/highliners-dans-les-nuages.jpg
   alt: "Two highliners hanging in a hazy sky"
 keyFacts:
-  - value: "5 courses"
+  - value: "5 formats"
     label: "Formulas"
   - value: "€160"
     label: "From"

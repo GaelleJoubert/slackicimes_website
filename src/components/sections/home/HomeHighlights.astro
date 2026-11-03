@@ -7,13 +7,11 @@ import { withSectionAnchor } from "../../../lib/url";
 import ArrowSquare from "../../ui/ArrowSquare.astro";
 import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
 import Container from "../../ui/Container.astro";
-import Eyebrow from "../../ui/Eyebrow.astro";
 
 type HomeContent = CollectionEntry<"home">["data"];
 type ImageFocus = HomeContent["highlights"][number]["imageFocus"];
 
 interface Props {
-  intro: HomeContent["highlightsIntro"];
   highlights: HomeContent["highlights"];
   locale: Locale;
 }
@@ -24,9 +22,10 @@ const PHOTO_SIZES = "(min-width: 768px) 400px, 96px";
 const IMAGE_FOCUS_CLASSES: Record<ImageFocus, string> = {
   center: "",
   upper: "object-upper",
+  highRight: "object-high-right",
 };
 
-const { intro, highlights, locale } = Astro.props;
+const { highlights, locale } = Astro.props;
 const cards = highlights.map((highlight) => ({
   ...highlight,
   href: withSectionAnchor(
@@ -37,10 +36,7 @@ const cards = highlights.map((highlight) => ({
 ---
 
 <section class="py-section">
-  <Container class="gap-stack flex flex-col">
-    <h2>
-      <Eyebrow>{intro.eyebrow}</Eyebrow>
-    </h2>
+  <Container>
     <ul class="gap-grid grid md:grid-cols-3">
       {cards.map((card) => (
         <li>

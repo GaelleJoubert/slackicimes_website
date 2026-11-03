@@ -5,21 +5,19 @@ hero:
     image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
     alt: Highliners on lines rigged in the mountains
   phoneImage: ../../assets/images/association/deux-highlineurs-dans-le-ciel.jpg
-highlightsIntro:
-  eyebrow: What we do
 highlights:
   - eyebrow: Courses
     illustration:
-      image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
-      alt: Two highliners hanging in a hazy sky
-    imageFocus: upper
+      image: ../../assets/images/stages/highlineuse-assise-au-dessus-de-la-foret.jpg
+      alt: Highliner sitting on the line above a mountain forest
+    imageFocus: highRight
     title: Discover highlining
     text: Different formulas to move through the air. Get started safely, progress or perfect your skills.
     pageSlug: stages-highline
-  - eyebrow: World Cup
+  - eyebrow: Events
     illustration:
-      image: ../../assets/images/world-cup/ligne-arc-2000.jpg
-      alt: Highliner on a line rigged above the Arc 2000 resort
+      image: ../../assets/images/world-cup/logo-coupe-du-monde-fond-marine.png
+      alt: Logo of the Les Arcs Highline Freestyle World Cup
     title: Highline Freestyle World Cup
     text: First stop of the 2027 World Cup, from April 14 to 16 on the Place Olympique in Arc 2000. Free entry.
     pageSlug: coupe-du-monde
@@ -33,8 +31,8 @@ highlights:
     sectionId: formulaire
 stats:
   - value: Les Arcs
-    label: based in Savoie
-  - value: 550+
+    label: Savoie, France
+  - value: 700+
     label: people introduced to highlining
   - value: "10"
     label: editions of the Winter Festislack
@@ -50,7 +48,7 @@ associationTeaser:
 stagesTeaser:
   title: Highline courses
   paragraphs:
-    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 550 people to this dizzying sport. It offers courses in different formats, suitable for every level.
+    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 700 people to this dizzying sport. It offers courses in different formats, suitable for every level.
   datesNote: 2027 dates coming soon
   illustration:
     image: ../../assets/images/stages/weekend.jpg
