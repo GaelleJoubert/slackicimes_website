@@ -30,7 +30,12 @@ const strings = uiStrings(locale);
 ---
 
 <section class="bg-lichen py-section relative isolate overflow-hidden">
-  <Skyline variant="background" profiles={["crete", "casse"]} tone="light" />
+  <Skyline
+    variant="background"
+    profiles={["crete"]}
+    tone="light"
+    class="translate-y-10 md:translate-y-16"
+  />
   <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={title}>
