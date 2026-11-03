@@ -175,6 +175,7 @@ const festivalEditions = defineCollection({
       gallery: nonEmptyText.optional(),
       galleryTitle: nonEmptyText.optional(),
       videos: z.array(z.url()).default([]),
+      videoThumbnail: image().optional(),
     }),
 });
 
