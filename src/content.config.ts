@@ -15,7 +15,13 @@ const pages = defineCollection({
       heading: nonEmptyText,
       headingAccent: nonEmptyText.optional(),
       eyebrow: nonEmptyText.optional(),
-      illustration: z.object({ image: image(), alt: nonEmptyText }).optional(),
+      illustration: z
+        .object({
+          image: image(),
+          alt: nonEmptyText,
+          focus: z.enum(["center", "upper"]).default("center"),
+        })
+        .optional(),
       keyFacts: z
         .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
         .optional(),
@@ -33,7 +39,6 @@ const pages = defineCollection({
         .object({
           title: nonEmptyText,
           paragraphs: z.array(nonEmptyText).min(1),
-          illustration: z.object({ image: image(), alt: nonEmptyText }),
         })
         .optional(),
     }),

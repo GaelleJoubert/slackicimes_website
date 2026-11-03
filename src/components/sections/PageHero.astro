@@ -44,6 +44,14 @@ const SHAPE_LAYOUTS: Record<PhotoShape, ShapeLayout> = {
   },
 };
 
+const PHOTO_FOCUS_CLASSES: Record<
+  NonNullable<PageData["illustration"]>["focus"],
+  string
+> = {
+  center: "",
+  upper: "object-upper",
+};
+
 const PHOTO_WIDTHS = [600, 1000];
 const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
 
@@ -103,7 +111,10 @@ const sectionClass = page.illustration ? layout.section : SECTION_WITHOUT_PHOTO;
           widths={PHOTO_WIDTHS}
           sizes={PHOTO_SIZES}
           loading="eager"
-          class={layout.image}
+          class:list={[
+            layout.image,
+            PHOTO_FOCUS_CLASSES[page.illustration.focus],
+          ]}
         />
       </div>
     )}

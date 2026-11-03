@@ -64,7 +64,6 @@ const fr = {
     ageLabel: "Âge",
     typicalWeekHeading: "Semaine type",
     ticketOfficeButton: "Accéder à la billetterie HelloAsso",
-    compareFormulasButton: "Comparer les formules",
     registrationStepsLabel: "Les étapes de l'inscription",
   },
   festival: {
@@ -211,7 +210,6 @@ const en: UiStrings = {
     ageLabel: "Age",
     typicalWeekHeading: "Typical week",
     ticketOfficeButton: "Go to the HelloAsso ticket office",
-    compareFormulasButton: "Compare the courses",
     registrationStepsLabel: "Registration steps",
   },
   festival: {
