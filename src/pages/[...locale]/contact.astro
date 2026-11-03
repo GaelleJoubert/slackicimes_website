@@ -1,6 +1,5 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { render } from "astro:content";
 import PageHero from "../../components/sections/PageHero.astro";
 import ContactForm from "../../components/sections/ContactForm.astro";
 import CallTiles from "../../components/sections/contact/CallTiles.astro";
@@ -22,7 +21,6 @@ const PAGE_SLUG = "contact";
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { Content: Intro } = await render(page);
 ---
 
 <BaseLayout
@@ -32,11 +30,9 @@ const { Content: Intro } = await render(page);
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <PageHero page={page.data}>
-    <Intro />
-  </PageHero>
+  <PageHero page={page.data} size="compact" />
 
-  <section class="py-section">
+  <section class="pt-block pb-section">
     <Container>
       <div class="gap-block grid md:grid-cols-5 md:items-start">
         <div

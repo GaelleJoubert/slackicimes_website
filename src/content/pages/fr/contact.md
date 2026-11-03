@@ -4,5 +4,3 @@ description: "Vous avez une question sur nos stages de highline ? Une demande d'
 heading: "Contactez nous"
 eyebrow: "Stages · Initiations · Démonstrations"
 ---
-
-Vous avez une question sur nos stages de highline ? Une demande d'initiation slackline ou de démonstration highline ? N'hésitez pas à nous contacter !
