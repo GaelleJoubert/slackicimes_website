@@ -31,8 +31,7 @@ function portraitOf(member: CollectionEntry<"team">) {
 }
 ---
 
-<section class="bg-forest text-snow py-section relative isolate overflow-hidden">
-  <Skyline variant="background" profiles={["montBlanc"]} tone="dark" />
+<section class="bg-forest text-snow py-section relative">
   <Container class="gap-block grid md:grid-cols-2 md:items-center">
     <SectionIntro title={duo.title} theme="dark">
       <div class="intro-text intro-text-on-dark">
@@ -67,4 +66,5 @@ function portraitOf(member: CollectionEntry<"team">) {
       })}
     </ul>
   </Container>
+  <Skyline variant="edge" profile="casse" fill="snow" />
 </section>
