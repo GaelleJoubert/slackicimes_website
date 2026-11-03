@@ -21,7 +21,7 @@ const { activities, locale } = Astro.props;
         <p class="text-graphite">{activities.intro}</p>
       </SectionIntro>
     </div>
-    <ul class="gap-grid grid grid-cols-2 md:grid-cols-3">
+    <ul class="gap-grid grid md:grid-cols-3">
       {activities.items.map((activity) => (
         <li>
           <ActivityCard

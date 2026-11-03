@@ -12,33 +12,45 @@ interface Props {
   href?: string;
 }
 
-const IMAGE_WIDTHS = [320, 640];
-const IMAGE_SIZES = "(min-width: 768px) 400px, 50vw";
+const IMAGE_WIDTHS = [240, 480, 800];
+const IMAGE_SIZES = "(min-width: 768px) 400px, 96px";
 
 const { title, text, image, imageAlt, href } = Astro.props;
-const CardTag = href ? "a" : "div";
+const isClickable = Boolean(href);
+const CardTag = isClickable ? "a" : "div";
 ---
 
 <CardTag
   href={href}
   class:list={[
-    "bg-moss rounded-card text-slate relative flex h-full flex-col overflow-hidden",
-    href && CLICKABLE_CARD_CLASSES,
+    "bg-moss rounded-card text-slate flex h-full items-center overflow-hidden md:flex-col md:items-stretch",
+    isClickable && CLICKABLE_CARD_CLASSES,
   ]}
 >
-  <Picture
-    src={image}
-    alt={imageAlt}
-    widths={IMAGE_WIDTHS}
-    sizes={IMAGE_SIZES}
-    formats={["avif", "webp"]}
-    class="h-22 w-full object-cover md:h-60"
-  />
-  <div class="flex flex-1 flex-col gap-2 p-3 md:gap-3 md:p-6">
-    <h3 class="card-title decoration-coral underline-offset-5 group-hover:underline">
-      {title}
-    </h3>
-    <p class="text-graphite hidden flex-1 md:block md:text-base">{text}</p>
-    {href && <ArrowSquare class="hidden self-end md:flex" />}
+  <div class="w-24 shrink-0 self-stretch md:h-60 md:w-full">
+    <Picture
+      src={image}
+      alt={imageAlt}
+      widths={IMAGE_WIDTHS}
+      sizes={IMAGE_SIZES}
+      formats={["avif", "webp"]}
+      class="size-full object-cover"
+    />
+  </div>
+  <div class="flex flex-1 items-center gap-3 p-4 md:flex-col md:items-stretch md:p-6">
+    <div class="flex flex-1 flex-col gap-1.5 md:gap-3">
+      <h3 class="card-title decoration-coral text-xl underline-offset-5 group-hover:underline md:text-card">
+        {title}
+      </h3>
+      <p
+        class:list={[
+          "text-graphite text-sm md:block md:text-base",
+          isClickable && "hidden",
+        ]}
+      >
+        {text}
+      </p>
+    </div>
+    {isClickable && <ArrowSquare class="md:self-end" />}
   </div>
 </CardTag>

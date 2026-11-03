@@ -317,12 +317,6 @@
     }
   }
 
-  .split-centered-grid {
-    @variant md {
-      grid-template-rows: 1fr auto auto 1fr;
-    }
-  }
-
   .media-start-grid {
     grid-template-columns: auto 1fr;
   }

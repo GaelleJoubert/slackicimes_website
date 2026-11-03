@@ -194,10 +194,6 @@ const association = defineCollection({
       paragraphs: z.array(nonEmptyText).min(1),
     });
     return z.object({
-      origin: z.object({
-        paragraphs: z.array(nonEmptyText).min(1),
-        illustration,
-      }),
       activities: z.object({
         title: nonEmptyText,
         intro: nonEmptyText,
