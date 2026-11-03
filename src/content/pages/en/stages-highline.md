@@ -5,8 +5,9 @@ heading: "Highline courses"
 headingAccent: "courses"
 eyebrow: "Les Arcs · Deux Têtes spot"
 illustration:
-  image: ../../../assets/images/stages/highliners-dans-les-nuages.jpg
-  alt: "Two highliners hanging in a hazy sky"
+  image: ../../../assets/images/stages/highlineuse-au-coucher-du-soleil.jpg
+  alt: "Silhouette of a highliner on a line at sunset, above the mountains"
+  focus: centerRight
 keyFacts:
   - value: "5 formats"
     label: "Formulas"

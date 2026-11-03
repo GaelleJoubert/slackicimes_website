@@ -5,8 +5,9 @@ heading: "Stages highline"
 headingAccent: "highline"
 eyebrow: "Les Arcs · Spot des Deux Têtes"
 illustration:
-  image: ../../../assets/images/stages/highliners-dans-les-nuages.jpg
-  alt: "Deux highlineurs suspendus dans un ciel brumeux"
+  image: ../../../assets/images/stages/highlineuse-au-coucher-du-soleil.jpg
+  alt: "Silhouette d'une highlineuse sur une ligne au coucher du soleil, au dessus des montagnes"
+  focus: centerRight
 keyFacts:
   - value: "5 formules"
     label: "Formules"
