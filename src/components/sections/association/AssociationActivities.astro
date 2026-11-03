@@ -11,7 +11,13 @@ interface Props {
   locale: Locale;
 }
 
+type Activity = Props["activities"]["items"][number];
+
 const { activities, locale } = Astro.props;
+
+const activityHref = (activity: Activity) =>
+  activity.externalUrl ??
+  (activity.pageSlug && localizedPath(activity.pageSlug, locale));
 ---
 
 <section class="py-section">
@@ -29,7 +35,8 @@ const { activities, locale } = Astro.props;
             text={activity.text}
             image={activity.illustration.image}
             imageAlt={activity.illustration.alt}
-            href={activity.pageSlug && localizedPath(activity.pageSlug, locale)}
+            href={activityHref(activity)}
+            isExternal={Boolean(activity.externalUrl)}
           />
         </li>
       ))}

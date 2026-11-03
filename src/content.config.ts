@@ -202,17 +202,26 @@ const association = defineCollection({
         intro: nonEmptyText,
         items: z
           .array(
-            z.object({
-              title: nonEmptyText,
-              text: nonEmptyText,
-              pageSlug: nonEmptyText.optional(),
-              illustration,
-            }),
+            z
+              .object({
+                title: nonEmptyText,
+                text: nonEmptyText,
+                pageSlug: nonEmptyText.optional(),
+                externalUrl: z.url().optional(),
+                illustration,
+              })
+              .refine(
+                (activity) => !(activity.pageSlug && activity.externalUrl),
+                {
+                  message:
+                    "An activity links either to a pageSlug or to an externalUrl, not both.",
+                },
+              ),
           )
           .min(1),
       }),
       duo: textBlock,
-      team: textBlock,
+      team: z.object({ title: nonEmptyText }),
     });
   },
 });

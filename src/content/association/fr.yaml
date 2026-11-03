@@ -34,6 +34,7 @@ activities:
         alt: Highline tendue depuis le sommet d'un mur d'escalade, au dessus des nuages
     - title: Un engagement
       text: Nous travaillons en collaboration avec l'ISA (International Slackline Association).
+      externalUrl: https://www.slacklineinternational.org/
       illustration:
         image: ../../assets/images/association/accolade.jpg
         alt: Deux highlineuses se serrant dans les bras au départ d'une ligne
@@ -44,5 +45,3 @@ duo:
     - "Investies depuis toujours dans le milieu associatif de la highline, et passionnées par l'enseignement dans leurs disciplines d'origine (ski pour Chloë, trampoline pour Gaëlle), elles partagent leur expérience : amener tout public à faire ses premiers pas dans le vide, et l'accompagner avec bienveillance sur ce chemin d'apprentissage bouleversant."
 team:
   title: L'équipe
-  paragraphs:
-    - L'association grandit chaque année, et plusieurs highlineurs passionnés et expérimentés ont maintenant rejoint l'équipe.
