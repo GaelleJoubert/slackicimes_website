@@ -19,7 +19,7 @@ const pages = defineCollection({
         .object({
           image: image(),
           alt: nonEmptyText,
-          focus: z.enum(["center", "upper"]).default("center"),
+          focus: z.enum(["center", "upper", "centerRight"]).default("center"),
         })
         .optional(),
       keyFacts: z

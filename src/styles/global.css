@@ -150,6 +150,10 @@
   object-position: 63% 43%;
 }
 
+@utility object-center-right {
+  object-position: 78% 50%;
+}
+
 @utility object-upper {
   object-position: 50% 25%;
 }
