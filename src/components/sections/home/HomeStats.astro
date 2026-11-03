@@ -13,7 +13,7 @@ const { label, stats } = Astro.props;
 
 <section aria-label={label} class="bg-forest text-snow snap-align-none py-6">
   <Container>
-    <dl class="gap-grid grid grid-cols-2 md:grid-cols-4">
+    <dl class="gap-grid grid grid-cols-2 md:grid-cols-4 md:text-center">
       {stats.map((stat) => (
         <Stat value={stat.value} label={stat.label} />
       ))}
