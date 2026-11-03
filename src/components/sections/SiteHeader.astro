@@ -1,9 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../../assets/images/logo-slackicimes.png";
 import type { Locale } from "../../i18n/locales";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
+import { SITE_NAME } from "../../lib/site";
 import Container from "../ui/Container.astro";
 import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
 import type { HeaderTone } from "./header-tone";
@@ -16,12 +15,11 @@ interface Props {
   tone: HeaderTone;
 }
 
-const LOGO_LARGEST_HEIGHT_PX = 64;
 const HOME_PAGE_SLUG = "";
 
-const TONE_CLASSES: Record<HeaderTone, { header: string; logo: string }> = {
-  light: { header: "bg-snow border-rule border-b", logo: "" },
-  dark: { header: "bg-slate", logo: "bg-snow rounded-control px-2 py-1" },
+const TONE_CLASSES: Record<HeaderTone, { header: string; wordmark: string }> = {
+  light: { header: "bg-snow border-rule border-b", wordmark: "text-slate" },
+  dark: { header: "bg-slate", wordmark: "text-snow" },
 };
 
 const { locale, pageSlug, tone } = Astro.props;
@@ -33,16 +31,13 @@ const toneClasses = TONE_CLASSES[tone];
   <Container class="flex items-center justify-between gap-4 py-3 lg:py-4">
     <a
       href={localizedPath(HOME_PAGE_SLUG, locale)}
-      class:list={["shrink-0", toneClasses.logo]}
+      aria-label={strings.navigation.homeLinkLabel}
+      class:list={[
+        "card-title flex h-12 shrink-0 items-center lg:h-16",
+        toneClasses.wordmark,
+      ]}
     >
-      <Image
-        src={logo}
-        alt={strings.navigation.homeLinkLabel}
-        height={LOGO_LARGEST_HEIGHT_PX}
-        densities={[1, 2]}
-        loading="eager"
-        class="h-12 w-auto lg:h-16"
-      />
+      {SITE_NAME}
     </a>
 
     <div class="hidden items-center gap-2 lg:flex">
