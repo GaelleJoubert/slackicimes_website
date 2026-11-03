@@ -18,9 +18,9 @@ const IMAGE_WIDTHS = [320, 640];
 const IMAGE_SIZES = "(min-width: 768px) 400px, 50vw";
 
 const TONE_CLASSES: Record<ActivityCardTone, string> = {
-  cloud: "bg-cloud",
-  ice: "bg-ice",
-  blush: "bg-blush",
+  cloud: "bg-moss",
+  ice: "bg-moss",
+  blush: "bg-lichen",
 };
 
 const { title, text, image, imageAlt, tone, href } = Astro.props;
@@ -30,7 +30,7 @@ const CardTag = href ? "a" : "div";
 <CardTag
   href={href}
   class:list={[
-    "rounded-card text-ink relative flex h-full flex-col overflow-hidden md:rounded-3xl",
+    "rounded-card text-slate relative flex h-full flex-col overflow-hidden md:rounded-3xl",
     href && PRESSABLE_CARD_CLASSES,
     TONE_CLASSES[tone],
   ]}

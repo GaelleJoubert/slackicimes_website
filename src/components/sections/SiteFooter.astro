@@ -53,19 +53,19 @@ const linkColumns = [
 ];
 ---
 
-<footer class="bg-ink text-paper relative mt-auto">
+<footer class="bg-slate text-snow relative mt-auto">
   <svg
     aria-hidden="true"
     viewBox="0 0 100 10"
     preserveAspectRatio="none"
-    class="fill-ink absolute bottom-full left-0 h-9 w-full md:h-15"
+    class="fill-slate absolute bottom-full left-0 h-9 w-full md:h-15"
   >
     <path d="M0 0 Q 50 20 100 0 L100 10 L0 10 Z" />
   </svg>
   <Container class="grid gap-8 py-8 md:grid-cols-4 md:pb-10">
     <div class="flex flex-col gap-1 md:gap-3">
       <p class="font-heading text-3xl md:text-4xl">{SITE_NAME}</p>
-      <p class="text-mist text-sm md:text-base">{strings.footer.tagline}</p>
+      <p class="text-rule text-sm md:text-base">{strings.footer.tagline}</p>
     </div>
     <div class="grid grid-cols-2 gap-6 md:col-span-3 md:grid-cols-3 md:gap-8">
       {linkColumns.map((column) => (
@@ -89,7 +89,7 @@ const linkColumns = [
       ))}
     </div>
   </Container>
-  <p class="border-navy text-mist border-t py-4 text-center text-sm">
+  <p class="border-slate text-rule border-t py-4 text-center text-sm">
     © {currentYear} {SITE_NAME}
   </p>
 </footer>

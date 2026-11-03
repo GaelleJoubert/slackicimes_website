@@ -28,10 +28,10 @@ const renderedQuestions = await Promise.all(
 const contactPath = localizedPath("contact", locale);
 ---
 
-<section id={id} class="bg-cloud scroll-mt-4 py-section">
+<section id={id} class="bg-moss scroll-mt-4 py-section">
   <Container class="grid items-start gap-block md:grid-cols-3">
     <SectionIntro title={strings.faq.title}>
-      <p class="text-slate">{intro}</p>
+      <p class="text-graphite">{intro}</p>
       <div class="hidden md:block">
         <LinkButton href={contactPath} variant="secondary">
           {strings.faq.otherQuestionButton}

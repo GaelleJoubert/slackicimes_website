@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@import "@fontsource/lilita-one";
-@import "@fontsource-variable/nunito";
+@import "@fontsource-variable/fraunces/opsz.css";
+@import "@fontsource-variable/fraunces/opsz-italic.css";
+@import "@fontsource-variable/hanken-grotesk";
 
 @font-face {
   font-family: "Clash Display";
@@ -21,18 +22,19 @@
 @theme {
   --color-*: initial;
   --color-white: #ffffff;
-  --color-paper: #fffefc;
-  --color-ink: #011021;
-  --color-navy: #253e59;
-  --color-slate: #3b4d63;
-  --color-mist: #b8cfde;
-  --color-cloud: #e8f0f6;
-  --color-ice: #d9f1f7;
-  --color-blush: #ffe4e1;
-  --color-sky: #00a0c4;
-  --color-teal: #006f79;
-  --color-coral: #ff695e;
-  --color-coral-strong: #bd5048;
+  --color-snow: #f6f5f1;
+  --color-moss: #e4ebda;
+  --color-lichen: #c8d8b0;
+  --color-rule: #c9d1c2;
+  --color-stone: #59666a;
+  --color-graphite: #3b484c;
+  --color-slate: #1d2a2e;
+  --color-forest: #2e463b;
+  --color-lake: #2d6a73;
+  --color-sage: #c9d4c3;
+  --color-coral: #b5492f;
+  --color-coral-strong: #9c3c25;
+  --color-coral-light: #e58a6f;
 
   --color-cup-navy: #2f3064;
   --color-cup-ink: #1b1c3f;
@@ -54,23 +56,36 @@
   --color-cup-slate-text: #d7d9ec;
   --color-cup-slate-muted: #aeb2cf;
 
-  --font-heading: "Lilita One", "Nunito Variable", system-ui, sans-serif;
-  --font-body: "Nunito Variable", system-ui, sans-serif;
+  --font-heading: "Fraunces Variable", Georgia, serif;
+  --font-body: "Hanken Grotesk Variable", system-ui, sans-serif;
   --font-display: "Clash Display", "Avenir Next", system-ui, sans-serif;
   --font-cup: "Inter Variable", system-ui, sans-serif;
 
-  --text-hero: 7.25rem;
-  --text-hero--line-height: 0.92;
-  --text-display: 6.5rem;
+  --text-hero: 10.5rem;
+  --text-hero--line-height: 0.88;
+  --text-display: 6rem;
   --text-display--line-height: 0.92;
   --text-error-code: 11.25rem;
   --text-error-code--line-height: 1;
-  --text-display-sm: clamp(2.75rem, 14.5vw, 3.5rem);
+  --text-display-sm: clamp(2.75rem, 14.5vw, 4rem);
   --text-display-sm--line-height: 0.95;
-  --text-title: 4rem;
-  --text-title--line-height: 1;
-  --text-title-sm: 2.75rem;
-  --text-title-sm--line-height: 1;
+  --text-title: 3.25rem;
+  --text-title--line-height: 1.05;
+  --text-title-sm: 2.25rem;
+  --text-title-sm--line-height: 1.1;
+  --text-card: 1.75rem;
+  --text-card--line-height: 1.15;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.55;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+
+  --font-weight-voice: 580;
+
+  --tracking-eyebrow: 0.14em;
+  --tracking-label: 0.12em;
   --text-cover-title: clamp(2rem, 12.5vw, 2.75rem);
   --text-cover-title--line-height: 1;
   --text-hero-word: 3.5rem;
@@ -78,7 +93,7 @@
   --text-quote: 2.125rem;
   --text-quote--line-height: 1.15;
 
-  --container-page: 77.5rem;
+  --container-page: 80rem;
 
   --aspect-photo: 3 / 2;
 
@@ -93,8 +108,8 @@
   --spacing-inline: var(--inline-space);
   --spacing-card-shadow: var(--card-shadow-distance);
 
-  --radius-card: 1.375rem;
-  --radius-photo: 1.75rem;
+  --radius-control: 0.375rem;
+  --radius-card: 0.625rem;
 
   --shadow-*: initial;
   --inset-shadow-*: initial;
@@ -103,27 +118,27 @@
 
   /* calc() makes Tailwind read the distances as lengths, so shadow color utilities keep working. */
   --shadow-raised: calc(var(--raised-shadow-distance))
-    calc(var(--raised-shadow-distance)) 0 var(--color-navy);
+    calc(var(--raised-shadow-distance)) 0 var(--color-slate);
   --shadow-pressable: calc(var(--pressable-shadow-distance))
-    calc(var(--pressable-shadow-distance)) 0 var(--color-navy);
+    calc(var(--pressable-shadow-distance)) 0 var(--color-slate);
   --shadow-card: calc(var(--card-shadow-distance))
-    calc(var(--card-shadow-distance)) 0 var(--color-navy);
+    calc(var(--card-shadow-distance)) 0 var(--color-slate);
   --text-shadow-raised: calc(var(--pressable-shadow-distance))
-    calc(var(--pressable-shadow-distance)) 0 var(--color-navy);
+    calc(var(--pressable-shadow-distance)) 0 var(--color-slate);
 }
 
 :root {
   --raised-shadow-distance: 0.3125rem;
   --card-shadow-distance: 0.3125rem;
   --pressable-shadow-distance: 0.1875rem;
-  --section-space: 2.5rem;
+  --section-space: 4.5rem;
   --cup-section-space: 2.5rem;
-  --page-top-space: 2rem;
-  --block-space: 2rem;
-  --stack-space: 1.25rem;
-  --grid-space: 1rem;
-  --card-space: 1.5rem;
-  --tile-space: 1rem;
+  --page-top-space: 4rem;
+  --block-space: 3rem;
+  --stack-space: 1rem;
+  --grid-space: 1.5rem;
+  --card-space: 1.75rem;
+  --tile-space: 1.25rem;
   --inline-space: 0.75rem;
 
   @variant md {
@@ -132,10 +147,10 @@
     --pressable-shadow-distance: 0.25rem;
     --section-space: 8rem;
     --cup-section-space: 5rem;
-    --page-top-space: 4rem;
-    --block-space: 4rem;
+    --page-top-space: 7.5rem;
+    --block-space: 4.5rem;
     --stack-space: 1.5rem;
-    --grid-space: 1.5rem;
+    --grid-space: 2rem;
     --card-space: 2.5rem;
     --tile-space: 1.5rem;
     --inline-space: 1rem;
@@ -166,45 +181,53 @@
   }
 
   :focus-visible {
-    @apply outline-3 outline-offset-3 outline-sky;
+    @apply outline-3 outline-offset-3 outline-lake;
   }
 }
 
 @layer components {
   .page-title {
-    @apply font-heading text-display-sm font-normal text-navy md:text-display;
+    @apply font-heading text-display-sm font-medium tracking-tight text-slate md:text-display;
   }
 
   .section-title {
-    @apply font-heading text-title-sm font-normal text-navy md:text-title;
+    @apply font-heading text-title-sm font-voice tracking-tight text-slate md:text-title;
   }
 
   .card-title {
-    @apply font-heading text-2xl leading-tight font-normal text-navy;
+    @apply font-heading text-2xl leading-tight font-voice text-slate md:text-card;
   }
 
   .timeline-year {
-    @apply font-heading text-5xl leading-none font-normal md:text-7xl;
+    @apply font-heading text-5xl leading-none font-medium md:text-7xl;
   }
 
   .timeline-title {
-    @apply font-heading text-3xl leading-tight font-normal text-navy md:text-4xl;
+    @apply font-heading text-3xl leading-tight font-voice text-slate md:text-4xl;
   }
 
   .subsection-title {
-    @apply font-heading text-xl font-normal text-navy;
+    @apply font-heading text-xl font-voice text-slate;
   }
 
   .stat-value {
-    @apply font-heading text-4xl leading-none md:text-6xl;
+    @apply font-heading text-4xl leading-none font-medium md:text-5xl;
   }
 
   .lead {
-    @apply text-lg font-bold md:text-xl;
+    @apply text-lead text-slate;
   }
 
   .caption {
-    @apply text-sm text-slate;
+    @apply text-sm text-stone;
+  }
+
+  .eyebrow-text {
+    @apply text-eyebrow font-semibold tracking-eyebrow uppercase;
+  }
+
+  .label-text {
+    @apply text-xs tracking-label text-stone uppercase;
   }
 
   .cup-eyebrow {
@@ -235,31 +258,38 @@
     @apply flex flex-col gap-4;
 
     & p:first-child {
-      @apply text-lg font-bold md:text-2xl;
+      @apply text-lead text-slate;
     }
   }
 
   .intro-text-on-dark {
-    @apply text-paper;
+    @apply text-snow;
+
+    & p:first-child {
+      @apply text-snow;
+    }
 
     & p:not(:first-child) {
-      @apply text-cloud;
+      @apply text-sage;
     }
   }
 
   .text-link {
-    @apply font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-teal;
+    @apply font-medium text-slate underline decoration-coral underline-offset-5 hover:text-coral;
+    text-decoration-thickness: 1.5px;
   }
 
   .text-link-on-dark {
-    @apply font-bold text-paper underline decoration-coral decoration-2 underline-offset-4 hover:text-ice;
+    @apply font-medium text-snow underline decoration-coral-light underline-offset-5 hover:text-white;
+    text-decoration-thickness: 1.5px;
   }
 
   .rich-text {
-    @apply space-y-4 leading-relaxed;
+    @apply space-y-4 text-body text-graphite;
 
     & a {
-      @apply font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-teal;
+      @apply font-medium text-slate underline decoration-coral underline-offset-5 hover:text-coral;
+      text-decoration-thickness: 1.5px;
     }
 
     & ul {
@@ -267,19 +297,19 @@
     }
 
     & strong {
-      @apply text-navy;
+      @apply font-semibold text-slate;
     }
   }
 
   .rich-text-on-dark {
-    @apply text-cloud;
+    @apply text-sage;
 
     & a {
-      @apply text-paper hover:text-ice;
+      @apply text-snow decoration-coral-light hover:text-white;
     }
 
     & strong {
-      @apply text-paper;
+      @apply text-snow;
     }
   }
 

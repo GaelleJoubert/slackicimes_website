@@ -5,9 +5,9 @@ interface Props {
 }
 
 const STEP_TONE_CLASSES = [
-  { tile: "bg-blush", number: "text-coral-strong" },
-  { tile: "bg-ice", number: "text-teal" },
-  { tile: "bg-cloud", number: "text-navy" },
+  { tile: "bg-lichen", number: "text-coral-strong" },
+  { tile: "bg-moss", number: "text-forest" },
+  { tile: "bg-moss", number: "text-slate" },
 ];
 
 const { steps, label } = Astro.props;
@@ -32,7 +32,7 @@ const { steps, label } = Astro.props;
         >
           {stepIndex + 1}
         </span>
-        <span class="text-navy font-extrabold">{step}</span>
+        <span class="text-slate font-extrabold">{step}</span>
       </li>
     );
   })}

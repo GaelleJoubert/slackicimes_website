@@ -30,7 +30,7 @@ function portraitOf(member: CollectionEntry<"team">) {
 }
 ---
 
-<section class="bg-navy text-paper py-section">
+<section class="bg-slate text-snow py-section">
   <Container class="grid gap-block md:grid-cols-2 md:items-center">
     <SectionIntro title={duo.title} theme="dark">
       <div class="intro-text intro-text-on-dark">
@@ -46,7 +46,7 @@ function portraitOf(member: CollectionEntry<"team">) {
           <li class:list={[memberIndex % 2 === 1 && "mt-4 md:mt-10"]}>
             <a
               href={`#${entrySlug(member.id)}`}
-              class="group text-paper flex flex-col items-center gap-1.5 text-center md:gap-2.5"
+              class="group text-snow flex flex-col items-center gap-1.5 text-center md:gap-2.5"
             >
               <FramedPicture
                 image={portrait.image}
@@ -59,7 +59,7 @@ function portraitOf(member: CollectionEntry<"team">) {
               <span class="card-title group-hover:text-coral text-current md:text-3xl">
                 {member.data.name}
               </span>
-              <span class="text-mist text-sm font-bold md:text-base">
+              <span class="text-rule text-sm font-bold md:text-base">
                 {strings.highlineSince} {member.data.highlineSince}
               </span>
             </a>

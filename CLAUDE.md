@@ -150,23 +150,26 @@ When the canvas and this file disagree, this file wins; flag the gap to the user
 Defined once in the `@theme` block of `src/styles/global.css`. Use the generated utilities
 (`bg-forest`, `text-slate`), never a hex value in a component.
 
-| Token    | Hex       | Role                                             |
-| :------- | :-------- | :----------------------------------------------- |
-| `snow`   | `#F6F5F1` | page background, text and buttons on dark blocks |
-| `moss`   | `#E4EBDA` | fill of clickable cards, tabs, callouts          |
-| `lichen` | `#C8D8B0` | light section background                         |
-| `rule`   | `#C9D1C2` | 1px rules and outlines                           |
-| `stone`  | `#59666A` | secondary text, captions, labels                 |
-| `slate`  | `#1D2A2E` | text, secondary buttons, arrow squares           |
-| `forest` | `#2E463B` | dark section, eyebrows on light backgrounds      |
-| `lake`   | `#2D6A73` | dark section, key figures band, focus ring       |
-| `coral`  | `#B5492F` | actions only (primary button, link underline)    |
+| Token          | Hex       | Role                                             |
+| :------------- | :-------- | :----------------------------------------------- |
+| `snow`         | `#F6F5F1` | page background, text and buttons on dark blocks |
+| `moss`         | `#E4EBDA` | fill of clickable cards, tabs, callouts          |
+| `lichen`       | `#C8D8B0` | light section background                         |
+| `rule`         | `#C9D1C2` | 1px rules and outlines                           |
+| `stone`        | `#59666A` | captions, labels                                 |
+| `graphite`     | `#3B484C` | long paragraphs on light backgrounds             |
+| `slate`        | `#1D2A2E` | text, secondary buttons, arrow squares           |
+| `forest`       | `#2E463B` | dark section, eyebrows on light backgrounds      |
+| `lake`         | `#2D6A73` | dark section, key figures band, focus ring       |
+| `sage`         | `#C9D4C3` | secondary text on dark blocks                    |
+| `coral`        | `#B5492F` | actions only: primary button, link underline     |
+| `coral-strong` | `#9C3C25` | primary button hover                             |
+| `coral-light`  | `#E58A6F` | link underline on dark blocks                    |
 
-- Body text on light backgrounds uses slate or `#3B484C` for long paragraphs; on dark blocks use
-  snow, with `#C9D4C3` for secondary text.
-- Coral never marks information. On dark blocks, link underlines use the light coral
-  `#E58A6F`.
+- Coral never marks information.
 - Every text color pair passes WCAG AA (4.5:1, 3:1 from 24px). Check new pairs before using them.
+  Two pairs fail and are banned for small text: `stone` on `lichen` (use `graphite`) and `sage` on
+  `lake` (use `snow`).
 
 ### Typography
 

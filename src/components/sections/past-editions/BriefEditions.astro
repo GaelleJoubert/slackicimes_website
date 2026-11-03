@@ -22,11 +22,11 @@ const renderedEditions = await Promise.all(
 <TimelineEntry
   dotTone={dotTone}
   dotOffset="card"
-  class="bg-ice rounded-photo gap-block p-card grid md:grid-cols-2"
+  class="bg-moss rounded-card gap-block p-card grid md:grid-cols-2"
 >
   {renderedEditions.map(({ edition, Story }) => (
     <article class="gap-stack flex flex-col">
-      <h2 class="timeline-year text-navy">
+      <h2 class="timeline-year text-slate">
         {editionPeriodLabel(edition.data.period, edition.data.editionNumber)}
       </h2>
       <div class="rich-text">

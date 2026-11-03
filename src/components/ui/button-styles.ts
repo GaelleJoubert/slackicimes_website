@@ -12,7 +12,7 @@ export type ButtonSize = "default" | "compact" | "large";
 export const PRESSABLE_CLASSES =
   "shadow-pressable hover:press-sink active:press-sink";
 
-export const PRESSABLE_ON_DARK_CLASSES = `${PRESSABLE_CLASSES} shadow-ink`;
+export const PRESSABLE_ON_DARK_CLASSES = `${PRESSABLE_CLASSES} shadow-slate`;
 
 export type RoundIconButtonTone = "light" | "dark";
 
@@ -20,8 +20,8 @@ const ROUND_ICON_BUTTON_SHAPE =
   "flex shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition";
 
 const ROUND_ICON_BUTTON_TONE_CLASSES: Record<RoundIconButtonTone, string> = {
-  light: `${PRESSABLE_CLASSES} border-navy bg-paper text-navy`,
-  dark: `${PRESSABLE_ON_DARK_CLASSES} border-paper bg-paper text-navy`,
+  light: `${PRESSABLE_CLASSES} border-slate bg-snow text-slate`,
+  dark: `${PRESSABLE_ON_DARK_CLASSES} border-snow bg-snow text-slate`,
 };
 
 export function roundIconButtonClasses(tone: RoundIconButtonTone): string {
@@ -40,10 +40,10 @@ const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: `${PRESSABLE_CLASSES} bg-coral text-ink`,
-  primaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} bg-coral text-ink`,
-  secondary: `${PRESSABLE_CLASSES} border-3 border-navy bg-paper text-navy`,
-  secondaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} border-3 border-paper bg-paper text-navy`,
+  primary: `${PRESSABLE_CLASSES} bg-coral text-slate`,
+  primaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} bg-coral text-slate`,
+  secondary: `${PRESSABLE_CLASSES} border-3 border-slate bg-snow text-slate`,
+  secondaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} border-3 border-snow bg-snow text-slate`,
   cupPrimary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink bg-cup-pink-strong text-white`,
   cupSecondary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-navy border-2 border-cup-navy bg-white text-cup-navy`,
   cupSecondaryOnDark: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink border-2 border-white bg-white text-cup-ink`,

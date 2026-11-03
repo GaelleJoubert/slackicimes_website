@@ -16,9 +16,9 @@ const { heading, origin } = Astro.props;
 const [leadParagraph, ...closingParagraphs] = origin.paragraphs;
 ---
 
-<section class="bg-navy text-paper pt-page-top pb-section">
+<section class="bg-slate text-snow pt-page-top pb-section">
   <Container class="split-centered-grid gap-stack md:gap-x-block grid md:grid-cols-2">
-    <h1 class="page-title text-paper md:row-start-2">{heading}</h1>
+    <h1 class="page-title text-snow md:row-start-2">{heading}</h1>
     <div class="pr-2 pb-2 md:col-start-2 md:row-span-4 md:row-start-1 md:p-0">
       <FramedPicture
         image={origin.illustration.image}
@@ -31,9 +31,9 @@ const [leadParagraph, ...closingParagraphs] = origin.paragraphs;
       />
     </div>
     <div class="gap-stack flex flex-col md:row-start-3">
-      <p class="text-cloud">{leadParagraph}</p>
+      <p class="text-moss">{leadParagraph}</p>
       {closingParagraphs.map((paragraph) => (
-        <p class="text-paper font-bold">{paragraph}</p>
+        <p class="text-snow font-bold">{paragraph}</p>
       ))}
     </div>
   </Container>

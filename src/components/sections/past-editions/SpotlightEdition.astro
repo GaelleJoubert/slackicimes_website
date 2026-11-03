@@ -31,17 +31,17 @@ const gallery = gallerySlug ? await getGallery(gallerySlug, locale) : undefined;
 <TimelineEntry
   dotTone={dotTone}
   dotOffset="card"
-  class="bg-navy text-paper rounded-photo gap-block p-card flex flex-col"
+  class="bg-slate text-snow rounded-card gap-block p-card flex flex-col"
 >
   <EditionWithPoster edition={edition} frame="bordered" theme="dark">
-    {highlight && <p class="subsection-title text-sky">{highlight}</p>}
+    {highlight && <p class="subsection-title text-lake">{highlight}</p>}
   </EditionWithPoster>
   {videos.map((videoUrl) => (
     <VideoEmbed videoUrl={videoUrl} title={videoTitle} locale={locale} />
   ))}
   {gallery && (
     <div class="gap-stack flex flex-col">
-      {galleryTitle && <h3 class="card-title text-paper">{galleryTitle}</h3>}
+      {galleryTitle && <h3 class="card-title text-snow">{galleryTitle}</h3>}
       <PhotoGrid photos={gallery.data.photos} />
     </div>
   )}

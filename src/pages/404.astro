@@ -29,7 +29,7 @@ const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
           <SlacklineIllustration state="broken" class="h-full" />
           <p
             aria-hidden="true"
-            class="font-heading text-navy text-display md:text-error-code absolute inset-x-0 top-6 md:top-12.5"
+            class="font-heading text-slate text-display md:text-error-code absolute inset-x-0 top-6 md:top-12.5"
           >
             {ERROR_CODE}
           </p>
@@ -47,7 +47,7 @@ const otherLocales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
           return (
             <div
               lang={LOCALE_SETTINGS[locale].htmlLang}
-              class="bg-cloud rounded-card md:rounded-photo mt-block p-card flex flex-col gap-2 self-stretch md:items-center md:gap-2.5"
+              class="bg-moss rounded-card md:rounded-card mt-block p-card flex flex-col gap-2 self-stretch md:items-center md:gap-2.5"
             >
               <h2 class="timeline-title">{strings.title}</h2>
               <p>{strings.text}</p>

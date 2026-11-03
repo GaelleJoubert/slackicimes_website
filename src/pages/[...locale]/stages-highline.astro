@@ -38,10 +38,10 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   pageSlug={PAGE_SLUG}
   headerTone="dark"
 >
-  <section class="bg-navy text-paper pt-page-top pb-section">
+  <section class="bg-slate text-snow pt-page-top pb-section">
     <Container class="gap-block grid items-center md:grid-cols-5">
       <div class="gap-stack flex flex-col md:col-span-2">
-        <h1 class="page-title text-paper">{page.data.heading}</h1>
+        <h1 class="page-title text-snow">{page.data.heading}</h1>
         <div class="rich-text rich-text-on-dark md:text-xl">
           <Intro />
         </div>
@@ -60,11 +60,11 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
     <Container class="gap-block flex flex-col">
       <div class="max-w-190">
         <SectionIntro title={strings.stages.formulasTitle}>
-          <p class="text-slate">{strings.stages.formulasIntro}</p>
+          <p class="text-graphite">{strings.stages.formulasIntro}</p>
         </SectionIntro>
       </div>
       <div class="gap-stack flex flex-col">
-        <p class="text-navy font-extrabold">{strings.stages.pickerHint}</p>
+        <p class="text-slate font-extrabold">{strings.stages.pickerHint}</p>
         <CoursePicker stages={stages} locale={locale} />
       </div>
     </Container>

@@ -12,7 +12,7 @@ interface Props {
 
 const MULTILINE_ROWS = 6;
 const INPUT_CLASSES =
-  "border-mist bg-paper focus:border-teal focus:ring-teal block w-full rounded-2xl border-3 px-3.5 font-normal focus:ring-2 focus:outline-none md:px-4";
+  "border-rule bg-snow focus:border-forest focus:ring-forest block w-full rounded-2xl border-3 px-3.5 font-normal focus:ring-2 focus:outline-none md:px-4";
 const SINGLE_LINE_CLASSES = "min-h-12 md:min-h-13";
 const MULTILINE_CLASSES = "h-24 py-3 md:h-auto md:py-3.5";
 
@@ -28,7 +28,7 @@ const fieldId = `field-${name}`;
 ---
 
 <div class="flex flex-col gap-1 md:gap-1.5">
-  <label for={fieldId} class="text-navy font-extrabold">
+  <label for={fieldId} class="text-slate font-extrabold">
     {label}
     {required && <span aria-hidden="true">*</span>}
   </label>

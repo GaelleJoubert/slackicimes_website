@@ -8,21 +8,21 @@ interface Props {
 }
 
 const BACKGROUND_CLASSES: Record<DividerTone, string> = {
-  paper: "bg-paper",
-  navy: "bg-navy",
-  blush: "bg-blush",
-  cloud: "bg-cloud",
+  paper: "bg-snow",
+  navy: "bg-slate",
+  blush: "bg-lichen",
+  cloud: "bg-moss",
 };
 
 const FILL_CLASSES: Record<DividerTone, string> = {
-  paper: "fill-paper",
-  navy: "fill-navy",
-  blush: "fill-blush",
-  cloud: "fill-cloud",
+  paper: "fill-snow",
+  navy: "fill-slate",
+  blush: "fill-lichen",
+  cloud: "fill-moss",
 };
 
 const ANCHOR_CLASSES =
-  "bg-navy absolute top-0 size-3 rounded-full md:top-1 md:size-4";
+  "bg-slate absolute top-0 size-3 rounded-full md:top-1 md:size-4";
 
 const { backgroundTone = "paper", fillTone, hasAnchors = false } = Astro.props;
 ---

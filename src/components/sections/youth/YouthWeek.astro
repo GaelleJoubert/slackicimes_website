@@ -19,16 +19,16 @@ interface Props {
 }
 
 const DEFAULT_DAY_TONE: DayTone = {
-  card: "bg-blush",
+  card: "bg-lichen",
   label: "coral",
-  title: "text-navy",
+  title: "text-slate",
 };
 
 const DAY_TONE_CYCLE: DayTone[] = [
   DEFAULT_DAY_TONE,
-  { card: "bg-ice", label: "sky", title: "text-navy" },
-  { card: "bg-cloud", label: "mist", title: "text-navy" },
-  { card: "bg-navy text-paper", label: "coralOnDark", title: "text-paper" },
+  { card: "bg-moss", label: "sky", title: "text-slate" },
+  { card: "bg-moss", label: "mist", title: "text-slate" },
+  { card: "bg-slate text-snow", label: "coralOnDark", title: "text-snow" },
 ];
 
 const { title, intro, days, locale } = Astro.props;
@@ -41,7 +41,7 @@ const toneAt = (dayIndex: number): DayTone =>
   <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={title}>
-        <p class="text-slate">{intro}</p>
+        <p class="text-graphite">{intro}</p>
       </SectionIntro>
     </div>
     <Carousel

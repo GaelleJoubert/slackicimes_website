@@ -31,11 +31,11 @@ const FRAMING_CLASSES: Record<PhotoFraming, string> = {
 };
 
 const HIGHLIGHT_CARD_CLASSES: Record<HighlightTone, string> = {
-  coral: "bg-blush",
-  sky: "bg-ice",
-  mist: "bg-cloud",
-  cloud: "bg-cloud",
-  ice: "bg-ice",
+  coral: "bg-lichen",
+  sky: "bg-moss",
+  mist: "bg-moss",
+  cloud: "bg-moss",
+  ice: "bg-moss",
 };
 
 const DESKTOP_COLUMN_CLASSES = [
@@ -82,13 +82,13 @@ const cards = highlights.map((highlight, highlightIndex) => ({
 
 <section class="pt-page-top">
   <Container class="gap-grid flex flex-col md:grid md:grid-cols-3">
-    <h1 class="font-heading text-paper grid gap-grid uppercase md:contents">
+    <h1 class="font-heading text-snow grid gap-grid uppercase md:contents">
       {panels.map((panel) => (
         <>
           {panel.needsSpaceBefore ? " " : ""}
           <span
             class:list={[
-              "rounded-card shadow-raised shadow-navy relative overflow-hidden md:pointer-events-none md:z-10 md:row-start-1 md:block md:overflow-visible md:rounded-none md:pt-4 md:shadow-none",
+              "rounded-card shadow-raised shadow-slate relative overflow-hidden md:pointer-events-none md:z-10 md:row-start-1 md:block md:overflow-visible md:rounded-none md:pt-4 md:shadow-none",
               panel.columnClass,
               panel.isMobileCover ? "block h-88" : "hidden",
             ]}
@@ -122,7 +122,7 @@ const cards = highlights.map((highlight, highlightIndex) => ({
           <a
             href={card.href}
             class:list={[
-              "group rounded-card shadow-card max-md:active:card-sink flex min-h-16 items-center gap-3 px-4 py-3 transition md:rounded-photo md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:p-0 md:hover:card-sink md:active:card-sink",
+              "group rounded-card shadow-card max-md:active:card-sink flex min-h-16 items-center gap-3 px-4 py-3 transition md:rounded-card md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:p-0 md:hover:card-sink md:active:card-sink",
               card.cardClass,
             ]}
           >
@@ -148,7 +148,7 @@ const cards = highlights.map((highlight, highlightIndex) => ({
             <span class="flex flex-col gap-1.5 md:p-tile">
               <Eyebrow tone={card.tone}>{card.eyebrow}</Eyebrow>
               <span class="card-title lg:text-3xl">{card.title}</span>
-              <span class="text-slate hidden text-base md:block">
+              <span class="text-graphite hidden text-base md:block">
                 {card.text}
               </span>
             </span>

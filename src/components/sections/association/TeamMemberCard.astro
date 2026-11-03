@@ -43,7 +43,7 @@ const { Content: Biography } = await render(member);
 <article
   id={entrySlug(member.id)}
   class:list={[
-    "border-mist rounded-card md:rounded-photo media-start-grid row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-0 md:content-normal overflow-hidden border-3 md:h-auto md:grid-cols-1",
+    "border-rule rounded-card md:rounded-card media-start-grid row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-0 md:content-normal overflow-hidden border-3 md:h-auto md:grid-cols-1",
   ]}
 >
   <Picture
@@ -62,7 +62,7 @@ const { Content: Biography } = await render(member);
     <p class="caption font-bold md:order-last md:col-span-2">{role}</p>
     <p class="hidden md:flex md:flex-col md:items-end md:justify-self-end">
       <span class="caption">{strings.highlineSince}</span>
-      <span class="card-title text-teal">{highlineSince}</span>
+      <span class="card-title text-forest">{highlineSince}</span>
     </p>
   </header>
   <blockquote class="col-span-2 mx-4 mt-4 text-sm md:col-span-1 md:mx-7 md:mt-4 md:text-base">
@@ -84,7 +84,7 @@ const { Content: Biography } = await render(member);
         ))}
       </dl>
     </ReadMore>
-    <div class="border-cloud border-t-2 pt-2 md:pt-3">
+    <div class="border-moss border-t-2 pt-2 md:pt-3">
       <TagList items={diplomaShortNames} label={strings.diplomasLabel} />
     </div>
   </footer>

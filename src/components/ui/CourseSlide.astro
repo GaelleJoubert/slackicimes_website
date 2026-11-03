@@ -21,7 +21,7 @@ const { href, name, duration, price, image, imageFocusClass } = Astro.props;
 <a
   href={href}
   class:list={[
-    "bg-paper rounded-card flex h-full flex-col overflow-hidden",
+    "bg-snow rounded-card flex h-full flex-col overflow-hidden",
     PRESSABLE_CARD_CLASSES,
   ]}
 >
@@ -36,7 +36,7 @@ const { href, name, duration, price, image, imageFocusClass } = Astro.props;
   <span class="flex flex-1 flex-col justify-between gap-2 px-3.5 pt-2.5 pb-3">
     <span class="card-title text-xl">{name}</span>
     <span class="flex items-baseline justify-between gap-2">
-      <span class="text-slate text-sm">{duration}</span>
+      <span class="text-graphite text-sm">{duration}</span>
       <span class="font-heading text-coral-strong text-2xl leading-none">
         {price}
       </span>

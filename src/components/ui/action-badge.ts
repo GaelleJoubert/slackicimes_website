@@ -13,7 +13,7 @@ const SIZE_CLASSES: Record<ActionBadgeSize, string> = {
 };
 
 const TONE_CLASSES: Record<ActionBadgeTone, string> = {
-  coral: "bg-coral text-ink",
+  coral: "bg-coral text-slate",
   cupPink: "bg-cup-pink-strong text-white",
 };
 

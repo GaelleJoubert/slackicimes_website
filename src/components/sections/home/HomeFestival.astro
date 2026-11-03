@@ -20,7 +20,7 @@ const { teaser, gallery, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="bg-navy text-paper py-section">
+<section class="bg-slate text-snow py-section">
   <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={strings.navigation.winterFestislack} theme="dark">
@@ -30,7 +30,7 @@ const strings = uiStrings(locale);
           highlight={FESTIVAL_NAME_HIGHLIGHT}
         />
         {teaser.paragraphs.map((paragraph) => (
-          <p class="text-cloud">{paragraph}</p>
+          <p class="text-moss">{paragraph}</p>
         ))}
         <div class="hidden md:block">
           <LinkButton

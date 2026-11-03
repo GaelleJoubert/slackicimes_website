@@ -19,11 +19,11 @@ const TONE_CLASSES: Record<
   { card: string; mark: string; initial: string }
 > = {
   blush: {
-    card: "bg-blush",
+    card: "bg-lichen",
     mark: "text-coral",
-    initial: "bg-paper text-coral-strong",
+    initial: "bg-snow text-coral-strong",
   },
-  ice: { card: "bg-ice", mark: "text-sky", initial: "bg-navy text-paper" },
+  ice: { card: "bg-moss", mark: "text-lake", initial: "bg-slate text-snow" },
 };
 
 const TEXT_SIZE_CLASSES: Record<QuoteTextSize, string> = {
@@ -52,7 +52,7 @@ const toneClasses = TONE_CLASSES[tone];
 
 <figure
   class:list={[
-    "text-ink rounded-card md:rounded-photo flex flex-col justify-center",
+    "text-slate rounded-card md:rounded-card flex flex-col justify-center",
     toneClasses.card,
     DENSITY_CLASSES[density],
     extraClasses,

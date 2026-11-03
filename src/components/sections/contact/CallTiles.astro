@@ -11,8 +11,8 @@ interface Props {
 }
 
 const TILE_TONE_CLASSES = [
-  { tile: "bg-blush", label: "text-coral-strong" },
-  { tile: "bg-ice", label: "text-teal" },
+  { tile: "bg-lichen", label: "text-coral-strong" },
+  { tile: "bg-moss", label: "text-forest" },
 ];
 
 const { locale, class: extraClasses } = Astro.props;
@@ -36,7 +36,7 @@ const strings = uiStrings(locale).contactPage;
             <span class:list={["text-sm font-extrabold", tone.label]}>
               {strings.callPerson} {person.firstName}
             </span>
-            <span class="text-navy font-extrabold">{person.displayPhone}</span>
+            <span class="text-slate font-extrabold">{person.displayPhone}</span>
           </span>
           <ActionBadge icon="phone" />
         </a>
