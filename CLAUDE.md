@@ -237,7 +237,7 @@ Interactive and informative elements never share a cue.
   fills slate on hover), and a text link for low priority. On dark blocks: `onDark` (snow fill,
   slate text) and a text link underlined in light coral.
 - A clickable card is a moss fill (snow on a lichen section) with radius `card` and a 44px slate
-  arrow square in a corner: the whole card opens a page. On hover or tap the square turns coral
+  arrow square in a corner: the whole card opens a page. On hover or tap the square turns lake
   and the title gets a coral underline. A clickable card has no outline.
 - An outlined square (slate 1.5px, radius `control`) announces another action: `+` unfolds a
   disclosure, play, phone, external link. It fills slate once a disclosure is open.
