@@ -24,9 +24,5 @@ const { image, alt, caption, loading = "lazy" } = Astro.props;
     loading={loading}
     class="h-56"
   />
-  {caption && (
-    <figcaption class="text-rule text-center text-sm font-bold">
-      {caption}
-    </figcaption>
-  )}
+  {caption && <figcaption class="text-center text-sm">{caption}</figcaption>}
 </figure>

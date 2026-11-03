@@ -2,6 +2,11 @@
 title: "Stages Jeunes | Slack'icîmes"
 description: "Stage Highline pour les jeunes, enfants et adolescents, aux Arcs, Savoie."
 heading: "Stage jeunes"
+headingAccent: "jeunes"
+eyebrow: "Les Arcs · De 10 à 17 ans"
+illustration:
+  image: ../../../assets/images/stages/stage-jeunes.jpg
+  alt: "Jeune stagiaire suspendue la tête en bas sous une highline"
 keyFacts:
   - { value: "5 jours", label: "de 9h à 17h" }
   - { value: "10-17 ans", label: "pour les jeunes sportifs" }

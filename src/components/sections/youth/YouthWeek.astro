@@ -6,6 +6,7 @@ import Carousel from "../../ui/Carousel.astro";
 import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
 import YouthDayCard, { type DayTone } from "./YouthDayCard.astro";
 
 type ProgramItem =
@@ -19,7 +20,7 @@ interface Props {
 }
 
 const DAY_TONE: DayTone = {
-  card: "bg-moss",
+  card: "bg-snow",
   label: "light",
   title: "text-slate",
 };
@@ -28,7 +29,8 @@ const { title, intro, days, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="py-section">
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline variant="background" profiles={["crete", "casse"]} tone="light" />
   <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={title}>

@@ -2,11 +2,12 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import FaqSection from "../../components/sections/FaqSection.astro";
+import PageHero from "../../components/sections/PageHero.astro";
 import CoursePicker from "../../components/sections/stages/CoursePicker.astro";
-import StagesHero from "../../components/sections/stages/StagesHero.astro";
 import StagesVideo from "../../components/sections/stages/StagesVideo.astro";
 import TestimonialHighlights from "../../components/sections/TestimonialHighlights.astro";
 import Container from "../../components/ui/Container.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
 import SectionIntro from "../../components/ui/SectionIntro.astro";
 import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths } from "../../i18n/routes";
@@ -37,9 +38,15 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <StagesHero page={page.data} faqSectionId={FAQ_SECTION_ID} locale={locale}>
+  <PageHero page={page.data} keyFactsLabel={strings.stages.keyFactsLabel}>
     <Intro />
-  </StagesHero>
+    <LinkButton slot="actions" href={`#${COURSE_FORMULAS_SECTION_ID}`}>
+      {strings.stages.chooseCourseButton}
+    </LinkButton>
+    <LinkButton slot="actions" href={`#${FAQ_SECTION_ID}`} variant="secondary">
+      {strings.stages.faqButton}
+    </LinkButton>
+  </PageHero>
 
   <section id={COURSE_FORMULAS_SECTION_ID} class="scroll-mt-24 py-section">
     <Container class="gap-block flex flex-col">
