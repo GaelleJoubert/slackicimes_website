@@ -13,7 +13,9 @@ const pages = defineCollection({
       title: nonEmptyText,
       description: nonEmptyText,
       heading: nonEmptyText,
+      headingAccent: nonEmptyText.optional(),
       eyebrow: nonEmptyText.optional(),
+      illustration: z.object({ image: image(), alt: nonEmptyText }).optional(),
       keyFacts: z
         .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
         .optional(),

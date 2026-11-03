@@ -1,18 +1,23 @@
 ---
+import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
 import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import DotList from "../../ui/DotList.astro";
-import FactTile from "../../ui/FactTile.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import YouthDayCard, { type DayTone } from "../youth/YouthDayCard.astro";
+import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
 interface Props {
   stage: CollectionEntry<"stages">;
   locale: Locale;
 }
+
+const PHOTO_WIDTHS = [480, 960];
+const PHOTO_SIZES = "500px";
 
 const DAY_TONE: DayTone = {
   card: "bg-moss",
@@ -27,10 +32,14 @@ const {
   duration,
   level,
   ageRange,
+  summary,
   description,
   program,
   prerequisites,
   dates,
+  image,
+  imageAlt,
+  imageFocus,
 } = stage.data;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
@@ -40,69 +49,81 @@ const programLines = program.items.map((item) =>
     ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
     : item.label,
 );
+const facts = [
+  { label: strings.stages.durationLabel, value: duration },
+  ...(ageRange ? [{ label: strings.stages.ageLabel, value: ageRange }] : []),
+  { label: strings.stages.datesHeading, value: dates },
+  { label: strings.stages.priceHeading, value: formattedPrice },
+];
 ---
 
-<div
-  data-switch-content
-  class="bg-lichen gap-stack hidden md:flex md:flex-col md:rounded-4xl md:p-card"
->
-  <dl class:list={["gap-grid grid", ageRange ? "grid-cols-5" : "grid-cols-4"]}>
-    <FactTile value={duration} label={strings.stages.durationLabel} />
-    <FactTile value={level} label={strings.stages.levelLabel} />
-    {ageRange && <FactTile value={ageRange} label={strings.stages.ageLabel} />}
-    <FactTile value={formattedPrice} label={strings.stages.priceHeading} />
-    <FactTile value={dates} label={strings.stages.datesHeading} />
-  </dl>
-  <div class="gap-block grid grid-cols-2 items-start">
+<div data-switch-content class="hidden gap-14 md:grid md:grid-cols-12">
+  <div class="md:col-span-5">
+    <Picture
+      src={image}
+      alt={imageAlt}
+      widths={PHOTO_WIDTHS}
+      sizes={PHOTO_SIZES}
+      formats={["avif", "webp"]}
+      class:list={[
+        "rounded-card h-140 w-full object-cover",
+        STAGE_IMAGE_FOCUS_CLASSES[imageFocus],
+      ]}
+    />
+  </div>
+  <div class="gap-block flex flex-col md:col-span-7">
     <div class="gap-stack flex flex-col">
-      <p
-        aria-hidden="true"
-        class="font-heading text-slate text-5xl leading-none"
-      >
+      <Eyebrow>{[duration, level].filter(Boolean).join(" · ")}</Eyebrow>
+      <p aria-hidden="true" class="font-heading text-slate text-5xl font-voice">
         {name}
       </p>
-      {description.map((paragraph) => (
-        <p class="text-justify hyphens-auto">{paragraph}</p>
+      <p class="lead">{summary}</p>
+    </div>
+    <dl class="border-rule grid grid-flow-col border-y">
+      {facts.map((fact) => (
+        <div class="border-rule flex flex-col gap-1.5 border-r py-4 pr-4 pl-4 first:pl-0 last:border-r-0">
+          <dt class="label-text">{fact.label}</dt>
+          <dd class="font-heading text-2xl font-voice">{fact.value}</dd>
+        </div>
       ))}
+    </dl>
+    <div class="flex flex-col gap-3.5">
+      {description.map((paragraph) => (
+        <p class="text-graphite">{paragraph}</p>
+      ))}
+    </div>
+    <div class="gap-grid grid grid-cols-2 items-start">
       {!isWeekByDay && (
-        <LinkButton href={STAGES_REGISTRATION_URL} class="self-center">
-          {strings.stages.registerButton}
-          <span class="sr-only">: {name}</span>
-        </LinkButton>
-      )}
-    </div>
-    <div class="gap-stack flex flex-col">
-      <div class="bg-snow border-rule rounded-card p-tile gap-stack flex flex-col border-3">
-        <section class="flex flex-col gap-3">
-          <h4 class="subsection-title md:text-3xl">
-            {strings.stages.prerequisitesHeading}
+        <section class="flex flex-col gap-3.5">
+          <h4>
+            <Eyebrow>{strings.stages.programHeading}</Eyebrow>
           </h4>
-          <DotList items={prerequisites} />
-        </section>
-        {!isWeekByDay && (
-          <section class="flex flex-col gap-3">
-            <h4 class="subsection-title md:text-3xl">
-              {strings.stages.programHeading}
-            </h4>
-            {program.intro.map((paragraph) => (
-              <p>{paragraph}</p>
+          {program.intro.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+          <ul class="flex flex-col">
+            {programLines.map((line) => (
+              <li class="border-rule border-b py-2.5">{line}</li>
             ))}
-            <DotList items={programLines} />
-          </section>
-        )}
-      </div>
-      {isWeekByDay && (
-        <LinkButton href={STAGES_REGISTRATION_URL} class="self-center">
-          {strings.stages.registerButton}
-          <span class="sr-only">: {name}</span>
-        </LinkButton>
+          </ul>
+        </section>
       )}
+      <section class="bg-moss rounded-control p-tile flex flex-col gap-3.5">
+        <h4>
+          <Eyebrow>{strings.stages.prerequisitesHeading}</Eyebrow>
+        </h4>
+        <DotList items={prerequisites} size="small" />
+      </section>
     </div>
+    <LinkButton href={STAGES_REGISTRATION_URL} class="self-start">
+      {strings.stages.registerButton}
+      <span class="sr-only">: {name}</span>
+    </LinkButton>
   </div>
   {isWeekByDay && (
-    <section class="flex flex-col gap-3">
-      <h4 class="subsection-title md:text-3xl">
-        {strings.stages.typicalWeekHeading}
+    <section class="gap-stack flex flex-col md:col-span-12">
+      <h4>
+        <Eyebrow>{strings.stages.typicalWeekHeading}</Eyebrow>
       </h4>
       {program.intro.map((paragraph) => (
         <p>{paragraph}</p>

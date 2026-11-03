@@ -2,7 +2,6 @@ import { prefersReducedMotion } from "./expand-animation";
 
 const FADE_OUT_MS = 250;
 const FADE_IN_MS = 450;
-const SWITCH_DURATION_MS = FADE_OUT_MS + FADE_IN_MS;
 const SWITCH_EASING = "cubic-bezier(0.33, 1, 0.68, 1)";
 const FADING_CONTENT_SELECTOR = "[data-switch-content] > *";
 
@@ -52,15 +51,4 @@ export async function crossfadePanels(
   await finished([resize, ...fadeIns]);
   fadeIns.forEach((animation) => animation.cancel());
   incoming.style.removeProperty("overflow");
-}
-
-export function glideTo(element: HTMLElement, place: () => void): void {
-  const previousLeft = element.offsetLeft;
-  place();
-  const shift = previousLeft - element.offsetLeft;
-  if (shift === 0 || prefersReducedMotion()) return;
-  element.animate(
-    [{ transform: `translateX(${shift}px)` }, { transform: "translateX(0)" }],
-    { duration: SWITCH_DURATION_MS, easing: SWITCH_EASING },
-  );
 }

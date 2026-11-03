@@ -34,7 +34,7 @@ const programLines = program.items.map((item) =>
 );
 ---
 
-<div class="bg-lichen gap-stack px-tile pb-tile flex flex-col text-sm md:hidden">
+<div class="gap-stack px-tile pb-tile flex flex-col text-sm md:hidden">
   <dl class="flex flex-wrap gap-2">
     <FactTile
       value={duration}
@@ -66,7 +66,7 @@ const programLines = program.items.map((item) =>
   </div>
   <div class="flex items-baseline gap-2.5">
     <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
-    <p class="font-bold">{dates}</p>
+    <p class="font-semibold">{dates}</p>
   </div>
   <LinkButton href={STAGES_REGISTRATION_URL}>
     {strings.stages.registerButton}
