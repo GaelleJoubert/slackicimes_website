@@ -6,7 +6,6 @@ import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import Container from "../ui/Container.astro";
 import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
-import LinkButton from "../ui/LinkButton.astro";
 import type { HeaderTone } from "./header-tone";
 import MobileMenu from "./MobileMenu.astro";
 import SiteNavigation from "./SiteNavigation.astro";
@@ -54,13 +53,6 @@ const toneClasses = TONE_CLASSES[tone];
         tone={tone}
       />
       <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
-      <LinkButton
-        href={localizedPath("inscriptions", locale)}
-        variant={tone === "dark" ? "primaryOnDark" : "primary"}
-        class="ml-2"
-      >
-        {strings.navigation.registerButton}
-      </LinkButton>
     </div>
 
     <div class="flex items-center gap-2 lg:hidden">
