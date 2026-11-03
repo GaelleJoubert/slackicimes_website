@@ -13,20 +13,18 @@ const STEP_CHEVRON_CLASSES =
   "text-cup-sky mx-auto rotate-90 self-center lg:rotate-0";
 ---
 
-<div class="bg-cup-navy gap-stack p-card flex flex-col rounded-2xl text-white">
-  <h3 class="cup-card-title">{bracket.title}</h3>
+<div class="bg-cup-ink rounded-card gap-stack p-card flex flex-col text-white">
+  <h3 class="cup-subsection-title">{bracket.title}</h3>
   <div class="bracket-flow-grid gap-grid grid">
     <WorldCupBracketStage stage={pool} tone="regular">
-      <ol class="grid grid-cols-4 gap-2">
+      <ol class="font-display text-cup-sky flex flex-wrap items-center gap-x-2 text-lg font-semibold">
         {pool.ranks.map((rank, rankIndex) => (
-          <li
-            class:list={[
-              "font-display rounded-lg border-2 py-1 text-center font-bold",
-              rankIndex === 0
-                ? "border-cup-pink text-cup-pink-soft"
-                : "border-cup-line",
-            ]}
-          >
+          <li class="flex items-center gap-2">
+            {rankIndex > 0 && (
+              <span aria-hidden="true" class="text-cup-line">
+                ·
+              </span>
+            )}
             {rank}
           </li>
         ))}

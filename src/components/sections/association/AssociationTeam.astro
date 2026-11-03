@@ -23,7 +23,7 @@ const strings = uiStrings(locale);
     <div class="max-w-190">
       <SectionIntro title={team.title}>
         {team.paragraphs.map((paragraph) => (
-          <p class="text-slate">{paragraph}</p>
+          <p class="text-graphite">{paragraph}</p>
         ))}
       </SectionIntro>
     </div>
@@ -36,7 +36,7 @@ const strings = uiStrings(locale);
       desktopGrid
     >
       {members.map((member) => (
-        <CarouselSlide class="pr-1.5 pb-1.5 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-0 md:p-0">
+        <CarouselSlide class="md:row-span-4 md:grid md:grid-rows-subgrid md:gap-0 md:p-0">
           <TeamMemberCard member={member} locale={locale} />
         </CarouselSlide>
       ))}

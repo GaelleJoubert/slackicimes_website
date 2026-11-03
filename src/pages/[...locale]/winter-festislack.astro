@@ -2,12 +2,13 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
 import FramedPicture from "../../components/ui/FramedPicture.astro";
 import HighlightedText from "../../components/ui/HighlightedText.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import PhotoGallery from "../../components/ui/PhotoGallery.astro";
 import SectionIntro from "../../components/ui/SectionIntro.astro";
-import SlacklineDivider from "../../components/ui/SlacklineDivider.astro";
+import Skyline from "../../components/ui/Skyline.astro";
 import {
   getGallery,
   getPageEntry,
@@ -43,18 +44,25 @@ const festivalGallery = await getGallery("festival", locale);
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
-  headerTone="dark"
   snapSectionsOnMobile
 >
-  <section class="bg-navy text-paper pt-page-top pb-section">
+  <section
+    aria-labelledby="page-title"
+    class="bg-forest text-snow pt-page-top relative pb-24 md:pb-40"
+  >
     <Container class="gap-block flex flex-col">
       <div class="gap-stack md:gap-block grid md:grid-cols-2 md:items-end">
-        <h1 class="page-title text-paper lg:text-hero">
-          <HighlightedText
-            text={page.data.heading}
-            highlight={FESTIVAL_NAME_HIGHLIGHT}
-          />
-        </h1>
+        <div class="gap-stack flex flex-col">
+          {page.data.eyebrow && (
+            <Eyebrow tone="dark">{page.data.eyebrow}</Eyebrow>
+          )}
+          <h1 id="page-title" class="page-title text-snow">
+            <HighlightedText
+              text={page.data.heading}
+              highlight={FESTIVAL_NAME_HIGHLIGHT}
+            />
+          </h1>
+        </div>
         <div class="intro-text intro-text-on-dark">
           <Intro />
         </div>
@@ -66,11 +74,10 @@ const festivalGallery = await getGallery("festival", locale);
         loading="eager"
       />
     </Container>
+    <Skyline variant="edge" profile="montBlanc" fill="snow" />
   </section>
 
-  <SlacklineDivider backgroundTone="navy" fillTone="paper" />
-
-  <section class="bg-paper py-section">
+  <section class="py-section">
     <Container class="gap-block grid items-center md:grid-cols-5">
       <div class="md:col-span-3">
         <SectionIntro title={announcement.title}>
@@ -81,12 +88,11 @@ const festivalGallery = await getGallery("festival", locale);
                 alt={announcement.poster.alt}
                 widths={POSTER_THUMBNAIL_WIDTHS}
                 sizes={POSTER_THUMBNAIL_SIZES}
-                frame="offsetSky"
                 class="h-auto"
               />
             </div>
             {announcement.paragraphs.map((paragraph) => (
-              <p>{paragraph}</p>
+              <p class="text-graphite">{paragraph}</p>
             ))}
           </div>
           <div class="gap-inline flex flex-col md:flex-row md:flex-wrap">
@@ -108,7 +114,6 @@ const festivalGallery = await getGallery("festival", locale);
           alt={announcement.poster.alt}
           widths={POSTER_WIDTHS}
           sizes={POSTER_SIZES}
-          frame="offsetSky"
           class="h-auto"
         />
       </div>

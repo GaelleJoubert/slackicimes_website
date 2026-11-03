@@ -1,20 +1,32 @@
 import { describe, expect, it } from "vitest";
-import { splitDisplayHeading } from "../../src/lib/heading";
+import { splitAroundHighlight } from "../../src/lib/heading";
 
-describe("splitDisplayHeading", () => {
-  it("splits words and breaks after an apostrophe inside a word", () => {
-    expect(splitDisplayHeading("Association Slack'icîmes")).toEqual([
-      { text: "Association", startsNewWord: true },
-      { text: "Slack'", startsNewWord: true },
-      { text: "icîmes", startsNewWord: false },
-    ]);
+describe("splitAroundHighlight", () => {
+  it("cuts the text before and after the highlight", () => {
+    expect(
+      splitAroundHighlight("Association Slack'icîmes", "Slack'icîmes"),
+    ).toEqual({ before: "Association ", highlight: "Slack'icîmes", after: "" });
   });
 
-  it("handles typographic apostrophes and extra spaces", () => {
-    expect(splitDisplayHeading("  Slack’icîmes   association ")).toEqual([
-      { text: "Slack’", startsNewWord: true },
-      { text: "icîmes", startsNewWord: false },
-      { text: "association", startsNewWord: true },
-    ]);
+  it("keeps text on both sides of a highlight in the middle", () => {
+    expect(
+      splitAroundHighlight("Prendre de la hauteur, ensemble !", "ensemble"),
+    ).toEqual({
+      before: "Prendre de la hauteur, ",
+      highlight: "ensemble",
+      after: " !",
+    });
+  });
+
+  it("returns the whole text untouched when the highlight is missing", () => {
+    expect(splitAroundHighlight("Winter Festislack", "Summer")).toEqual({
+      before: "Winter Festislack",
+      highlight: "",
+      after: "",
+    });
+  });
+
+  it("ignores an empty highlight", () => {
+    expect(splitAroundHighlight("Stages", "").before).toBe("Stages");
   });
 });

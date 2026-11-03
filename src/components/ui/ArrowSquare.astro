@@ -1,0 +1,34 @@
+---
+type ArrowSquareTone = "site" | "cup";
+
+interface Props {
+  tone?: ArrowSquareTone;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<ArrowSquareTone, string> = {
+  site: "bg-slate text-snow group-hover:bg-coral",
+  cup: "bg-cup-navy text-white group-hover:bg-cup-pink-strong",
+};
+
+const { tone = "site", class: extraClasses } = Astro.props;
+---
+
+<span
+  aria-hidden="true"
+  class:list={[
+    "rounded-control flex size-11 shrink-0 items-center justify-center transition",
+    TONE_CLASSES[tone],
+    extraClasses,
+  ]}
+>
+  <svg
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.6"
+    class="size-4.5"
+  >
+    <path d="M3 8h10M9 4l4 4-4 4"></path>
+  </svg>
+</span>

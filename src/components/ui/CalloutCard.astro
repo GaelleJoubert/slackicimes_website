@@ -7,11 +7,11 @@ interface Props {
 const { title, paragraphs } = Astro.props;
 ---
 
-<div class="bg-navy text-paper rounded-card md:rounded-photo gap-stack p-card md:gap-block grid md:grid-cols-3 md:items-center">
+<div class="bg-forest text-snow rounded-card gap-stack p-card md:gap-block grid md:grid-cols-3 md:items-center">
   <div class="gap-stack flex flex-col md:col-span-2">
-    <h2 class="timeline-title text-paper md:text-title-sm">{title}</h2>
+    <h2 class="timeline-title text-snow md:text-title-sm">{title}</h2>
     {paragraphs.map((paragraph) => (
-      <p class="text-cloud">{paragraph}</p>
+      <p class="text-sage">{paragraph}</p>
     ))}
   </div>
   <slot />

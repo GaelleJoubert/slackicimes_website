@@ -1,12 +1,14 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
+import PageHero from "../../components/sections/PageHero.astro";
 import YouthWeek from "../../components/sections/youth/YouthWeek.astro";
 import Carousel from "../../components/ui/Carousel.astro";
 import CarouselSlide from "../../components/ui/CarouselSlide.astro";
 import Container from "../../components/ui/Container.astro";
-import FramedPicture from "../../components/ui/FramedPicture.astro";
-import KeyFactsBand from "../../components/ui/KeyFactsBand.astro";
+import DotList from "../../components/ui/DotList.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import KeyFactsRow from "../../components/ui/KeyFactsRow.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import PhotoMosaic from "../../components/ui/PhotoMosaic.astro";
 import PhotoSlide from "../../components/ui/PhotoSlide.astro";
@@ -17,7 +19,7 @@ import {
 } from "../../i18n/collections";
 import { entrySlug } from "../../i18n/content";
 import { LOCALE_SETTINGS } from "../../i18n/locales";
-import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatPriceInEuros } from "../../lib/format";
@@ -30,8 +32,6 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "stages-jeunes";
 const YOUTH_STAGE_SLUG = "stage-jeunes";
-const HERO_IMAGE_WIDTHS = [600, 1200];
-const HERO_IMAGE_SIZES = "(min-width: 768px) 600px, 100vw";
 const WEEK_INTRO_PARAGRAPH_INDEX = 1;
 
 const { locale } = Astro.props;
@@ -64,58 +64,40 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <section class="pt-page-top">
-    <Container class="gap-block grid items-center md:grid-cols-2">
-      <div class="gap-stack flex flex-col">
-        <h1 class="page-title">{page.data.heading}</h1>
-        <div class="rich-text md:text-xl">
-          <Intro />
-        </div>
-      </div>
-      <FramedPicture
-        image={youthStage.data.image}
-        alt={youthStage.data.imageAlt}
-        widths={HERO_IMAGE_WIDTHS}
-        sizes={HERO_IMAGE_SIZES}
-        frame="offsetSky"
-        loading="eager"
-        class="h-48 md:h-110"
-      />
-    </Container>
-  </section>
+  <PageHero page={page.data} photoShape="landscape">
+    <Intro />
+  </PageHero>
 
-  <section aria-label={strings.youthStages.keyFactsLabel} class="pt-section">
-    <Container class="gap-grid grid md:grid-cols-2">
-      {page.data.keyFacts && (
-        <div class="md:col-span-2">
-          <KeyFactsBand facts={page.data.keyFacts} />
+  <section class="py-section">
+    <Container class="gap-block grid md:grid-cols-2 md:items-start">
+      <div class="gap-block flex flex-col">
+        {page.data.keyFacts && (
+          <KeyFactsRow
+            facts={page.data.keyFacts}
+            label={strings.youthStages.keyFactsLabel}
+          />
+        )}
+        <div class="gap-stack flex flex-col">
+          <h2>
+            <Eyebrow>{strings.stages.prerequisitesHeading}</Eyebrow>
+          </h2>
+          <DotList items={prerequisites} />
         </div>
-      )}
-      <LinkButton
-        href={localizedPath("inscriptions", locale)}
-        class="my-2 md:hidden"
-      >
-        {strings.stages.registrationsButton}
-      </LinkButton>
-      <div class="border-mist rounded-card p-card border-3 md:rounded-3xl">
-        <h2 class="subsection-title md:text-3xl">
-          {strings.stages.prerequisitesHeading}
-        </h2>
-        <ul class="mt-2.5 flex list-disc flex-col gap-1 pl-5">
-          {prerequisites.map((prerequisite) => (
-            <li>{prerequisite}</li>
-          ))}
-        </ul>
       </div>
-      <div class="bg-blush rounded-card hidden gap-stack p-card flex-col justify-center md:flex md:rounded-3xl">
-        <p class="font-heading text-ink text-2xl md:text-3xl">
-          {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
-        </p>
-        <p class="font-bold">
-          {strings.stages.priceNote} {dates}.
-        </p>
-        <LinkButton href={STAGES_REGISTRATION_URL} class="md:self-start">
-          {strings.stages.registerButton}
+      <div class="gap-block flex flex-col items-center">
+        <div class="bg-moss rounded-card p-card gap-stack flex w-full flex-col">
+          <h2>
+            <Eyebrow>{strings.stages.priceHeading}</Eyebrow>
+          </h2>
+          <p class="font-heading text-slate text-3xl font-voice">
+            {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
+          </p>
+          <p class="text-graphite">
+            {strings.stages.priceNote} {dates}.
+          </p>
+        </div>
+        <LinkButton href={STAGES_REGISTRATION_URL} size="large">
+          {strings.youthStages.registerButton}
         </LinkButton>
       </div>
     </Container>
@@ -128,7 +110,7 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
     locale={locale}
   />
 
-  <section class="pb-section">
+  <section class="py-section">
     <Container class="gap-block flex flex-col">
       <h2 class="section-title">{strings.youthStages.galleryTitle}</h2>
       <div class="hidden md:block">

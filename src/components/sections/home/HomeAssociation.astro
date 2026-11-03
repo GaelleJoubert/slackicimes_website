@@ -5,7 +5,6 @@ import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
 import Container from "../../ui/Container.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
-import LinkButton from "../../ui/LinkButton.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 
 interface Props {
@@ -14,35 +13,35 @@ interface Props {
 }
 
 const PHOTO_WIDTHS = [600, 1200];
-const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+const PHOTO_SIZES = "(min-width: 768px) 700px, 100vw";
 
 const { teaser, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
 <section class="py-section">
-  <Container class="grid items-center gap-block md:grid-cols-2">
-    <div class="pr-2.5 md:pr-0">
+  <Container class="grid items-center gap-block md:grid-cols-12">
+    <div class="md:col-span-5">
+      <SectionIntro title={strings.navigation.association}>
+        {teaser.paragraphs.map((paragraph) => (
+          <p class="text-graphite">{paragraph}</p>
+        ))}
+        <a
+          href={localizedPath("association", locale)}
+          class="text-link self-start"
+        >
+          {strings.home.discoverTeamButton}
+        </a>
+      </SectionIntro>
+    </div>
+    <div class="md:col-span-7">
       <FramedPicture
         image={teaser.illustration.image}
         alt={teaser.illustration.alt}
         widths={PHOTO_WIDTHS}
         sizes={PHOTO_SIZES}
-        frame="offsetMist"
-        class="h-60 md:h-110"
+        class="h-60 md:h-120"
       />
     </div>
-    <SectionIntro title={strings.navigation.association}>
-      {teaser.paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
-      <LinkButton
-        href={localizedPath("association", locale)}
-        variant="secondary"
-        class="md:self-start"
-      >
-        {strings.home.discoverTeamButton}
-      </LinkButton>
-    </SectionIntro>
   </Container>
 </section>

@@ -25,18 +25,16 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
 
 <aside
   class:list={[
-    "bg-navy text-paper rounded-card md:rounded-photo gap-stack p-card flex flex-col",
+    "bg-forest text-snow rounded-card gap-stack p-card flex flex-col",
     extraClasses,
   ]}
 >
-  <h2 class="timeline-title text-paper">{strings.contactPage.detailsTitle}</h2>
+  <h2 class="timeline-title text-snow">{strings.contactPage.detailsTitle}</h2>
   <dl class="gap-stack flex flex-col">
     <div class="hidden md:block">
-      <dt class="text-coral font-extrabold">
-        {strings.contactBlock.phoneHeading}
-      </dt>
+      <dt class="label-text text-sage">{strings.contactBlock.phoneHeading}</dt>
       {CONTACT_PEOPLE.map((person) => (
-        <dd class="mt-1.5 text-xl font-bold">
+        <dd class="mt-1.5 text-lead">
           {person.firstName}{" "}
           <a
             href={`tel:${person.internationalPhone}`}
@@ -48,20 +46,18 @@ const socialNetworks = SOCIAL_PROFILES.filter((profile) =>
       ))}
     </div>
     <div>
-      <dt class="text-coral font-extrabold">
-        {strings.contactBlock.emailHeading}
-      </dt>
-      <dd class="mt-0.5 font-bold break-all md:mt-1.5 md:text-xl">
+      <dt class="label-text text-sage">{strings.contactBlock.emailHeading}</dt>
+      <dd class="mt-1.5 break-all md:text-lead">
         <a href={`mailto:${CONTACT_EMAIL}`} class="text-link-on-dark">
           {CONTACT_EMAIL}
         </a>
       </dd>
     </div>
     <div>
-      <dt class="text-coral font-extrabold">
+      <dt class="label-text text-sage">
         {strings.contactBlock.addressHeading}
       </dt>
-      <dd class="mt-0.5 md:mt-1.5">
+      <dd class="text-sage mt-1.5">
         <address class="flex flex-col not-italic">
           {POSTAL_ADDRESS_LINES.map((line) => (
             <span>{line}</span>

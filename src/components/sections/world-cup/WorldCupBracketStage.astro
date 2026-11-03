@@ -10,8 +10,8 @@ interface Props {
 }
 
 const CARD_TONE_CLASSES: Record<StageTone, string> = {
-  regular: "border-cup-line",
-  final: "border-cup-pink",
+  regular: "",
+  final: "border-cup-pink border-t-4",
 };
 
 const { stage, tone } = Astro.props;
@@ -19,11 +19,11 @@ const { stage, tone } = Astro.props;
 
 <div
   class:list={[
-    "p-tile flex flex-col justify-center gap-2 rounded-2xl border-2",
+    "bg-cup-navy rounded-control p-tile flex flex-col justify-center gap-2",
     CARD_TONE_CLASSES[tone],
   ]}
 >
-  <h4 class="cup-card-title lg:text-xl">{stage.title}</h4>
+  <h4 class="cup-card-title text-xl">{stage.title}</h4>
   <p class="text-cup-soft text-sm">{stage.text}</p>
   <slot />
 </div>

@@ -1,5 +1,5 @@
 ---
-import Stat, { type StatTone } from "./Stat.astro";
+import Stat from "./Stat.astro";
 
 interface KeyFact {
   value: string;
@@ -10,15 +10,11 @@ interface Props {
   facts: KeyFact[];
 }
 
-const FACT_TONE_CYCLE: StatTone[] = ["coral", "sky", "coral", "mist"];
-
 const { facts } = Astro.props;
-const toneAt = (factIndex: number): StatTone =>
-  FACT_TONE_CYCLE[factIndex % FACT_TONE_CYCLE.length] ?? "coral";
 ---
 
-<dl class="bg-navy text-paper rounded-card md:rounded-photo gap-grid p-card grid grid-cols-2 md:grid-cols-4">
-  {facts.map((fact, factIndex) => (
-    <Stat value={fact.value} label={fact.label} tone={toneAt(factIndex)} />
+<dl class="bg-forest text-snow rounded-card gap-grid p-card grid grid-cols-2 md:grid-cols-4">
+  {facts.map((fact) => (
+    <Stat value={fact.value} label={fact.label} />
   ))}
 </dl>

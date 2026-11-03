@@ -3,42 +3,36 @@ import type { Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { CONTACT_PEOPLE } from "../../../lib/site";
 import ActionBadge from "../../ui/ActionBadge.astro";
-import { PRESSABLE_CARD_CLASSES } from "../../ui/card-styles";
+import { STANDALONE_BADGE_CLASSES } from "../../ui/action-badge";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
 
 interface Props {
   locale: Locale;
   class?: string;
 }
 
-const TILE_TONE_CLASSES = [
-  { tile: "bg-blush", label: "text-coral-strong" },
-  { tile: "bg-ice", label: "text-teal" },
-];
-
 const { locale, class: extraClasses } = Astro.props;
 const strings = uiStrings(locale).contactPage;
 ---
 
 <ul class:list={["gap-grid grid", extraClasses]}>
-  {CONTACT_PEOPLE.map((person, personIndex) => {
-    const tone = TILE_TONE_CLASSES[personIndex % TILE_TONE_CLASSES.length];
+  {CONTACT_PEOPLE.map((person) => {
     return (
       <li>
         <a
           href={`tel:${person.internationalPhone}`}
           class:list={[
-            "rounded-2xl flex min-h-16 items-center justify-between gap-3 px-4 py-2.5",
-            PRESSABLE_CARD_CLASSES,
-            tone.tile,
+            "bg-moss rounded-card flex min-h-16 items-center justify-between gap-3 px-4 py-2.5",
+            CLICKABLE_CARD_CLASSES,
           ]}
         >
           <span class="flex flex-col">
-            <span class:list={["text-sm font-extrabold", tone.label]}>
+            <span class="text-forest text-sm font-semibold">
               {strings.callPerson} {person.firstName}
             </span>
-            <span class="text-navy font-extrabold">{person.displayPhone}</span>
+            <span class="text-slate font-semibold">{person.displayPhone}</span>
           </span>
-          <ActionBadge icon="phone" />
+          <ActionBadge icon="phone" class={STANDALONE_BADGE_CLASSES} />
         </a>
       </li>
     );

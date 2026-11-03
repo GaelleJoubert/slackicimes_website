@@ -10,59 +10,48 @@ interface Props {
 }
 
 const { infos } = Astro.props;
-const lastStepIndex = infos.steps.length - 1;
 ---
 
 <CupSection id={WORLD_CUP_SECTION_IDS.practicalInfo} tone="white">
-  <div class="gap-stack flex flex-col">
-    <CupSectionIntro
-      eyebrow={infos.eyebrow}
-      title={infos.title}
-      theme="light"
-    />
-    <div class="gap-block grid lg:grid-cols-3">
-      <div class="gap-stack flex flex-col lg:col-span-2">
-        <ol class="gap-stack flex flex-col">
-          {infos.steps.map((step, stepIndex) => (
-            <li class="flex items-start gap-4">
-              <span
-                aria-hidden="true"
-                class:list={[
-                  "font-display w-8 flex-none text-4xl leading-none font-bold",
-                  stepIndex === lastStepIndex
-                    ? "text-cup-magenta"
-                    : "text-cup-navy",
-                ]}
-              >
-                {stepIndex + 1}
-              </span>
-              <div>
-                <h3 class="text-cup-navy text-lg font-bold">{step.title}</h3>
-                <p class="mt-1">
-                  {step.text}{" "}
-                  {step.link && (
-                    <a
-                      href={step.link.url}
-                      class="text-cup-magenta hover:text-cup-ink decoration-cup-pink font-bold underline decoration-2 underline-offset-4"
-                    >
-                      {step.link.label}
-                    </a>
-                  )}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <ul class="gap-grid grid sm:grid-cols-3">
-          {infos.facts.map((fact) => (
-            <li class="bg-cup-surface p-tile rounded-2xl">
-              <h3 class="text-cup-navy font-bold">{fact.title}</h3>
-              <p class="mt-1 text-sm">{fact.text}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <WorldCupVenuePhoto venue={infos} class="hidden lg:flex" />
+  <div class="gap-block grid lg:grid-cols-12">
+    <div class="gap-block flex flex-col lg:col-span-7">
+      <CupSectionIntro
+        eyebrow={infos.eyebrow}
+        title={infos.title}
+        theme="light"
+      />
+      <ol class="flex flex-col">
+        {infos.steps.map((step, stepIndex) => (
+          <li class="border-cup-border flex items-start gap-5 border-t py-5 last:border-b md:gap-6 md:py-6">
+            <span
+              aria-hidden="true"
+              class="font-display text-cup-navy w-8 flex-none text-4xl leading-none font-bold"
+            >
+              {stepIndex + 1}
+            </span>
+            <div class="flex flex-col gap-1.5">
+              <h3 class="cup-card-title text-cup-ink text-xl">{step.title}</h3>
+              <p class="text-cup-muted">
+                {step.text}{" "}
+                {step.link && (
+                  <a href={step.link.url} class="cup-text-link">
+                    {step.link.label}
+                  </a>
+                )}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <ul class="gap-grid grid sm:grid-cols-3">
+        {infos.facts.map((fact) => (
+          <li class="border-cup-ink flex flex-col gap-2 border-t-2 pt-4">
+            <h3 class="cup-card-title text-cup-ink text-lg">{fact.title}</h3>
+            <p class="text-cup-muted text-sm">{fact.text}</p>
+          </li>
+        ))}
+      </ul>
     </div>
+    <WorldCupVenuePhoto venue={infos} class="hidden lg:col-span-5 lg:flex" />
   </div>
 </CupSection>

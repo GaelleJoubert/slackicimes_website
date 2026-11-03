@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import LinkButton from "../../ui/LinkButton.astro";
+import PlayIcon from "../../ui/PlayIcon.astro";
+
+interface Props {
+  edition: CollectionEntry<"festivalEditions">;
+}
+
+const { edition } = Astro.props;
+const { videos, videoLinkLabel } = edition.data;
+const hasUnlabeledVideo = videos.length > 0 && !videoLinkLabel;
+if (hasUnlabeledVideo) {
+  throw new Error(
+    `Festival edition "${edition.id}" has videos: add a "videoLinkLabel" to its frontmatter.`,
+  );
+}
+---
+
+{videos.map((videoUrl) => (
+  <LinkButton href={videoUrl} variant="secondary" class="gap-2.5 md:self-start">
+    <PlayIcon class="text-coral" />
+    {videoLinkLabel}
+  </LinkButton>
+))}

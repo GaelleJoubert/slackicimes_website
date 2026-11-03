@@ -2,7 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
-import VideoEmbed from "../../ui/VideoEmbed.astro";
+import Container from "../../ui/Container.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
 import VideoThumbnailLink from "../../ui/VideoThumbnailLink.astro";
 
 type StagesVideoContent = NonNullable<
@@ -18,23 +20,21 @@ const { video, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<figure class="gap-stack flex flex-col">
-  <VideoThumbnailLink
-    href={video.url}
-    thumbnail={video.thumbnail}
-    label={`${strings.video.watchOnYoutube}: ${video.title}`}
-    class="md:hidden"
-  />
-  <div class="hidden md:block">
-    <VideoEmbed
-      videoUrl={video.url}
-      title={video.title}
-      locale={locale}
-      class="shadow-raised shadow-sky"
+<section class="bg-lake text-snow pt-section relative pb-24 md:pb-40">
+  <Container class="gap-block grid items-center md:grid-cols-2">
+    <VideoThumbnailLink
+      href={video.url}
+      thumbnail={video.thumbnail}
+      label={`${strings.video.watchOnYoutube}: ${video.title}`}
     />
-  </div>
-  <figcaption class="flex flex-col gap-1 pt-1 md:gap-2 md:pt-2">
-    <p class="card-title text-paper md:text-3xl">{video.heading}</p>
-    <p class="text-cloud">{video.text}</p>
-  </figcaption>
-</figure>
+    <SectionIntro
+      title={video.heading}
+      eyebrow={strings.video.eyebrow}
+      eyebrowTone="photo"
+      theme="dark"
+    >
+      <p class="text-snow">{video.text}</p>
+    </SectionIntro>
+  </Container>
+  <Skyline variant="edge" profile="casse" fill="moss" />
+</section>

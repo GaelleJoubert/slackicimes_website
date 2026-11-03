@@ -19,3 +19,11 @@ photos:
       image: ../../../assets/images/stages/jeunes/photo-05.jpg,
       alt: Young trainees playing balance games in a park,
     }
+  - image: ../../../assets/images/stages/stage-jeunes.jpg
+    alt: "Young trainee hanging upside down under a highline"
+  - image: ../../../assets/images/stages/jeunes/jeune-au-dessus-des-nuages.jpg
+    alt: "Young trainee balancing on a highline above a sea of clouds"
+  - image: ../../../assets/images/stages/jeunes/etirements-au-parc.jpg
+    alt: "Group stretching session in a park"
+  - image: ../../../assets/images/stages/jeunes/groupe-en-montagne.jpg
+    alt: "Group of young trainees and instructors raising their arms in the mountains"

@@ -6,6 +6,7 @@ import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { formatPriceInEuros } from "../../../lib/format";
 import CourseDetails from "./CourseDetails.astro";
 import CourseDetailsCompact from "./CourseDetailsCompact.astro";
+import Skyline from "../../ui/Skyline.astro";
 import ToggleSign from "../../ui/ToggleSign.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
@@ -35,7 +36,7 @@ const courses = stages.map((stage) => {
     <div
       id={slug}
       data-course
-      class="bg-cloud rounded-card shadow-card data-open:bg-blush not-data-open:active:card-sink scroll-mt-4 overflow-hidden transition md:contents"
+      class="bg-moss rounded-card scroll-mt-4 overflow-hidden md:contents"
     >
       <h3 class="md:row-start-1">
         <button
@@ -43,7 +44,7 @@ const courses = stages.map((stage) => {
           aria-expanded="false"
           aria-controls={panelId}
           data-course-toggle
-          class="group text-ink md:bg-cloud md:shadow-card md:hover:card-sink md:aria-expanded:card-sink md:aria-expanded:bg-blush relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:rounded-3xl md:p-0 md:transition"
+          class="group text-slate md:bg-moss md:rounded-control md:hover:bg-lichen md:aria-expanded:bg-slate md:aria-expanded:text-snow relative flex min-h-19 w-full cursor-pointer items-center gap-3 p-2.5 text-left md:h-full md:flex-col md:items-start md:justify-center md:gap-1 md:px-4.5 md:py-3.5 md:transition"
         >
           <Picture
             src={stage.data.image}
@@ -52,57 +53,42 @@ const courses = stages.map((stage) => {
             sizes={THUMBNAIL_SIZES}
             formats={["avif", "webp"]}
             class:list={[
-              "md:aspect-photo size-14 shrink-0 rounded-2xl object-cover md:h-auto md:w-full md:rounded-none",
+              "rounded-control size-14 shrink-0 object-cover md:hidden",
               STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus],
             ]}
           />
-          <span class="flex flex-1 flex-col md:px-4 md:pt-3.5 md:pb-4">
-            <span class="card-title group-aria-expanded:scale-110 origin-left text-xl transition-transform duration-300 motion-reduce:transition-none md:text-2xl md:group-aria-expanded:scale-100">
+          <span class="flex flex-1 flex-col">
+            <span class="card-title group-aria-expanded:scale-110 md:group-aria-expanded:text-snow origin-left text-xl transition-transform duration-300 motion-reduce:transition-none md:group-aria-expanded:scale-100">
               {stage.data.name}
             </span>
-            <span class="text-slate group-aria-expanded:max-h-0 group-aria-expanded:opacity-0 max-h-6 overflow-hidden text-sm font-bold transition-all duration-300 motion-reduce:transition-none md:max-h-none md:text-base md:group-aria-expanded:max-h-none md:group-aria-expanded:opacity-100">
+            <span class="text-graphite group-aria-expanded:max-h-0 group-aria-expanded:opacity-0 md:group-aria-expanded:text-sage max-h-6 overflow-hidden text-sm transition-all duration-300 motion-reduce:transition-none md:max-h-none md:group-aria-expanded:max-h-none md:group-aria-expanded:opacity-100">
               {summary}
             </span>
           </span>
-          <ToggleSign
-            variant="courseTab"
-            class="md:absolute md:top-3 md:right-3"
-          />
+          <ToggleSign variant="courseTab" class="md:hidden" />
         </button>
       </h3>
       <div
         id={panelId}
         data-course-panel
         hidden="until-found"
-        class="md:col-span-5 md:col-start-1 md:row-start-2"
+        class="md:col-span-5 md:col-start-1 md:row-start-3"
       >
         <CourseDetails stage={stage} locale={locale} />
         <CourseDetailsCompact stage={stage} locale={locale} />
       </div>
     </div>
   ))}
-  <div
-    data-course-bridge
-    aria-hidden="true"
-    class="text-blush card-sink pointer-events-none absolute hidden h-14 md:block"
-  >
-    <svg viewBox="0 0 100 56" preserveAspectRatio="none" class="size-full">
-      <path
-        fill="currentColor"
-        d="M0 0H100V12C80 18 68 22 68 28C68 34 80 38 100 44V56H0V44C20 38 32 34 32 28C32 22 20 18 0 12Z"
-      />
-    </svg>
+  <div aria-hidden="true" class="hidden md:col-span-5 md:row-start-2 md:block">
+    <Skyline variant="divider" />
   </div>
 </div>
 
 <script>
   import { collapsePanel, expandPanel } from "../../ui/expand-animation";
-  import { crossfadePanels, glideTo } from "../../ui/slide-animation";
+  import { crossfadePanels } from "../../ui/slide-animation";
 
   const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
-  const BRIDGE_WIDTH_RATIO = 0.75;
-  // The bridge starts inside the card so its curve reads as part of the card.
-  const BRIDGE_CARD_OVERLAP_PX = 16;
 
   interface Course {
     root: HTMLElement;
@@ -146,14 +132,6 @@ const courses = stages.map((stage) => {
     await expandPanel(course.panel);
   }
 
-  function findBridge(picker: HTMLElement): HTMLElement {
-    const bridge = picker.querySelector<HTMLElement>("[data-course-bridge]");
-    if (!bridge) {
-      throw new Error("The course picker needs a bridge element.");
-    }
-    return bridge;
-  }
-
   function initCoursePicker(picker: HTMLElement): void {
     const courses = [
       ...picker.querySelectorAll<HTMLElement>("[data-course]"),
@@ -162,33 +140,16 @@ const courses = stages.map((stage) => {
     const isDesktop = () => desktopQuery.matches;
     const openOnly = (target: Course) =>
       courses.forEach((course) => setOpen(course, course === target));
-    const bridge = findBridge(picker);
     const openCourse = () =>
       courses.find((course) => course.root.hasAttribute("data-open"));
-
-    function placeBridgeUnder(course: Course): void {
-      const card = course.toggle.parentElement;
-      if (!card) return;
-      const bridgeWidth = card.offsetWidth * BRIDGE_WIDTH_RATIO;
-      bridge.style.width = `${bridgeWidth}px`;
-      bridge.style.left = `${card.offsetLeft + (card.offsetWidth - bridgeWidth) / 2}px`;
-      bridge.style.top = `${card.offsetTop + card.offsetHeight - BRIDGE_CARD_OVERLAP_PX}px`;
-    }
-
-    const placeBridgeUnderOpenCourse = () => {
-      const course = openCourse();
-      if (course) placeBridgeUnder(course);
-    };
 
     async function switchDesktopCourse(target: Course): Promise<void> {
       const current = openCourse();
       if (current === target) return;
       if (!current) {
         openOnly(target);
-        placeBridgeUnder(target);
         return;
       }
-      glideTo(bridge, () => placeBridgeUnder(target));
       await crossfadePanels(current.panel, target.panel, () =>
         openOnly(target),
       );
@@ -212,7 +173,6 @@ const courses = stages.map((stage) => {
       });
       course.panel.addEventListener("beforematch", () => {
         openOnly(course);
-        placeBridgeUnderOpenCourse();
       });
     });
 
@@ -222,7 +182,6 @@ const courses = stages.map((stage) => {
       );
       if (!target) return;
       openOnly(target);
-      placeBridgeUnderOpenCourse();
       target.toggle.scrollIntoView({ block: "start" });
     };
     const openFirstOnDesktop = () => {
@@ -230,12 +189,10 @@ const courses = stages.map((stage) => {
         course.root.hasAttribute("data-open"),
       );
       if (isDesktop() && !hasOpenCourse) openOnly(courses[0]);
-      placeBridgeUnderOpenCourse();
     };
     openFromHash();
     openFirstOnDesktop();
     window.addEventListener("hashchange", openFromHash);
-    new ResizeObserver(placeBridgeUnderOpenCourse).observe(picker);
     desktopQuery.addEventListener("change", openFirstOnDesktop);
   }
 

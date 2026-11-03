@@ -2,7 +2,7 @@
 import type { ImageMetadata } from "astro";
 import FramedPicture from "./FramedPicture.astro";
 import ActionBadge from "./ActionBadge.astro";
-import { PRESSABLE_CARD_CLASSES } from "./card-styles";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
 
 interface Props {
   href: string;
@@ -22,8 +22,8 @@ const { href, thumbnail, label, class: extraClasses } = Astro.props;
   target="_blank"
   rel="noopener"
   class:list={[
-    "rounded-card md:rounded-photo relative block shadow-ink",
-    PRESSABLE_CARD_CLASSES,
+    "rounded-card relative block overflow-hidden",
+    CLICKABLE_CARD_CLASSES,
     extraClasses,
   ]}
 >
@@ -32,9 +32,13 @@ const { href, thumbnail, label, class: extraClasses } = Astro.props;
     alt=""
     widths={THUMBNAIL_WIDTHS}
     sizes={THUMBNAIL_SIZES}
-    frame="plain"
     class="aspect-video"
   />
-  <ActionBadge icon="play" size="large" class="absolute inset-0 m-auto" />
+  <ActionBadge
+    icon="play"
+    size="large"
+    tone="filled"
+    class="absolute bottom-4 left-4 md:bottom-6 md:left-6"
+  />
   <span class="sr-only">{label}</span>
 </a>

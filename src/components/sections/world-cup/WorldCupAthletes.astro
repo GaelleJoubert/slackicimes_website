@@ -15,14 +15,18 @@ interface Props {
 const { athletes, locale } = Astro.props;
 ---
 
-<CupSection id={WORLD_CUP_SECTION_IDS.athletes} tone="navy">
+<CupSection
+  id={WORLD_CUP_SECTION_IDS.athletes}
+  tone="navy"
+  edgeFill="cupSurface"
+>
   <div class="gap-block flex flex-col">
     <CupSectionIntro
       eyebrow={athletes.eyebrow}
       title={athletes.title}
       theme="dark"
     >
-      <p class="text-cup-pale max-w-3xl">{athletes.intro}</p>
+      <p class="text-cup-soft max-w-3xl text-lg md:text-xl">{athletes.intro}</p>
     </CupSectionIntro>
     <WorldCupContestInfo contest={athletes.contest} locale={locale} />
     <WorldCupWildCard wildCard={athletes.wildCard} />

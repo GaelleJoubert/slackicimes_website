@@ -1,160 +1,55 @@
 ---
-import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import type { Locale } from "../../../i18n/locales";
-import { localizedPath } from "../../../i18n/routes";
-import { splitDisplayHeading } from "../../../lib/heading";
-import { withSectionAnchor } from "../../../lib/url";
+import ArtDirectedPicture from "../../ui/ArtDirectedPicture.astro";
 import Container from "../../ui/Container.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
-
-type HomeContent = CollectionEntry<"home">["data"];
-type HighlightTone = HomeContent["highlights"][number]["tone"];
+import HighlightedText from "../../ui/HighlightedText.astro";
+import Skyline from "../../ui/Skyline.astro";
 
 interface Props {
   heading: string;
-  hero: HomeContent["hero"];
-  highlights: HomeContent["highlights"];
-  locale: Locale;
+  hero: CollectionEntry<"home">["data"]["hero"];
 }
 
-type PhotoFraming = HomeContent["hero"]["photos"][number]["framing"];
+const DESKTOP_PHOTO_WIDTHS = [1024, 1600, 2400];
+const PHONE_PHOTO_WIDTHS = [400, 800, 1200];
 
-const PHOTO_WIDTHS = [400, 800, 1200, 1600];
-const PHOTO_SIZES = "(min-width: 768px) 400px, 100vw";
-const ZOOMED_PHOTO_SIZES = "(min-width: 768px) 1200px, 150vw";
-
-const FRAMING_CLASSES: Record<PhotoFraming, string> = {
-  fill: "",
-  upper: "object-upper",
-  zoomFromTop: "origin-top scale-200",
-};
-
-const HIGHLIGHT_CARD_CLASSES: Record<HighlightTone, string> = {
-  coral: "bg-blush",
-  sky: "bg-ice",
-  mist: "bg-cloud",
-  cloud: "bg-cloud",
-  ice: "bg-ice",
-};
-
-const DESKTOP_COLUMN_CLASSES = [
-  "md:col-start-1",
-  "md:col-start-2",
-  "md:col-start-3",
-];
-
-const { heading, hero, highlights, locale } = Astro.props;
-const headingParts = splitDisplayHeading(heading);
-const hasOnePhotoAndHighlightPerPart =
-  headingParts.length === hero.photos.length &&
-  headingParts.length === highlights.length;
-if (headingParts.length > DESKTOP_COLUMN_CLASSES.length) {
-  throw new Error(
-    `The home hero lays out at most ${DESKTOP_COLUMN_CLASSES.length} cards on desktop: "${heading}" has ${headingParts.length} parts.`,
-  );
-}
-if (!hasOnePhotoAndHighlightPerPart) {
-  throw new Error(
-    `The home hero needs one photo and one highlight per heading part: "${heading}" has ${headingParts.length} parts, hero.photos has ${hero.photos.length} images and highlights has ${highlights.length} entries.`,
-  );
-}
-const highlightHref = (highlight: HomeContent["highlights"][number]) =>
-  withSectionAnchor(
-    localizedPath(highlight.pageSlug, locale),
-    highlight.sectionId,
-  );
-const panels = headingParts.map((part, partIndex) => ({
-  ...part,
-  photo: hero.photos[partIndex],
-  needsSpaceBefore: part.startsNewWord && partIndex > 0,
-  isMobileCover: partIndex === 0,
-  columnClass: DESKTOP_COLUMN_CLASSES[partIndex],
-}));
-const cards = highlights.map((highlight, highlightIndex) => ({
-  ...highlight,
-  href: highlightHref(highlight),
-  photo: hero.photos[highlightIndex],
-  cardClass: HIGHLIGHT_CARD_CLASSES[highlight.tone],
-  columnClass: DESKTOP_COLUMN_CLASSES[highlightIndex],
-}));
+const { heading, hero } = Astro.props;
 ---
 
-<section class="pt-page-top">
-  <Container class="gap-grid flex flex-col md:grid md:grid-cols-3">
-    <h1 class="font-heading text-paper grid gap-grid uppercase md:contents">
-      {panels.map((panel) => (
-        <>
-          {panel.needsSpaceBefore ? " " : ""}
-          <span
-            class:list={[
-              "rounded-card shadow-raised shadow-navy relative overflow-hidden md:pointer-events-none md:z-10 md:row-start-1 md:block md:overflow-visible md:rounded-none md:pt-4 md:shadow-none",
-              panel.columnClass,
-              panel.isMobileCover ? "block h-88" : "hidden",
-            ]}
-          >
-            {panel.isMobileCover && panel.photo && (
-              <Picture
-                src={panel.photo.image}
-                alt=""
-                widths={PHOTO_WIDTHS}
-                sizes={PHOTO_SIZES}
-                formats={["avif", "webp"]}
-                loading="eager"
-                class="object-upper absolute inset-0 size-full object-cover md:hidden"
-              />
-            )}
-            {panel.isMobileCover && (
-              <span class="text-cover-title text-shadow-raised absolute inset-x-0 top-6 px-4 text-center md:hidden">
-                {heading}
-              </span>
-            )}
-            <span class="text-shadow-raised hidden text-center text-4xl md:block lg:text-hero-word">
-              {panel.text}
-            </span>
-          </span>
-        </>
-      ))}
+<section
+  aria-labelledby="hero-title"
+  class="text-snow relative h-160 overflow-hidden md:h-215"
+>
+  <ArtDirectedPicture
+    desktopImage={hero.illustration.image}
+    phoneImage={hero.phoneImage}
+    alt={hero.illustration.alt}
+    desktopWidths={DESKTOP_PHOTO_WIDTHS}
+    phoneWidths={PHONE_PHOTO_WIDTHS}
+    class="absolute inset-0 size-full object-cover md:object-high"
+  />
+  <div
+    aria-hidden="true"
+    class="to-slate/55 absolute inset-0 hidden bg-linear-to-b from-transparent from-60% md:block"
+  ></div>
+  <Container class="gap-stack pt-block relative flex h-full flex-col items-center text-center md:items-end md:justify-end md:pt-0 md:pb-36 md:text-right">
+    <Eyebrow
+      tone="light"
+      class="md:text-snow order-last self-center md:self-end"
+    >
+      {hero.eyebrow}
+    </Eyebrow>
+    <h1
+      id="hero-title"
+      class="font-heading text-slate md:text-snow flex flex-col items-center text-2xl leading-none font-medium tracking-tight md:items-end md:text-4xl"
+    >
+      <HighlightedText
+        text={heading}
+        highlight={hero.titleEmphasis}
+        highlightClass="text-display-sm md:text-hero"
+      />
     </h1>
-    <ul class="grid gap-grid md:contents">
-      {cards.map((card) => (
-        <li class:list={["md:row-start-1", card.columnClass]}>
-          <a
-            href={card.href}
-            class:list={[
-              "group rounded-card shadow-card max-md:active:card-sink flex min-h-16 items-center gap-3 px-4 py-3 transition md:rounded-photo md:h-full md:flex-col md:items-stretch md:gap-0 md:overflow-hidden md:p-0 md:hover:card-sink md:active:card-sink",
-              card.cardClass,
-            ]}
-          >
-            {card.photo && (
-              <span class="hidden h-72 overflow-hidden md:block">
-                <Picture
-                  src={card.photo.image}
-                  alt=""
-                  widths={PHOTO_WIDTHS}
-                  sizes={
-                    card.photo.framing === "zoomFromTop"
-                      ? ZOOMED_PHOTO_SIZES
-                      : PHOTO_SIZES
-                  }
-                  formats={["avif", "webp"]}
-                  class:list={[
-                    "size-full object-cover transition duration-300 group-hover:brightness-110",
-                    FRAMING_CLASSES[card.photo.framing],
-                  ]}
-                />
-              </span>
-            )}
-            <span class="flex flex-col gap-1.5 md:p-tile">
-              <Eyebrow tone={card.tone}>{card.eyebrow}</Eyebrow>
-              <span class="card-title lg:text-3xl">{card.title}</span>
-              <span class="text-slate hidden text-base md:block">
-                {card.text}
-              </span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
   </Container>
+  <Skyline variant="edge" fill="forest" hasInnerRidge />
 </section>

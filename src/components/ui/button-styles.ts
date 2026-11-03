@@ -9,44 +9,45 @@ export type ButtonVariant =
 
 export type ButtonSize = "default" | "compact" | "large";
 
-export const PRESSABLE_CLASSES =
-  "shadow-pressable hover:press-sink active:press-sink";
+export type SquareIconButtonTone = "light" | "dark";
 
-export const PRESSABLE_ON_DARK_CLASSES = `${PRESSABLE_CLASSES} shadow-ink`;
+const SQUARE_ICON_BUTTON_SHAPE =
+  "flex shrink-0 cursor-pointer items-center justify-center rounded-control border-thin transition";
 
-export type RoundIconButtonTone = "light" | "dark";
-
-const ROUND_ICON_BUTTON_SHAPE =
-  "flex shrink-0 cursor-pointer items-center justify-center rounded-full border-3 transition";
-
-const ROUND_ICON_BUTTON_TONE_CLASSES: Record<RoundIconButtonTone, string> = {
-  light: `${PRESSABLE_CLASSES} border-navy bg-paper text-navy`,
-  dark: `${PRESSABLE_ON_DARK_CLASSES} border-paper bg-paper text-navy`,
+const SQUARE_ICON_BUTTON_TONE_CLASSES: Record<SquareIconButtonTone, string> = {
+  light: "border-slate text-slate hover:bg-slate hover:text-snow",
+  dark: "border-snow text-snow hover:bg-snow hover:text-slate",
 };
 
-export function roundIconButtonClasses(tone: RoundIconButtonTone): string {
-  return `${ROUND_ICON_BUTTON_SHAPE} ${ROUND_ICON_BUTTON_TONE_CLASSES[tone]}`;
+export function squareIconButtonClasses(tone: SquareIconButtonTone): string {
+  return `${SQUARE_ICON_BUTTON_SHAPE} ${SQUARE_ICON_BUTTON_TONE_CLASSES[tone]}`;
 }
 
 const BASE_BUTTON_CLASSES =
-  "inline-flex cursor-pointer items-center justify-center rounded-xl py-2 text-center font-extrabold transition";
+  "inline-flex cursor-pointer items-center justify-center gap-3 text-center transition";
 
-const CUP_BUTTON_SIZE = "min-h-13 px-7";
+const SITE_BUTTON_SHAPE = "rounded-control font-semibold";
+
+const CUP_BUTTON_SHAPE = "min-h-13 rounded-control px-6.5 py-2 font-bold";
 
 const SITE_SIZE_CLASSES: Record<ButtonSize, string> = {
-  default: "min-h-13 px-6",
-  compact: "min-h-11 px-4 text-sm md:min-h-12 md:px-5 md:text-base",
-  large: "min-h-13 px-6 md:min-h-15 md:px-9 md:text-lg",
+  default: "min-h-12 px-5.5 text-sm md:text-base",
+  compact: "min-h-11 px-4 text-sm",
+  large: "min-h-14 px-8 text-base md:min-h-15 md:px-10 md:text-lg",
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: `${PRESSABLE_CLASSES} bg-coral text-ink`,
-  primaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} bg-coral text-ink`,
-  secondary: `${PRESSABLE_CLASSES} border-3 border-navy bg-paper text-navy`,
-  secondaryOnDark: `${PRESSABLE_ON_DARK_CLASSES} border-3 border-paper bg-paper text-navy`,
-  cupPrimary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink bg-cup-pink-strong text-white`,
-  cupSecondary: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-navy border-2 border-cup-navy bg-white text-cup-navy`,
-  cupSecondaryOnDark: `${CUP_BUTTON_SIZE} ${PRESSABLE_CLASSES} shadow-cup-ink border-2 border-white bg-white text-cup-ink`,
+  primary: "bg-coral text-white hover:bg-coral-strong",
+  primaryOnDark: "bg-snow text-slate hover:bg-white",
+  secondary:
+    "border-thin border-slate text-slate hover:bg-slate hover:text-snow",
+  secondaryOnDark:
+    "border-thin border-snow text-snow hover:bg-snow hover:text-slate",
+  cupPrimary: "bg-cup-pink-strong text-white hover:bg-cup-magenta",
+  cupSecondary:
+    "border-thin border-cup-navy text-cup-navy hover:bg-cup-navy hover:text-white",
+  cupSecondaryOnDark:
+    "border-thin border-white text-white hover:bg-white hover:text-cup-ink",
 };
 
 function isSiteVariant(variant: ButtonVariant): boolean {
@@ -57,6 +58,8 @@ export function buttonClasses(
   variant: ButtonVariant,
   size: ButtonSize = "default",
 ): string {
-  const siteClasses = isSiteVariant(variant) ? SITE_SIZE_CLASSES[size] : "";
-  return `${BASE_BUTTON_CLASSES} ${siteClasses} ${VARIANT_CLASSES[variant]}`;
+  const shapeClasses = isSiteVariant(variant)
+    ? `${SITE_BUTTON_SHAPE} ${SITE_SIZE_CLASSES[size]}`
+    : CUP_BUTTON_SHAPE;
+  return `${BASE_BUTTON_CLASSES} ${shapeClasses} ${VARIANT_CLASSES[variant]}`;
 }

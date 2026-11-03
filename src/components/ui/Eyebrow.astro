@@ -1,32 +1,29 @@
 ---
-export type EyebrowTone =
-  "coral" | "coralOnDark" | "sky" | "mist" | "cloud" | "ice";
+import LineGlyph from "./LineGlyph.astro";
+
+export type EyebrowTone = "light" | "dark" | "photo";
 
 interface Props {
-  tone: EyebrowTone;
+  tone?: EyebrowTone;
+  class?: string;
 }
 
 const TONE_CLASSES: Record<EyebrowTone, string> = {
-  coral: "text-coral-strong",
-  coralOnDark: "text-coral",
-  sky: "text-teal",
-  mist: "text-navy",
-  cloud: "text-navy",
-  ice: "text-teal",
+  light: "text-forest",
+  dark: "text-sage",
+  photo: "text-snow",
 };
 
-const { tone } = Astro.props;
+const { tone = "light", class: extraClasses } = Astro.props;
 ---
 
 <span
   class:list={[
-    "inline-flex items-center gap-2 self-start text-xs font-extrabold tracking-widest uppercase md:text-sm",
+    "eyebrow-text inline-flex items-center gap-3",
     TONE_CLASSES[tone],
+    extraClasses ?? "self-start",
   ]}
 >
-  <span
-    aria-hidden="true"
-    class="size-2 shrink-0 rounded-full bg-current"
-  ></span>
+  <LineGlyph />
   <slot />
 </span>

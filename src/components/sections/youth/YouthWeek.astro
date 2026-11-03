@@ -6,6 +6,7 @@ import Carousel from "../../ui/Carousel.astro";
 import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
 import YouthDayCard, { type DayTone } from "./YouthDayCard.astro";
 
 type ProgramItem =
@@ -18,30 +19,27 @@ interface Props {
   locale: Locale;
 }
 
-const DEFAULT_DAY_TONE: DayTone = {
-  card: "bg-blush",
-  label: "coral",
-  title: "text-navy",
+const DAY_TONE: DayTone = {
+  card: "bg-snow",
+  label: "light",
+  title: "text-slate",
 };
-
-const DAY_TONE_CYCLE: DayTone[] = [
-  DEFAULT_DAY_TONE,
-  { card: "bg-ice", label: "sky", title: "text-navy" },
-  { card: "bg-cloud", label: "mist", title: "text-navy" },
-  { card: "bg-navy text-paper", label: "coralOnDark", title: "text-paper" },
-];
 
 const { title, intro, days, locale } = Astro.props;
 const strings = uiStrings(locale);
-const toneAt = (dayIndex: number): DayTone =>
-  DAY_TONE_CYCLE[dayIndex % DAY_TONE_CYCLE.length] ?? DEFAULT_DAY_TONE;
 ---
 
-<section class="py-section">
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline
+    variant="background"
+    profiles={["crete"]}
+    tone="light"
+    class="translate-y-10 md:translate-y-16"
+  />
   <Container class="flex flex-col gap-block">
     <div class="max-w-190">
       <SectionIntro title={title}>
-        <p class="text-slate">{intro}</p>
+        <p class="text-graphite">{intro}</p>
       </SectionIntro>
     </div>
     <Carousel
@@ -52,16 +50,16 @@ const toneAt = (dayIndex: number): DayTone =>
       width="full"
       class="md:hidden"
     >
-      {days.map((day, dayIndex) => (
+      {days.map((day) => (
         <CarouselSlide>
-          <YouthDayCard day={day} tone={toneAt(dayIndex)} />
+          <YouthDayCard day={day} tone={DAY_TONE} />
         </CarouselSlide>
       ))}
     </Carousel>
     <ul class="gap-grid hidden md:grid md:grid-cols-2 lg:grid-cols-4">
-      {days.map((day, dayIndex) => (
+      {days.map((day) => (
         <li>
-          <YouthDayCard day={day} tone={toneAt(dayIndex)} />
+          <YouthDayCard day={day} tone={DAY_TONE} />
         </li>
       ))}
     </ul>

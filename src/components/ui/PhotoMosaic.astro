@@ -30,7 +30,7 @@ const { photos } = Astro.props;
           widths={isLeadPhoto ? LEAD_PHOTO_WIDTHS : PHOTO_WIDTHS}
           sizes={isLeadPhoto ? LEAD_PHOTO_SIZES : PHOTO_SIZES}
           formats={["avif", "webp"]}
-          class="size-full rounded-2xl object-cover md:rounded-3xl"
+          class="rounded-card size-full object-cover"
         />
       </li>
     );

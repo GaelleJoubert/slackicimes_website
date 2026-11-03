@@ -19,3 +19,11 @@ photos:
       image: ../../../assets/images/stages/jeunes/photo-05.jpg,
       alt: Jeunes stagiaires jouant à des jeux d'équilibre dans un parc,
     }
+  - image: ../../../assets/images/stages/stage-jeunes.jpg
+    alt: "Jeune stagiaire suspendue la tête en bas sous une highline"
+  - image: ../../../assets/images/stages/jeunes/jeune-au-dessus-des-nuages.jpg
+    alt: "Jeune stagiaire en équilibre sur une highline au dessus d'une mer de nuages"
+  - image: ../../../assets/images/stages/jeunes/etirements-au-parc.jpg
+    alt: "Séance d'étirements en groupe dans un parc"
+  - image: ../../../assets/images/stages/jeunes/groupe-en-montagne.jpg
+    alt: "Groupe de jeunes stagiaires et d'encadrants levant les bras en montagne"

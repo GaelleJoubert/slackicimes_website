@@ -9,23 +9,19 @@ const { live } = Astro.props;
 const previewRows = Array.from({ length: live.previewRowCount });
 ---
 
-<div class="bg-cup-slate gap-block p-card flex flex-col rounded-2xl text-white lg:flex-row lg:items-center">
+<div class="bg-cup-ink rounded-card gap-block p-card flex flex-col text-white lg:flex-row lg:items-center">
   <div class="gap-stack flex min-w-0 flex-1 flex-col">
-    <span class="text-cup-sky inline-flex items-center gap-2 self-start text-sm font-bold tracking-wider uppercase">
-      <span aria-hidden="true" class="bg-cup-sky size-2 rounded-full"></span>
+    <span class="text-cup-pink-soft inline-flex items-center gap-2.5 self-start text-xs font-bold tracking-widest uppercase">
+      <span aria-hidden="true" class="bg-cup-pink size-2 rounded-full"></span>
       {live.badge}
     </span>
-    <h3 class="cup-subsection-title">{live.title}</h3>
-    <p class="text-cup-slate-text">{live.text}</p>
+    <h3 class="cup-subsection-title md:text-4xl">{live.title}</h3>
+    <p class="text-cup-soft">{live.text}</p>
   </div>
-  <div
-    class="bg-cup-slate-deep p-tile flex flex-1 flex-col gap-2.5 rounded-2xl"
-    aria-label={live.previewLabel}
-    role="table"
-  >
+  <div class="flex flex-1 flex-col" aria-label={live.previewLabel} role="table">
     <div
       role="row"
-      class="text-cup-slate-muted flex justify-between text-sm font-semibold tracking-wider uppercase"
+      class="border-cup-line text-cup-slate-muted flex justify-between border-b-2 pb-3 text-xs font-semibold tracking-widest uppercase"
     >
       <span role="columnheader">{live.previewGroup}</span>
       <span role="columnheader">{live.previewScore}</span>
@@ -33,7 +29,7 @@ const previewRows = Array.from({ length: live.previewRowCount });
     {previewRows.map(() => (
       <div
         role="row"
-        class="bg-cup-slate flex justify-between rounded-lg px-3.5 py-2.5"
+        class="border-cup-line flex justify-between border-b py-4 text-sm"
       >
         <span role="cell">{live.previewRow}</span>
         <span role="cell" class="text-cup-slate-muted">

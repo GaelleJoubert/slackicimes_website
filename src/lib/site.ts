@@ -4,8 +4,6 @@ export const SITE_NAME = "Slack'icîmes";
 
 export const FESTIVAL_NAME_HIGHLIGHT = "Festi";
 
-export const FESTIVAL_FULL_NAME_HIGHLIGHT = "Winter FestiSlack";
-
 export const COURSE_FORMULAS_SECTION_ID = "formules";
 export const CONTACT_FORM_SECTION_ID = "formulaire";
 

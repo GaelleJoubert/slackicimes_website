@@ -3,7 +3,7 @@ import type { Locale } from "../../i18n/locales";
 import { uiStrings } from "../../i18n/ui";
 import type { HeaderTone } from "./header-tone";
 import SiteNavigation from "./SiteNavigation.astro";
-import { roundIconButtonClasses } from "../ui/button-styles";
+import { squareIconButtonClasses } from "../ui/button-styles";
 
 interface Props {
   locale: Locale;
@@ -18,7 +18,7 @@ const strings = uiStrings(locale);
 <details data-animated-details class="group">
   <summary
     aria-label={strings.navigation.menuToggle}
-    class:list={["size-11 list-none", roundIconButtonClasses(tone)]}
+    class:list={["size-11 list-none", squareIconButtonClasses(tone)]}
   >
     <svg
       aria-hidden="true"
@@ -44,7 +44,7 @@ const strings = uiStrings(locale);
     </svg>
   </summary>
   <div data-expand-panel class="absolute inset-x-0 top-full z-20">
-    <div class="bg-paper border-navy border-b-3 px-4 pt-2 pb-6">
+    <div class="bg-snow border-rule border-b px-5 pt-2 pb-6">
       <SiteNavigation
         locale={locale}
         currentPageSlug={pageSlug}

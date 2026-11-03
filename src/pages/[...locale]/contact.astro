@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { render } from "astro:content";
+import PageHero from "../../components/sections/PageHero.astro";
 import ContactForm from "../../components/sections/ContactForm.astro";
 import CallTiles from "../../components/sections/contact/CallTiles.astro";
 import ContactDetailsCard from "../../components/sections/contact/ContactDetailsCard.astro";
@@ -21,7 +21,6 @@ const PAGE_SLUG = "contact";
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { Content: Intro } = await render(page);
 ---
 
 <BaseLayout
@@ -31,18 +30,14 @@ const { Content: Intro } = await render(page);
   pageSlug={PAGE_SLUG}
   snapSectionsOnMobile
 >
-  <section class="pt-page-top pb-section">
-    <Container class="gap-block flex flex-col">
-      <div class="gap-stack flex max-w-205 flex-col">
-        <h1 class="page-title">{page.data.heading}</h1>
-        <div class="rich-text md:text-xl">
-          <Intro />
-        </div>
-      </div>
+  <PageHero page={page.data} size="compact" />
+
+  <section class="pt-block pb-section">
+    <Container>
       <div class="gap-block grid md:grid-cols-5 md:items-start">
         <div
           id={CONTACT_FORM_SECTION_ID}
-          class="scroll-mt-4 border-mist rounded-card md:rounded-photo gap-stack p-card flex snap-start flex-col border-3 md:col-span-3"
+          class="border-rule rounded-card gap-stack p-card flex scroll-mt-4 snap-start flex-col border md:col-span-3"
         >
           <h2 class="timeline-title">{strings.contactPage.formTitle}</h2>
           <ContactForm locale={locale} />

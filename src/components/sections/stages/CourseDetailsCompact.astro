@@ -34,33 +34,21 @@ const programLines = program.items.map((item) =>
 );
 ---
 
-<div class="bg-blush gap-stack px-tile pb-tile flex flex-col text-sm md:hidden">
+<div class="gap-stack px-tile pb-tile flex flex-col text-sm md:hidden">
   <dl class="flex flex-wrap gap-2">
     <FactTile
       value={duration}
       label={strings.stages.durationLabel}
-      tone="navy"
       class="grow"
     />
     <FactTile
       value={formattedPrice}
       label={strings.stages.priceHeading}
-      tone="paper"
       class="grow"
     />
-    <FactTile
-      value={level}
-      label={strings.stages.levelLabel}
-      tone="sky"
-      class="grow"
-    />
+    <FactTile value={level} label={strings.stages.levelLabel} class="grow" />
     {ageRange && (
-      <FactTile
-        value={ageRange}
-        label={strings.stages.ageLabel}
-        tone="ice"
-        class="grow"
-      />
+      <FactTile value={ageRange} label={strings.stages.ageLabel} class="grow" />
     )}
   </dl>
   <div class="flex flex-col gap-2">
@@ -78,7 +66,7 @@ const programLines = program.items.map((item) =>
   </div>
   <div class="flex items-baseline gap-2.5">
     <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
-    <p class="font-bold">{dates}</p>
+    <p class="font-semibold">{dates}</p>
   </div>
   <LinkButton href={STAGES_REGISTRATION_URL}>
     {strings.stages.registerButton}

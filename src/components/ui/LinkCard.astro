@@ -1,0 +1,33 @@
+---
+import ArrowSquare from "./ArrowSquare.astro";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
+
+type HeadingLevel = "h2" | "h3";
+
+interface Props {
+  href: string;
+  title: string;
+  headingLevel?: HeadingLevel;
+  class?: string;
+}
+
+const { href, title, headingLevel = "h3", class: extraClasses } = Astro.props;
+const Heading = headingLevel;
+---
+
+<a
+  href={href}
+  class:list={[
+    "bg-moss rounded-card text-slate p-card gap-stack flex flex-col",
+    CLICKABLE_CARD_CLASSES,
+    extraClasses,
+  ]}
+>
+  <Heading class="card-title decoration-coral underline-offset-5 group-hover:underline">
+    {title}
+  </Heading>
+  <div class="text-graphite gap-stack flex flex-1 flex-col">
+    <slot />
+  </div>
+  <ArrowSquare class="self-end" />
+</a>

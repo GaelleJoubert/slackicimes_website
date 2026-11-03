@@ -1,8 +1,9 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import PageHero from "../../components/sections/PageHero.astro";
 import AssociationActivities from "../../components/sections/association/AssociationActivities.astro";
 import AssociationDuo from "../../components/sections/association/AssociationDuo.astro";
-import AssociationHero from "../../components/sections/association/AssociationHero.astro";
 import AssociationTeam from "../../components/sections/association/AssociationTeam.astro";
 import {
   getLocalizedCollection,
@@ -21,7 +22,8 @@ const PAGE_SLUG = "association";
 
 const { locale } = Astro.props;
 const page = await getPageEntry(PAGE_SLUG, locale);
-const { origin, activities, duo, team } = (
+const { Content: Intro } = await render(page);
+const { activities, duo, team } = (
   await getSingleEntryContent("association", locale)
 ).data;
 const teamMembers = await getLocalizedCollection("team", locale);
@@ -33,10 +35,11 @@ const duoMembers = teamMembers.filter((member) => member.data.group === "duo");
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
-  headerTone="dark"
   snapSectionsOnMobile
 >
-  <AssociationHero heading={page.data.heading} origin={origin} />
+  <PageHero page={page.data} photoShape="landscape">
+    <Intro />
+  </PageHero>
   <AssociationActivities activities={activities} locale={locale} />
   <AssociationDuo duo={duo} members={duoMembers} locale={locale} />
   <AssociationTeam team={team} members={teamMembers} locale={locale} />

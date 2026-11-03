@@ -6,6 +6,7 @@ import { uiStrings } from "../../../i18n/ui";
 import Container from "../../ui/Container.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
 
 interface Props {
   duo: CollectionEntry<"association">["data"]["duo"];
@@ -30,8 +31,8 @@ function portraitOf(member: CollectionEntry<"team">) {
 }
 ---
 
-<section class="bg-navy text-paper py-section">
-  <Container class="grid gap-block md:grid-cols-2 md:items-center">
+<section class="bg-forest text-snow py-section relative">
+  <Container class="gap-block grid md:grid-cols-2 md:items-center">
     <SectionIntro title={duo.title} theme="dark">
       <div class="intro-text intro-text-on-dark">
         {duo.paragraphs.map((paragraph) => (
@@ -40,32 +41,30 @@ function portraitOf(member: CollectionEntry<"team">) {
       </div>
     </SectionIntro>
     <ul class="gap-grid grid grid-cols-2">
-      {members.map((member, memberIndex) => {
+      {members.map((member) => {
         const portrait = portraitOf(member);
         return (
-          <li class:list={[memberIndex % 2 === 1 && "mt-4 md:mt-10"]}>
+          <li class="flex flex-col gap-2">
+            <FramedPicture
+              image={portrait.image}
+              alt={portrait.alt}
+              widths={PORTRAIT_WIDTHS}
+              sizes={PORTRAIT_SIZES}
+              class="h-44 md:h-85"
+            />
             <a
               href={`#${entrySlug(member.id)}`}
-              class="group text-paper flex flex-col items-center gap-1.5 text-center md:gap-2.5"
+              class="card-title text-link-on-dark self-start"
             >
-              <FramedPicture
-                image={portrait.image}
-                alt={portrait.alt}
-                widths={PORTRAIT_WIDTHS}
-                sizes={PORTRAIT_SIZES}
-                frame="bordered"
-                class="h-44 md:h-85"
-              />
-              <span class="card-title group-hover:text-coral text-current md:text-3xl">
-                {member.data.name}
-              </span>
-              <span class="text-mist text-sm font-bold md:text-base">
-                {strings.highlineSince} {member.data.highlineSince}
-              </span>
+              {member.data.name}
             </a>
+            <span class="label-text text-sage">
+              {strings.highlineSince} {member.data.highlineSince}
+            </span>
           </li>
         );
       })}
     </ul>
   </Container>
+  <Skyline variant="edge" profile="casse" fill="snow" />
 </section>
