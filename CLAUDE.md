@@ -127,73 +127,155 @@ decision from the user.
   images.
 - `public/` is only for files that must keep a fixed URL. Do not put content images there.
 
-## UI components
+## Design system: Crête
 
-For links styled as buttons and for actions, use the shared components in `src/components/ui/`;
-never style a raw `<a>` or `<button>` as a button inside a section. If no shared component fits,
-add one there.
+The V2 site follows the design system « Crête » (Claude Design canvas
+https://claude.ai/artifact/MJQquWWGY4BDuNo114r1wn, board "Design system « Crête »"; the
+Accueil and Stages highline boards are the reference pages). A calm system that lets the mountain
+speak: soft corners, flat colors, no shadows, light typography, large photos, mountain ridges.
+
+When the canvas and this file disagree, this file wins; flag the gap to the user.
+
+### Principles
+
+- Soft: slightly rounded corners, never pills or sharp boxes.
+- Flat: no shadow anywhere. Depth comes from flat color blocks, 1px rules and white space.
+- Natural: one family of greens from light to deep. Sections alternate these flat colors; coral is
+  reserved for actions.
+- Photo first: images take the space, without frame or offset. Text sits beside or below a
+  photo, rarely on top of it.
+
+### Colors
+
+Defined once in the `@theme` block of `src/styles/global.css`. Use the generated utilities
+(`bg-forest`, `text-slate`), never a hex value in a component.
+
+| Token    | Hex       | Role                                             |
+| :------- | :-------- | :----------------------------------------------- |
+| `snow`   | `#F6F5F1` | page background, text and buttons on dark blocks |
+| `moss`   | `#E4EBDA` | fill of clickable cards, tabs, callouts          |
+| `lichen` | `#C8D8B0` | light section background                         |
+| `rule`   | `#C9D1C2` | 1px rules and outlines                           |
+| `stone`  | `#59666A` | secondary text, captions, labels                 |
+| `slate`  | `#1D2A2E` | text, secondary buttons, arrow squares           |
+| `forest` | `#2E463B` | dark section, eyebrows on light backgrounds      |
+| `lake`   | `#2D6A73` | dark section, key figures band, focus ring       |
+| `coral`  | `#B5492F` | actions only (primary button, link underline)    |
+
+- Body text on light backgrounds uses slate or `#3B484C` for long paragraphs; on dark blocks use
+  snow, with `#C9D4C3` for secondary text.
+- Coral never marks information. On dark blocks, link underlines use the light coral
+  `#E58A6F`.
+- Every text color pair passes WCAG AA (4.5:1, 3:1 from 24px). Check new pairs before using them.
+
+### Typography
+
+Two families, loaded with `@fontsource`: Fraunces (variable, with italic) for the voice,
+Hanken Grotesk for information. Sections pick a role class or component; they never combine raw
+size and weight utilities.
+
+| Role          | Font and weight     | Size / line height (desktop) |
+| :------------ | :------------------ | :--------------------------- |
+| Hero title    | Fraunces 500        | 168 / 0.88, home only        |
+| Page title    | Fraunces 500        | 88 to 112 / 0.92             |
+| Section title | Fraunces 580        | 48 to 52 / 1.05              |
+| Card title    | Fraunces 580        | 26 to 28 / 1.15              |
+| Accent        | Fraunces 500 italic | in titles, forest color      |
+| Key figure    | Fraunces 500 or 580 | 26 to 36 / 1                 |
+| Lead          | Hanken 400          | 20 / 1.55                    |
+| Body          | Hanken 400          | 17 / 1.65                    |
+| Eyebrow       | Hanken 600 capitals | 13, letter spacing 0.14em    |
+| Label         | Hanken capitals     | 12, letter spacing 0.12em    |
+| Caption       | Hanken 400          | 14 / 1.5                     |
+
+Every eyebrow starts with the line and mountain glyph (a slackline over a ridge). Titles shrink on
+phones (page title about 64, section title 36).
+
+### Shapes
+
+- Radius `control` (6px): buttons, inputs, arrow squares, tabs, small panels.
+- Radius `card` (10px): cards and photos inside the content.
+- No radius: photos that touch the edge of the screen.
+- Rules are 1px in `rule`. A block title may carry a 2px slate rule above it.
+- No drop shadow, no offset frame, no gradient (the only gradient allowed is the dark shade that
+  keeps text readable over the bottom of the hero photo). Tailwind's default shadows stay
+  disabled.
+
+### Skylines
+
+Mountain ridges replace straight lines. The profiles live in `src/lib/skylines.ts` (drawn on a
+1440 × 100 grid) and render through the shared `Skyline` component; never paste a path into a
+page or section.
+
+- Profiles: `crete` (the original ridge), `montBlanc` (Mont Blanc massif seen from Les Arcs),
+  `pourri` (Mont Pourri from Arc 1800), `casse` (Grande Casse, Vanoise). Vary profiles from one
+  section to the next; a profile may be mirrored horizontally.
+- Divider: a straight separator between two content blocks may become a ridge: 2px slate stroke,
+  full content width, 40px high (24px on phones). The 1px rules of tables, lists and key facts
+  stay straight.
+- Edge: the bottom of a colored block may follow a ridge filled with the next block's color,
+  72px high (43px on phones). Once or twice per page, so it stays an event. Leave enough bottom
+  padding that the ridge never touches content.
+- Background: a colored block may carry 2 or 3 white ridges behind its content: 1.5px strokes,
+  each one lower and fainter than the previous (85, 45, 20% opacity on lichen; 16, 9, 5% on
+  forest or lake). They never sit under long text without a contrast check.
+- Skylines are decorative: `aria-hidden="true"`, no interaction, strokes with
+  `vector-effect="non-scaling-stroke"` so they keep their width when stretched.
 
 ### Clickable or not
 
-Visitors on phones have no hover, so the look alone must say what reacts to a finger. Interactive
-and informative elements never share a cue.
+Without shadows, the look alone must still tell a phone user what reacts to a finger.
+Interactive and informative elements never share a cue.
 
-- A navy hard shadow means "press me": it sits under the whole thing you press. Buttons and round
-  icon buttons use `shadow-pressable`, clickable cards and clickable photos use `shadow-card`
-  (`PRESSABLE_CARD_CLASSES`), in navy, or `shadow-ink` on dark sections. Nothing else has a navy
-  shadow.
-- Clickable cards have no outline: a tint fill (cloud by default, or the card's tone) plus the card
-  shadow. A plain link card has no badge, since opening a page is what a shadowed card does.
-- An action badge (`ActionBadge`, or `ToggleSign` for details) appears only when the tap does
-  something else: +/− unfolds, play, phone, external. It is a flat coral circle inside a card;
-  only a badge standing alone (`ReadMore`) takes `STANDALONE_BADGE_CLASSES`. Information never has
-  a coral circle.
-- Information lies flat: no shadow, no navy outline, no badge. Panels holding content (forms,
-  details, team cards) keep a mist outline without a frame. Only photos that are not links keep a
-  colored frame (`shadow-raised` in coral, sky, mist or blush), never navy.
-- Everything pressable sinks into its shadow on tap and on desktop hover (`press-sink` for buttons,
-  `card-sink` for cards). A disclosure only sinks while closed. Keyboard focus shows the global sky
-  ring.
-- Links inside text use `.text-link` (or `.text-link-on-dark`, `.rich-text`): always underlined in
+- Buttons are filled or outlined rectangles with radius `control`, at least 48px high. Three
+  levels: `primary` (coral fill, white text, one per section), `secondary` (slate 1.5px outline,
+  fills slate on hover), and a text link for low priority. On dark blocks: `onDark` (snow fill,
+  slate text) and a text link underlined in light coral.
+- A clickable card is a moss fill (snow on a lichen section) with radius `card` and a 44px slate
+  arrow square in a corner: the whole card opens a page. On hover or tap the square turns coral
+  and the title gets a coral underline. A clickable card has no outline.
+- An outlined square (slate 1.5px, radius `control`) announces another action: `+` unfolds a
+  disclosure, play, phone, external link. It fills slate once a disclosure is open.
+- Links inside text use `.text-link` (`.text-link-on-dark` on dark blocks): always underlined in
   coral. Navigation lists (header, footers, section bars) are exempt.
-- No pills for information: eyebrows are a colored dot plus uppercase text, facts are plain text
-  separated by coral dots. Coral fills are reserved for actions.
-- Buttons have three levels: `primary` (coral, one per section), `secondary` (paper with navy
-  outline), and a text link for low priority. Use the `OnDark` variants on dark sections.
-- World Cup pages follow the same rules in their palette: pink (`cup-pink-strong`) replaces coral
-  for primary buttons and badges (`ActionBadge tone="cupPink"`), shadows are `cup-ink` on dark and
-  `cup-navy` on light, and clickable tiles use a `cup-surface` fill with the card shadow. Their thin outlines are information; pink fills are for actions only.
+- Information lies flat: 1px rules, square forest bullets, figures in Fraunces, no fill, no
+  arrow, no coral. A moss panel without an arrow square is a callout, not a link. Photos that are
+  not links have no frame and no badge.
+- No pills for information: eyebrows are the glyph plus capitals, facts are plain text separated
+  by rules or dots.
+- Keyboard focus shows a lake ring on every interactive element.
+- For links styled as buttons and for actions, use the shared components in
+  `src/components/ui/`; never style a raw `<a>` or `<button>` inside a section. If no shared
+  component fits, add one there.
 
-## Design tokens and responsive
+### World Cup pages
+
+The World Cup pages keep their own palette (pink, navy) until a Crête version is designed in
+Claude Design and approved by the user. Do not restyle them on your own.
+
+### Tokens and responsive
 
 - Mobile first: base utility classes target phones; `sm:`, `md:`, `lg:` only enlarge. Check every
   change at 375px wide before desktop.
 - On mobile, each section should fit one screen when possible: at 375 × 812, a section stays within
   the viewport minus the sticky header (about 740px). Rearrange the mobile layout (smaller media,
   side by side blocks, a carousel) rather than letting a section run over several screens.
-- Colors, fonts, font sizes, spacing scale, radii, shadows and breakpoints are defined once in the
-  `@theme` block of `src/styles/global.css`. Use the utilities they generate.
-- Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`, `w-[372px]`) or inline `style`
-  attributes. If no token fits, add one to `@theme`, keeping the existing scale.
-- Shadows share one direction: a hard diagonal offset toward the bottom right, no blur. Use
-  `shadow-raised` for photos that are not links, `shadow-card` for clickable cards and photos,
-  `shadow-pressable` for buttons and small controls,
-  `text-shadow-raised` for text over photos. Their distances grow on desktop by themselves, so never
-  add an `md:` shadow size. Change the color with `shadow-<color>` only. Tailwind's default
-  shadows are disabled; a new shadow need is a new token in `@theme`, in the same direction.
+- Colors, fonts, font sizes, spacing, radii and breakpoints are defined once in the `@theme`
+  block of `src/styles/global.css`. Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`) or
+  inline `style` attributes. If no token fits, add one to `@theme`, keeping the existing scale.
 - Spacing comes from eight named tokens that grow on desktop by themselves (never add an `md:`
-  size to them). Generous white space wins: when in doubt, take the larger role.
-  - `section`: vertical padding of every section (`py-section`). When two sections in a row share
-    a background, the second one drops its top padding (`pb-section`) so the gap stays one step.
-  - `page-top`: top padding of a page's first section, under the header (`pt-page-top`).
-  - `block`: between big groups inside a section, such as an intro and its grid of cards.
-  - `stack`: between the elements of a text group: eyebrow, title, paragraphs, buttons.
-  - `grid`: between cards or tiles in a grid or list.
-  - `card` and `tile`: inner padding of panels and large cards (`p-card`), of small cards and
-    tiles (`p-tile`).
-  - `inline`: between items in a row, such as buttons side by side.
-- Typography roles (page title, section title, body, caption) are component classes or components;
-  sections pick a role, they do not combine raw size and weight utilities.
+  size to them). Generous white space wins: when in doubt, take the larger role. Values are
+  phone, then desktop.
+  - `section` (72, 128): vertical padding of every section (`py-section`). When two sections in
+    a row share a background, the second one drops its top padding.
+  - `page-top` (64, 120): top padding of a page's first section, under the header.
+  - `block` (48, 72): between big groups inside a section, such as an intro and its grid.
+  - `stack` (16, 24): between the elements of a text group: eyebrow, title, paragraphs, buttons.
+  - `grid` (24, 32): between cards or tiles in a grid or list.
+  - `card` (28, 40) and `tile` (20, 24): inner padding of panels and large cards, of small cards
+    and tiles.
+  - `inline` (12, 16): between items in a row, such as buttons side by side.
+- Content width: 1280px maximum, with 40px side padding on desktop and 20px on phones.
 
 ## Localization
 
