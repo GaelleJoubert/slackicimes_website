@@ -4,9 +4,8 @@ description: "Inscriptions pour les stages de highline de l'association."
 heading: "Inscriptions"
 eyebrow: "Stages highline · Les Arcs"
 illustration:
-  image: ../../../assets/images/stages/highline-deux-tetes.jpg
-  alt: Stagiaire éclatant de rire, assise en baudrier sur une highline en montagne
-  focus: upper
+  image: ../../../assets/images/stages/highline-figure-coucher-de-soleil.jpg
+  alt: Figure sous une highline au coucher du soleil, au dessus d'une vallée de montagne
 steps:
   - Choisissez votre formule
   - Inscrivez-vous sur HelloAsso

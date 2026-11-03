@@ -96,6 +96,7 @@ const sectionClass = page.illustration ? layout.section : SECTION_WITHOUT_PHOTO;
         {keyFacts && (
           <KeyFactsRow facts={keyFacts} label={keyFactsLabel ?? ""} />
         )}
+        <slot name="details" />
         {Astro.slots.has("actions") && (
           <div class="gap-inline flex flex-wrap">
             <slot name="actions" />

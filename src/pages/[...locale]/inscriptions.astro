@@ -45,6 +45,14 @@ const formulasPath = withSectionAnchor(
 >
   <PageHero page={page.data} photoShape="landscape">
     <Instructions />
+    {steps && (
+      <div slot="details" class="gap-stack flex flex-col">
+        <h2>
+          <Eyebrow>{strings.stages.registrationStepsLabel}</Eyebrow>
+        </h2>
+        <StepList steps={steps} label={strings.stages.registrationStepsLabel} />
+      </div>
+    )}
     <LinkButton
       slot="actions"
       href={STAGES_REGISTRATION_URL}
@@ -56,24 +64,13 @@ const formulasPath = withSectionAnchor(
   </PageHero>
 
   <section class="py-section">
-    <Container class="gap-block grid md:grid-cols-12 md:items-end">
-      {steps && (
-        <div class="gap-stack flex flex-col md:col-span-7">
-          <h2>
-            <Eyebrow>{strings.stages.registrationStepsLabel}</Eyebrow>
-          </h2>
-          <StepList
-            steps={steps}
-            label={strings.stages.registrationStepsLabel}
-          />
-        </div>
-      )}
+    <Container class="grid md:grid-cols-12">
       {feature && (
         <LinkCard
           href={formulasPath}
           title={feature.title}
           headingLevel="h2"
-          class="md:col-span-5"
+          class="md:col-span-7"
         >
           {feature.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>

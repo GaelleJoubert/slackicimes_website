@@ -4,9 +4,8 @@ description: "Registrations for the association's highline courses."
 heading: "Registrations"
 eyebrow: "Highline courses · Les Arcs"
 illustration:
-  image: ../../../assets/images/stages/highline-deux-tetes.jpg
-  alt: Trainee laughing, sitting in a harness on a highline in the mountains
-  focus: upper
+  image: ../../../assets/images/stages/highline-figure-coucher-de-soleil.jpg
+  alt: Highliner doing a trick under the line at sunset, above a mountain valley
 steps:
   - Choose your course
   - Register on HelloAsso
