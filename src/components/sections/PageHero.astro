@@ -55,11 +55,13 @@ const {
   photoShape = "portrait",
 } = Astro.props;
 const layout = SHAPE_LAYOUTS[photoShape];
+const SECTION_WITHOUT_PHOTO = "md:pb-32";
+const sectionClass = page.illustration ? layout.section : SECTION_WITHOUT_PHOTO;
 ---
 
 <section
   aria-labelledby="page-title"
-  class:list={["bg-lichen pt-page-top relative pb-20", layout.section]}
+  class:list={["bg-lichen pt-page-top relative pb-20", sectionClass]}
 >
   <Container class:list={["gap-block grid md:grid-cols-12", layout.grid]}>
     <div

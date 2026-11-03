@@ -1,15 +1,13 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
+import PageHero from "../../components/sections/PageHero.astro";
 import EditionTimeline from "../../components/sections/past-editions/EditionTimeline.astro";
 import ChevronIcon from "../../components/ui/ChevronIcon.astro";
-import Container from "../../components/ui/Container.astro";
-import HighlightedText from "../../components/ui/HighlightedText.astro";
 import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
 import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { FESTIVAL_FULL_NAME_HIGHLIGHT } from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -32,26 +30,17 @@ const editions = await getLocalizedCollection("festivalEditions", locale);
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <section class="pt-page-top">
-    <Container class="gap-stack flex flex-col">
-      <a
-        href={localizedPath(FESTIVAL_PAGE_SLUG, locale)}
-        class="text-forest hover:text-slate inline-flex min-h-11 items-center gap-1.5 self-start font-extrabold"
-      >
-        <ChevronIcon direction="left" />
-        {strings.navigation.winterFestislack}
-      </a>
-      <h1 class="page-title">
-        <HighlightedText
-          text={page.data.heading}
-          highlight={FESTIVAL_FULL_NAME_HIGHLIGHT}
-        />
-      </h1>
-      <div class="lead">
-        <Intro />
-      </div>
-    </Container>
-  </section>
+  <PageHero page={page.data}>
+    <Intro />
+    <a
+      slot="actions"
+      href={localizedPath(FESTIVAL_PAGE_SLUG, locale)}
+      class="text-link inline-flex min-h-11 items-center gap-1.5"
+    >
+      <ChevronIcon direction="left" />
+      {strings.navigation.winterFestislack}
+    </a>
+  </PageHero>
 
   <EditionTimeline editions={editions} locale={locale} />
 </BaseLayout>
