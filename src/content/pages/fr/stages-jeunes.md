@@ -10,7 +10,6 @@ illustration:
 keyFacts:
   - { value: "5 jours", label: "de 9h à 17h" }
   - { value: "10-17 ans", label: "pour les jeunes sportifs" }
-  - { value: "200 €", label: "activités et matériel inclus" }
   - { value: "2027", label: "dates à venir" }
 ---
 

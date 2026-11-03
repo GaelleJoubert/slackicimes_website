@@ -14,22 +14,58 @@ interface Props {
   keyFacts?: PageData["keyFacts"];
   keyFactsLabel?: string;
   edgeFill?: SkylineEdgeFill;
+  photoShape?: PhotoShape;
 }
 
-const PHOTO_WIDTHS = [600, 1000];
-const PHOTO_SIZES = "(min-width: 768px) 500px, 100vw";
+type PhotoShape = "portrait" | "landscape";
 
-const { page, keyFacts, keyFactsLabel, edgeFill = "snow" } = Astro.props;
+interface ShapeLayout {
+  section: string;
+  grid: string;
+  text: string;
+  photo: string;
+  image: string;
+}
+
+const SHAPE_LAYOUTS: Record<PhotoShape, ShapeLayout> = {
+  portrait: {
+    section: "md:pb-44",
+    grid: "",
+    text: "md:col-span-7",
+    photo: "md:col-span-5",
+    image: "object-upper h-170",
+  },
+  landscape: {
+    section: "md:pb-32",
+    grid: "md:items-center",
+    text: "md:col-span-6",
+    photo: "md:col-span-6",
+    image: "aspect-photo",
+  },
+};
+
+const PHOTO_WIDTHS = [600, 1000];
+const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+
+const {
+  page,
+  keyFacts,
+  keyFactsLabel,
+  edgeFill = "snow",
+  photoShape = "portrait",
+} = Astro.props;
+const layout = SHAPE_LAYOUTS[photoShape];
 ---
 
 <section
   aria-labelledby="page-title"
-  class="bg-lichen pt-page-top relative pb-20 md:pb-44"
+  class:list={["bg-lichen pt-page-top relative pb-20", layout.section]}
 >
-  <Container class="gap-block grid md:grid-cols-12">
+  <Container class:list={["gap-block grid md:grid-cols-12", layout.grid]}>
     <div
       class:list={[
-        "gap-block flex flex-col md:col-span-7",
+        "gap-block flex flex-col",
+        layout.text,
         keyFacts && "justify-between md:pb-20",
       ]}
     >
@@ -56,14 +92,14 @@ const { page, keyFacts, keyFactsLabel, edgeFill = "snow" } = Astro.props;
       </div>
     </div>
     {page.illustration && (
-      <div class="hidden md:col-span-5 md:block">
+      <div class:list={["hidden md:block", layout.photo]}>
         <FramedPicture
           image={page.illustration.image}
           alt={page.illustration.alt}
           widths={PHOTO_WIDTHS}
           sizes={PHOTO_SIZES}
           loading="eager"
-          class="object-upper h-170"
+          class={layout.image}
         />
       </div>
     )}
