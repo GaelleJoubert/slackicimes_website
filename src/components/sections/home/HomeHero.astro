@@ -1,6 +1,6 @@
 ---
-import { Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import ArtDirectedPicture from "../../ui/ArtDirectedPicture.astro";
 import Container from "../../ui/Container.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
 import HighlightedText from "../../ui/HighlightedText.astro";
@@ -11,8 +11,8 @@ interface Props {
   hero: CollectionEntry<"home">["data"]["hero"];
 }
 
-const PHOTO_WIDTHS = [640, 1024, 1600, 2400];
-const PHOTO_SIZES = "100vw";
+const DESKTOP_PHOTO_WIDTHS = [1024, 1600, 2400];
+const PHONE_PHOTO_WIDTHS = [400, 800, 1200];
 
 const { heading, hero } = Astro.props;
 ---
@@ -21,15 +21,13 @@ const { heading, hero } = Astro.props;
   aria-labelledby="hero-title"
   class="text-snow relative h-160 overflow-hidden md:h-215"
 >
-  <Picture
-    src={hero.illustration.image}
+  <ArtDirectedPicture
+    desktopImage={hero.illustration.image}
+    phoneImage={hero.phoneImage}
     alt={hero.illustration.alt}
-    widths={PHOTO_WIDTHS}
-    sizes={PHOTO_SIZES}
-    formats={["avif", "webp"]}
-    loading="eager"
-    fetchpriority="high"
-    class="absolute inset-0 size-full object-high object-cover"
+    desktopWidths={DESKTOP_PHOTO_WIDTHS}
+    phoneWidths={PHONE_PHOTO_WIDTHS}
+    class="absolute inset-0 size-full object-cover md:object-high"
   />
   <div
     aria-hidden="true"

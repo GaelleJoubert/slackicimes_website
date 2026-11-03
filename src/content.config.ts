@@ -97,6 +97,7 @@ const home = defineCollection({
         eyebrow: nonEmptyText,
         titleEmphasis: nonEmptyText,
         illustration,
+        phoneImage: image(),
       }),
       highlightsIntro: z.object({
         eyebrow: nonEmptyText,

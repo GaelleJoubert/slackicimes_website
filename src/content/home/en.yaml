@@ -3,7 +3,8 @@ hero:
   titleEmphasis: Slack'icîmes
   illustration:
     image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
-    alt: Highliner on a line rigged between a rocky spire and the mountain, at sunset, facing snowy peaks
+    alt: Highliner on a line rigged from a rocky spire, at sunset
+  phoneImage: ../../assets/images/association/tower-header-mobile.jpg
 highlightsIntro:
   eyebrow: What we do
   title: Gaining height, together

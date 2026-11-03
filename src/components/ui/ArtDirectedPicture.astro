@@ -1,0 +1,66 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+
+interface Props {
+  desktopImage: ImageMetadata;
+  phoneImage: ImageMetadata;
+  alt: string;
+  desktopWidths: number[];
+  phoneWidths: number[];
+  class?: string;
+}
+
+const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
+const MODERN_FORMATS = ["avif", "webp"] as const;
+const FULL_WIDTH_SIZES = "100vw";
+
+const {
+  desktopImage,
+  phoneImage,
+  alt,
+  desktopWidths,
+  phoneWidths,
+  class: imageClasses,
+} = Astro.props;
+
+const sourcesFor = (image: ImageMetadata, widths: number[]) =>
+  Promise.all(
+    MODERN_FORMATS.map(async (format) => ({
+      type: `image/${format}`,
+      srcset: (await getImage({ src: image, widths, format })).srcSet.attribute,
+    })),
+  );
+
+const desktopSources = await sourcesFor(desktopImage, desktopWidths);
+const phoneSources = await sourcesFor(phoneImage, phoneWidths);
+const fallback = await getImage({ src: phoneImage, widths: phoneWidths });
+---
+
+<picture>
+  {desktopSources.map((source) => (
+    <source
+      media={DESKTOP_MEDIA_QUERY}
+      type={source.type}
+      srcset={source.srcset}
+      sizes={FULL_WIDTH_SIZES}
+    />
+  ))}
+  {phoneSources.map((source) => (
+    <source
+      type={source.type}
+      srcset={source.srcset}
+      sizes={FULL_WIDTH_SIZES}
+    />
+  ))}
+  <img
+    src={fallback.src}
+    srcset={fallback.srcSet.attribute}
+    sizes={FULL_WIDTH_SIZES}
+    alt={alt}
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    class={imageClasses}
+  />
+</picture>

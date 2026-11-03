@@ -3,7 +3,8 @@ hero:
   titleEmphasis: Slack'icîmes
   illustration:
     image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
-    alt: Highlineur sur une ligne tendue entre un piton rocheux et la montagne, au coucher du soleil, face aux sommets enneigés
+    alt: Highlineur sur une ligne tendue depuis un piton rocheux, au coucher du soleil
+  phoneImage: ../../assets/images/association/tower-header-mobile.jpg
 highlightsIntro:
   eyebrow: Ce que nous faisons
   title: Prendre de la hauteur, ensemble
