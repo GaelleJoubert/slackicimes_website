@@ -43,13 +43,14 @@ const strings = uiStrings(locale);
         </div>
       </div>
       <div class="gap-stack flex flex-col">
+        {page.keyFacts && <Skyline variant="divider" profile="pourri" />}
         {page.keyFacts && (
           <dl
             aria-label={strings.stages.keyFactsLabel}
-            class="border-slate grid grid-cols-3 border-y"
+            class="grid grid-cols-3"
           >
             {page.keyFacts.map((fact) => (
-              <div class="flex flex-col gap-1.5 py-4 pr-4">
+              <div class="flex flex-col gap-1.5 pr-4 pb-2">
                 <dt class="label-text text-graphite">{fact.label}</dt>
                 <dd class="font-heading text-xl font-voice md:text-3xl">
                   {fact.value}
