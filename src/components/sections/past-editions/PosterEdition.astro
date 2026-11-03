@@ -1,10 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import LinkButton from "../../ui/LinkButton.astro";
-import PlayIcon from "../../ui/PlayIcon.astro";
 import TimelineEntry, {
   type TimelineDotTone,
 } from "../../ui/TimelineEntry.astro";
+import EditionVideoLinks from "./EditionVideoLinks.astro";
 import EditionWithPoster from "./EditionWithPoster.astro";
 
 interface Props {
@@ -13,26 +12,10 @@ interface Props {
 }
 
 const { edition, dotTone } = Astro.props;
-const { videos, videoLinkLabel } = edition.data;
-const hasUnlabeledVideo = videos.length > 0 && !videoLinkLabel;
-if (hasUnlabeledVideo) {
-  throw new Error(
-    `Festival edition "${edition.id}" has videos: add a "videoLinkLabel" to its frontmatter.`,
-  );
-}
 ---
 
 <TimelineEntry dotTone={dotTone}>
   <EditionWithPoster edition={edition}>
-    {videos.map((videoUrl) => (
-      <LinkButton
-        href={videoUrl}
-        variant="secondary"
-        class="gap-2.5 md:self-start"
-      >
-        <PlayIcon class="text-coral" />
-        {videoLinkLabel}
-      </LinkButton>
-    ))}
+    <EditionVideoLinks edition={edition} />
   </EditionWithPoster>
 </TimelineEntry>

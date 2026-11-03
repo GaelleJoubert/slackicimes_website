@@ -4,6 +4,7 @@ import { editionPeriodLabel } from "../../../lib/festival-edition";
 import TimelineEntry, {
   type TimelineDotTone,
 } from "../../ui/TimelineEntry.astro";
+import EditionVideoLinks from "./EditionVideoLinks.astro";
 
 interface Props {
   editions: CollectionEntry<"festivalEditions">[];
@@ -32,6 +33,7 @@ const renderedEditions = await Promise.all(
       <div class="rich-text">
         <Story />
       </div>
+      <EditionVideoLinks edition={edition} />
     </article>
   ))}
 </TimelineEntry>
