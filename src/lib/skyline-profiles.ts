@@ -4,7 +4,7 @@ export type SkylineProfile = "crete" | "montBlanc" | "pourri" | "casse";
 
 export type SkylinePoint = readonly [x: number, y: number];
 
-function toSkylinePoints(points: number[][]): SkylinePoint[] {
+export function toSkylinePoints(points: number[][]): SkylinePoint[] {
   return points.map(([x, y]) => {
     if (x === undefined || y === undefined) {
       throw new Error("A skyline point needs both an x and a y coordinate.");

@@ -5,6 +5,7 @@ import { uiStrings } from "../../i18n/ui";
 import ContactDetails from "../ui/ContactDetails.astro";
 import Container from "../ui/Container.astro";
 import LinkButton from "../ui/LinkButton.astro";
+import Skyline from "../ui/Skyline.astro";
 
 interface Props {
   text: string;
@@ -15,23 +16,26 @@ const { text, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="pb-section">
-  <Container>
-    <div class="bg-snow border-rule rounded-card md:rounded-card grid items-center gap-block border-3 p-card md:grid-cols-2">
-      <div class="flex flex-col gap-stack">
-        <h2 class="section-title">{strings.contactBlock.title}</h2>
-        <p class="font-bold">{text}</p>
-        <LinkButton
-          href={localizedPath("contact", locale)}
-          variant="primary"
-          class="md:self-start"
-        >
-          {strings.contactBlock.writeUsButton}
-        </LinkButton>
-      </div>
-      <div class="bg-moss rounded-card p-tile md:rounded-3xl">
-        <ContactDetails locale={locale} layout="grid" />
-      </div>
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline
+    variant="background"
+    profiles={["montBlanc", "crete"]}
+    tone="light"
+  />
+  <Container class="gap-block grid items-center md:grid-cols-2">
+    <div class="gap-stack flex flex-col">
+      <h2 class="section-title">{strings.contactBlock.title}</h2>
+      <p class="text-graphite">{text}</p>
+      <LinkButton
+        href={localizedPath("contact", locale)}
+        variant="primary"
+        class="md:self-start"
+      >
+        {strings.contactBlock.writeUsButton}
+      </LinkButton>
+    </div>
+    <div class="bg-snow rounded-card p-tile md:p-card">
+      <ContactDetails locale={locale} layout="grid" />
     </div>
   </Container>
 </section>

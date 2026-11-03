@@ -1,12 +1,11 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
-import FramedPicture, { type PictureFrame } from "../../ui/FramedPicture.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
 
 type EditionTheme = "light" | "dark";
 
 interface Props {
   edition: CollectionEntry<"festivalEditions">;
-  frame: PictureFrame;
   theme?: EditionTheme;
 }
 
@@ -23,7 +22,7 @@ const STORY_THEME_CLASSES: Record<EditionTheme, string> = {
   dark: "rich-text-on-dark",
 };
 
-const { edition, frame, theme = "light" } = Astro.props;
+const { edition, theme = "light" } = Astro.props;
 const { period, title, poster, posterAlt } = edition.data;
 if (!poster || !posterAlt) {
   throw new Error(
@@ -44,7 +43,6 @@ const { Content: Story } = await render(edition);
       alt={posterAlt}
       widths={POSTER_WIDTHS}
       sizes={POSTER_SIZES}
-      frame={frame}
       class="h-auto"
     />
   </div>

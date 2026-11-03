@@ -5,7 +5,9 @@ import {
 } from "../../src/lib/skyline-profiles";
 import {
   SKYLINE_HEIGHT,
+  SKYLINE_EDGE_HEIGHT,
   SKYLINE_WIDTH,
+  creteInnerRidgePath,
   skylineBackgroundLayers,
   skylineFillPath,
   skylinePoints,
@@ -99,5 +101,38 @@ describe("skylineBackgroundLayers", () => {
         "light",
       ),
     ).toThrow(/got 4/);
+  });
+});
+
+describe("creteInnerRidgePath", () => {
+  const MIN_GAP_UNDER_CRETE = 2;
+
+  const pointsOf = (path: string): number[][] =>
+    [...path.matchAll(/(-?[\d.]+) (-?[\d.]+)/g)].map((match) => [
+      Number(match[1]),
+      Number(match[2]),
+    ]);
+
+  const heightAt = (points: number[][], x: number): number => {
+    const segmentEnd = points.findIndex(([pointX = 0]) => pointX >= x);
+    const [endX = 0, endY = 0] = points[segmentEnd] ?? [];
+    const [startX = 0, startY = 0] = points[segmentEnd - 1] ?? [endX, endY];
+    if (endX === startX) return endY;
+    return startY + ((endY - startY) * (x - startX)) / (endX - startX);
+  };
+
+  it("stays under the crete ridge and inside the edge", () => {
+    const innerPoints = pointsOf(creteInnerRidgePath());
+    const cretePoints = skylinePoints({ profile: "crete" }).map(([x, y]) => [
+      x,
+      y,
+    ]);
+
+    for (let x = 0; x <= SKYLINE_WIDTH; x += 1) {
+      expect(
+        heightAt(innerPoints, x) - heightAt(cretePoints, x),
+      ).toBeGreaterThanOrEqual(MIN_GAP_UNDER_CRETE);
+      expect(heightAt(innerPoints, x)).toBeLessThanOrEqual(SKYLINE_EDGE_HEIGHT);
+    }
   });
 });

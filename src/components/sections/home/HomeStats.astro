@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Container from "../../ui/Container.astro";
-import KeyFactsBand from "../../ui/KeyFactsBand.astro";
+import Stat from "../../ui/Stat.astro";
 
 interface Props {
   label: string;
@@ -11,8 +11,12 @@ interface Props {
 const { label, stats } = Astro.props;
 ---
 
-<section aria-label={label} class="snap-align-none pt-grid pb-section">
+<section aria-label={label} class="bg-forest text-snow snap-align-none py-6">
   <Container>
-    <KeyFactsBand facts={stats} />
+    <dl class="gap-grid grid grid-cols-2 md:grid-cols-4">
+      {stats.map((stat) => (
+        <Stat value={stat.value} label={stat.label} />
+      ))}
+    </dl>
   </Container>
 </section>

@@ -6,6 +6,7 @@ import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import Container from "../ui/Container.astro";
 import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
+import LinkButton from "../ui/LinkButton.astro";
 import type { HeaderTone } from "./header-tone";
 import MobileMenu from "./MobileMenu.astro";
 import SiteNavigation from "./SiteNavigation.astro";
@@ -20,8 +21,8 @@ const LOGO_LARGEST_HEIGHT_PX = 64;
 const HOME_PAGE_SLUG = "";
 
 const TONE_CLASSES: Record<HeaderTone, { header: string; logo: string }> = {
-  light: { header: "bg-snow", logo: "" },
-  dark: { header: "bg-slate", logo: "bg-snow rounded-2xl px-2 py-1" },
+  light: { header: "bg-snow border-rule border-b", logo: "" },
+  dark: { header: "bg-slate", logo: "bg-snow rounded-control px-2 py-1" },
 };
 
 const { locale, pageSlug, tone } = Astro.props;
@@ -53,6 +54,13 @@ const toneClasses = TONE_CLASSES[tone];
         tone={tone}
       />
       <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
+      <LinkButton
+        href={localizedPath("inscriptions", locale)}
+        variant={tone === "dark" ? "primaryOnDark" : "primary"}
+        class="ml-2"
+      >
+        {strings.navigation.registerButton}
+      </LinkButton>
     </div>
 
     <div class="flex items-center gap-2 lg:hidden">

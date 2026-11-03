@@ -1,23 +1,33 @@
 hero:
-  photos:
-    - image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
-      framing: upper
-    - image: ../../assets/images/world-cup/ligne-arc-2000.jpg
-    - image: ../../assets/images/prestations/demonstration-lac.jpg
-      framing: zoomFromTop
+  eyebrow: Highline and slackline · Les Arcs, Savoie
+  titleEmphasis: Slack'icîmes
+  illustration:
+    image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
+    alt: Highliner on a line rigged between a rocky spire and the mountain, at sunset, facing snowy peaks
+highlightsIntro:
+  eyebrow: What we do
+  title: Gaining height, together
+  titleAccent: together
 highlights:
   - eyebrow: Courses
-    tone: mist
+    illustration:
+      image: ../../assets/images/stages/highliners-dans-les-nuages.jpg
+      alt: Two highliners hanging in a hazy sky
+    imageFocus: upper
     title: Discover highlining
     text: Different formulas to move through the air. Get started safely, progress or perfect your skills.
     pageSlug: stages-highline
   - eyebrow: World Cup
-    tone: sky
+    illustration:
+      image: ../../assets/images/world-cup/ligne-arc-2000.jpg
+      alt: Highliner on a line rigged above the Arc 2000 resort
     title: Highline Freestyle World Cup
     text: First stop of the 2027 World Cup, from April 14 to 16 on the Place Olympique in Arc 2000. Free entry.
     pageSlug: coupe-du-monde
   - eyebrow: Services
-    tone: coral
+    illustration:
+      image: ../../assets/images/prestations/demonstration-lac.jpg
+      alt: Highline demonstration above a lake
     title: Introductions & demonstrations
     text: Let people discover slackline or highline at your event.
     pageSlug: contact

@@ -33,7 +33,7 @@ const gallery = gallerySlug ? await getGallery(gallerySlug, locale) : undefined;
   dotOffset="card"
   class="bg-slate text-snow rounded-card gap-block p-card flex flex-col"
 >
-  <EditionWithPoster edition={edition} frame="bordered" theme="dark">
+  <EditionWithPoster edition={edition} theme="dark">
     {highlight && <p class="subsection-title text-lake">{highlight}</p>}
   </EditionWithPoster>
   {videos.map((videoUrl) => (

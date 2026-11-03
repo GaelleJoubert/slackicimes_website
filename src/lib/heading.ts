@@ -1,19 +1,22 @@
-export interface HeadingPart {
-  text: string;
-  startsNewWord: boolean;
+export interface HighlightedParts {
+  before: string;
+  highlight: string;
+  after: string;
 }
 
-const WORD_SEPARATOR = /\s+/;
-const AFTER_APOSTROPHE = /(?<=['’])/;
-
-export function splitDisplayHeading(heading: string): HeadingPart[] {
-  return heading
-    .trim()
-    .split(WORD_SEPARATOR)
-    .flatMap((word) =>
-      word.split(AFTER_APOSTROPHE).map((text, partIndex) => ({
-        text,
-        startsNewWord: partIndex === 0,
-      })),
-    );
+export function splitAroundHighlight(
+  text: string,
+  highlight: string,
+): HighlightedParts {
+  const highlightStart = text.indexOf(highlight);
+  const hasHighlight = highlight.length > 0 && highlightStart >= 0;
+  if (!hasHighlight) {
+    return { before: text, highlight: "", after: "" };
+  }
+  const highlightEnd = highlightStart + highlight.length;
+  return {
+    before: text.slice(0, highlightStart),
+    highlight,
+    after: text.slice(highlightEnd),
+  };
 }

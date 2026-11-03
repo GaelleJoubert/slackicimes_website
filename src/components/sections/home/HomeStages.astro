@@ -13,6 +13,7 @@ import CourseSlide from "../../ui/CourseSlide.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "../stages/stage-image-focus";
 
 interface Props {
@@ -22,7 +23,7 @@ interface Props {
 }
 
 const PHOTO_WIDTHS = [600, 1200];
-const PHOTO_SIZES = "600px";
+const PHOTO_SIZES = "(min-width: 768px) 700px, 100vw";
 
 const { teaser, stages, locale } = Astro.props;
 const strings = uiStrings(locale);
@@ -35,28 +36,30 @@ const courses = stages.map((stage) => ({
 }));
 ---
 
-<section class="bg-lichen py-section">
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline variant="background" profiles={["crete", "pourri"]} tone="light" />
   <Container class="flex flex-col gap-block">
-    <div class="grid items-center gap-block md:grid-cols-2">
-      <SectionIntro title={teaser.title}>
-        {teaser.paragraphs.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))}
-        <div class="gap-inline hidden flex-wrap md:flex">
-          <LinkButton href={stagesPagePath}>
-            {strings.home.discoverStagesButton}
-          </LinkButton>
-        </div>
-      </SectionIntro>
-      <div class="hidden md:block">
+    <div class="grid items-center gap-block md:grid-cols-12">
+      <div class="hidden md:col-span-7 md:block">
         <FramedPicture
           image={teaser.illustration.image}
           alt={teaser.illustration.alt}
           widths={PHOTO_WIDTHS}
           sizes={PHOTO_SIZES}
-          frame="plain"
-          class="h-105"
+          class="h-130"
         />
+      </div>
+      <div class="md:col-span-5">
+        <SectionIntro title={teaser.title}>
+          {teaser.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+          <div class="gap-inline hidden flex-wrap md:flex">
+            <LinkButton href={stagesPagePath}>
+              {strings.home.discoverStagesButton}
+            </LinkButton>
+          </div>
+        </SectionIntro>
       </div>
     </div>
     <Carousel
@@ -97,9 +100,7 @@ const courses = stages.map((stage) => ({
         </li>
       ))}
     </ul>
-    <p class="text-slate hidden text-center font-bold md:block">
-      {teaser.datesNote}
-    </p>
+    <p class="text-graphite hidden text-center md:block">{teaser.datesNote}</p>
     <LinkButton href={stagesPagePath} class="md:hidden">
       {strings.home.discoverStagesButton}
     </LinkButton>

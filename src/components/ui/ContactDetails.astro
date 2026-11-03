@@ -32,9 +32,7 @@ const layoutClasses = LAYOUT_CLASSES[layout];
 
 <dl class={layoutClasses.list}>
   <div>
-    <dt class="text-slate font-extrabold">
-      {strings.contactBlock.phoneHeading}
-    </dt>
+    <dt class="label-text">{strings.contactBlock.phoneHeading}</dt>
     {CONTACT_PEOPLE.map((person) => (
       <dd class="mt-1">
         {person.firstName}{" "}
@@ -45,9 +43,7 @@ const layoutClasses = LAYOUT_CLASSES[layout];
     ))}
   </div>
   <div>
-    <dt class="text-slate font-extrabold">
-      {strings.contactBlock.emailHeading}
-    </dt>
+    <dt class="label-text">{strings.contactBlock.emailHeading}</dt>
     <dd class="mt-1">
       <a href={`mailto:${CONTACT_EMAIL}`} class="text-link break-all">
         {CONTACT_EMAIL}
@@ -55,9 +51,7 @@ const layoutClasses = LAYOUT_CLASSES[layout];
     </dd>
   </div>
   <div class={layoutClasses.address}>
-    <dt class="text-slate font-extrabold">
-      {strings.contactBlock.addressHeading}
-    </dt>
+    <dt class="label-text">{strings.contactBlock.addressHeading}</dt>
     <dd class="mt-1">
       <address class="not-italic">{POSTAL_ADDRESS_LINES.join(", ")}</address>
     </dd>

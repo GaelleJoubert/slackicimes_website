@@ -1,11 +1,14 @@
+import creteInnerRidgePoints from "./crete-inner-ridge.json";
 import {
   SKYLINE_POINTS,
+  toSkylinePoints,
   type SkylinePoint,
   type SkylineProfile,
 } from "./skyline-profiles";
 
 export const SKYLINE_WIDTH = 1440;
 export const SKYLINE_HEIGHT = 100;
+export const SKYLINE_EDGE_HEIGHT = 120;
 
 export type { SkylineProfile };
 
@@ -35,7 +38,7 @@ export function skylineStrokePath(drawing: SkylineDrawing): string {
 
 export function skylineFillPath(
   drawing: SkylineDrawing,
-  bottom: number = SKYLINE_HEIGHT,
+  bottom: number = SKYLINE_EDGE_HEIGHT,
 ): string {
   const ridge = skylinePoints(drawing);
   const closingCorners: SkylinePoint[] = [
@@ -43,6 +46,10 @@ export function skylineFillPath(
     [0, bottom],
   ];
   return `${pointsToPath([...ridge, ...closingCorners])} Z`;
+}
+
+export function creteInnerRidgePath(): string {
+  return pointsToPath(toSkylinePoints(creteInnerRidgePoints));
 }
 
 export type SkylineBackgroundTone = "light" | "dark";

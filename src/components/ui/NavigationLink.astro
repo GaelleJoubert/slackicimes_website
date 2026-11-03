@@ -9,12 +9,12 @@ interface Props {
 
 const TONE_CLASSES: Record<HeaderTone, { current: string; other: string }> = {
   light: {
-    current: "bg-moss text-slate",
-    other: "text-slate hover:text-forest",
+    current: "text-slate underline decoration-coral underline-offset-6",
+    other: "text-slate hover:underline underline-offset-6",
   },
   dark: {
-    current: "bg-lake text-slate",
-    other: "text-snow hover:text-coral",
+    current: "text-snow underline decoration-coral-light underline-offset-6",
+    other: "text-snow hover:underline underline-offset-6",
   },
 };
 
@@ -26,7 +26,7 @@ const toneClasses = TONE_CLASSES[tone];
   href={href}
   aria-current={isCurrentPage ? "page" : undefined}
   class:list={[
-    "block rounded-xl px-3.5 py-2.5 font-extrabold transition-colors",
+    "block px-3 py-3 transition-colors",
     isCurrentPage ? toneClasses.current : toneClasses.other,
   ]}
 >

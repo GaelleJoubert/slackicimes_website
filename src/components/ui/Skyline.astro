@@ -1,7 +1,9 @@
 ---
 import {
+  SKYLINE_EDGE_HEIGHT,
   SKYLINE_HEIGHT,
   SKYLINE_WIDTH,
+  creteInnerRidgePath,
   skylineBackgroundLayers,
   skylineFillPath,
   skylineStrokePath,
@@ -24,6 +26,7 @@ type Props =
       variant: "edge";
       profile?: SkylineProfile;
       fill: SkylineEdgeFill;
+      hasInnerRidge?: boolean;
       isMirrored?: boolean;
       class?: string;
     }
@@ -38,7 +41,8 @@ type Props =
 const DIVIDER_TOP_MARGIN = 5;
 const DIVIDER_BOTTOM_MARGIN = 10;
 const DIVIDER_VIEW_BOX = `0 ${DIVIDER_TOP_MARGIN} ${SKYLINE_WIDTH} ${SKYLINE_HEIGHT - DIVIDER_TOP_MARGIN - DIVIDER_BOTTOM_MARGIN}`;
-const FULL_VIEW_BOX = `0 0 ${SKYLINE_WIDTH} ${SKYLINE_HEIGHT}`;
+const EDGE_VIEW_BOX = `0 0 ${SKYLINE_WIDTH} ${SKYLINE_EDGE_HEIGHT}`;
+const INNER_RIDGE_OPACITY = 0.35;
 const BACKGROUND_VISIBLE_SHARE = 0.5;
 const BACKGROUND_VISIBLE_WIDTH = SKYLINE_WIDTH * BACKGROUND_VISIBLE_SHARE;
 const BACKGROUND_VISIBLE_START = (SKYLINE_WIDTH - BACKGROUND_VISIBLE_WIDTH) / 2;
@@ -84,7 +88,7 @@ const isMirrored = props.isMirrored ?? false;
 {props.variant === "edge" && (
   <svg
     aria-hidden="true"
-    viewBox={FULL_VIEW_BOX}
+    viewBox={EDGE_VIEW_BOX}
     preserveAspectRatio="none"
     class:list={[
       "pointer-events-none absolute inset-x-0 -bottom-px block h-11 w-full md:h-18",
@@ -95,6 +99,18 @@ const isMirrored = props.isMirrored ?? false;
       d={skylineFillPath({ profile: props.profile ?? "crete", isMirrored })}
       class={EDGE_FILL_CLASSES[props.fill]}
     />
+    {props.hasInnerRidge && (
+      <path
+        d={creteInnerRidgePath()}
+        fill="none"
+        stroke-width="1.5"
+        stroke-opacity={INNER_RIDGE_OPACITY}
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        vector-effect="non-scaling-stroke"
+        class="stroke-white"
+      />
+    )}
   </svg>
 )}
 

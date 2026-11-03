@@ -9,6 +9,7 @@ import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import { CONTACT_EMAIL, SITE_NAME, SOCIAL_PROFILES } from "../../lib/site";
 import Container from "../ui/Container.astro";
+import Skyline from "../ui/Skyline.astro";
 
 interface Props {
   locale: Locale;
@@ -53,19 +54,17 @@ const linkColumns = [
 ];
 ---
 
-<footer class="bg-slate text-snow relative mt-auto">
-  <svg
-    aria-hidden="true"
-    viewBox="0 0 100 10"
-    preserveAspectRatio="none"
-    class="fill-slate absolute bottom-full left-0 h-9 w-full md:h-15"
-  >
-    <path d="M0 0 Q 50 20 100 0 L100 10 L0 10 Z" />
-  </svg>
-  <Container class="grid gap-8 py-8 md:grid-cols-4 md:pb-10">
-    <div class="flex flex-col gap-1 md:gap-3">
-      <p class="font-heading text-3xl md:text-4xl">{SITE_NAME}</p>
-      <p class="text-rule text-sm md:text-base">{strings.footer.tagline}</p>
+<footer class="bg-slate text-snow relative isolate mt-auto overflow-hidden">
+  <Skyline
+    variant="background"
+    profiles={["crete", "pourri"]}
+    tone="dark"
+    isMirrored
+  />
+  <Container class="gap-block grid pt-18 pb-10 md:grid-cols-4">
+    <div class="flex flex-col gap-3">
+      <p class="font-heading text-3xl font-voice md:text-4xl">{SITE_NAME}</p>
+      <p class="text-sage text-sm md:text-base">{strings.footer.tagline}</p>
     </div>
     <div class="grid grid-cols-2 gap-6 md:col-span-3 md:grid-cols-3 md:gap-8">
       {linkColumns.map((column) => (
@@ -75,11 +74,14 @@ const linkColumns = [
               "order-last col-span-2 md:order-none md:col-span-1",
           ]}
         >
-          <h2 class="text-coral font-extrabold">{column.heading}</h2>
-          <ul class="mt-2 flex flex-col gap-2 font-bold">
+          <h2 class="label-text text-sage">{column.heading}</h2>
+          <ul class="mt-3 flex flex-col gap-2.5">
             {column.links.map((link) => (
               <li>
-                <a href={link.href} class="hover:text-coral transition-colors">
+                <a
+                  href={link.href}
+                  class="text-sage transition-colors hover:text-white"
+                >
                   {link.label}
                 </a>
               </li>
@@ -89,7 +91,9 @@ const linkColumns = [
       ))}
     </div>
   </Container>
-  <p class="border-slate text-rule border-t py-4 text-center text-sm">
-    © {currentYear} {SITE_NAME}
-  </p>
+  <Container>
+    <p class="border-graphite text-sage border-t py-6 text-sm">
+      © {currentYear} {SITE_NAME}
+    </p>
+  </Container>
 </footer>

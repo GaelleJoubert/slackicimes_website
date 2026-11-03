@@ -86,28 +86,27 @@ const testimonials = defineCollection({
   }),
 });
 
-const eyebrowTone = z.enum(["coral", "sky", "mist", "cloud", "ice"]);
-
 const home = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/home" }),
   schema: ({ image }) => {
     const illustration = z.object({ image: image(), alt: nonEmptyText });
     return z.object({
       hero: z.object({
-        photos: z
-          .array(
-            z.object({
-              image: image(),
-              framing: z.enum(["fill", "upper", "zoomFromTop"]).default("fill"),
-            }),
-          )
-          .min(1),
+        eyebrow: nonEmptyText,
+        titleEmphasis: nonEmptyText,
+        illustration,
+      }),
+      highlightsIntro: z.object({
+        eyebrow: nonEmptyText,
+        title: nonEmptyText,
+        titleAccent: nonEmptyText,
       }),
       highlights: z
         .array(
           z.object({
             eyebrow: nonEmptyText,
-            tone: eyebrowTone,
+            illustration,
+            imageFocus: z.enum(["center", "upper"]).default("center"),
             title: nonEmptyText,
             text: nonEmptyText,
             pageSlug: nonEmptyText,

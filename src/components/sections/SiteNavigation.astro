@@ -20,7 +20,7 @@ const LAYOUT_CLASSES: Record<
   { list: string; item: string; submenu: string }
 > = {
   inline: {
-    list: "flex items-center gap-1",
+    list: "flex items-center gap-3",
     item: "group relative",
     submenu:
       "absolute top-full left-0 hidden pt-2 group-focus-within:block group-hover:block",
@@ -28,13 +28,13 @@ const LAYOUT_CLASSES: Record<
   stacked: {
     list: "flex flex-col gap-1",
     item: "",
-    submenu: "border-coral ml-5 border-l-3 pl-2",
+    submenu: "border-rule ml-3 border-l pl-2",
   },
 };
 
 const SUBMENU_LIST_CLASSES: Record<NavigationLayout, string> = {
   inline:
-    "bg-snow border-rule flex min-w-60 flex-col rounded-card border-3 p-2",
+    "bg-snow border-rule rounded-control flex min-w-60 flex-col border p-2",
   stacked: "flex flex-col",
 };
 

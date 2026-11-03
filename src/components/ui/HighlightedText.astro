@@ -1,21 +1,16 @@
 ---
+import { splitAroundHighlight } from "../../lib/heading";
+
 interface Props {
   text: string;
   highlight: string;
+  highlightClass?: string;
 }
 
-const { text, highlight } = Astro.props;
-const highlightStart = text.indexOf(highlight);
-const hasHighlight = highlight.length > 0 && highlightStart >= 0;
-const highlightEnd = highlightStart + highlight.length;
+const { text, highlight, highlightClass = "italic" } = Astro.props;
+const parts = splitAroundHighlight(text, highlight);
 ---
 
-{hasHighlight ? (
-  <>
-    {text.slice(0, highlightStart)}
-    <span class="italic">{text.slice(highlightStart, highlightEnd)}</span>
-    {text.slice(highlightEnd)}
-  </>
-) : (
-  text
-)}
+{parts.before}
+{parts.highlight && <span class={highlightClass}>{parts.highlight}</span>}
+{parts.after}
