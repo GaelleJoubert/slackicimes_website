@@ -20,13 +20,7 @@ const { video, locale } = Astro.props;
 const strings = uiStrings(locale);
 ---
 
-<section class="bg-lake text-snow py-section relative isolate overflow-hidden">
-  <Skyline
-    variant="background"
-    profiles={["crete", "casse"]}
-    tone="dark"
-    isMirrored
-  />
+<section class="bg-lake text-snow pt-section relative pb-24 md:pb-40">
   <Container class="gap-block grid items-center md:grid-cols-2">
     <VideoThumbnailLink
       href={video.url}
@@ -42,4 +36,5 @@ const strings = uiStrings(locale);
       <p class="text-snow">{video.text}</p>
     </SectionIntro>
   </Container>
+  <Skyline variant="edge" profile="casse" fill="moss" />
 </section>
