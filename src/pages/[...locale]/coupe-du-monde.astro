@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/inter";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import sharePreviewImage from "../../assets/images/world-cup/apercu-partage-coupe-du-monde.jpg";
 import WorldCupAthletes from "../../components/sections/world-cup/WorldCupAthletes.astro";
 import WorldCupEvent from "../../components/sections/world-cup/WorldCupEvent.astro";
 import WorldCupFormat from "../../components/sections/world-cup/WorldCupFormat.astro";
@@ -33,6 +34,7 @@ const worldCup = (await getSingleEntryContent("worldCup", locale)).data;
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
+  sharePreview={{ image: sharePreviewImage, alt: worldCup.hero.fullLogo.alt }}
 >
   <div class="font-cup text-cup-ink bg-cup-surface text-base leading-relaxed md:text-lg">
     <WorldCupSectionNav sectionNav={worldCup.sectionNav} />
