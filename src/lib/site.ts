@@ -31,7 +31,7 @@ export const CONTACT_PEOPLE: ContactPerson[] = [
 
 export const POSTAL_ADDRESS_LINES = [
   "Association Slack'icîmes",
-  "Chalet de la Croizette",
+  "947 route de la Croisette",
   "Arc 1800",
   "73700 Bourg Saint Maurice",
 ];
