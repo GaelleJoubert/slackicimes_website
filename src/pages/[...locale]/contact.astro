@@ -28,7 +28,6 @@ const page = await getPageEntry(PAGE_SLUG, locale);
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
-  snapSectionsOnMobile
 >
   <PageHero page={page.data} size="compact" />
 
@@ -37,7 +36,7 @@ const page = await getPageEntry(PAGE_SLUG, locale);
       <div class="gap-block grid md:grid-cols-5 md:items-start">
         <div
           id={CONTACT_FORM_SECTION_ID}
-          class="border-rule rounded-card gap-stack p-card flex scroll-mt-4 snap-start flex-col border md:col-span-3"
+          class="border-rule rounded-card gap-stack p-card flex scroll-mt-4 flex-col border md:col-span-3"
         >
           <h2 class="timeline-title">{strings.contactPage.formTitle}</h2>
           <ContactForm locale={locale} />

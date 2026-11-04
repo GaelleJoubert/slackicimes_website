@@ -11,7 +11,7 @@ interface Props {
 const { label, facts } = Astro.props;
 ---
 
-<section aria-label={label} class="bg-forest text-snow snap-align-none py-6">
+<section aria-label={label} class="bg-forest text-snow py-6">
   <Container>
     <dl class="gap-grid grid grid-cols-2 md:grid-cols-3 md:text-center">
       {facts.map((fact) => (

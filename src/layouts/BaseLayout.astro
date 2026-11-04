@@ -27,7 +27,6 @@ interface Props {
   isErrorPage?: boolean;
   headerTone?: HeaderTone;
   footer?: FooterVariant;
-  snapSectionsOnMobile?: boolean;
 }
 
 type FooterVariant = "full" | "compact";
@@ -40,7 +39,6 @@ const {
   isErrorPage = false,
   headerTone = "light",
   footer = "full",
-  snapSectionsOnMobile = false,
 } = Astro.props;
 const localeSettings = LOCALE_SETTINGS[locale];
 const canonicalUrl = absoluteUrl(localizedPath(pageSlug, locale));
@@ -57,10 +55,7 @@ const HEADER_SCROLL_PADDING_CLASSES: Record<HeaderTone, string> = {
 <!doctype html>
 <html
   lang={localeSettings.htmlLang}
-  class:list={[
-    HEADER_SCROLL_PADDING_CLASSES[headerTone],
-    snapSectionsOnMobile && "mobile-section-snap",
-  ]}
+  class={HEADER_SCROLL_PADDING_CLASSES[headerTone]}
 >
   <head>
     <meta charset="utf-8" />

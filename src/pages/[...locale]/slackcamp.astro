@@ -37,9 +37,8 @@ const { zones, bivouac, access, callToAction } = (
   description={page.data.description}
   locale={locale}
   pageSlug={PAGE_SLUG}
-  snapSectionsOnMobile
 >
-  <div class="md:h-home-fold snap-start md:flex md:flex-col">
+  <div class="md:h-home-fold md:flex md:flex-col">
     <SlackcampHero page={page.data} />
     {page.data.keyFacts && (
       <SlackcampFacts

@@ -41,9 +41,8 @@ const festivalGallery = await getGallery("festival", locale);
   description={page.data.description}
   locale={locale}
   pageSlug={HOME_PAGE_SLUG}
-  snapSectionsOnMobile
 >
-  <div class="md:h-home-fold snap-start md:flex md:flex-col">
+  <div class="md:h-home-fold md:flex md:flex-col">
     <HomeHero heading={page.data.heading} hero={home.hero} />
     <HomeStats label={strings.home.statsLabel} stats={home.stats} />
   </div>
