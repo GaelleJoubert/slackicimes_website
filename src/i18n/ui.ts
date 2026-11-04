@@ -2,6 +2,8 @@ import type { Locale } from "./locales";
 
 const fr = {
   common: {
+    sharePreviewAlt:
+      "Highlineur sur une ligne tendue au coucher du soleil, face aux montagnes des Arcs",
     learnMore: "En savoir plus",
     discoverWorldCupButton: "Découvrir la Coupe du Monde",
     seeStagesButton: "Voir les stages",
@@ -165,6 +167,8 @@ export type UiStrings = typeof fr;
 
 const en: UiStrings = {
   common: {
+    sharePreviewAlt:
+      "Highliner on a line at sunset, facing the mountains of Les Arcs",
     learnMore: "Learn more",
     discoverWorldCupButton: "Discover the World Cup",
     seeStagesButton: "See the courses",

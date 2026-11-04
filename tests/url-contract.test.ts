@@ -55,6 +55,12 @@ describe.each(CONTRACT_PATHS)("contract page %s", (path) => {
     expect(countMatches(readBuiltPage(path), /<h1[\s>]/g)).toBe(1);
   });
 
+  it("has a social preview image", () => {
+    expect(readBuiltPage(path)).toMatch(
+      /<meta property="og:image" content="https:\/\/[^"]+\.jpg"/,
+    );
+  });
+
   it("has a title and a meta description", () => {
     const html = readBuiltPage(path);
     expect(html).toMatch(/<title>[^<]+<\/title>/);

@@ -27,16 +27,16 @@ const { heading, hero } = Astro.props;
     alt={hero.illustration.alt}
     desktopWidths={DESKTOP_PHOTO_WIDTHS}
     phoneWidths={PHONE_PHOTO_WIDTHS}
-    class="absolute inset-0 size-full object-cover md:object-low"
+    class="md:object-low absolute inset-0 size-full object-cover object-left"
   />
   <div
     aria-hidden="true"
     class="to-slate/55 absolute inset-0 hidden bg-linear-to-b from-transparent from-60% md:block"
   ></div>
-  <Container class="gap-stack pt-block relative flex h-full flex-col items-center text-center md:items-end md:justify-end md:pt-0 md:pb-36 md:text-right">
+  <Container class="gap-stack relative flex h-full pt-38 flex-col items-center text-center md:items-end md:justify-end md:pt-0 md:pb-36 md:text-right">
     <Eyebrow
       tone="light"
-      class="md:text-snow order-last self-center md:self-end"
+      class="text-slate md:text-snow self-center md:order-last md:self-end"
     >
       {hero.eyebrow}
     </Eyebrow>
