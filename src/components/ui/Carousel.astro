@@ -73,7 +73,11 @@ const {
     requireCarouselElement,
     showPageDots,
   } from "./carousel-controls";
-  import { closeAnimatedDetailsIn } from "./expand-animation";
+  import {
+    closeAnimatedDetailsIn,
+    hasOpenAnimatedDetails,
+    prefersReducedMotion,
+  } from "./expand-animation";
 
   function setUpCarousel(carousel: HTMLElement) {
     const track = requireCarouselElement<HTMLElement>(
@@ -103,7 +107,16 @@ const {
       const hasChangedSlide = currentSlideIndex() !== shownSlideIndex;
       if (!hasChangedSlide) return;
       shownSlideIndex = currentSlideIndex();
+      foldOpenDetails();
+    }
+
+    function foldOpenDetails() {
+      if (!hasOpenAnimatedDetails(track)) return;
       closeAnimatedDetailsIn(track);
+      carousel.scrollIntoView({
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+        block: "start",
+      });
     }
 
     previousButton.addEventListener("click", () =>

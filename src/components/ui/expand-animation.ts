@@ -102,10 +102,22 @@ function enhanceDetails(details: HTMLDetailsElement): void {
   });
 }
 
+function openAnimatedDetailsIn(
+  container: HTMLElement,
+): NodeListOf<HTMLDetailsElement> {
+  return container.querySelectorAll<HTMLDetailsElement>(
+    `${ANIMATED_DETAILS_SELECTOR}[open]`,
+  );
+}
+
+export function hasOpenAnimatedDetails(container: HTMLElement): boolean {
+  return openAnimatedDetailsIn(container).length > 0;
+}
+
 export function closeAnimatedDetailsIn(container: HTMLElement): void {
-  container
-    .querySelectorAll<HTMLDetailsElement>(`${ANIMATED_DETAILS_SELECTOR}[open]`)
-    .forEach((details) => detailsClosers.get(details)?.());
+  openAnimatedDetailsIn(container).forEach((details) =>
+    detailsClosers.get(details)?.(),
+  );
 }
 
 export function enhanceAnimatedDetails(): void {
