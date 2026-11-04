@@ -109,7 +109,6 @@ const fr = {
     title: "Vos questions",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages.",
     otherQuestionButton: "Une autre question ?",
-    themesLabel: "Thèmes des questions",
     themes: {
       choosing: "Choisir son stage",
       registration: "Inscription",
@@ -273,7 +272,6 @@ const en: UiStrings = {
     title: "Your questions",
     stagesIntro: "All the answers to your questions about our courses.",
     otherQuestionButton: "Another question?",
-    themesLabel: "Question themes",
     themes: {
       choosing: "Choosing your course",
       registration: "Registration",

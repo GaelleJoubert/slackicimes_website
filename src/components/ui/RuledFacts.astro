@@ -5,7 +5,7 @@ interface Fact {
 }
 
 type FactsTone = "light" | "dark";
-type FactsColumns = "two" | "three";
+type FactsColumns = "two" | "three" | "threeFittedToValues";
 
 interface Props {
   facts: Fact[];
@@ -20,9 +20,13 @@ const TONE_CLASSES: Record<FactsTone, { list: string; term: string }> = {
   dark: { list: "border-snow/40", term: "text-sage" },
 };
 
-const COLUMN_CLASSES: Record<FactsColumns, string> = {
-  two: "grid-cols-2",
-  three: "grid-cols-3",
+const COLUMN_CLASSES: Record<FactsColumns, { list: string; value: string }> = {
+  two: { list: "grid grid-cols-2", value: "" },
+  three: { list: "grid grid-cols-3", value: "" },
+  threeFittedToValues: {
+    list: "flex justify-between md:grid md:grid-cols-3",
+    value: "whitespace-nowrap",
+  },
 };
 
 const {
@@ -33,21 +37,22 @@ const {
   class: extraClasses,
 } = Astro.props;
 const toneClasses = TONE_CLASSES[tone];
+const columnClasses = COLUMN_CLASSES[columns];
 ---
 
 <dl
   aria-label={label}
-  class:list={[
-    "grid border-y",
-    COLUMN_CLASSES[columns],
-    toneClasses.list,
-    extraClasses,
-  ]}
+  class:list={["border-y", columnClasses.list, toneClasses.list, extraClasses]}
 >
   {facts.map((fact) => (
-    <div class="flex flex-col gap-1.5 py-5 pr-4">
+    <div class="flex flex-col justify-between gap-1.5 py-5 pr-4">
       <dt class:list={["label-text", toneClasses.term]}>{fact.label}</dt>
-      <dd class="font-heading text-xl leading-none font-voice md:text-3xl">
+      <dd
+        class:list={[
+          "font-heading text-xl leading-none font-voice md:text-3xl",
+          columnClasses.value,
+        ]}
+      >
         {fact.value}
       </dd>
     </div>

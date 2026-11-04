@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  faqThemeSectionId,
-  groupByFaqTheme,
-  type FaqTheme,
-} from "../../src/lib/faq";
+import { groupByFaqTheme, type FaqTheme } from "../../src/lib/faq";
 
 describe("groupByFaqTheme", () => {
   it("follows the theme order and keeps the question order inside a theme", () => {
@@ -30,11 +26,5 @@ describe("groupByFaqTheme", () => {
 
   it("leaves out the themes without a question", () => {
     expect(groupByFaqTheme([])).toEqual([]);
-  });
-});
-
-describe("faqThemeSectionId", () => {
-  it("prefixes the theme so it cannot clash with other section ids", () => {
-    expect(faqThemeSectionId("living")).toBe("faq-living");
   });
 });

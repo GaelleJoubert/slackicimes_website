@@ -30,7 +30,3 @@ export function groupByFaqTheme<Question extends { theme: FaqTheme }>(
     questions: questions.filter((question) => question.theme === theme),
   })).filter((group) => group.questions.length > 0);
 }
-
-export function faqThemeSectionId(theme: FaqTheme): string {
-  return `faq-${theme}`;
-}
