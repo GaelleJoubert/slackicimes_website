@@ -1,0 +1,30 @@
+---
+import Container from "../ui/Container.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Skyline from "../ui/Skyline.astro";
+import type { SkylineProfile } from "../../lib/skylines";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  edgeProfile: SkylineProfile;
+  id?: string;
+}
+
+const { eyebrow, title, lead, edgeProfile, id } = Astro.props;
+---
+
+<section id={id} class="bg-lake text-snow pt-section relative pb-28 md:pb-42">
+  <Container class="gap-grid flex flex-wrap items-end justify-between">
+    <div class="gap-stack flex max-w-170 flex-col">
+      <Eyebrow tone="photo">{eyebrow}</Eyebrow>
+      <h2 class="section-title text-snow">{title}</h2>
+      {lead && <p class="lead text-snow">{lead}</p>}
+    </div>
+    <div class="gap-stack flex flex-wrap items-center">
+      <slot />
+    </div>
+  </Container>
+  <Skyline variant="edge" fill="slate" profile={edgeProfile} />
+</section>

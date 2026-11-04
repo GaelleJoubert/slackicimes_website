@@ -1,5 +1,6 @@
 ---
-order: 6
+order: 14
+theme: course
 question: "Quel matériel dois-je amener ?"
 ---
 
@@ -7,6 +8,8 @@ Le matériel collectif pour la highline est fourni.
 
 Nous demandons aux stagiaires d'amener leur baudrier et une paire de longes doubles.
 
-A propos du baudrier, un baudrier d'escalade avec double pontet est l'idéal.
+À propos du baudrier, il vous faut un baudrier à double pontet : les simples pontets ne sont pas adaptés à la highline.
 
-A propos des longes, il s'agit simplement de longes de sécurité d'escalade, pour se sécuriser sur le rocher. Vous pouvez les acheter toutes faites ou les fabriquer avec un bout de corde et deux mousquetons. Les longes de via ferrata ne sont pas adaptées.
+À propos des longes, deux solutions : une longe double d'escalade toute faite (en vente chez Decathlon ou en magasin spécialisé), ou un bout de corde dynamique (2 m, diamètre 8 à 10 mm) avec 2 mousquetons à vis. Nous pouvons vous aider à les monter. Les longes de via ferrata ne sont pas adaptées.
+
+Le casque n'est pas nécessaire, sauf pour le stage Rigging.

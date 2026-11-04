@@ -1,0 +1,73 @@
+quoteButton: Demander un devis
+initiation:
+  eyebrow: Pour tous, dès 3 ans
+  title: Initiation slackline
+  titleAccent: slackline
+  lead: "En fonction de votre événement et de votre public, deux formats sont possibles :"
+  formats:
+    - title: Slack parc en accès libre
+      text: Le public est libre, chacun passe quand il veut et essaie les lignes à son rythme. Nos encadrants sont présents pour conseiller et accompagner.
+    - title: Cours
+      text: Des séances en petits groupes, un encadrant pour 10 personnes environ. Idéal pour les écoles, les centres de loisirs et les groupes.
+  highlights:
+    - Tout le matériel est fourni.
+    - "Pas besoin d'arbres : nous pouvons nous adapter à votre terrain."
+    - De 3 à 15 slacklines, selon la place et le public.
+    - Encadrants qualifiés.
+  photosLabel: Photos d'initiations slackline
+  photos:
+    - image: ../../assets/images/prestations/enfants-au-bord-du-lac.jpg
+      alt: Enfants en équilibre sur des slacklines au sol, au bord d'un lac
+      shape: wide
+    - image: ../../assets/images/prestations/fille-sur-portiques-devant-le-village.jpg
+      alt: Une fille marche sur une slackline posée sur portiques devant une maison de village
+      shape: half
+    - image: ../../assets/images/prestations/enfants-sur-portiques-en-montagne.jpg
+      alt: Enfants qui s'essaient à la slackline sur portiques en montagne
+      shape: half
+    - image: ../../assets/images/prestations/initiation-sur-la-pelouse-du-chateau.jpg
+      alt: Initiation slackline sur la pelouse d'un château, montagnes au fond
+      shape: panorama
+      focus: low
+show:
+  title: Show et démo highline
+  titleAccent: highline
+  paragraphs:
+    - "Une traversée au-dessus de la place du village, de la highline freestyle, ou encore un spectacle créé pour votre événement : nous nous adaptons à vos envies !"
+    - La highline permet de poser un regard nouveau sur un lieu déjà connu, tout en faisant rêver petits et grands.
+  factsLabel: Dimensions de la highline
+  facts:
+    - { value: Dès 8 m, label: Hauteur }
+    - { value: 20 à 800 m, label: Longueur }
+  certification:
+    title: Une équipe diplômée et assurée
+    text: Toute notre équipe est diplômée du CQP cordiste et certifiée Rigger ISA (International Slackline Association). Chaque prestation est couverte par notre assurance.
+  photosLabel: Photos de shows highline
+  photos:
+    - image: ../../assets/images/association/demonstration-sous-un-dome.jpg
+      alt: Highlineuse en robe à fleurs sous un dôme, éclairée par des projecteurs de scène
+      shape: wide
+    - image: ../../assets/images/prestations/highlineur-au-dessus-des-toits.jpg
+      alt: Highlineur au-dessus des toits d'un bâtiment en ville
+      shape: tall
+    - image: ../../assets/images/association/demonstration-mur-escalade.jpg
+      alt: Highlineuse qui part du sommet d'un mur d'escalade
+      shape: tall
+process:
+  title: Demandez votre devis
+  titleAccent: devis
+  stepsLabel: Les étapes d'un devis
+  steps:
+    - title: Envoyez-nous vos besoins
+      text: "Le lieu, la date, le public attendu, vos contraintes et ce qui vous intéresse : initiation, show, ou les deux."
+    - title: On étudie votre lieu
+      text: D'abord sur photos et vue satellite, nous faisons une première estimation des possibilités.
+    - title: On confirme sur place
+      text: Un repérage physique est obligatoire avant tout devis final.
+  reassurance:
+    title: Nous vous répondons rapidement
+    text: Nous construisons votre projet ensemble, en fonction de vos envies et des possibilités de votre lieu d'accueil.
+quote:
+  eyebrow: Devis gratuit
+  title: Parlons de votre événement
+  lead: Nous intervenons surtout en Rhône Alpes, et nous nous déplaçons plus loin si besoin.

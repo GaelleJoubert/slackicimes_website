@@ -4,16 +4,21 @@ import { render } from "astro:content";
 import FaqSection from "../../components/sections/FaqSection.astro";
 import PageHero from "../../components/sections/PageHero.astro";
 import CoursePicker from "../../components/sections/stages/CoursePicker.astro";
+import StagesSlackcamp from "../../components/sections/stages/StagesSlackcamp.astro";
 import StagesVideo from "../../components/sections/stages/StagesVideo.astro";
 import TestimonialHighlights from "../../components/sections/TestimonialHighlights.astro";
 import Container from "../../components/ui/Container.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
 import SectionIntro from "../../components/ui/SectionIntro.astro";
-import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import {
+  getLocalizedCollection,
+  getPageEntry,
+  getSingleEntryContent,
+} from "../../i18n/collections";
 import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { COURSE_FORMULAS_SECTION_ID } from "../../lib/site";
+import { COURSE_FORMULAS_SECTION_ID, FAQ_SECTION_ID } from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -21,13 +26,16 @@ export const getStaticPaths = (() =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "stages-highline";
-const FAQ_SECTION_ID = "faq";
+const SLACKCAMP_PAGE_SLUG = "slackcamp";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);
 const page = await getPageEntry(PAGE_SLUG, locale);
 const { Content: Intro } = await render(page);
 const stages = await getLocalizedCollection("stages", locale);
+const slackcampPage = await getPageEntry(SLACKCAMP_PAGE_SLUG, locale);
+const { stagesTeaser } = (await getSingleEntryContent("slackcamp", locale))
+  .data;
 const questions = await getLocalizedCollection("faq", locale);
 const testimonials = await getLocalizedCollection("testimonials", locale);
 ---
@@ -68,6 +76,13 @@ const testimonials = await getLocalizedCollection("testimonials", locale);
       </div>
     </Container>
   </section>
+
+  <StagesSlackcamp
+    teaser={stagesTeaser}
+    facts={slackcampPage.data.keyFacts}
+    factsLabel={strings.slackcamp.keyFactsLabel}
+    locale={locale}
+  />
 
   {page.data.video && <StagesVideo video={page.data.video} locale={locale} />}
 

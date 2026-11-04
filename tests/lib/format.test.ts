@@ -1,8 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { formatPriceInEuros, lowercaseFirstLetter } from "../../src/lib/format";
+import {
+  formatPriceInEuros,
+  formatStepNumber,
+  lowercaseFirstLetter,
+} from "../../src/lib/format";
 
 const NARROW_NO_BREAK_SPACE = " ";
 const NO_BREAK_SPACE = " ";
+
+describe("formatStepNumber", () => {
+  it("numbers the first step 01", () => {
+    expect(formatStepNumber(0)).toBe("01");
+  });
+
+  it("keeps two digit numbers as they are", () => {
+    expect(formatStepNumber(11)).toBe("12");
+  });
+});
 
 describe("formatPriceInEuros", () => {
   it("puts the euro sign after the amount in French", () => {

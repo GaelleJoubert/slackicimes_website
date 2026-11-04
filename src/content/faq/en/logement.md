@@ -1,5 +1,6 @@
 ---
-order: 4
+order: 21
+theme: living
 question: "I would rather rent a place, where is it most convenient?"
 ---
 

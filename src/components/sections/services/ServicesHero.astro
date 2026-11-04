@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import RuledFacts from "../../ui/RuledFacts.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  page: CollectionEntry<"pages">["data"];
+  keyFactsLabel: string;
+}
+
+const PHOTO_WIDTHS = [600, 1000, 1400];
+const PHOTO_SIZES = "(min-width: 768px) 50vw, 100vw";
+
+const { page, keyFactsLabel } = Astro.props;
+---
+
+<section
+  aria-labelledby="page-title"
+  class="bg-lichen pt-page-top relative pb-24 md:pb-32"
+>
+  <Container class="gap-block grid md:grid-cols-12">
+    <div class="gap-stack flex flex-col md:col-span-6">
+      {page.eyebrow && <Eyebrow>{page.eyebrow}</Eyebrow>}
+      <h1 id="page-title" class="page-title">
+        {page.heading}
+      </h1>
+      <div class="lead">
+        <slot />
+      </div>
+      {page.keyFacts && (
+        <RuledFacts
+          facts={page.keyFacts}
+          label={keyFactsLabel}
+          columns="three"
+        />
+      )}
+      <div class="gap-inline mt-auto flex flex-wrap">
+        <slot name="actions" />
+      </div>
+    </div>
+    {page.illustration && (
+      <div class="relative md:col-span-6">
+        <FramedPicture
+          image={page.illustration.image}
+          alt={page.illustration.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={PHOTO_SIZES}
+          loading="eager"
+          class="object-high h-70 md:absolute md:inset-0 md:h-full"
+        />
+      </div>
+    )}
+  </Container>
+  <Skyline variant="edge" fill="snow" profile="pourri" />
+</section>

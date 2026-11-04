@@ -1,5 +1,6 @@
 ---
-order: 7
+order: 19
+theme: access
 question: "Can I come without a car?"
 ---
 
@@ -7,4 +8,4 @@ Absolutely! The easiest way to get to Les Arcs is to take the train to Bourg Sai
 
 From there, the funicular takes you straight to Arc 1600.
 
-The SlackCamp is a 15 minute walk from the top of the funicular.
+The Slackcamp is a 15 minute walk from the top of the funicular.

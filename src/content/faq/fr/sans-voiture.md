@@ -1,5 +1,6 @@
 ---
-order: 7
+order: 19
+theme: access
 question: "Puis-je venir sans voiture ?"
 ---
 
@@ -7,4 +8,4 @@ Tout à fait ! Le plus simple pour venir aux Arcs est de prendre le train jusqu'
 
 Vous pouvez ensuite directement accéder à Arc 1600 en funiculaire.
 
-Le SlackCamp est à 15 minutes à pied du haut du funiculaire.
+Le Slackcamp est à 15 minutes à pied du haut du funiculaire.

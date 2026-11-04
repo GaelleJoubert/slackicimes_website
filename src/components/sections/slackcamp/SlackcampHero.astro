@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "astro:assets";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  page: CollectionEntry<"pages">["data"];
+}
+
+const PHOTO_WIDTHS = [800, 1600, 2400];
+const PHOTO_SIZES = "100vw";
+
+const { page } = Astro.props;
+---
+
+<section
+  aria-labelledby="page-title"
+  class="text-snow relative h-160 overflow-hidden md:h-auto md:flex-1"
+>
+  {page.illustration && (
+    <Picture
+      src={page.illustration.image}
+      alt={page.illustration.alt}
+      widths={PHOTO_WIDTHS}
+      sizes={PHOTO_SIZES}
+      formats={["avif", "webp"]}
+      loading="eager"
+      class="md:object-low absolute inset-0 size-full object-cover"
+    />
+  )}
+  <div
+    aria-hidden="true"
+    class="to-slate/75 absolute inset-0 bg-linear-to-b from-transparent from-40%"
+  ></div>
+  <Container class="gap-stack relative flex h-full flex-col items-start justify-end pb-24 md:pb-36">
+    <h1 id="page-title" class="page-title text-snow">
+      <HighlightedText
+        text={page.heading}
+        highlight={page.headingAccent ?? ""}
+        highlightClass="italic"
+      />
+    </h1>
+    {page.eyebrow && <Eyebrow tone="photo">{page.eyebrow}</Eyebrow>}
+  </Container>
+  <Skyline variant="edge" fill="forest" hasInnerRidge />
+</section>

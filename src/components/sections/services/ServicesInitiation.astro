@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import Container from "../../ui/Container.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import InfoPanel from "../../ui/InfoPanel.astro";
+import PhotoCollage from "../../ui/PhotoCollage.astro";
+import RuledList from "../../ui/RuledList.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  initiation: CollectionEntry<"services">["data"]["initiation"];
+  locale: Locale;
+}
+
+const { initiation, locale } = Astro.props;
+---
+
+<section class="py-section" aria-labelledby="initiation-title">
+  <Container class="gap-block grid md:grid-cols-12">
+    <div class="gap-grid flex flex-col md:col-span-5">
+      <SectionIntro
+        id="initiation-title"
+        title={initiation.title}
+        eyebrow={initiation.eyebrow}
+      >
+        <HighlightedText
+          slot="title"
+          text={initiation.title}
+          highlight={initiation.titleAccent}
+          highlightClass="text-forest font-medium italic"
+        />
+        <p class="lead">{initiation.lead}</p>
+      </SectionIntro>
+      <div class="gap-grid flex flex-1 flex-col justify-evenly">
+        {initiation.formats.map((format) => (
+          <InfoPanel title={format.title} text={format.text} />
+        ))}
+      </div>
+      <Skyline variant="divider" profile="casse" />
+      <RuledList items={initiation.highlights} />
+    </div>
+    <div class="md:col-span-7">
+      <PhotoCollage
+        photos={initiation.photos}
+        label={initiation.photosLabel}
+        locale={locale}
+      />
+    </div>
+  </Container>
+</section>

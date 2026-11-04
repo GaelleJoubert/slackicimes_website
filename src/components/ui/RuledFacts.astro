@@ -1,0 +1,55 @@
+---
+interface Fact {
+  value: string;
+  label: string;
+}
+
+type FactsTone = "light" | "dark";
+type FactsColumns = "two" | "three";
+
+interface Props {
+  facts: Fact[];
+  label: string;
+  tone?: FactsTone;
+  columns?: FactsColumns;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<FactsTone, { list: string; term: string }> = {
+  light: { list: "border-slate", term: "text-graphite" },
+  dark: { list: "border-snow/40", term: "text-sage" },
+};
+
+const COLUMN_CLASSES: Record<FactsColumns, string> = {
+  two: "grid-cols-2",
+  three: "grid-cols-3",
+};
+
+const {
+  facts,
+  label,
+  tone = "light",
+  columns = "two",
+  class: extraClasses,
+} = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<dl
+  aria-label={label}
+  class:list={[
+    "grid border-y",
+    COLUMN_CLASSES[columns],
+    toneClasses.list,
+    extraClasses,
+  ]}
+>
+  {facts.map((fact) => (
+    <div class="flex flex-col gap-1.5 py-5 pr-4">
+      <dt class:list={["label-text", toneClasses.term]}>{fact.label}</dt>
+      <dd class="font-heading text-xl leading-none font-voice md:text-3xl">
+        {fact.value}
+      </dd>
+    </div>
+  ))}
+</dl>

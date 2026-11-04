@@ -1,7 +1,10 @@
 ---
 import type { Locale } from "../../i18n/locales";
-import { MAIN_NAVIGATION } from "../../i18n/navigation";
-import { localizedPath } from "../../i18n/routes";
+import {
+  MAIN_NAVIGATION,
+  isCurrentNavigationItem,
+  navigationHref,
+} from "../../i18n/navigation";
 import { uiStrings } from "../../i18n/ui";
 import NavigationLink from "../ui/NavigationLink.astro";
 import type { HeaderTone } from "./header-tone";
@@ -48,8 +51,8 @@ const layoutClasses = LAYOUT_CLASSES[layout];
     {MAIN_NAVIGATION.map((item) => (
       <li class={layoutClasses.item}>
         <NavigationLink
-          href={localizedPath(item.pageSlug, locale)}
-          isCurrentPage={item.pageSlug === currentPageSlug}
+          href={navigationHref(item, locale)}
+          isCurrentPage={isCurrentNavigationItem(item, currentPageSlug)}
           tone={tone}
         >
           {strings.navigation[item.labelKey]}
@@ -60,8 +63,11 @@ const layoutClasses = LAYOUT_CLASSES[layout];
               {item.children.map((child) => (
                 <li>
                   <NavigationLink
-                    href={localizedPath(child.pageSlug, locale)}
-                    isCurrentPage={child.pageSlug === currentPageSlug}
+                    href={navigationHref(child, locale)}
+                    isCurrentPage={isCurrentNavigationItem(
+                      child,
+                      currentPageSlug,
+                    )}
                     tone="light"
                   >
                     {strings.navigation[child.labelKey]}
@@ -75,3 +81,15 @@ const layoutClasses = LAYOUT_CLASSES[layout];
     ))}
   </ul>
 </nav>
+
+<script>
+  // A link to a section of the current page does not reload it, so the open menu would cover that section.
+  document
+    .querySelectorAll<HTMLAnchorElement>("header nav a[href*='#']")
+    .forEach((sectionLink) => {
+      sectionLink.addEventListener("click", () => {
+        sectionLink.blur();
+        sectionLink.closest("details")?.removeAttribute("open");
+      });
+    });
+</script>

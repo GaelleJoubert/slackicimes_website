@@ -1,0 +1,81 @@
+zones:
+  title: Welcome to the Slackcamp
+  titleAccent: Slackcamp
+  audienceLabel: Who it's for
+  items:
+    - title: Introduction area
+      text: More than 10 low slacklines, for all levels.
+      audience: Our workshops, and the introduction slots organized with Les Arcs.
+      illustration:
+        image: ../../assets/images/slackcamp/zone-initiation.jpg
+        alt: Group of participants on the slacklines of the introduction area
+    - title: Forest midlines
+      text: 3 midlines among the fir trees, to move gently from slackline to highline.
+      audience: Our workshops and the association's members.
+      illustration:
+        image: ../../assets/images/slackcamp/midlines-en-foret.jpg
+        alt: Two people on midlines rigged among the fir trees
+    - title: A bivouac area
+      text: The participants' bivouac, for time spent living together.
+      audience: The participants in our courses.
+      illustration:
+        image: ../../assets/images/slackcamp/lecture-au-bivouac.jpg
+        alt: A participant reading in a camping chair in the evening sun, with the association's tent behind
+stagesTeaser:
+  eyebrow: The association's base camp
+  title: Slackcamp
+  lead: "This is the association's base camp in Les Arcs. Together with the Les Arcs resort, we have turned this space into a slackline paradise: slacklines for beginners, reassuring midlines in the forest and a bivouac area reserved for course participants. It is the meeting point for every course."
+  linkLabel: Discover the Slackcamp
+  illustration:
+    image: ../../assets/images/slackcamp/vue-aerienne-du-camp.jpg
+    alt: "Aerial view of the Slackcamp: meadow, tents, slacklines and the valley behind"
+bivouac:
+  eyebrow: For course participants only
+  title: Sleeping at the camp
+  titleAccent: at the camp
+  lead: During your course, you can pitch your tent at the camp. No camping gear is provided. The Slackcamp is also accessible to vans.
+  lists:
+    - title: On site
+      items:
+        - Water
+        - Dry toilets
+        - No shower
+        - No electricity
+    - title: Camp rules
+      items:
+        - No fires
+        - Dogs always on a leash
+        - Leave the camp clean
+        - Quiet evenings
+  photosLabel: Photos of life at the camp
+  photos:
+    - image: ../../assets/images/slackcamp/camp-en-fin-de-journee.jpg
+      alt: "The camp at the end of the day: the association's tent, the banner and the slacklines in the meadow"
+      shape: wide
+    - image: ../../assets/images/slackcamp/tablee-sous-la-tente.jpg
+      alt: Participants at a table under the association's tent at the end of the day
+      shape: half
+      focus: upper
+    - image: ../../assets/images/slackcamp/tricot-au-bord-de-la-prairie.jpg
+      alt: A participant knitting in a chair at the edge of the meadow, with slackliners and the association's banner behind
+      shape: half
+access:
+  eyebrow: Access
+  title: Getting to the Slackcamp
+  titleAccent: Slackcamp
+  routes:
+    - label: Car
+      text: Take the Arc 1600 road, then drive all the way to the camp.
+    - label: Funicular
+      text: From Bourg Saint Maurice to Arc 1600 (free for pedestrians in summer), then a 15 minute walk along the footpath.
+    - label: Train
+      text: To Bourg Saint Maurice station, then the funicular and the footpath.
+  gpsLabel: GPS point
+  mapButton: Open the map
+  plan:
+    image: ../../assets/images/slackcamp/plan-d-acces.jpg
+    alt: "Hand drawn access map: from Bourg Saint Maurice to Arc 1600 by funicular, then the footpath to the Slackcamp"
+callToAction:
+  eyebrow: See you at the camp
+  title: All our courses start from here
+  questionLink: A question? Write to us

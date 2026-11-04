@@ -22,8 +22,11 @@ const fr = {
     pastEditions: "Anciennes éditions",
     stages: "Stages",
     youthStages: "Stages jeunes",
+    slackcamp: "Le Slackcamp",
+    services: "Prestations",
     registrations: "Inscriptions",
     guestbook: "Livre d'or",
+    faq: "FAQ",
     contact: "Contact",
   },
   languageSwitcher: {
@@ -81,6 +84,12 @@ const fr = {
     timelineLabel: "Frise des éditions",
     archiveTitle: "Les premières éditions en vidéo",
   },
+  services: {
+    keyFactsLabel: "Nos prestations en bref",
+  },
+  slackcamp: {
+    keyFactsLabel: "Le Slackcamp en bref",
+  },
   youthStages: {
     keyFactsLabel: "L'essentiel",
     registerButton: "Inscription",
@@ -100,6 +109,15 @@ const fr = {
     title: "Vos questions",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages.",
     otherQuestionButton: "Une autre question ?",
+    themesLabel: "Thèmes des questions",
+    themes: {
+      choosing: "Choisir son stage",
+      registration: "Inscription",
+      course: "Déroulement et matériel",
+      access: "Venir aux Arcs",
+      living: "Dormir et vivre sur place",
+      companions: "Accompagnants et chiens",
+    },
   },
   testimonials: {
     title: "Livre d'or",
@@ -168,8 +186,11 @@ const en: UiStrings = {
     pastEditions: "Previous editions",
     stages: "Courses",
     youthStages: "Youth course",
+    slackcamp: "The Slackcamp",
+    services: "Services",
     registrations: "Registrations",
     guestbook: "Guestbook",
+    faq: "FAQ",
     contact: "Contact",
   },
   languageSwitcher: {
@@ -227,6 +248,12 @@ const en: UiStrings = {
     timelineLabel: "Editions timeline",
     archiveTitle: "The first editions on video",
   },
+  services: {
+    keyFactsLabel: "Our services at a glance",
+  },
+  slackcamp: {
+    keyFactsLabel: "The Slackcamp at a glance",
+  },
   youthStages: {
     registerButton: "Registration",
     keyFactsLabel: "Key facts",
@@ -246,6 +273,15 @@ const en: UiStrings = {
     title: "Your questions",
     stagesIntro: "All the answers to your questions about our courses.",
     otherQuestionButton: "Another question?",
+    themesLabel: "Question themes",
+    themes: {
+      choosing: "Choosing your course",
+      registration: "Registration",
+      course: "Course days and equipment",
+      access: "Getting to Les Arcs",
+      living: "Sleeping and living on site",
+      companions: "Companions and dogs",
+    },
   },
   testimonials: {
     title: "Guestbook",
