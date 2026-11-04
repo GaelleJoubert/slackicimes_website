@@ -1,33 +1,31 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Container from "../../ui/Container.astro";
-import Skyline from "../../ui/Skyline.astro";
 import SlackcampZoneCard from "./SlackcampZoneCard.astro";
+import SlackcampZoneDisclosure from "./SlackcampZoneDisclosure.astro";
 
 interface Props {
   zones: CollectionEntry<"slackcamp">["data"]["zones"];
 }
 
-const DIVIDER_PROFILES = ["pourri", "casse"] as const;
-
 const { zones } = Astro.props;
-const lastZoneIndex = zones.items.length - 1;
 ---
 
 <section class="pb-section" aria-label={zones.title}>
   <Container>
-    <ul class="gap-grid flex flex-col md:grid md:grid-cols-3">
+    <div class="gap-grid flex flex-col md:hidden">
       {zones.items.map((zone, zoneIndex) => (
+        <SlackcampZoneDisclosure
+          zone={zone}
+          audienceLabel={zones.audienceLabel}
+          isOpen={zoneIndex === 0}
+        />
+      ))}
+    </div>
+    <ul class="gap-grid hidden md:grid md:grid-cols-3">
+      {zones.items.map((zone) => (
         <li>
           <SlackcampZoneCard zone={zone} audienceLabel={zones.audienceLabel} />
-          {zoneIndex < lastZoneIndex && (
-            <Skyline
-              variant="divider"
-              profile={DIVIDER_PROFILES[zoneIndex % DIVIDER_PROFILES.length]}
-              isThin
-              class="mt-grid md:hidden"
-            />
-          )}
         </li>
       ))}
     </ul>

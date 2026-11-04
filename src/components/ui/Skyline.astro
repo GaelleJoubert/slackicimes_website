@@ -26,7 +26,6 @@ type Props =
       variant: "divider";
       profile?: SkylineProfile;
       tone?: SkylineBackgroundTone;
-      isThin?: boolean;
       isMirrored?: boolean;
       class?: string;
     }
@@ -46,8 +45,6 @@ type Props =
       class?: string;
     };
 
-const DIVIDER_STROKE_WIDTH = 2;
-const THIN_DIVIDER_STROKE_WIDTH = 1.5;
 const DIVIDER_TOP_MARGIN = 5;
 const DIVIDER_BOTTOM_MARGIN = 10;
 const DIVIDER_VIEW_BOX = `0 ${DIVIDER_TOP_MARGIN} ${SKYLINE_WIDTH} ${SKYLINE_HEIGHT - DIVIDER_TOP_MARGIN - DIVIDER_BOTTOM_MARGIN}`;
@@ -88,9 +85,7 @@ const isMirrored = props.isMirrored ?? false;
     <path
       d={skylineStrokePath({ profile: props.profile ?? "crete", isMirrored })}
       fill="none"
-      stroke-width={
-        props.isThin ? THIN_DIVIDER_STROKE_WIDTH : DIVIDER_STROKE_WIDTH
-      }
+      stroke-width="2"
       stroke-linejoin="round"
       stroke-linecap="round"
       vector-effect="non-scaling-stroke"

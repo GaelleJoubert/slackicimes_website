@@ -10,28 +10,24 @@ interface Props {
 }
 
 const PHOTO_WIDTHS = [400, 800, 1200];
-const PHOTO_SIZES = "(min-width: 768px) 33vw, 128px";
+const PHOTO_SIZES = "33vw";
 
 const { zone, audienceLabel } = Astro.props;
 ---
 
-<article class="gap-stack md:gap-tile flex h-full flex-col">
-  <div class="gap-inline md:gap-tile flex items-start md:flex-col md:items-stretch">
-    <div class="w-32 shrink-0 md:w-full">
-      <FramedPicture
-        image={zone.illustration.image}
-        alt={zone.illustration.alt}
-        widths={PHOTO_WIDTHS}
-        sizes={PHOTO_SIZES}
-        class="aspect-square"
-      />
-    </div>
-    <div class="flex flex-col gap-2.5">
-      <h3 class="card-title md:text-card text-xl">{zone.title}</h3>
-      <p class="text-graphite md:text-body text-base">{zone.text}</p>
-    </div>
+<article class="gap-tile flex h-full flex-col">
+  <FramedPicture
+    image={zone.illustration.image}
+    alt={zone.illustration.alt}
+    widths={PHOTO_WIDTHS}
+    sizes={PHOTO_SIZES}
+    class="aspect-square"
+  />
+  <div class="flex flex-col gap-2.5">
+    <h3 class="card-title">{zone.title}</h3>
+    <p class="text-graphite">{zone.text}</p>
   </div>
-  <p class="border-rule flex flex-col gap-1 md:border-t md:pt-3.5">
+  <p class="border-rule flex flex-col gap-1 border-t pt-3.5">
     <span class="label-text text-slate font-bold">{audienceLabel}</span>
     <span class="text-slate text-base">{zone.audience}</span>
   </p>
