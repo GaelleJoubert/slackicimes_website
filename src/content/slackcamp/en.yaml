@@ -3,12 +3,12 @@ zones:
   titleAccent: Slackcamp
   audienceLabel: Who it's for
   items:
-    - title: Introduction area
+    - title: Slack Park
       text: More than 10 low slacklines, for all levels.
       audience: Our workshops, and the introduction slots organized with Les Arcs.
       illustration:
         image: ../../assets/images/slackcamp/zone-initiation.jpg
-        alt: Group of participants on the slacklines of the introduction area
+        alt: Group of participants on the slacklines of the Slack Park
     - title: Forest midlines
       text: 3 midlines among the fir trees, to move gently from slackline to highline.
       audience: Our workshops and the association's members.

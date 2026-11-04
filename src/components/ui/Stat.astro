@@ -2,12 +2,26 @@
 interface Props {
   value: string;
   label: string;
+  isCompactOnMobile?: boolean;
+  labelClass?: string;
 }
 
-const { value, label } = Astro.props;
+const {
+  value,
+  label,
+  isCompactOnMobile = false,
+  labelClass = "text-sage",
+} = Astro.props;
 ---
 
 <div class="flex flex-col gap-1.5">
-  <dt class="text-sage order-last text-sm leading-snug">{label}</dt>
-  <dd class="stat-value">{value}</dd>
+  <dt class:list={["order-last text-sm leading-snug", labelClass]}>{label}</dt>
+  <dd
+    class:list={[
+      "stat-value",
+      isCompactOnMobile && "text-xl whitespace-nowrap md:text-5xl",
+    ]}
+  >
+    {value}
+  </dd>
 </div>

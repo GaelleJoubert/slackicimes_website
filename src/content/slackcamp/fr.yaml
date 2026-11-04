@@ -3,12 +3,12 @@ zones:
   titleAccent: Slackcamp
   audienceLabel: Pour qui
   items:
-    - title: Zone d'initiation
+    - title: Slack Park
       text: Plus de 10 slacklines au sol, pour tous les niveaux.
       audience: Nos ateliers, et les créneaux d'initiation organisés avec Les Arcs.
       illustration:
         image: ../../assets/images/slackcamp/zone-initiation.jpg
-        alt: Groupe de stagiaires sur les slacklines de la zone d'initiation
+        alt: Groupe de stagiaires sur les slacklines du Slack Park
     - title: Midlines en forêt
       text: 3 midlines entre les sapins, pour passer de la slackline à la highline en douceur.
       audience: Nos ateliers et les membres de l'association.
