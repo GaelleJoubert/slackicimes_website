@@ -73,6 +73,7 @@ const {
     requireCarouselElement,
     showPageDots,
   } from "./carousel-controls";
+  import { closeAnimatedDetailsIn } from "./expand-animation";
 
   function setUpCarousel(carousel: HTMLElement) {
     const track = requireCarouselElement<HTMLElement>(
@@ -95,13 +96,23 @@ const {
     const highlightCurrentDot = () =>
       showPageDots(dots, currentSlideIndex(), slides.length);
 
+    let shownSlideIndex = currentSlideIndex();
+
+    function handleTrackScroll() {
+      highlightCurrentDot();
+      const hasChangedSlide = currentSlideIndex() !== shownSlideIndex;
+      if (!hasChangedSlide) return;
+      shownSlideIndex = currentSlideIndex();
+      closeAnimatedDetailsIn(track);
+    }
+
     previousButton.addEventListener("click", () =>
       showSlide(currentSlideIndex() - 1),
     );
     nextButton.addEventListener("click", () =>
       showSlide(currentSlideIndex() + 1),
     );
-    track.addEventListener("scroll", highlightCurrentDot, { passive: true });
+    track.addEventListener("scroll", handleTrackScroll, { passive: true });
     controls.hidden = false;
     highlightCurrentDot();
   }

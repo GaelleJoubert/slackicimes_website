@@ -141,6 +141,10 @@
   }
 }
 
+@utility object-raised {
+  object-position: 50% 17%;
+}
+
 @utility object-high {
   object-position: 50% 40%;
 }

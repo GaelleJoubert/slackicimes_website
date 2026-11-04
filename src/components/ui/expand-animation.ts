@@ -102,6 +102,12 @@ function enhanceDetails(details: HTMLDetailsElement): void {
   });
 }
 
+export function closeAnimatedDetailsIn(container: HTMLElement): void {
+  container
+    .querySelectorAll<HTMLDetailsElement>(`${ANIMATED_DETAILS_SELECTOR}[open]`)
+    .forEach((details) => detailsClosers.get(details)?.());
+}
+
 export function enhanceAnimatedDetails(): void {
   document
     .querySelectorAll<HTMLDetailsElement>(ANIMATED_DETAILS_SELECTOR)
