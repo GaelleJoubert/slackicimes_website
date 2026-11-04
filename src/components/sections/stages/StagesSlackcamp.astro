@@ -42,21 +42,28 @@ const { teaser, facts, factsLabel, locale } = Astro.props;
       >
         <p class="lead">{teaser.lead}</p>
       </SectionIntro>
-      {facts && <RuledFacts facts={facts} label={factsLabel} columns="three" />}
-      <div>
+      {facts && (
+        <RuledFacts
+          facts={facts}
+          label={factsLabel}
+          columns="threeFittedToValues"
+        />
+      )}
+      <div class="flex justify-center md:block">
         <LinkButton href={localizedPath(SLACKCAMP_PAGE_SLUG, locale)}>
           {teaser.linkLabel}
           <ButtonIcon name="arrow" />
         </LinkButton>
       </div>
     </div>
-    <div class="md:col-span-5">
+    <div class="-mt-section order-first -mx-5 md:order-none md:col-span-5 md:mx-0 md:mt-0">
       <FramedPicture
         image={teaser.illustration.image}
         alt={teaser.illustration.alt}
         widths={PHOTO_WIDTHS}
         sizes={PHOTO_SIZES}
-        class="h-40 md:h-120"
+        isEdgeToEdgeOnMobile
+        class="h-56 md:h-120"
       />
     </div>
   </Container>

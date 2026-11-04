@@ -2,7 +2,6 @@
 import CarouselControls, { type CarouselTone } from "./CarouselControls.astro";
 
 type CarouselWidth = "narrow" | "full";
-type DesktopColumns = "two" | "three";
 
 interface Props {
   label: string;
@@ -12,7 +11,6 @@ interface Props {
   tone?: CarouselTone;
   width?: CarouselWidth;
   desktopGrid?: boolean;
-  desktopColumns?: DesktopColumns;
   class?: string;
 }
 
@@ -23,13 +21,8 @@ const WIDTH_CLASSES: Record<CarouselWidth, string> = {
 
 const DESKTOP_GRID_CLASSES = {
   root: "md:max-w-none",
-  track: "md:grid md:gap-grid md:overflow-visible",
+  track: "md:grid md:grid-cols-2 md:gap-grid md:overflow-visible",
   controls: "md:hidden",
-};
-
-const DESKTOP_COLUMN_CLASSES: Record<DesktopColumns, string> = {
-  two: "md:grid-cols-2",
-  three: "md:grid-cols-3",
 };
 
 const {
@@ -40,7 +33,6 @@ const {
   tone = "light",
   width = "narrow",
   desktopGrid = false,
-  desktopColumns = "two",
   class: extraClasses,
 } = Astro.props;
 ---
@@ -61,10 +53,7 @@ const {
     data-slide-track
     class:list={[
       "gap-grid relative flex snap-x snap-mandatory overflow-x-auto",
-      desktopGrid && [
-        DESKTOP_GRID_CLASSES.track,
-        DESKTOP_COLUMN_CLASSES[desktopColumns],
-      ],
+      desktopGrid && DESKTOP_GRID_CLASSES.track,
     ]}
   >
     <slot />
@@ -84,6 +73,11 @@ const {
     requireCarouselElement,
     showPageDots,
   } from "./carousel-controls";
+  import {
+    closeAnimatedDetailsIn,
+    hasOpenAnimatedDetails,
+    prefersReducedMotion,
+  } from "./expand-animation";
 
   function setUpCarousel(carousel: HTMLElement) {
     const track = requireCarouselElement<HTMLElement>(
@@ -106,13 +100,32 @@ const {
     const highlightCurrentDot = () =>
       showPageDots(dots, currentSlideIndex(), slides.length);
 
+    let shownSlideIndex = currentSlideIndex();
+
+    function handleTrackScroll() {
+      highlightCurrentDot();
+      const hasChangedSlide = currentSlideIndex() !== shownSlideIndex;
+      if (!hasChangedSlide) return;
+      shownSlideIndex = currentSlideIndex();
+      foldOpenDetails();
+    }
+
+    function foldOpenDetails() {
+      if (!hasOpenAnimatedDetails(track)) return;
+      closeAnimatedDetailsIn(track);
+      carousel.scrollIntoView({
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+        block: "start",
+      });
+    }
+
     previousButton.addEventListener("click", () =>
       showSlide(currentSlideIndex() - 1),
     );
     nextButton.addEventListener("click", () =>
       showSlide(currentSlideIndex() + 1),
     );
-    track.addEventListener("scroll", highlightCurrentDot, { passive: true });
+    track.addEventListener("scroll", handleTrackScroll, { passive: true });
     controls.hidden = false;
     highlightCurrentDot();
   }

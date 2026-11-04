@@ -8,6 +8,7 @@ interface Props {
   widths: number[];
   sizes: string;
   loading?: "eager" | "lazy";
+  isEdgeToEdgeOnMobile?: boolean;
   class?: string;
 }
 
@@ -17,6 +18,7 @@ const {
   widths,
   sizes,
   loading = "lazy",
+  isEdgeToEdgeOnMobile = false,
   class: sizeClasses,
 } = Astro.props;
 ---
@@ -28,5 +30,9 @@ const {
   sizes={sizes}
   formats={["avif", "webp"]}
   loading={loading}
-  class:list={["block w-full object-cover", "rounded-card", sizeClasses]}
+  class:list={[
+    "block w-full object-cover",
+    isEdgeToEdgeOnMobile ? "md:rounded-card" : "rounded-card",
+    sizeClasses,
+  ]}
 />

@@ -77,7 +77,11 @@ const courses = stages.map((stage) => ({
             duration={stage.data.duration}
             price={price}
             image={stage.data.image}
-            imageFocusClass={STAGE_IMAGE_FOCUS_CLASSES[stage.data.imageFocus]}
+            imageFocusClass={
+              STAGE_IMAGE_FOCUS_CLASSES[
+                stage.data.slideImageFocus ?? stage.data.imageFocus
+              ]
+            }
           />
         </CarouselSlide>
       ))}

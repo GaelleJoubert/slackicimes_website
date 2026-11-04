@@ -1,50 +1,33 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Locale } from "../../../i18n/locales";
-import { uiStrings } from "../../../i18n/ui";
-import Carousel from "../../ui/Carousel.astro";
-import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
-import HighlightedText from "../../ui/HighlightedText.astro";
-import SectionIntro from "../../ui/SectionIntro.astro";
 import SlackcampZoneCard from "./SlackcampZoneCard.astro";
+import SlackcampZoneDisclosure from "./SlackcampZoneDisclosure.astro";
 
 interface Props {
   zones: CollectionEntry<"slackcamp">["data"]["zones"];
-  locale: Locale;
 }
 
-const { zones, locale } = Astro.props;
-const strings = uiStrings(locale);
+const { zones } = Astro.props;
 ---
 
-<section class="py-section" aria-labelledby="zones-title">
-  <Container class="gap-block flex flex-col">
-    <SectionIntro id="zones-title" title={zones.title}>
-      <HighlightedText
-        slot="title"
-        text={zones.title}
-        highlight={zones.titleAccent}
-        highlightClass="text-forest font-medium italic"
-      />
-      <div class="lead">
-        <slot />
-      </div>
-    </SectionIntro>
-    <Carousel
-      label={zones.title}
-      roleDescription={strings.common.carouselRoleDescription}
-      previousLabel={strings.common.previousPhotoButton}
-      nextLabel={strings.common.nextPhotoButton}
-      width="full"
-      desktopGrid
-      desktopColumns="three"
-    >
-      {zones.items.map((zone) => (
-        <CarouselSlide>
-          <SlackcampZoneCard zone={zone} audienceLabel={zones.audienceLabel} />
-        </CarouselSlide>
+<section class="pb-section" aria-label={zones.title}>
+  <Container>
+    <div class="gap-grid flex flex-col md:hidden">
+      {zones.items.map((zone, zoneIndex) => (
+        <SlackcampZoneDisclosure
+          zone={zone}
+          audienceLabel={zones.audienceLabel}
+          isOpen={zoneIndex === 0}
+        />
       ))}
-    </Carousel>
+    </div>
+    <ul class="gap-grid hidden md:grid md:grid-cols-3">
+      {zones.items.map((zone) => (
+        <li>
+          <SlackcampZoneCard zone={zone} audienceLabel={zones.audienceLabel} />
+        </li>
+      ))}
+    </ul>
   </Container>
 </section>

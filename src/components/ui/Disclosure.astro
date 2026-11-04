@@ -1,27 +1,66 @@
 ---
+import ChevronIcon from "./ChevronIcon.astro";
 import ToggleSign from "./ToggleSign.astro";
+
+type DisclosureLevel = "theme" | "question";
 
 interface Props {
   summary: string;
+  level?: DisclosureLevel;
   groupName?: string;
   isOpen?: boolean;
 }
 
-const { summary, groupName, isOpen = false } = Astro.props;
+interface LevelStyle {
+  Heading: "h3" | "h4";
+  details: string;
+  summary: string;
+  content: string;
+}
+
+const LEVEL_STYLES: Record<DisclosureLevel, LevelStyle> = {
+  theme: {
+    Heading: "h3",
+    details: "",
+    summary: "card-title text-lake border-slate border-b-2",
+    content: "gap-inline pt-inline pb-stack flex flex-col",
+  },
+  question: {
+    Heading: "h4",
+    details: "bg-snow rounded-card overflow-hidden",
+    summary: "card-title text-slate px-tile text-xl",
+    content: "rich-text px-tile pb-tile text-base",
+  },
+};
+
+const { summary, level = "question", groupName, isOpen = false } = Astro.props;
+const { Heading, ...levelClasses } = LEVEL_STYLES[level];
 ---
 
 <details
   data-animated-details
   name={groupName}
   open={isOpen}
-  class="group border-rule border-b"
+  class={levelClasses.details}
 >
-  <summary class="font-heading text-slate flex min-h-16 cursor-pointer items-center justify-between gap-4 py-4 text-lg leading-snug font-voice md:min-h-18 md:text-2xl">
-    <h4>{summary}</h4>
-    <ToggleSign />
+  <summary
+    class:list={[
+      "flex min-h-16 cursor-pointer items-center justify-between gap-4 py-4",
+      levelClasses.summary,
+    ]}
+  >
+    <Heading>{summary}</Heading>
+    {level === "theme" ? (
+      <ChevronIcon
+        direction="down"
+        class="disclosure-open:rotate-180 transition"
+      />
+    ) : (
+      <ToggleSign />
+    )}
   </summary>
   <div data-expand-panel>
-    <div class="rich-text pr-12 pb-6 text-base md:pr-14">
+    <div class={levelClasses.content}>
       <slot />
     </div>
   </div>

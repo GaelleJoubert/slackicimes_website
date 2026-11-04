@@ -11,11 +11,19 @@ interface Props {
 const { label, facts } = Astro.props;
 ---
 
-<section aria-label={label} class="bg-forest text-snow py-6">
+<section
+  aria-label={label}
+  class="text-slate pb-block md:bg-forest md:text-snow md:py-6"
+>
   <Container>
-    <dl class="gap-grid grid grid-cols-2 md:grid-cols-3 md:text-center">
+    <dl class="bg-lichen rounded-card p-tile flex justify-between gap-3 md:gap-grid md:grid md:grid-cols-3 md:rounded-none md:bg-transparent md:p-0 md:text-center">
       {facts.map((fact) => (
-        <Stat value={fact.value} label={fact.label} />
+        <Stat
+          value={fact.value}
+          label={fact.label}
+          labelClass="text-graphite md:text-sage"
+          isCompactOnMobile
+        />
       ))}
     </dl>
   </Container>

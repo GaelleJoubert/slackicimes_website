@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "astro:assets";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import ToggleSign from "../../ui/ToggleSign.astro";
+
+type SlackcampZones = CollectionEntry<"slackcamp">["data"]["zones"];
+
+interface Props {
+  zone: SlackcampZones["items"][number];
+  audienceLabel: string;
+  isOpen?: boolean;
+}
+
+const DISCLOSURE_GROUP_NAME = "slackcamp-zones";
+const THUMBNAIL_WIDTHS = [120];
+const THUMBNAIL_SIZES = "56px";
+const PHOTO_WIDTHS = [400, 800];
+const PHOTO_SIZES = "100vw";
+
+const { zone, audienceLabel, isOpen = false } = Astro.props;
+---
+
+<details
+  data-animated-details
+  name={DISCLOSURE_GROUP_NAME}
+  open={isOpen}
+  class="bg-moss rounded-card overflow-hidden"
+>
+  <summary class="text-slate flex min-h-19 cursor-pointer items-center gap-3 p-2.5">
+    <Picture
+      src={zone.illustration.image}
+      alt=""
+      widths={THUMBNAIL_WIDTHS}
+      sizes={THUMBNAIL_SIZES}
+      formats={["avif", "webp"]}
+      class="rounded-control size-14 shrink-0 object-cover"
+    />
+    <h3 class="card-title flex-1 text-xl">{zone.title}</h3>
+    <ToggleSign />
+  </summary>
+  <div data-expand-panel>
+    <div class="gap-stack px-tile pb-tile flex flex-col">
+      <FramedPicture
+        image={zone.illustration.image}
+        alt={zone.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        class="aspect-photo"
+      />
+      <p class="text-graphite text-base">{zone.text}</p>
+      <p class="flex flex-col gap-1">
+        <span class="label-text text-slate font-bold">{audienceLabel}</span>
+        <span class="text-slate text-base">{zone.audience}</span>
+      </p>
+    </div>
+  </div>
+</details>
+
+<script>
+  import { enhanceAnimatedDetails } from "../../ui/expand-animation";
+
+  enhanceAnimatedDetails();
+</script>

@@ -18,32 +18,36 @@ const { page } = Astro.props;
 
 <section
   aria-labelledby="page-title"
-  class="text-snow relative h-160 overflow-hidden md:h-auto md:flex-1"
+  class="text-snow md:relative md:flex-1 md:overflow-hidden"
 >
-  {page.illustration && (
-    <Picture
-      src={page.illustration.image}
-      alt={page.illustration.alt}
-      widths={PHOTO_WIDTHS}
-      sizes={PHOTO_SIZES}
-      formats={["avif", "webp"]}
-      loading="eager"
-      class="md:object-low absolute inset-0 size-full object-cover"
-    />
-  )}
-  <div
-    aria-hidden="true"
-    class="to-slate/75 absolute inset-0 bg-linear-to-b from-transparent from-40%"
-  ></div>
-  <Container class="gap-stack relative flex h-full flex-col items-start justify-end pb-24 md:pb-36">
-    <h1 id="page-title" class="page-title text-snow">
-      <HighlightedText
-        text={page.heading}
-        highlight={page.headingAccent ?? ""}
-        highlightClass="italic"
+  <div class="relative h-80 overflow-hidden md:absolute md:inset-0 md:h-auto">
+    {page.illustration && (
+      <Picture
+        src={page.illustration.image}
+        alt={page.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        formats={["avif", "webp"]}
+        loading="eager"
+        class="md:object-low absolute inset-x-0 bottom-0 h-4/3 w-full object-cover md:h-full"
       />
-    </h1>
-    {page.eyebrow && <Eyebrow tone="photo">{page.eyebrow}</Eyebrow>}
-  </Container>
-  <Skyline variant="edge" fill="forest" hasInnerRidge />
+    )}
+    <div
+      aria-hidden="true"
+      class="to-slate/75 absolute inset-0 hidden bg-linear-to-b from-transparent from-40% md:block"
+    ></div>
+    <Skyline variant="edge" fill="forest" hasInnerRidge />
+  </div>
+  <div class="bg-forest md:absolute md:inset-0 md:bg-transparent">
+    <Container class="gap-stack pt-tile pb-card flex flex-col items-start md:h-full md:justify-end md:pt-0 md:pb-36">
+      <h1 id="page-title" class="page-title text-snow">
+        <HighlightedText
+          text={page.heading}
+          highlight={page.headingAccent ?? ""}
+          highlightClass="italic"
+        />
+      </h1>
+      {page.eyebrow && <Eyebrow tone="photo">{page.eyebrow}</Eyebrow>}
+    </Container>
+  </div>
 </section>

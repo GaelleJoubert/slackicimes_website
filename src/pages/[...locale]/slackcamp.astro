@@ -6,6 +6,7 @@ import SlackcampAccess from "../../components/sections/slackcamp/SlackcampAccess
 import SlackcampBivouac from "../../components/sections/slackcamp/SlackcampBivouac.astro";
 import SlackcampFacts from "../../components/sections/slackcamp/SlackcampFacts.astro";
 import SlackcampHero from "../../components/sections/slackcamp/SlackcampHero.astro";
+import SlackcampIntro from "../../components/sections/slackcamp/SlackcampIntro.astro";
 import SlackcampZones from "../../components/sections/slackcamp/SlackcampZones.astro";
 import ButtonIcon from "../../components/ui/ButtonIcon.astro";
 import LinkButton from "../../components/ui/LinkButton.astro";
@@ -38,18 +39,25 @@ const { zones, bivouac, access, callToAction } = (
   locale={locale}
   pageSlug={PAGE_SLUG}
 >
-  <div class="md:h-home-fold md:flex md:flex-col">
-    <SlackcampHero page={page.data} />
-    {page.data.keyFacts && (
-      <SlackcampFacts
-        label={strings.slackcamp.keyFactsLabel}
-        facts={page.data.keyFacts}
-      />
-    )}
+  <div class="flex flex-col md:block">
+    <div class="md:h-home-fold contents md:flex md:flex-col">
+      <SlackcampHero page={page.data} />
+      {page.data.keyFacts && (
+        <div class="order-2 md:order-none">
+          <SlackcampFacts
+            label={strings.slackcamp.keyFactsLabel}
+            facts={page.data.keyFacts}
+          />
+        </div>
+      )}
+    </div>
+    <div class="order-1 md:order-none">
+      <SlackcampIntro zones={zones}>
+        <Intro />
+      </SlackcampIntro>
+    </div>
   </div>
-  <SlackcampZones zones={zones} locale={locale}>
-    <Intro />
-  </SlackcampZones>
+  <SlackcampZones zones={zones} />
   <SlackcampBivouac bivouac={bivouac} locale={locale} />
   <SlackcampAccess access={access} />
   <CallToActionBand

@@ -3,6 +3,9 @@
 @import "@fontsource-variable/fraunces/opsz-italic.css";
 @import "@fontsource-variable/hanken-grotesk";
 
+/* group-open would also match a disclosure nested in an open one. */
+@custom-variant disclosure-open (details[open] > summary &);
+
 @font-face {
   font-family: "Clash Display";
   src: url("../assets/fonts/clash-display-bold.otf") format("opentype");
@@ -136,6 +139,10 @@
     --tile-space: 1.5rem;
     --inline-space: 1rem;
   }
+}
+
+@utility object-raised {
+  object-position: 50% 17%;
 }
 
 @utility object-high {
