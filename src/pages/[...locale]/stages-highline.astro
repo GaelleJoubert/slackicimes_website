@@ -18,7 +18,7 @@ import {
 import { buildLocaleStaticPaths } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { COURSE_FORMULAS_SECTION_ID } from "../../lib/site";
+import { COURSE_FORMULAS_SECTION_ID, FAQ_SECTION_ID } from "../../lib/site";
 
 export const getStaticPaths = (() =>
   buildLocaleStaticPaths()) satisfies GetStaticPaths;
@@ -27,7 +27,6 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const PAGE_SLUG = "stages-highline";
 const SLACKCAMP_PAGE_SLUG = "slackcamp";
-const FAQ_SECTION_ID = "faq";
 
 const { locale } = Astro.props;
 const strings = uiStrings(locale);

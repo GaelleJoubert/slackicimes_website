@@ -26,6 +26,7 @@ const fr = {
     services: "Prestations",
     registrations: "Inscriptions",
     guestbook: "Livre d'or",
+    faq: "FAQ",
     contact: "Contact",
   },
   languageSwitcher: {
@@ -108,6 +109,15 @@ const fr = {
     title: "Vos questions",
     stagesIntro: "Toutes les réponses à vos questions concernant les stages.",
     otherQuestionButton: "Une autre question ?",
+    themesLabel: "Thèmes des questions",
+    themes: {
+      choosing: "Choisir son stage",
+      registration: "Inscription",
+      course: "Déroulement et matériel",
+      access: "Venir aux Arcs",
+      living: "Dormir et vivre sur place",
+      companions: "Accompagnants et chiens",
+    },
   },
   testimonials: {
     title: "Livre d'or",
@@ -180,6 +190,7 @@ const en: UiStrings = {
     services: "Services",
     registrations: "Registrations",
     guestbook: "Guestbook",
+    faq: "FAQ",
     contact: "Contact",
   },
   languageSwitcher: {
@@ -262,6 +273,15 @@ const en: UiStrings = {
     title: "Your questions",
     stagesIntro: "All the answers to your questions about our courses.",
     otherQuestionButton: "Another question?",
+    themesLabel: "Question themes",
+    themes: {
+      choosing: "Choosing your course",
+      registration: "Registration",
+      course: "Course days and equipment",
+      access: "Getting to Les Arcs",
+      living: "Sleeping and living on site",
+      companions: "Companions and dogs",
+    },
   },
   testimonials: {
     title: "Guestbook",

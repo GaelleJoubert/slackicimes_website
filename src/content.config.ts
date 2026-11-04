@@ -1,6 +1,7 @@
 import { defineCollection, type SchemaContext } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { FAQ_THEMES } from "./lib/faq";
 import { WORLD_CUP_SECTION_ID_LIST } from "./lib/world-cup";
 
 type ImageFunction = SchemaContext["image"];
@@ -82,6 +83,7 @@ const faq = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/faq" }),
   schema: z.object({
     order: displayOrder,
+    theme: z.enum(FAQ_THEMES),
     question: nonEmptyText,
   }),
 });

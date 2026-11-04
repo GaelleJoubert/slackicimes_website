@@ -1,5 +1,6 @@
 ---
-order: 4
+order: 21
+theme: living
 question: "Je souhaite plutôt prendre un logement, quel est l'endroit le plus pratique ?"
 ---
 

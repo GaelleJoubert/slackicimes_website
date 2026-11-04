@@ -3,6 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 import type { Locale } from "../../i18n/locales";
 import { localizedPath } from "../../i18n/routes";
 import { uiStrings } from "../../i18n/ui";
+import { faqThemeSectionId, groupByFaqTheme } from "../../lib/faq";
 import Container from "../ui/Container.astro";
 import Disclosure from "../ui/Disclosure.astro";
 import LinkButton from "../ui/LinkButton.astro";
@@ -23,9 +24,12 @@ const strings = uiStrings(locale);
 const renderedQuestions = await Promise.all(
   questions.map(async (question) => ({
     question: question.data.question,
+    theme: question.data.theme,
     Answer: (await render(question)).Content,
   })),
 );
+const questionGroups = groupByFaqTheme(renderedQuestions);
+const [firstQuestion] = renderedQuestions;
 const contactPath = localizedPath("contact", locale);
 ---
 
@@ -34,23 +38,43 @@ const contactPath = localizedPath("contact", locale);
   class="bg-moss pt-section relative scroll-mt-24 pb-24 md:pb-40"
 >
   <Container class="grid items-start gap-block md:grid-cols-3">
-    <SectionIntro title={strings.faq.title}>
-      <p class="text-graphite">{intro}</p>
-      <div class="hidden md:block">
-        <LinkButton href={contactPath} variant="secondary">
-          {strings.faq.otherQuestionButton}
-        </LinkButton>
-      </div>
-    </SectionIntro>
-    <div class="border-rule flex flex-col border-t md:col-span-2">
-      {renderedQuestions.map(({ question, Answer }, questionIndex) => (
-        <Disclosure
-          summary={question}
-          groupName={DISCLOSURE_GROUP_NAME}
-          isOpen={questionIndex === 0}
-        >
-          <Answer />
-        </Disclosure>
+    <div class="md:sticky md:top-32">
+      <SectionIntro title={strings.faq.title}>
+        <p class="text-graphite">{intro}</p>
+        <nav aria-label={strings.faq.themesLabel}>
+          <ul class="flex flex-col gap-2">
+            {questionGroups.map(({ theme }) => (
+              <li>
+                <a href={`#${faqThemeSectionId(theme)}`} class="text-link">
+                  {strings.faq.themes[theme]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="hidden md:block">
+          <LinkButton href={contactPath} variant="secondary">
+            {strings.faq.otherQuestionButton}
+          </LinkButton>
+        </div>
+      </SectionIntro>
+    </div>
+    <div class="gap-block flex flex-col md:col-span-2">
+      {questionGroups.map(({ theme, questions: themeQuestions }) => (
+        <div id={faqThemeSectionId(theme)} class="scroll-mt-8">
+          <h3 class="card-title border-slate border-b-2 pb-3">
+            {strings.faq.themes[theme]}
+          </h3>
+          {themeQuestions.map((themeQuestion) => (
+            <Disclosure
+              summary={themeQuestion.question}
+              groupName={DISCLOSURE_GROUP_NAME}
+              isOpen={themeQuestion === firstQuestion}
+            >
+              <themeQuestion.Answer />
+            </Disclosure>
+          ))}
+        </div>
       ))}
     </div>
     <LinkButton href={contactPath} variant="secondary" class="md:hidden">

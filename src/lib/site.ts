@@ -6,6 +6,7 @@ export const FESTIVAL_NAME_HIGHLIGHT = "Festi";
 
 export const COURSE_FORMULAS_SECTION_ID = "formules";
 export const CONTACT_FORM_SECTION_ID = "formulaire";
+export const FAQ_SECTION_ID = "faq";
 
 export const CONTACT_EMAIL = "slackicimes@gmail.com";
 

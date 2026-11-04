@@ -1,5 +1,6 @@
 ---
-order: 5
+order: 2
+theme: choosing
 question: "Quel stage choisir ?"
 ---
 
@@ -10,3 +11,5 @@ Les stages **Premiers Pas** s'adressent aux débutants de la discipline, que vou
 Vous souhaitez apprendre à installer une highline en plus de pratiquer ? Le stage **Rigging** est parfait.
 
 Vous avez déjà fait un de nos stages, ou déjà pratiqué la highline ? Le stage **Back 2 Les Arcs** est fait pour vous !
+
+Vous avez entre 10 et 18 ans ? Le **Stage Jeune** est spécialement pensé pour vous.
