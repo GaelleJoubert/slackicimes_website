@@ -42,6 +42,8 @@ Every URL Google knows must keep working after the switch. `migration/wix-invent
 | `/livre-d-or`                           | `/en/livre-d-or`                           | 0 / 0                     |
 | `/anciennes-editions-winter-festislack` | `/en/anciennes-editions-winter-festislack` | new URL                   |
 | `/coupe-du-monde`                       | `/en/coupe-du-monde`                       | new URL                   |
+| `/prestations`                          | `/en/prestations`                          | 1 / 0                     |
+| `/slackcamp`                            | `/en/slackcamp`                            | new URL                   |
 
 The top three pages carry 87% of clicks: copy them with the most care.
 
@@ -54,8 +56,6 @@ GitHub Pages serves static files only, so redirects are Astro `redirects` entrie
 | `/copie-de-winter-festislack`, `/old-winterfestislack-editions`       | `/anciennes-editions-winter-festislack`    |
 | `/en/copie-de-winter-festislack`, `/en/old-winterfestislack-editions` | `/en/anciennes-editions-winter-festislack` |
 | `/event-details/*` (9 past 2024 events)                               | `/stages-highline`                         |
-| `/prestations` (removed page, 1 search click)                         | `/contact`                                 |
-| `/en/prestations`                                                     | `/en/contact`                              |
 | `/inscriptions-winter-festislack` (removed page, 1 search click)      | `/winter-festislack`                       |
 | `/en/inscriptions-winter-festislack`                                  | `/en/winter-festislack`                    |
 | `/expeditions` (removed page)                                         | `/association`                             |

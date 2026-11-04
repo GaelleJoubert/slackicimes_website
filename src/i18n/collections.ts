@@ -7,7 +7,7 @@ type LocalizedCollectionName =
   "stages" | "faq" | "testimonials" | "team" | "festivalEditions";
 
 type SingleEntryCollectionName =
-  "home" | "festival" | "association" | "worldCup";
+  "home" | "festival" | "association" | "worldCup" | "services" | "slackcamp";
 
 export async function getLocalizedCollection<
   Name extends LocalizedCollectionName,

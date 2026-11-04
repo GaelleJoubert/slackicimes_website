@@ -40,7 +40,7 @@ const toneClasses = TONE_CLASSES[tone];
       {SITE_NAME}
     </a>
 
-    <div class="hidden items-center gap-2 lg:flex">
+    <div class="hidden items-center gap-2 xl:flex">
       <SiteNavigation
         locale={locale}
         currentPageSlug={pageSlug}
@@ -50,7 +50,7 @@ const toneClasses = TONE_CLASSES[tone];
       <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
     </div>
 
-    <div class="flex items-center gap-2 lg:hidden">
+    <div class="flex items-center gap-2 xl:hidden">
       <LanguageSwitcher locale={locale} pageSlug={pageSlug} tone={tone} />
       <MobileMenu locale={locale} pageSlug={pageSlug} tone={tone} />
     </div>

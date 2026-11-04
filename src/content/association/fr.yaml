@@ -22,13 +22,13 @@ activities:
         alt: Athlète de highline freestyle en rotation sous la ligne, sur fond de ciel bleu
     - title: Des initiations
       text: En collaboration avec des communes et des offices du tourisme, nous permettons aux petits et grands de tester leur équilibre.
-      pageSlug: contact
+      pageSlug: prestations
       illustration:
         image: ../../assets/images/association/initiation-slackline-parc.jpg
         alt: Enfants s'entraidant pour garder l'équilibre sur une slackline basse dans un parc
     - title: Des démonstrations
       text: L'association a régalé des yeux admiratifs lors de divers évènements.
-      pageSlug: contact
+      pageSlug: prestations
       illustration:
         image: ../../assets/images/association/demonstration-sous-un-dome.jpg
         alt: Highlineuse en robe à fleurs sur une ligne tendue sous la charpente d'un dôme, à côté des projecteurs

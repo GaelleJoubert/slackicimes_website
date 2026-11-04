@@ -18,6 +18,8 @@ const CONTRACT_PAGE_SLUGS = [
   "livre-d-or",
   "anciennes-editions-winter-festislack",
   "coupe-du-monde",
+  "prestations",
+  "slackcamp",
 ];
 
 const CONTRACT_PATHS = CONTRACT_PAGE_SLUGS.flatMap((slug) => [

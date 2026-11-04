@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import Container from "../../ui/Container.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import PhotoCollage from "../../ui/PhotoCollage.astro";
+import RuledList from "../../ui/RuledList.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  bivouac: CollectionEntry<"slackcamp">["data"]["bivouac"];
+  locale: Locale;
+}
+
+const { bivouac, locale } = Astro.props;
+---
+
+<section
+  aria-labelledby="bivouac-title"
+  class="bg-forest text-snow pt-section relative isolate overflow-hidden pb-28 md:pb-44"
+>
+  <Skyline
+    variant="background"
+    profiles={["pourri", "pourri", "pourri"]}
+    tone="dark"
+  />
+  <Container class="gap-block grid md:grid-cols-12 md:items-start">
+    <div class="gap-grid flex flex-col md:col-span-5">
+      <SectionIntro
+        id="bivouac-title"
+        title={bivouac.title}
+        eyebrow={bivouac.eyebrow}
+        theme="dark"
+      >
+        <HighlightedText
+          slot="title"
+          text={bivouac.title}
+          highlight={bivouac.titleAccent}
+          highlightClass="text-lichen font-medium italic"
+        />
+        <p class="lead text-snow">{bivouac.lead}</p>
+      </SectionIntro>
+      <div class="gap-grid grid grid-cols-2">
+        {bivouac.lists.map((list) => (
+          <div class="flex flex-col gap-3">
+            <h3 class="label-text text-sage">{list.title}</h3>
+            <RuledList items={list.items} tone="dark" />
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="md:col-span-7">
+      <PhotoCollage
+        photos={bivouac.photos}
+        label={bivouac.photosLabel}
+        locale={locale}
+        tone="dark"
+      />
+    </div>
+  </Container>
+  <Skyline variant="edge" fill="snow" profile="casse" isMirrored />
+</section>

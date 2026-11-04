@@ -1,7 +1,9 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, type SchemaContext } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { WORLD_CUP_SECTION_ID_LIST } from "./lib/world-cup";
+
+type ImageFunction = SchemaContext["image"];
 
 const nonEmptyText = z.string().min(1);
 const displayOrder = z.number().int().nonnegative();
@@ -253,6 +255,110 @@ const team = defineCollection({
     }),
 });
 
+const collagePhoto = (image: ImageFunction) =>
+  z.object({
+    image: image(),
+    alt: nonEmptyText,
+    shape: z.enum(["wide", "panorama", "half", "tall"]),
+    focus: z.enum(["center", "upper", "low"]).default("center"),
+  });
+
+const titledParagraph = z.object({ title: nonEmptyText, text: nonEmptyText });
+
+const services = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/services" }),
+  schema: ({ image }) => {
+    const accentedIntro = z.object({
+      title: nonEmptyText,
+      titleAccent: nonEmptyText,
+    });
+    return z.object({
+      quoteButton: nonEmptyText,
+      initiation: accentedIntro.extend({
+        eyebrow: nonEmptyText,
+        lead: nonEmptyText,
+        formats: z.array(titledParagraph).min(1),
+        highlights: z.array(nonEmptyText).min(1),
+        photosLabel: nonEmptyText,
+        photos: z.array(collagePhoto(image)).min(1),
+      }),
+      show: accentedIntro.extend({
+        paragraphs: z.array(nonEmptyText).min(1),
+        factsLabel: nonEmptyText,
+        facts: z
+          .array(z.object({ value: nonEmptyText, label: nonEmptyText }))
+          .min(1),
+        certification: titledParagraph,
+        photosLabel: nonEmptyText,
+        photos: z.array(collagePhoto(image)).min(1),
+      }),
+      process: accentedIntro.extend({
+        stepsLabel: nonEmptyText,
+        steps: z.array(titledParagraph).min(1),
+        reassurance: titledParagraph,
+      }),
+      quote: z.object({
+        eyebrow: nonEmptyText,
+        title: nonEmptyText,
+        lead: nonEmptyText,
+      }),
+    });
+  },
+});
+
+const slackcamp = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/slackcamp" }),
+  schema: ({ image }) => {
+    const illustration = z.object({ image: image(), alt: nonEmptyText });
+    const accentedIntro = z.object({
+      eyebrow: nonEmptyText,
+      title: nonEmptyText,
+      titleAccent: nonEmptyText,
+    });
+    return z.object({
+      zones: accentedIntro.omit({ eyebrow: true }).extend({
+        audienceLabel: nonEmptyText,
+        items: z
+          .array(
+            titledParagraph.extend({ audience: nonEmptyText, illustration }),
+          )
+          .min(1),
+      }),
+      stagesTeaser: accentedIntro.omit({ titleAccent: true }).extend({
+        lead: nonEmptyText,
+        linkLabel: nonEmptyText,
+        illustration,
+      }),
+      bivouac: accentedIntro.extend({
+        lead: nonEmptyText,
+        lists: z
+          .array(
+            z.object({
+              title: nonEmptyText,
+              items: z.array(nonEmptyText).min(1),
+            }),
+          )
+          .min(1),
+        photosLabel: nonEmptyText,
+        photos: z.array(collagePhoto(image)).min(1),
+      }),
+      access: accentedIntro.extend({
+        routes: z
+          .array(z.object({ label: nonEmptyText, text: nonEmptyText }))
+          .min(1),
+        gpsLabel: nonEmptyText,
+        mapButton: nonEmptyText,
+        plan: illustration,
+      }),
+      callToAction: z.object({
+        eyebrow: nonEmptyText,
+        title: nonEmptyText,
+        questionLink: nonEmptyText,
+      }),
+    });
+  },
+});
+
 const worldCup = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/world-cup" }),
   schema: ({ image }) => {
@@ -434,5 +540,7 @@ export const collections = {
   festival,
   association,
   team,
+  services,
+  slackcamp,
   worldCup,
 };

@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import ButtonIcon from "../../ui/ButtonIcon.astro";
+import Container from "../../ui/Container.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import RuledFacts from "../../ui/RuledFacts.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  teaser: CollectionEntry<"slackcamp">["data"]["stagesTeaser"];
+  facts: CollectionEntry<"pages">["data"]["keyFacts"];
+  factsLabel: string;
+  locale: Locale;
+}
+
+const SLACKCAMP_PAGE_SLUG = "slackcamp";
+const PHOTO_WIDTHS = [600, 1000];
+const PHOTO_SIZES = "(min-width: 768px) 500px, 100vw";
+
+const { teaser, facts, factsLabel, locale } = Astro.props;
+---
+
+<section
+  aria-labelledby="slackcamp-title"
+  class="bg-lichen py-section md:min-h-home-fold relative isolate overflow-hidden md:flex md:items-center"
+>
+  <Skyline
+    variant="background"
+    profiles={["montBlanc", "pourri", "casse"]}
+    tone="light"
+  />
+  <Container class="gap-block grid md:grid-cols-12 md:items-center">
+    <div class="gap-grid flex flex-col md:col-span-7">
+      <SectionIntro
+        id="slackcamp-title"
+        title={teaser.title}
+        eyebrow={teaser.eyebrow}
+      >
+        <p class="lead">{teaser.lead}</p>
+      </SectionIntro>
+      {facts && <RuledFacts facts={facts} label={factsLabel} columns="three" />}
+      <div>
+        <LinkButton href={localizedPath(SLACKCAMP_PAGE_SLUG, locale)}>
+          {teaser.linkLabel}
+          <ButtonIcon name="arrow" />
+        </LinkButton>
+      </div>
+    </div>
+    <div class="md:col-span-5">
+      <FramedPicture
+        image={teaser.illustration.image}
+        alt={teaser.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        class="h-40 md:h-120"
+      />
+    </div>
+  </Container>
+</section>

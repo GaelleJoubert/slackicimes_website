@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import Container from "../../ui/Container.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import InfoPanel from "../../ui/InfoPanel.astro";
+import PhotoCollage from "../../ui/PhotoCollage.astro";
+import RuledFacts from "../../ui/RuledFacts.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  show: CollectionEntry<"services">["data"]["show"];
+  locale: Locale;
+}
+
+const { show, locale } = Astro.props;
+---
+
+<section
+  aria-labelledby="show-title"
+  class="bg-forest text-snow py-section relative isolate overflow-hidden"
+>
+  <Skyline
+    variant="background"
+    profiles={["montBlanc", "montBlanc", "montBlanc"]}
+    tone="dark"
+    isMirrored
+  />
+  <Container class="gap-block grid md:grid-cols-12 md:items-start">
+    <div class="gap-grid flex flex-col md:col-span-5">
+      <SectionIntro id="show-title" title={show.title} theme="dark">
+        <HighlightedText
+          slot="title"
+          text={show.title}
+          highlight={show.titleAccent}
+          highlightClass="text-lichen font-medium italic"
+        />
+      </SectionIntro>
+      <RuledFacts facts={show.facts} label={show.factsLabel} tone="dark" />
+      <div class="lead gap-stack text-snow flex flex-col">
+        {show.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+      <InfoPanel
+        title={show.certification.title}
+        text={show.certification.text}
+      />
+    </div>
+    <div class="md:col-span-7">
+      <PhotoCollage
+        photos={show.photos}
+        label={show.photosLabel}
+        locale={locale}
+        tone="dark"
+      />
+    </div>
+  </Container>
+</section>

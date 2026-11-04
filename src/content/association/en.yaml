@@ -22,13 +22,13 @@ activities:
         alt: Highline freestyle athlete spinning under the line against a blue sky
     - title: Introductions
       text: Together with towns and tourist offices, we let children and adults test their balance.
-      pageSlug: contact
+      pageSlug: prestations
       illustration:
         image: ../../assets/images/association/initiation-slackline-parc.jpg
         alt: Children helping each other balance on a low slackline in a park
     - title: Demonstrations
       text: The association has delighted admiring audiences at many events.
-      pageSlug: contact
+      pageSlug: prestations
       illustration:
         image: ../../assets/images/association/demonstration-sous-un-dome.jpg
         alt: Highliner in a flowered dress on a line rigged under the frame of a dome, next to stage lights

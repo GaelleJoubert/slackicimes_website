@@ -22,6 +22,8 @@ const fr = {
     pastEditions: "Anciennes éditions",
     stages: "Stages",
     youthStages: "Stages jeunes",
+    slackcamp: "Le Slackcamp",
+    services: "Prestations",
     registrations: "Inscriptions",
     guestbook: "Livre d'or",
     contact: "Contact",
@@ -80,6 +82,12 @@ const fr = {
   pastEditions: {
     timelineLabel: "Frise des éditions",
     archiveTitle: "Les premières éditions en vidéo",
+  },
+  services: {
+    keyFactsLabel: "Nos prestations en bref",
+  },
+  slackcamp: {
+    keyFactsLabel: "Le Slackcamp en bref",
   },
   youthStages: {
     keyFactsLabel: "L'essentiel",
@@ -168,6 +176,8 @@ const en: UiStrings = {
     pastEditions: "Previous editions",
     stages: "Courses",
     youthStages: "Youth course",
+    slackcamp: "The Slackcamp",
+    services: "Services",
     registrations: "Registrations",
     guestbook: "Guestbook",
     contact: "Contact",
@@ -226,6 +236,12 @@ const en: UiStrings = {
   pastEditions: {
     timelineLabel: "Editions timeline",
     archiveTitle: "The first editions on video",
+  },
+  services: {
+    keyFactsLabel: "Our services at a glance",
+  },
+  slackcamp: {
+    keyFactsLabel: "The Slackcamp at a glance",
   },
   youthStages: {
     registerButton: "Registration",

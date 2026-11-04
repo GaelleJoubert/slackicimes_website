@@ -25,11 +25,13 @@ export const MAIN_NAVIGATION: NavigationItem[] = [
     pageSlug: "stages-highline",
     labelKey: "stages",
     children: [
+      { pageSlug: "slackcamp", labelKey: "slackcamp" },
       { pageSlug: "stages-jeunes", labelKey: "youthStages" },
       { pageSlug: "inscriptions", labelKey: "registrations" },
       { pageSlug: "livre-d-or", labelKey: "guestbook" },
     ],
   },
+  { pageSlug: "prestations", labelKey: "services" },
   { pageSlug: "contact", labelKey: "contact" },
 ];
 
@@ -38,6 +40,8 @@ export const FOOTER_SITE_LINKS: NavigationItem[] = [
   { pageSlug: "coupe-du-monde", labelKey: "worldCup" },
   { pageSlug: "winter-festislack", labelKey: "winterFestislack" },
   { pageSlug: "stages-highline", labelKey: "stages" },
+  { pageSlug: "slackcamp", labelKey: "slackcamp" },
+  { pageSlug: "prestations", labelKey: "services" },
 ];
 
 export const FOOTER_CONTACT_LINKS: NavigationItem[] = [
