@@ -11,6 +11,8 @@ permissions:
 
 env:
   STAGING_REPOSITORY: slackicimes/slackicimes.github.io
+  PRODUCTION_ORIGIN: https://www.slackicimes.org
+  STAGING_ORIGIN: https://slackicimes.github.io
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -38,6 +40,9 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+      # Link previews fetch og:image from these absolute URLs, and production does not host staging files.
+      - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+        run: find dist -name '*.html' -exec sed -i "s#$PRODUCTION_ORIGIN#$STAGING_ORIGIN#g" {} +
       - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
         uses: peaceiris/actions-gh-pages@v4
         with:
