@@ -366,6 +366,13 @@ const worldCup = defineCollection({
   loader: glob({ pattern: "*.yaml", base: "./src/content/world-cup" }),
   schema: ({ image }) => {
     const illustration = z.object({ image: image(), alt: nonEmptyText });
+    const qualifiedAthlete = z.object({
+      nameLines: z.tuple([nonEmptyText, nonEmptyText]),
+      country: nonEmptyText,
+      flag: image(),
+      profileUrl: z.url(),
+      photo: image().optional(),
+    });
     const titledText = z.object({ title: nonEmptyText, text: nonEmptyText });
     const titledList = z.object({
       title: nonEmptyText,
@@ -437,9 +444,17 @@ const worldCup = defineCollection({
           title: nonEmptyText,
           intro: nonEmptyText,
           announcement: nonEmptyText,
-          categories: z.array(nonEmptyText).min(1),
+          categories: z
+            .array(
+              z.object({
+                name: nonEmptyText,
+                athletes: z.array(qualifiedAthlete).default([]),
+              }),
+            )
+            .min(1),
           slotsPerCategory: z.number().int().positive(),
           placeholderLabel: nonEmptyText,
+          profileLinkLabel: nonEmptyText,
         }),
         live: z.object({
           badge: nonEmptyText,

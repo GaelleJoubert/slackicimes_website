@@ -1,0 +1,66 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image, Picture } from "astro:assets";
+import { athleteInitials } from "../../lib/world-cup";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
+
+interface Props {
+  nameLines: [string, string];
+  country: string;
+  flag: ImageMetadata;
+  profileUrl: string;
+  profileLinkLabel: string;
+  photo?: ImageMetadata;
+}
+
+const PHOTO_WIDTHS = [240, 480];
+const PHOTO_SIZES = "(min-width: 640px) 240px, 45vw";
+const FLAG_RENDER_WIDTH = 80;
+
+const { nameLines, country, flag, profileUrl, profileLinkLabel, photo } =
+  Astro.props;
+---
+
+<a
+  href={profileUrl}
+  target="_blank"
+  rel="noopener"
+  class:list={[
+    "rounded-card bg-cup-navy flex h-full flex-col overflow-hidden",
+    CLICKABLE_CARD_CLASSES,
+  ]}
+>
+  <div class="border-cup-pink relative border-b-4">
+    {photo ? (
+      <Picture
+        src={photo}
+        alt=""
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        formats={["avif", "webp"]}
+        class="block aspect-square w-full object-cover"
+      />
+    ) : (
+      <span
+        aria-hidden="true"
+        class="bg-cup-line font-display flex aspect-square items-center justify-center text-4xl font-semibold text-white"
+      >
+        {athleteInitials(nameLines.join(" "))}
+      </span>
+    )}
+    <Image
+      src={flag}
+      alt={country}
+      width={FLAG_RENDER_WIDTH}
+      class="absolute -bottom-5 left-1/2 size-10 -translate-x-1/2 rounded-full border-2 border-white object-cover"
+    />
+  </div>
+  <div class="pb-inline px-1 pt-7">
+    <p class="cup-athlete-name decoration-cup-pink-soft text-white underline-offset-4 group-hover:underline">
+      {nameLines.map((nameLine) => (
+        <span>{nameLine}</span>
+      ))}
+    </p>
+  </div>
+  <span class="sr-only">{profileLinkLabel}</span>
+</a>
