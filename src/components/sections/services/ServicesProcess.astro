@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatStepNumber } from "../../../lib/format";
+import Container from "../../ui/Container.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import InfoPanel from "../../ui/InfoPanel.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  process: CollectionEntry<"services">["data"]["process"];
+}
+
+const { process } = Astro.props;
+---
+
+<section class="py-section" aria-labelledby="process-title">
+  <Container class="gap-block flex flex-col">
+    <SectionIntro id="process-title" title={process.title}>
+      <HighlightedText
+        slot="title"
+        text={process.title}
+        highlight={process.titleAccent}
+        highlightClass="text-forest font-medium italic"
+      />
+    </SectionIntro>
+    <ol aria-label={process.stepsLabel} class="gap-grid grid md:grid-cols-3">
+      {process.steps.map((step, stepIndex) => (
+        <li class="border-slate flex flex-col gap-3 border-t-2 pt-5">
+          <span
+            aria-hidden="true"
+            class="font-heading text-forest text-4xl leading-none font-medium"
+          >
+            {formatStepNumber(stepIndex)}
+          </span>
+          <h3 class="card-title">{step.title}</h3>
+          <p class="text-graphite">{step.text}</p>
+        </li>
+      ))}
+    </ol>
+    <InfoPanel
+      title={process.reassurance.title}
+      text={process.reassurance.text}
+    />
+  </Container>
+</section>

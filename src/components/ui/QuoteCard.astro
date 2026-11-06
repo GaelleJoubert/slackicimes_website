@@ -1,0 +1,93 @@
+---
+import { authorInitial } from "../../lib/testimonial";
+
+export type QuoteTone = "lichen" | "moss";
+export type QuoteTextSize = "huge" | "extraLarge" | "large" | "base" | "small";
+type QuoteDensity = "regular" | "compact";
+
+interface Props {
+  author: string;
+  context: string;
+  tone: QuoteTone;
+  textSize: QuoteTextSize;
+  density?: QuoteDensity;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<
+  QuoteTone,
+  { card: string; mark: string; initial: string }
+> = {
+  lichen: {
+    card: "bg-lichen",
+    mark: "text-forest",
+    initial: "bg-snow text-forest",
+  },
+  moss: {
+    card: "bg-moss",
+    mark: "text-forest",
+    initial: "bg-forest text-snow",
+  },
+};
+
+const TEXT_SIZE_CLASSES: Record<QuoteTextSize, string> = {
+  huge: "text-2xl md:text-lg",
+  extraLarge: "text-xl md:text-lg",
+  large: "text-lg",
+  base: "text-base md:text-lg",
+  small: "text-sm md:text-lg",
+};
+
+const DENSITY_CLASSES: Record<QuoteDensity, string> = {
+  regular: "gap-stack p-card",
+  compact: "gap-stack p-tile",
+};
+
+const {
+  author,
+  context,
+  tone,
+  textSize,
+  density = "regular",
+  class: extraClasses,
+} = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<figure
+  class:list={[
+    "text-slate rounded-card md:rounded-card flex flex-col justify-center",
+    toneClasses.card,
+    DENSITY_CLASSES[density],
+    extraClasses,
+  ]}
+>
+  {density === "regular" && (
+    <span
+      aria-hidden="true"
+      class:list={[
+        "font-heading -mb-1 h-8 text-7xl leading-none md:h-12 md:text-8xl",
+        toneClasses.mark,
+      ]}
+    >
+      “
+    </span>
+  )}
+  <blockquote class:list={["flex flex-col gap-3", TEXT_SIZE_CLASSES[textSize]]}>
+    <slot />
+  </blockquote>
+  <figcaption class="flex items-center gap-2.5 font-semibold md:gap-3">
+    <span
+      aria-hidden="true"
+      class:list={[
+        "font-heading flex size-10 shrink-0 items-center justify-center rounded-full text-xl md:size-12 md:text-2xl",
+        toneClasses.initial,
+      ]}
+    >
+      {authorInitial(author)}
+    </span>
+    <span>
+      {author} · {context}
+    </span>
+  </figcaption>
+</figure>

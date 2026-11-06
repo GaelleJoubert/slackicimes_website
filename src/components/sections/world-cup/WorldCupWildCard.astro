@@ -1,0 +1,104 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import DotList from "../../ui/DotList.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  wildCard: WorldCupContent["athletes"]["wildCard"];
+}
+
+type TimelineEmphasis =
+  WorldCupContent["athletes"]["wildCard"]["timeline"][number]["emphasis"];
+
+interface MilestoneStyle {
+  rule: string;
+  date: string;
+  label: string;
+}
+
+const MILESTONE_STYLES: Record<TimelineEmphasis, MilestoneStyle> = {
+  regular: {
+    rule: "border-cup-line border-t-2 pt-4",
+    date: "text-cup-slate-muted",
+    label: "font-semibold",
+  },
+  highlight: {
+    rule: "border-cup-pink border-t-4 pt-3.5",
+    date: "text-cup-pink-soft",
+    label: "font-bold",
+  },
+  reserve: {
+    rule: "border-cup-line border-t-2 border-dashed pt-4",
+    date: "text-cup-slate-muted",
+    label: "text-cup-slate-muted",
+  },
+};
+
+const { wildCard } = Astro.props;
+const { videoFormat, rules, judging, submission } = wildCard;
+const videoGuidelines = [videoFormat, rules];
+---
+
+<div
+  id={WORLD_CUP_SECTION_IDS.wildCards}
+  class="bg-cup-ink rounded-card gap-block p-card flex scroll-mt-16 flex-col"
+>
+  <h3 class="cup-subsection-title md:text-4xl">{wildCard.title}</h3>
+  <ol class="gap-grid grid sm:grid-cols-3">
+    {wildCard.timeline.map((milestone) => {
+      const style = MILESTONE_STYLES[milestone.emphasis];
+      return (
+        <li class:list={["flex flex-col gap-1.5", style.rule]}>
+          <span
+            class:list={[
+              "text-xs font-bold tracking-widest uppercase",
+              style.date,
+            ]}
+          >
+            {milestone.date}
+          </span>
+          <p class={style.label}>{milestone.label}</p>
+        </li>
+      );
+    })}
+  </ol>
+  <div class="gap-block grid lg:grid-cols-3 lg:gap-grid">
+    {videoGuidelines.map((guideline) => (
+      <div class="gap-stack flex flex-col">
+        <h4 class="cup-card-title text-xl">{guideline.title}</h4>
+        <DotList
+          items={guideline.items}
+          size="small"
+          bulletTone="cupPink"
+          class="text-cup-soft"
+        />
+      </div>
+    ))}
+    <div class="gap-stack flex flex-col">
+      <h4 class="cup-card-title text-xl">{judging.title}</h4>
+      <dl class="divide-cup-line flex flex-col divide-y">
+        {judging.criteria.map((criterion) => (
+          <div class="flex justify-between gap-3 py-2.5 text-sm">
+            <dt class="text-cup-soft">{criterion.label}</dt>
+            <dd class="text-cup-sky font-bold whitespace-nowrap">
+              {criterion.points}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <p class="text-cup-slate-muted text-sm">{judging.note}</p>
+    </div>
+  </div>
+  <div class="border-cup-line gap-stack flex flex-col border-t pt-8 lg:flex-row lg:items-center lg:justify-between">
+    <p class="max-w-140 font-semibold">{submission.text}</p>
+    <div class="gap-inline flex flex-col sm:flex-row sm:flex-wrap">
+      <LinkButton href={submission.formUrl} variant="cupPrimary">
+        {submission.formLabel}
+      </LinkButton>
+      <LinkButton href={submission.rulesUrl} variant="cupSecondaryOnDark">
+        {submission.rulesLabel}
+      </LinkButton>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+---
+import { Picture } from "astro:assets";
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent, WorldCupVenue } from "./types";
+import WorldCupVenuePhoto from "./WorldCupVenuePhoto.astro";
+
+interface Props {
+  event: WorldCupContent["event"];
+  venue: WorldCupVenue;
+}
+
+const ILLUSTRATION_WIDTHS = [600, 1200];
+const ILLUSTRATION_SIZES = "(min-width: 1024px) 600px, 100vw";
+
+const { event, venue } = Astro.props;
+const [leadParagraph, ...otherParagraphs] = event.paragraphs;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.event} tone="surface">
+  <div class="gap-block flex flex-col">
+    <div class="gap-block grid items-center lg:grid-cols-2">
+      <CupSectionIntro
+        eyebrow={event.eyebrow}
+        title={event.title}
+        theme="light"
+      >
+        <p class="text-lg md:text-xl">{leadParagraph}</p>
+        {otherParagraphs.map((paragraph) => (
+          <p class="text-cup-muted">{paragraph}</p>
+        ))}
+      </CupSectionIntro>
+      <div class="hidden lg:block">
+        <Picture
+          src={event.illustration.image}
+          alt={event.illustration.alt}
+          widths={ILLUSTRATION_WIDTHS}
+          sizes={ILLUSTRATION_SIZES}
+          formats={["avif", "webp"]}
+          class="rounded-card h-130 w-full object-cover"
+        />
+      </div>
+    </div>
+    <ul class="gap-grid grid grid-cols-2 lg:grid-cols-4">
+      {event.stats.map((stat) => (
+        <li class="border-cup-navy flex flex-col gap-1.5 border-t-2 pt-4 md:pt-5">
+          <p
+            class:list={[
+              "cup-stat-value whitespace-nowrap",
+              stat.isHighlighted ? "text-cup-pink-strong" : "text-cup-navy",
+            ]}
+          >
+            {stat.value}
+          </p>
+          <p class="font-bold">{stat.label}</p>
+          <p class="text-cup-muted text-sm">{stat.detail}</p>
+        </li>
+      ))}
+    </ul>
+    <WorldCupVenuePhoto venue={venue} class="flex lg:hidden" />
+  </div>
+</CupSection>

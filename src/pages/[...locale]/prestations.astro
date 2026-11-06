@@ -1,0 +1,71 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import CallToActionBand from "../../components/sections/CallToActionBand.astro";
+import ServicesHero from "../../components/sections/services/ServicesHero.astro";
+import ServicesInitiation from "../../components/sections/services/ServicesInitiation.astro";
+import ServicesProcess from "../../components/sections/services/ServicesProcess.astro";
+import ServicesShow from "../../components/sections/services/ServicesShow.astro";
+import ButtonIcon from "../../components/ui/ButtonIcon.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import { getPageEntry, getSingleEntryContent } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, CONTACT_FORM_SECTION_ID } from "../../lib/site";
+import { withSectionAnchor } from "../../lib/url";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "prestations";
+const CONTACT_PAGE_SLUG = "contact";
+const QUOTE_SECTION_ID = "devis";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const { quoteButton, initiation, show, process, quote } = (
+  await getSingleEntryContent("services", locale)
+).data;
+const contactFormPath = withSectionAnchor(
+  localizedPath(CONTACT_PAGE_SLUG, locale),
+  CONTACT_FORM_SECTION_ID,
+);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <ServicesHero page={page.data} keyFactsLabel={strings.services.keyFactsLabel}>
+    <Intro />
+    <LinkButton slot="actions" href={`#${QUOTE_SECTION_ID}`}>
+      {quoteButton}
+      <ButtonIcon name="arrow" />
+    </LinkButton>
+  </ServicesHero>
+  <ServicesInitiation initiation={initiation} locale={locale} />
+  <ServicesShow show={show} locale={locale} />
+  <ServicesProcess process={process} />
+  <CallToActionBand
+    id={QUOTE_SECTION_ID}
+    eyebrow={quote.eyebrow}
+    title={quote.title}
+    lead={quote.lead}
+    edgeProfile="casse"
+  >
+    <LinkButton href={contactFormPath} variant="primaryOnDark">
+      {quoteButton}
+      <ButtonIcon name="arrow" />
+    </LinkButton>
+    <a href={`mailto:${CONTACT_EMAIL}`} class="text-link-on-dark">
+      {CONTACT_EMAIL}
+    </a>
+  </CallToActionBand>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import type { WorldCupContent } from "./types";
+import WorldCupShowcase from "./WorldCupShowcase.astro";
+
+interface Props {
+  hero: WorldCupContent["hero"];
+}
+
+const TITLE_ID = "coupe-du-monde-titre";
+
+const { hero } = Astro.props;
+const heroActions = [
+  {
+    href: `#${WORLD_CUP_SECTION_IDS.practicalInfo}`,
+    label: hero.primaryCta,
+    variant: "cupPrimary" as const,
+  },
+  {
+    href: `#${WORLD_CUP_SECTION_IDS.wildCards}`,
+    label: hero.secondaryCta,
+    variant: "cupSecondaryOnDark" as const,
+  },
+];
+---
+
+<WorldCupShowcase
+  hero={hero}
+  headingLevel="h1"
+  titleId={TITLE_ID}
+  actions={heroActions}
+  edgeFill="cupSurface"
+/>

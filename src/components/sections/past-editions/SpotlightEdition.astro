@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getGallery } from "../../../i18n/collections";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import PhotoGrid from "../../ui/PhotoGrid.astro";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+import VideoEmbed from "../../ui/VideoEmbed.astro";
+import EditionWithPoster from "./EditionWithPoster.astro";
+
+interface Props {
+  edition: CollectionEntry<"festivalEditions">;
+  dotTone: TimelineDotTone;
+  locale: Locale;
+}
+
+const { edition, dotTone, locale } = Astro.props;
+const {
+  title,
+  highlight,
+  videos,
+  gallery: gallerySlug,
+  galleryTitle,
+} = edition.data;
+const videoTitle = `${title} ${uiStrings(locale).video.videoSuffix}`;
+const gallery = gallerySlug ? await getGallery(gallerySlug, locale) : undefined;
+---
+
+<TimelineEntry
+  dotTone={dotTone}
+  dotOffset="card"
+  class="bg-forest text-snow rounded-card gap-block p-card flex flex-col"
+>
+  <EditionWithPoster edition={edition} theme="dark">
+    {highlight && <p class="subsection-title text-snow italic">{highlight}</p>}
+  </EditionWithPoster>
+  {videos.map((videoUrl) => (
+    <VideoEmbed videoUrl={videoUrl} title={videoTitle} locale={locale} />
+  ))}
+  {gallery && (
+    <div class="gap-stack flex flex-col">
+      {galleryTitle && <h3 class="card-title text-snow">{galleryTitle}</h3>}
+      <PhotoGrid photos={gallery.data.photos} />
+    </div>
+  )}
+</TimelineEntry>

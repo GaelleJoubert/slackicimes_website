@@ -1,0 +1,22 @@
+---
+interface Props {
+  steps: string[];
+  label: string;
+}
+
+const { steps, label } = Astro.props;
+---
+
+<ol aria-label={label} class="gap-grid grid md:grid-cols-3">
+  {steps.map((step, stepIndex) => (
+    <li class="border-slate flex items-baseline gap-3.5 border-t-2 pt-4 md:flex-col md:gap-2">
+      <span
+        aria-hidden="true"
+        class="font-heading text-forest w-5 shrink-0 text-3xl leading-none font-medium md:w-auto md:text-4xl"
+      >
+        {stepIndex + 1}
+      </span>
+      <span class="text-slate font-semibold">{step}</span>
+    </li>
+  ))}
+</ol>

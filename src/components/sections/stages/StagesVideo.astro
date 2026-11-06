@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import Container from "../../ui/Container.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+import VideoThumbnailLink from "../../ui/VideoThumbnailLink.astro";
+
+type StagesVideoContent = NonNullable<
+  CollectionEntry<"pages">["data"]["video"]
+>;
+
+interface Props {
+  video: StagesVideoContent;
+  locale: Locale;
+}
+
+const { video, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="bg-lake text-snow pt-section relative pb-24 md:pb-40">
+  <Container class="gap-block grid items-center md:grid-cols-2">
+    <VideoThumbnailLink
+      href={video.url}
+      thumbnail={video.thumbnail}
+      label={`${strings.video.watchOnYoutube}: ${video.title}`}
+    />
+    <SectionIntro
+      title={video.heading}
+      eyebrow={strings.video.eyebrow}
+      eyebrowTone="photo"
+      theme="dark"
+    >
+      <p class="text-snow">{video.text}</p>
+    </SectionIntro>
+  </Container>
+  <Skyline variant="edge" profile="casse" fill="moss" />
+</section>

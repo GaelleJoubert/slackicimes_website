@@ -1,0 +1,80 @@
+---
+import type { ImageMetadata } from "astro";
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import Carousel from "./Carousel.astro";
+import type { CarouselTone } from "./CarouselControls.astro";
+import CarouselSlide from "./CarouselSlide.astro";
+import FramedPicture from "./FramedPicture.astro";
+import PhotoSlide from "./PhotoSlide.astro";
+
+type CollageShape = "wide" | "panorama" | "half" | "tall";
+type CollageFocus = "center" | "upper" | "low";
+
+interface CollagePhoto {
+  image: ImageMetadata;
+  alt: string;
+  shape: CollageShape;
+  focus: CollageFocus;
+}
+
+interface Props {
+  photos: CollagePhoto[];
+  label: string;
+  locale: Locale;
+  tone?: CarouselTone;
+}
+
+const SHAPE_LAYOUTS: Record<
+  CollageShape,
+  { cell: string; image: string; sizes: string }
+> = {
+  wide: { cell: "col-span-2", image: "h-100", sizes: "700px" },
+  panorama: { cell: "col-span-2", image: "h-80", sizes: "700px" },
+  half: { cell: "", image: "h-75", sizes: "340px" },
+  tall: { cell: "", image: "h-105", sizes: "340px" },
+};
+
+const FOCUS_CLASSES: Record<CollageFocus, string> = {
+  center: "",
+  upper: "object-upper",
+  low: "object-low",
+};
+
+const PHOTO_WIDTHS = [400, 800, 1400];
+
+const { photos, label, locale, tone = "light" } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<div class="hidden grid-cols-2 gap-4 md:grid">
+  {photos.map((photo) => {
+    const layout = SHAPE_LAYOUTS[photo.shape];
+    return (
+      <div class={layout.cell}>
+        <FramedPicture
+          image={photo.image}
+          alt={photo.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={layout.sizes}
+          class:list={[layout.image, FOCUS_CLASSES[photo.focus]]}
+        />
+      </div>
+    );
+  })}
+</div>
+<Carousel
+  label={label}
+  roleDescription={strings.common.carouselRoleDescription}
+  previousLabel={strings.common.previousPhotoButton}
+  nextLabel={strings.common.nextPhotoButton}
+  tone={tone}
+  width="full"
+  class="md:hidden"
+>
+  {photos.map((photo) => (
+    <CarouselSlide>
+      <PhotoSlide image={photo.image} alt={photo.alt} />
+    </CarouselSlide>
+  ))}
+</Carousel>

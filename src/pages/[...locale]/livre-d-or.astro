@@ -1,0 +1,58 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import TestimonialCarousel from "../../components/sections/TestimonialCarousel.astro";
+import CalloutCard from "../../components/ui/CalloutCard.astro";
+import Container from "../../components/ui/Container.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "livre-d-or";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const testimonials = await getLocalizedCollection("testimonials", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <PageHero page={page.data} size="compact" />
+
+  <section class="pt-block pb-section">
+    <Container class="gap-block flex flex-col">
+      <TestimonialCarousel testimonials={testimonials} locale={locale} />
+      <CalloutCard
+        title={strings.testimonials.callToActionTitle}
+        paragraphs={[strings.testimonials.callToActionText]}
+      >
+        <div class="gap-inline flex flex-col">
+          <LinkButton
+            href={localizedPath("stages-highline", locale)}
+            variant="primaryOnDark"
+          >
+            {strings.common.seeStagesButton}
+          </LinkButton>
+          <LinkButton
+            href={localizedPath("contact", locale)}
+            variant="secondaryOnDark"
+          >
+            {strings.testimonials.writeUsButton}
+          </LinkButton>
+        </div>
+      </CalloutCard>
+    </Container>
+  </section>
+</BaseLayout>

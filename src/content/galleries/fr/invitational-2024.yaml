@@ -1,0 +1,61 @@
+photos:
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-01.jpg,
+      alt: "Highlineuse en équilibre sur la ligne, vue d'en haut au dessus de la neige",
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-02.jpg,
+      alt: Skieur freestyle en plein saut dans le ciel au dessus des sommets,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-03.jpg,
+      alt: Athlète souriant en baudrier sur une crête enneigée,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-04.jpg,
+      alt: Athlète sac au dos face au lever du soleil sur les montagnes,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-05.jpg,
+      alt: Athlète en doudoune sur une pente enneigée au soleil,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-06.jpg,
+      alt: "Le cirque du Fond Blanc enneigé, traversé par la highline de 570 mètres",
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-07.jpg,
+      alt: Silhouette d'un athlète en figure aérienne sous un ciel nuageux,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-08.jpg,
+      alt: Highline tendue entre les rochers d'une crête enneigée,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-09.jpg,
+      alt: Highlineur traversant très haut au dessus des sommets enneigés,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-10.jpg,
+      alt: Athlète en saut sous la ligne devant un ciel chargé,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-11.jpg,
+      alt: La longue ligne traversant le cirque sous un ciel couvert,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-12.jpg,
+      alt: Skieuse freestyle en tenue rouge en plein saut,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-13.jpg,
+      alt: Parapente survolant les rochers enneigés du cirque,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-14.jpg,
+      alt: Skieuse en rouge sautant au dessus de la pente enneigée,
+    }
+  - {
+      image: ../../../assets/images/festival/invitational-2024/photo-15.jpg,
+      alt: Highlineur marchant sur la ligne près de la crête rocheuse,
+    }

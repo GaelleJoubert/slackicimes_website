@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import SlackcampZoneCard from "./SlackcampZoneCard.astro";
+import SlackcampZoneDisclosure from "./SlackcampZoneDisclosure.astro";
+
+interface Props {
+  zones: CollectionEntry<"slackcamp">["data"]["zones"];
+}
+
+const { zones } = Astro.props;
+---
+
+<section class="pb-section" aria-label={zones.title}>
+  <Container>
+    <div class="gap-grid flex flex-col md:hidden">
+      {zones.items.map((zone, zoneIndex) => (
+        <SlackcampZoneDisclosure
+          zone={zone}
+          audienceLabel={zones.audienceLabel}
+          isOpen={zoneIndex === 0}
+        />
+      ))}
+    </div>
+    <ul class="gap-grid hidden md:grid md:grid-cols-3">
+      {zones.items.map((zone) => (
+        <li>
+          <SlackcampZoneCard zone={zone} audienceLabel={zones.audienceLabel} />
+        </li>
+      ))}
+    </ul>
+  </Container>
+</section>

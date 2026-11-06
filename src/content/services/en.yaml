@@ -1,0 +1,73 @@
+quoteButton: Request a quote
+initiation:
+  eyebrow: For everyone, from age 3
+  title: Slackline introduction
+  titleAccent: Slackline
+  lead: "Depending on your event and your audience, two formats are possible:"
+  formats:
+    - title: Open access slack park
+      text: The public comes and goes freely, and everyone tries the lines at their own pace. Our instructors are there to advise and support.
+    - title: Lessons
+      text: Sessions in small groups, with about one instructor for 10 people. Ideal for schools, holiday clubs and groups.
+  highlights:
+    - All equipment is provided.
+    - "No trees needed: we can adapt to your ground."
+    - 3 to 15 slacklines, depending on the space and the audience.
+    - Qualified instructors.
+  photosLabel: Photos of slackline introductions
+  photos:
+    - image: ../../assets/images/prestations/enfants-au-bord-du-lac.jpg
+      alt: Children balancing on low slacklines by a lake
+      shape: wide
+    - image: ../../assets/images/prestations/fille-sur-portiques-devant-le-village.jpg
+      alt: A girl walking a slackline on A-frames in front of a village house
+      shape: half
+    - image: ../../assets/images/prestations/enfants-sur-portiques-en-montagne.jpg
+      alt: Children trying slackline on A-frames in the mountains
+      shape: half
+    - image: ../../assets/images/prestations/initiation-sur-la-pelouse-du-chateau.jpg
+      alt: Slackline introduction on the lawn of a castle, with mountains behind
+      shape: panorama
+      focus: low
+show:
+  title: Highline show and demo
+  titleAccent: Highline
+  paragraphs:
+    - "A crossing above the village square, freestyle highline, or a show created for your event: we adapt to what you have in mind!"
+    - A highline brings a fresh look to a familiar place, and sets young and old dreaming.
+  factsLabel: Highline dimensions
+  facts:
+    - { value: From 8 m, label: Height }
+    - { value: 20 to 800 m, label: Length }
+  certification:
+    title: A qualified and insured team
+    text: Our whole team holds the CQP cordiste rope access qualification and the ISA (International Slackline Association) Rigger certification. Every service is covered by our insurance.
+  photosLabel: Photos of highline shows
+  photos:
+    - image: ../../assets/images/association/demonstration-sous-un-dome.jpg
+      alt: Highliner in a flowered dress under a dome, lit by stage lights
+      shape: wide
+    - image: ../../assets/images/prestations/highlineur-au-dessus-des-toits.jpg
+      alt: Highliner above the roofs of a building in town
+      shape: tall
+    - image: ../../assets/images/association/demonstration-mur-escalade.jpg
+      alt: Highliner setting off from the top of a climbing wall
+      shape: tall
+process:
+  title: Request your quote
+  titleAccent: quote
+  stepsLabel: The steps of a quote
+  steps:
+    - title: Send us your needs
+      text: "The place, the date, the expected audience, your constraints and what interests you: introduction, show, or both."
+    - title: We study your site
+      text: First from photos and satellite views, we make an initial estimate of what is possible.
+    - title: We confirm on site
+      text: A physical site visit is required before any final quote.
+  reassurance:
+    title: We reply quickly
+    text: We build your project together, based on what you have in mind and what your venue allows.
+quote:
+  eyebrow: Free quote
+  title: Let's talk about your event
+  lead: We mostly work in the Rhône Alpes region, and we travel further if needed.

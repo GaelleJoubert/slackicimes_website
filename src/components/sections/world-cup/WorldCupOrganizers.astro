@@ -1,0 +1,58 @@
+---
+import { Picture } from "astro:assets";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import ArrowSquare from "../../ui/ArrowSquare.astro";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  organizers: WorldCupContent["organizers"];
+  locale: Locale;
+}
+
+const ASSOCIATION_PAGE_SLUG = "association";
+const ILLUSTRATION_WIDTHS = [600, 1200];
+const ILLUSTRATION_SIZES = "(min-width: 1024px) 600px, 100vw";
+
+const { organizers, locale } = Astro.props;
+const [introParagraph, ...cardParagraphs] = organizers.paragraphs;
+---
+
+<CupSection tone="white">
+  <div class="gap-block grid items-center lg:grid-cols-2">
+    <Picture
+      src={organizers.illustration.image}
+      alt={organizers.illustration.alt}
+      widths={ILLUSTRATION_WIDTHS}
+      sizes={ILLUSTRATION_SIZES}
+      formats={["avif", "webp"]}
+      class="rounded-card h-72 w-full object-cover md:h-120"
+    />
+    <CupSectionIntro
+      eyebrow={organizers.eyebrow}
+      title={organizers.title}
+      theme="light"
+      titleSize="compact"
+    >
+      <p class="text-cup-muted">{introParagraph}</p>
+      <a
+        href={localizedPath(ASSOCIATION_PAGE_SLUG, locale)}
+        class:list={[
+          "bg-cup-surface rounded-card text-cup-ink p-card gap-stack flex flex-col",
+          CLICKABLE_CARD_CLASSES,
+        ]}
+      >
+        <span class="cup-card-title decoration-cup-pink-strong underline-offset-5 group-hover:underline">
+          {organizers.linkLabel}
+        </span>
+        {cardParagraphs.map((paragraph) => (
+          <span class="text-cup-muted text-sm">{paragraph}</span>
+        ))}
+        <ArrowSquare tone="cup" class="self-end" />
+      </a>
+    </CupSectionIntro>
+  </div>
+</CupSection>

@@ -1,0 +1,75 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  programme: WorldCupContent["programme"];
+}
+
+type DayEmphasis = WorldCupContent["programme"]["days"][number]["emphasis"];
+
+interface DayStyle {
+  rule: string;
+  date: string;
+  title: string;
+  text: string;
+}
+
+const DAY_STYLES: Record<DayEmphasis, DayStyle> = {
+  regular: {
+    rule: "border-cup-line border-t-2 pt-5",
+    date: "text-cup-sky",
+    title: "text-white",
+    text: "text-cup-soft",
+  },
+  highlight: {
+    rule: "border-cup-pink border-t-4 pt-4.5",
+    date: "text-cup-pink-soft",
+    title: "text-white",
+    text: "text-white",
+  },
+  reserve: {
+    rule: "border-cup-line border-t-2 border-dashed pt-5",
+    date: "text-cup-slate-muted",
+    title: "text-cup-slate-muted",
+    text: "text-cup-slate-muted",
+  },
+};
+
+const { programme } = Astro.props;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.programme} tone="navy">
+  <div class="gap-block flex flex-col">
+    <CupSectionIntro
+      eyebrow={programme.eyebrow}
+      title={programme.title}
+      theme="dark"
+    >
+      <p class="text-cup-soft">{programme.note}</p>
+    </CupSectionIntro>
+    <ol class="gap-grid grid sm:grid-cols-2 lg:grid-cols-5">
+      {programme.days.map((day) => {
+        const style = DAY_STYLES[day.emphasis];
+        return (
+          <li class:list={["flex flex-col gap-2.5", style.rule]}>
+            <span
+              class:list={[
+                "text-xs font-bold tracking-widest uppercase",
+                style.date,
+              ]}
+            >
+              {day.date}
+            </span>
+            <h3 class:list={["cup-card-title text-xl", style.title]}>
+              {day.title}
+            </h3>
+            <p class:list={["text-sm", style.text]}>{day.text}</p>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</CupSection>

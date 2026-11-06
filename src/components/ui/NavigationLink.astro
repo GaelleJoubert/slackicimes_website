@@ -1,0 +1,34 @@
+---
+import type { HeaderTone } from "../sections/header-tone";
+
+interface Props {
+  href: string;
+  isCurrentPage: boolean;
+  tone: HeaderTone;
+}
+
+const TONE_CLASSES: Record<HeaderTone, { current: string; other: string }> = {
+  light: {
+    current: "text-slate underline decoration-coral underline-offset-6",
+    other: "text-slate hover:underline underline-offset-6",
+  },
+  dark: {
+    current: "text-snow underline decoration-coral-light underline-offset-6",
+    other: "text-snow hover:underline underline-offset-6",
+  },
+};
+
+const { href, isCurrentPage, tone } = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<a
+  href={href}
+  aria-current={isCurrentPage ? "page" : undefined}
+  class:list={[
+    "block px-3 py-3 whitespace-nowrap transition-colors",
+    isCurrentPage ? toneClasses.current : toneClasses.other,
+  ]}
+>
+  <slot />
+</a>

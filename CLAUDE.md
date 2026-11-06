@@ -84,20 +84,20 @@ are fine, three identical blocks are not. YAGNI unless the change is already pla
 
 Run `ls` for the live tree. Tests live under `tests/`, mirroring `src/lib/`.
 
-| Artifact             | Location                      | Notes                                              |
-|:---------------------|:------------------------------|:---------------------------------------------------|
-| Routes               | `src/pages/`, `src/pages/en/` | thin files: pick content, compose sections         |
-| Layouts              | `src/layouts/`                | `BaseLayout.astro` owns `<head>` and SEO tags      |
-| UI components        | `src/components/ui/`          | presentational building blocks                     |
-| Sections             | `src/components/sections/`    | page sections composed from ui components          |
-| Content              | `src/content/`                | collections with Zod schemas, one entry per locale |
-| Localization         | `src/i18n/`                   | locales, UI strings, route mapping                 |
-| Pure logic           | `src/lib/`                    | SEO, structured data, URL helpers                  |
-| Site constants       | `src/lib/site.ts`             | origin, organization data, social links            |
-| Design tokens        | `src/styles/global.css`       | Tailwind `@theme` block                            |
-| Images               | `src/assets/images/`          | optimized at build through `astro:assets`          |
-| Static files         | `public/`                     | `CNAME`, favicons: files that need a fixed URL     |
-| Wix reference        | `migration/`                  | read only inventory of the old site                |
+| Artifact       | Location                   | Notes                                               |
+| :------------- | :------------------------- | :-------------------------------------------------- |
+| Routes         | `src/pages/[...locale]/`   | thin files: pick content, compose sections          |
+| Layouts        | `src/layouts/`             | `BaseLayout.astro` owns `<head>` and SEO tags       |
+| UI components  | `src/components/ui/`       | presentational building blocks                      |
+| Sections       | `src/components/sections/` | page sections composed from ui components           |
+| Content        | `src/content/`             | collections with Zod schemas, one entry per locale  |
+| Localization   | `src/i18n/`                | locales, UI strings, route mapping                  |
+| Pure logic     | `src/lib/`                 | SEO, structured data, URL helpers                   |
+| Site constants | `src/lib/site.ts`          | origin, organization data, social links             |
+| Design tokens  | `src/styles/global.css`    | Tailwind `@theme` block                             |
+| Images         | `src/assets/images/`       | optimized at build through `astro:assets`           |
+| Static files   | `public/`                  | `robots.txt`, favicons: files that need a fixed URL |
+| Wix reference  | `migration/`               | read only inventory of the old site                 |
 
 Dependencies point inward: pages use layouts, sections and content; sections use ui components;
 everything may use `lib/` and `i18n/`; `lib/` imports nothing from the rest of the project.
@@ -127,22 +127,164 @@ decision from the user.
   images.
 - `public/` is only for files that must keep a fixed URL. Do not put content images there.
 
-## UI components
+## Design system: Crête
 
-For links styled as buttons and for actions, use the shared components in `src/components/ui/`;
-never style a raw `<a>` or `<button>` as a button inside a section. If no shared component fits,
-add one there.
+The V2 site follows the design system « Crête » (Claude Design canvas
+https://claude.ai/artifact/MJQquWWGY4BDuNo114r1wn, board "Design system « Crête »"; the
+Accueil and Stages highline boards are the reference pages). A calm system that lets the mountain
+speak: soft corners, flat colors, no shadows, light typography, large photos, mountain ridges.
 
-## Design tokens and responsive
+When the canvas and this file disagree, this file wins; flag the gap to the user.
+
+### Principles
+
+- Soft: slightly rounded corners, never pills or sharp boxes.
+- Flat: no shadow anywhere. Depth comes from flat color blocks, 1px rules and white space.
+- Natural: one family of greens from light to deep. Sections alternate these flat colors; coral is
+  reserved for actions.
+- Photo first: images take the space, without frame or offset. Text sits beside or below a
+  photo, rarely on top of it.
+
+### Colors
+
+Defined once in the `@theme` block of `src/styles/global.css`. Use the generated utilities
+(`bg-forest`, `text-slate`), never a hex value in a component.
+
+| Token          | Hex       | Role                                             |
+| :------------- | :-------- | :----------------------------------------------- |
+| `snow`         | `#F6F5F1` | page background, text and buttons on dark blocks |
+| `moss`         | `#E4EBDA` | fill of clickable cards, tabs, callouts          |
+| `lichen`       | `#C8D8B0` | light section background                         |
+| `rule`         | `#C9D1C2` | 1px rules and outlines                           |
+| `stone`        | `#59666A` | captions, labels                                 |
+| `graphite`     | `#3B484C` | long paragraphs on light backgrounds             |
+| `slate`        | `#1D2A2E` | text, secondary buttons, arrow squares           |
+| `forest`       | `#2E463B` | dark section, eyebrows on light backgrounds      |
+| `lake`         | `#2D6A73` | dark section, key figures band, focus ring       |
+| `sage`         | `#C9D4C3` | secondary text on dark blocks                    |
+| `coral`        | `#B5492F` | actions only: primary button, link underline     |
+| `coral-strong` | `#9C3C25` | primary button hover                             |
+| `coral-light`  | `#E58A6F` | link underline on dark blocks                    |
+
+- Coral never marks information.
+- Every text color pair passes WCAG AA (4.5:1, 3:1 from 24px). Check new pairs before using them.
+  Two pairs fail and are banned for small text: `stone` on `lichen` (use `graphite`) and `sage` on
+  `lake` (use `snow`).
+
+### Typography
+
+Two families, loaded with `@fontsource`: Fraunces (variable, with italic) for the voice,
+Hanken Grotesk for information. Sections pick a role class or component; they never combine raw
+size and weight utilities.
+
+| Role          | Font and weight     | Size / line height (desktop) |
+| :------------ | :------------------ | :--------------------------- |
+| Hero title    | Fraunces 500        | 168 / 0.88, home only        |
+| Page title    | Fraunces 500        | 88 to 112 / 0.92             |
+| Section title | Fraunces 580        | 48 to 52 / 1.05              |
+| Card title    | Fraunces 580        | 26 to 28 / 1.15              |
+| Accent        | Fraunces 500 italic | in titles, forest color      |
+| Key figure    | Fraunces 500 or 580 | 26 to 36 / 1                 |
+| Lead          | Hanken 400          | 20 / 1.55                    |
+| Body          | Hanken 400          | 17 / 1.65                    |
+| Eyebrow       | Hanken 600 capitals | 13, letter spacing 0.14em    |
+| Label         | Hanken capitals     | 12, letter spacing 0.12em    |
+| Caption       | Hanken 400          | 14 / 1.5                     |
+
+Every eyebrow starts with the line and mountain glyph (a slackline over a ridge). Titles shrink on
+phones (page title about 64, section title 36).
+
+### Shapes
+
+- Radius `control` (6px): buttons, inputs, arrow squares, tabs, small panels.
+- Radius `card` (10px): cards and photos inside the content.
+- No radius: photos that touch the edge of the screen.
+- Rules are 1px in `rule`. A block title may carry a 2px slate rule above it.
+- No drop shadow, no offset frame, no gradient (the only gradient allowed is the dark shade that
+  keeps text readable over the bottom of the hero photo). Tailwind's default shadows stay
+  disabled.
+
+### Skylines
+
+Mountain ridges replace straight lines. The profiles live in `src/lib/skylines.ts` (drawn on a
+1440 × 100 grid) and render through the shared `Skyline` component; never paste a path into a
+page or section.
+
+- Profiles: `crete` (the original ridge), `montBlanc` (Mont Blanc massif seen from Les Arcs),
+  `pourri` (Mont Pourri from Arc 1800), `casse` (Grande Casse, Vanoise). Vary profiles from one
+  section to the next; a profile may be mirrored horizontally.
+- Divider: a straight separator between two content blocks may become a ridge: 2px slate stroke,
+  full content width, 40px high (24px on phones). The 1px rules of tables, lists and key facts
+  stay straight.
+- Edge: the bottom of a colored block may follow a ridge filled with the next block's color,
+  72px high (43px on phones). Once or twice per page, so it stays an event. Leave enough bottom
+  padding that the ridge never touches content.
+- Background: a colored block may carry 1 to 3 white ridges behind its content: 1.5px strokes,
+  each one lower and fainter than the previous (85, 45, 20% opacity on lichen; 16, 9, 5% on
+  forest or lake). They never sit under long text without a contrast check.
+- Hosts: an `edge` sits at the bottom of a `relative` block; a `background` needs a
+  `relative isolate overflow-hidden` block so the ridges stay behind the content.
+- Skylines are decorative: `aria-hidden="true"`, no interaction, strokes with
+  `vector-effect="non-scaling-stroke"` so they keep their width when stretched.
+
+### Clickable or not
+
+Without shadows, the look alone must still tell a phone user what reacts to a finger.
+Interactive and informative elements never share a cue.
+
+- Buttons are filled or outlined rectangles with radius `control`, at least 48px high. Three
+  levels: `primary` (coral fill, white text, one per section), `secondary` (slate 1.5px outline,
+  fills slate on hover), and a text link for low priority. On dark blocks: `onDark` (snow fill,
+  slate text) and a text link underlined in light coral.
+- A clickable card is a moss fill (snow on a lichen section) with radius `card` and a 44px slate
+  arrow square in a corner: the whole card opens a page. On hover or tap the square turns lake
+  and the title gets a coral underline. A clickable card has no outline.
+- An outlined square (slate 1.5px, radius `control`) announces another action: `+` unfolds a
+  disclosure, play, phone, external link. It fills slate once a disclosure is open.
+- Links inside text use `.text-link` (`.text-link-on-dark` on dark blocks): always underlined in
+  coral. Navigation lists (header, footers, section bars) are exempt.
+- Information lies flat: 1px rules, square forest bullets, figures in Fraunces, no fill, no
+  arrow, no coral. A moss panel without an arrow square is a callout, not a link. Photos that are
+  not links have no frame and no badge.
+- No pills for information: eyebrows are the glyph plus capitals, facts are plain text separated
+  by rules or dots.
+- Keyboard focus shows a lake ring on every interactive element.
+- For links styled as buttons and for actions, use the shared components in
+  `src/components/ui/`; never style a raw `<a>` or `<button>` inside a section. If no shared
+  component fits, add one there.
+
+### World Cup pages
+
+The World Cup pages keep their own identity: Clash Display and Inter, and the `cup-*` colors
+(navy, ink, pink, sky, surface). They follow the Crête shapes and behaviors: `control` and `card`
+radii, no shadows, information on rules, eyebrows with the glyph, ridge edges, arrow squares for
+clickable cards and outlined squares for external links. Pink marks actions (buttons use
+`cup-pink-strong` for contrast) and a few highlights (final day, deadline, prize figure). The
+approved mockup is the "Coupe du monde" page of the Crête canvas.
+
+### Tokens and responsive
 
 - Mobile first: base utility classes target phones; `sm:`, `md:`, `lg:` only enlarge. Check every
   change at 375px wide before desktop.
-- Colors, fonts, font sizes, spacing scale, radii, shadows and breakpoints are defined once in the
-  `@theme` block of `src/styles/global.css`. Use the utilities they generate.
-- Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`, `w-[372px]`) or inline `style`
-  attributes. If no token fits, add one to `@theme`, keeping the existing scale.
-- Typography roles (page title, section title, body, caption) are component classes or components;
-  sections pick a role, they do not combine raw size and weight utilities.
+- On mobile, each section should fit one screen when possible: at 375 × 812, a section stays within
+  the viewport minus the sticky header (about 740px). Rearrange the mobile layout (smaller media,
+  side by side blocks, a carousel) rather than letting a section run over several screens.
+- Colors, fonts, font sizes, spacing, radii and breakpoints are defined once in the `@theme`
+  block of `src/styles/global.css`. Never use arbitrary values (`p-[13px]`, `text-[#1a1a1a]`) or
+  inline `style` attributes. If no token fits, add one to `@theme`, keeping the existing scale.
+- Spacing comes from eight named tokens that grow on desktop by themselves (never add an `md:`
+  size to them). Generous white space wins: when in doubt, take the larger role. Values are
+  phone, then desktop.
+  - `section` (72, 128): vertical padding of every section (`py-section`). When two sections in
+    a row share a background, the second one drops its top padding.
+  - `page-top` (64, 120): top padding of a page's first section, under the header.
+  - `block` (48, 72): between big groups inside a section, such as an intro and its grid.
+  - `stack` (16, 24): between the elements of a text group: eyebrow, title, paragraphs, buttons.
+  - `grid` (24, 32): between cards or tiles in a grid or list.
+  - `card` (28, 40) and `tile` (20, 24): inner padding of panels and large cards, of small cards
+    and tiles.
+  - `inline` (12, 16): between items in a row, such as buttons side by side.
+- Content width: 1280px maximum, with 40px side padding on desktop and 20px on phones.
 
 ## Localization
 
@@ -169,7 +311,10 @@ add one there.
 
 ## Git
 
-- `main` is the release branch (every push deploys): reach it only through pull requests.
+- `dev` is the integration branch and the base for local work: branch from `dev` and open every
+  pull request against `dev`.
+- `main` is the release branch (every push deploys): it only receives pull requests from `dev`,
+  opened by the user when a release is ready.
 - Commit messages and PR titles: `type: Capitalized sentence`, with `fix`, `feat`, `refactor` or
   `chore` (e.g. `fix: Restore the English title of the festival page`).
 
@@ -189,8 +334,8 @@ npm scripts only, with the Node version from `.nvmrc`:
 
 Claude may run the dev server and builds, and look at pages in the built-in browser to compare them
 with the Wix site (prefer the `agent-browser` skill over raw Playwright). Claude never deploys,
-never pushes to `main`, and never changes DNS, GitHub Pages settings or third-party accounts:
-those belong to the user.
+never pushes to `main` or `dev`, never opens a pull request against `main`, and never changes DNS,
+GitHub Pages settings or third-party accounts: those belong to the user.
 
 ### Definition of done
 

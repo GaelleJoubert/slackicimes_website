@@ -1,0 +1,20 @@
+---
+import Stat from "./Stat.astro";
+
+interface KeyFact {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  facts: KeyFact[];
+}
+
+const { facts } = Astro.props;
+---
+
+<dl class="bg-forest text-snow rounded-card gap-grid p-card grid grid-cols-2 md:grid-cols-4">
+  {facts.map((fact) => (
+    <Stat value={fact.value} label={fact.label} />
+  ))}
+</dl>

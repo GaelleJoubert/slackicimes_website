@@ -1,0 +1,26 @@
+---
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import CupSection from "../../ui/CupSection.astro";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import type { WorldCupContent } from "./types";
+import WorldCupLiveResults from "./WorldCupLiveResults.astro";
+import WorldCupQualifiedAthletes from "./WorldCupQualifiedAthletes.astro";
+
+interface Props {
+  results: WorldCupContent["results"];
+}
+
+const { results } = Astro.props;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.results} tone="surface">
+  <div class="gap-block flex flex-col">
+    <CupSectionIntro
+      eyebrow={results.eyebrow}
+      title={results.title}
+      theme="light"
+    />
+    <WorldCupQualifiedAthletes qualified={results.qualified} />
+    <WorldCupLiveResults live={results.live} />
+  </div>
+</CupSection>

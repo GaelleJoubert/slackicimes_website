@@ -1,0 +1,80 @@
+---
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { withSectionAnchor } from "../../../lib/url";
+import ArrowSquare from "../../ui/ArrowSquare.astro";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
+import Container from "../../ui/Container.astro";
+
+type HomeContent = CollectionEntry<"home">["data"];
+type ImageFocus = HomeContent["highlights"][number]["imageFocus"];
+
+interface Props {
+  highlights: HomeContent["highlights"];
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [240, 480, 800];
+const PHOTO_SIZES = "(min-width: 768px) 400px, 96px";
+
+const IMAGE_FOCUS_CLASSES: Record<ImageFocus, string> = {
+  center: "",
+  upper: "object-upper",
+  highRight: "object-high-right",
+};
+
+const { highlights, locale } = Astro.props;
+const cards = highlights.map((highlight) => ({
+  ...highlight,
+  href: withSectionAnchor(
+    localizedPath(highlight.pageSlug, locale),
+    highlight.sectionId,
+  ),
+}));
+---
+
+<section class="py-section">
+  <Container>
+    <ul class="gap-grid grid md:grid-cols-3">
+      {cards.map((card) => (
+        <li>
+          <a
+            href={card.href}
+            class:list={[
+              "bg-moss rounded-card text-slate flex h-full items-center overflow-hidden md:flex-col md:items-stretch",
+              CLICKABLE_CARD_CLASSES,
+            ]}
+          >
+            <span class="w-24 shrink-0 self-stretch md:h-70 md:w-full">
+              <Picture
+                src={card.illustration.image}
+                alt={card.illustration.alt}
+                widths={PHOTO_WIDTHS}
+                sizes={PHOTO_SIZES}
+                formats={["avif", "webp"]}
+                class:list={[
+                  "size-full object-cover",
+                  IMAGE_FOCUS_CLASSES[card.imageFocus],
+                ]}
+              />
+            </span>
+            <span class="flex flex-1 items-center gap-3 p-4 md:flex-col md:items-stretch md:gap-3 md:p-6">
+              <span class="flex flex-1 flex-col gap-1.5 md:gap-3">
+                <span class="eyebrow-text text-forest">{card.eyebrow}</span>
+                <span class="card-title decoration-coral text-xl underline-offset-5 group-hover:underline md:text-card">
+                  {card.title}
+                </span>
+                <span class="text-graphite hidden text-base md:block">
+                  {card.text}
+                </span>
+              </span>
+              <ArrowSquare class="md:self-end" />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Container>
+</section>

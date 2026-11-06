@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
+import Container from "../../ui/Container.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+import YouthDayCard, { type DayTone } from "./YouthDayCard.astro";
+
+type ProgramItem =
+  CollectionEntry<"stages">["data"]["program"]["items"][number];
+
+interface Props {
+  title: string;
+  intro: string;
+  days: ProgramItem[];
+  locale: Locale;
+}
+
+const DAY_TONE: DayTone = {
+  card: "bg-snow",
+  label: "light",
+  title: "text-slate",
+};
+
+const { title, intro, days, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline
+    variant="background"
+    profiles={["crete"]}
+    tone="light"
+    class="translate-y-10 md:translate-y-16"
+  />
+  <Container class="flex flex-col gap-block">
+    <div class="max-w-190">
+      <SectionIntro title={title}>
+        <p class="text-graphite">{intro}</p>
+      </SectionIntro>
+    </div>
+    <Carousel
+      label={title}
+      roleDescription={strings.common.carouselRoleDescription}
+      previousLabel={strings.youthStages.previousDayButton}
+      nextLabel={strings.youthStages.nextDayButton}
+      width="full"
+      class="md:hidden"
+    >
+      {days.map((day) => (
+        <CarouselSlide>
+          <YouthDayCard day={day} tone={DAY_TONE} />
+        </CarouselSlide>
+      ))}
+    </Carousel>
+    <ul class="gap-grid hidden md:grid md:grid-cols-2 lg:grid-cols-4">
+      {days.map((day) => (
+        <li>
+          <YouthDayCard day={day} tone={DAY_TONE} />
+        </li>
+      ))}
+    </ul>
+  </Container>
+</section>

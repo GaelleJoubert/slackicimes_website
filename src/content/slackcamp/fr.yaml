@@ -1,0 +1,81 @@
+zones:
+  title: Bienvenue au Slackcamp
+  titleAccent: Slackcamp
+  audienceLabel: Pour qui
+  items:
+    - title: Slack Park
+      text: Plus de 10 slacklines au sol, pour tous les niveaux.
+      audience: Nos ateliers, et les créneaux d'initiation organisés avec Les Arcs.
+      illustration:
+        image: ../../assets/images/slackcamp/zone-initiation.jpg
+        alt: Groupe de stagiaires sur les slacklines du Slack Park
+    - title: Midlines en forêt
+      text: 3 midlines entre les sapins, pour passer de la slackline à la highline en douceur.
+      audience: Nos ateliers et les membres de l'association.
+      illustration:
+        image: ../../assets/images/slackcamp/midlines-en-foret.jpg
+        alt: Deux personnes sur des midlines tendues entre les sapins
+    - title: Une zone bivouac
+      text: Le bivouac des stagiaires, pour des moments collectifs de vie partagée.
+      audience: Les participants à nos stages.
+      illustration:
+        image: ../../assets/images/slackcamp/lecture-au-bivouac.jpg
+        alt: Une stagiaire lit dans une chaise de camping au soleil du soir, la tente de l'association derrière
+stagesTeaser:
+  eyebrow: Camp de base de l'association
+  title: Slackcamp
+  lead: "C'est le camp de base de l'association aux Arcs. En collaboration avec la station des Arcs, nous avons investi cet espace pour le transformer en paradis de la slackline : des slacklines pour s'initier, des midlines rassurantes dans la forêt et une zone de bivouac réservée aux participants des stages. C'est le lieu de rendez-vous pour chaque stage."
+  linkLabel: Découvrir le Slackcamp
+  illustration:
+    image: ../../assets/images/slackcamp/vue-aerienne-du-camp.jpg
+    alt: "Vue aérienne du Slackcamp : prairie, tentes, slacklines et vallée en arrière-plan"
+bivouac:
+  eyebrow: Réservé aux stagiaires
+  title: Dormir au camp
+  titleAccent: au camp
+  lead: Pendant votre stage, vous pouvez planter votre tente au camp. Aucun matériel de camping n'est fourni. Le Slackcamp est aussi accessible aux vans.
+  lists:
+    - title: Sur place
+      items:
+        - Eau
+        - Toilettes sèches
+        - Pas de douche
+        - Pas d'électricité
+    - title: Règles du camp
+      items:
+        - Pas de feu
+        - Chiens toujours en laisse
+        - Un camp laissé propre
+        - Soirées calmes
+  photosLabel: Photos de la vie au camp
+  photos:
+    - image: ../../assets/images/slackcamp/camp-en-fin-de-journee.jpg
+      alt: "Le camp en fin de journée : la tente de l'association, la banderole et les slacklines dans la prairie"
+      shape: wide
+    - image: ../../assets/images/slackcamp/tablee-sous-la-tente.jpg
+      alt: Stagiaires attablés sous la tente de l'association en fin de journée
+      shape: half
+      focus: upper
+    - image: ../../assets/images/slackcamp/tricot-au-bord-de-la-prairie.jpg
+      alt: Un stagiaire tricote dans sa chaise au bord de la prairie, des slackliners et la banderole de l'association derrière
+      shape: half
+access:
+  eyebrow: Accès
+  title: Venir au Slackcamp
+  titleAccent: Slackcamp
+  routes:
+    - label: Voiture
+      text: Route d'Arc 1600, puis accès voiture jusqu'au camp.
+    - label: Funiculaire
+      text: De Bourg Saint Maurice à Arc 1600 (gratuit l'été pour les piétons), puis 15 minutes à pied par le chemin piéton.
+    - label: Train
+      text: Jusqu'à la gare de Bourg Saint Maurice, puis funiculaire et chemin piéton.
+  gpsLabel: Point GPS
+  mapButton: Ouvrir la carte
+  plan:
+    image: ../../assets/images/slackcamp/plan-d-acces.jpg
+    alt: "Plan d'accès dessiné : de Bourg Saint Maurice à Arc 1600 par le funiculaire, puis chemin piéton jusqu'au Slackcamp"
+callToAction:
+  eyebrow: Rendez-vous au camp
+  title: Tous nos stages partent d'ici
+  questionLink: Une question ? Écrivez-nous

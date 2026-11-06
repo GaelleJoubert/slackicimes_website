@@ -1,0 +1,25 @@
+---
+type ButtonIconName = "arrow" | "external";
+
+interface Props {
+  name: ButtonIconName;
+}
+
+const ICON_PATHS: Record<ButtonIconName, string> = {
+  arrow: "M3 8h10M9 4l4 4-4 4",
+  external: "M9 3h4v4M13 3L7 9M11 10v3H3V5h3",
+};
+
+const { name } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  viewBox="0 0 16 16"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  class="size-4 shrink-0"
+>
+  <path d={ICON_PATHS[name]}></path>
+</svg>

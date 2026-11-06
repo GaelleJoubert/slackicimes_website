@@ -1,0 +1,145 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../ui/Container.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import FramedPicture from "../ui/FramedPicture.astro";
+import HighlightedText from "../ui/HighlightedText.astro";
+import KeyFactsRow from "../ui/KeyFactsRow.astro";
+import Skyline, { type SkylineEdgeFill } from "../ui/Skyline.astro";
+
+type PageData = CollectionEntry<"pages">["data"];
+
+interface Props {
+  page: PageData;
+  keyFacts?: PageData["keyFacts"];
+  keyFactsLabel?: string;
+  edgeFill?: SkylineEdgeFill;
+  photoShape?: PhotoShape;
+  size?: HeroSize;
+}
+
+type HeroSize = "regular" | "compact";
+
+type PhotoShape = "portrait" | "landscape";
+
+interface ShapeLayout {
+  section: string;
+  grid: string;
+  text: string;
+  photo: string;
+  image: string;
+  defaultFocus: string;
+}
+
+const SHAPE_LAYOUTS: Record<PhotoShape, ShapeLayout> = {
+  portrait: {
+    section: "md:pb-44",
+    grid: "",
+    text: "md:col-span-7",
+    photo: "md:col-span-5",
+    image: "h-170",
+    defaultFocus: "object-upper",
+  },
+  landscape: {
+    section: "md:pb-32",
+    grid: "md:items-center",
+    text: "md:col-span-6",
+    photo: "md:col-span-6",
+    image: "aspect-photo",
+    defaultFocus: "",
+  },
+};
+
+const PHOTO_FOCUS_CLASSES: Record<
+  NonNullable<PageData["illustration"]>["focus"],
+  string
+> = {
+  center: "",
+  upper: "object-upper",
+  centerRight: "object-center-right",
+};
+
+const PHOTO_WIDTHS = [600, 1000];
+const PHOTO_SIZES = "(min-width: 768px) 600px, 100vw";
+
+const {
+  page,
+  keyFacts,
+  keyFactsLabel,
+  edgeFill = "snow",
+  photoShape = "portrait",
+  size = "regular",
+} = Astro.props;
+const layout = SHAPE_LAYOUTS[photoShape];
+const hasDetailsColumn =
+  Boolean(keyFacts) || Astro.slots.has("details") || Astro.slots.has("actions");
+const SECTION_WITHOUT_PHOTO = "pt-page-top pb-20 md:pb-32";
+const COMPACT_SECTION = "pt-block pb-16 md:pb-24";
+
+function sectionPaddingClass(): string {
+  if (size === "compact") return COMPACT_SECTION;
+  return page.illustration
+    ? `pt-page-top pb-20 ${layout.section}`
+    : SECTION_WITHOUT_PHOTO;
+}
+---
+
+<section
+  aria-labelledby="page-title"
+  class:list={["bg-lichen relative", sectionPaddingClass()]}
+>
+  <Container class:list={["gap-block grid md:grid-cols-12", layout.grid]}>
+    <div
+      class:list={[
+        "gap-block flex flex-col",
+        layout.text,
+        keyFacts && "justify-between md:pb-20",
+      ]}
+    >
+      <div class="gap-stack flex flex-col">
+        {page.eyebrow && <Eyebrow>{page.eyebrow}</Eyebrow>}
+        <h1 id="page-title" class="page-title">
+          <HighlightedText
+            text={page.heading}
+            highlight={page.headingAccent ?? ""}
+            highlightClass="text-forest italic"
+          />
+        </h1>
+        {Astro.slots.has("default") && (
+          <div class="lead gap-stack flex max-w-140 flex-col">
+            <slot />
+          </div>
+        )}
+      </div>
+      {hasDetailsColumn && (
+        <div class="gap-stack flex flex-col">
+          {keyFacts && (
+            <KeyFactsRow facts={keyFacts} label={keyFactsLabel ?? ""} />
+          )}
+          <slot name="details" />
+          {Astro.slots.has("actions") && (
+            <div class="gap-inline flex flex-wrap">
+              <slot name="actions" />
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+    {page.illustration && (
+      <div class:list={["hidden md:block", layout.photo]}>
+        <FramedPicture
+          image={page.illustration.image}
+          alt={page.illustration.alt}
+          widths={PHOTO_WIDTHS}
+          sizes={PHOTO_SIZES}
+          loading="eager"
+          class:list={[
+            layout.image,
+            PHOTO_FOCUS_CLASSES[page.illustration.focus] || layout.defaultFocus,
+          ]}
+        />
+      </div>
+    )}
+  </Container>
+  <Skyline variant="edge" fill={edgeFill} />
+</section>

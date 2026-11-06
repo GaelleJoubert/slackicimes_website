@@ -1,0 +1,74 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import { groupByFaqTheme } from "../../lib/faq";
+import Container from "../ui/Container.astro";
+import Disclosure from "../ui/Disclosure.astro";
+import LinkButton from "../ui/LinkButton.astro";
+import SectionIntro from "../ui/SectionIntro.astro";
+import Skyline from "../ui/Skyline.astro";
+
+interface Props {
+  id: string;
+  intro: string;
+  questions: CollectionEntry<"faq">[];
+  locale: Locale;
+}
+
+const DISCLOSURE_GROUP_NAME = "faq";
+
+const { id, intro, questions, locale } = Astro.props;
+const strings = uiStrings(locale);
+const renderedQuestions = await Promise.all(
+  questions.map(async (question) => ({
+    question: question.data.question,
+    theme: question.data.theme,
+    Answer: (await render(question)).Content,
+  })),
+);
+const questionGroups = groupByFaqTheme(renderedQuestions);
+const [firstGroup] = questionGroups;
+const [firstQuestion] = renderedQuestions;
+const contactPath = localizedPath("contact", locale);
+---
+
+<section
+  id={id}
+  class="bg-moss pt-section relative scroll-mt-24 pb-24 md:pb-40"
+>
+  <Container class="grid items-start gap-block md:grid-cols-3">
+    <SectionIntro title={strings.faq.title}>
+      <p class="text-graphite">{intro}</p>
+      <div class="hidden md:block">
+        <LinkButton href={contactPath} variant="secondary">
+          {strings.faq.otherQuestionButton}
+        </LinkButton>
+      </div>
+    </SectionIntro>
+    <div class="flex flex-col md:col-span-2">
+      {questionGroups.map((group) => (
+        <Disclosure
+          summary={strings.faq.themes[group.theme]}
+          level="theme"
+          isOpen={group === firstGroup}
+        >
+          {group.questions.map((themeQuestion) => (
+            <Disclosure
+              summary={themeQuestion.question}
+              groupName={DISCLOSURE_GROUP_NAME}
+              isOpen={themeQuestion === firstQuestion}
+            >
+              <themeQuestion.Answer />
+            </Disclosure>
+          ))}
+        </Disclosure>
+      ))}
+    </div>
+    <LinkButton href={contactPath} variant="secondary" class="md:hidden">
+      {strings.faq.otherQuestionButton}
+    </LinkButton>
+  </Container>
+  <Skyline variant="edge" profile="montBlanc" fill="snow" />
+</section>

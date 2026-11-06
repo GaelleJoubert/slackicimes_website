@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import CallToActionBand from "../../components/sections/CallToActionBand.astro";
+import SlackcampAccess from "../../components/sections/slackcamp/SlackcampAccess.astro";
+import SlackcampBivouac from "../../components/sections/slackcamp/SlackcampBivouac.astro";
+import SlackcampFacts from "../../components/sections/slackcamp/SlackcampFacts.astro";
+import SlackcampHero from "../../components/sections/slackcamp/SlackcampHero.astro";
+import SlackcampIntro from "../../components/sections/slackcamp/SlackcampIntro.astro";
+import SlackcampZones from "../../components/sections/slackcamp/SlackcampZones.astro";
+import ButtonIcon from "../../components/ui/ButtonIcon.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import { getPageEntry, getSingleEntryContent } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "slackcamp";
+const STAGES_PAGE_SLUG = "stages-highline";
+const CONTACT_PAGE_SLUG = "contact";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const { zones, bivouac, access, callToAction } = (
+  await getSingleEntryContent("slackcamp", locale)
+).data;
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <div class="flex flex-col md:block">
+    <div class="md:h-home-fold contents md:flex md:flex-col">
+      <SlackcampHero page={page.data} />
+      {page.data.keyFacts && (
+        <div class="order-2 md:order-none">
+          <SlackcampFacts
+            label={strings.slackcamp.keyFactsLabel}
+            facts={page.data.keyFacts}
+          />
+        </div>
+      )}
+    </div>
+    <div class="order-1 md:order-none">
+      <SlackcampIntro zones={zones}>
+        <Intro />
+      </SlackcampIntro>
+    </div>
+  </div>
+  <SlackcampZones zones={zones} />
+  <SlackcampBivouac bivouac={bivouac} locale={locale} />
+  <SlackcampAccess access={access} />
+  <CallToActionBand
+    eyebrow={callToAction.eyebrow}
+    title={callToAction.title}
+    edgeProfile="crete"
+  >
+    <LinkButton
+      href={localizedPath(STAGES_PAGE_SLUG, locale)}
+      variant="primaryOnDark"
+    >
+      {strings.common.seeStagesButton}
+      <ButtonIcon name="arrow" />
+    </LinkButton>
+    <a
+      href={localizedPath(CONTACT_PAGE_SLUG, locale)}
+      class="text-link-on-dark"
+    >
+      {callToAction.questionLink}
+    </a>
+  </CallToActionBand>
+</BaseLayout>

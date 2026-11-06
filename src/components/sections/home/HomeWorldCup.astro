@@ -1,0 +1,30 @@
+---
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { uiStrings } from "../../../i18n/ui";
+import type { WorldCupContent } from "../world-cup/types";
+import WorldCupShowcase from "../world-cup/WorldCupShowcase.astro";
+
+interface Props {
+  hero: WorldCupContent["hero"];
+  locale: Locale;
+}
+
+const TITLE_ID = "coupe-du-monde";
+
+const { hero, locale } = Astro.props;
+const strings = uiStrings(locale);
+const discoverAction = {
+  href: localizedPath("coupe-du-monde", locale),
+  label: strings.common.discoverWorldCupButton,
+  variant: "cupPrimary" as const,
+};
+---
+
+<WorldCupShowcase
+  hero={hero}
+  headingLevel="h2"
+  titleId={TITLE_ID}
+  actions={[discoverAction]}
+  edgeFill="snow"
+/>

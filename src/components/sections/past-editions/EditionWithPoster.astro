@@ -1,0 +1,60 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import FramedPicture from "../../ui/FramedPicture.astro";
+
+type EditionTheme = "light" | "dark";
+
+interface Props {
+  edition: CollectionEntry<"festivalEditions">;
+  theme?: EditionTheme;
+}
+
+const POSTER_WIDTHS = [400, 800];
+const POSTER_SIZES = "(min-width: 768px) 360px, 100vw";
+
+const TITLE_THEME_CLASSES: Record<EditionTheme, string> = {
+  light: "",
+  dark: "text-snow",
+};
+
+const PERIOD_THEME_CLASSES: Record<EditionTheme, string> = {
+  light: "text-forest",
+  dark: "text-sage",
+};
+
+const STORY_THEME_CLASSES: Record<EditionTheme, string> = {
+  light: "",
+  dark: "rich-text-on-dark",
+};
+
+const { edition, theme = "light" } = Astro.props;
+const { period, title, poster, posterAlt } = edition.data;
+if (!poster || !posterAlt) {
+  throw new Error(
+    `Festival edition "${edition.id}" has a poster layout: add "poster" and "posterAlt" to its frontmatter.`,
+  );
+}
+const { Content: Story } = await render(edition);
+---
+
+<article class="poster-edition-grid gap-stack md:gap-x-block grid md:grid-cols-3">
+  <header class="gap-stack flex flex-col md:col-span-2">
+    <p class:list={["timeline-year", PERIOD_THEME_CLASSES[theme]]}>{period}</p>
+    <h2 class:list={["timeline-title", TITLE_THEME_CLASSES[theme]]}>{title}</h2>
+  </header>
+  <div class="pr-2 pb-2 md:col-start-3 md:row-span-2 md:row-start-1 md:p-0">
+    <FramedPicture
+      image={poster}
+      alt={posterAlt}
+      widths={POSTER_WIDTHS}
+      sizes={POSTER_SIZES}
+      class="h-auto"
+    />
+  </div>
+  <div class="gap-stack flex flex-col md:col-span-2">
+    <div class:list={["rich-text", STORY_THEME_CLASSES[theme]]}>
+      <Story />
+    </div>
+    <slot />
+  </div>
+</article>

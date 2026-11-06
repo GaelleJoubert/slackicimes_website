@@ -1,0 +1,47 @@
+activities:
+  title: Slack'icîmes is...
+  intro: The association has always been committed to developing slackline and highline, and to sharing their values.
+  items:
+    - title: Courses
+      text: In 2019, the association ran the first highline courses in France. Since then, more than 300 people have discovered highline with us.
+      pageSlug: stages-highline
+      illustration:
+        image: ../../assets/images/association/stagiaire-pouce-leve.jpg
+        alt: Smiling trainee giving a thumbs up while sitting on a highline
+    - title: A festival
+      text: Since 2012, the Winter Festislack has brought together athletes from all over the world around a unique concept combining skiing and highline.
+      pageSlug: winter-festislack
+      illustration:
+        image: ../../assets/images/association/festival-ski-highline.jpg
+        alt: Skier flipping above a highline rigged between snowy peaks
+    - title: A competition
+      text: From April 14 to 16, 2027, the association hosts the Highline Freestyle World Cup in Les Arcs, on the main square of Arc 2000.
+      pageSlug: coupe-du-monde
+      illustration:
+        image: ../../assets/images/world-cup/athlete-rotation.jpg
+        alt: Highline freestyle athlete spinning under the line against a blue sky
+    - title: Introductions
+      text: Together with towns and tourist offices, we let children and adults test their balance.
+      pageSlug: prestations
+      illustration:
+        image: ../../assets/images/association/initiation-slackline-parc.jpg
+        alt: Children helping each other balance on a low slackline in a park
+    - title: Demonstrations
+      text: The association has delighted admiring audiences at many events.
+      pageSlug: prestations
+      illustration:
+        image: ../../assets/images/association/demonstration-sous-un-dome.jpg
+        alt: Highliner in a flowered dress on a line rigged under the frame of a dome, next to stage lights
+    - title: A commitment
+      text: We work together with the ISA (International Slackline Association).
+      externalUrl: https://www.slacklineinternational.org/
+      illustration:
+        image: ../../assets/images/association/accolade.jpg
+        alt: Two highliners hugging at the start of a line
+duo:
+  title: The duo
+  paragraphs:
+    - In 2019, Chloë and Gaëlle joined forces to set up the first highline introduction courses in France.
+    - "Long involved in the highline community, and passionate about teaching in their original disciplines (skiing for Chloë, trampoline for Gaëlle), they share their experience: helping people of every background take their first steps into the void, and guiding them with kindness along this life changing learning path."
+team:
+  title: The team

@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import PageHero from "../../components/sections/PageHero.astro";
+import EditionTimeline from "../../components/sections/past-editions/EditionTimeline.astro";
+import ChevronIcon from "../../components/ui/ChevronIcon.astro";
+import { getLocalizedCollection, getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "anciennes-editions-winter-festislack";
+const FESTIVAL_PAGE_SLUG = "winter-festislack";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const editions = await getLocalizedCollection("festivalEditions", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <PageHero page={page.data}>
+    <Intro />
+    <a
+      slot="actions"
+      href={localizedPath(FESTIVAL_PAGE_SLUG, locale)}
+      class="text-link inline-flex min-h-11 items-center gap-1.5"
+    >
+      <ChevronIcon direction="left" />
+      {strings.navigation.winterFestislack}
+    </a>
+  </PageHero>
+
+  <EditionTimeline editions={editions} locale={locale} />
+</BaseLayout>

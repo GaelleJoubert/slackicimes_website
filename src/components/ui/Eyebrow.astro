@@ -1,0 +1,29 @@
+---
+import LineGlyph from "./LineGlyph.astro";
+
+export type EyebrowTone = "light" | "dark" | "photo";
+
+interface Props {
+  tone?: EyebrowTone;
+  class?: string;
+}
+
+const TONE_CLASSES: Record<EyebrowTone, string> = {
+  light: "text-forest",
+  dark: "text-sage",
+  photo: "text-snow",
+};
+
+const { tone = "light", class: extraClasses } = Astro.props;
+---
+
+<span
+  class:list={[
+    "eyebrow-text inline-flex items-center gap-3",
+    TONE_CLASSES[tone],
+    extraClasses ?? "self-start",
+  ]}
+>
+  <LineGlyph />
+  <slot />
+</span>

@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from "astro";
+import FramedPicture from "./FramedPicture.astro";
+import ActionBadge from "./ActionBadge.astro";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
+
+interface Props {
+  href: string;
+  thumbnail: ImageMetadata;
+  label: string;
+  class?: string;
+}
+
+const THUMBNAIL_WIDTHS = [400, 800];
+const THUMBNAIL_SIZES = "100vw";
+
+const { href, thumbnail, label, class: extraClasses } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  class:list={[
+    "rounded-card relative block overflow-hidden",
+    CLICKABLE_CARD_CLASSES,
+    extraClasses,
+  ]}
+>
+  <FramedPicture
+    image={thumbnail}
+    alt=""
+    widths={THUMBNAIL_WIDTHS}
+    sizes={THUMBNAIL_SIZES}
+    class="aspect-video"
+  />
+  <ActionBadge
+    icon="play"
+    size="large"
+    tone="filled"
+    class="absolute bottom-4 left-4 md:bottom-6 md:left-6"
+  />
+  <span class="sr-only">{label}</span>
+</a>

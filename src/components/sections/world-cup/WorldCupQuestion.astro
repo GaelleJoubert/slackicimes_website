@@ -1,0 +1,28 @@
+---
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import Container from "../../ui/Container.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  question: WorldCupContent["question"];
+  locale: Locale;
+}
+
+const CONTACT_PAGE_SLUG = "contact";
+
+const { question, locale } = Astro.props;
+---
+
+<section class="bg-cup-navy py-block text-white">
+  <Container class="gap-stack flex flex-col sm:flex-row sm:items-center sm:justify-between">
+    <h2 class="cup-title">{question.title}</h2>
+    <LinkButton
+      href={localizedPath(CONTACT_PAGE_SLUG, locale)}
+      variant="cupPrimary"
+    >
+      {question.buttonLabel}
+    </LinkButton>
+  </Container>
+</section>

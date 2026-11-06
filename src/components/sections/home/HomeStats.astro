@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import Stat from "../../ui/Stat.astro";
+
+interface Props {
+  label: string;
+  stats: CollectionEntry<"home">["data"]["stats"];
+}
+
+const { label, stats } = Astro.props;
+---
+
+<section aria-label={label} class="bg-forest text-snow py-6">
+  <Container>
+    <dl class="gap-grid grid grid-cols-2 md:grid-cols-4 md:text-center">
+      {stats.map((stat) => (
+        <Stat value={stat.value} label={stat.label} />
+      ))}
+    </dl>
+  </Container>
+</section>

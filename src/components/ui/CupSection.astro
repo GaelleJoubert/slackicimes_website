@@ -1,0 +1,49 @@
+---
+import type { SkylineProfile } from "../../lib/skylines";
+import Container from "./Container.astro";
+import Skyline, { type SkylineEdgeFill } from "./Skyline.astro";
+
+type CupTone = "surface" | "white" | "navy" | "ink";
+
+interface Props {
+  id?: string;
+  tone: CupTone;
+  ariaLabel?: string;
+  edgeFill?: SkylineEdgeFill;
+  edgeProfile?: SkylineProfile;
+}
+
+const TONE_CLASSES: Record<CupTone, string> = {
+  surface: "bg-cup-surface text-cup-ink",
+  white: "bg-white text-cup-ink",
+  navy: "bg-cup-navy text-white",
+  ink: "bg-cup-ink text-white",
+};
+
+const SECTION_WITH_EDGE_CLASSES = "relative pt-section pb-28 md:pb-44";
+
+const {
+  id,
+  tone,
+  ariaLabel,
+  edgeFill,
+  edgeProfile = "montBlanc",
+} = Astro.props;
+---
+
+<section
+  id={id}
+  aria-label={ariaLabel}
+  class:list={[
+    "scroll-mt-16",
+    edgeFill ? SECTION_WITH_EDGE_CLASSES : "py-section",
+    TONE_CLASSES[tone],
+  ]}
+>
+  <Container>
+    <slot />
+  </Container>
+  {edgeFill && (
+    <Skyline variant="edge" profile={edgeProfile} fill={edgeFill} isMirrored />
+  )}
+</section>

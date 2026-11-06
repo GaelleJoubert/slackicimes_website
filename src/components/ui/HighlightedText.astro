@@ -1,0 +1,16 @@
+---
+import { splitAroundHighlight } from "../../lib/heading";
+
+interface Props {
+  text: string;
+  highlight: string;
+  highlightClass?: string;
+}
+
+const { text, highlight, highlightClass = "italic" } = Astro.props;
+const parts = splitAroundHighlight(text, highlight);
+---
+
+{parts.before}
+{parts.highlight && <span class={highlightClass}>{parts.highlight}</span>}
+{parts.after}

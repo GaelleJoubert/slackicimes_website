@@ -1,0 +1,43 @@
+order: 5
+name: Youth Course
+duration: 5 days
+level: Beginner
+ageRange: 10-18 years old
+summary: A highline introduction course designed especially for young athletes.
+image: ../../../assets/images/stages/jeunes/photo-01.jpg
+imageAlt: Smiling young trainee sitting in a harness on a highline
+imageFocus: right
+description:
+  - From technique, through safety, cooperation and overcoming fears, perfect for athletes who want new sensations or to work on their mental and body control!
+  - "On the program: a little slackline, a lot of highline, a fun day at the lake, and dedicated time for mental preparation and managing fear and emotions."
+program:
+  intro:
+    - Days run from 9 a.m. to 5 p.m.
+  items:
+    - label: Monday
+      place: At the park
+      details:
+        - Learn the basics and/or progress
+        - Highline specific workshops
+        - Stretching and breathing exercises
+    - label: Tuesday
+      place: Highline spot
+      details:
+        - Highline practice
+        - Fear management exercises
+    - label: Wednesday
+      place: At the lake
+      details:
+        - Waterline (slackline over water)
+        - Slackline and balance games
+    - label: Thursday and Friday
+      place: Highline spot
+      details:
+        - Highline practice
+        - Emotion management exercises
+prerequisites:
+  - Be over 10 years old
+  - Practice a sport regularly
+  - Be motivated!
+dates: 2027 dates coming soon
+priceInEuros: 200

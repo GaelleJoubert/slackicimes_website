@@ -1,0 +1,58 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import Container from "../../components/ui/Container.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import Skyline from "../../components/ui/Skyline.astro";
+import SlacklineIllustration from "../../components/ui/SlacklineIllustration.astro";
+import { getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "merci";
+const HOME_PAGE_SLUG = "";
+const STAGES_PAGE_SLUG = "stages-highline";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+  footer="compact"
+>
+  <section class="bg-lichen pt-page-top relative pb-28 md:pb-40">
+    <Container>
+      <div class="mx-auto flex max-w-225 gap-stack flex-col items-center text-center">
+        <SlacklineIllustration state="walked" class="h-22.5 md:h-35" />
+        <h1 class="page-title">{page.data.heading}</h1>
+        <div class="lead">
+          <Content />
+        </div>
+        <div class="gap-inline flex flex-col self-stretch md:flex-row md:justify-center md:self-auto">
+          <LinkButton href={localizedPath(HOME_PAGE_SLUG, locale)}>
+            {strings.contactPage.backHomeButton}
+          </LinkButton>
+          <LinkButton
+            href={localizedPath(STAGES_PAGE_SLUG, locale)}
+            variant="secondary"
+          >
+            {strings.common.seeStagesButton}
+          </LinkButton>
+        </div>
+      </div>
+    </Container>
+    <Skyline variant="edge" profile="pourri" fill="snow" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import Container from "../../ui/Container.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  duo: CollectionEntry<"association">["data"]["duo"];
+  members: CollectionEntry<"team">[];
+  locale: Locale;
+}
+
+const PORTRAIT_WIDTHS = [300, 600];
+const PORTRAIT_SIZES = "(min-width: 768px) 300px, 50vw";
+
+const { duo, members, locale } = Astro.props;
+const strings = uiStrings(locale).team;
+
+function portraitOf(member: CollectionEntry<"team">) {
+  const { portrait, portraitAlt, name } = member.data;
+  if (!portrait || !portraitAlt) {
+    throw new Error(
+      `Team member "${member.id}" belongs to the duo: add "portrait" and "portraitAlt" for ${name}.`,
+    );
+  }
+  return { image: portrait, alt: portraitAlt };
+}
+---
+
+<section class="bg-forest text-snow py-section relative">
+  <Container class="gap-block grid md:grid-cols-2 md:items-center">
+    <SectionIntro title={duo.title} theme="dark">
+      <div class="intro-text intro-text-on-dark">
+        {duo.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+    </SectionIntro>
+    <ul class="gap-grid grid grid-cols-2">
+      {members.map((member) => {
+        const portrait = portraitOf(member);
+        return (
+          <li class="flex flex-col gap-2">
+            <FramedPicture
+              image={portrait.image}
+              alt={portrait.alt}
+              widths={PORTRAIT_WIDTHS}
+              sizes={PORTRAIT_SIZES}
+              class="h-44 md:h-85"
+            />
+            <a
+              href={`#${entrySlug(member.id)}`}
+              class="card-title text-link-on-dark self-start"
+            >
+              {member.data.name}
+            </a>
+            <span class="label-text text-sage">
+              {strings.highlineSince} {member.data.highlineSince}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  </Container>
+  <Skyline variant="edge" profile="casse" fill="snow" />
+</section>

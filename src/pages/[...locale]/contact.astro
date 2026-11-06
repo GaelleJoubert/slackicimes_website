@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import ContactForm from "../../components/sections/ContactForm.astro";
+import CallTiles from "../../components/sections/contact/CallTiles.astro";
+import ContactDetailsCard from "../../components/sections/contact/ContactDetailsCard.astro";
+import Container from "../../components/ui/Container.astro";
+import { getPageEntry } from "../../i18n/collections";
+import { buildLocaleStaticPaths } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { CONTACT_FORM_SECTION_ID } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "contact";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <PageHero page={page.data} size="compact" />
+
+  <section class="pt-block pb-section">
+    <Container>
+      <div class="gap-block grid md:grid-cols-5 md:items-start">
+        <div
+          id={CONTACT_FORM_SECTION_ID}
+          class="border-rule rounded-card gap-stack p-card flex scroll-mt-4 flex-col border md:col-span-3"
+        >
+          <h2 class="timeline-title">{strings.contactPage.formTitle}</h2>
+          <ContactForm locale={locale} />
+        </div>
+        <CallTiles locale={locale} class="md:hidden" />
+        <ContactDetailsCard
+          locale={locale}
+          class="md:order-first md:col-span-2"
+        />
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

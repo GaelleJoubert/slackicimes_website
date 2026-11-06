@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  zones: CollectionEntry<"slackcamp">["data"]["zones"];
+}
+
+const { zones } = Astro.props;
+---
+
+<section class="pt-section pb-block" aria-labelledby="zones-title">
+  <Container>
+    <SectionIntro id="zones-title" title={zones.title}>
+      <HighlightedText
+        slot="title"
+        text={zones.title}
+        highlight={zones.titleAccent}
+        highlightClass="text-forest font-medium italic"
+      />
+      <div class="lead">
+        <slot />
+      </div>
+    </SectionIntro>
+  </Container>
+</section>

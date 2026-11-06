@@ -1,0 +1,22 @@
+order: 2
+name: Premiers Pas
+duration: 5 jours
+level: Débutant
+summary: Stage complet pour s'initier à la highline et s'immerger dans son univers.
+image: ../../../assets/images/stages/highlineur-bras-en-croix-contre-jour.jpg
+imageAlt: Silhouette d'un highlineur bras en croix à contre jour sur un ciel bleu
+slideImageFocus: raised
+description:
+  - Ce stage se veut général et a pour but de vous faire découvrir toutes les facettes de la Highline.
+  - De la technique aux notions d'installation, en passant par la sécurité, la coopération et le surpassement de ses peurs, parfait pour les sportifs qui veulent découvrir de nouvelles sensations ou travailler sur leur mental et le contrôle de leur corps.
+program:
+  items:
+    - label: "Slackline au sol : 1 demi journée"
+    - label: 'Atelier "Rigging" (installation de Highline) : 1 demi journée'
+    - label: "Highline : 4 journées"
+prerequisites:
+  - Être motivé pour dépasser ses propres limites
+  - Savoir faire 3 pompes ou 1 traction
+  - Avoir 15 ans ou plus, ou être accompagné
+dates: Dates 2027 à venir
+priceInEuros: 250

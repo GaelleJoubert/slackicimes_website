@@ -1,0 +1,29 @@
+---
+import type { WorldCupContent } from "./types";
+
+type BracketStage = WorldCupContent["format"]["bracket"]["grandFinal"];
+type StageTone = "regular" | "final";
+
+interface Props {
+  stage: BracketStage;
+  tone: StageTone;
+}
+
+const CARD_TONE_CLASSES: Record<StageTone, string> = {
+  regular: "",
+  final: "border-cup-pink border-t-4",
+};
+
+const { stage, tone } = Astro.props;
+---
+
+<div
+  class:list={[
+    "bg-cup-navy rounded-control p-tile flex flex-col justify-center gap-2",
+    CARD_TONE_CLASSES[tone],
+  ]}
+>
+  <h4 class="cup-card-title text-xl">{stage.title}</h4>
+  <p class="text-cup-soft text-sm">{stage.text}</p>
+  <slot />
+</div>

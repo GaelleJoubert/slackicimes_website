@@ -1,0 +1,67 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  STAGING_REPOSITORY: slackicimes/slackicimes.github.io
+  PRODUCTION_ORIGIN: https://www.slackicimes.org
+  STAGING_ORIGIN: https://slackicimes.github.io
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run check
+      - run: npm run build
+        env:
+          # Only production may be indexed; staging is always noindex.
+          SITE_INDEXABLE: ${{ github.ref == 'refs/heads/main' && vars.SITE_INDEXABLE == 'true' }}
+      - run: npm test
+      - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      # Link previews fetch og:image from these absolute URLs, and production does not host staging files.
+      - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+        run: find dist -name '*.html' -exec sed -i "s#$PRODUCTION_ORIGIN#$STAGING_ORIGIN#g" {} +
+      - if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.STAGING_DEPLOY_KEY }}
+          external_repository: ${{ env.STAGING_REPOSITORY }}
+          publish_branch: gh-pages
+          publish_dir: dist
+          force_orphan: true
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
+import Container from "../../ui/Container.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import TeamMemberCard from "./TeamMemberCard.astro";
+
+interface Props {
+  team: CollectionEntry<"association">["data"]["team"];
+  members: CollectionEntry<"team">[];
+  locale: Locale;
+}
+
+const { team, members, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="py-section">
+  <Container class="flex flex-col gap-block">
+    <SectionIntro title={team.title} />
+    <Carousel
+      label={team.title}
+      roleDescription={strings.common.carouselRoleDescription}
+      previousLabel={strings.team.previousMemberButton}
+      nextLabel={strings.team.nextMemberButton}
+      width="full"
+      desktopGrid
+    >
+      {members.map((member) => (
+        <CarouselSlide class="md:row-span-4 md:grid md:grid-rows-subgrid md:gap-0 md:p-0">
+          <TeamMemberCard member={member} locale={locale} />
+        </CarouselSlide>
+      ))}
+    </Carousel>
+  </Container>
+</section>

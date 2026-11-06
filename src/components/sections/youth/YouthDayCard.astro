@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import DotList from "../../ui/DotList.astro";
+import Eyebrow, { type EyebrowTone } from "../../ui/Eyebrow.astro";
+
+type ProgramItem =
+  CollectionEntry<"stages">["data"]["program"]["items"][number];
+
+export interface DayTone {
+  card: string;
+  label: EyebrowTone;
+  title: string;
+}
+
+export type DayCardDensity = "regular" | "compact";
+
+interface Props {
+  day: ProgramItem;
+  tone: DayTone;
+  density?: DayCardDensity;
+  headingTag?: "h3" | "h5";
+}
+
+const DENSITY_CLASSES: Record<DayCardDensity, { card: string; title: string }> =
+  {
+    regular: { card: "p-card", title: "text-2xl md:text-3xl" },
+    compact: { card: "p-tile", title: "text-2xl" },
+  };
+
+const { day, tone, density = "regular", headingTag = "h3" } = Astro.props;
+const Heading = headingTag;
+const densityClasses = DENSITY_CLASSES[density];
+---
+
+<article
+  class:list={[
+    "rounded-card flex h-full flex-col gap-2.5",
+    densityClasses.card,
+    tone.card,
+  ]}
+>
+  <Eyebrow tone={tone.label}>{day.label}</Eyebrow>
+  {day.place && (
+    <Heading
+      class:list={["font-heading font-voice", densityClasses.title, tone.title]}
+    >
+      {day.place}
+    </Heading>
+  )}
+  <DotList items={day.details} size="small" />
+</article>

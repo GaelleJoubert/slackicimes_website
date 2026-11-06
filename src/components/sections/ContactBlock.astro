@@ -1,0 +1,37 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import ContactDetails from "../ui/ContactDetails.astro";
+import Container from "../ui/Container.astro";
+import LinkButton from "../ui/LinkButton.astro";
+import Skyline from "../ui/Skyline.astro";
+
+interface Props {
+  text: string;
+  locale: Locale;
+}
+
+const { text, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<section class="bg-lichen py-section relative isolate overflow-hidden">
+  <Skyline variant="background" profiles={["crete"]} tone="light" />
+  <Container class="gap-block grid items-center md:grid-cols-2">
+    <div class="gap-stack flex flex-col">
+      <h2 class="section-title">{strings.contactBlock.title}</h2>
+      <p class="text-graphite">{text}</p>
+      <LinkButton
+        href={localizedPath("contact", locale)}
+        variant="primary"
+        class="md:self-start"
+      >
+        {strings.contactBlock.writeUsButton}
+      </LinkButton>
+    </div>
+    <div class="bg-snow rounded-card p-tile md:p-card">
+      <ContactDetails locale={locale} layout="grid" />
+    </div>
+  </Container>
+</section>

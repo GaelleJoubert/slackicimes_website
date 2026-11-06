@@ -1,0 +1,18 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  class?: string;
+}
+
+const { value, label, class: extraClasses } = Astro.props;
+---
+
+<div
+  class:list={["border-rule flex flex-col gap-1 border-t pt-3", extraClasses]}
+>
+  <dt class="label-text order-last">{label}</dt>
+  <dd class="font-heading text-slate text-xl leading-tight font-voice md:text-2xl">
+    {value}
+  </dd>
+</div>

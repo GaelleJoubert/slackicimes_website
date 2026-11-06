@@ -1,0 +1,32 @@
+---
+import ArrowSquare from "./ArrowSquare.astro";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
+
+interface Props {
+  href: string;
+  name: string;
+  details: string;
+  price: string;
+}
+
+const { href, name, details, price } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "bg-snow rounded-card flex h-full flex-col gap-1 p-5",
+    CLICKABLE_CARD_CLASSES,
+  ]}
+>
+  <span class="card-title decoration-coral text-2xl underline-offset-5 group-hover:underline md:text-2xl">
+    {name}
+  </span>
+  <span class="text-graphite text-sm">{details}</span>
+  <span class="mt-auto flex items-end justify-between gap-3 pt-4">
+    <span class="font-heading text-slate text-3xl leading-none font-medium">
+      {price}
+    </span>
+    <ArrowSquare />
+  </span>
+</a>

@@ -1,0 +1,91 @@
+---
+import { Picture } from "astro:assets";
+import { render, type CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import DotList from "../../ui/DotList.astro";
+import ReadMore from "../../ui/ReadMore.astro";
+import TagList from "../../ui/TagList.astro";
+
+interface Props {
+  member: CollectionEntry<"team">;
+  locale: Locale;
+}
+
+const PHOTO_WIDTHS = [320, 600, 1200];
+const PHOTO_SIZES = "(min-width: 768px) 560px, 128px";
+
+const PHOTO_FOCUS_CLASSES: Record<
+  CollectionEntry<"team">["data"]["photoFocus"],
+  string
+> = {
+  center: "object-center",
+  top: "object-top",
+};
+
+const { member, locale } = Astro.props;
+const strings = uiStrings(locale).team;
+const {
+  name,
+  role,
+  photo,
+  photoAlt,
+  photoFocus,
+  highlineSince,
+  diplomaShortNames,
+  excerpt,
+  facts,
+} = member.data;
+const { Content: Biography } = await render(member);
+---
+
+<article
+  id={entrySlug(member.id)}
+  class="media-start-grid gap-x-tile row-span-4 grid h-full scroll-mt-4 grid-rows-subgrid content-start gap-y-0 md:h-auto md:grid-cols-1 md:content-normal"
+>
+  <Picture
+    src={photo}
+    alt={photoAlt}
+    widths={PHOTO_WIDTHS}
+    sizes={PHOTO_SIZES}
+    formats={["avif", "webp"]}
+    class:list={[
+      "rounded-card block size-32 object-cover md:h-72 md:w-full",
+      PHOTO_FOCUS_CLASSES[photoFocus],
+    ]}
+  />
+  <header class="flex flex-col justify-center gap-1.5 md:grid md:grid-cols-2 md:items-end md:gap-x-4 md:gap-y-1 md:pt-6">
+    <h3 class="card-title">{name}</h3>
+    <p class="caption md:order-last md:col-span-2">{role}</p>
+    <p class="flex flex-col md:items-end md:justify-self-end">
+      <span class="label-text">{strings.highlineSince}</span>
+      <span class="font-heading font-voice text-xl md:text-2xl">
+        {highlineSince}
+      </span>
+    </p>
+  </header>
+  <blockquote class="text-graphite col-span-2 mt-4 md:col-span-1">
+    {excerpt}
+  </blockquote>
+  <footer class="col-span-2 mt-3 flex flex-col gap-3 md:col-span-1">
+    <ReadMore summary={strings.readFullStory} accessibleContext={name}>
+      <div class="rich-text">
+        <Biography />
+      </div>
+      <dl class="flex flex-col gap-4">
+        {facts.map((fact) => (
+          <div class="flex flex-col gap-2">
+            <dt class="label-text">{fact.label}</dt>
+            <dd>
+              <DotList items={fact.items} />
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </ReadMore>
+    <div class="border-rule border-t pt-3">
+      <TagList items={diplomaShortNames} label={strings.diplomasLabel} />
+    </div>
+  </footer>
+</article>

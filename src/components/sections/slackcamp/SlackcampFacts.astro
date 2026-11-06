@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../../ui/Container.astro";
+import Stat from "../../ui/Stat.astro";
+
+interface Props {
+  label: string;
+  facts: NonNullable<CollectionEntry<"pages">["data"]["keyFacts"]>;
+}
+
+const { label, facts } = Astro.props;
+---
+
+<section
+  aria-label={label}
+  class="text-slate pb-block md:bg-forest md:text-snow md:py-6"
+>
+  <Container>
+    <dl class="bg-lichen rounded-card p-tile flex justify-between gap-3 md:gap-grid md:grid md:grid-cols-3 md:rounded-none md:bg-transparent md:p-0 md:text-center">
+      {facts.map((fact) => (
+        <Stat
+          value={fact.value}
+          label={fact.label}
+          labelClass="text-graphite md:text-sage"
+          isCompactOnMobile
+        />
+      ))}
+    </dl>
+  </Container>
+</section>

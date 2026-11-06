@@ -1,0 +1,40 @@
+---
+type RuledListTone = "light" | "dark";
+
+interface Props {
+  items: string[];
+  tone?: RuledListTone;
+}
+
+const TONE_CLASSES: Record<
+  RuledListTone,
+  { list: string; item: string; bullet: string }
+> = {
+  light: { list: "", item: "border-rule text-slate", bullet: "bg-forest" },
+  dark: {
+    list: "border-snow/20 border-t",
+    item: "border-snow/20 text-snow",
+    bullet: "bg-lichen",
+  },
+};
+
+const { items, tone = "light" } = Astro.props;
+const toneClasses = TONE_CLASSES[tone];
+---
+
+<ul class:list={["flex flex-col", toneClasses.list]}>
+  {items.map((item) => (
+    <li
+      class:list={[
+        "flex items-start gap-3.5 border-b py-3 text-base",
+        toneClasses.item,
+      ]}
+    >
+      <span
+        aria-hidden="true"
+        class:list={["mt-2.5 size-1.5 shrink-0", toneClasses.bullet]}
+      />
+      <span>{item}</span>
+    </li>
+  ))}
+</ul>

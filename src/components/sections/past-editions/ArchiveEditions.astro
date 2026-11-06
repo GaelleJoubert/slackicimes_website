@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { editionNumberLabel } from "../../../lib/festival-edition";
+import { videoPlatformName } from "../../../lib/video";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+
+interface Props {
+  editions: CollectionEntry<"festivalEditions">[];
+  dotTone: TimelineDotTone;
+  locale: Locale;
+}
+
+const { editions, dotTone, locale } = Astro.props;
+const strings = uiStrings(locale);
+---
+
+<TimelineEntry dotTone={dotTone} class="gap-stack flex flex-col">
+  <h2 class="timeline-title">{strings.pastEditions.archiveTitle}</h2>
+  <ul class="gap-grid grid grid-cols-2 md:grid-cols-6">
+    {editions.map(({ data: edition }) => (
+      <li class="border-slate flex flex-col justify-between gap-3 border-t-2 pt-3">
+        <h3 class="timeline-title">{edition.period}</h3>
+        <p class="text-graphite text-sm">
+          {edition.editionNumber &&
+            `${editionNumberLabel(edition.editionNumber)} · `}
+          {edition.videos.map((videoUrl, videoIndex) => (
+            <>
+              {videoIndex > 0 && <span class="px-1.5">+</span>}
+              <a href={videoUrl} class="text-link inline-block py-1">
+                <span class="sr-only">{edition.title}, </span>
+                {videoPlatformName(videoUrl)}
+              </a>
+            </>
+          ))}
+        </p>
+      </li>
+    ))}
+  </ul>
+</TimelineEntry>

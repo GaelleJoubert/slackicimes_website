@@ -1,0 +1,109 @@
+---
+import { Picture } from "astro:assets";
+import type { Locale } from "../../../i18n/locales";
+import { localizedPath } from "../../../i18n/routes";
+import { WORLD_CUP_SECTION_IDS } from "../../../lib/world-cup";
+import ActionBadge from "../../ui/ActionBadge.astro";
+import CupSection from "../../ui/CupSection.astro";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
+import CupSectionIntro from "../../ui/CupSectionIntro.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import type { WorldCupContent } from "./types";
+
+interface Props {
+  partners: WorldCupContent["partners"];
+  locale: Locale;
+}
+
+type GroupSize = WorldCupContent["partners"]["groups"][number]["size"];
+
+const CONTACT_PAGE_SLUG = "contact";
+const LOGO_WIDTHS = [240, 480];
+const LOGO_SIZES = "240px";
+
+const GRID_CLASSES: Record<GroupSize, string> = {
+  main: "grid-cols-1",
+  equipment: "sm:grid-cols-2",
+  support: "sm:grid-cols-3",
+};
+
+const TILE_HEIGHT_CLASSES: Record<GroupSize, string> = {
+  main: "h-56",
+  equipment: "h-48",
+  support: "h-40",
+};
+
+const LOGO_CLASSES: Record<GroupSize, string> = {
+  main: "max-h-32",
+  equipment: "max-h-24",
+  support: "max-h-16",
+};
+
+const { partners, locale } = Astro.props;
+---
+
+<CupSection id={WORLD_CUP_SECTION_IDS.partners} tone="surface">
+  <div class="gap-block flex flex-col">
+    <CupSectionIntro
+      eyebrow={partners.eyebrow}
+      title={partners.title}
+      theme="light"
+    />
+    {partners.groups.map((group) => (
+      <div class="gap-stack flex flex-col">
+        <h3 class="text-cup-muted text-xs font-bold tracking-widest uppercase">
+          {group.label}
+        </h3>
+        <ul class:list={["gap-grid grid", GRID_CLASSES[group.size]]}>
+          {group.partners.map((partner) => {
+            const Tile = partner.url ? "a" : "div";
+            return (
+              <li>
+                <Tile
+                  href={partner.url}
+                  class:list={[
+                    "rounded-card relative flex w-full flex-col items-center justify-center gap-2.5 bg-white px-14 pt-12 pb-6",
+                    TILE_HEIGHT_CLASSES[group.size],
+                    partner.url && CLICKABLE_CARD_CLASSES,
+                  ]}
+                >
+                  {partner.url && (
+                    <ActionBadge
+                      icon="external"
+                      tone="cupOutline"
+                      class="absolute top-3 right-3"
+                    />
+                  )}
+                  <Picture
+                    src={partner.logo}
+                    alt={partner.name}
+                    widths={LOGO_WIDTHS}
+                    sizes={LOGO_SIZES}
+                    formats={["avif", "webp"]}
+                    class:list={[
+                      "h-auto w-auto max-w-full object-contain",
+                      LOGO_CLASSES[group.size],
+                    ]}
+                  />
+                  {partner.role && (
+                    <span class="text-cup-muted text-sm font-semibold">
+                      {partner.role}
+                    </span>
+                  )}
+                </Tile>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+    <div class="flex justify-center">
+      <LinkButton
+        href={localizedPath(CONTACT_PAGE_SLUG, locale)}
+        variant="cupPrimary"
+      >
+        {partners.becomePartnerLabel}
+      </LinkButton>
+    </div>
+  </div>
+</CupSection>

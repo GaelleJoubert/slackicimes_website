@@ -1,0 +1,49 @@
+---
+import LineGlyph from "./LineGlyph.astro";
+
+type IntroTheme = "light" | "dark";
+type TitleSize = "regular" | "compact";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  theme: IntroTheme;
+  titleSize?: TitleSize;
+}
+
+const TITLE_SIZE_CLASSES: Record<TitleSize, string> = {
+  regular: "",
+  compact: "lg:text-5xl",
+};
+
+const EYEBROW_CLASSES: Record<IntroTheme, string> = {
+  light: "text-cup-navy",
+  dark: "text-cup-sky",
+};
+
+const TITLE_CLASSES: Record<IntroTheme, string> = {
+  light: "text-cup-navy",
+  dark: "text-white",
+};
+
+const { eyebrow, title, theme, titleSize = "regular" } = Astro.props;
+---
+
+<div class="gap-stack flex flex-col">
+  <span
+    class:list={["cup-eyebrow flex items-center gap-3", EYEBROW_CLASSES[theme]]}
+  >
+    <LineGlyph />
+    {eyebrow}
+  </span>
+  <h2
+    class:list={[
+      "cup-title",
+      TITLE_CLASSES[theme],
+      TITLE_SIZE_CLASSES[titleSize],
+    ]}
+  >
+    {title}
+  </h2>
+  <slot />
+</div>

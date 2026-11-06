@@ -1,0 +1,59 @@
+hero:
+  eyebrow: Highline et slackline
+  titleEmphasis: Slack'icîmes
+  illustration:
+    image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
+    alt: Highlineurs sur des lignes tendues en montagne
+  phoneImage: ../../assets/images/association/tower-header-mobile.jpg
+highlights:
+  - eyebrow: Stages
+    illustration:
+      image: ../../assets/images/stages/highlineuse-assise-au-dessus-de-la-foret.jpg
+      alt: Highlineuse assise sur la ligne au dessus d'une forêt de montagne
+    imageFocus: highRight
+    title: Découvrez la highline
+    text: Différentes formules pour évoluer dans les airs. Pour s'initier en toute sécurité, progresser ou se perfectionner.
+    pageSlug: stages-highline
+  - eyebrow: Évènements
+    illustration:
+      image: ../../assets/images/world-cup/logo-coupe-du-monde-fond-marine.png
+      alt: Logo de la Coupe du Monde de Highline Freestyle des Arcs
+    title: Coupe du Monde de Highline Freestyle
+    text: Première étape de la Coupe du Monde 2027, du 14 au 16 avril sur la Place Olympique d'Arc 2000. Entrée libre.
+    pageSlug: coupe-du-monde
+  - eyebrow: Prestations
+    illustration:
+      image: ../../assets/images/prestations/demonstration-lac.jpg
+      alt: Démonstration de highline au dessus d'un lac
+    title: Initiations & démonstrations
+    text: Faites découvrir la slackline ou la highline lors de votre évènement.
+    pageSlug: prestations
+stats:
+  - value: Les Arcs
+    label: Savoie, France
+  - value: 700+
+    label: personnes initiées à la highline
+  - value: "10"
+    label: éditions du Winter Festislack
+  - value: 1ère
+    label: association de France à proposer des stages de highline
+associationTeaser:
+  paragraphs:
+    - L'association a été fondée en 2012 et a permis de faire vivre l'activité slackline et highline en Haute Tarentaise en Savoie, notamment à travers l'évènement Winter Festislack, qui rassemble depuis 10 éditions, 150 pratiquants du monde entier, sur le domaine skiable des Arcs, aux Deux Têtes.
+    - Nous sommes maintenant deux femmes à la tête de cette association, extrêmement motivées à développer ses nombreuses facettes.
+  illustration:
+    image: ../../assets/images/association/groupe.jpg
+    alt: Groupe de stagiaires et d'encadrantes souriant sur un rocher en montagne
+stagesTeaser:
+  title: Stages highline
+  paragraphs:
+    - En 2019, Slack'icîmes est la première association de France à proposer des stages de highline. Depuis ses débuts, l'association a initié plus de 700 personnes à ce sport vertigineux. L'association propose des stages de différents formats, adaptés à tous les niveaux.
+  datesNote: Dates 2027 à venir
+  illustration:
+    image: ../../assets/images/stages/highline-face-a-l-aiguille.jpg
+    alt: Deux highlineurs sur une ligne tendue près d'une aiguille rocheuse, au dessus des sapins
+festivalTeaser:
+  paragraphs:
+    - Évènement unique au monde de ski et highline. Il rassemble des pratiquants du monde entier sur le site naturel fabuleux des Deux Têtes, en plein cœur du domaine skiable des Arcs, face au Mont-Blanc.
+contactTeaser:
+  text: Une question sur un stage, une demande d'initiation ou de démonstration ? Écrivez-nous ou appelez-nous.

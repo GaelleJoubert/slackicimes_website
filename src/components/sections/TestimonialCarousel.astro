@@ -1,0 +1,199 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../i18n/locales";
+import { uiStrings } from "../../i18n/ui";
+import {
+  estimatedTextHeight,
+  largestFittingTextSize,
+  pairMatchingItems,
+  testimonialParagraphs,
+  type TextBox,
+  type TextSizeCandidate,
+} from "../../lib/testimonial";
+import CarouselControls from "../ui/CarouselControls.astro";
+import QuoteCard, {
+  type QuoteTextSize,
+  type QuoteTone,
+} from "../ui/QuoteCard.astro";
+
+interface Props {
+  testimonials: CollectionEntry<"testimonials">[];
+  locale: Locale;
+}
+
+const QUOTE_TONES: QuoteTone[] = ["lichen", "moss"];
+
+// Text boxes of the 375px wide mobile cards: min-h-104 minus padding, quote mark and a two line author row.
+const REGULAR_TEXT_BOX: TextBox = { heightPx: 256, paragraphGapPx: 12 };
+const COMPACT_TEXT_BOX: TextBox = { heightPx: 94, paragraphGapPx: 12 };
+const HUGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "huge",
+  charactersPerLine: 21,
+  lineHeightPx: 32,
+};
+const EXTRA_LARGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "extraLarge",
+  charactersPerLine: 27,
+  lineHeightPx: 28,
+};
+const LARGE: TextSizeCandidate<QuoteTextSize> = {
+  name: "large",
+  charactersPerLine: 31,
+  lineHeightPx: 28,
+};
+const BASE: TextSizeCandidate<QuoteTextSize> = {
+  name: "base",
+  charactersPerLine: 34,
+  lineHeightPx: 24,
+};
+const SMALL: TextSizeCandidate<QuoteTextSize> = {
+  name: "small",
+  charactersPerLine: 41,
+  lineHeightPx: 20,
+};
+const REGULAR_TEXT_SIZES = [HUGE, EXTRA_LARGE, LARGE, BASE, SMALL];
+const COMPACT_TEXT_SIZES = [LARGE, BASE, SMALL];
+
+const { testimonials, locale } = Astro.props;
+const allStrings = uiStrings(locale);
+const strings = allStrings.testimonials;
+const cards = await Promise.all(
+  testimonials.map(async (testimonial) => {
+    const paragraphs = testimonialParagraphs(testimonial.body ?? "");
+    return {
+      testimonial,
+      paragraphs,
+      fitsCompactCard:
+        estimatedTextHeight(
+          paragraphs,
+          SMALL,
+          COMPACT_TEXT_BOX.paragraphGapPx,
+        ) <= COMPACT_TEXT_BOX.heightPx,
+      Content: (await render(testimonial)).Content,
+    };
+  }),
+);
+
+type Card = (typeof cards)[number];
+
+function sharedTextSize(
+  group: Card[],
+  candidatesFromLargest: TextSizeCandidate<QuoteTextSize>[],
+  box: TextBox,
+): QuoteTextSize {
+  const fittingIndexes = group.map((card) => {
+    const fittingSize = largestFittingTextSize(
+      card.paragraphs,
+      candidatesFromLargest,
+      box,
+    );
+    return candidatesFromLargest.findIndex(
+      (candidate) => candidate.name === fittingSize,
+    );
+  });
+  return candidatesFromLargest[Math.max(...fittingIndexes)].name;
+}
+
+function withAlternatingTones<Item>(groups: Item[][]) {
+  let cardIndex = 0;
+  return groups.map((group) =>
+    group.map((item) => ({
+      ...item,
+      tone: QUOTE_TONES[cardIndex++ % QUOTE_TONES.length],
+    })),
+  );
+}
+
+const sizedGroups = pairMatchingItems(
+  cards,
+  (card) => card.fitsCompactCard,
+).map((group) => {
+  const isPair = group.length > 1;
+  const textSize = isPair
+    ? sharedTextSize(group, COMPACT_TEXT_SIZES, COMPACT_TEXT_BOX)
+    : sharedTextSize(group, REGULAR_TEXT_SIZES, REGULAR_TEXT_BOX);
+  const density = isPair ? ("compact" as const) : ("regular" as const);
+  return group.map((card) => ({ ...card, density, textSize }));
+});
+const slides = withAlternatingTones(sizedGroups);
+---
+
+<div
+  data-testimonial-carousel
+  role="region"
+  aria-roledescription={allStrings.common.carouselRoleDescription}
+  aria-label={strings.carouselLabel}
+  class="gap-grid flex flex-col"
+>
+  <ul
+    aria-live="polite"
+    class="gap-grid grid min-h-104 md:min-h-120 md:grid-cols-2"
+  >
+    {slides.map((slideCards) => (
+      <li data-carousel-slide class="gap-grid flex flex-col">
+        {slideCards.map(({ testimonial, tone, density, textSize, Content }) => (
+          <QuoteCard
+            author={testimonial.data.author}
+            context={testimonial.data.stageName}
+            tone={tone}
+            density={density}
+            textSize={textSize}
+            class="flex-1"
+          >
+            <Content />
+          </QuoteCard>
+        ))}
+      </li>
+    ))}
+  </ul>
+  <CarouselControls
+    previousLabel={strings.previousButton}
+    nextLabel={strings.nextButton}
+  />
+</div>
+
+<script>
+  import { isOnPage, pageCount, wrapPageIndex } from "../../lib/pagination";
+  import { findCarouselControls, showPageDots } from "../ui/carousel-controls";
+
+  const DESKTOP_MEDIA_QUERY = "(min-width: 48rem)";
+  const SLIDES_PER_PAGE_ON_MOBILE = 1;
+  const SLIDES_PER_PAGE_ON_DESKTOP = 2;
+
+  function setUpCarousel(carousel: HTMLElement) {
+    const slides = [
+      ...carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
+    ];
+    const { controls, previousButton, nextButton, dots } =
+      findCarouselControls(carousel);
+    const desktopQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    let currentPageIndex = 0;
+
+    const slidesPerPage = () =>
+      desktopQuery.matches
+        ? SLIDES_PER_PAGE_ON_DESKTOP
+        : SLIDES_PER_PAGE_ON_MOBILE;
+
+    function showPage(pageIndex: number) {
+      const perPage = slidesPerPage();
+      const totalPages = pageCount(slides.length, perPage);
+      currentPageIndex = wrapPageIndex(pageIndex, totalPages);
+      slides.forEach((slide, slideIndex) => {
+        slide.hidden = !isOnPage(slideIndex, currentPageIndex, perPage);
+      });
+      showPageDots(dots, currentPageIndex, totalPages);
+    }
+
+    previousButton.addEventListener("click", () =>
+      showPage(currentPageIndex - 1),
+    );
+    nextButton.addEventListener("click", () => showPage(currentPageIndex + 1));
+    desktopQuery.addEventListener("change", () => showPage(0));
+    controls.hidden = false;
+    showPage(0);
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-testimonial-carousel]")
+    .forEach(setUpCarousel);
+</script>

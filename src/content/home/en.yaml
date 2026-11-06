@@ -1,0 +1,59 @@
+hero:
+  eyebrow: Highline and slackline
+  titleEmphasis: Slack'icîmes
+  illustration:
+    image: ../../assets/images/stages/highline-piton-coucher-de-soleil.jpg
+    alt: Highliners on lines rigged in the mountains
+  phoneImage: ../../assets/images/association/tower-header-mobile.jpg
+highlights:
+  - eyebrow: Courses
+    illustration:
+      image: ../../assets/images/stages/highlineuse-assise-au-dessus-de-la-foret.jpg
+      alt: Highliner sitting on the line above a mountain forest
+    imageFocus: highRight
+    title: Discover highlining
+    text: Different formulas to move through the air. Get started safely, progress or perfect your skills.
+    pageSlug: stages-highline
+  - eyebrow: Events
+    illustration:
+      image: ../../assets/images/world-cup/logo-coupe-du-monde-fond-marine.png
+      alt: Logo of the Les Arcs Highline Freestyle World Cup
+    title: Highline Freestyle World Cup
+    text: First stop of the 2027 World Cup, from April 14 to 16 on the Place Olympique in Arc 2000. Free entry.
+    pageSlug: coupe-du-monde
+  - eyebrow: Services
+    illustration:
+      image: ../../assets/images/prestations/demonstration-lac.jpg
+      alt: Highline demonstration above a lake
+    title: Introductions & demonstrations
+    text: Let people discover slackline or highline at your event.
+    pageSlug: prestations
+stats:
+  - value: Les Arcs
+    label: Savoie, France
+  - value: 700+
+    label: people introduced to highlining
+  - value: "10"
+    label: editions of the Winter Festislack
+  - value: 1st
+    label: association in France to offer highline courses
+associationTeaser:
+  paragraphs:
+    - The association was founded in 2012 and has kept slackline and highline alive in Haute Tarentaise, Savoie, in particular through the Winter Festislack, which over 10 editions has brought together 150 practitioners from all over the world at the Deux Têtes, in the Les Arcs ski area.
+    - Two women now lead the association, highly motivated to develop its many facets.
+  illustration:
+    image: ../../assets/images/association/groupe.jpg
+    alt: Group of trainees and instructors smiling on a rock in the mountains
+stagesTeaser:
+  title: Highline courses
+  paragraphs:
+    - In 2019, Slack'icîmes became the first association in France to offer highline courses. Since then, the association has introduced more than 700 people to this dizzying sport. It offers courses in different formats, suitable for every level.
+  datesNote: 2027 dates coming soon
+  illustration:
+    image: ../../assets/images/stages/highline-face-a-l-aiguille.jpg
+    alt: Two highliners on a line rigged next to a rock spire, above the pine trees
+festivalTeaser:
+  paragraphs:
+    - A one of a kind event combining skiing and highline. It brings together practitioners from all over the world on the fabulous natural site of the Deux Têtes, in the heart of the Les Arcs ski area, facing Mont Blanc.
+contactTeaser:
+  text: A question about a course, a request for an introduction or a demonstration? Write to us or give us a call.

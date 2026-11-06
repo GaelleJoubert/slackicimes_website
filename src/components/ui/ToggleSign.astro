@@ -1,0 +1,45 @@
+---
+import { actionBadgeClasses } from "./action-badge";
+
+type ToggleSignVariant = "details" | "courseTab";
+
+interface Props {
+  variant?: ToggleSignVariant;
+  class?: string;
+}
+
+interface VariantClasses {
+  square: string;
+  plus: string;
+  minus: string;
+}
+
+const VARIANT_CLASSES: Record<ToggleSignVariant, VariantClasses> = {
+  details: {
+    square: "disclosure-open:bg-slate disclosure-open:text-snow",
+    plus: "disclosure-open:hidden",
+    minus: "hidden disclosure-open:inline",
+  },
+  courseTab: {
+    square: "group-aria-expanded:bg-slate group-aria-expanded:text-snow",
+    plus: "group-aria-expanded:hidden",
+    minus: "hidden group-aria-expanded:inline",
+  },
+};
+
+const { variant = "details", class: extraClasses } = Astro.props;
+const variantClasses = VARIANT_CLASSES[variant];
+---
+
+<span
+  aria-hidden="true"
+  class:list={[
+    "text-xl leading-none",
+    actionBadgeClasses(),
+    variantClasses.square,
+    extraClasses,
+  ]}
+>
+  <span class={variantClasses.plus}>+</span>
+  <span class={variantClasses.minus}>–</span>
+</span>

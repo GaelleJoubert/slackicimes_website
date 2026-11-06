@@ -1,0 +1,84 @@
+---
+import type { Locale } from "../../i18n/locales";
+import { localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import { absoluteUrl } from "../../lib/seo";
+import {
+  CONTACT_FORM_ENDPOINT,
+  SITE_NAME,
+  WEB3FORMS_ACCESS_KEY,
+} from "../../lib/site";
+import SubmitButton from "../ui/SubmitButton.astro";
+import TextField from "../ui/TextField.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const THANK_YOU_PAGE_SLUG = "merci";
+const NAME_MAX_LENGTH = 100;
+// RFC 5321 caps a deliverable email address at 254 characters.
+const EMAIL_MAX_LENGTH = 254;
+const TOPIC_MAX_LENGTH = 150;
+const MESSAGE_MAX_LENGTH = 5000;
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale).contactForm;
+const thankYouUrl = absoluteUrl(localizedPath(THANK_YOU_PAGE_SLUG, locale));
+---
+
+<form
+  action={CONTACT_FORM_ENDPOINT}
+  method="POST"
+  class="gap-stack flex flex-col"
+>
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="from_name" value={SITE_NAME} />
+  <input type="hidden" name="subject" value={strings.notificationSubject} />
+  <input type="hidden" name="redirect" value={thankYouUrl} />
+  <input
+    type="checkbox"
+    name="botcheck"
+    class="hidden"
+    tabindex="-1"
+    autocomplete="off"
+  />
+
+  <div class="gap-grid grid grid-cols-2">
+    <TextField
+      name="first_name"
+      label={strings.firstNameLabel}
+      autocomplete="given-name"
+      maxLength={NAME_MAX_LENGTH}
+    />
+    <TextField
+      name="last_name"
+      label={strings.lastNameLabel}
+      autocomplete="family-name"
+      maxLength={NAME_MAX_LENGTH}
+    />
+  </div>
+  <TextField
+    name="email"
+    label={strings.emailLabel}
+    type="email"
+    autocomplete="email"
+    maxLength={EMAIL_MAX_LENGTH}
+    required
+  />
+  <TextField
+    name="topic"
+    label={strings.topicLabel}
+    maxLength={TOPIC_MAX_LENGTH}
+  />
+  <TextField
+    name="message"
+    label={strings.messageLabel}
+    type="multiline"
+    maxLength={MESSAGE_MAX_LENGTH}
+    required
+  />
+
+  <p class="caption">{strings.requiredFieldsNote}</p>
+  <SubmitButton class="md:self-start">{strings.submitButton}</SubmitButton>
+</form>

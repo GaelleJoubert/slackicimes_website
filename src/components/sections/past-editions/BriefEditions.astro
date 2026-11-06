@@ -1,0 +1,69 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { editionPeriodLabel } from "../../../lib/festival-edition";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+import { uiStrings } from "../../../i18n/ui";
+import VideoThumbnailLink from "../../ui/VideoThumbnailLink.astro";
+
+type FestivalEdition = CollectionEntry<"festivalEditions">;
+
+interface Props {
+  editions: FestivalEdition[];
+  dotTone: TimelineDotTone;
+  locale: Locale;
+}
+
+const { editions, dotTone, locale } = Astro.props;
+const strings = uiStrings(locale);
+
+function briefVideo(edition: FestivalEdition) {
+  const { videos, videoThumbnail, title } = edition.data;
+  const [videoUrl, ...extraVideos] = videos;
+  if (!videoUrl) return null;
+  const hasOnePreviewableVideo = extraVideos.length === 0 && videoThumbnail;
+  if (!hasOnePreviewableVideo) {
+    throw new Error(
+      `Festival edition "${edition.id}" has a brief layout: give it one video and a "videoThumbnail".`,
+    );
+  }
+  return {
+    url: videoUrl,
+    thumbnail: videoThumbnail,
+    label: `${strings.video.watchOnYoutube}: ${title}`,
+  };
+}
+const renderedEditions = await Promise.all(
+  editions.map(async (edition) => ({
+    edition,
+    video: briefVideo(edition),
+    Story: (await render(edition)).Content,
+  })),
+);
+---
+
+<TimelineEntry
+  dotTone={dotTone}
+  dotOffset="card"
+  class="bg-moss rounded-card gap-block p-card grid md:grid-cols-2"
+>
+  {renderedEditions.map(({ edition, video, Story }) => (
+    <article class="gap-stack flex flex-col">
+      <h2 class="timeline-year text-slate">
+        {editionPeriodLabel(edition.data.period, edition.data.editionNumber)}
+      </h2>
+      <div class="rich-text">
+        <Story />
+      </div>
+      {video && (
+        <VideoThumbnailLink
+          href={video.url}
+          thumbnail={video.thumbnail}
+          label={video.label}
+        />
+      )}
+    </article>
+  ))}
+</TimelineEntry>

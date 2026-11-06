@@ -1,0 +1,121 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import Container from "../../components/ui/Container.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import FramedPicture from "../../components/ui/FramedPicture.astro";
+import HighlightedText from "../../components/ui/HighlightedText.astro";
+import LinkButton from "../../components/ui/LinkButton.astro";
+import PhotoGallery from "../../components/ui/PhotoGallery.astro";
+import SectionIntro from "../../components/ui/SectionIntro.astro";
+import Skyline from "../../components/ui/Skyline.astro";
+import {
+  getGallery,
+  getPageEntry,
+  getSingleEntryContent,
+} from "../../i18n/collections";
+import { buildLocaleStaticPaths, localizedPath } from "../../i18n/routes";
+import { uiStrings } from "../../i18n/ui";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { FESTIVAL_NAME_HIGHLIGHT } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  buildLocaleStaticPaths()) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const PAGE_SLUG = "winter-festislack";
+const PAST_EDITIONS_PAGE_SLUG = "anciennes-editions-winter-festislack";
+const POSTER_WIDTHS = [480, 960];
+const POSTER_SIZES = "480px";
+const POSTER_THUMBNAIL_WIDTHS = [160, 320];
+const POSTER_THUMBNAIL_SIZES = "128px";
+
+const { locale } = Astro.props;
+const strings = uiStrings(locale);
+const page = await getPageEntry(PAGE_SLUG, locale);
+const { Content: Intro } = await render(page);
+const { announcement } = (await getSingleEntryContent("festival", locale)).data;
+const festivalGallery = await getGallery("festival", locale);
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  locale={locale}
+  pageSlug={PAGE_SLUG}
+>
+  <section
+    aria-labelledby="page-title"
+    class="bg-forest text-snow pt-page-top relative pb-24 md:pb-40"
+  >
+    <Container class="gap-block flex flex-col">
+      <div class="gap-stack md:gap-block grid md:grid-cols-2 md:items-end">
+        <div class="gap-stack flex flex-col">
+          {page.data.eyebrow && (
+            <Eyebrow tone="dark">{page.data.eyebrow}</Eyebrow>
+          )}
+          <h1 id="page-title" class="page-title text-snow">
+            <HighlightedText
+              text={page.data.heading}
+              highlight={FESTIVAL_NAME_HIGHLIGHT}
+            />
+          </h1>
+        </div>
+        <div class="intro-text intro-text-on-dark">
+          <Intro />
+        </div>
+      </div>
+      <PhotoGallery
+        photos={festivalGallery.data.photos}
+        label={strings.festival.galleryLabel}
+        locale={locale}
+        loading="eager"
+      />
+    </Container>
+    <Skyline variant="edge" profile="montBlanc" fill="snow" />
+  </section>
+
+  <section class="py-section">
+    <Container class="gap-block grid items-center md:grid-cols-5">
+      <div class="md:col-span-3">
+        <SectionIntro title={announcement.title}>
+          <div class="flow-root space-y-4">
+            <div class="float-right mb-2 ml-4 w-32 md:hidden">
+              <FramedPicture
+                image={announcement.poster.image}
+                alt={announcement.poster.alt}
+                widths={POSTER_THUMBNAIL_WIDTHS}
+                sizes={POSTER_THUMBNAIL_SIZES}
+                class="h-auto"
+              />
+            </div>
+            {announcement.paragraphs.map((paragraph) => (
+              <p class="text-graphite">{paragraph}</p>
+            ))}
+          </div>
+          <div class="gap-inline flex flex-col md:flex-row md:flex-wrap">
+            <LinkButton href={localizedPath("coupe-du-monde", locale)}>
+              {strings.common.discoverWorldCupButton}
+            </LinkButton>
+            <LinkButton
+              href={localizedPath(PAST_EDITIONS_PAGE_SLUG, locale)}
+              variant="secondary"
+            >
+              {strings.festival.pastEditionsButton}
+            </LinkButton>
+          </div>
+        </SectionIntro>
+      </div>
+      <div class="hidden md:col-span-2 md:block">
+        <FramedPicture
+          image={announcement.poster.image}
+          alt={announcement.poster.alt}
+          widths={POSTER_WIDTHS}
+          sizes={POSTER_SIZES}
+          class="h-auto"
+        />
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

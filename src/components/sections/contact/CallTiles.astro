@@ -1,0 +1,40 @@
+---
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { CONTACT_PEOPLE } from "../../../lib/site";
+import ActionBadge from "../../ui/ActionBadge.astro";
+import { STANDALONE_BADGE_CLASSES } from "../../ui/action-badge";
+import { CLICKABLE_CARD_CLASSES } from "../../ui/card-styles";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: extraClasses } = Astro.props;
+const strings = uiStrings(locale).contactPage;
+---
+
+<ul class:list={["gap-grid grid", extraClasses]}>
+  {CONTACT_PEOPLE.map((person) => {
+    return (
+      <li>
+        <a
+          href={`tel:${person.internationalPhone}`}
+          class:list={[
+            "bg-moss rounded-card flex min-h-16 items-center justify-between gap-3 px-4 py-2.5",
+            CLICKABLE_CARD_CLASSES,
+          ]}
+        >
+          <span class="flex flex-col">
+            <span class="text-forest text-sm font-semibold">
+              {strings.callPerson} {person.firstName}
+            </span>
+            <span class="text-slate font-semibold">{person.displayPhone}</span>
+          </span>
+          <ActionBadge icon="phone" class={STANDALONE_BADGE_CLASSES} />
+        </a>
+      </li>
+    );
+  })}
+</ul>

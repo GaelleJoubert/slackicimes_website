@@ -1,0 +1,32 @@
+---
+import ToggleSign from "./ToggleSign.astro";
+import { STANDALONE_BADGE_CLASSES } from "./action-badge";
+
+interface Props {
+  summary: string;
+  accessibleContext: string;
+}
+
+const { summary, accessibleContext } = Astro.props;
+---
+
+<details data-animated-details class="group">
+  <summary class="text-slate flex min-h-11 cursor-pointer items-center gap-3 font-semibold">
+    <ToggleSign class={STANDALONE_BADGE_CLASSES} />
+    <span>
+      {summary}
+      <span class="sr-only">: {accessibleContext}</span>
+    </span>
+  </summary>
+  <div data-expand-panel>
+    <div class="flex flex-col gap-5 pt-3">
+      <slot />
+    </div>
+  </div>
+</details>
+
+<script>
+  import { enhanceAnimatedDetails } from "./expand-animation";
+
+  enhanceAnimatedDetails();
+</script>

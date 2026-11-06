@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArtDirectedPicture from "../../ui/ArtDirectedPicture.astro";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  heading: string;
+  hero: CollectionEntry<"home">["data"]["hero"];
+}
+
+const DESKTOP_PHOTO_WIDTHS = [1024, 1600, 2400];
+const PHONE_PHOTO_WIDTHS = [400, 800, 1200];
+
+const { heading, hero } = Astro.props;
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="text-snow relative h-160 overflow-hidden md:h-auto md:flex-1"
+>
+  <ArtDirectedPicture
+    desktopImage={hero.illustration.image}
+    phoneImage={hero.phoneImage}
+    alt={hero.illustration.alt}
+    desktopWidths={DESKTOP_PHOTO_WIDTHS}
+    phoneWidths={PHONE_PHOTO_WIDTHS}
+    class="md:object-low absolute inset-0 size-full object-cover object-left-of-center"
+  />
+  <div
+    aria-hidden="true"
+    class="to-slate/55 absolute inset-0 hidden bg-linear-to-b from-transparent from-60% md:block"
+  ></div>
+  <Container class="gap-stack relative flex h-full pt-38 flex-col items-center text-center md:items-end md:justify-end md:pt-0 md:pb-36 md:text-right">
+    <Eyebrow
+      tone="light"
+      class="text-slate md:text-snow self-center md:order-last md:self-end"
+    >
+      {hero.eyebrow}
+    </Eyebrow>
+    <h1
+      id="hero-title"
+      class="font-heading text-slate md:text-snow flex flex-col items-center text-2xl leading-none font-medium tracking-tight md:items-end md:text-4xl"
+    >
+      <HighlightedText
+        text={heading}
+        highlight={hero.titleEmphasis}
+        highlightClass="text-display-sm md:text-hero"
+      />
+    </h1>
+  </Container>
+  <Skyline variant="edge" fill="forest" hasInnerRidge />
+</section>

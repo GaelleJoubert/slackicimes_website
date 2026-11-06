@@ -1,0 +1,10 @@
+photos:
+  - image: ../../../assets/images/festival/deux-tetes.jpg
+    alt: Le site des Deux Têtes enneigé, sur le domaine skiable des Arcs
+    caption: Site des Deux Têtes
+  - image: ../../../assets/images/festival/highlineur-en-contre-jour.jpg
+    alt: Silhouette d'un highlineur à contre jour, accroché à une ligne inclinée
+    caption: À contre jour
+  - image: ../../../assets/images/festival/highlineuse-en-vol-face-aux-sommets.jpg
+    alt: Highlineuse allongée en l'air au dessus de la ligne, devant des sommets enneigés
+    caption: Freestyle face aux sommets

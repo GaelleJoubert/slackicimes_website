@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TimelineEntry, {
+  type TimelineDotTone,
+} from "../../ui/TimelineEntry.astro";
+import EditionVideoLinks from "./EditionVideoLinks.astro";
+import EditionWithPoster from "./EditionWithPoster.astro";
+
+interface Props {
+  edition: CollectionEntry<"festivalEditions">;
+  dotTone: TimelineDotTone;
+}
+
+const { edition, dotTone } = Astro.props;
+---
+
+<TimelineEntry dotTone={dotTone}>
+  <EditionWithPoster edition={edition}>
+    <EditionVideoLinks edition={edition} />
+  </EditionWithPoster>
+</TimelineEntry>

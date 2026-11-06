@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "astro:assets";
+import Container from "../../ui/Container.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import Skyline from "../../ui/Skyline.astro";
+
+interface Props {
+  page: CollectionEntry<"pages">["data"];
+}
+
+const PHOTO_WIDTHS = [800, 1600, 2400];
+const PHOTO_SIZES = "100vw";
+
+const { page } = Astro.props;
+---
+
+<section
+  aria-labelledby="page-title"
+  class="text-snow md:relative md:flex-1 md:overflow-hidden"
+>
+  <div class="relative h-80 overflow-hidden md:absolute md:inset-0 md:h-auto">
+    {page.illustration && (
+      <Picture
+        src={page.illustration.image}
+        alt={page.illustration.alt}
+        widths={PHOTO_WIDTHS}
+        sizes={PHOTO_SIZES}
+        formats={["avif", "webp"]}
+        loading="eager"
+        class="md:object-low absolute inset-x-0 bottom-0 h-4/3 w-full object-cover md:h-full"
+      />
+    )}
+    <div
+      aria-hidden="true"
+      class="to-slate/75 absolute inset-0 hidden bg-linear-to-b from-transparent from-40% md:block"
+    ></div>
+    <Skyline variant="edge" fill="forest" hasInnerRidge />
+  </div>
+  <div class="bg-forest md:absolute md:inset-0 md:bg-transparent">
+    <Container class="gap-stack pt-tile pb-card flex flex-col items-start md:h-full md:justify-end md:pt-0 md:pb-36">
+      <h1 id="page-title" class="page-title text-snow">
+        <HighlightedText
+          text={page.heading}
+          highlight={page.headingAccent ?? ""}
+          highlightClass="italic"
+        />
+      </h1>
+      {page.eyebrow && <Eyebrow tone="photo">{page.eyebrow}</Eyebrow>}
+    </Container>
+  </div>
+</section>

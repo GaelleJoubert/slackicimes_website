@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+}
+
+const { title, paragraphs } = Astro.props;
+---
+
+<div class="bg-forest text-snow rounded-card gap-stack p-card md:gap-block grid md:grid-cols-3 md:items-center">
+  <div class="gap-stack flex flex-col md:col-span-2">
+    <h2 class="timeline-title text-snow md:text-title-sm">{title}</h2>
+    {paragraphs.map((paragraph) => (
+      <p class="text-sage">{paragraph}</p>
+    ))}
+  </div>
+  <slot />
+</div>

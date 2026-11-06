@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SLACKCAMP_GPS_POSITION, SLACKCAMP_MAP_URL } from "../../../lib/site";
+import ButtonIcon from "../../ui/ButtonIcon.astro";
+import Container from "../../ui/Container.astro";
+import FramedPicture from "../../ui/FramedPicture.astro";
+import HighlightedText from "../../ui/HighlightedText.astro";
+import LinkButton from "../../ui/LinkButton.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  access: CollectionEntry<"slackcamp">["data"]["access"];
+}
+
+const PLAN_WIDTHS = [420, 840, 1260];
+const PLAN_SIZES = "(min-width: 768px) 420px, 100vw";
+
+const { access } = Astro.props;
+---
+
+<section class="py-section" aria-labelledby="access-title">
+  <Container class="gap-block md:gap-24 flex flex-col items-center md:flex-row md:justify-center">
+    <div class="gap-grid flex w-full flex-col md:max-w-130">
+      <SectionIntro
+        id="access-title"
+        title={access.title}
+        eyebrow={access.eyebrow}
+      >
+        <HighlightedText
+          slot="title"
+          text={access.title}
+          highlight={access.titleAccent}
+          highlightClass="text-forest font-medium italic"
+        />
+      </SectionIntro>
+      <dl class="border-rule border-t">
+        {access.routes.map((route) => (
+          <div class="border-rule grid grid-cols-3 gap-4 border-b py-4.5">
+            <dt class="label-text pt-1">{route.label}</dt>
+            <dd class="text-slate col-span-2">{route.text}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="flex flex-col gap-2">
+        <p class="label-text">{access.gpsLabel}</p>
+        <p class="font-heading text-xl leading-none font-voice md:text-3xl">
+          {SLACKCAMP_GPS_POSITION}
+        </p>
+      </div>
+      <LinkButton
+        href={SLACKCAMP_MAP_URL}
+        variant="secondary"
+        class="self-start"
+      >
+        {access.mapButton}
+        <ButtonIcon name="external" />
+      </LinkButton>
+    </div>
+    <div class="w-full md:max-w-105">
+      <FramedPicture
+        image={access.plan.image}
+        alt={access.plan.alt}
+        widths={PLAN_WIDTHS}
+        sizes={PLAN_SIZES}
+      />
+    </div>
+  </Container>
+</section>

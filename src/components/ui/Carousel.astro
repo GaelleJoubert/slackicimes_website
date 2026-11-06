@@ -1,0 +1,136 @@
+---
+import CarouselControls, { type CarouselTone } from "./CarouselControls.astro";
+
+type CarouselWidth = "narrow" | "full";
+
+interface Props {
+  label: string;
+  roleDescription: string;
+  previousLabel: string;
+  nextLabel: string;
+  tone?: CarouselTone;
+  width?: CarouselWidth;
+  desktopGrid?: boolean;
+  class?: string;
+}
+
+const WIDTH_CLASSES: Record<CarouselWidth, string> = {
+  narrow: "max-w-76",
+  full: "",
+};
+
+const DESKTOP_GRID_CLASSES = {
+  root: "md:max-w-none",
+  track: "md:grid md:grid-cols-2 md:gap-grid md:overflow-visible",
+  controls: "md:hidden",
+};
+
+const {
+  label,
+  roleDescription,
+  previousLabel,
+  nextLabel,
+  tone = "light",
+  width = "narrow",
+  desktopGrid = false,
+  class: extraClasses,
+} = Astro.props;
+---
+
+<div
+  data-slide-carousel
+  role="region"
+  aria-roledescription={roleDescription}
+  aria-label={label}
+  class:list={[
+    "gap-grid mx-auto flex w-full flex-col",
+    WIDTH_CLASSES[width],
+    desktopGrid && DESKTOP_GRID_CLASSES.root,
+    extraClasses,
+  ]}
+>
+  <ul
+    data-slide-track
+    class:list={[
+      "gap-grid relative flex snap-x snap-mandatory overflow-x-auto",
+      desktopGrid && DESKTOP_GRID_CLASSES.track,
+    ]}
+  >
+    <slot />
+  </ul>
+  <CarouselControls
+    previousLabel={previousLabel}
+    nextLabel={nextLabel}
+    tone={tone}
+    class={desktopGrid ? DESKTOP_GRID_CLASSES.controls : undefined}
+  />
+</div>
+
+<script>
+  import { wrapPageIndex } from "../../lib/pagination";
+  import {
+    findCarouselControls,
+    requireCarouselElement,
+    showPageDots,
+  } from "./carousel-controls";
+  import {
+    closeAnimatedDetailsIn,
+    hasOpenAnimatedDetails,
+    prefersReducedMotion,
+  } from "./expand-animation";
+
+  function setUpCarousel(carousel: HTMLElement) {
+    const track = requireCarouselElement<HTMLElement>(
+      carousel,
+      "[data-slide-track]",
+    );
+    const slides = [...track.children] as HTMLElement[];
+    const { controls, previousButton, nextButton, dots } =
+      findCarouselControls(carousel);
+
+    const slideStep = () =>
+      slides[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap);
+    const currentSlideIndex = () => Math.round(track.scrollLeft / slideStep());
+
+    function showSlide(slideIndex: number) {
+      const targetIndex = wrapPageIndex(slideIndex, slides.length);
+      track.scrollTo({ left: targetIndex * slideStep(), behavior: "smooth" });
+    }
+
+    const highlightCurrentDot = () =>
+      showPageDots(dots, currentSlideIndex(), slides.length);
+
+    let shownSlideIndex = currentSlideIndex();
+
+    function handleTrackScroll() {
+      highlightCurrentDot();
+      const hasChangedSlide = currentSlideIndex() !== shownSlideIndex;
+      if (!hasChangedSlide) return;
+      shownSlideIndex = currentSlideIndex();
+      foldOpenDetails();
+    }
+
+    function foldOpenDetails() {
+      if (!hasOpenAnimatedDetails(track)) return;
+      closeAnimatedDetailsIn(track);
+      carousel.scrollIntoView({
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+        block: "start",
+      });
+    }
+
+    previousButton.addEventListener("click", () =>
+      showSlide(currentSlideIndex() - 1),
+    );
+    nextButton.addEventListener("click", () =>
+      showSlide(currentSlideIndex() + 1),
+    );
+    track.addEventListener("scroll", handleTrackScroll, { passive: true });
+    controls.hidden = false;
+    highlightCurrentDot();
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-slide-carousel]")
+    .forEach(setUpCarousel);
+</script>
