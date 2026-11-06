@@ -70,6 +70,8 @@
   --text-title--line-height: 1.05;
   --text-title-sm: 2.25rem;
   --text-title-sm--line-height: 1.1;
+  --text-athlete-name: clamp(0.875rem, 4.4vw, 1rem);
+  --text-athlete-name--line-height: 1.25;
   --text-card: 1.75rem;
   --text-card--line-height: 1.15;
   --text-body: 1.0625rem;
@@ -242,6 +244,15 @@
 
   .cup-card-title {
     @apply font-display text-2xl font-semibold uppercase;
+  }
+
+  .cup-athlete-name {
+    @apply flex flex-col items-center justify-center text-center font-display text-athlete-name font-bold text-balance uppercase;
+    height: 3lh;
+
+    @variant sm {
+      height: 2lh;
+    }
   }
 
   .cup-stat-value {

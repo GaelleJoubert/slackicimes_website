@@ -1,4 +1,5 @@
 ---
+import CupAthleteCard from "../../ui/CupAthleteCard.astro";
 import type { WorldCupContent } from "./types";
 
 interface Props {
@@ -6,22 +7,31 @@ interface Props {
 }
 
 const { qualified } = Astro.props;
-const placeholderSlots = Array.from({ length: qualified.slotsPerCategory });
 ---
 
 <div class="gap-stack flex flex-col">
   <h3 class="cup-subsection-title text-cup-navy">{qualified.title}</h3>
   <p class="text-cup-muted max-w-2xl">
-    {qualified.intro}
+    {qualified.intro}{" "}
     <strong class="text-cup-ink">{qualified.announcement}</strong>
   </p>
-  <div class="gap-grid grid lg:grid-cols-2">
+  <div class="gap-grid grid xl:grid-cols-2">
     {qualified.categories.map((category) => (
       <div class="border-cup-ink gap-stack flex flex-col border-t-2 pt-5">
-        <h4 class="cup-subsection-title text-cup-ink">{category}</h4>
-        <ul class="grid grid-cols-4 gap-3 sm:grid-cols-6">
-          {placeholderSlots.map(() => (
-            <li class="border-cup-soft rounded-control text-cup-muted flex aspect-square items-center justify-center border border-dashed text-center text-xs">
+        <h4 class="cup-subsection-title text-cup-ink">{category.name}</h4>
+        <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3">
+          {category.athletes.map((athlete) => (
+            <li>
+              <CupAthleteCard
+                {...athlete}
+                profileLinkLabel={qualified.profileLinkLabel}
+              />
+            </li>
+          ))}
+          {Array.from({
+            length: qualified.slotsPerCategory - category.athletes.length,
+          }).map(() => (
+            <li class="border-cup-soft rounded-control text-cup-muted flex aspect-video items-center justify-center border border-dashed text-center text-xs">
               {qualified.placeholderLabel}
             </li>
           ))}

@@ -175,9 +175,72 @@ results:
     title: The 24 qualified athletes
     intro: In each category, 6 athletes qualify through the ISA ranking and 6 through video wild cards.
     announcement: Qualified athletes announced in December 2026.
-    categories: [Women, Men]
+    categories:
+      - name: Women
+        athletes:
+          - nameLines: [Cecilia, Stock]
+            country: Germany
+            flag: ../../assets/images/world-cup/flags/de.png
+            profileUrl: https://slacklinesport.org/athlete/cecilia-stock
+            photo: ../../assets/images/world-cup/athletes/cecilia-stock.jpg
+          - nameLines: [Flora, Fink]
+            country: Germany
+            flag: ../../assets/images/world-cup/flags/de.png
+            profileUrl: https://slacklinesport.org/athlete/flora-fink
+          - nameLines: [Louise, Lenoble]
+            country: France
+            flag: ../../assets/images/world-cup/flags/fr.png
+            profileUrl: https://slacklinesport.org/athlete/louise-lenoble
+            photo: ../../assets/images/world-cup/athletes/louise-lenoble.jpg
+          - nameLines: [Dayoung, Cheong]
+            country: United States
+            flag: ../../assets/images/world-cup/flags/us.png
+            profileUrl: https://slacklinesport.org/athlete/dayoung-cheong
+          - nameLines: [Monique, Paredes]
+            country: Brazil
+            flag: ../../assets/images/world-cup/flags/br.png
+            profileUrl: https://slacklinesport.org/athlete/monique-paredes
+            photo: ../../assets/images/world-cup/athletes/monique-paredes.jpg
+          - nameLines: [Rosanna, French]
+            country: United Kingdom
+            flag: ../../assets/images/world-cup/flags/gb.png
+            profileUrl: https://slacklinesport.org/athlete/rosanna-french
+            photo: ../../assets/images/world-cup/athletes/rosanna-french.jpg
+      - name: Men
+        athletes:
+          - nameLines: [Sebastian, Egger]
+            country: Germany
+            flag: ../../assets/images/world-cup/flags/de.png
+            profileUrl: https://slacklinesport.org/athlete/sebastian-egger
+            photo: ../../assets/images/world-cup/athletes/sebastian-egger.jpg
+          - nameLines: [Davis, Hermes]
+            country: United States
+            flag: ../../assets/images/world-cup/flags/us.png
+            profileUrl: https://slacklinesport.org/athlete/davis-hermes
+            photo: ../../assets/images/world-cup/athletes/davis-hermes.jpg
+          - nameLines: [David Palomo, Echevarrieta]
+            country: Spain
+            flag: ../../assets/images/world-cup/flags/es.png
+            profileUrl: https://slacklinesport.org/athlete/david-palomo-echevarrieta
+            photo: ../../assets/images/world-cup/athletes/david-palomo-echevarrieta.jpg
+          - nameLines: [Pedro Tlaloc, Moctezuma Burns]
+            country: Mexico
+            flag: ../../assets/images/world-cup/flags/mx.png
+            profileUrl: https://slacklinesport.org/athlete/pedro-tlaloc-moctezuma-burns
+            photo: ../../assets/images/world-cup/athletes/pedro-tlaloc-moctezuma-burns.jpg
+          - nameLines: [Alex, Fernandez]
+            country: United States
+            flag: ../../assets/images/world-cup/flags/us.png
+            profileUrl: https://slacklinesport.org/athlete/alex-fernandez
+            photo: ../../assets/images/world-cup/athletes/alex-fernandez.jpg
+          - nameLines: [Lucas, Clemente]
+            country: Brazil
+            flag: ../../assets/images/world-cup/flags/br.png
+            profileUrl: https://slacklinesport.org/athlete/lucas-clemente
+            photo: ../../assets/images/world-cup/athletes/lucas-clemente.jpg
     slotsPerCategory: 12
     placeholderLabel: Coming soon
+    profileLinkLabel: Slackline Sport profile (opens in a new tab)
   live:
     badge: Live from April 14
     title: Live results
