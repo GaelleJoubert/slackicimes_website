@@ -55,6 +55,12 @@ const programItem = z.object({
 
 const stageImageFocus = z.enum(["top", "high", "center", "right", "raised"]);
 
+const courseSession = z
+  .object({ start: z.coerce.date(), end: z.coerce.date() })
+  .refine((session) => session.end >= session.start, {
+    message: "A session cannot end before it starts.",
+  });
+
 const stages = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/stages" }),
   schema: ({ image }) =>
@@ -75,7 +81,7 @@ const stages = defineCollection({
         items: z.array(programItem).min(1),
       }),
       prerequisites: z.array(nonEmptyText).min(1),
-      dates: z.array(nonEmptyText).min(1),
+      sessions: z.array(courseSession).min(1),
       priceInEuros: z.number().positive(),
     }),
 });
@@ -134,7 +140,6 @@ const home = defineCollection({
       stagesTeaser: z.object({
         paragraphs: z.array(nonEmptyText).min(1),
         title: nonEmptyText,
-        datesNote: nonEmptyText,
         illustration,
       }),
       festivalTeaser: z.object({

@@ -21,6 +21,6 @@ prerequisites:
   - Have already been on a highline
   - Know how to set up a slackline on the ground OR be comfortable handling ropes
   - Be 15 or older, or be accompanied
-dates:
-  - July 12 to 16, 2027
+sessions:
+  - { start: 2027-07-12, end: 2027-07-16 }
 priceInEuros: 270

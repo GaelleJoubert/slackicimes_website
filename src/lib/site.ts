@@ -5,6 +5,7 @@ export const SITE_NAME = "Slack'icîmes";
 export const FESTIVAL_NAME_HIGHLIGHT = "Festi";
 
 export const COURSE_FORMULAS_SECTION_ID = "formules";
+export const COURSE_CALENDAR_SECTION_ID = "calendrier";
 export const CONTACT_FORM_SECTION_ID = "formulaire";
 export const FAQ_SECTION_ID = "faq";
 

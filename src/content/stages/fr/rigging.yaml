@@ -21,6 +21,6 @@ prerequisites:
   - Être déjà allé sur une highline
   - Savoir installer une slack au sol OU être à l'aise avec les manipulations de cordes
   - Avoir 15 ans ou plus, ou être accompagné
-dates:
-  - Du 12 au 16 juillet 2027
+sessions:
+  - { start: 2027-07-12, end: 2027-07-16 }
 priceInEuros: 270

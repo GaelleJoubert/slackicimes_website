@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
+import { formatSessionLines, seasonYear } from "../../../lib/sessions";
 import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import DotList from "../../ui/DotList.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
@@ -38,13 +39,19 @@ const {
   description,
   program,
   prerequisites,
-  dates,
+  sessions,
   image,
   imageAlt,
   imageFocus,
 } = stage.data;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+const dateLines = formatSessionLines(
+  sessions,
+  languageTag,
+  strings.stages.sessionSeparator,
+);
+const datesLabel = `${strings.stages.datesHeading} ${seasonYear(sessions)}`;
 const isWeekByDay = program.items.some((item) => item.details.length > 0);
 const programLines = program.items.map((item) =>
   item.place
@@ -54,7 +61,7 @@ const programLines = program.items.map((item) =>
 const facts = [
   { label: strings.stages.durationLabel, lines: [duration] },
   ...(ageRange ? [{ label: strings.stages.ageLabel, lines: [ageRange] }] : []),
-  { label: strings.stages.datesHeading, lines: dates },
+  { label: datesLabel, lines: dateLines },
   { label: strings.stages.priceHeading, lines: [formattedPrice] },
 ];
 const isLongFact = (lines: string[]) =>

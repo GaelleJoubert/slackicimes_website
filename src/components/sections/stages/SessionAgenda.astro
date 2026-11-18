@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { entrySlug } from "../../../i18n/content";
+import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { formatPriceInEuros } from "../../../lib/format";
+import {
+  formatSessionDays,
+  formatSessionRange,
+  formatSessionWeekdays,
+  groupByStartMonth,
+  monthName,
+  toIsoDate,
+  type CourseSession,
+} from "../../../lib/sessions";
+import Carousel from "../../ui/Carousel.astro";
+import CarouselSlide from "../../ui/CarouselSlide.astro";
+import SessionCard, { type SessionCardTone } from "../../ui/SessionCard.astro";
+
+type AgendaDensity = "full" | "compact";
+
+interface Props {
+  stages: CollectionEntry<"stages">[];
+  locale: Locale;
+  coursePagePath?: string;
+  density?: AgendaDensity;
+  cardTone?: SessionCardTone;
+}
+
+interface ScheduledSession {
+  session: CourseSession;
+  stage: CollectionEntry<"stages">;
+}
+
+const {
+  stages,
+  locale,
+  coursePagePath = "",
+  density = "full",
+  cardTone = "moss",
+} = Astro.props;
+const strings = uiStrings(locale);
+const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+
+const scheduledSessions: ScheduledSession[] = stages.flatMap((stage) =>
+  stage.data.sessions.map((session) => ({ session, stage })),
+);
+const months = groupByStartMonth(scheduledSessions);
+
+function courseDetails(stage: CollectionEntry<"stages">): string | undefined {
+  if (density === "compact") return undefined;
+  const price = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+  return `${stage.data.duration} · ${price}`;
+}
+---
+
+<Carousel
+  label={strings.stages.calendarLabel}
+  roleDescription={strings.common.carouselRoleDescription}
+  previousLabel={strings.stages.previousMonthButton}
+  nextLabel={strings.stages.nextMonthButton}
+  width="full"
+  desktopGrid="three"
+  controlsPlacement="above"
+>
+  {months.map(({ month, items }) => (
+    <CarouselSlide class="flex flex-col gap-4">
+      <h3 class="card-title border-slate border-t-2 pt-3 capitalize">
+        {monthName(month, languageTag)}
+      </h3>
+      <ul class="flex flex-col gap-2">
+        {items.map(({ session, stage }) => (
+          <li>
+            <SessionCard
+              href={`${coursePagePath}#${entrySlug(stage.id)}`}
+              name={stage.data.name}
+              days={formatSessionDays(session)}
+              weekdays={formatSessionWeekdays(session, languageTag)}
+              startDate={toIsoDate(session.start)}
+              dateLabel={formatSessionRange(session, languageTag)}
+              details={courseDetails(stage)}
+              tone={cardTone}
+            />
+          </li>
+        ))}
+      </ul>
+    </CarouselSlide>
+  ))}
+</Carousel>
