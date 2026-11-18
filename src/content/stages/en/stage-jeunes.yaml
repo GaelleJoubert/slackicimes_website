@@ -39,5 +39,6 @@ prerequisites:
   - Be over 10 years old
   - Practice a sport regularly
   - Be motivated!
-dates: 2027 dates coming soon
+sessions:
+  - { start: 2027-08-23, end: 2027-08-27 }
 priceInEuros: 200

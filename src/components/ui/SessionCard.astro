@@ -1,0 +1,62 @@
+---
+import ArrowSquare from "./ArrowSquare.astro";
+import { CLICKABLE_CARD_CLASSES } from "./card-styles";
+
+export type SessionCardTone = "moss" | "snow";
+
+interface Props {
+  href: string;
+  name: string;
+  days: string;
+  weekdays: string;
+  startDate: string;
+  dateLabel: string;
+  details?: string;
+  tone?: SessionCardTone;
+}
+
+const TONE_CLASSES: Record<SessionCardTone, string> = {
+  moss: "bg-moss",
+  snow: "bg-snow",
+};
+
+const {
+  href,
+  name,
+  days,
+  weekdays,
+  startDate,
+  dateLabel,
+  details,
+  tone = "moss",
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "rounded-card text-slate flex items-center gap-3 p-3.5 md:p-4",
+    TONE_CLASSES[tone],
+    CLICKABLE_CARD_CLASSES,
+  ]}
+>
+  <span class="flex w-18 shrink-0 flex-col gap-1.5">
+    <time
+      datetime={startDate}
+      class="font-heading text-2xl leading-none font-voice whitespace-nowrap"
+    >
+      <span aria-hidden="true">{days}</span>
+      <span class="sr-only">{dateLabel}</span>
+    </time>
+    <span aria-hidden="true" class="label-text">
+      {weekdays}
+    </span>
+  </span>
+  <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+    <span class="subsection-title decoration-coral leading-tight underline-offset-4 group-hover:underline">
+      {name}
+    </span>
+    {details && <span class="text-graphite text-sm">{details}</span>}
+  </span>
+  <ArrowSquare />
+</a>

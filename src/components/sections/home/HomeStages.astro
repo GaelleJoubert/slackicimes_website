@@ -5,6 +5,8 @@ import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { localizedPath } from "../../../i18n/routes";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros } from "../../../lib/format";
+import { seasonYear } from "../../../lib/sessions";
+import { COURSE_CALENDAR_SECTION_ID } from "../../../lib/site";
 import Carousel from "../../ui/Carousel.astro";
 import CarouselSlide from "../../ui/CarouselSlide.astro";
 import Container from "../../ui/Container.astro";
@@ -12,8 +14,10 @@ import CourseCard from "../../ui/CourseCard.astro";
 import CourseSlide from "../../ui/CourseSlide.astro";
 import FramedPicture from "../../ui/FramedPicture.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
 import SectionIntro from "../../ui/SectionIntro.astro";
 import Skyline from "../../ui/Skyline.astro";
+import SessionAgenda from "../stages/SessionAgenda.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "../stages/stage-image-focus";
 
 interface Props {
@@ -29,6 +33,8 @@ const { teaser, stages, locale } = Astro.props;
 const strings = uiStrings(locale);
 const stagesPagePath = localizedPath("stages-highline", locale);
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
+const year = seasonYear(stages.flatMap((stage) => stage.data.sessions));
+const seasonLabel = `${strings.stages.calendarTitle} ${year}`;
 const courses = stages.map((stage) => ({
   stage,
   href: `${stagesPagePath}#${entrySlug(stage.id)}`,
@@ -104,9 +110,26 @@ const courses = stages.map((stage) => ({
         </li>
       ))}
     </ul>
-    <p class="text-graphite hidden text-center md:block">{teaser.datesNote}</p>
-    <LinkButton href={stagesPagePath} class="md:hidden">
-      {strings.home.discoverStagesButton}
-    </LinkButton>
+    <div class="gap-stack hidden flex-col md:flex">
+      <Eyebrow>{seasonLabel}</Eyebrow>
+      <SessionAgenda
+        stages={stages}
+        locale={locale}
+        coursePagePath={stagesPagePath}
+        density="compact"
+        cardTone="snow"
+      />
+    </div>
+    <div class="gap-inline flex flex-col md:hidden">
+      <LinkButton href={stagesPagePath}>
+        {strings.home.discoverStagesButton}
+      </LinkButton>
+      <LinkButton
+        href={`${stagesPagePath}#${COURSE_CALENDAR_SECTION_ID}`}
+        variant="secondary"
+      >
+        {strings.home.seeCalendarButton}
+      </LinkButton>
+    </div>
   </Container>
 </section>

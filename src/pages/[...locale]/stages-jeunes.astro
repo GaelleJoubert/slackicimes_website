@@ -48,8 +48,7 @@ if (!youthStage) {
   );
 }
 const gallery = await getGallery(YOUTH_STAGE_SLUG, locale);
-const { duration, dates, prerequisites, description, program } =
-  youthStage.data;
+const { duration, prerequisites, description, program } = youthStage.data;
 const formattedPrice = formatPriceInEuros(
   youthStage.data.priceInEuros,
   LOCALE_SETTINGS[locale].htmlLang,
@@ -91,9 +90,7 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
           <p class="font-heading text-slate text-3xl font-voice">
             {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
           </p>
-          <p class="text-graphite">
-            {strings.stages.priceNote} {dates}.
-          </p>
+          <p class="text-graphite">{strings.stages.priceNote}</p>
         </div>
         <LinkButton href={STAGES_REGISTRATION_URL} size="large">
           {strings.youthStages.registerButton}

@@ -18,5 +18,6 @@ prerequisites:
   - Avoir déjà pratiqué la highline
   - Maîtriser la remontée sur leash et le rétablissement sur la ligne
   - Maîtriser un départ assis sur une ligne au sol
-dates: Dates 2027 à venir
-priceInEuros: 250
+sessions:
+  - { start: 2027-07-19, end: 2027-07-23 }
+priceInEuros: 270

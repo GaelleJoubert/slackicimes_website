@@ -18,5 +18,6 @@ prerequisites:
   - Have already practiced highlining
   - Master the leash climb and getting back on the line
   - Master a sit start on a line on the ground
-dates: 2027 dates coming soon
-priceInEuros: 250
+sessions:
+  - { start: 2027-07-19, end: 2027-07-23 }
+priceInEuros: 270
