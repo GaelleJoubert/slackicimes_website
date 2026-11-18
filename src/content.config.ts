@@ -75,7 +75,7 @@ const stages = defineCollection({
         items: z.array(programItem).min(1),
       }),
       prerequisites: z.array(nonEmptyText).min(1),
-      dates: nonEmptyText,
+      dates: z.array(nonEmptyText).min(1),
       priceInEuros: z.number().positive(),
     }),
 });

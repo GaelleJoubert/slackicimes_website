@@ -8,6 +8,7 @@ import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import DotList from "../../ui/DotList.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import TextLines from "../../ui/TextLines.astro";
 import YouthDayCard, { type DayTone } from "../youth/YouthDayCard.astro";
 import { STAGE_IMAGE_FOCUS_CLASSES } from "./stage-image-focus";
 
@@ -18,6 +19,7 @@ interface Props {
 
 const PHOTO_WIDTHS = [480, 960];
 const PHOTO_SIZES = "500px";
+const LONG_FACT_CHARACTER_COUNT = 30;
 
 const DAY_TONE: DayTone = {
   card: "bg-moss",
@@ -50,11 +52,13 @@ const programLines = program.items.map((item) =>
     : item.label,
 );
 const facts = [
-  { label: strings.stages.durationLabel, value: duration },
-  ...(ageRange ? [{ label: strings.stages.ageLabel, value: ageRange }] : []),
-  { label: strings.stages.datesHeading, value: dates },
-  { label: strings.stages.priceHeading, value: formattedPrice },
+  { label: strings.stages.durationLabel, lines: [duration] },
+  ...(ageRange ? [{ label: strings.stages.ageLabel, lines: [ageRange] }] : []),
+  { label: strings.stages.datesHeading, lines: dates },
+  { label: strings.stages.priceHeading, lines: [formattedPrice] },
 ];
+const isLongFact = (lines: string[]) =>
+  lines.join(" ").length > LONG_FACT_CHARACTER_COUNT;
 ---
 
 <div data-switch-content class="hidden gap-14 md:grid md:grid-cols-12">
@@ -83,7 +87,14 @@ const facts = [
       {facts.map((fact) => (
         <div class="border-rule flex flex-col gap-1.5 border-r py-4 pr-4 pl-4 first:pl-0 last:border-r-0">
           <dt class="label-text">{fact.label}</dt>
-          <dd class="font-heading text-2xl font-voice">{fact.value}</dd>
+          <dd
+            class:list={[
+              "font-heading font-voice",
+              isLongFact(fact.lines) ? "text-lg" : "text-2xl",
+            ]}
+          >
+            <TextLines lines={fact.lines} />
+          </dd>
         </div>
       ))}
     </dl>

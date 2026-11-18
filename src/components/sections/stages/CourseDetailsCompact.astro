@@ -7,6 +7,7 @@ import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import DotList from "../../ui/DotList.astro";
 import FactTile from "../../ui/FactTile.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import TextLines from "../../ui/TextLines.astro";
 
 interface Props {
   stage: CollectionEntry<"stages">;
@@ -66,7 +67,9 @@ const programLines = program.items.map((item) =>
   </div>
   <div class="flex items-baseline gap-2.5">
     <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
-    <p class="font-semibold">{dates}</p>
+    <p class="font-semibold">
+      <TextLines lines={dates} />
+    </p>
   </div>
   <LinkButton href={STAGES_REGISTRATION_URL}>
     {strings.stages.registerButton}

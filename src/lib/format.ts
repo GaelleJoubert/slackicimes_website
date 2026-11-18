@@ -21,3 +21,9 @@ export function lowercaseFirstLetter(
 ): string {
   return `${text.charAt(0).toLocaleLowerCase(languageTag)}${text.slice(1)}`;
 }
+
+const BREAK_AFTER_SEMICOLON = /(?<=;)\s+/;
+
+export function splitAfterSemicolons(text: string): string[] {
+  return text.split(BREAK_AFTER_SEMICOLON);
+}

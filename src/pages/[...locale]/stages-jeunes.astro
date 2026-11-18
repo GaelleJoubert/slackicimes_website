@@ -92,7 +92,7 @@ const weekIntro = description[WEEK_INTRO_PARAGRAPH_INDEX] ?? "";
             {formattedPrice} {strings.youthStages.pricePerDuration} {duration}
           </p>
           <p class="text-graphite">
-            {strings.stages.priceNote} {dates}.
+            {strings.stages.priceNote} {dates.join(", ")}.
           </p>
         </div>
         <LinkButton href={STAGES_REGISTRATION_URL} size="large">
