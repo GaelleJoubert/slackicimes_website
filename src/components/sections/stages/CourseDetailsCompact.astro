@@ -3,10 +3,12 @@ import type { CollectionEntry } from "astro:content";
 import { LOCALE_SETTINGS, type Locale } from "../../../i18n/locales";
 import { uiStrings } from "../../../i18n/ui";
 import { formatPriceInEuros, lowercaseFirstLetter } from "../../../lib/format";
+import { formatSessionLines, seasonYear } from "../../../lib/sessions";
 import { STAGES_REGISTRATION_URL } from "../../../lib/site";
 import DotList from "../../ui/DotList.astro";
 import FactTile from "../../ui/FactTile.astro";
 import LinkButton from "../../ui/LinkButton.astro";
+import TextLines from "../../ui/TextLines.astro";
 
 interface Props {
   stage: CollectionEntry<"stages">;
@@ -20,13 +22,19 @@ const {
   duration,
   level,
   ageRange,
-  dates,
+  sessions,
   description,
   program,
   prerequisites,
 } = stage.data;
 const languageTag = LOCALE_SETTINGS[locale].htmlLang;
 const formattedPrice = formatPriceInEuros(stage.data.priceInEuros, languageTag);
+const dateLines = formatSessionLines(
+  sessions,
+  languageTag,
+  strings.stages.sessionSeparator,
+);
+const datesLabel = `${strings.stages.datesHeading} ${seasonYear(sessions)}`;
 const programLines = program.items.map((item) =>
   item.place
     ? `${item.label}, ${lowercaseFirstLetter(item.place, languageTag)}`
@@ -65,8 +73,10 @@ const programLines = program.items.map((item) =>
     <DotList items={prerequisites} size="small" />
   </div>
   <div class="flex items-baseline gap-2.5">
-    <h4 class="subsection-title">{strings.stages.datesHeading}</h4>
-    <p class="font-semibold">{dates}</p>
+    <h4 class="subsection-title">{datesLabel}</h4>
+    <p class="font-semibold">
+      <TextLines lines={dateLines} />
+    </p>
   </div>
   <LinkButton href={STAGES_REGISTRATION_URL}>
     {strings.stages.registerButton}

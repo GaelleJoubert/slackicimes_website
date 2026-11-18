@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../../../i18n/locales";
+import { uiStrings } from "../../../i18n/ui";
+import { seasonYear } from "../../../lib/sessions";
+import { COURSE_CALENDAR_SECTION_ID } from "../../../lib/site";
+import Container from "../../ui/Container.astro";
+import SectionIntro from "../../ui/SectionIntro.astro";
+import SessionAgenda from "./SessionAgenda.astro";
+
+interface Props {
+  stages: CollectionEntry<"stages">[];
+  locale: Locale;
+}
+
+const { stages, locale } = Astro.props;
+const strings = uiStrings(locale);
+const year = seasonYear(stages.flatMap((stage) => stage.data.sessions));
+---
+
+<section id={COURSE_CALENDAR_SECTION_ID} class="py-section scroll-mt-24">
+  <Container class="gap-block flex flex-col">
+    <div class="max-w-190">
+      <SectionIntro
+        title={strings.stages.calendarQuestion}
+        eyebrow={`${strings.stages.calendarTitle} ${year}`}
+      >
+        <p class="text-graphite">{strings.stages.calendarIntro}</p>
+      </SectionIntro>
+    </div>
+    <SessionAgenda stages={stages} locale={locale} />
+  </Container>
+</section>

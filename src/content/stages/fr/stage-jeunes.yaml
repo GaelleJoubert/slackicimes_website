@@ -39,5 +39,6 @@ prerequisites:
   - Avoir plus de 10 ans
   - Pratiquer un sport de manière régulière
   - Être motivé !
-dates: Dates 2027 à venir
+sessions:
+  - { start: 2027-08-23, end: 2027-08-27 }
 priceInEuros: 200

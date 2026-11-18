@@ -18,5 +18,7 @@ prerequisites:
   - Be motivated to push your own limits
   - Be able to do 3 push-ups or 1 pull-up
   - Be 15 or older, or be accompanied
-dates: 2027 dates coming soon
-priceInEuros: 250
+sessions:
+  - { start: 2027-07-26, end: 2027-07-30 }
+  - { start: 2027-08-16, end: 2027-08-20 }
+priceInEuros: 270

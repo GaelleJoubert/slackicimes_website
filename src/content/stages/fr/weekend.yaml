@@ -17,5 +17,11 @@ prerequisites:
   - Être motivé pour dépasser ses propres limites
   - Savoir faire 3 pompes ou 1 traction
   - Avoir 15 ans ou plus, ou être accompagné
-dates: Dates 2027 à venir
+sessions:
+  - { start: 2027-06-26, end: 2027-06-27 }
+  - { start: 2027-07-03, end: 2027-07-04 }
+  - { start: 2027-07-17, end: 2027-07-18 }
+  - { start: 2027-07-31, end: 2027-08-01 }
+  - { start: 2027-08-14, end: 2027-08-15 }
+  - { start: 2027-08-21, end: 2027-08-22 }
 priceInEuros: 160
