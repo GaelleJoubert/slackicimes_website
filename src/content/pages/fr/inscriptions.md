@@ -13,7 +13,7 @@ steps:
 feature:
   title: Stages highline
   paragraphs:
-    - Première association de France à proposer des stages de highline, l'association propose des stages de différents formats, adaptés à tous les niveaux. Dates 2027 à venir.
+    - Première association de France à proposer des stages de highline, l'association propose des stages de différents formats, adaptés à tous les niveaux. Les stages 2027 ont lieu du 26 juin au 27 août.
 ---
 
 Les inscriptions se font grâce à la plateforme HelloAsso. Cliquez sur le bouton ci-dessous pour être redirigé vers la billetterie.

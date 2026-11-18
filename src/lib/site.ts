@@ -41,7 +41,7 @@ export const CONTACT_FORM_ENDPOINT = "https://api.web3forms.com/submit";
 export const WEB3FORMS_ACCESS_KEY = "5ae66538-452d-4f43-a177-b69d6666129e";
 
 export const STAGES_REGISTRATION_URL =
-  "https://www.helloasso.com/associations/slackicimes/evenements/stages-highlines-2026";
+  "https://www.helloasso.com/associations/slackicimes/evenements/stages-highlines-2027";
 
 export const SLACKCAMP_GPS_POSITION = "45°35′18.4″N 6°47′21.0″E";
 

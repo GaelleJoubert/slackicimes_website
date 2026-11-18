@@ -13,7 +13,7 @@ steps:
 feature:
   title: Highline courses
   paragraphs:
-    - The first association in France to offer highline courses, Slack'icîmes runs courses in different formats, suitable for every level. 2027 dates coming soon.
+    - The first association in France to offer highline courses, Slack'icîmes runs courses in different formats, suitable for every level. The 2027 courses run from June 26 to August 27.
 ---
 
 Registrations are handled through the HelloAsso platform. Click the button below to go to the ticket office.

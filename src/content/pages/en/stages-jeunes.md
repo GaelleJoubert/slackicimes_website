@@ -10,7 +10,7 @@ illustration:
 keyFacts:
   - { value: "5 days", label: "from 9 a.m. to 5 p.m." }
   - { value: "10-17", label: "years old, for young athletes" }
-  - { value: "2027", label: "dates coming soon" }
+  - { value: "August 23 to 27", label: "in 2027" }
 ---
 
 A highline introduction course designed especially for young athletes! From technique, through safety, cooperation and overcoming fears.
